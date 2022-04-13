@@ -26,41 +26,28 @@
 
 #include <hdf5.h>
 #include <hdf5_hl.h>
-#include <mpi.h>
 
 #include <string>
-#include <vector>
 
-#include "PLIHDF5/type.h"
-
+// TODO(jreuter): This approach is okay, but users cannot really compare the
+// types because HDF5 will return different strings than the native ones.
 namespace PLI {
 namespace HDF5 {
-class Dataset {
+class Type {
  public:
-  static PLI::HDF5::Dataset open(const hid_t parentPtr,
-                                 const std::string& datasetName);
-  template <typename T>
-  static PLI::HDF5::Dataset create(const hid_t parentPtr,
-                                   const std::string& datasetName,
-                                   const int32_t ndims, const hsize_t* dims,
-                                   const bool chunked = true);
-  static bool exists(const hid_t parentPtr, const std::string& datasetName);
+  explicit Type(const std::string& typeName);
+  explicit Type(const hid_t typeID);
+  explicit Type(const Type& type);
 
-  void close();
-  template <typename T>
-  T* read() const;
-  template <typename T>
-  void write(const T* data, const int32_t ndims, const hsize_t* dims);
-
-  const PLI::HDF5::Type type() const;
-  int ndims() const;
-  const std::vector<hsize_t> dims() const;
-  hid_t id() const;
+  operator hid_t() const;
+  operator std::string() const;
+  bool operator==(Type& other) const;
 
  private:
-  explicit Dataset(hid_t datasetPtr);
-  ~Dataset();
-  hid_t m_id;
+  static std::string convertIDToName(const hid_t ID);
+  static hid_t convertNameToID(const std::string& name);
+
+  hid_t m_typeID;
 };
 }  // namespace HDF5
 }  // namespace PLI

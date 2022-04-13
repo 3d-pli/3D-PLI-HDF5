@@ -22,45 +22,39 @@
    IN THE SOFTWARE.
  */
 
-#pragma once
-
-#include <hdf5.h>
-#include <hdf5_hl.h>
-#include <mpi.h>
-
-#include <string>
-#include <vector>
-
 #include "PLIHDF5/type.h"
 
-namespace PLI {
-namespace HDF5 {
-class Dataset {
- public:
-  static PLI::HDF5::Dataset open(const hid_t parentPtr,
-                                 const std::string& datasetName);
-  template <typename T>
-  static PLI::HDF5::Dataset create(const hid_t parentPtr,
-                                   const std::string& datasetName,
-                                   const int32_t ndims, const hsize_t* dims,
-                                   const bool chunked = true);
-  static bool exists(const hid_t parentPtr, const std::string& datasetName);
+PLI::HDF5::Type::Type(const std::string &typeName) {
+  this->m_typeID = PLI::HDF5::Type::convertNameToID(typeName);
+}
 
-  void close();
-  template <typename T>
-  T* read() const;
-  template <typename T>
-  void write(const T* data, const int32_t ndims, const hsize_t* dims);
+PLI::HDF5::Type::Type(const hid_t typeID) { this->m_typeID = typeID; }
 
-  const PLI::HDF5::Type type() const;
-  int ndims() const;
-  const std::vector<hsize_t> dims() const;
-  hid_t id() const;
+PLI::HDF5::Type::Type(const Type &type) { this->m_typeID = hid_t(type); }
 
- private:
-  explicit Dataset(hid_t datasetPtr);
-  ~Dataset();
-  hid_t m_id;
-};
-}  // namespace HDF5
-}  // namespace PLI
+PLI::HDF5::Type::operator hid_t() const { return this->m_typeID; }
+
+PLI::HDF5::Type::operator std::string() const {
+  return PLI::HDF5::Type::convertIDToName(this->m_typeID);
+}
+
+bool PLI::HDF5::Type::operator==(Type &other) const {
+  return this->m_typeID == hid_t(other);
+}
+
+std::string PLI::HDF5::Type::convertIDToName(const hid_t ID) {
+  size_t typeNameLength = 0;
+  // Make a first call to get the length of the typename
+  H5LTdtype_to_text(ID, nullptr, H5LT_DDL, &typeNameLength);
+
+  // Create a container to save the second call.
+  std::string returnString;
+  returnString.resize(typeNameLength);
+  H5LTdtype_to_text(ID, returnString.data(), H5LT_DDL, &typeNameLength);
+
+  return returnString;
+}
+
+hid_t PLI::HDF5::Type::convertNameToID(const std::string &name) {
+  return H5LTtext_to_dtype(name.c_str(), H5LT_DDL);
+}
