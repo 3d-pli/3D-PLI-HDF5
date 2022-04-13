@@ -30,8 +30,9 @@
 #include <vector>
 
 namespace PLI {
+namespace HDF5 {
 class AttributeHandler {
-  static PLI::AttributeHandler openHandler(const hid_t parentPtr);
+  static PLI::HDF5::AttributeHandler openHandler(const hid_t parentPtr);
 
   template <typename T>
   void createAttribute(const std::string& attributeName, const T& content);
@@ -42,19 +43,19 @@ class AttributeHandler {
   void deleteAttribute(const std::string& attributeName);
   bool attributeExists(const std::string& attributeName) const;
 
-  void copyTo(PLI::AttributeHandler dstHandler, const std::string& srcName,
-              const std::string& dstName);
-  void copyFrom(const PLI::AttributeHandler& srcHandler,
+  void copyTo(PLI::HDF5::AttributeHandler dstHandler,
+              const std::string& srcName, const std::string& dstName);
+  void copyFrom(const PLI::HDF5::AttributeHandler& srcHandler,
                 const std::string& srcName, const std::string& dstName);
   void copyAllFrom(
-      const PLI::AttributeHandler& srcHandler,
+      const PLI::HDF5::AttributeHandler& srcHandler,
       const std::vector<std::string>& exceptions = std::vector<std::string>());
   void copyAllTo(
-      PLI::AttributeHandler dstHandler,
+      PLI::HDF5::AttributeHandler dstHandler,
       const std::vector<std::string>& exceptions = std::vector<std::string>());
 
-  void setReference(const PLI::AttributeHandler& reference);
-  void setReference(const std::vector<PLI::AttributeHandler>& references);
+  void setReference(const PLI::HDF5::AttributeHandler& reference);
+  void setReference(const std::vector<PLI::HDF5::AttributeHandler>& references);
 
   void addCreator();
   void addId();
@@ -62,4 +63,5 @@ class AttributeHandler {
   std::vector<std::string> attributeNames();
   hid_t attributeId();
 };
+}  // namespace HDF5
 }  // namespace PLI

@@ -24,15 +24,17 @@
 
 #pragma once
 
-#include <H5Ipublic.h>  // for hid_t
+#include <H5Fpublic.h>
+#include <H5Ipublic.h>
 
 #include <string>
 
 namespace PLI {
+namespace HDF5 {
 class File {
  public:
-  static PLI::File create();
-  static PLI::File open();
+  static PLI::HDF5::File create(std::string fileName, unsigned createState);
+  static PLI::HDF5::File open(std::string fileName, unsigned openState);
   void close();
   void reopen();
   void flush();
@@ -40,11 +42,10 @@ class File {
   bool isHDF5();
   hid_t id();
 
-  hid_t operator[](std::string idx);
-
  private:
   File();
   ~File();
   hid_t m_id;
 };
+}  // namespace HDF5
 }  // namespace PLI

@@ -29,10 +29,11 @@
 #include <string>
 
 namespace PLI {
+namespace HDF5 {
 class Group {
  public:
-  static PLI::Group open(hid_t parentPtr, std::string groupName);
-  static PLI::Group create(hid_t parentPtr, std::string groupName);
+  static PLI::HDF5::Group open(hid_t parentPtr, std::string groupName);
+  static PLI::HDF5::Group create(hid_t parentPtr, std::string groupName);
   static bool exists(hid_t parentPtr, std::string groupName);
 
   void close();
@@ -44,4 +45,5 @@ class Group {
 
   hid_t m_id;
 };
+}  // namespace HDF5
 }  // namespace PLI

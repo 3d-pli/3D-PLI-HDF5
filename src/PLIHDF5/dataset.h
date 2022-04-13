@@ -32,14 +32,16 @@
 struct hdf5_type;
 
 namespace PLI {
+namespace HDF5 {
 class Dataset {
  public:
-  static PLI::Dataset open(const hid_t parentPtr,
-                           const std::string& datasetName);
+  static PLI::HDF5::Dataset open(const hid_t parentPtr,
+                                 const std::string& datasetName);
   template <typename T>
-  static PLI::Dataset create(const hid_t parentPtr,
-                             const std::string& datasetName, const uint ndims,
-                             const uint* dims, const bool chunked = true);
+  static PLI::HDF5::Dataset create(const hid_t parentPtr,
+                                   const std::string& datasetName,
+                                   const uint ndims, const uint* dims,
+                                   const bool chunked = true);
   static bool exists(const hid_t parentPtr, const std::string& datasetName);
 
   void close();
@@ -60,4 +62,5 @@ class Dataset {
   ~Dataset();
   hid_t m_id;
 };
+}  // namespace HDF5
 }  // namespace PLI
