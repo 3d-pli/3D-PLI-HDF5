@@ -24,26 +24,30 @@
 
 #pragma once
 
-#include <H5Fpublic.h>
-#include <H5Ipublic.h>
+#include <hdf5.h>
+#include <mpi.h>
 
+#include <filesystem>
 #include <string>
 
 namespace PLI {
 namespace HDF5 {
 class File {
  public:
-  static PLI::HDF5::File create(std::string fileName, unsigned createState);
-  static PLI::HDF5::File open(std::string fileName, unsigned openState);
+  static PLI::HDF5::File create(const std::string& fileName);
+  static PLI::HDF5::File open(const std::string& fileName,
+                              const unsigned openState);
+  static bool isHDF5(const std::string& fileName);
+  static bool fileExists(const std::string& fileName);
+
   void close();
   void reopen();
   void flush();
 
-  bool isHDF5();
   hid_t id();
 
  private:
-  File();
+  explicit File(const hid_t filePtr);
   ~File();
   hid_t m_id;
 };

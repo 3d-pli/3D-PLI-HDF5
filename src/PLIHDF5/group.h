@@ -24,7 +24,8 @@
 
 #pragma once
 
-#include <H5Ipublic.h>  // for hid_t
+#include <hdf5.h>
+#include <mpi.h>
 
 #include <string>
 

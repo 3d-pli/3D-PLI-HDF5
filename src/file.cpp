@@ -23,3 +23,61 @@
  */
 
 #include "PLIHDF5/file.h"
+
+PLI::HDF5::File PLI::HDF5::File::create(const std::string& fileName) {
+  if (PLI::HDF5::File::fileExists(fileName)) {
+    // TODO(jreuter): Write Exceptions!
+    throw 0;
+  }
+
+  hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
+  H5Pset_fapl_mpio(fapl_id, MPI_COMM_WORLD, MPI_INFO_NULL);
+
+  hid_t filePtr =
+      H5Fcreate(fileName.c_str(), H5F_ACC_EXCL, H5P_DEFAULT, fapl_id);
+  return PLI::HDF5::File(filePtr);
+}
+
+PLI::HDF5::File PLI::HDF5::File::open(const std::string& fileName,
+                                      const unsigned openState) {
+  if (!PLI::HDF5::File::fileExists(fileName)) {
+    // TODO(jreuter): Write Exceptions!
+    throw 0;
+  }
+  if (!PLI::HDF5::File::isHDF5(fileName)) {
+    // TODO(jreuter): Write Exceptions!
+    throw 0;
+  }
+
+  hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
+  H5Pset_fapl_mpio(fapl_id, MPI_COMM_WORLD, MPI_INFO_NULL);
+
+  // TODO(jreuter): Check the openState variable!
+  hid_t filePtr = H5Fopen(fileName.c_str(), H5F_ACC_RDWR, fapl_id);
+  return PLI::HDF5::File(filePtr);
+}
+
+void PLI::HDF5::File::close() {
+  if (this->m_id > 0) {
+    H5Fclose(this->m_id);
+    this->m_id = -1;
+  }
+}
+
+void PLI::HDF5::File::reopen() { H5Freopen(this->m_id); }
+
+void PLI::HDF5::File::flush() { H5Fflush(this->m_id, H5F_SCOPE_LOCAL); }
+
+bool PLI::HDF5::File::isHDF5(const std::string& fileName) {
+  return H5Fis_hdf5(fileName.c_str()) > 0;
+}
+
+bool PLI::HDF5::File::fileExists(const std::string& fileName) {
+  return std::filesystem::exists(fileName);
+}
+
+hid_t PLI::HDF5::File::id() { return this->m_id; }
+
+PLI::HDF5::File::File(const hid_t filePtr) { this->m_id = filePtr; }
+
+PLI::HDF5::File::~File() { close(); }
