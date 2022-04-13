@@ -1,0 +1,35 @@
+cmake_minimum_required(VERSION 3.5)
+project(PLIHDF5 LANGUAGES C CXX VERSION 1.0.0)
+
+set(default_build_type "Release")
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(HDF5 REQUIRED COMPONENTS C CXX HL)
+include_directories(${HDF5_INCLUDE_DIRS})
+set(PLIHDF5_LINK_LIBRARIES ${HDF5_LIBRARIES})
+
+option(PLIHDF5_USE_MPI "Compile with MPI support" ON)
+if(PLIHDF5_USE_MPI)
+    find_package(MPI REQUIRED)
+    include_directories(${MPI_INCLUDE_DIR})
+    set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} ${MPI_LIBRARIES})
+    add_definitions(-DPLIHDF5_USE_MPI)
+endif(PLIHDF5_USE_MPI)
+
+set(SPDLOG_BUILD_SHARED ON CACHE BOOL "SPDLOG_BUILD_SHARED: Build shared library.")
+add_subdirectory(extern/spdlog)
+set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} spdlog)
+
+set(JSON_BuildTests OFF CACHE INTERNAL "")
+add_subdirectory(extern/json)
+set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} nlohmann_json::nlohmann_json)
+
+add_subdirectory(src)
+if(BUILD_TESTING)
+    if(NOT WIN32)
+       enable_testing()
+       add_subdirectory(test)
+    endif()
+endif()
