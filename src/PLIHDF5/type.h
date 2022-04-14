@@ -29,15 +29,16 @@
 
 #include <string>
 
-// TODO(jreuter): This approach is okay, but users cannot really compare the
-// types because HDF5 will return different strings than the native ones.
 namespace PLI {
 namespace HDF5 {
 class Type {
  public:
+  template <typename T>
+  static PLI::HDF5::Type createType();
+
   explicit Type(const std::string& typeName);
   explicit Type(const hid_t typeID);
-  explicit Type(const Type& type);
+  Type(const Type& type);
 
   operator hid_t() const;
   operator std::string() const;
@@ -51,3 +52,32 @@ class Type {
 };
 }  // namespace HDF5
 }  // namespace PLI
+
+// Unsigned Int
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<uint8_t>();
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<uint16_t>();
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<uint32_t>();
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<uint64_t>();
+// Int
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<int8_t>();
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<int16_t>();
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<int32_t>();
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<int64_t>();
+// Float
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<float>();
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<double>();
+// String
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<std::string>();
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<const char*>();

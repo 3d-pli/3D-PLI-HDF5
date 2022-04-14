@@ -58,3 +58,67 @@ std::string PLI::HDF5::Type::convertIDToName(const hid_t ID) {
 hid_t PLI::HDF5::Type::convertNameToID(const std::string &name) {
   return H5LTtext_to_dtype(name.c_str(), H5LT_DDL);
 }
+
+// Unsigned Int
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<uint8_t>() {
+  return PLI::HDF5::Type("H5T_NATIVE_UCHAR");
+}
+
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<uint16_t>() {
+  return PLI::HDF5::Type("H5T_NATIVE_USHORT");
+}
+
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<uint32_t>() {
+  return PLI::HDF5::Type("H5T_NATIVE_UINT");
+}
+
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<uint64_t>() {
+  return PLI::HDF5::Type("H5T_NATIVE_ULONG");
+}
+
+// Int
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<int8_t>() {
+  return PLI::HDF5::Type("H5T_NATIVE_SCHAR");
+}
+
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<int16_t>() {
+  return PLI::HDF5::Type("H5T_NATIVE_SHORT");
+}
+
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<int32_t>() {
+  return PLI::HDF5::Type("H5T_NATIVE_INT");
+}
+
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<int64_t>() {
+  return PLI::HDF5::Type("H5T_NATIVE_LONG");
+}
+
+// Float
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<float>() {
+  return PLI::HDF5::Type("H5T_NATIVE_FLOAT");
+}
+
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<double>() {
+  return PLI::HDF5::Type("H5T_NATIVE_DOUBLE");
+}
+
+// String
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<std::string>() {
+  return PLI::HDF5::Type("H5T_NATIVE_CHAR");
+}
+
+template <>
+PLI::HDF5::Type PLI::HDF5::Type::createType<const char *>() {
+  return PLI::HDF5::Type("H5T_NATIVE_CHAR");
+}
