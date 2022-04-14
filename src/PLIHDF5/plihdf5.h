@@ -24,8 +24,30 @@
 
 #pragma once
 
+#include <algorithm>
+#include <string>
+#include <vector>
+
 #include "PLIHDF5/attributes.h"
 #include "PLIHDF5/dataset.h"
 #include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/file.h"
 #include "PLIHDF5/group.h"
+
+namespace PLI {
+class PLIM {
+ public:
+  explicit PLIM(PLI::HDF5::AttributeHandler dataset);
+
+  bool validSolrHDF5(const std::string& solrJSON);
+  void addCreator();
+  void addID();
+  void addReference(const PLI::HDF5::AttributeHandler& file);
+  void addReference(const std::vector<PLI::HDF5::AttributeHandler>& files);
+  void addSoftware(const std::string& softwareName);
+  void addSoftwareRevision(const std::string& revisionString);
+
+ private:
+  PLI::HDF5::AttributeHandler m_attrHandler;
+};
+}  // namespace PLI

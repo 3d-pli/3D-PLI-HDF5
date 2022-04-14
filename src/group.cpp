@@ -23,3 +23,37 @@
  */
 
 #include "PLIHDF5/group.h"
+
+PLI::HDF5::Group PLI::HDF5::Group::open(hid_t parentPtr,
+                                        const std::string& groupName) {
+  if (!PLI::HDF5::Group::exists(parentPtr, groupName)) {
+    throw 0;
+  }
+  return PLI::HDF5::Group(H5Gopen(parentPtr, groupName.c_str(), H5P_DEFAULT));
+}
+
+PLI::HDF5::Group PLI::HDF5::Group::create(hid_t parentPtr,
+                                          const std::string& groupName) {
+  if (PLI::HDF5::Group::exists(parentPtr, groupName)) {
+    throw 0;
+  }
+  return PLI::HDF5::Group(H5Gcreate(parentPtr, groupName.c_str(), H5P_DEFAULT,
+                                    H5P_DEFAULT, H5P_DEFAULT));
+}
+
+bool PLI::HDF5::Group::exists(hid_t parentPtr, const std::string& groupName) {
+  return true;
+}
+
+void PLI::HDF5::Group::close() {
+  if (this->m_id > 0) {
+    H5Gclose(this->m_id);
+  }
+  this->m_id = -1;
+}
+
+hid_t PLI::HDF5::Group::id() { return this->m_id; }
+
+PLI::HDF5::Group::Group(const hid_t groupPtr) { this->m_id = groupPtr; }
+
+PLI::HDF5::Group::~Group() { close(); }

@@ -23,3 +23,54 @@
  */
 
 #include "PLIHDF5/plihdf5.h"
+
+PLI::PLIM::PLIM(PLI::HDF5::AttributeHandler handler) : m_attrHandler(handler) {}
+
+bool PLI::PLIM::validSolrHDF5(const std::string &solrJSON) { return true; }
+
+void PLI::PLIM::addCreator() {
+  std::string username;
+#ifdef __GNUC__
+  username = std::getenv("USER");
+#else
+  char username_arr[UNLEN + 1];
+  DWORD username_len = UNLEN + 1;
+  GetUserName(username_arr, &username_len);
+  username = std::string(username_arr);
+#endif
+  if (m_attrHandler.attributeExists("created_by")) {
+    m_attrHandler.deleteAttribute("created_by");
+  }
+  m_attrHandler.createAttribute("created_by", username);
+}
+
+void PLI::PLIM::addID() {}
+
+void PLI::PLIM::addReference(const PLI::HDF5::AttributeHandler &file) {
+  std::vector<std::string> fileID = file.getAttribute<std::string>("id");
+  m_attrHandler.createAttribute("reference_images", fileID[0]);
+}
+
+void PLI::PLIM::addReference(
+    const std::vector<PLI::HDF5::AttributeHandler> &files) {
+  std::vector<std::string> fileIDs;
+  std::transform(files.begin(), files.end(), std::back_inserter(fileIDs),
+                 [](PLI::HDF5::AttributeHandler file) -> std::string {
+                   return file.getAttribute<std::string>("id")[0];
+                 });
+  m_attrHandler.createAttribute("reference_images", fileIDs, {fileIDs.size()});
+}
+
+void PLI::PLIM::addSoftware(const std::string &softwareName) {
+  if (m_attrHandler.attributeExists("software")) {
+    m_attrHandler.deleteAttribute("software");
+  }
+  m_attrHandler.createAttribute("software", softwareName);
+}
+
+void PLI::PLIM::addSoftwareRevision(const std::string &revisionString) {
+  if (m_attrHandler.attributeExists("software_revision")) {
+    m_attrHandler.deleteAttribute("software_revision");
+  }
+  m_attrHandler.createAttribute("software_revision", revisionString);
+}

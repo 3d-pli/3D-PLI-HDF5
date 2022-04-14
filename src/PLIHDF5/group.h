@@ -25,6 +25,7 @@
 #pragma once
 
 #include <hdf5.h>
+#include <hdf5_hl.h>
 #include <mpi.h>
 
 #include <string>
@@ -33,16 +34,16 @@ namespace PLI {
 namespace HDF5 {
 class Group {
  public:
-  static PLI::HDF5::Group open(hid_t parentPtr, std::string groupName);
-  static PLI::HDF5::Group create(hid_t parentPtr, std::string groupName);
-  static bool exists(hid_t parentPtr, std::string groupName);
+  ~Group();
+  static PLI::HDF5::Group open(hid_t parentPtr, const std::string& groupName);
+  static PLI::HDF5::Group create(hid_t parentPtr, const std::string& groupName);
+  static bool exists(hid_t parentPtr, const std::string& groupName);
 
   void close();
   hid_t id();
 
  private:
-  Group();
-  ~Group();
+  explicit Group(const hid_t groupPtr);
 
   hid_t m_id;
 };

@@ -27,22 +27,46 @@
 #include <hdf5.h>
 #include <mpi.h>
 
+#ifdef __GNUC__
+#include <pwd.h>
+#include <unistd.h>
+#else
+#define NOMINMAX
+#include <Windows.h>
+#include <lmcons.h>
+#endif
+
+#include <memory>
 #include <string>
 #include <vector>
+
+#include "PLIHDF5/type.h"
 
 namespace PLI {
 namespace HDF5 {
 class AttributeHandler {
-  static PLI::HDF5::AttributeHandler openHandler(const hid_t parentPtr);
+ public:
+  explicit AttributeHandler(const hid_t parentPtr);
 
+  template <typename T>
+  void createAttribute(const std::string& attributeName,
+                       const std::vector<T>& content,
+                       const std::vector<hsize_t>& dimensions);
   template <typename T>
   void createAttribute(const std::string& attributeName, const T& content);
   template <typename T>
-  const T getAttribute(const std::string& attributeName) const;
+  const std::vector<T> getAttribute(const std::string& attributeName) const;
+  const std::vector<hsize_t> getAttributeDimensions(
+      const std::string& attributeName) const;
   template <typename T>
   void updateAttribute(const std::string& attributeName, const T& content);
+  template <typename T>
+  void updateAttribute(const std::string& attributeName,
+                       const std::vector<T>& content,
+                       const std::vector<hsize_t>& dimensions);
   void deleteAttribute(const std::string& attributeName);
   bool attributeExists(const std::string& attributeName) const;
+  PLI::HDF5::Type attributeType(const std::string& attributeName) const;
 
   void copyTo(PLI::HDF5::AttributeHandler dstHandler,
               const std::string& srcName, const std::string& dstName);
@@ -55,14 +79,11 @@ class AttributeHandler {
       PLI::HDF5::AttributeHandler dstHandler,
       const std::vector<std::string>& exceptions = std::vector<std::string>());
 
-  void setReference(const PLI::HDF5::AttributeHandler& reference);
-  void setReference(const std::vector<PLI::HDF5::AttributeHandler>& references);
-
-  void addCreator();
-  void addId();
-
   std::vector<std::string> attributeNames();
-  hid_t attributeId();
+  hid_t id();
+
+ private:
+  hid_t m_id;
 };
 }  // namespace HDF5
 }  // namespace PLI
