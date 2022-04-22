@@ -39,6 +39,9 @@ namespace HDF5 {
 class Dataset {
  public:
   ~Dataset();
+  Dataset();
+  explicit Dataset(const Dataset& otherFile);
+  explicit Dataset(hid_t datasetPtr);
   static PLI::HDF5::Dataset open(const hid_t parentPtr,
                                  const std::string& datasetName);
   template <typename T>
@@ -62,7 +65,6 @@ class Dataset {
   operator hid_t() const;
 
  private:
-  explicit Dataset(hid_t datasetPtr);
   hid_t m_id;
 };
 }  // namespace HDF5

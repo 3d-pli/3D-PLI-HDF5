@@ -73,7 +73,11 @@ const std::vector<hsize_t> PLI::HDF5::Dataset::dims() const {
 
 hid_t PLI::HDF5::Dataset::id() const { return this->m_id; }
 
+PLI::HDF5::Dataset::Dataset() : m_id(-1) {}
+
 PLI::HDF5::Dataset::Dataset(hid_t datasetPtr) { this->m_id = datasetPtr; }
+
+PLI::HDF5::Dataset::Dataset(const Dataset &dataset) : m_id(dataset.id()) {}
 
 PLI::HDF5::Dataset::~Dataset() {}
 

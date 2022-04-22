@@ -26,3 +26,58 @@
 #include <gtest/gtest.h>
 
 #include "PLIHDF5/dataset.h"
+#include "PLIHDF5/file.h"
+#include "testEnvironment.h"
+
+class DatasetFixtureTest : public ::testing::Test {
+ protected:
+  void SetUp() override {
+    _filePath = "test_dataset.h5";
+    _copyFilePath = "test_dataset.h5.bak";
+    std::filesystem::copy_file(
+        _filePath, _copyFilePath,
+        std::filesystem::copy_options::overwrite_existing);
+    _file = PLI::HDF5::File::open(_filePath, H5F_ACC_RDWR);
+    _dataset = PLI::HDF5::Dataset::open(_file, "test");
+  }
+
+  void TearDown() override {
+    _dataset.close();
+    _file.close();
+    std::filesystem::copy_file(
+        _copyFilePath, _filePath,
+        std::filesystem::copy_options::overwrite_existing);
+  }
+
+  std::string _filePath, _copyFilePath;
+  PLI::HDF5::File _file;
+  PLI::HDF5::Dataset _dataset;
+};
+
+TEST_F(DatasetFixtureTest, Exists) {}
+
+TEST_F(DatasetFixtureTest, Close) {}
+
+TEST_F(DatasetFixtureTest, Write) {}
+
+TEST_F(DatasetFixtureTest, Type) {}
+
+TEST_F(DatasetFixtureTest, NDims) {}
+
+TEST_F(DatasetFixtureTest, Dims) {}
+
+TEST_F(DatasetFixtureTest, ID) {}
+
+TEST(DatasetTest, Open) {}
+
+TEST(DatasetTest, Create) {}
+
+int main(int argc, char* argv[]) {
+  int result = 0;
+
+  ::testing::InitGoogleTest(&argc, argv);
+  ::testing::AddGlobalTestEnvironment(new MPIEnvironment);
+
+  result = RUN_ALL_TESTS();
+  return result;
+}
