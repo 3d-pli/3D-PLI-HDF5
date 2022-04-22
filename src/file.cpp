@@ -25,6 +25,8 @@
 
 #include "PLIHDF5/file.h"
 
+#include <iostream>
+
 PLI::HDF5::File PLI::HDF5::File::create(const std::string& fileName) {
   if (PLI::HDF5::File::fileExists(fileName)) {
     // TODO(jreuter): Write Exceptions!
@@ -68,8 +70,9 @@ PLI::HDF5::File PLI::HDF5::File::open(const std::string& fileName,
 
 void PLI::HDF5::File::close() {
   if (this->m_id > 0) {
+    std::cout << this << " " << this->m_id << std::endl;
     H5Fclose(this->m_id);
-    this->m_id = -1;
+    this->m_id = int64_t(-1);
   }
 }
 
@@ -90,12 +93,14 @@ bool PLI::HDF5::File::fileExists(const std::string& fileName) {
   return std::filesystem::exists(fileName);
 }
 
-hid_t PLI::HDF5::File::id() { return this->m_id; }
+hid_t PLI::HDF5::File::id() const { return this->m_id; }
 
 PLI::HDF5::File::File() : m_id(-1) {}
 
+PLI::HDF5::File::File(const File& other) : m_id(other.id()) {}
+
 PLI::HDF5::File::File(const hid_t filePtr) : m_id(filePtr) {}
 
-PLI::HDF5::File::~File() { close(); }
+PLI::HDF5::File::~File() {}
 
 PLI::HDF5::File::operator hid_t() const { return this->m_id; }

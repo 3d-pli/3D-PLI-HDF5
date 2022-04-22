@@ -75,7 +75,7 @@ hid_t PLI::HDF5::Dataset::id() const { return this->m_id; }
 
 PLI::HDF5::Dataset::Dataset(hid_t datasetPtr) { this->m_id = datasetPtr; }
 
-PLI::HDF5::Dataset::~Dataset() { this->close(); }
+PLI::HDF5::Dataset::~Dataset() {}
 
 template <typename T>
 PLI::HDF5::Dataset PLI::HDF5::Dataset::create(const hid_t parentPtr,

@@ -37,6 +37,7 @@ class File {
  public:
   ~File();
   File();
+  explicit File(const File& otherFile);
   explicit File(const hid_t filePtr);
   static PLI::HDF5::File create(const std::string& fileName);
   static PLI::HDF5::File open(const std::string& fileName,
@@ -48,7 +49,7 @@ class File {
   void reopen();
   void flush();
 
-  hid_t id();
+  hid_t id() const;
 
   operator hid_t() const;
 
