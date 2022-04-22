@@ -196,6 +196,7 @@ _deps
 *.cxxflags
 *.cflags
 
-
+.vscode/
+defaults.cfg
 # End of https://www.toptal.com/developers/gitignore/api/c++,qtcreator,clion,cmake
 
