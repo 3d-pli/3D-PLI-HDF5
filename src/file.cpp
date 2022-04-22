@@ -42,7 +42,7 @@ PLI::HDF5::File PLI::HDF5::File::create(const std::string& fileName) {
     // TODO(jreuter): Write Exceptions!
     throw 0;
   }
-  return PLI::HDF5::File(filePtr);
+  return PLI::HDF5::File(filePtr, fapl_id);
 }
 
 PLI::HDF5::File PLI::HDF5::File::open(const std::string& fileName,
@@ -65,12 +65,12 @@ PLI::HDF5::File PLI::HDF5::File::open(const std::string& fileName,
     // TODO(jreuter): Write Exceptions!
     throw 0;
   }
-  return PLI::HDF5::File(filePtr);
+  return PLI::HDF5::File(filePtr, fapl_id);
 }
 
 void PLI::HDF5::File::close() {
   if (this->m_id > 0) {
-    std::cout << this << " " << this->m_id << std::endl;
+    H5Pclose(this->m_faplID);
     H5Fclose(this->m_id);
     this->m_id = int64_t(-1);
   }
@@ -95,11 +95,14 @@ bool PLI::HDF5::File::fileExists(const std::string& fileName) {
 
 hid_t PLI::HDF5::File::id() const { return this->m_id; }
 
+hid_t PLI::HDF5::File::faplID() const { return this->m_faplID; }
+
 PLI::HDF5::File::File() : m_id(-1) {}
 
 PLI::HDF5::File::File(const File& other) : m_id(other.id()) {}
 
-PLI::HDF5::File::File(const hid_t filePtr) : m_id(filePtr) {}
+PLI::HDF5::File::File(const hid_t filePtr, const hid_t faplID)
+    : m_id(filePtr), m_faplID(faplID) {}
 
 PLI::HDF5::File::~File() {}
 

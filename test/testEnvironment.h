@@ -25,38 +25,22 @@
 
 #pragma once
 
-#include <hdf5.h>
+#include <gtest/gtest.h>
 #include <mpi.h>
 
-#include <filesystem>
-#include <string>
-
-namespace PLI {
-namespace HDF5 {
-class File {
+class MPIEnvironment : public ::testing::Environment {
  public:
-  ~File();
-  File();
-  explicit File(const File& otherFile);
-  explicit File(const hid_t filePtr, const hid_t faplID);
-  static PLI::HDF5::File create(const std::string& fileName);
-  static PLI::HDF5::File open(const std::string& fileName,
-                              const unsigned openState);
-  static bool isHDF5(const std::string& fileName);
-  static bool fileExists(const std::string& fileName);
+  virtual void SetUp() {
+    char** argv;
+    int argc = 0;
+    int mpiError = MPI_Init(&argc, &argv);
+    ASSERT_FALSE(mpiError);
+  }
 
-  void close();
-  void reopen();
-  void flush();
+  virtual void TearDown() {
+    int mpiError = MPI_Finalize();
+    ASSERT_FALSE(mpiError);
+  }
 
-  hid_t id() const;
-  hid_t faplID() const;
-
-  operator hid_t() const;
-
- private:
-  hid_t m_id;
-  hid_t m_faplID;
+  virtual ~MPIEnvironment() {}
 };
-}  // namespace HDF5
-}  // namespace PLI
