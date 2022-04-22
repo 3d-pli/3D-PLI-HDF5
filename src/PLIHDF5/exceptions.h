@@ -1,7 +1,8 @@
 /*
     MIT License
 
-    Copyright (c) 2022 Forschungszentrum Jülich / Jan André Reuter.
+    Copyright (c) 2022 Forschungszentrum Jülich / Jan André Reuter & Felix
+   Matuschke.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to
