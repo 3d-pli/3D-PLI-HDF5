@@ -40,7 +40,7 @@ PLI::HDF5::Type::operator std::string() const {
 }
 
 bool PLI::HDF5::Type::operator==(Type &other) const {
-  return this->m_typeID == hid_t(other);
+  return H5Tequal(this->m_typeID, other) > 0;
 }
 
 std::string PLI::HDF5::Type::convertIDToName(const hid_t ID) {

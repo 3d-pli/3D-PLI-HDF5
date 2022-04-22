@@ -26,3 +26,24 @@
 #include <gtest/gtest.h>
 
 #include "PLIHDF5/group.h"
+#include "testEnvironment.h"
+
+TEST(TestGroup, Open) {}
+
+TEST(TestGroup, Create) {}
+
+TEST(TestGroup, Exists) {}
+
+TEST(TestGroup, Close) {}
+
+TEST(TestGroup, ID) {}
+
+int main(int argc, char* argv[]) {
+  int result = 0;
+
+  ::testing::InitGoogleTest(&argc, argv);
+  ::testing::AddGlobalTestEnvironment(new MPIEnvironment);
+
+  result = RUN_ALL_TESTS();
+  return result;
+}

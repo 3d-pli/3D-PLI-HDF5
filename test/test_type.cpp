@@ -25,4 +25,26 @@
 
 #include <gtest/gtest.h>
 
+#include <string>
+
 #include "PLIHDF5/type.h"
+
+template <typename T>
+class TypeTest : public ::testing::Test {
+ protected:
+  TypeTest() : m_type(PLI::HDF5::Type::createType<T>()) {}
+  PLI::HDF5::Type m_type;
+};
+typedef ::testing::Types<uint8_t, uint16_t, uint32_t, uint64_t, int8_t, int16_t,
+                         int32_t, int64_t, float, double, std::string>
+    TestTypes;
+
+TYPED_TEST_SUITE(TypeTest, TestTypes);
+
+TYPED_TEST(TypeTest, CreateType) {
+  EXPECT_TRUE(PLI::HDF5::Type::createType<TypeParam>() == this->m_type);
+}
+
+TYPED_TEST(TypeTest, CreateTypeFromName) {}
+
+TYPED_TEST(TypeTest, CreateTypeFromID) {}

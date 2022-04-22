@@ -26,3 +26,34 @@
 #include <gtest/gtest.h>
 
 #include "PLIHDF5/link.h"
+#include "testEnvironment.h"
+
+TEST(TestLink, CreateSoft) {}
+
+TEST(TestLink, CreateHard) {}
+
+TEST(TestLink, CreateExternal) {}
+
+TEST(TestLink, Exists) {}
+
+TEST(TestLink, IsSoftLink) {}
+
+TEST(TestLink, IsHardLink) {}
+
+TEST(TestLink, IsExternalLink) {}
+
+TEST(TestLink, DeleteLink) {}
+
+TEST(TestLink, MoveLink) {}
+
+TEST(TestLink, CopyLink) {}
+
+int main(int argc, char* argv[]) {
+  int result = 0;
+
+  ::testing::InitGoogleTest(&argc, argv);
+  ::testing::AddGlobalTestEnvironment(new MPIEnvironment);
+
+  result = RUN_ALL_TESTS();
+  return result;
+}
