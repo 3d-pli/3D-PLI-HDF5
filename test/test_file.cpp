@@ -26,3 +26,30 @@
 #include <gtest/gtest.h>
 
 #include "PLIHDF5/file.h"
+#include "testEnvironment.h"
+
+TEST(TestFile, Create) {}
+
+TEST(TestFile, Open) {}
+
+TEST(TestFile, IsHDF5) {}
+
+TEST(TestFile, FileExists) {}
+
+TEST(TestFile, Close) {}
+
+TEST(TestFile, Reopen) {}
+
+TEST(TestFile, Flush) {}
+
+TEST(TestFile, ID) {}
+
+int main(int argc, char* argv[]) {
+  int result = 0;
+
+  ::testing::InitGoogleTest(&argc, argv);
+  ::testing::AddGlobalTestEnvironment(new MPIEnvironment);
+
+  result = RUN_ALL_TESTS();
+  return result;
+}
