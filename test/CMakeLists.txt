@@ -36,3 +36,7 @@ gtest_discover_tests(test_type)
 add_executable(test_plihdf5 test_plihdf5.cpp)
 target_link_libraries(test_plihdf5 PLIHDF5 ${PLIHDF5_LINK_LIBRARIES} gtest_main)
 gtest_discover_tests(test_plihdf5)
+
+add_executable(test_sha256 test_sha256.cpp)
+target_link_libraries(test_sha256 PLIHDF5 ${PLIHDF5_LINK_LIBRARIES} gtest_main)
+gtest_discover_tests(test_sha256)

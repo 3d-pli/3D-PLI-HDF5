@@ -23,18 +23,25 @@
    IN THE SOFTWARE.
  */
 
+#include <gtest/gtest.h>
+
 #include "PLIHDF5/sha256.h"
+#include "testEnvironment.h"
 
-std::string PLI::toSHA256(const std::string &hashString) {
-  unsigned char hash[SHA256_DIGEST_LENGTH];
-  SHA256(reinterpret_cast<const unsigned char *>(hashString.c_str()),
-         hashString.length(), hash);
+TEST(TestSHA256, ToSHA256) {
+  std::string string = "Hello World!";
+  std::string expected =
+      "7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069";
+  std::string actual = PLI::toSHA256(string);
+  EXPECT_EQ(expected, actual);
+}
 
-  std::stringstream ss;
-  for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
-    ss << std::hex << std::setw(2) << std::setfill('0')
-       << static_cast<int>(hash[i]);
-  }
+int main(int argc, char* argv[]) {
+  int result = 0;
 
-  return ss.str();
+  ::testing::InitGoogleTest(&argc, argv);
+  ::testing::AddGlobalTestEnvironment(new MPIEnvironment);
+
+  result = RUN_ALL_TESTS();
+  return result;
 }
