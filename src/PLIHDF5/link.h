@@ -33,20 +33,24 @@
 namespace PLI {
 namespace HDF5 {
 class Link {
-  static bool createSoft(hid_t parentPtr, const std::string &path,
-                         const std::string &target);
-  static bool createHard(hid_t parentPtr, const std::string &path,
-                         const std::string &target);
-  static bool createExternal(hid_t parentPtr, const std::string &externalPath,
-                             const std::string &path,
-                             const std::string &target);
-  static bool exists(hid_t parentPtr, const std::string &path);
-  static bool isSoftLink(hid_t parentPtr, const std::string &path);
-  static bool deleteLink(hid_t parentPtr, const std::string &path);
-  static bool moveLink(hid_t parentPtr, const std::string &sourcePath,
-                       const std::string &destinationPath);
-  static bool copyLink(hid_t parentPtr, const std::string &sourcePath,
-                       const std::string &destinationPath);
+ public:
+  static bool createSoft(const hid_t parentPtr, const std::string &srcPath,
+                         const std::string &dstPath);
+  static bool createHard(const hid_t parentPtr, const std::string &srcPath,
+                         const std::string &dstPath);
+  static bool createExternal(const hid_t parentPtr,
+                             const std::string &externalPath,
+                             const std::string &srcPath,
+                             const std::string &dstPath);
+  static bool exists(const hid_t parentPtr, const std::string &path);
+  static bool isSoftLink(const hid_t parentPtr, const std::string &path);
+  static bool isHardLink(const hid_t parentPtr, const std::string &path);
+  static bool isExternalLink(const hid_t parentPtr, const std::string &path);
+  static bool deleteLink(const hid_t parentPtr, const std::string &path);
+  static bool moveLink(const hid_t parentPtr, const std::string &srcPath,
+                       const std::string &dstPath);
+  static bool copyLink(const hid_t parentPtr, const std::string &srcPath,
+                       const std::string &dstPath);
 };
 }  // namespace HDF5
 }  // namespace PLI

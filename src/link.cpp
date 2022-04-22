@@ -24,3 +24,69 @@
  */
 
 #include "PLIHDF5/link.h"
+
+bool PLI::HDF5::Link::createSoft(const hid_t parentPtr,
+                                 const std::string &srcPath,
+                                 const std::string &dstPath) {
+  return H5Lcreate_soft(srcPath.c_str(), parentPtr, dstPath.c_str(),
+                        H5P_DEFAULT, H5P_DEFAULT) >= 0;
+}
+
+bool PLI::HDF5::Link::createHard(const hid_t parentPtr,
+                                 const std::string &srcPath,
+                                 const std::string &dstPath) {
+  return H5Lcreate_hard(parentPtr, srcPath.c_str(), parentPtr, dstPath.c_str(),
+                        H5P_DEFAULT, H5P_DEFAULT) >= 0;
+}
+
+bool PLI::HDF5::Link::createExternal(const hid_t parentPtr,
+                                     const std::string &externalPath,
+                                     const std::string &srcPath,
+                                     const std::string &dstPath) {
+  return H5Lcreate_external(externalPath.c_str(), srcPath.c_str(), parentPtr,
+                            dstPath.c_str(), H5P_DEFAULT, H5P_DEFAULT) >= 0;
+}
+
+bool PLI::HDF5::Link::exists(const hid_t parentPtr, const std::string &path) {
+  return H5Lexists(parentPtr, path.c_str(), H5P_DEFAULT) > 0;
+}
+
+bool PLI::HDF5::Link::isSoftLink(const hid_t parentPtr,
+                                 const std::string &path) {
+  H5L_info_t linkInfo;
+  H5Lget_info(parentPtr, path.c_str(), &linkInfo, H5P_DEFAULT);
+  return linkInfo.type == H5L_TYPE_SOFT;
+}
+
+bool PLI::HDF5::Link::isHardLink(const hid_t parentPtr,
+                                 const std::string &path) {
+  H5L_info_t linkInfo;
+  H5Lget_info(parentPtr, path.c_str(), &linkInfo, H5P_DEFAULT);
+  return linkInfo.type == H5L_TYPE_HARD;
+}
+
+bool PLI::HDF5::Link::isExternalLink(const hid_t parentPtr,
+                                     const std::string &path) {
+  H5L_info_t linkInfo;
+  H5Lget_info(parentPtr, path.c_str(), &linkInfo, H5P_DEFAULT);
+  return linkInfo.type == H5L_TYPE_EXTERNAL;
+}
+
+bool PLI::HDF5::Link::deleteLink(const hid_t parentPtr,
+                                 const std::string &path) {
+  return H5Ldelete(parentPtr, path.c_str(), H5P_DEFAULT) >= 0;
+}
+
+bool PLI::HDF5::Link::moveLink(const hid_t parentPtr,
+                               const std::string &srcPath,
+                               const std::string &dstPath) {
+  return H5Lmove(parentPtr, srcPath.c_str(), parentPtr, dstPath.c_str(),
+                 H5P_DEFAULT, H5P_DEFAULT) >= 0;
+}
+
+bool PLI::HDF5::Link::copyLink(const hid_t parentPtr,
+                               const std::string &srcPath,
+                               const std::string &dstPath) {
+  return H5Lcopy(parentPtr, srcPath.c_str(), parentPtr, dstPath.c_str(),
+                 H5P_DEFAULT, H5P_DEFAULT) >= 0;
+}
