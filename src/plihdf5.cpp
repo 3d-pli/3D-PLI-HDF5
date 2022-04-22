@@ -26,10 +26,10 @@
 #include "PLIHDF5/plihdf5.h"
 
 PLI::PLIM::PLIM(PLI::HDF5::File handler, const std::string &dataset) {
-  if (PLI::HDF5::Dataset::exists(handler.id(), dataset)) {
+  if (PLI::HDF5::Dataset::exists(handler, dataset)) {
     PLI::HDF5::Dataset datasetHandler =
-        PLI::HDF5::Dataset::open(handler.id(), dataset);
-    m_attrHandler = PLI::HDF5::AttributeHandler(datasetHandler.id());
+        PLI::HDF5::Dataset::open(handler, dataset);
+    m_attrHandler = PLI::HDF5::AttributeHandler(datasetHandler);
   } else {
     throw PLI::HDF5::DatasetNotFoundException(dataset);
   }
