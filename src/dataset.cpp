@@ -118,3 +118,5 @@ T *PLI::HDF5::Dataset::read() const {
 template <typename T>
 void PLI::HDF5::Dataset::write(const T *data, const int32_t ndims,
                                const hsize_t *dims) {}
+
+PLI::HDF5::Dataset::operator hid_t() const { return this->m_id; }

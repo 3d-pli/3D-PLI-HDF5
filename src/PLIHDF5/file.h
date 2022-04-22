@@ -47,6 +47,8 @@ class File {
 
   hid_t id();
 
+  operator hid_t() const;
+
  private:
   explicit File(const hid_t filePtr);
   ~File();

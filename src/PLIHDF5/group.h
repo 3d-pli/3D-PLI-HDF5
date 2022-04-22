@@ -43,6 +43,8 @@ class Group {
   void close();
   hid_t id();
 
+  operator hid_t() const;
+
  private:
   explicit Group(const hid_t groupPtr);
 

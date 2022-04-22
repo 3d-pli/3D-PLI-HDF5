@@ -82,3 +82,5 @@ hid_t PLI::HDF5::File::id() { return this->m_id; }
 PLI::HDF5::File::File(const hid_t filePtr) { this->m_id = filePtr; }
 
 PLI::HDF5::File::~File() { close(); }
+
+PLI::HDF5::File::operator hid_t() const { return this->m_id; }

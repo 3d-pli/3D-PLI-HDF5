@@ -25,8 +25,28 @@
 
 #pragma once
 
+#include <hdf5.h>
+#include <hdf5_hl.h>
+
+#include <string>
+
 namespace PLI {
 namespace HDF5 {
-class Link {};
+class Link {
+  static bool createSoft(hid_t parentPtr, const std::string &path,
+                         const std::string &target);
+  static bool createHard(hid_t parentPtr, const std::string &path,
+                         const std::string &target);
+  static bool createExternal(hid_t parentPtr, const std::string &externalPath,
+                             const std::string &path,
+                             const std::string &target);
+  static bool exists(hid_t parentPtr, const std::string &path);
+  static bool isSoftLink(hid_t parentPtr, const std::string &path);
+  static bool deleteLink(hid_t parentPtr, const std::string &path);
+  static bool moveLink(hid_t parentPtr, const std::string &sourcePath,
+                       const std::string &destinationPath);
+  static bool copyLink(hid_t parentPtr, const std::string &sourcePath,
+                       const std::string &destinationPath);
+};
 }  // namespace HDF5
 }  // namespace PLI

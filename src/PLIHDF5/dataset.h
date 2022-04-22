@@ -59,6 +59,8 @@ class Dataset {
   const std::vector<hsize_t> dims() const;
   hid_t id() const;
 
+  operator hid_t() const;
+
  private:
   explicit Dataset(hid_t datasetPtr);
   hid_t m_id;

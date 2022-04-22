@@ -58,3 +58,5 @@ hid_t PLI::HDF5::Group::id() { return this->m_id; }
 PLI::HDF5::Group::Group(const hid_t groupPtr) { this->m_id = groupPtr; }
 
 PLI::HDF5::Group::~Group() { close(); }
+
+PLI::HDF5::Group::operator hid_t() const { return this->m_id; }
