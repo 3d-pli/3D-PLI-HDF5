@@ -24,3 +24,9 @@
  */
 
 #pragma once
+
+namespace PLI {
+namespace HDF5 {
+class Link {};
+}  // namespace HDF5
+}  // namespace PLI

@@ -25,6 +25,16 @@
 
 #include "PLIHDF5/plihdf5.h"
 
+PLI::PLIM::PLIM(PLI::HDF5::File handler, const std::string &dataset) {
+  if (PLI::HDF5::Dataset::exists(handler.id(), dataset)) {
+    PLI::HDF5::Dataset datasetHandler =
+        PLI::HDF5::Dataset::open(handler.id(), dataset);
+    m_attrHandler = PLI::HDF5::AttributeHandler(datasetHandler.id());
+  } else {
+    throw PLI::HDF5::DatasetNotFoundException(dataset);
+  }
+}
+
 PLI::PLIM::PLIM(PLI::HDF5::AttributeHandler handler) : m_attrHandler(handler) {}
 
 bool PLI::PLIM::validSolrHDF5(const std::string &solrJSON) { return true; }
@@ -45,7 +55,39 @@ void PLI::PLIM::addCreator() {
   m_attrHandler.createAttribute("created_by", username);
 }
 
-void PLI::PLIM::addID() {}
+void PLI::PLIM::addID(const std::vector<std::string> &idAttributes) {
+  std::string hashCode;
+
+  for (const std::string &attribute : idAttributes) {
+    if (m_attrHandler.attributeExists(attribute)) {
+      std::vector<std::string> attributeString =
+          m_attrHandler.getAttribute<std::string>(attribute);
+      std::for_each(attributeString.begin(), attributeString.end(),
+                    [&hashCode](const std::string &str) { hashCode += str; });
+    } else {
+      throw PLI::HDF5::AttributeNotFoundException(attribute);
+    }
+  }
+
+  // Convert hashCode to SHA256
+  unsigned char hash[SHA256_DIGEST_LENGTH];
+  SHA256_CTX sha256;
+  SHA256_Init(&sha256);
+  SHA256_Update(&sha256, hashCode.c_str(), hashCode.size());
+  SHA256_Final(hash, &sha256);
+
+  std::stringstream ss;
+  for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
+    ss << std::hex << std::setw(2) << std::setfill('0')
+       << static_cast<int>(hash[i]);
+  }
+
+  // Write the attribute
+  if (m_attrHandler.attributeExists("id")) {
+    m_attrHandler.deleteAttribute("id");
+  }
+  m_attrHandler.createAttribute("id", ss.str());
+}
 
 void PLI::PLIM::addReference(const PLI::HDF5::AttributeHandler &file) {
   std::vector<std::string> fileID = file.getAttribute<std::string>("id");

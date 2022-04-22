@@ -25,6 +25,8 @@
 
 #pragma once
 
+#include <openssl/sha.h>
+
 #include <algorithm>
 #include <string>
 #include <vector>
@@ -38,11 +40,12 @@
 namespace PLI {
 class PLIM {
  public:
+  explicit PLIM(PLI::HDF5::File file, const std::string& dataset);
   explicit PLIM(PLI::HDF5::AttributeHandler dataset);
 
   bool validSolrHDF5(const std::string& solrJSON);
   void addCreator();
-  void addID();
+  void addID(const std::vector<std::string>& idAttributes);
   void addReference(const PLI::HDF5::AttributeHandler& file);
   void addReference(const std::vector<PLI::HDF5::AttributeHandler>& files);
   void addSoftware(const std::string& softwareName);

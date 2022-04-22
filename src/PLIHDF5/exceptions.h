@@ -26,5 +26,32 @@
 #pragma once
 
 #include <exception>
+#include <string>
 
-namespace PLI {}
+namespace PLI {
+namespace HDF5 {
+class DatasetNotFoundException : public std::exception {
+ public:
+  explicit DatasetNotFoundException(const std::string& message)
+      : std::exception(), m_message(message) {}
+  virtual ~DatasetNotFoundException() throw() {}
+  virtual const char* what() const throw() { return m_message.c_str(); }
+
+ private:
+  std::string m_message;
+};
+
+class AttributeNotFoundException : public std::exception {
+ public:
+  explicit AttributeNotFoundException(const std::string& message)
+      : std::exception(), m_message(message) {}
+  virtual ~AttributeNotFoundException() throw() {}
+  virtual const char* what() const throw() { return m_message.c_str(); }
+
+ private:
+  std::string m_message;
+};
+}  // namespace HDF5
+
+namespace Solr {}
+}  // namespace PLI

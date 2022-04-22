@@ -48,7 +48,9 @@ namespace PLI {
 namespace HDF5 {
 class AttributeHandler {
  public:
+  AttributeHandler();
   explicit AttributeHandler(const hid_t parentPtr);
+  void setPtr(const hid_t parentPtr);
 
   bool attributeExists(const std::string& attributeName) const;
   const std::vector<std::string> attributeNames() const;

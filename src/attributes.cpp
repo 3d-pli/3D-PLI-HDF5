@@ -25,6 +25,15 @@
 
 #include "PLIHDF5/attributes.h"
 
+PLI::HDF5::AttributeHandler::AttributeHandler() : m_id(-1) {}
+
+PLI::HDF5::AttributeHandler::AttributeHandler(const hid_t parentPtr)
+    : m_id(parentPtr) {}
+
+void PLI::HDF5::AttributeHandler::setPtr(const hid_t parentPtr) {
+  m_id = parentPtr;
+}
+
 bool PLI::HDF5::AttributeHandler::attributeExists(
     const std::string &attributeName) const {
   return H5Aexists(this->m_id, attributeName.c_str()) > 0;

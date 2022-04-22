@@ -14,6 +14,10 @@ set(PLIHDF5_LINK_LIBRARIES ${HDF5_LIBRARIES} ${HDF5_HL_LIBRARIES})
 find_package(MPI REQUIRED)
 include_directories(${MPI_INCLUDE_DIR})
 set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} ${MPI_LIBRARIES})
+# OpenSSL Support
+find_package(OpenSSL REQUIRED)
+include_directories(${OpenSSL_INCLUDE_DIR})
+set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} OpenSSL::SSL)
 # Logging
 set(SPDLOG_BUILD_SHARED ON CACHE BOOL "SPDLOG_BUILD_SHARED: Build shared library.")
 add_subdirectory(extern/spdlog)
