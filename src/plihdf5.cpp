@@ -69,11 +69,18 @@ void PLI::PLIM::addID(const std::vector<std::string> &idAttributes) {
     }
   }
 
-  // Convert hashCode to SHA256
+  // Write the attribute
+  if (m_attrHandler.attributeExists("id")) {
+    m_attrHandler.deleteAttribute("id");
+  }
+  m_attrHandler.createAttribute("id", getSHA256(hashCode));
+}
+
+std::string PLI::PLIM::getSHA256(const std::string &hashString) {
   unsigned char hash[SHA256_DIGEST_LENGTH];
   SHA256_CTX sha256;
   SHA256_Init(&sha256);
-  SHA256_Update(&sha256, hashCode.c_str(), hashCode.size());
+  SHA256_Update(&sha256, hashString.c_str(), hashString.size());
   SHA256_Final(hash, &sha256);
 
   std::stringstream ss;
@@ -82,11 +89,7 @@ void PLI::PLIM::addID(const std::vector<std::string> &idAttributes) {
        << static_cast<int>(hash[i]);
   }
 
-  // Write the attribute
-  if (m_attrHandler.attributeExists("id")) {
-    m_attrHandler.deleteAttribute("id");
-  }
-  m_attrHandler.createAttribute("id", ss.str());
+  return ss.str();
 }
 
 void PLI::PLIM::addReference(const PLI::HDF5::AttributeHandler &file) {

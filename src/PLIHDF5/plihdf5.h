@@ -52,6 +52,7 @@ class PLIM {
   void addSoftwareRevision(const std::string& revisionString);
 
  private:
+  std::string getSHA256(const std::string& hashString);
   PLI::HDF5::AttributeHandler m_attrHandler;
 };
 }  // namespace PLI
