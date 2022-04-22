@@ -49,6 +49,10 @@ class AttributeHandler {
  public:
   explicit AttributeHandler(const hid_t parentPtr);
 
+  bool attributeExists(const std::string& attributeName) const;
+  const std::vector<std::string> attributeNames() const;
+  PLI::HDF5::Type attributeType(const std::string& attributeName) const;
+
   template <typename T>
   void createAttribute(const std::string& attributeName,
                        const std::vector<T>& content,
@@ -61,10 +65,26 @@ class AttributeHandler {
   void createAttribute(const std::string& attributeName, const void* content,
                        const PLI::HDF5::Type dataType);
 
+  void copyTo(PLI::HDF5::AttributeHandler dstHandler,
+              const std::string& srcName, const std::string& dstName) const;
+  void copyFrom(const PLI::HDF5::AttributeHandler& srcHandler,
+                const std::string& srcName, const std::string& dstName);
+  void copyAllFrom(
+      const PLI::HDF5::AttributeHandler& srcHandler,
+      const std::vector<std::string>& exceptions = std::vector<std::string>());
+  void copyAllTo(
+      PLI::HDF5::AttributeHandler dstHandler,
+      const std::vector<std::string>& exceptions = std::vector<std::string>());
+
+  void deleteAttribute(const std::string& attributeName);
+
   template <typename T>
   const std::vector<T> getAttribute(const std::string& attributeName) const;
   const std::vector<hsize_t> getAttributeDimensions(
       const std::string& attributeName) const;
+
+  hid_t id();
+
   template <typename T>
   void updateAttribute(const std::string& attributeName, const T& content);
   template <typename T>
@@ -76,22 +96,6 @@ class AttributeHandler {
   void updateAttribute(const std::string& attributeName, const void* content,
                        const std::vector<hsize_t>& dimensions,
                        const PLI::HDF5::Type dataType);
-  void deleteAttribute(const std::string& attributeName);
-  bool attributeExists(const std::string& attributeName) const;
-  PLI::HDF5::Type attributeType(const std::string& attributeName) const;
-
-  void copyTo(PLI::HDF5::AttributeHandler dstHandler,
-              const std::string& srcName, const std::string& dstName) const;
-  void copyFrom(const PLI::HDF5::AttributeHandler& srcHandler,
-                const std::string& srcName, const std::string& dstName);
-  void copyAllFrom(
-      const PLI::HDF5::AttributeHandler& srcHandler,
-      const std::vector<std::string>& exceptions = std::vector<std::string>());
-  void copyAllTo(
-      PLI::HDF5::AttributeHandler dstHandler,
-      const std::vector<std::string>& exceptions = std::vector<std::string>());
-  std::vector<std::string> attributeNames() const;
-  hid_t id();
 
  private:
   const std::vector<unsigned char> getAttribute(
@@ -100,3 +104,5 @@ class AttributeHandler {
 };
 }  // namespace HDF5
 }  // namespace PLI
+
+#include "PLIHDF5/attributes.tpp"

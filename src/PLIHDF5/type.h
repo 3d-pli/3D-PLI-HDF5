@@ -52,32 +52,3 @@ class Type {
 };
 }  // namespace HDF5
 }  // namespace PLI
-
-// Unsigned Int
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<uint8_t>();
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<uint16_t>();
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<uint32_t>();
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<uint64_t>();
-// Int
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<int8_t>();
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<int16_t>();
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<int32_t>();
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<int64_t>();
-// Float
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<float>();
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<double>();
-// String
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<std::string>();
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<const char*>();
