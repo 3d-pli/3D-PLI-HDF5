@@ -36,6 +36,10 @@ PLI::HDF5::File PLI::HDF5::File::create(const std::string& fileName) {
 
   hid_t filePtr =
       H5Fcreate(fileName.c_str(), H5F_ACC_EXCL, H5P_DEFAULT, fapl_id);
+  if (filePtr <= 0) {
+    // TODO(jreuter): Write Exceptions!
+    throw 0;
+  }
   return PLI::HDF5::File(filePtr);
 }
 
@@ -55,6 +59,10 @@ PLI::HDF5::File PLI::HDF5::File::open(const std::string& fileName,
 
   // TODO(jreuter): Check the openState variable!
   hid_t filePtr = H5Fopen(fileName.c_str(), H5F_ACC_RDWR, fapl_id);
+  if (filePtr <= 0) {
+    // TODO(jreuter): Write Exceptions!
+    throw 0;
+  }
   return PLI::HDF5::File(filePtr);
 }
 
@@ -65,9 +73,14 @@ void PLI::HDF5::File::close() {
   }
 }
 
-void PLI::HDF5::File::reopen() { H5Freopen(this->m_id); }
+void PLI::HDF5::File::reopen() { this->m_id = H5Freopen(this->m_id); }
 
-void PLI::HDF5::File::flush() { H5Fflush(this->m_id, H5F_SCOPE_LOCAL); }
+void PLI::HDF5::File::flush() {
+  if (H5Fflush(this->m_id, H5F_SCOPE_LOCAL) <= 0) {
+    // TODO(jreuter): Write Exceptions!
+    throw 0;
+  }
+}
 
 bool PLI::HDF5::File::isHDF5(const std::string& fileName) {
   return H5Fis_hdf5(fileName.c_str()) > 0;
@@ -79,7 +92,9 @@ bool PLI::HDF5::File::fileExists(const std::string& fileName) {
 
 hid_t PLI::HDF5::File::id() { return this->m_id; }
 
-PLI::HDF5::File::File(const hid_t filePtr) { this->m_id = filePtr; }
+PLI::HDF5::File::File() : m_id(-1) {}
+
+PLI::HDF5::File::File(const hid_t filePtr) : m_id(filePtr) {}
 
 PLI::HDF5::File::~File() { close(); }
 

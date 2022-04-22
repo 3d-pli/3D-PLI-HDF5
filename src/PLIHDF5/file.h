@@ -35,6 +35,9 @@ namespace PLI {
 namespace HDF5 {
 class File {
  public:
+  ~File();
+  File();
+  explicit File(const hid_t filePtr);
   static PLI::HDF5::File create(const std::string& fileName);
   static PLI::HDF5::File open(const std::string& fileName,
                               const unsigned openState);
@@ -50,8 +53,6 @@ class File {
   operator hid_t() const;
 
  private:
-  explicit File(const hid_t filePtr);
-  ~File();
   hid_t m_id;
 };
 }  // namespace HDF5
