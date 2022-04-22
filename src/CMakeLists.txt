@@ -13,6 +13,7 @@ set(PLIHDF5_SOURCES
         dataset.cpp
         link.cpp
         type.cpp
+        sha256.cpp
     )
 
 add_library(PLIHDF5 SHARED ${PLIHDF5_SOURCES})

@@ -73,23 +73,7 @@ void PLI::PLIM::addID(const std::vector<std::string> &idAttributes) {
   if (m_attrHandler.attributeExists("id")) {
     m_attrHandler.deleteAttribute("id");
   }
-  m_attrHandler.createAttribute("id", getSHA256(hashCode));
-}
-
-std::string PLI::PLIM::getSHA256(const std::string &hashString) {
-  unsigned char hash[SHA256_DIGEST_LENGTH];
-  SHA256_CTX sha256;
-  SHA256_Init(&sha256);
-  SHA256_Update(&sha256, hashString.c_str(), hashString.size());
-  SHA256_Final(hash, &sha256);
-
-  std::stringstream ss;
-  for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
-    ss << std::hex << std::setw(2) << std::setfill('0')
-       << static_cast<int>(hash[i]);
-  }
-
-  return ss.str();
+  m_attrHandler.createAttribute("id", toSHA256(hashCode));
 }
 
 void PLI::PLIM::addReference(const PLI::HDF5::AttributeHandler &file) {
@@ -114,9 +98,16 @@ void PLI::PLIM::addSoftware(const std::string &softwareName) {
   m_attrHandler.createAttribute("software", softwareName);
 }
 
-void PLI::PLIM::addSoftwareRevision(const std::string &revisionString) {
+void PLI::PLIM::addSoftwareRevision(const std::string &softwareRevision) {
   if (m_attrHandler.attributeExists("software_revision")) {
     m_attrHandler.deleteAttribute("software_revision");
   }
-  m_attrHandler.createAttribute("software_revision", revisionString);
+  m_attrHandler.createAttribute("software_revision", softwareRevision);
+}
+
+void PLI::PLIM::addSoftwareParameters(const std::string &softwareParameters) {
+  if (m_attrHandler.attributeExists("software_parameters")) {
+    m_attrHandler.deleteAttribute("software_parameters");
+  }
+  m_attrHandler.createAttribute("software_parameters", softwareParameters);
 }

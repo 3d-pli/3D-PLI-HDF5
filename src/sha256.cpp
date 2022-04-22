@@ -23,35 +23,20 @@
    IN THE SOFTWARE.
  */
 
-#pragma once
-
-#include <algorithm>
-#include <string>
-#include <vector>
-
-#include "PLIHDF5/attributes.h"
-#include "PLIHDF5/dataset.h"
-#include "PLIHDF5/exceptions.h"
-#include "PLIHDF5/file.h"
-#include "PLIHDF5/group.h"
 #include "PLIHDF5/sha256.h"
 
-namespace PLI {
-class PLIM {
- public:
-  explicit PLIM(PLI::HDF5::File file, const std::string& dataset);
-  explicit PLIM(PLI::HDF5::AttributeHandler dataset);
+std::string PLI::toSHA256(const std::string &hashString) {
+  unsigned char hash[SHA256_DIGEST_LENGTH];
+  SHA256_CTX sha256;
+  SHA256_Init(&sha256);
+  SHA256_Update(&sha256, hashString.c_str(), hashString.size());
+  SHA256_Final(hash, &sha256);
 
-  bool validSolrHDF5(const std::string& solrJSON);
-  void addCreator();
-  void addID(const std::vector<std::string>& idAttributes);
-  void addReference(const PLI::HDF5::AttributeHandler& file);
-  void addReference(const std::vector<PLI::HDF5::AttributeHandler>& files);
-  void addSoftware(const std::string& softwareName);
-  void addSoftwareRevision(const std::string& softwareRevision);
-  void addSoftwareParameters(const std::string& softwareParameters);
+  std::stringstream ss;
+  for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
+    ss << std::hex << std::setw(2) << std::setfill('0')
+       << static_cast<int>(hash[i]);
+  }
 
- private:
-  PLI::HDF5::AttributeHandler m_attrHandler;
-};
-}  // namespace PLI
+  return ss.str();
+}

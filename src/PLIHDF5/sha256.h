@@ -25,33 +25,12 @@
 
 #pragma once
 
-#include <algorithm>
-#include <string>
-#include <vector>
+#include <openssl/sha.h>
 
-#include "PLIHDF5/attributes.h"
-#include "PLIHDF5/dataset.h"
-#include "PLIHDF5/exceptions.h"
-#include "PLIHDF5/file.h"
-#include "PLIHDF5/group.h"
-#include "PLIHDF5/sha256.h"
+#include <iomanip>
+#include <sstream>
+#include <string>
 
 namespace PLI {
-class PLIM {
- public:
-  explicit PLIM(PLI::HDF5::File file, const std::string& dataset);
-  explicit PLIM(PLI::HDF5::AttributeHandler dataset);
-
-  bool validSolrHDF5(const std::string& solrJSON);
-  void addCreator();
-  void addID(const std::vector<std::string>& idAttributes);
-  void addReference(const PLI::HDF5::AttributeHandler& file);
-  void addReference(const std::vector<PLI::HDF5::AttributeHandler>& files);
-  void addSoftware(const std::string& softwareName);
-  void addSoftwareRevision(const std::string& softwareRevision);
-  void addSoftwareParameters(const std::string& softwareParameters);
-
- private:
-  PLI::HDF5::AttributeHandler m_attrHandler;
-};
-}  // namespace PLI
+std::string toSHA256(const std::string& string);
+}
