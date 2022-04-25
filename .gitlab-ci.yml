@@ -1,0 +1,67 @@
+stages:
+  - lint
+  - build
+  - test
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+before_script:
+  - apt-get update -qq
+  - apt-get install -y git
+  - git submodule update --init --recursive
+
+lint:cppcheck:
+  stage: lint
+  image: ubuntu:22.04
+  script: 
+    - apt-get install -y cppcheck libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev
+    - cppcheck --std=c++17 --language=c++ --error-exitcode=1 --enable=all --suppress=unmatchedSuppression --suppress=missingIncludeSystem --suppress=unusedFunction src/*.cpp src/PLIHDF5/*
+ 
+lint:clang-format:
+  stage: lint
+  image: ubuntu:22.04
+  script:
+    - apt-get install -y clang-format 
+    - clang-format --style=Google -i src/*.cpp src/PLIHDF5/*
+
+lint:clang-tidy:
+  stage: lint
+  image: ubuntu:22.04
+  script:
+    - apt-get install -y clang-tidy cmake libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev g++ gcc
+    - mkdir build
+    - cd build
+    - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+    - clang-tidy -p=. ../src/*.cpp ../src/PLIHDF5/*
+
+lint:cpplint:
+  stage: lint
+  image: ubuntu:22.04
+  script:
+    - apt-get install -y cpplint
+    - cpplint src/*.cpp src/PLIHDF5/*
+
+build:ubuntu:
+  stage: build
+  image: ubuntu:22.04
+  script:
+    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
+  artifacts:
+    paths:
+      - build/
+
+test:ubuntu:
+  stage: test
+  image: ubuntu:22.04
+  script:
+    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev
+    - cd build
+    - make test
+  dependencies:
+    - build:ubuntu
+    
