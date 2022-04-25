@@ -1,9 +1,12 @@
-set(CMAKE_C_CPPCHECK cppcheck; -q; template=gcc; --error-exitcode=1; --enable=all; --suppress=unmatchedSuppression; --suppress=missingIncludeSystem; --suppress=unusedFunction)
-set(CMAKE_CXX_CPPCHECK cppcheck; -q; template=gcc; --error-exitcode=1; --enable=all; --suppress=unmatchedSuppression; --suppress=missingIncludeSystem; --suppress=unusedFunction)
-set(CMAKE_C_CPPLINT cpplint; --verbose=1)
-set(CMAKE_CXX_CPPLINT cpplint; --verbose=1)
-set(CMAKE_C_CLANG_TIDY clang-tidy)
-set(CMAKE_CXX_CLANG_TIDY clang-tidy)
+option(PLIHDF5_USE_LINTING "Enable linting during compilation to check for code style." ON)
+if(PLIHDF5_USE_LINTING)
+    set(CMAKE_C_CPPCHECK cppcheck; -q; template=gcc; --error-exitcode=1; --enable=all; --suppress=unmatchedSuppression; --suppress=missingIncludeSystem; --suppress=unusedFunction)
+    set(CMAKE_CXX_CPPCHECK cppcheck; -q; template=gcc; --error-exitcode=1; --enable=all; --suppress=unmatchedSuppression; --suppress=missingIncludeSystem; --suppress=unusedFunction)
+    set(CMAKE_C_CPPLINT cpplint; --verbose=1)
+    set(CMAKE_CXX_CPPLINT cpplint; --verbose=1)
+    set(CMAKE_C_CLANG_TIDY clang-tidy)
+    set(CMAKE_CXX_CLANG_TIDY clang-tidy)
+endif()
 
 set(PLIHDF5_SOURCES
         plihdf5.cpp
