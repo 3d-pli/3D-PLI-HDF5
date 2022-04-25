@@ -219,7 +219,7 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
 
   // Check if dimensions and sizes match
   int attributeNDims = H5Sget_simple_extent_ndims(spaceID);
-  if (dimensions.size() != attributeNDims) {
+  if (dimensions.size() != size_t(attributeNDims)) {
     throw 0;
   }
   std::vector<hsize_t> attributeSpaceSize;

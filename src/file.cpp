@@ -56,11 +56,18 @@ PLI::HDF5::File PLI::HDF5::File::open(const std::string& fileName,
     throw 0;
   }
 
+  hid_t access;
+  if (openState == 0) {
+    access = H5F_ACC_RDWR;
+  } else {
+    access = H5F_ACC_RDONLY;
+  }
+
   hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
   H5Pset_fapl_mpio(fapl_id, MPI_COMM_WORLD, MPI_INFO_NULL);
 
   // TODO(jreuter): Check the openState variable!
-  hid_t filePtr = H5Fopen(fileName.c_str(), H5F_ACC_RDWR, fapl_id);
+  hid_t filePtr = H5Fopen(fileName.c_str(), access, fapl_id);
   if (filePtr <= 0) {
     // TODO(jreuter): Write Exceptions!
     throw 0;
