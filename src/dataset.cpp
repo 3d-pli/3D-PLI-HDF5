@@ -132,10 +132,13 @@ std::vector<T> PLI::HDF5::Dataset::readFullDataset() const {
 
   PLI::HDF5::Type returnType = PLI::HDF5::Type::createType<T>();
 
+  hid_t xf_id = H5Pcreate(H5P_DATASET_XFER);
+  H5Pset_dxpl_mpio(xf_id, H5FD_MPIO_COLLECTIVE);
   hid_t memspacePtr = H5Screate_simple(numDims, dims.data(), nullptr);
-  H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr, H5P_DEFAULT,
+  H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr, xf_id,
           returnData.data());
 
+  H5Pclose(xf_id);
   H5Sclose(dataspacePtr);
   H5Sclose(memspacePtr);
   return returnData;
