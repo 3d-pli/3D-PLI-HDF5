@@ -37,7 +37,9 @@ PLI::PLIM::PLIM(PLI::HDF5::File handler, const std::string &dataset) {
 
 PLI::PLIM::PLIM(PLI::HDF5::AttributeHandler handler) : m_attrHandler(handler) {}
 
-bool PLI::PLIM::validSolrHDF5(const std::string &solrJSON) { return true; }
+bool PLI::PLIM::validSolrHDF5(const std::string &solrJSON) {
+  return solrJSON.empty();
+}
 
 void PLI::PLIM::addCreator() {
   std::string username;
