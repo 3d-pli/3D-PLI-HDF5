@@ -48,7 +48,7 @@ class Dataset {
   template <typename T>
   static PLI::HDF5::Dataset create(const hid_t parentPtr,
                                    const std::string& datasetName,
-                                   const int32_t ndims, const hsize_t* dims,
+                                   const std::vector<hsize_t>& dims,
                                    const bool chunked = true);
   static bool exists(const hid_t parentPtr, const std::string& datasetName);
 

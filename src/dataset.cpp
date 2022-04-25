@@ -85,8 +85,7 @@ PLI::HDF5::Dataset::~Dataset() {}
 template <typename T>
 PLI::HDF5::Dataset PLI::HDF5::Dataset::create(const hid_t parentPtr,
                                               const std::string &datasetName,
-                                              const int32_t ndims,
-                                              const hsize_t *dims,
+                                              const std::vector<hsize_t> &dims,
                                               const bool chunked) {
   if (PLI::HDF5::Dataset::exists(parentPtr, datasetName)) {
     throw 0;
@@ -96,8 +95,8 @@ PLI::HDF5::Dataset PLI::HDF5::Dataset::create(const hid_t parentPtr,
   if (chunked) {
     // TODO(jreuter): Allow the chunk size to be variable as an input variable.
     std::vector<hsize_t> chunk_dims;
-    chunk_dims.resize(ndims);
-    for (int32_t i = 0; i < ndims; ++i) {
+    chunk_dims.resize(dims.size());
+    for (size_t i = 0; i < dims.size(); ++i) {
       if (i < 2) {
         chunk_dims[i] = 256;
       } else {
@@ -105,11 +104,12 @@ PLI::HDF5::Dataset PLI::HDF5::Dataset::create(const hid_t parentPtr,
       }
     }
     dcpl_id = H5Pcreate(H5P_DATASET_CREATE);
-    H5Pset_chunk(dcpl_id, ndims, chunk_dims.data());
+    H5Pset_chunk(dcpl_id, dims.size(), chunk_dims.data());
   }
 
-  hid_t dataspacePtr = H5Screate_simple(ndims, dims, nullptr);
-  hid_t datasetPtr = H5Dcreate(parentPtr, datasetName.c_str(), H5T_NATIVE_UCHAR,
+  PLI::HDF5::Type dataType = PLI::HDF5::Type::createType<T>();
+  hid_t dataspacePtr = H5Screate_simple(dims.size(), dims.data(), nullptr);
+  hid_t datasetPtr = H5Dcreate(parentPtr, datasetName.c_str(), dataType,
                                dataspacePtr, dcpl_id, H5P_DEFAULT, H5P_DEFAULT);
   H5Sclose(dataspacePtr);
   return PLI::HDF5::Dataset(datasetPtr);
