@@ -22,10 +22,6 @@ set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} MPI::MPI_C MPI::MPI_CXX)
 find_package(OpenSSL REQUIRED)
 include_directories(${OpenSSL_INCLUDE_DIR})
 set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} OpenSSL::SSL)
-# Logging
-set(SPDLOG_BUILD_SHARED ON CACHE BOOL "SPDLOG_BUILD_SHARED: Build shared library.")
-add_subdirectory(extern/spdlog)
-set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} spdlog)
 # JSON
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 add_subdirectory(extern/json)
