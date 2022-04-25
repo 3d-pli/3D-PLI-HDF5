@@ -180,6 +180,16 @@ void PLI::HDF5::Dataset::write(const std::vector<T> &data,
   if (dataType != PLI::HDF5::Type(H5Dget_type(this->m_id))) {
     throw 0;
   }
+
+  hid_t xf_id = H5Pcreate(H5P_DATASET_XFER);
+  H5Pset_dxpl_mpio(xf_id, H5FD_MPIO_COLLECTIVE);
+  H5Sselect_hyperslab(dataSpacePtr, H5S_SELECT_SET, offset.data(), nullptr,
+                      dims.data(), nullptr);
+
+  H5Dwrite(this->m_id, dataType, H5S_ALL, dataSpacePtr, xf_id, data.data());
+
+  H5Pclose(xf_id);
+  H5Sclose(dataSpacePtr);
 }
 
 PLI::HDF5::Dataset::operator hid_t() const { return this->m_id; }
