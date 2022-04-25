@@ -49,7 +49,7 @@ build:ubuntu:
     - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev
     - mkdir build
     - cd build
-    - cmake ..
+    - cmake -DPLIHDF5_USE_LINTING=OFF ..
     - make
   artifacts:
     paths:
