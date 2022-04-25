@@ -34,19 +34,19 @@ class DatasetFixtureTest : public ::testing::Test {
   void SetUp() override {
     _filePath = "test_dataset.h5";
     _copyFilePath = "test_dataset.h5.bak";
-    std::filesystem::copy_file(
-        _filePath, _copyFilePath,
-        std::filesystem::copy_options::overwrite_existing);
-    _file = PLI::HDF5::File::open(_filePath, H5F_ACC_RDWR);
-    _dataset = PLI::HDF5::Dataset::open(_file, "test");
+    // std::filesystem::copy_file(
+    //     _filePath, _copyFilePath,
+    //     std::filesystem::copy_options::overwrite_existing);
+    // _file = PLI::HDF5::File::open(_filePath, H5F_ACC_RDWR);
+    // _dataset = PLI::HDF5::Dataset::open(_file, "test");
   }
 
   void TearDown() override {
     _dataset.close();
     _file.close();
-    std::filesystem::copy_file(
-        _copyFilePath, _filePath,
-        std::filesystem::copy_options::overwrite_existing);
+    // std::filesystem::copy_file(
+    //     _copyFilePath, _filePath,
+    //     std::filesystem::copy_options::overwrite_existing);
   }
 
   std::string _filePath, _copyFilePath;
