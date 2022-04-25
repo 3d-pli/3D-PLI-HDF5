@@ -44,7 +44,8 @@ void PLI::HDF5::Dataset::close() {
 }
 
 const PLI::HDF5::Type PLI::HDF5::Dataset::type() const {
-  return PLI::HDF5::Type("H5T_NATIVE_CHAR");
+  hid_t typePtr = H5Dget_type(this->m_id);
+  return PLI::HDF5::Type(typePtr);
 }
 
 int PLI::HDF5::Dataset::ndims() const {
