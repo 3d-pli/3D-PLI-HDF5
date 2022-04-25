@@ -29,6 +29,7 @@
 #include <hdf5_hl.h>
 #include <mpi.h>
 
+#include <algorithm>
 #include <string>
 #include <vector>
 
@@ -53,7 +54,10 @@ class Dataset {
 
   void close();
   template <typename T>
-  T* read() const;
+  std::vector<T> readFullDataset() const;
+  template <typename T>
+  std::vector<T> read(const std::vector<hsize_t>& offset,
+                      const std::vector<hsize_t>& count) const;
   template <typename T>
   void write(const T* data, const int32_t ndims, const hsize_t* dims);
 

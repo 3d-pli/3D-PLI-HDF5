@@ -116,8 +116,55 @@ PLI::HDF5::Dataset PLI::HDF5::Dataset::create(const hid_t parentPtr,
 }
 
 template <typename T>
-T *PLI::HDF5::Dataset::read() const {
-  return new T;
+std::vector<T> PLI::HDF5::Dataset::readFullDataset() const {
+  hid_t dataspacePtr = H5Dget_space(this->m_id);
+  hsize_t sumOfElements;
+  sumOfElements = H5Sget_simple_extent_npoints(dataspacePtr);
+
+  int numDims;
+  numDims = H5Sget_simple_extent_ndims(dataspacePtr);
+  std::vector<hsize_t> dims;
+  dims.resize(numDims);
+  H5Sget_simple_extent_dims(dataspacePtr, dims.data(), nullptr);
+
+  std::vector<T> returnData;
+  returnData.resize(sumOfElements);
+
+  PLI::HDF5::Type returnType = PLI::HDF5::Type::createType<T>();
+
+  hid_t memspacePtr = H5Screate_simple(numDims, dims.data(), nullptr);
+  H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr, H5P_DEFAULT,
+          returnData.data());
+
+  H5Sclose(dataspacePtr);
+  H5Sclose(memspacePtr);
+  return returnData;
+}
+
+template <typename T>
+std::vector<T> PLI::HDF5::Dataset::read(
+    const std::vector<hsize_t> &offset,
+    const std::vector<hsize_t> &count) const {
+  hid_t dataspacePtr = H5Dget_space(this->m_id);
+  PLI::HDF5::Type returnType = PLI::HDF5::Type::createType<T>();
+
+  size_t numElements = 1;
+  std::for_each(
+      count.begin(), count.end(),
+      [&numElements](const hsize_t dimension) { numElements *= dimension; });
+  std::vector<T> returnData;
+  returnData.resize(numElements);
+
+  hid_t xf_id = H5Pcreate(H5P_DATASET_XFER);
+  H5Pset_dxpl_mpio(xf_id, H5FD_MPIO_COLLECTIVE);
+  H5Sselect_hyperslab(dataspacePtr, H5S_SELECT_SET, offset.data(), nullptr,
+                      count.data(), nullptr);
+  H5Dread(this->m_id, returnType, H5S_ALL, dataspacePtr, xf_id,
+          returnData.data());
+
+  H5Pclose(xf_id);
+  H5Sclose(dataspacePtr);
+  return returnData;
 }
 
 template <typename T>
