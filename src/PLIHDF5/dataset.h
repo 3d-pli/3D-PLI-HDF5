@@ -59,7 +59,8 @@ class Dataset {
   std::vector<T> read(const std::vector<hsize_t>& offset,
                       const std::vector<hsize_t>& count) const;
   template <typename T>
-  void write(const T* data, const int32_t ndims, const hsize_t* dims);
+  void write(const std::vector<T>& data, const std::vector<hsize_t>& offset,
+             const std::vector<hsize_t>& dims);
 
   const PLI::HDF5::Type type() const;
   int ndims() const;

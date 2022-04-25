@@ -171,7 +171,15 @@ std::vector<T> PLI::HDF5::Dataset::read(
 }
 
 template <typename T>
-void PLI::HDF5::Dataset::write(const T *data, const int32_t ndims,
-                               const hsize_t *dims) {}
+void PLI::HDF5::Dataset::write(const std::vector<T> &data,
+                               const std::vector<hsize_t> &offset,
+                               const std::vector<hsize_t> &dims) {
+  hid_t dataSpacePtr = H5Dget_space(this->m_id);
+  // Check if the type matches the type of the dataset
+  PLI::HDF5::Type dataType = PLI::HDF5::Type::createType<T>();
+  if (dataType != PLI::HDF5::Type(H5Dget_type(this->m_id))) {
+    throw 0;
+  }
+}
 
 PLI::HDF5::Dataset::operator hid_t() const { return this->m_id; }
