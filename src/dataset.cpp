@@ -92,29 +92,24 @@ PLI::HDF5::Dataset::Dataset(const Dataset &dataset) noexcept
 PLI::HDF5::Dataset::~Dataset() {}
 
 template <typename T>
-PLI::HDF5::Dataset PLI::HDF5::Dataset::create(const hid_t parentPtr,
-                                              const std::string &datasetName,
-                                              const std::vector<hsize_t> &dims,
-                                              const bool chunked) {
+PLI::HDF5::Dataset PLI::HDF5::Dataset::create(
+    const hid_t parentPtr, const std::string &datasetName,
+    const std::vector<hsize_t> &dims, const std::vector<hsize_t> &chunkDims) {
   if (PLI::HDF5::Dataset::exists(parentPtr, datasetName)) {
     throw DatasetExistsException("Dataset alreadt exists!");
   }
 
   hid_t dcpl_id = H5P_DEFAULT;
-  if (chunked) {
-    // TODO(jreuter): Allow the chunk size to be variable as an input variable.
-    std::vector<hsize_t> chunk_dims;
-    chunk_dims.resize(dims.size());
-    for (size_t i = 0; i < dims.size(); ++i) {
-      if (i < 2) {
-        chunk_dims[i] = 256;
-      } else {
-        chunk_dims[i] = 1;
-      }
+  if (!chunkDims.empty()) {
+    if (dims.size() != chunkDims.size()) {
+      throw HDF5RuntimeException(
+          "Chunk dimensions must have the same size as "
+          "dataset dimensions.");
     }
+
     dcpl_id = H5Pcreate(H5P_DATASET_CREATE);
     checkHDF5Ptr(dcpl_id, "H5Pcreate");
-    checkHDF5Call(H5Pset_chunk(dcpl_id, dims.size(), chunk_dims.data()),
+    checkHDF5Call(H5Pset_chunk(dcpl_id, chunkDims.size(), chunkDims.data()),
                   "H5Pset_chunk");
   }
 

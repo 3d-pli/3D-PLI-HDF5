@@ -50,7 +50,7 @@ class Dataset {
   static PLI::HDF5::Dataset create(const hid_t parentPtr,
                                    const std::string& datasetName,
                                    const std::vector<hsize_t>& dims,
-                                   const bool chunked = true);
+                                   const std::vector<hsize_t>& chunkDims = {});
   static bool exists(const hid_t parentPtr, const std::string& datasetName);
 
   void close();
