@@ -25,7 +25,7 @@
 
 #include "PLIHDF5/sha256.h"
 
-std::string PLI::toSHA256(const std::string &hashString) {
+std::string PLI::toSHA256(const std::string &hashString) noexcept {
   unsigned char hash[SHA256_DIGEST_LENGTH];
   SHA256(reinterpret_cast<const unsigned char *>(hashString.c_str()),
          hashString.length(), hash);

@@ -17,6 +17,7 @@ set(PLIHDF5_SOURCES
         link.cpp
         type.cpp
         sha256.cpp
+        exceptions.cpp
     )
 
 add_library(PLIHDF5 SHARED ${PLIHDF5_SOURCES})
