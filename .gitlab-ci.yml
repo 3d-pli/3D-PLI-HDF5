@@ -51,9 +51,9 @@ build:ubuntu:
     - cd build
     - cmake -DPLIHDF5_USE_LINTING=OFF ..
     - make
-  artifacts:
-    paths:
-      - build/
+#   artifacts:
+#     paths:
+#       - build/
 
 # test:ubuntu:
 #   stage: test
