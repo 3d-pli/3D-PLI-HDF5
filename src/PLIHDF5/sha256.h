@@ -32,5 +32,5 @@
 #include <string>
 
 namespace PLI {
-std::string toSHA256(const std::string& string);
+std::string toSHA256(const std::string& string) noexcept;
 }
