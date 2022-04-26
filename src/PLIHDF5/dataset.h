@@ -32,6 +32,7 @@
 #include <string>
 #include <vector>
 
+#include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/type.h"
 
 namespace PLI {
@@ -39,9 +40,9 @@ namespace HDF5 {
 class Dataset {
  public:
   ~Dataset();
-  Dataset();
-  explicit Dataset(const Dataset& otherFile);
-  explicit Dataset(hid_t datasetPtr);
+  Dataset() noexcept;
+  explicit Dataset(const Dataset& otherFile) noexcept;
+  explicit Dataset(hid_t datasetPtr) noexcept;
   static PLI::HDF5::Dataset open(const hid_t parentPtr,
                                  const std::string& datasetName);
   template <typename T>
@@ -60,9 +61,9 @@ class Dataset {
   const PLI::HDF5::Type type() const;
   int ndims() const;
   const std::vector<hsize_t> dims() const;
-  hid_t id() const;
+  hid_t id() const noexcept;
 
-  operator hid_t() const;
+  operator hid_t() const noexcept;
 
  private:
   hid_t m_id;

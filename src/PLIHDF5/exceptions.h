@@ -41,6 +41,17 @@ class DatasetNotFoundException : public std::exception {
   std::string m_message;
 };
 
+class IdentifierNotValidException : public std::exception {
+ public:
+  explicit IdentifierNotValidException(const std::string& message)
+      : std::exception(), m_message(message) {}
+  virtual ~IdentifierNotValidException() throw() {}
+  virtual const char* what() const throw() { return m_message.c_str(); }
+
+ private:
+  std::string m_message;
+};
+
 class AttributeNotFoundException : public std::exception {
  public:
   explicit AttributeNotFoundException(const std::string& message)
@@ -51,7 +62,63 @@ class AttributeNotFoundException : public std::exception {
  private:
   std::string m_message;
 };
+
+class AttributeExistsException : public std::exception {
+ public:
+  explicit AttributeExistsException(const std::string& message)
+      : std::exception(), m_message(message) {}
+  virtual ~AttributeExistsException() throw() {}
+  virtual const char* what() const throw() { return m_message.c_str(); }
+
+ private:
+  std::string m_message;
+};
+
+class AttributeDeletionException : public std::exception {
+ public:
+  explicit AttributeDeletionException(const std::string& message)
+      : std::exception(), m_message(message) {}
+  virtual ~AttributeDeletionException() throw() {}
+  virtual const char* what() const throw() { return m_message.c_str(); }
+
+ private:
+  std::string m_message;
+};
+
+class DatasetExistsException : public std::exception {
+ public:
+  explicit DatasetExistsException(const std::string& message)
+      : std::exception(), m_message(message) {}
+  virtual ~DatasetExistsException() throw() {}
+  virtual const char* what() const throw() { return m_message.c_str(); }
+
+ private:
+  std::string m_message;
+};
+
+class DimensionMismatchException : public std::exception {
+ public:
+  explicit DimensionMismatchException(const std::string& message)
+      : std::exception(), m_message(message) {}
+  virtual ~DimensionMismatchException() throw() {}
+  virtual const char* what() const throw() { return m_message.c_str(); }
+
+ private:
+  std::string m_message;
+};
+
+class HDF5RuntimeException : public std::exception {
+ public:
+  explicit HDF5RuntimeException(const std::string& message)
+      : std::exception(), m_message(message) {}
+  virtual ~HDF5RuntimeException() throw() {}
+  virtual const char* what() const throw() { return m_message.c_str(); }
+
+ private:
+  std::string m_message;
+};
 }  // namespace HDF5
 
 namespace Solr {}
+
 }  // namespace PLI

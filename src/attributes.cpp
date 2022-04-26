@@ -25,22 +25,28 @@
 
 #include "PLIHDF5/attributes.h"
 
-PLI::HDF5::AttributeHandler::AttributeHandler() : m_id(-1) {}
+PLI::HDF5::AttributeHandler::AttributeHandler() noexcept : m_id(-1) {}
 
-PLI::HDF5::AttributeHandler::AttributeHandler(const hid_t parentPtr)
+PLI::HDF5::AttributeHandler::AttributeHandler(const hid_t parentPtr) noexcept
     : m_id(parentPtr) {}
 
-void PLI::HDF5::AttributeHandler::setPtr(const hid_t parentPtr) {
+void PLI::HDF5::AttributeHandler::setPtr(const hid_t parentPtr) noexcept {
   m_id = parentPtr;
 }
 
 bool PLI::HDF5::AttributeHandler::attributeExists(
     const std::string &attributeName) const {
+  if (this->m_id < 0) {
+    throw IdentifierNotValidException("Identifier not valid.");
+  }
   return H5Aexists(this->m_id, attributeName.c_str()) > 0;
 }
 
 const std::vector<std::string> PLI::HDF5::AttributeHandler::attributeNames()
     const {
+  if (this->m_id < 0) {
+    throw IdentifierNotValidException("Identifier not valid.");
+  }
   int numAttrs = H5Aget_num_attrs(this->m_id);
   std::vector<std::string> attributes;
   attributes.resize(numAttrs);
@@ -65,6 +71,11 @@ const std::vector<std::string> PLI::HDF5::AttributeHandler::attributeNames()
 
 PLI::HDF5::Type PLI::HDF5::AttributeHandler::attributeType(
     const std::string &attributeName) const {
+  if (!this->attributeExists(attributeName)) {
+    throw AttributeNotFoundException(
+        "Could not update attribute because it "
+        "does not exist.");
+  }
   hid_t attribute = H5Aopen(m_id, attributeName.c_str(), H5P_DEFAULT);
   hid_t attributeType = H5Aget_type(attribute);
   PLI::HDF5::Type returnValue(attributeType);
@@ -135,6 +146,10 @@ void PLI::HDF5::AttributeHandler::copyAllTo(
 void PLI::HDF5::AttributeHandler::createAttribute(
     const std::string &attributeName, const void *content,
     const std::vector<hsize_t> &dimensions, const Type dataType) {
+  if (attributeExists(attributeName)) {
+    throw AttributeExistsException("Attribute with name " + attributeName +
+                                   " already exists");
+  }
   hid_t spacePtr =
       H5Screate_simple(dimensions.size(), dimensions.data(), nullptr);
   hid_t attrPtr = H5Acreate(m_id, attributeName.c_str(), dataType, spacePtr,
@@ -145,6 +160,10 @@ void PLI::HDF5::AttributeHandler::createAttribute(
 void PLI::HDF5::AttributeHandler::createAttribute(
     const std::string &attributeName, const void *content,
     const Type dataType) {
+  if (attributeExists(attributeName)) {
+    throw AttributeExistsException("Attribute with name " + attributeName +
+                                   " already exists");
+  }
   hid_t attrPtr = H5Acreate(m_id, attributeName.c_str(), dataType, H5P_DEFAULT,
                             H5P_DEFAULT, H5P_DEFAULT);
   H5Awrite(attrPtr, dataType, &content);
@@ -154,14 +173,29 @@ void PLI::HDF5::AttributeHandler::deleteAttribute(
     const std::string &attributeName) {
   herr_t returnValue = H5Adelete(this->m_id, attributeName.c_str());
   if (returnValue < 0) {
-    throw 0;
+    throw AttributeDeletionException("Could not delete attribute " +
+                                     attributeName + ".");
   }
 }
 
-hid_t PLI::HDF5::AttributeHandler::id() { return this->m_id; }
+hid_t PLI::HDF5::AttributeHandler::attributePtr(
+    const std::string &attributeName) const {
+  if (!this->attributeExists(attributeName)) {
+    throw AttributeNotFoundException(
+        "Could not update attribute because it "
+        "does not exist.");
+  }
+  hid_t attribute = H5Aopen(m_id, attributeName.c_str(), H5P_DEFAULT);
+  return attribute;
+}
 
 const std::vector<unsigned char> PLI::HDF5::AttributeHandler::getAttribute(
     const std::string &attributeName, const Type dataType) const {
+  if (!this->attributeExists(attributeName)) {
+    throw AttributeNotFoundException(
+        "Could not update attribute because it "
+        "does not exist.");
+  }
   hid_t attributeID = H5Aopen(this->m_id, attributeName.c_str(), H5P_DEFAULT);
   hid_t attributeType = dataType;
   hid_t attributeSpace = H5Aget_space(attributeID);
@@ -201,7 +235,9 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
     const std::string &attributeName, const void *content,
     const Type dataType) {
   if (!this->attributeExists(attributeName)) {
-    throw 0;
+    throw AttributeNotFoundException(
+        "Could not update attribute because it "
+        "does not exist.");
   }
   hid_t attributeID = H5Aopen(this->m_id, attributeName.c_str(), H5P_DEFAULT);
   H5Awrite(attributeID, dataType, &content);
@@ -212,7 +248,9 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
     const std::string &attributeName, const void *content,
     const std::vector<hsize_t> &dimensions, const Type dataType) {
   if (!this->attributeExists(attributeName)) {
-    throw 0;
+    throw AttributeNotFoundException(
+        "Could not update attribute because it "
+        "does not exist.");
   }
   hid_t attributeID = H5Aopen(this->m_id, attributeName.c_str(), H5P_DEFAULT);
   hid_t spaceID = H5Aget_space(attributeID);
@@ -220,7 +258,9 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
   // Check if dimensions and sizes match
   int attributeNDims = H5Sget_simple_extent_ndims(spaceID);
   if (dimensions.size() != size_t(attributeNDims)) {
-    throw 0;
+    throw DimensionMismatchException(
+        "Dimensions of attribute to update do not match dimensions of "
+        "the method call.");
   }
   std::vector<hsize_t> attributeSpaceSize;
   attributeSpaceSize.resize(attributeNDims);
