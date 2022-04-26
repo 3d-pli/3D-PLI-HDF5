@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.19)
 project(PLIHDF5 LANGUAGES C CXX VERSION 1.0.0)
 
+# Set some CMake standards
 set(default_build_type "Debug")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_CXX_STANDARD 17)
@@ -9,27 +10,35 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # HDF5 Support
 find_package(HDF5 REQUIRED COMPONENTS C CXX HL)
 include_directories(${HDF5_INCLUDE_DIRS})
+<<<<<<< Updated upstream
 set(HDF5_ENABLE_PARALLEL ON)
 set(PLIHDF5_LINK_LIBRARIES ${HDF5_LIBRARIES} ${HDF5_HL_LIBRARIES})
+=======
+if(NOT HDF5_IS_PARALLEL)
+    message(FATAL_ERROR "HDF5 is not parallel")
+endif()
+set(PLIHDF5_LINK_LIBRARIES hdf5::hdf5 hdf5::hdf5_hl)
+
+>>>>>>> Stashed changes
 # MPI Support
 find_package(MPI REQUIRED)
 include_directories(${MPI_CXX_INCLUDE_DIRS} ${MPI_C_INCLUDE_DIRS})
 set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} MPI::MPI_C MPI::MPI_CXX)
+
 # OpenSSL Support
 find_package(OpenSSL REQUIRED)
 include_directories(${OpenSSL_INCLUDE_DIR})
 set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} OpenSSL::SSL)
-# Logging
-set(SPDLOG_BUILD_SHARED ON CACHE BOOL "SPDLOG_BUILD_SHARED: Build shared library.")
-add_subdirectory(extern/spdlog)
-set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} spdlog)
+
 # JSON
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 add_subdirectory(extern/json)
 set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} nlohmann_json::nlohmann_json)
+
 # Source files / headers
 include_directories(src)
 add_subdirectory(src)
+
 # Testing
 set(BUILD_TESTING ON CACHE BOOL "Enable testing")
 if(BUILD_TESTING)
