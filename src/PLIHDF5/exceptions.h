@@ -96,6 +96,28 @@ class DatasetExistsException : public std::exception {
   std::string m_message;
 };
 
+class GroupExistsException : public std::exception {
+ public:
+  explicit GroupExistsException(const std::string& message)
+      : std::exception(), m_message(message) {}
+  virtual ~GroupExistsException() throw() {}
+  virtual const char* what() const throw() { return m_message.c_str(); }
+
+ private:
+  std::string m_message;
+};
+
+class GroupNotFoundException : public std::exception {
+ public:
+  explicit GroupNotFoundException(const std::string& message)
+      : std::exception(), m_message(message) {}
+  virtual ~GroupNotFoundException() throw() {}
+  virtual const char* what() const throw() { return m_message.c_str(); }
+
+ private:
+  std::string m_message;
+};
+
 class DimensionMismatchException : public std::exception {
  public:
   explicit DimensionMismatchException(const std::string& message)

@@ -30,23 +30,24 @@
 
 #include <string>
 
+#include "PLIHDF5/exceptions.h"
+
 namespace PLI {
 namespace HDF5 {
 class Group {
  public:
   ~Group();
+  Group() noexcept;
+  explicit Group(const hid_t groupPtr) noexcept;
   static PLI::HDF5::Group open(hid_t parentPtr, const std::string& groupName);
   static PLI::HDF5::Group create(hid_t parentPtr, const std::string& groupName);
   static bool exists(hid_t parentPtr, const std::string& groupName);
 
   void close();
-  hid_t id();
-
-  operator hid_t() const;
+  hid_t id() const noexcept;
+  operator hid_t() const noexcept;
 
  private:
-  explicit Group(const hid_t groupPtr);
-
   hid_t m_id;
 };
 }  // namespace HDF5
