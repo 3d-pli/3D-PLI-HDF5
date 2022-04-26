@@ -20,7 +20,7 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev g++ gcc cppcheck
       - name: Run CppCheck
-        run: cppcheck --std=c++17 --language=c++ --error-exitcode=1 --enable=all --suppress=unmatchedSuppression --suppress=missingIncludeSystem --suppress=unusedFunction --xml --xml-version=2 --xml-out=cppcheck.xml ${{github.workspace}}/src/*.cpp ${{github.workspace}}/src/PLIHDF5/*
+        run: cppcheck --std=c++17 --language=c++ --error-exitcode=1 --enable=all --suppress=unmatchedSuppression --suppress=missingIncludeSystem --suppress=unusedFunction ${{github.workspace}}/src/*.cpp ${{github.workspace}}/src/PLIHDF5/*
 
   lint-cpplint:
     runs-on: ubuntu-latest
@@ -35,6 +35,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
       - name: Install Requirements
         run: |
           sudo apt-get update -qq
@@ -62,6 +64,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
     - name: Install Requirements
       run: |
         sudo apt-get update -qq
