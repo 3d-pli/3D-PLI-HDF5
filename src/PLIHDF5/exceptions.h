@@ -25,6 +25,8 @@
 
 #pragma once
 
+#include <hdf5.h>
+
 #include <exception>
 #include <string>
 
@@ -68,17 +70,6 @@ class AttributeExistsException : public std::exception {
   explicit AttributeExistsException(const std::string& message)
       : std::exception(), m_message(message) {}
   virtual ~AttributeExistsException() throw() {}
-  virtual const char* what() const throw() { return m_message.c_str(); }
-
- private:
-  std::string m_message;
-};
-
-class AttributeDeletionException : public std::exception {
- public:
-  explicit AttributeDeletionException(const std::string& message)
-      : std::exception(), m_message(message) {}
-  virtual ~AttributeDeletionException() throw() {}
   virtual const char* what() const throw() { return m_message.c_str(); }
 
  private:
@@ -139,6 +130,8 @@ class HDF5RuntimeException : public std::exception {
  private:
   std::string m_message;
 };
+
+void checkHDF5Call(const herr_t returnValue);
 }  // namespace HDF5
 
 namespace Solr {}

@@ -48,6 +48,9 @@ const std::vector<std::string> PLI::HDF5::AttributeHandler::attributeNames()
     throw IdentifierNotValidException("Identifier not valid.");
   }
   int numAttrs = H5Aget_num_attrs(this->m_id);
+  if (numAttrs < 0) {
+    throw HDF5RuntimeException("Could not get the number of attributes.");
+  }
   std::vector<std::string> attributes;
   attributes.resize(numAttrs);
 
@@ -79,7 +82,7 @@ PLI::HDF5::Type PLI::HDF5::AttributeHandler::attributeType(
   hid_t attribute = H5Aopen(m_id, attributeName.c_str(), H5P_DEFAULT);
   hid_t attributeType = H5Aget_type(attribute);
   PLI::HDF5::Type returnValue(attributeType);
-  H5Aclose(attribute);
+  checkHDF5Call(H5Aclose(attribute));
   return returnValue;
 }
 
@@ -154,7 +157,7 @@ void PLI::HDF5::AttributeHandler::createAttribute(
       H5Screate_simple(dimensions.size(), dimensions.data(), nullptr);
   hid_t attrPtr = H5Acreate(m_id, attributeName.c_str(), dataType, spacePtr,
                             H5P_DEFAULT, H5P_DEFAULT);
-  H5Awrite(attrPtr, dataType, content);
+  checkHDF5Call(H5Awrite(attrPtr, dataType, content));
 }
 
 void PLI::HDF5::AttributeHandler::createAttribute(
@@ -166,16 +169,12 @@ void PLI::HDF5::AttributeHandler::createAttribute(
   }
   hid_t attrPtr = H5Acreate(m_id, attributeName.c_str(), dataType, H5P_DEFAULT,
                             H5P_DEFAULT, H5P_DEFAULT);
-  H5Awrite(attrPtr, dataType, &content);
+  checkHDF5Call(H5Awrite(attrPtr, dataType, &content));
 }
 
 void PLI::HDF5::AttributeHandler::deleteAttribute(
     const std::string &attributeName) {
-  herr_t returnValue = H5Adelete(this->m_id, attributeName.c_str());
-  if (returnValue < 0) {
-    throw AttributeDeletionException("Could not delete attribute " +
-                                     attributeName + ".");
-  }
+  checkHDF5Call(H5Adelete(this->m_id, attributeName.c_str()));
 }
 
 hid_t PLI::HDF5::AttributeHandler::attributePtr(
@@ -198,22 +197,16 @@ const std::vector<unsigned char> PLI::HDF5::AttributeHandler::getAttribute(
   }
   hid_t attributeID = H5Aopen(this->m_id, attributeName.c_str(), H5P_DEFAULT);
   hid_t attributeType = dataType;
-  hid_t attributeSpace = H5Aget_space(attributeID);
-  int ndims = H5Sget_simple_extent_ndims(attributeSpace);
-  std::vector<hsize_t> dims;
-  dims.resize(ndims);
-  H5Sget_simple_extent_dims(attributeSpace, dims.data(), nullptr);
 
+  std::vector<hsize_t> dims = this->getAttributeDimensions(attributeName);
   hsize_t numElements = 1;
-  for (int i = 0; i < ndims; ++i) {
+  for (size_t i = 0; i < dims.size(); ++i) {
     numElements *= dims[i];
   }
   std::vector<unsigned char> returnContainer;
   returnContainer.resize(numElements * H5Tget_size(attributeType));
-  H5Aread(attributeID, attributeType, returnContainer.data());
-
-  H5Sclose(attributeSpace);
-  H5Aclose(attributeID);
+  checkHDF5Call(H5Aread(attributeID, attributeType, returnContainer.data()));
+  checkHDF5Call(H5Aclose(attributeID));
 
   return returnContainer;
 }

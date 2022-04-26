@@ -54,9 +54,6 @@ class Link {
                        const std::string &dstPath);
   static void copyLink(const hid_t parentPtr, const std::string &srcPath,
                        const std::string &dstPath);
-
- private:
-  static void checkHDF5Call(herr_t returnValue);
 };
 }  // namespace HDF5
 }  // namespace PLI

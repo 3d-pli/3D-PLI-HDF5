@@ -25,14 +25,6 @@
 
 #include "PLIHDF5/link.h"
 
-void PLI::HDF5::Link::checkHDF5Call(herr_t returnValue) {
-  if (returnValue <= 0) {
-    throw HDF5RuntimeException("Call of function returned value " +
-                               std::to_string(returnValue) +
-                               ", which is not successful.");
-  }
-}
-
 H5L_info_t PLI::HDF5::Link::getLinkInfo(const hid_t parentPtr,
                                         const std::string &path) {
   H5L_info_t linkInfo;

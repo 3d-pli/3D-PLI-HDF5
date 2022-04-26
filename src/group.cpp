@@ -43,12 +43,12 @@ PLI::HDF5::Group PLI::HDF5::Group::create(hid_t parentPtr,
 }
 
 bool PLI::HDF5::Group::exists(hid_t parentPtr, const std::string& groupName) {
-  return H5Lexists(parentPtr, groupName.c_str(), H5P_DEFAULT) == 1;
+  return H5Lexists(parentPtr, groupName.c_str(), H5P_DEFAULT) > 0;
 }
 
 void PLI::HDF5::Group::close() {
   if (this->m_id > 0) {
-    H5Gclose(this->m_id);
+    checkHDF5Call(H5Gclose(this->m_id));
   }
   this->m_id = -1;
 }
