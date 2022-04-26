@@ -15,7 +15,7 @@ if(NOT HDF5_IS_PARALLEL)
 endif()
 set(PLIHDF5_LINK_LIBRARIES hdf5::hdf5 hdf5::hdf5_hl)
 # MPI Support
-find_package(MPI REQUIRED)
+find_package(MPI REQUIRED COMPONENTS C CXX)
 include_directories(${MPI_CXX_INCLUDE_DIRS} ${MPI_C_INCLUDE_DIRS})
 set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} MPI::MPI_C MPI::MPI_CXX)
 # OpenSSL Support
