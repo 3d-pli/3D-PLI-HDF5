@@ -46,12 +46,15 @@ bool PLI::HDF5::Type::operator==(Type &other) const {
 std::string PLI::HDF5::Type::convertIDToName(const hid_t ID) {
   size_t typeNameLength = 0;
   // Make a first call to get the length of the typename
-  H5LTdtype_to_text(ID, nullptr, H5LT_DDL, &typeNameLength);
+  checkHDF5Call(H5LTdtype_to_text(ID, nullptr, H5LT_DDL, &typeNameLength),
+                "H5LTdtype_to_text");
 
   // Create a container to save the second call.
   std::string returnString;
   returnString.resize(typeNameLength);
-  H5LTdtype_to_text(ID, returnString.data(), H5LT_DDL, &typeNameLength);
+  checkHDF5Call(
+      H5LTdtype_to_text(ID, returnString.data(), H5LT_DDL, &typeNameLength),
+      "H5LTdtype_to_text");
 
   return returnString;
 }

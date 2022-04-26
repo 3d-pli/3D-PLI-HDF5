@@ -31,6 +31,8 @@
 #include <filesystem>
 #include <string>
 
+#include "PLIHDF5/exceptions.h"
+
 namespace PLI {
 namespace HDF5 {
 class File {

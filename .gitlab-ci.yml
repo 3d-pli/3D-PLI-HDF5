@@ -1,7 +1,7 @@
 stages:
   - lint
   - build
-  - test
+#   - test
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
@@ -49,19 +49,19 @@ build:ubuntu:
     - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev
     - mkdir build
     - cd build
-    - cmake ..
+    - cmake -DPLIHDF5_USE_LINTING=OFF ..
     - make
-  artifacts:
-    paths:
-      - build/
+#   artifacts:
+#     paths:
+#       - build/
 
-test:ubuntu:
-  stage: test
-  image: ubuntu:22.04
-  script:
-    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev
-    - cd build
-    - make test
-  dependencies:
-    - build:ubuntu
+# test:ubuntu:
+#   stage: test
+#   image: ubuntu:22.04
+#   script:
+#     - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev
+#     - cd build
+#     - make test
+#   dependencies:
+#     - build:ubuntu
     

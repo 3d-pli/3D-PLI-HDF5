@@ -29,9 +29,11 @@
 #include <hdf5_hl.h>
 #include <mpi.h>
 
+#include <algorithm>
 #include <string>
 #include <vector>
 
+#include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/type.h"
 
 namespace PLI {
@@ -39,30 +41,34 @@ namespace HDF5 {
 class Dataset {
  public:
   ~Dataset();
-  Dataset();
-  explicit Dataset(const Dataset& otherFile);
-  explicit Dataset(hid_t datasetPtr);
+  Dataset() noexcept;
+  explicit Dataset(const Dataset& otherFile) noexcept;
+  explicit Dataset(hid_t datasetPtr) noexcept;
   static PLI::HDF5::Dataset open(const hid_t parentPtr,
                                  const std::string& datasetName);
   template <typename T>
   static PLI::HDF5::Dataset create(const hid_t parentPtr,
                                    const std::string& datasetName,
-                                   const int32_t ndims, const hsize_t* dims,
-                                   const bool chunked = true);
+                                   const std::vector<hsize_t>& dims,
+                                   const std::vector<hsize_t>& chunkDims = {});
   static bool exists(const hid_t parentPtr, const std::string& datasetName);
 
   void close();
   template <typename T>
-  T* read() const;
+  std::vector<T> readFullDataset() const;
   template <typename T>
-  void write(const T* data, const int32_t ndims, const hsize_t* dims);
+  std::vector<T> read(const std::vector<hsize_t>& offset,
+                      const std::vector<hsize_t>& count) const;
+  template <typename T>
+  void write(const std::vector<T>& data, const std::vector<hsize_t>& offset,
+             const std::vector<hsize_t>& dims);
 
   const PLI::HDF5::Type type() const;
   int ndims() const;
   const std::vector<hsize_t> dims() const;
-  hid_t id() const;
+  hid_t id() const noexcept;
 
-  operator hid_t() const;
+  operator hid_t() const noexcept;
 
  private:
   hid_t m_id;

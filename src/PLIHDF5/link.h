@@ -30,26 +30,29 @@
 
 #include <string>
 
+#include "PLIHDF5/exceptions.h"
+
 namespace PLI {
 namespace HDF5 {
 class Link {
  public:
-  static bool createSoft(const hid_t parentPtr, const std::string &srcPath,
+  static void createSoft(const hid_t parentPtr, const std::string &srcPath,
                          const std::string &dstPath);
-  static bool createHard(const hid_t parentPtr, const std::string &srcPath,
+  static void createHard(const hid_t parentPtr, const std::string &srcPath,
                          const std::string &dstPath);
-  static bool createExternal(const hid_t parentPtr,
+  static void createExternal(const hid_t parentPtr,
                              const std::string &externalPath,
                              const std::string &srcPath,
                              const std::string &dstPath);
+  static H5L_info_t getLinkInfo(const hid_t parentPtr, const std::string &path);
   static bool exists(const hid_t parentPtr, const std::string &path);
   static bool isSoftLink(const hid_t parentPtr, const std::string &path);
   static bool isHardLink(const hid_t parentPtr, const std::string &path);
   static bool isExternalLink(const hid_t parentPtr, const std::string &path);
-  static bool deleteLink(const hid_t parentPtr, const std::string &path);
-  static bool moveLink(const hid_t parentPtr, const std::string &srcPath,
+  static void deleteLink(const hid_t parentPtr, const std::string &path);
+  static void moveLink(const hid_t parentPtr, const std::string &srcPath,
                        const std::string &dstPath);
-  static bool copyLink(const hid_t parentPtr, const std::string &srcPath,
+  static void copyLink(const hid_t parentPtr, const std::string &srcPath,
                        const std::string &dstPath);
 };
 }  // namespace HDF5

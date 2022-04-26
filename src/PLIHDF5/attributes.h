@@ -42,15 +42,16 @@
 #include <string>
 #include <vector>
 
+#include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/type.h"
 
 namespace PLI {
 namespace HDF5 {
 class AttributeHandler {
  public:
-  AttributeHandler();
-  explicit AttributeHandler(const hid_t parentPtr);
-  void setPtr(const hid_t parentPtr);
+  AttributeHandler() noexcept;
+  explicit AttributeHandler(const hid_t parentPtr) noexcept;
+  void setPtr(const hid_t parentPtr) noexcept;
 
   bool attributeExists(const std::string& attributeName) const;
   const std::vector<std::string> attributeNames() const;
@@ -81,12 +82,12 @@ class AttributeHandler {
 
   void deleteAttribute(const std::string& attributeName);
 
+  hid_t attributePtr(const std::string& attributeName) const;
+
   template <typename T>
   const std::vector<T> getAttribute(const std::string& attributeName) const;
   const std::vector<hsize_t> getAttributeDimensions(
       const std::string& attributeName) const;
-
-  hid_t id();
 
   template <typename T>
   void updateAttribute(const std::string& attributeName, const T& content);

@@ -8,20 +8,16 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # HDF5 Support
-find_package(HDF5 REQUIRED COMPONENTS C CXX HL)
+set(HDF5_PREFER_PARALLEL ON)
+find_package(HDF5 REQUIRED COMPONENTS C HL)
 include_directories(${HDF5_INCLUDE_DIRS})
-<<<<<<< Updated upstream
-set(HDF5_ENABLE_PARALLEL ON)
-set(PLIHDF5_LINK_LIBRARIES ${HDF5_LIBRARIES} ${HDF5_HL_LIBRARIES})
-=======
 if(NOT HDF5_IS_PARALLEL)
     message(FATAL_ERROR "HDF5 is not parallel")
 endif()
 set(PLIHDF5_LINK_LIBRARIES hdf5::hdf5 hdf5::hdf5_hl)
 
->>>>>>> Stashed changes
 # MPI Support
-find_package(MPI REQUIRED)
+find_package(MPI REQUIRED COMPONENTS C CXX)
 include_directories(${MPI_CXX_INCLUDE_DIRS} ${MPI_C_INCLUDE_DIRS})
 set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} MPI::MPI_C MPI::MPI_CXX)
 

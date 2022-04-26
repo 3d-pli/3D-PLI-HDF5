@@ -23,32 +23,20 @@
    IN THE SOFTWARE.
  */
 
-#pragma once
-
-#include <hdf5.h>
-#include <hdf5_hl.h>
-
-#include <string>
-
 #include "PLIHDF5/exceptions.h"
 
-namespace PLI {
-namespace HDF5 {
-class Group {
- public:
-  ~Group();
-  Group() noexcept;
-  explicit Group(const hid_t groupPtr) noexcept;
-  static PLI::HDF5::Group open(hid_t parentPtr, const std::string& groupName);
-  static PLI::HDF5::Group create(hid_t parentPtr, const std::string& groupName);
-  static bool exists(hid_t parentPtr, const std::string& groupName);
+void PLI::HDF5::checkHDF5Call(const herr_t hdf5ReturnValue,
+                              const std::string& message) {
+  if (hdf5ReturnValue <= 0) {
+    throw PLI::HDF5::HDF5RuntimeException(
+        "[" + message + "]: Call of function returned value " +
+        std::to_string(hdf5ReturnValue) + ", which is not successful.");
+  }
+}
 
-  void close();
-  hid_t id() const noexcept;
-  operator hid_t() const noexcept;
-
- private:
-  hid_t m_id;
-};
-}  // namespace HDF5
-}  // namespace PLI
+void PLI::HDF5::checkHDF5Ptr(const hid_t hdf5Ptr, const std::string& message) {
+  if (hdf5Ptr <= 0) {
+    throw PLI::HDF5::IdentifierNotValidException(
+        "[" + message + "]: Pointer to HDF5 object is invalid.");
+  }
+}
