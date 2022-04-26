@@ -25,10 +25,18 @@
 
 #include "PLIHDF5/exceptions.h"
 
-void PLI::HDF5::checkHDF5Call(const herr_t returnValue) {
-  if (returnValue <= 0) {
-    throw PLI::HDF5::HDF5RuntimeException("Call of function returned value " +
-                                          std::to_string(returnValue) +
-                                          ", which is not successful.");
+void PLI::HDF5::checkHDF5Call(const herr_t hdf5ReturnValue,
+                              const std::string& message) {
+  if (hdf5ReturnValue <= 0) {
+    throw PLI::HDF5::HDF5RuntimeException(
+        "[" + message + "]: Call of function returned value " +
+        std::to_string(hdf5ReturnValue) + ", which is not successful.");
+  }
+}
+
+void PLI::HDF5::checkHDF5Ptr(const hid_t hdf5Ptr, const std::string& message) {
+  if (hdf5Ptr <= 0) {
+    throw PLI::HDF5::IdentifierNotValidException(
+        "[" + message + "]: Pointer to HDF5 object is invalid.");
   }
 }

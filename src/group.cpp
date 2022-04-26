@@ -48,7 +48,7 @@ bool PLI::HDF5::Group::exists(hid_t parentPtr, const std::string& groupName) {
 
 void PLI::HDF5::Group::close() {
   if (this->m_id > 0) {
-    checkHDF5Call(H5Gclose(this->m_id));
+    checkHDF5Call(H5Gclose(this->m_id), "H5Gclose");
   }
   this->m_id = -1;
 }

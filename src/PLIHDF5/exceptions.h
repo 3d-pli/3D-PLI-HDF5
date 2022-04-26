@@ -131,7 +131,9 @@ class HDF5RuntimeException : public std::exception {
   std::string m_message;
 };
 
-void checkHDF5Call(const herr_t returnValue);
+void checkHDF5Call(const herr_t hdf5ReturnValue,
+                   const std::string& message = "None");
+void checkHDF5Ptr(const hid_t hdf5Ptr, const std::string& message = "None");
 }  // namespace HDF5
 
 namespace Solr {}

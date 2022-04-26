@@ -34,14 +34,13 @@ PLI::HDF5::File PLI::HDF5::File::create(const std::string& fileName) {
   }
 
   hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
-  H5Pset_fapl_mpio(fapl_id, MPI_COMM_WORLD, MPI_INFO_NULL);
+  checkHDF5Ptr(fapl_id, "H5Pcreate");
+  checkHDF5Call(H5Pset_fapl_mpio(fapl_id, MPI_COMM_WORLD, MPI_INFO_NULL),
+                "H5Pset_fapl_mpio");
 
   hid_t filePtr =
       H5Fcreate(fileName.c_str(), H5F_ACC_EXCL, H5P_DEFAULT, fapl_id);
-  if (filePtr <= 0) {
-    // TODO(jreuter): Write Exceptions!
-    throw 0;
-  }
+  checkHDF5Ptr(filePtr, "H5Fcreate");
   return PLI::HDF5::File(filePtr, fapl_id);
 }
 
@@ -64,21 +63,19 @@ PLI::HDF5::File PLI::HDF5::File::open(const std::string& fileName,
   }
 
   hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
-  H5Pset_fapl_mpio(fapl_id, MPI_COMM_WORLD, MPI_INFO_NULL);
+  checkHDF5Ptr(fapl_id, "H5Pcreate");
+  checkHDF5Call(H5Pset_fapl_mpio(fapl_id, MPI_COMM_WORLD, MPI_INFO_NULL));
 
   // TODO(jreuter): Check the openState variable!
   hid_t filePtr = H5Fopen(fileName.c_str(), access, fapl_id);
-  if (filePtr <= 0) {
-    // TODO(jreuter): Write Exceptions!
-    throw 0;
-  }
+  checkHDF5Ptr(filePtr, "H5Fopen");
   return PLI::HDF5::File(filePtr, fapl_id);
 }
 
 void PLI::HDF5::File::close() {
   if (this->m_id > 0) {
-    H5Pclose(this->m_faplID);
-    H5Fclose(this->m_id);
+    checkHDF5Call(H5Pclose(this->m_faplID), "H5Pclose");
+    checkHDF5Call(H5Fclose(this->m_id), "H5Fclose");
     this->m_id = int64_t(-1);
   }
 }
@@ -86,10 +83,7 @@ void PLI::HDF5::File::close() {
 void PLI::HDF5::File::reopen() { this->m_id = H5Freopen(this->m_id); }
 
 void PLI::HDF5::File::flush() {
-  if (H5Fflush(this->m_id, H5F_SCOPE_LOCAL) <= 0) {
-    // TODO(jreuter): Write Exceptions!
-    throw 0;
-  }
+  checkHDF5Call(H5Fflush(this->m_id, H5F_SCOPE_LOCAL), "H5Fflush");
 }
 
 bool PLI::HDF5::File::isHDF5(const std::string& fileName) {

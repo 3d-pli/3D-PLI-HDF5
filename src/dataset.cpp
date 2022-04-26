@@ -38,15 +38,13 @@ bool PLI::HDF5::Dataset::exists(const hid_t parentPtr,
 
 void PLI::HDF5::Dataset::close() {
   if (this->m_id > 0) {
-    H5Dclose(this->m_id);
+    checkHDF5Call(H5Dclose(this->m_id), "H5Dclose");
   }
   this->m_id = -1;
 }
 
 const PLI::HDF5::Type PLI::HDF5::Dataset::type() const {
-  if (this->m_id < 0) {
-    throw PLI::HDF5::IdentifierNotValidException("Dataset ID is invalid!");
-  }
+  checkHDF5Ptr(this->m_id, "Dataset ID");
   return PLI::HDF5::Type("H5T_NATIVE_CHAR");
 }
 
@@ -56,7 +54,7 @@ int PLI::HDF5::Dataset::ndims() const {
   }
   hid_t dataspace = H5Dget_space(this->m_id);
   int numDims = H5Sget_simple_extent_ndims(dataspace);
-  H5Sclose(dataspace);
+  checkHDF5Call(H5Sclose(dataspace), "H5Sclose");
   if (numDims > 0) {
     return numDims;
   } else {
@@ -65,16 +63,15 @@ int PLI::HDF5::Dataset::ndims() const {
 }
 
 const std::vector<hsize_t> PLI::HDF5::Dataset::dims() const {
-  if (this->m_id < 0) {
-    throw PLI::HDF5::IdentifierNotValidException("Dataset ID is invalid!");
-  }
+  checkHDF5Ptr(this->m_id, "Dataset ID");
   int numDims = this->ndims();
   std::vector<hsize_t> dims;
   dims.resize(numDims);
 
   hid_t dataspace = H5Dget_space(this->m_id);
+  checkHDF5Ptr(dataspace, "H5Dget_space");
   H5Sget_simple_extent_dims(dataspace, dims.data(), nullptr);
-  H5Sclose(dataspace);
+  checkHDF5Call(H5Sclose(dataspace), "H5Sclose");
 
   return dims;
 }
@@ -115,30 +112,30 @@ PLI::HDF5::Dataset PLI::HDF5::Dataset::create(const hid_t parentPtr,
       }
     }
     dcpl_id = H5Pcreate(H5P_DATASET_CREATE);
-    H5Pset_chunk(dcpl_id, ndims, chunk_dims.data());
+    checkHDF5Ptr(dcpl_id, "H5Pcreate");
+    checkHDF5Call(H5Pset_chunk(dcpl_id, ndims, chunk_dims.data()),
+                  "H5Pset_chunk");
   }
 
   hid_t dataspacePtr = H5Screate_simple(ndims, dims, nullptr);
+  checkHDF5Ptr(dataspacePtr, "H5Screate_simple");
   hid_t datasetPtr = H5Dcreate(parentPtr, datasetName.c_str(), H5T_NATIVE_UCHAR,
                                dataspacePtr, dcpl_id, H5P_DEFAULT, H5P_DEFAULT);
-  H5Sclose(dataspacePtr);
+  checkHDF5Ptr(datasetPtr, "H5Dcreate");
+  checkHDF5Call(H5Sclose(dataspacePtr), "H5Sclose");
   return PLI::HDF5::Dataset(datasetPtr);
 }
 
 template <typename T>
 T *PLI::HDF5::Dataset::read() const {
-  if (this->m_id < 0) {
-    throw PLI::HDF5::IdentifierNotValidException("Dataset ID is invalid!");
-  }
+  checkHDF5Ptr(this->m_id, "Dataset ID");
   return new T;
 }
 
 template <typename T>
 void PLI::HDF5::Dataset::write(const T *data, const int32_t ndims,
                                const hsize_t *dims) {
-  if (this->m_id < 0) {
-    throw PLI::HDF5::IdentifierNotValidException("Dataset ID is invalid!");
-  }
+  checkHDF5Ptr(this->m_id, "Dataset ID");
 }
 
 PLI::HDF5::Dataset::operator hid_t() const noexcept { return this->m_id; }
