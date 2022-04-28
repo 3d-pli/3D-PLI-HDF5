@@ -8,6 +8,21 @@ if(PLIHDF5_USE_LINTING)
     set(CMAKE_CXX_CLANG_TIDY clang-tidy)
 endif()
 
+
+set(PLIHDF5_HEADERS
+    PLIHDF5/attributes.h
+    PLIHDF5/attributes.tpp
+    PLIHDF5/dataset.h
+    PLIHDF5/exceptions.h
+    PLIHDF5/file.h
+    PLIHDF5/group.h
+    PLIHDF5/link.h
+    PLIHDF5/plihdf5.h
+    PLIHDF5/sha256.h
+    PLIHDF5/type.h
+   )
+
+
 set(PLIHDF5_SOURCES
         plihdf5.cpp
         file.cpp
@@ -26,5 +41,21 @@ if(MSVC)
 else()
   target_compile_options(PLIHDF5 PRIVATE -Wall -Wextra -Wpedantic -Werror -Wshadow -O)
 endif()
-target_link_libraries(PLIHDF5 ${PLIHDF5_LINK_LIBRARIES})
+target_link_libraries(PLIHDF5 ${PLIHDF5_LINK_LIBRARIES} )
 
+
+
+################################################################################
+# Installation
+################################################################################
+
+install( DIRECTORY "PLIHDF5"
+         DESTINATION include
+         COMPONENT devel
+         FILES_MATCHING PATTERN "*.h" )
+install( DIRECTORY "PLIHDF5"
+         DESTINATION include
+         COMPONENT devel
+         FILES_MATCHING PATTERN "*.tpp" )
+
+install( TARGETS PLIHDF5 DESTINATION lib COMPONENT runtime )
