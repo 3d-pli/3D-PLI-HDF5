@@ -32,5 +32,12 @@
 #include <string>
 
 namespace PLI {
+/**
+ * @brief Calculate SHA256 hash from a given string
+ * This method converts a given string to a SHA256 hash using the OpenSSL
+ * library.
+ * @param string String that will be converted.
+ * @return std::string SHA256 encoded string
+ */
 std::string toSHA256(const std::string& string) noexcept;
-}
+}  // namespace PLI
