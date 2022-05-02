@@ -42,7 +42,6 @@ class PLIM {
   explicit PLIM(PLI::HDF5::File file, const std::string& dataset);
   explicit PLIM(PLI::HDF5::AttributeHandler dataset);
 
-  bool validSolrHDF5(const std::string& solrJSON);
   void addCreator();
   void addID(const std::vector<std::string>& idAttributes);
   void addReference(const PLI::HDF5::AttributeHandler& file);
