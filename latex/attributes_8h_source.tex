@@ -1,0 +1,118 @@
+\hypertarget{attributes_8h_source}{}\doxysection{attributes.\+h}
+\label{attributes_8h_source}\index{src/PLIHDF5/attributes.h@{src/PLIHDF5/attributes.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    MIT License}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{    Copyright (c) 2022 Forschungszentrum Jülich / Jan André Reuter \& Felix}}
+\DoxyCodeLine{5 \textcolor{comment}{   Matuschke.}}
+\DoxyCodeLine{6 \textcolor{comment}{}}
+\DoxyCodeLine{7 \textcolor{comment}{    Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{8 \textcolor{comment}{    of this software and associated documentation files (the "{}Software"{}), to}}
+\DoxyCodeLine{9 \textcolor{comment}{   deal in the Software without restriction, including without limitation the}}
+\DoxyCodeLine{10 \textcolor{comment}{   rights to use, copy, modify, merge, publish, distribute, sublicense, and/or}}
+\DoxyCodeLine{11 \textcolor{comment}{   sell copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{12 \textcolor{comment}{    furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{13 \textcolor{comment}{}}
+\DoxyCodeLine{14 \textcolor{comment}{    The above copyright notice and this permission notice shall be included in}}
+\DoxyCodeLine{15 \textcolor{comment}{   all copies or substantial portions of the Software.}}
+\DoxyCodeLine{16 \textcolor{comment}{}}
+\DoxyCodeLine{17 \textcolor{comment}{    THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{18 \textcolor{comment}{    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{19 \textcolor{comment}{    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{20 \textcolor{comment}{    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{21 \textcolor{comment}{    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING}}
+\DoxyCodeLine{22 \textcolor{comment}{   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS}}
+\DoxyCodeLine{23 \textcolor{comment}{   IN THE SOFTWARE.}}
+\DoxyCodeLine{24 \textcolor{comment}{ */}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include <hdf5.h>}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include <mpi.h>}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#ifdef \_\_GNUC\_\_}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include <pwd.h>}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define NOMINMAX}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include <Windows.h>}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#include <lmcons.h>}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#include "{}PLIHDF5/exceptions.h"{}}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#include "{}PLIHDF5/type.h"{}}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{keyword}{namespace }PLI \{}
+\DoxyCodeLine{49 \textcolor{keyword}{namespace }HDF5 \{}
+\DoxyCodeLine{50 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{AttributeHandler}} \{}
+\DoxyCodeLine{51  \textcolor{keyword}{public}:}
+\DoxyCodeLine{52   \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{AttributeHandler}}() \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{53   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{AttributeHandler}}(\textcolor{keyword}{const} hid\_t parentPtr) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{54   \textcolor{keywordtype}{void} setPtr(\textcolor{keyword}{const} hid\_t parentPtr) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56   \textcolor{keywordtype}{bool} attributeExists(\textcolor{keyword}{const} std::string\& attributeName) \textcolor{keyword}{const};}
+\DoxyCodeLine{57   \textcolor{keyword}{const} std::vector<std::string> attributeNames() \textcolor{keyword}{const};}
+\DoxyCodeLine{58   \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} attributeType(\textcolor{keyword}{const} std::string\& attributeName) \textcolor{keyword}{const};}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{61   \textcolor{keywordtype}{void} createAttribute(\textcolor{keyword}{const} std::string\& attributeName,}
+\DoxyCodeLine{62                        \textcolor{keyword}{const} std::vector<T>\& content,}
+\DoxyCodeLine{63                        \textcolor{keyword}{const} std::vector<hsize\_t>\& dimensions);}
+\DoxyCodeLine{64   \textcolor{keywordtype}{void} createAttribute(\textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* content,}
+\DoxyCodeLine{65                        \textcolor{keyword}{const} std::vector<hsize\_t>\& dimensions,}
+\DoxyCodeLine{66                        \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} dataType);}
+\DoxyCodeLine{67   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{68   \textcolor{keywordtype}{void} createAttribute(\textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} T\& content);}
+\DoxyCodeLine{69   \textcolor{keywordtype}{void} createAttribute(\textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* content,}
+\DoxyCodeLine{70                        \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} dataType);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72   \textcolor{keywordtype}{void} copyTo(\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}} dstHandler,}
+\DoxyCodeLine{73               \textcolor{keyword}{const} std::string\& srcName, \textcolor{keyword}{const} std::string\& dstName) \textcolor{keyword}{const};}
+\DoxyCodeLine{74   \textcolor{keywordtype}{void} copyFrom(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}}\& srcHandler,}
+\DoxyCodeLine{75                 \textcolor{keyword}{const} std::string\& srcName, \textcolor{keyword}{const} std::string\& dstName);}
+\DoxyCodeLine{76   \textcolor{keywordtype}{void} copyAllFrom(}
+\DoxyCodeLine{77       \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}}\& srcHandler,}
+\DoxyCodeLine{78       \textcolor{keyword}{const} std::vector<std::string>\& exceptions = std::vector<std::string>());}
+\DoxyCodeLine{79   \textcolor{keywordtype}{void} copyAllTo(}
+\DoxyCodeLine{80       \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}} dstHandler,}
+\DoxyCodeLine{81       \textcolor{keyword}{const} std::vector<std::string>\& exceptions = std::vector<std::string>());}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83   \textcolor{keywordtype}{void} deleteAttribute(\textcolor{keyword}{const} std::string\& attributeName);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85   hid\_t attributePtr(\textcolor{keyword}{const} std::string\& attributeName) \textcolor{keyword}{const};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{88   \textcolor{keyword}{const} std::vector<T> getAttribute(\textcolor{keyword}{const} std::string\& attributeName) \textcolor{keyword}{const};}
+\DoxyCodeLine{89   \textcolor{keyword}{const} std::vector<hsize\_t> getAttributeDimensions(}
+\DoxyCodeLine{90       \textcolor{keyword}{const} std::string\& attributeName) \textcolor{keyword}{const};}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{93   \textcolor{keywordtype}{void} updateAttribute(\textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} T\& content);}
+\DoxyCodeLine{94   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{95   \textcolor{keywordtype}{void} updateAttribute(\textcolor{keyword}{const} std::string\& attributeName,}
+\DoxyCodeLine{96                        \textcolor{keyword}{const} std::vector<T>\& content,}
+\DoxyCodeLine{97                        \textcolor{keyword}{const} std::vector<hsize\_t>\& dimensions);}
+\DoxyCodeLine{98   \textcolor{keywordtype}{void} updateAttribute(\textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* content,}
+\DoxyCodeLine{99                        \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} dataType);}
+\DoxyCodeLine{100   \textcolor{keywordtype}{void} updateAttribute(\textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* content,}
+\DoxyCodeLine{101                        \textcolor{keyword}{const} std::vector<hsize\_t>\& dimensions,}
+\DoxyCodeLine{102                        \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} dataType);}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104  \textcolor{keyword}{private}:}
+\DoxyCodeLine{105   \textcolor{keyword}{const} std::vector<unsigned char> getAttribute(}
+\DoxyCodeLine{106       \textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} dataType) \textcolor{keyword}{const};}
+\DoxyCodeLine{107   hid\_t m\_id;}
+\DoxyCodeLine{108 \};}
+\DoxyCodeLine{109 \}  \textcolor{comment}{// namespace HDF5}}
+\DoxyCodeLine{110 \}  \textcolor{comment}{// namespace PLI}}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{preprocessor}{\#include "{}PLIHDF5/attributes.tpp"{}}}
+
+\end{DoxyCode}
