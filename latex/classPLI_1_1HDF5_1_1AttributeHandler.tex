@@ -1,0 +1,74 @@
+\hypertarget{classPLI_1_1HDF5_1_1AttributeHandler}{}\doxysection{PLI\+::HDF5\+::Attribute\+Handler Class Reference}
+\label{classPLI_1_1HDF5_1_1AttributeHandler}\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a26b87fea482e8d01cb4d5f8328699946}\label{classPLI_1_1HDF5_1_1AttributeHandler_a26b87fea482e8d01cb4d5f8328699946}} 
+{\bfseries Attribute\+Handler} (const hid\+\_\+t parent\+Ptr) noexcept
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a66fc467264a153321bd393f30181e2b9}\label{classPLI_1_1HDF5_1_1AttributeHandler_a66fc467264a153321bd393f30181e2b9}} 
+void {\bfseries set\+Ptr} (const hid\+\_\+t parent\+Ptr) noexcept
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a3b98a1b162d7a1fcc511499c35870e95}\label{classPLI_1_1HDF5_1_1AttributeHandler_a3b98a1b162d7a1fcc511499c35870e95}} 
+bool {\bfseries attribute\+Exists} (const std\+::string \&attribute\+Name) const
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a1ac96f87576cfb40887bc18702747352}\label{classPLI_1_1HDF5_1_1AttributeHandler_a1ac96f87576cfb40887bc18702747352}} 
+const std\+::vector$<$ std\+::string $>$ {\bfseries attribute\+Names} () const
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a2b9bd46779f748c57a96184ff91a8ac5}\label{classPLI_1_1HDF5_1_1AttributeHandler_a2b9bd46779f748c57a96184ff91a8ac5}} 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} {\bfseries attribute\+Type} (const std\+::string \&attribute\+Name) const
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_aea4a9b7141c4451b5e041f0b943bab99}\label{classPLI_1_1HDF5_1_1AttributeHandler_aea4a9b7141c4451b5e041f0b943bab99}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries create\+Attribute} (const std\+::string \&attribute\+Name, const std\+::vector$<$ T $>$ \&content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions)
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a89e0337a08be8f86d483f0432670c94b}\label{classPLI_1_1HDF5_1_1AttributeHandler_a89e0337a08be8f86d483f0432670c94b}} 
+void {\bfseries create\+Attribute} (const std\+::string \&attribute\+Name, const void $\ast$content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_ae0c73f1af9d1df88b1b726a9d830bb66}\label{classPLI_1_1HDF5_1_1AttributeHandler_ae0c73f1af9d1df88b1b726a9d830bb66}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries create\+Attribute} (const std\+::string \&attribute\+Name, const T \&content)
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_ac418f6989013cc30b7b64ddbf12df2c0}\label{classPLI_1_1HDF5_1_1AttributeHandler_ac418f6989013cc30b7b64ddbf12df2c0}} 
+void {\bfseries create\+Attribute} (const std\+::string \&attribute\+Name, const void $\ast$content, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a97d36c2ea661ea3ac646b6a1079f03b5}\label{classPLI_1_1HDF5_1_1AttributeHandler_a97d36c2ea661ea3ac646b6a1079f03b5}} 
+void {\bfseries copy\+To} (\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} dst\+Handler, const std\+::string \&src\+Name, const std\+::string \&dst\+Name) const
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a457b1a3dc7301b43ba396cb5e2f2bc4b}\label{classPLI_1_1HDF5_1_1AttributeHandler_a457b1a3dc7301b43ba396cb5e2f2bc4b}} 
+void {\bfseries copy\+From} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} \&src\+Handler, const std\+::string \&src\+Name, const std\+::string \&dst\+Name)
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a7c80eae7960d06e5097a21eaac67a061}\label{classPLI_1_1HDF5_1_1AttributeHandler_a7c80eae7960d06e5097a21eaac67a061}} 
+void {\bfseries copy\+All\+From} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} \&src\+Handler, const std\+::vector$<$ std\+::string $>$ \&exceptions=std\+::vector$<$ std\+::string $>$())
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a5c210b240c5274208e39178c0a067de8}\label{classPLI_1_1HDF5_1_1AttributeHandler_a5c210b240c5274208e39178c0a067de8}} 
+void {\bfseries copy\+All\+To} (\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} dst\+Handler, const std\+::vector$<$ std\+::string $>$ \&exceptions=std\+::vector$<$ std\+::string $>$())
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_af746380e422151cca64b537cd83aa16c}\label{classPLI_1_1HDF5_1_1AttributeHandler_af746380e422151cca64b537cd83aa16c}} 
+void {\bfseries delete\+Attribute} (const std\+::string \&attribute\+Name)
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a640d218c8bfcbf19684a94ca7e290d7c}\label{classPLI_1_1HDF5_1_1AttributeHandler_a640d218c8bfcbf19684a94ca7e290d7c}} 
+hid\+\_\+t {\bfseries attribute\+Ptr} (const std\+::string \&attribute\+Name) const
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}\label{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}} 
+{\footnotesize template$<$typename T $>$ }\\const std\+::vector$<$ T $>$ {\bfseries get\+Attribute} (const std\+::string \&attribute\+Name) const
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}\label{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}} 
+const std\+::vector$<$ hsize\+\_\+t $>$ {\bfseries get\+Attribute\+Dimensions} (const std\+::string \&attribute\+Name) const
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_af375ca7b2ebd88e203e4078c8a74d031}\label{classPLI_1_1HDF5_1_1AttributeHandler_af375ca7b2ebd88e203e4078c8a74d031}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries update\+Attribute} (const std\+::string \&attribute\+Name, const T \&content)
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a5d1c16f2a247738c393b80435288a160}\label{classPLI_1_1HDF5_1_1AttributeHandler_a5d1c16f2a247738c393b80435288a160}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries update\+Attribute} (const std\+::string \&attribute\+Name, const std\+::vector$<$ T $>$ \&content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions)
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a1299a90851e07e37a486b38f91bd9625}\label{classPLI_1_1HDF5_1_1AttributeHandler_a1299a90851e07e37a486b38f91bd9625}} 
+void {\bfseries update\+Attribute} (const std\+::string \&attribute\+Name, const void $\ast$content, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
+\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}\label{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}} 
+void {\bfseries update\+Attribute} (const std\+::string \&attribute\+Name, const void $\ast$content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+PLIHDF5/attributes.\+h\item 
+src/attributes.\+cpp\end{DoxyCompactItemize}

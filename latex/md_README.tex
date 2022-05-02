@@ -1,0 +1,64 @@
+\hypertarget{md_README_autotoc_md1}{}\doxysection{Introduction}\label{md_README_autotoc_md1}
+HDF5 is a widely used file format for storing and sharing scientific data. It is used in the Fiber Architecture Group to store brain data and pyramids of images. The pyramids allow easy visualization of the data with external tools.
+
+However, using HDF5 can be troublesome when using C / C++. The library itself is written in C. While headers for C++ are provided, important features like MPI are not available.
+
+To improve the usability of the library, this repository contains a C++ library wrapping features of HDF5 to make the usage in 3D-\/\+PLI projects easier.\hypertarget{md_README_autotoc_md2}{}\doxysection{Install instructions}\label{md_README_autotoc_md2}
+\hypertarget{md_README_autotoc_md3}{}\doxysubsection{Requirements}\label{md_README_autotoc_md3}
+
+\begin{DoxyItemize}
+\item CMake 3.\+19 or newer
+\item HDF5 with C and HL
+\item MPI
+\item C++17 compatible compiler
+\end{DoxyItemize}
+
+If you want to use linting during the compilation\+:
+\begin{DoxyItemize}
+\item Clang-\/tidy
+\item Clang-\/format
+\item cppcheck
+\item cpplint
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md4}{}\doxysubsection{Compile the project manually}\label{md_README_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https://github.com/3d-\/pli/3D-\/PLI-\/HDF5.git}
+\DoxyCodeLine{cd 3d-\/pli-\/hdf5}
+\DoxyCodeLine{mkdir build}
+\DoxyCodeLine{cd build}
+\DoxyCodeLine{cmake ..}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md5}{}\doxysubsection{Install the library from source}\label{md_README_autotoc_md5}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https://github.com/3d-\/pli/3D-\/PLI-\/HDF5.git}
+\DoxyCodeLine{cd 3d-\/pli-\/hdf5}
+\DoxyCodeLine{mkdir build}
+\DoxyCodeLine{cd build}
+\DoxyCodeLine{cmake ..}
+\DoxyCodeLine{make}
+\DoxyCodeLine{make install}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md6}{}\doxysubsection{Build DEB package}\label{md_README_autotoc_md6}
+{\bfseries{TODO}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https://github.com/3d-\/pli/3D-\/PLI-\/HDF5.git}
+\DoxyCodeLine{cd 3d-\/pli-\/hdf5}
+\DoxyCodeLine{mkdir build}
+\DoxyCodeLine{cd build}
+\DoxyCodeLine{cmake ..}
+\DoxyCodeLine{make}
+\DoxyCodeLine{cpack -\/G DEB}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md7}{}\doxysubsection{Install the library as a DEB package}\label{md_README_autotoc_md7}
+{\bfseries{TODO}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{dpkg -\/i 3d-\/pli-\/hdf5\_0.1.0-\/1\_amd64.deb}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md8}{}\doxysection{API documentation}\label{md_README_autotoc_md8}
+The API documentation is generated from the source code. The methods itself are documented in the source code. To view the documentation outside of the repository, you can go to the wiki page of the repository\+: \href{https://jugit.fz-juelich.de/prototypes/3d-pli-hdf5/-/wikis/home}{\texttt{ Here}} 
