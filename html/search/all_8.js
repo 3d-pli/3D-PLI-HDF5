@@ -5,5 +5,6 @@ var searchData=
   ['invalidhdf5fileexception_2',['InvalidHDF5FileException',['../classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException.html',1,'PLI::HDF5::Exceptions']]],
   ['isexternallink_3',['isExternalLink',['../classPLI_1_1HDF5_1_1Link.html#ac52df02391a5a19b4e70fc5fa390c098',1,'PLI::HDF5::Link']]],
   ['ishardlink_4',['isHardLink',['../classPLI_1_1HDF5_1_1Link.html#ac9760f2c0906c061429a8b53ecb0fb4a',1,'PLI::HDF5::Link']]],
-  ['ishdf5_5',['isHDF5',['../classPLI_1_1HDF5_1_1File.html#ad4f7de370ce9655532fbcae6b920868b',1,'PLI::HDF5::File']]]
+  ['ishdf5_5',['isHDF5',['../classPLI_1_1HDF5_1_1File.html#ad4f7de370ce9655532fbcae6b920868b',1,'PLI::HDF5::File']]],
+  ['issoftlink_6',['isSoftLink',['../classPLI_1_1HDF5_1_1Link.html#a0a14d7073f8e08b635a79219c8f67c92',1,'PLI::HDF5::Link']]]
 ];

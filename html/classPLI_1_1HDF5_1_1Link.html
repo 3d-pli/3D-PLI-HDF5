@@ -96,8 +96,11 @@ static H5L_info_t&#160;</td><td class="memItemRight" valign="bottom"><b>getLinkI
 <tr class="memitem:a82ae485c441b68889da022721049115f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#a82ae485c441b68889da022721049115f">exists</a> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
 <tr class="memdesc:a82ae485c441b68889da022721049115f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a link exists.  <a href="classPLI_1_1HDF5_1_1Link.html#a82ae485c441b68889da022721049115f">More...</a><br /></td></tr>
 <tr class="separator:a82ae485c441b68889da022721049115f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a14d7073f8e08b635a79219c8f67c92"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#a0a14d7073f8e08b635a79219c8f67c92">isSoftLink</a> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
+<tr class="memdesc:a0a14d7073f8e08b635a79219c8f67c92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a link is a soft link.  <a href="classPLI_1_1HDF5_1_1Link.html#a0a14d7073f8e08b635a79219c8f67c92">More...</a><br /></td></tr>
+<tr class="separator:a0a14d7073f8e08b635a79219c8f67c92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9760f2c0906c061429a8b53ecb0fb4a"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#ac9760f2c0906c061429a8b53ecb0fb4a">isHardLink</a> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
-<tr class="memdesc:ac9760f2c0906c061429a8b53ecb0fb4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a link is a soft link.  <a href="classPLI_1_1HDF5_1_1Link.html#ac9760f2c0906c061429a8b53ecb0fb4a">More...</a><br /></td></tr>
+<tr class="memdesc:ac9760f2c0906c061429a8b53ecb0fb4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a link is a hard link.  <a href="classPLI_1_1HDF5_1_1Link.html#ac9760f2c0906c061429a8b53ecb0fb4a">More...</a><br /></td></tr>
 <tr class="separator:ac9760f2c0906c061429a8b53ecb0fb4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac52df02391a5a19b4e70fc5fa390c098"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#ac52df02391a5a19b4e70fc5fa390c098">isExternalLink</a> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
 <tr class="memdesc:ac52df02391a5a19b4e70fc5fa390c098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a link is an external link.  <a href="classPLI_1_1HDF5_1_1Link.html#ac52df02391a5a19b4e70fc5fa390c098">More...</a><br /></td></tr>
@@ -505,6 +508,54 @@ false It is not an external link </dd></dl>
 </table>
 </div><div class="memdoc">
 
+<p>Checks if a link is a hard link. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group identifier </td></tr>
+    <tr><td class="paramname">path</td><td>Path to the link </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true It is a hard link </dd>
+<dd>
+false It is not a hard link </dd></dl>
+
+</div>
+</div>
+<a id="a0a14d7073f8e08b635a79219c8f67c92" name="a0a14d7073f8e08b635a79219c8f67c92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a14d7073f8e08b635a79219c8f67c92">&#9670;&nbsp;</a></span>isSoftLink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PLI::HDF5::Link::isSoftLink </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>parentPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 <p>Checks if a link is a soft link. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -515,17 +566,7 @@ false It is not an external link </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true It is a soft link </dd>
 <dd>
-false It is not a soft link static bool isSoftLink(const hid_t parentPtr, const std::string &amp;path); /**</dd></dl>
-<p>Checks if a link is a hard link </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group identifier </td></tr>
-    <tr><td class="paramname">path</td><td>Path to the link </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true It is a hard link </dd>
-<dd>
-false It is not a hard link </dd></dl>
+false It is not a soft link </dd></dl>
 
 </div>
 </div>

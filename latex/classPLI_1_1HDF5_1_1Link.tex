@@ -23,8 +23,10 @@ static H5\+L\+\_\+info\+\_\+t {\bfseries get\+Link\+Info} (const hid\+\_\+t pare
 \item 
 static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a82ae485c441b68889da022721049115f}{exists}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
 \begin{DoxyCompactList}\small\item\em Checks if a link exists. \end{DoxyCompactList}\item 
-static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ac9760f2c0906c061429a8b53ecb0fb4a}{is\+Hard\+Link}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
+static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a0a14d7073f8e08b635a79219c8f67c92}{is\+Soft\+Link}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
 \begin{DoxyCompactList}\small\item\em Checks if a link is a soft link. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ac9760f2c0906c061429a8b53ecb0fb4a}{is\+Hard\+Link}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Checks if a link is a hard link. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ac52df02391a5a19b4e70fc5fa390c098}{is\+External\+Link}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
 \begin{DoxyCompactList}\small\item\em Checks if a link is an external link. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ac570f98a38e7f4e24c560ce93b375822}{delete\+Link}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
@@ -186,6 +188,28 @@ false It is not an external link
 
 
 
+Checks if a link is a hard link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group identifier \\
+\hline
+{\em path} & Path to the link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true It is a hard link 
+
+false It is not a hard link 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a0a14d7073f8e08b635a79219c8f67c92}\label{classPLI_1_1HDF5_1_1Link_a0a14d7073f8e08b635a79219c8f67c92}} 
+\index{PLI::HDF5::Link@{PLI::HDF5::Link}!isSoftLink@{isSoftLink}}
+\index{isSoftLink@{isSoftLink}!PLI::HDF5::Link@{PLI::HDF5::Link}}
+\doxysubsubsection{\texorpdfstring{isSoftLink()}{isSoftLink()}}
+{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+Link\+::is\+Soft\+Link (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
 Checks if a link is a soft link. 
 
 
@@ -198,19 +222,7 @@ Checks if a link is a soft link.
 \begin{DoxyReturn}{Returns}
 true It is a soft link 
 
-false It is not a soft link static bool is\+Soft\+Link(const hid\+\_\+t parent\+Ptr, const std\+::string \&path); /$\ast$$\ast$
-\end{DoxyReturn}
-Checks if a link is a hard link 
-\begin{DoxyParams}{Parameters}
-{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group identifier \\
-\hline
-{\em path} & Path to the link \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true It is a hard link 
-
-false It is not a hard link 
+false It is not a soft link 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a84b34a81a3fb8c0152e210138cc8b917}\label{classPLI_1_1HDF5_1_1Link_a84b34a81a3fb8c0152e210138cc8b917}} 
 \index{PLI::HDF5::Link@{PLI::HDF5::Link}!moveLink@{moveLink}}
