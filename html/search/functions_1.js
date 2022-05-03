@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['close_0',['close',['../classPLI_1_1HDF5_1_1Dataset.html#ac21f50996e82918fbf5d71c9cedec281',1,'PLI::HDF5::Dataset::close()'],['../classPLI_1_1HDF5_1_1File.html#a930eacc5e5c0ff2235c1d678447dd85e',1,'PLI::HDF5::File::close()']]],
+  ['close_0',['close',['../classPLI_1_1HDF5_1_1Dataset.html#ac21f50996e82918fbf5d71c9cedec281',1,'PLI::HDF5::Dataset::close()'],['../classPLI_1_1HDF5_1_1File.html#a930eacc5e5c0ff2235c1d678447dd85e',1,'PLI::HDF5::File::close()'],['../classPLI_1_1HDF5_1_1Group.html#a244fc843079f3488ee215b5df0f9403e',1,'PLI::HDF5::Group::close()']]],
   ['copyallfrom_1',['copyAllFrom',['../classPLI_1_1HDF5_1_1AttributeHandler.html#a7c80eae7960d06e5097a21eaac67a061',1,'PLI::HDF5::AttributeHandler']]],
   ['copyallto_2',['copyAllTo',['../classPLI_1_1HDF5_1_1AttributeHandler.html#a5c210b240c5274208e39178c0a067de8',1,'PLI::HDF5::AttributeHandler']]],
   ['copyfrom_3',['copyFrom',['../classPLI_1_1HDF5_1_1AttributeHandler.html#a457b1a3dc7301b43ba396cb5e2f2bc4b',1,'PLI::HDF5::AttributeHandler']]],

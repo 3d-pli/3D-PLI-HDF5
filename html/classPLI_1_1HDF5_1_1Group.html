@@ -84,27 +84,32 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a596fd620f7e16d3733b8d5dd3f1e9dcc"><td class="memItemLeft" align="right" valign="top"><a id="a596fd620f7e16d3733b8d5dd3f1e9dcc" name="a596fd620f7e16d3733b8d5dd3f1e9dcc"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Group</b> () noexcept</td></tr>
-<tr class="memdesc:a596fd620f7e16d3733b8d5dd3f1e9dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> object Create an empty group object. Calling other methods on this object will fail because no pointer to an HDF5 object is set. To open a group, use <a class="el" href="classPLI_1_1HDF5_1_1Group.html#aed1852d153f5c8ab32392b99e3d5d8e4">PLI::HDF5::Group::open(hid_t parentPtr, const std::string&amp; groupName)</a>. To create a grouop, use PLI::HDF5::File::create(hid_t parentPtr, const
+<tr class="memdesc:a596fd620f7e16d3733b8d5dd3f1e9dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> object Create an empty group object. Calling other methods on this object will fail because no pointer to an HDF5 object is set. To open a group, use <a class="el" href="classPLI_1_1HDF5_1_1Group.html#aed1852d153f5c8ab32392b99e3d5d8e4" title="Opens a group Open an existing group. If the group does not exist, an exception is thrown.">PLI::HDF5::Group::open(hid_t parentPtr, const std::string&amp; groupName)</a>. To create a grouop, use PLI::HDF5::File::create(hid_t parentPtr, const
 std::string&amp; groupName). <br /></td></tr>
 <tr class="separator:a596fd620f7e16d3733b8d5dd3f1e9dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a757771b7db2e3799bee107390350e82a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a757771b7db2e3799bee107390350e82a">Group</a> (const hid_t groupPtr) noexcept</td></tr>
 <tr class="memdesc:a757771b7db2e3799bee107390350e82a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> object Construct a new group object by using the given HDF5 pointer of another group object.  <a href="classPLI_1_1HDF5_1_1Group.html#a757771b7db2e3799bee107390350e82a">More...</a><br /></td></tr>
 <tr class="separator:a757771b7db2e3799bee107390350e82a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a244fc843079f3488ee215b5df0f9403e"><td class="memItemLeft" align="right" valign="top"><a id="a244fc843079f3488ee215b5df0f9403e" name="a244fc843079f3488ee215b5df0f9403e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
+<tr class="memitem:a244fc843079f3488ee215b5df0f9403e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a244fc843079f3488ee215b5df0f9403e">close</a> ()</td></tr>
+<tr class="memdesc:a244fc843079f3488ee215b5df0f9403e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the group if it is valid. If the dataset is valid, it is closed. The group pointer is then set to an invalid value (-1) to ensure, that calls will result in an exception afterwards.  <a href="classPLI_1_1HDF5_1_1Group.html#a244fc843079f3488ee215b5df0f9403e">More...</a><br /></td></tr>
 <tr class="separator:a244fc843079f3488ee215b5df0f9403e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a456080f735a1da9d7937faeeaa745b49"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a456080f735a1da9d7937faeeaa745b49">id</a> () const noexcept</td></tr>
+<tr class="memdesc:a456080f735a1da9d7937faeeaa745b49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the raw HDF5 pointer of the group. Returns the raw HDF5 pointer of the group. This pointer can be used to access the group using the HDF5 library.  <a href="classPLI_1_1HDF5_1_1Group.html#a456080f735a1da9d7937faeeaa745b49">More...</a><br /></td></tr>
 <tr class="separator:a456080f735a1da9d7937faeeaa745b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1331843612104a553c4b03f5825b5dcd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a1331843612104a553c4b03f5825b5dcd">operator hid_t</a> () const noexcept</td></tr>
+<tr class="memdesc:a1331843612104a553c4b03f5825b5dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the group to a the raw HDF5 pointer.  <a href="classPLI_1_1HDF5_1_1Group.html#a1331843612104a553c4b03f5825b5dcd">More...</a><br /></td></tr>
 <tr class="separator:a1331843612104a553c4b03f5825b5dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aed1852d153f5c8ab32392b99e3d5d8e4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classPLI_1_1HDF5_1_1Group.html">PLI::HDF5::Group</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#aed1852d153f5c8ab32392b99e3d5d8e4">open</a> (hid_t parentPtr, const std::string &amp;groupName)</td></tr>
+<tr class="memdesc:aed1852d153f5c8ab32392b99e3d5d8e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a group Open an existing group. If the group does not exist, an exception is thrown.  <a href="classPLI_1_1HDF5_1_1Group.html#aed1852d153f5c8ab32392b99e3d5d8e4">More...</a><br /></td></tr>
 <tr class="separator:aed1852d153f5c8ab32392b99e3d5d8e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ec0e3a27ce904c0fda6617ebafb2176"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classPLI_1_1HDF5_1_1Group.html">PLI::HDF5::Group</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a4ec0e3a27ce904c0fda6617ebafb2176">create</a> (hid_t parentPtr, const std::string &amp;groupName)</td></tr>
+<tr class="memdesc:a4ec0e3a27ce904c0fda6617ebafb2176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a group Create a new group. If the group already exists, an exception is thrown.  <a href="classPLI_1_1HDF5_1_1Group.html#a4ec0e3a27ce904c0fda6617ebafb2176">More...</a><br /></td></tr>
 <tr class="separator:a4ec0e3a27ce904c0fda6617ebafb2176"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac282b5bcff034bb2ac34e64634cb924d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#ac282b5bcff034bb2ac34e64634cb924d">exists</a> (hid_t parentPtr, const std::string &amp;groupName)</td></tr>
+<tr class="memdesc:ac282b5bcff034bb2ac34e64634cb924d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the group exists.  <a href="classPLI_1_1HDF5_1_1Group.html#ac282b5bcff034bb2ac34e64634cb924d">More...</a><br /></td></tr>
 <tr class="separator:ac282b5bcff034bb2ac34e64634cb924d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -145,6 +150,31 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a244fc843079f3488ee215b5df0f9403e" name="a244fc843079f3488ee215b5df0f9403e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a244fc843079f3488ee215b5df0f9403e">&#9670;&nbsp;</a></span>close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::Group::close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Closes the group if it is valid. If the dataset is valid, it is closed. The group pointer is then set to an invalid value (-1) to ensure, that calls will result in an exception afterwards. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException.html">PLI::HDF5::Exceptions::HDF5RuntimeException</a></td><td>If the group could not be closed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a4ec0e3a27ce904c0fda6617ebafb2176" name="a4ec0e3a27ce904c0fda6617ebafb2176"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4ec0e3a27ce904c0fda6617ebafb2176">&#9670;&nbsp;</a></span>create()</h2>
 
@@ -178,14 +208,23 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Creates a group Create a new group. If the group already exists, an exception is thrown. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parentPtr</td><td></td></tr>
-    <tr><td class="paramname">groupName</td><td></td></tr>
+    <tr><td class="paramname">parentPtr</td><td>Pointer to the parent group or file. </td></tr>
+    <tr><td class="paramname">groupName</td><td>Name of the group to create. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">PLI::HDF5::Group</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">PLI::HDF5::Group</a> <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> object, if successful. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1GroupExistsException.html">PLI::HDF5::Exceptions::GroupExistsException</a></td><td>If the group already exists. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException.html">PLI::HDF5::Exceptions::IdentifierNotValidException</a></td><td>If creating the group fails or the parentPtr is invalid. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -222,16 +261,24 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Checks if the group exists. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parentPtr</td><td></td></tr>
-    <tr><td class="paramname">groupName</td><td></td></tr>
+    <tr><td class="paramname">parentPtr</td><td>Pointer to the parent group or file </td></tr>
+    <tr><td class="paramname">groupName</td><td>Name of the group to check. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dl class="section return"><dt>Returns</dt><dd>true If the group exists. </dd>
 <dd>
-false </dd></dl>
+false If the group does not exist. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException.html">PLI::HDF5::Exceptions::IdentifierNotValidException</a></td><td>If the parentPtr is invalid. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -257,7 +304,9 @@ false </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>hid_t </dd></dl>
+
+<p>Get the raw HDF5 pointer of the group. Returns the raw HDF5 pointer of the group. This pointer can be used to access the group using the HDF5 library. </p>
+<dl class="section return"><dt>Returns</dt><dd>hid_t <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> ID stored in the object. </dd></dl>
 
 </div>
 </div>
@@ -294,14 +343,23 @@ false </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Opens a group Open an existing group. If the group does not exist, an exception is thrown. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parentPtr</td><td></td></tr>
-    <tr><td class="paramname">groupName</td><td></td></tr>
+    <tr><td class="paramname">parentPtr</td><td>Pointer to the parent group or file. </td></tr>
+    <tr><td class="paramname">groupName</td><td>Name of the group to open. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">PLI::HDF5::Group</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">PLI::HDF5::Group</a> <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> object, if successful. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException.html">PLI::HDF5::Exceptions::GroupNotFoundException</a></td><td>If the group does not exist. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException.html">PLI::HDF5::Exceptions::IdentifierNotValidException</a></td><td>If opening the group fails or the parentPtr is invalid. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -327,7 +385,9 @@ false </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>hid_t </dd></dl>
+
+<p>Convert the group to a the raw HDF5 pointer. </p>
+<dl class="section return"><dt>Returns</dt><dd>hid_t <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> ID stored in the object. </dd></dl>
 
 </div>
 </div>
