@@ -39,33 +39,33 @@
 \DoxyCodeLine{35 }
 \DoxyCodeLine{36 \textcolor{keyword}{namespace }PLI \{}
 \DoxyCodeLine{37 \textcolor{keyword}{namespace }HDF5 \{}
-\DoxyCodeLine{38 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} \{}
-\DoxyCodeLine{39  \textcolor{keyword}{public}:}
-\DoxyCodeLine{40   \textcolor{keyword}{enum} OpenState \{ ReadOnly = 0, ReadWrite = 1 \};}
-\DoxyCodeLine{41 }
-\DoxyCodeLine{49   \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}{File}}();}
-\DoxyCodeLine{56   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}{File}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}}\& otherFile);}
-\DoxyCodeLine{64   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}{File}}(\textcolor{keyword}{const} hid\_t filePtr, \textcolor{keyword}{const} hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}{faplID}});}
-\DoxyCodeLine{78   \textcolor{keyword}{static} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI::HDF5::File}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a36f551c8afd5bf4e5e87abcae947a7c7}{create}}(\textcolor{keyword}{const} std::string\& fileName);}
-\DoxyCodeLine{102   \textcolor{keyword}{static} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI::HDF5::File}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a96ae5bca619994c5a17ec3c843c3d34c}{open}}(\textcolor{keyword}{const} std::string\& fileName,}
-\DoxyCodeLine{103                               \textcolor{keyword}{const} OpenState openState = OpenState::ReadOnly);}
-\DoxyCodeLine{112   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad4f7de370ce9655532fbcae6b920868b}{isHDF5}}(\textcolor{keyword}{const} std::string\& fileName);}
-\DoxyCodeLine{119   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae7d1c6b269c872ce262222d5b5542885}{fileExists}}(\textcolor{keyword}{const} std::string\& fileName);}
-\DoxyCodeLine{120 }
-\DoxyCodeLine{129   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a930eacc5e5c0ff2235c1d678447dd85e}{close}}();}
-\DoxyCodeLine{137   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_adaf80744e54c4b7c04ead41a2b46b165}{reopen}}();}
-\DoxyCodeLine{145   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a83b2e323c070259dbde4c23909097eeb}{flush}}();}
-\DoxyCodeLine{146 }
-\DoxyCodeLine{151   hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae9595536a728637c89589fb595e43230}{id}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{156   hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}{faplID}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{157 }
-\DoxyCodeLine{162   \textcolor{keyword}{operator} hid\_t() \textcolor{keyword}{const};}
-\DoxyCodeLine{163 }
-\DoxyCodeLine{164  \textcolor{keyword}{private}:}
-\DoxyCodeLine{165   hid\_t m\_id;}
-\DoxyCodeLine{166   hid\_t m\_faplID;}
-\DoxyCodeLine{167 \};}
-\DoxyCodeLine{168 \}  \textcolor{comment}{// namespace HDF5}}
-\DoxyCodeLine{169 \}  \textcolor{comment}{// namespace PLI}}
+\DoxyCodeLine{42 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} \{}
+\DoxyCodeLine{43  \textcolor{keyword}{public}:}
+\DoxyCodeLine{44   \textcolor{keyword}{enum} OpenState \{ ReadOnly = 0, ReadWrite = 1 \};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{53   \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}{File}}();}
+\DoxyCodeLine{60   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}{File}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}}\& otherFile);}
+\DoxyCodeLine{68   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}{File}}(\textcolor{keyword}{const} hid\_t filePtr, \textcolor{keyword}{const} hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}{faplID}});}
+\DoxyCodeLine{82   \textcolor{keyword}{static} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI::HDF5::File}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a36f551c8afd5bf4e5e87abcae947a7c7}{create}}(\textcolor{keyword}{const} std::string\& fileName);}
+\DoxyCodeLine{106   \textcolor{keyword}{static} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI::HDF5::File}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a96ae5bca619994c5a17ec3c843c3d34c}{open}}(\textcolor{keyword}{const} std::string\& fileName,}
+\DoxyCodeLine{107                               \textcolor{keyword}{const} OpenState openState = OpenState::ReadOnly);}
+\DoxyCodeLine{116   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad4f7de370ce9655532fbcae6b920868b}{isHDF5}}(\textcolor{keyword}{const} std::string\& fileName);}
+\DoxyCodeLine{123   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae7d1c6b269c872ce262222d5b5542885}{fileExists}}(\textcolor{keyword}{const} std::string\& fileName);}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{133   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a930eacc5e5c0ff2235c1d678447dd85e}{close}}();}
+\DoxyCodeLine{141   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_adaf80744e54c4b7c04ead41a2b46b165}{reopen}}();}
+\DoxyCodeLine{149   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a83b2e323c070259dbde4c23909097eeb}{flush}}();}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{155   hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae9595536a728637c89589fb595e43230}{id}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{160   hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}{faplID}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{166   \textcolor{keyword}{operator} hid\_t() \textcolor{keyword}{const};}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168  \textcolor{keyword}{private}:}
+\DoxyCodeLine{169   hid\_t m\_id;}
+\DoxyCodeLine{170   hid\_t m\_faplID;}
+\DoxyCodeLine{171 \};}
+\DoxyCodeLine{172 \}  \textcolor{comment}{// namespace HDF5}}
+\DoxyCodeLine{173 \}  \textcolor{comment}{// namespace PLI}}
 
 \end{DoxyCode}

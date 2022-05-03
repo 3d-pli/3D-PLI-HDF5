@@ -1,5 +1,14 @@
 \hypertarget{classPLI_1_1HDF5_1_1File}{}\doxysection{PLI\+::HDF5\+::File Class Reference}
 \label{classPLI_1_1HDF5_1_1File}\index{PLI::HDF5::File@{PLI::HDF5::File}}
+
+
+HDF5 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} wrapper class. Create and / or open an HDF5 file to store or read data.  
+
+
+
+
+{\ttfamily \#include $<$file.\+h$>$}
+
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,6 +51,9 @@ static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad4f7de370ce9655532fbcae6b
 static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae7d1c6b269c872ce262222d5b5542885}{file\+Exists}} (const std\+::string \&file\+Name)
 \begin{DoxyCompactList}\small\item\em Check if the file exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+HDF5 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} wrapper class. Create and / or open an HDF5 file to store or read data. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a506df5f077ae597a98f8d7a08b04d056}\label{classPLI_1_1HDF5_1_1File_a506df5f077ae597a98f8d7a08b04d056}} 
@@ -114,9 +126,9 @@ Create a new file object. Create a new file object. Per default, the file is cre
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em PLI\+::\+HDF5\+::\+Exception\+::\+File\+Exists\+Exception} & If the file already exists. \\
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileExistsException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+File\+Exists\+Exception}}} & If the file already exists. \\
 \hline
-{\em PLI\+::\+HDF5\+::\+Exception\+::\+Identifier\+Not\+Valid\+Exception} & If the file couldn\textquotesingle{}t be created or the file access token failed. \\
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the file couldn\textquotesingle{}t be created or the file access token failed. \\
 \hline
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & Error during setting the MPI file access. \\
 \hline
@@ -226,9 +238,9 @@ Open an existing file object. This method tries to open an existing file. If the
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em PLI\+::\+HDF5\+::\+Exception\+::\+File\+Not\+Found\+Exception} & If the file doesn\textquotesingle{}t exist. \\
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+File\+Not\+Found\+Exception}}} & If the file doesn\textquotesingle{}t exist. \\
 \hline
-{\em PLI\+::\+HDF5\+::\+Exception\+::\+Identifier\+Not\+Valid\+Exception} & If the file couldn\textquotesingle{}t be opened or the file access token failed. \\
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the file couldn\textquotesingle{}t be opened or the file access token failed. \\
 \hline
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & Error during setting the MPI file access. \\
 \hline
