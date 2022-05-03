@@ -41,6 +41,10 @@ void PLI::HDF5::AttributeHandler::createAttribute(
 template <typename T>
 const std::vector<T> PLI::HDF5::AttributeHandler::getAttribute(
     const std::string &attributeName) const {
+  if(!this->attributeExists(attributeName)) {
+    throw PLI::HDF5::Exceptions::AttributeNotFoundException(
+        "Attribute '" + attributeName + "' not found.");
+  }
   hid_t attributeID = H5Aopen(this->m_id, attributeName.c_str(), H5P_DEFAULT);
   checkHDF5Ptr(attributeID, "H5Aopen");
   hid_t attributeType = PLI::HDF5::Type::createType<T>();

@@ -218,8 +218,16 @@ const std::vector<unsigned char> PLI::HDF5::AttributeHandler::getAttribute(
 
 const std::vector<hsize_t> PLI::HDF5::AttributeHandler::getAttributeDimensions(
     const std::string &attributeName) const {
+  if (!this->attributeExists(attributeName)) {
+    throw Exceptions::AttributeNotFoundException(
+        "Could not get dimensions of attribute " + attributeName +
+        " because it "
+        "does not exist.");
+  }
   hid_t attributeID = H5Aopen(this->m_id, attributeName.c_str(), H5P_DEFAULT);
+  checkHDF5Ptr(attributeID, "H5Aopen");
   hid_t attributeSpace = H5Aget_space(attributeID);
+  checkHDF5Ptr(attributeSpace, "H5Aget_space");
   int ndims = H5Sget_simple_extent_ndims(attributeSpace);
   std::vector<hsize_t> dims;
   dims.resize(ndims);

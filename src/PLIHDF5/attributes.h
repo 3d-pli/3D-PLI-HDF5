@@ -212,9 +212,39 @@ class AttributeHandler {
    */
   void copyFrom(const PLI::HDF5::AttributeHandler& srcHandler,
                 const std::string& srcName, const std::string& dstName);
+  /**
+   * @brief Copy all attributes from another AttributeHandler to this one.
+   * This method copies all attributes from another AttributeHandler to this
+   * one. Exceptions can be defined through the exceptions parameter. Those
+   * attributes will be skipped instead. The datatype will be defined by the
+   * source datatype. The attribute names will be kept the same.
+   * @param srcHandler Source AttributeHandler from which the attributes are
+   * copied.
+   * @param exceptions Attributes which will not be copied during the method
+   * call.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer or attribute pointer is not valid.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library call
+   * failed.
+   */
   void copyAllFrom(
       const PLI::HDF5::AttributeHandler& srcHandler,
       const std::vector<std::string>& exceptions = std::vector<std::string>());
+  /**
+   * @brief Copy all attributes to another AttributeHandler from this one.
+   * This method copies all attributes to another AttributeHandler from this
+   * one. Exceptions can be defined through the exceptions parameter. Those
+   * attributes will be skipped instead. The datatype will be defined by the
+   * source datatype. The attribute names will be kept the same.
+   * @param dstHandler Destination AttributeHandler from which the attributes
+   * are copied.
+   * @param exceptions Attributes which will not be copied during the method
+   * call.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer or attribute pointer is not valid.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library call
+   * failed.
+   */
   void copyAllTo(
       PLI::HDF5::AttributeHandler dstHandler,
       const std::vector<std::string>& exceptions = std::vector<std::string>());
@@ -249,19 +279,123 @@ class AttributeHandler {
    */
   hid_t attributePtr(const std::string& attributeName) const;
 
+  /**
+   * @brief Get the Attribute object
+   * This method returns the Attribute object with the given attributeName.
+   * The type of the returned attribute is defined by the template.
+   * The conversion is done by the HDF5 library.
+   * @tparam T Supported data types are: bool, char, unsigned char, short,
+   * unsigned short, int, unsigned int, long, unsigned long, long long,
+   * unsigned long long, float, double, long double, std::string.
+   * @param attributeName Name of the attribute to be returned.
+   * @return const std::vector<T> Vector of the attribute content. To get
+   * the real dimensions of the attribute, use the method
+   * PLI::HDF5::Attribute::getAttributeDimensions(const std::string&
+   * attributeName).
+   * @throws PLI::HDF5::Exceptions::AttributeNotFoundException Attribute with
+   * the given attributeName does not exist.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer is invalid.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library returned
+   * an error.
+   */
   template <typename T>
   const std::vector<T> getAttribute(const std::string& attributeName) const;
+  /**
+   * @brief Get the Attribute Dimensions object
+   * This method checks the dimensions of the attribute with the given
+   * attributeName.
+   * @param attributeName Name of the attribute to be returned.
+   * @return const std::vector<hsize_t> Number of elements in each dimension.
+   * @throws PLI::HDF5::Exceptions::AttributeNotFoundException Attribute with
+   * the given attributeName does not exist.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer is invalid.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library returned
+   * an error.
+   */
   const std::vector<hsize_t> getAttributeDimensions(
       const std::string& attributeName) const;
 
+  /**
+   * @brief Update attribute with new content.
+   * This method updates the attribute with the given attributeName with the new
+   * content. The type of the attribute is defined by the template. This method
+   * is used for a single object. For a vector of objects, use the other
+   * options.
+   * @tparam T Supported data types are: bool, char, unsigned char, short,
+   * unsigned short, int, unsigned int, long, unsigned long, long long,
+   * unsigned long long, float, double, long double, std::string.
+   * @param attributeName Name of the attribute to be updated.
+   * @param content New content of the attribute.
+   * @throws PLI::HDF5::Exceptions::AttributeNotFoundException Attribute with
+   * the given attributeName does not exist.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer is invalid.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library returned
+   * an error.
+   */
   template <typename T>
   void updateAttribute(const std::string& attributeName, const T& content);
+  /**
+   * @brief Update attribute with new content.
+   * This method updates the attribute with the given attributeName with the new
+   * content. The type of the attribute is defined by the template. This method
+   * is used for a vector of objects. For a single object use the other options.
+   * @tparam T Supported data types are: bool, char, unsigned char, short,
+   * unsigned short, int, unsigned int, long, unsigned long, long long,
+   * unsigned long long, float, double, long double, std::string.
+   * @param attributeName Name of the attribute to be updated.
+   * @param content New content of the attribute.
+   * @param dimensions Number of elements in each dimension.
+   * @throws PLI::HDF5::Exceptions::AttributeNotFoundException Attribute with
+   * the given attributeName does not exist.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer is invalid.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library returned
+   * an error.
+   */
   template <typename T>
   void updateAttribute(const std::string& attributeName,
                        const std::vector<T>& content,
                        const std::vector<hsize_t>& dimensions);
+  /**
+   * @brief Update attribute with new content.
+   * This method updates the attribute with the given attributeName with the new
+   * content. The type of the attribute is defined by the template. This method
+   * is used for a single object. For a vector of objects, use the other
+   * options. The used datatype to store the object is defined by the
+   * PLI::HDF5::Type parameter.
+   * @param attributeName Name of the attribute to be updated.
+   * @param content New content of the attribute.
+   * @param dataType HDF5 data type of the attribute.
+   * @throws PLI::HDF5::Exceptions::AttributeNotFoundException Attribute with
+   * the given attributeName does not exist.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer is invalid.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library returned
+   * an error.
+   */
   void updateAttribute(const std::string& attributeName, const void* content,
                        const PLI::HDF5::Type dataType);
+  /**
+   * @brief Update attribute with new content.
+   * This method updates the attribute with the given attributeName with the new
+   * content. The type of the attribute is defined by the template. This method
+   * is used for a vector of objects. For a single object use the other options.
+   * The used datatype to store the object is defined by the PLI::HDF5::Type
+   * parameter.
+   * @param attributeName Name of the attribute to be updated.
+   * @param content New content of the attribute.
+   * @param dimensions Number of elements in each dimension.
+   * @param dataType HDF5 data type of the attribute.
+   * @throws PLI::HDF5::Exceptions::AttributeNotFoundException Attribute with
+   * the given attributeName does not exist.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer is invalid.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library returned
+   * an error.
+   */
   void updateAttribute(const std::string& attributeName, const void* content,
                        const std::vector<hsize_t>& dimensions,
                        const PLI::HDF5::Type dataType);
