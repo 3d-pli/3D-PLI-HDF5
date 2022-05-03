@@ -28,8 +28,6 @@
 #include "PLIHDF5/plihdf5.h"
 #include "testEnvironment.h"
 
-TEST(TestPLIM, ValidSolrHDF5) {}
-
 TEST(TestPLIM, AddCreator) {}
 
 TEST(TestPLIM, AddID) {}

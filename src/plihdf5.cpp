@@ -31,15 +31,11 @@ PLI::PLIM::PLIM(PLI::HDF5::File handler, const std::string &dataset) {
         PLI::HDF5::Dataset::open(handler, dataset);
     m_attrHandler = PLI::HDF5::AttributeHandler(datasetHandler);
   } else {
-    throw PLI::HDF5::DatasetNotFoundException(dataset);
+    throw PLI::HDF5::Exceptions::DatasetNotFoundException(dataset);
   }
 }
 
 PLI::PLIM::PLIM(PLI::HDF5::AttributeHandler handler) : m_attrHandler(handler) {}
-
-bool PLI::PLIM::validSolrHDF5(const std::string &solrJSON) {
-  return solrJSON.empty();
-}
 
 void PLI::PLIM::addCreator() {
   std::string username;
@@ -67,7 +63,7 @@ void PLI::PLIM::addID(const std::vector<std::string> &idAttributes) {
       std::for_each(attributeString.begin(), attributeString.end(),
                     [&hashCode](const std::string &str) { hashCode += str; });
     } else {
-      throw PLI::HDF5::AttributeNotFoundException(attribute);
+      throw PLI::HDF5::Exceptions::AttributeNotFoundException(attribute);
     }
   }
 

@@ -41,9 +41,16 @@ void PLI::HDF5::AttributeHandler::createAttribute(
 template <typename T>
 const std::vector<T> PLI::HDF5::AttributeHandler::getAttribute(
     const std::string &attributeName) const {
+  if(!this->attributeExists(attributeName)) {
+    throw PLI::HDF5::Exceptions::AttributeNotFoundException(
+        "Attribute '" + attributeName + "' not found.");
+  }
   hid_t attributeID = H5Aopen(this->m_id, attributeName.c_str(), H5P_DEFAULT);
+  checkHDF5Ptr(attributeID, "H5Aopen");
   hid_t attributeType = PLI::HDF5::Type::createType<T>();
+  checkHDF5Ptr(attributeType, "PLI::HDF5::Type");
   hid_t attributeSpace = H5Aget_space(attributeID);
+  checkHDF5Ptr(attributeSpace, "H5Aget_space");
   int ndims = H5Sget_simple_extent_ndims(attributeSpace);
   std::vector<hsize_t> dims;
   dims.resize(ndims);
@@ -55,10 +62,10 @@ const std::vector<T> PLI::HDF5::AttributeHandler::getAttribute(
   }
   std::vector<T> returnContainer;
   returnContainer.resize(numElements);
-  H5Aread(attributeID, attributeType, returnContainer.data());
+  checkHDF5Call(H5Aread(attributeID, attributeType, returnContainer.data()), "H5Aread");
 
-  H5Sclose(attributeSpace);
-  H5Aclose(attributeID);
+  checkHDF5Call(H5Sclose(attributeSpace), "H5Sclose");
+  checkHDF5Call(H5Aclose(attributeID), "H5Aclose");
 
   return returnContainer;
 }
