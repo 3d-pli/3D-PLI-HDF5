@@ -28,7 +28,7 @@
 PLI::HDF5::Group PLI::HDF5::Group::open(hid_t parentPtr,
                                         const std::string& groupName) {
   if (!PLI::HDF5::Group::exists(parentPtr, groupName)) {
-    throw GroupNotFoundException("Group not found: " + groupName);
+    throw Exceptions::GroupNotFoundException("Group not found: " + groupName);
   }
   return PLI::HDF5::Group(H5Gopen(parentPtr, groupName.c_str(), H5P_DEFAULT));
 }
@@ -36,7 +36,8 @@ PLI::HDF5::Group PLI::HDF5::Group::open(hid_t parentPtr,
 PLI::HDF5::Group PLI::HDF5::Group::create(hid_t parentPtr,
                                           const std::string& groupName) {
   if (PLI::HDF5::Group::exists(parentPtr, groupName)) {
-    throw GroupExistsException("Group already exists: " + groupName);
+    throw Exceptions::GroupExistsException("Group already exists: " +
+                                           groupName);
   }
   return PLI::HDF5::Group(H5Gcreate(parentPtr, groupName.c_str(), H5P_DEFAULT,
                                     H5P_DEFAULT, H5P_DEFAULT));

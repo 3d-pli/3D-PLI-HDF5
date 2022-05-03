@@ -51,7 +51,7 @@ const PLI::HDF5::Type PLI::HDF5::Dataset::type() const {
 
 int PLI::HDF5::Dataset::ndims() const {
   if (this->m_id < 0) {
-    throw PLI::HDF5::IdentifierNotValidException("Dataset ID is invalid!");
+    throw Exceptions::IdentifierNotValidException("Dataset ID is invalid!");
   }
   hid_t dataspace = H5Dget_space(this->m_id);
   checkHDF5Ptr(dataspace, "H5Dget_space");
@@ -60,7 +60,7 @@ int PLI::HDF5::Dataset::ndims() const {
   if (numDims > 0) {
     return numDims;
   } else {
-    throw HDF5RuntimeException("Dataset has no dimensions.");
+    throw Exceptions::HDF5RuntimeException("Dataset has no dimensions.");
   }
 }
 
@@ -96,13 +96,13 @@ PLI::HDF5::Dataset PLI::HDF5::Dataset::create(
     const hid_t parentPtr, const std::string &datasetName,
     const std::vector<hsize_t> &dims, const std::vector<hsize_t> &chunkDims) {
   if (PLI::HDF5::Dataset::exists(parentPtr, datasetName)) {
-    throw DatasetExistsException("Dataset alreadt exists!");
+    throw Exceptions::DatasetExistsException("Dataset alreadt exists!");
   }
 
   hid_t dcpl_id = H5P_DEFAULT;
   if (!chunkDims.empty()) {
     if (dims.size() != chunkDims.size()) {
-      throw HDF5RuntimeException(
+      throw Exceptions::HDF5RuntimeException(
           "Chunk dimensions must have the same size as "
           "dataset dimensions.");
     }
@@ -194,7 +194,7 @@ void PLI::HDF5::Dataset::write(const std::vector<T> &data,
   // Check if the type matches the type of the dataset
   PLI::HDF5::Type dataType = PLI::HDF5::Type::createType<T>();
   if (dataType != PLI::HDF5::Type(H5Dget_type(this->m_id))) {
-    throw 0;
+    throw Exceptions::HDF5RuntimeException("Datatypes do not match.");
   }
 
   hid_t xf_id = H5Pcreate(H5P_DATASET_XFER);

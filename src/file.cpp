@@ -29,7 +29,7 @@
 
 PLI::HDF5::File PLI::HDF5::File::create(const std::string& fileName) {
   if (PLI::HDF5::File::fileExists(fileName)) {
-    throw FileExistsException("File already exists: " + fileName);
+    throw Exceptions::FileExistsException("File already exists: " + fileName);
   }
 
   hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
@@ -46,11 +46,11 @@ PLI::HDF5::File PLI::HDF5::File::create(const std::string& fileName) {
 PLI::HDF5::File PLI::HDF5::File::open(const std::string& fileName,
                                       const unsigned openState) {
   if (!PLI::HDF5::File::fileExists(fileName)) {
-    throw FileNotFoundException("File not found: " + fileName);
+    throw Exceptions::FileNotFoundException("File not found: " + fileName);
   }
   if (!PLI::HDF5::File::isHDF5(fileName)) {
-    throw InvalidHDF5FileException("File " + fileName +
-                                   " is not an HDF5 file.");
+    throw Exceptions::InvalidHDF5FileException("File " + fileName +
+                                               " is not an HDF5 file.");
   }
 
   hid_t access;
