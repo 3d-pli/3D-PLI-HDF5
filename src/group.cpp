@@ -30,7 +30,9 @@ PLI::HDF5::Group PLI::HDF5::Group::open(hid_t parentPtr,
   if (!PLI::HDF5::Group::exists(parentPtr, groupName)) {
     throw Exceptions::GroupNotFoundException("Group not found: " + groupName);
   }
-  return PLI::HDF5::Group(H5Gopen(parentPtr, groupName.c_str(), H5P_DEFAULT));
+  hid_t groupPtr = H5Gopen(parentPtr, groupName.c_str(), H5P_DEFAULT);
+  checkHDF5Ptr(groupPtr);
+  return PLI::HDF5::Group(groupPtr);
 }
 
 PLI::HDF5::Group PLI::HDF5::Group::create(hid_t parentPtr,
@@ -39,8 +41,10 @@ PLI::HDF5::Group PLI::HDF5::Group::create(hid_t parentPtr,
     throw Exceptions::GroupExistsException("Group already exists: " +
                                            groupName);
   }
-  return PLI::HDF5::Group(H5Gcreate(parentPtr, groupName.c_str(), H5P_DEFAULT,
-                                    H5P_DEFAULT, H5P_DEFAULT));
+  hid_t groupPtr = H5Gcreate(parentPtr, groupName.c_str(), H5P_DEFAULT,
+                             H5P_DEFAULT, H5P_DEFAULT);
+  checkHDF5Ptr(groupPtr, "H5Gcreate");
+  return PLI::HDF5::Group(groupPtr);
 }
 
 bool PLI::HDF5::Group::exists(hid_t parentPtr, const std::string& groupName) {
@@ -59,7 +63,5 @@ hid_t PLI::HDF5::Group::id() const noexcept { return this->m_id; }
 PLI::HDF5::Group::Group(const hid_t groupPtr) noexcept : m_id(groupPtr) {}
 
 PLI::HDF5::Group::Group() noexcept : m_id(-1) {}
-
-PLI::HDF5::Group::~Group() {}
 
 PLI::HDF5::Group::operator hid_t() const noexcept { return this->m_id; }
