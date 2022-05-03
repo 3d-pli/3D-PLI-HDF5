@@ -44,7 +44,7 @@ PLI::HDF5::File PLI::HDF5::File::create(const std::string& fileName) {
 }
 
 PLI::HDF5::File PLI::HDF5::File::open(const std::string& fileName,
-                                      const unsigned openState) {
+                                      const OpenState openState) {
   if (!PLI::HDF5::File::fileExists(fileName)) {
     throw Exceptions::FileNotFoundException("File not found: " + fileName);
   }
@@ -64,7 +64,6 @@ PLI::HDF5::File PLI::HDF5::File::open(const std::string& fileName,
   checkHDF5Ptr(fapl_id, "H5Pcreate");
   checkHDF5Call(H5Pset_fapl_mpio(fapl_id, MPI_COMM_WORLD, MPI_INFO_NULL));
 
-  // TODO(jreuter): Check the openState variable!
   hid_t filePtr = H5Fopen(fileName.c_str(), access, fapl_id);
   checkHDF5Ptr(filePtr, "H5Fopen");
   return PLI::HDF5::File(filePtr, fapl_id);
@@ -78,9 +77,14 @@ void PLI::HDF5::File::close() {
   }
 }
 
-void PLI::HDF5::File::reopen() { this->m_id = H5Freopen(this->m_id); }
+void PLI::HDF5::File::reopen() {
+  checkHDF5Ptr(this->m_id, "H5Fopen");
+  this->m_id = H5Freopen(this->m_id);
+  checkHDF5Ptr(this->m_id, "H5Freopen");
+}
 
 void PLI::HDF5::File::flush() {
+  checkHDF5Ptr(this->m_id, "H5Fflush");
   checkHDF5Call(H5Fflush(this->m_id, H5F_SCOPE_LOCAL), "H5Fflush");
 }
 
@@ -102,7 +106,5 @@ PLI::HDF5::File::File(const File& other) : m_id(other.id()) {}
 
 PLI::HDF5::File::File(const hid_t filePtr, const hid_t faplID)
     : m_id(filePtr), m_faplID(faplID) {}
-
-PLI::HDF5::File::~File() {}
 
 PLI::HDF5::File::operator hid_t() const { return this->m_id; }

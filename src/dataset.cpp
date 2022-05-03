@@ -39,6 +39,7 @@ PLI::HDF5::Dataset PLI::HDF5::Dataset::open(const hid_t parentPtr,
 
 bool PLI::HDF5::Dataset::exists(const hid_t parentPtr,
                                 const std::string &datasetName) {
+  checkHDF5Ptr(parentPtr, "PLI::HDF5::Dataset::exists");
   return H5LTfind_dataset(parentPtr, datasetName.c_str()) > 0;
 }
 
@@ -50,6 +51,7 @@ void PLI::HDF5::Dataset::close() {
 }
 
 const PLI::HDF5::Type PLI::HDF5::Dataset::type() const {
+  checkHDF5Ptr(this->m_id, "PLI::HDF5::Dataset::type");
   hid_t typePtr = H5Dget_type(this->m_id);
   checkHDF5Ptr(typePtr, "H5Dget_type");
   return PLI::HDF5::Type(typePtr);
