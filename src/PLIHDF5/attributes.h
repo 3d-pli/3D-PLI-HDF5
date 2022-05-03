@@ -255,7 +255,7 @@ class AttributeHandler {
    * attributeName from the HDF5 object pointer. Please note that the behaviour
    * of this method is undefined when the method
    * PLI::HDF5::AttributeHandler::attributePtr(const std::string& attributeName)
-   * is used and is not closed manually.
+   * const is used and is not closed manually.
    * @param attributeName Name of the attribute to be deleted.
    * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library function
    * H5Adelete returns an error. This may happen when the attribute does not

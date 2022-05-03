@@ -100,8 +100,8 @@ class File {
    * couldn't be opened or the file access token failed.
    * @throws PLI::HDF5::Exceptions::HDF5RuntimeException Error during setting
    * the MPI file access.
-   * @throws PLI::HDF5::Exceptions::InvalidHDF5Exception If the file is not a
-   * valid HDF5 file.
+   * @throws PLI::HDF5::Exceptions::InvalidHDF5FileException If the file is not
+   * a valid HDF5 file.
    */
   static PLI::HDF5::File open(const std::string& fileName,
                               const OpenState openState = OpenState::ReadOnly);

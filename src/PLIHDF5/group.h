@@ -45,7 +45,7 @@ class Group {
    * Create an empty group object. Calling other methods on this object will
    * fail because no pointer to an HDF5 object is set. To open a group, use
    * PLI::HDF5::Group::open(hid_t parentPtr, const std::string& groupName). To
-   * create a grouop, use PLI::HDF5::File::create(hid_t parentPtr, const
+   * create a grouop, use PLI::HDF5::Group::create(hid_t parentPtr, const
    * std::string& groupName).
    */
   Group() noexcept;
