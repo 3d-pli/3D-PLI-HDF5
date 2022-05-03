@@ -38,6 +38,10 @@
 
 namespace PLI {
 namespace HDF5 {
+/**
+ * @brief HDF5 Dataset wrapper class.
+ * Create and store or read data in an HDF5 dataset.
+ */
 class Dataset {
  public:
   /**

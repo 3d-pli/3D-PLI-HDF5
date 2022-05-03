@@ -35,6 +35,10 @@
 
 namespace PLI {
 namespace HDF5 {
+/**
+ * @brief HDF5 File wrapper class.
+ * Create and / or open an HDF5 file to store or read data.
+ */
 class File {
  public:
   enum OpenState { ReadOnly = 0, ReadWrite = 1 };
@@ -68,9 +72,9 @@ class File {
    * MPI file access.
    * @param fileName File name.
    * @return PLI::HDF5::File File object, if successful.
-   * @throw PLI::HDF5::Exception::FileExistsException If the file already
+   * @throw PLI::HDF5::Exceptions::FileExistsException If the file already
    * exists.
-   * @throw PLI::HDF5::Exception::IdentifierNotValidException If the file
+   * @throw PLI::HDF5::Exceptions::IdentifierNotValidException If the file
    * couldn't be created or the file access token failed.
    * @throw PLI::HDF5::Exceptions::HDF5RuntimeException Error during setting the
    * MPI file access.
@@ -90,9 +94,9 @@ class File {
    * PLI::HDF5::File::OpenState::ReadOnly and
    * PLI::HDF5::File::OpenState::ReadWrite.
    * @return PLI::HDF5::File File object if successful.
-   * @throws PLI::HDF5::Exception::FileNotFoundException If the file doesn't
+   * @throws PLI::HDF5::Exceptions::FileNotFoundException If the file doesn't
    * exist.
-   * @throws PLI::HDF5::Exception::IdentifierNotValidException If the file
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the file
    * couldn't be opened or the file access token failed.
    * @throws PLI::HDF5::Exceptions::HDF5RuntimeException Error during setting
    * the MPI file access.
