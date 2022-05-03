@@ -27,7 +27,13 @@
 
 PLI::HDF5::Dataset PLI::HDF5::Dataset::open(const hid_t parentPtr,
                                             const std::string &datasetName) {
+  checkHDF5Ptr(parentPtr, "PLI::HDF5::Dataset::open");
+  if (!exists(parentPtr, datasetName)) {
+    throw PLI::HDF5::Exceptions::DatasetNotFoundException(
+        "PLI::HDF5::Dataset::open: Dataset " + datasetName + " not found.");
+  }
   hid_t datasetPtr = H5Dopen(parentPtr, datasetName.c_str(), H5P_DEFAULT);
+  checkHDF5Ptr(datasetPtr, "H5Dopen");
   return PLI::HDF5::Dataset(datasetPtr);
 }
 
@@ -88,8 +94,6 @@ PLI::HDF5::Dataset::Dataset(hid_t datasetPtr) noexcept {
 
 PLI::HDF5::Dataset::Dataset(const Dataset &dataset) noexcept
     : m_id(dataset.id()) {}
-
-PLI::HDF5::Dataset::~Dataset() {}
 
 template <typename T>
 PLI::HDF5::Dataset PLI::HDF5::Dataset::create(
