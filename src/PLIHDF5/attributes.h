@@ -104,20 +104,112 @@ class AttributeHandler {
    */
   PLI::HDF5::Type attributeType(const std::string& attributeName) const;
 
+  /**
+   * @brief Create a Attribute object
+   * This method creates an attribute with the given name. The
+   * content and dimensions are defined by the other arguments.
+   * This method is intended to be used if more than one object needs to be
+   * stored.
+   * @tparam T Supported data types are: bool, char, unsigned char, short,
+   * unsigned short, int, unsigned int, long, unsigned long, long long,
+   * unsigned long long, float, double, long double, std::string.
+   * @param attributeName Name of the attribute.
+   * @param content The content of the attribute.
+   * @param dimensions The dimensions of the attribute.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer or attribute pointer is not valid.
+   * @throws PLI::HDF5::Exceptions::AttributeExistsException Attribute with the
+   * given name already exists.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library call
+   * failed.
+   */
   template <typename T>
   void createAttribute(const std::string& attributeName,
                        const std::vector<T>& content,
                        const std::vector<hsize_t>& dimensions);
+  /**
+   * @brief Create a Attribute object
+   * This method creates an attribute with the given name. The
+   * content and dimensions are defined by the other arguments.
+   * This method is intended to be used if only one object needs to be stored.
+   * The datatype is defined by the type parameter.
+   * @param attributeName Name of the attribute.
+   * @param content The content of the attribute.
+   * @param dimensions The dimensions of the attribute.
+   * @param dataType Datatype which is used to store the attribute.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer or attribute pointer is not valid.
+   * @throws PLI::HDF5::Exceptions::AttributeExistsException Attribute with the
+   * given name already exists.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library call
+   * failed.
+   */
   void createAttribute(const std::string& attributeName, const void* content,
                        const std::vector<hsize_t>& dimensions,
                        const PLI::HDF5::Type dataType);
+  /**
+   * @brief Create a Attribute object
+   * This method creates an attribute with the given name. This method will
+   * only store a single parameter of the given type. The datatype is defined by
+   * the template.
+   * @tparam T Supported data types are: bool, char, unsigned char, short,
+   * unsigned short, int, unsigned int, long, unsigned long, long long,
+   * unsigned long long, float, double, long double, std::string.
+   * @param attributeName The name of the attribute.
+   * @param content The content of the attribute.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer or attribute pointer is not valid.
+   * @throws PLI::HDF5::Exceptions::AttributeExistsException Attribute with the
+   * given name already exists.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library call
+   * failed.
+   */
   template <typename T>
   void createAttribute(const std::string& attributeName, const T& content);
+  /**
+   * @brief Create a Attribute object
+   * This method creates an attribute with the given name. This method will
+   * only store a single parameter of the given type. The datatype is defined by
+   * the type parameter.
+   * @param attributeName The name of the attribute.
+   * @param content The content of the attribute.
+   * @param dataType Datatype which is used to store the attribute.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer or attribute pointer is not valid.
+   * @throws PLI::HDF5::Exceptions::AttributeExistsException Attribute with the
+   * given name already exists.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library call
+   * failed.
+   */
   void createAttribute(const std::string& attributeName, const void* content,
                        const PLI::HDF5::Type dataType);
 
+  /**
+   * @brief Copy an attribute from this AttributeHandler to another one.
+   * This method copies an attribute from this AttributeHandler to another one.
+   * The datatype is defined by the source datatype.
+   * @param dstHandler Desination AttributeHandler.
+   * @param srcName Name of the attribute to be copied.
+   * @param dstName Name of the destination of the attribute.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer or attribute pointer is not valid.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library call
+   * failed.
+   */
   void copyTo(PLI::HDF5::AttributeHandler dstHandler,
               const std::string& srcName, const std::string& dstName) const;
+  /**
+   * @brief Copy an attribute from another AttributeHandler to this one.
+   * This method copies an attribute from another AttributeHandler to this one.
+   * The datatype is defined by the source datatype.
+   * @param srcHandler Source AttributeHandler
+   * @param srcName Name of the attribute to be copied.
+   * @param dstName Name of the destination of the attribute.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer or attribute pointer is not valid.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library call
+   * failed.
+   */
   void copyFrom(const PLI::HDF5::AttributeHandler& srcHandler,
                 const std::string& srcName, const std::string& dstName);
   void copyAllFrom(
@@ -131,8 +223,9 @@ class AttributeHandler {
    * @brief Remove attribute with the given attributeName from the HDF5 object
    * pointer. This method tries to delete the attribute with the given
    * attributeName from the HDF5 object pointer. Please note that the behaviour
-   * of this method is undefined when the method attributePtr(const std::string&
-   * attributeName) is used and is not closed manually.
+   * of this method is undefined when the method
+   * PLI::HDF5::AttributeHandler::attributePtr(const std::string& attributeName)
+   * is used and is not closed manually.
    * @param attributeName Name of the attribute to be deleted.
    * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library function
    * H5Adelete returns an error. This may happen when the attribute does not
