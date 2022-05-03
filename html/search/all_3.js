@@ -4,6 +4,7 @@ var searchData=
   ['datasetexistsexception_1',['DatasetExistsException',['../classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException.html',1,'PLI::HDF5::Exceptions']]],
   ['datasetnotfoundexception_2',['DatasetNotFoundException',['../classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException.html',1,'PLI::HDF5::Exceptions']]],
   ['deleteattribute_3',['deleteAttribute',['../classPLI_1_1HDF5_1_1AttributeHandler.html#af746380e422151cca64b537cd83aa16c',1,'PLI::HDF5::AttributeHandler']]],
-  ['dimensionmismatchexception_4',['DimensionMismatchException',['../classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException.html',1,'PLI::HDF5::Exceptions']]],
-  ['dims_5',['dims',['../classPLI_1_1HDF5_1_1Dataset.html#a2ddda9ea49d95aabbad8cd298d4b3d3e',1,'PLI::HDF5::Dataset']]]
+  ['deletelink_4',['deleteLink',['../classPLI_1_1HDF5_1_1Link.html#ac570f98a38e7f4e24c560ce93b375822',1,'PLI::HDF5::Link']]],
+  ['dimensionmismatchexception_5',['DimensionMismatchException',['../classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException.html',1,'PLI::HDF5::Exceptions']]],
+  ['dims_6',['dims',['../classPLI_1_1HDF5_1_1Dataset.html#a2ddda9ea49d95aabbad8cd298d4b3d3e',1,'PLI::HDF5::Dataset']]]
 ];

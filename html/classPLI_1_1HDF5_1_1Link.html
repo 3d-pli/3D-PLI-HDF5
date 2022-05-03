@@ -73,43 +73,514 @@ $(function() {
   <div class="headertitle"><div class="title">PLI::HDF5::Link Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Static class to create and manage links.  
+ <a href="classPLI_1_1HDF5_1_1Link.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="link_8h_source.html">link.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a71d2780a7a86def081fccdad857eb72d"><td class="memItemLeft" align="right" valign="top"><a id="a71d2780a7a86def081fccdad857eb72d" name="a71d2780a7a86def081fccdad857eb72d"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>createSoft</b> (const hid_t parentPtr, const std::string &amp;srcPath, const std::string &amp;dstPath)</td></tr>
+<tr class="memitem:a71d2780a7a86def081fccdad857eb72d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#a71d2780a7a86def081fccdad857eb72d">createSoft</a> (const hid_t parentPtr, const std::string &amp;srcPath, const std::string &amp;dstPath)</td></tr>
+<tr class="memdesc:a71d2780a7a86def081fccdad857eb72d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a soft link inside a HDF5 file.  <a href="classPLI_1_1HDF5_1_1Link.html#a71d2780a7a86def081fccdad857eb72d">More...</a><br /></td></tr>
 <tr class="separator:a71d2780a7a86def081fccdad857eb72d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a679b5185bd4513f470de870776459c"><td class="memItemLeft" align="right" valign="top"><a id="a2a679b5185bd4513f470de870776459c" name="a2a679b5185bd4513f470de870776459c"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>createHard</b> (const hid_t parentPtr, const std::string &amp;srcPath, const std::string &amp;dstPath)</td></tr>
+<tr class="memitem:a2a679b5185bd4513f470de870776459c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#a2a679b5185bd4513f470de870776459c">createHard</a> (const hid_t parentPtr, const std::string &amp;srcPath, const std::string &amp;dstPath)</td></tr>
+<tr class="memdesc:a2a679b5185bd4513f470de870776459c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a hard link inside a HDF5 file.  <a href="classPLI_1_1HDF5_1_1Link.html#a2a679b5185bd4513f470de870776459c">More...</a><br /></td></tr>
 <tr class="separator:a2a679b5185bd4513f470de870776459c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89874ff15a8b7b8ee0bd8028aa6dd624"><td class="memItemLeft" align="right" valign="top"><a id="a89874ff15a8b7b8ee0bd8028aa6dd624" name="a89874ff15a8b7b8ee0bd8028aa6dd624"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>createExternal</b> (const hid_t parentPtr, const std::string &amp;externalPath, const std::string &amp;srcPath, const std::string &amp;dstPath)</td></tr>
+<tr class="memitem:a89874ff15a8b7b8ee0bd8028aa6dd624"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#a89874ff15a8b7b8ee0bd8028aa6dd624">createExternal</a> (const hid_t parentPtr, const std::string &amp;externalPath, const std::string &amp;srcPath, const std::string &amp;dstPath)</td></tr>
+<tr class="memdesc:a89874ff15a8b7b8ee0bd8028aa6dd624"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an external link from one HDF5 file to another.  <a href="classPLI_1_1HDF5_1_1Link.html#a89874ff15a8b7b8ee0bd8028aa6dd624">More...</a><br /></td></tr>
 <tr class="separator:a89874ff15a8b7b8ee0bd8028aa6dd624"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3bd6112b8ac7a35ca51b9a4af6f8a7d"><td class="memItemLeft" align="right" valign="top"><a id="ac3bd6112b8ac7a35ca51b9a4af6f8a7d" name="ac3bd6112b8ac7a35ca51b9a4af6f8a7d"></a>
 static H5L_info_t&#160;</td><td class="memItemRight" valign="bottom"><b>getLinkInfo</b> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
 <tr class="separator:ac3bd6112b8ac7a35ca51b9a4af6f8a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82ae485c441b68889da022721049115f"><td class="memItemLeft" align="right" valign="top"><a id="a82ae485c441b68889da022721049115f" name="a82ae485c441b68889da022721049115f"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>exists</b> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
+<tr class="memitem:a82ae485c441b68889da022721049115f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#a82ae485c441b68889da022721049115f">exists</a> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
+<tr class="memdesc:a82ae485c441b68889da022721049115f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a link exists.  <a href="classPLI_1_1HDF5_1_1Link.html#a82ae485c441b68889da022721049115f">More...</a><br /></td></tr>
 <tr class="separator:a82ae485c441b68889da022721049115f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a14d7073f8e08b635a79219c8f67c92"><td class="memItemLeft" align="right" valign="top"><a id="a0a14d7073f8e08b635a79219c8f67c92" name="a0a14d7073f8e08b635a79219c8f67c92"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>isSoftLink</b> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
-<tr class="separator:a0a14d7073f8e08b635a79219c8f67c92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9760f2c0906c061429a8b53ecb0fb4a"><td class="memItemLeft" align="right" valign="top"><a id="ac9760f2c0906c061429a8b53ecb0fb4a" name="ac9760f2c0906c061429a8b53ecb0fb4a"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>isHardLink</b> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
+<tr class="memitem:ac9760f2c0906c061429a8b53ecb0fb4a"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#ac9760f2c0906c061429a8b53ecb0fb4a">isHardLink</a> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
+<tr class="memdesc:ac9760f2c0906c061429a8b53ecb0fb4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a link is a soft link.  <a href="classPLI_1_1HDF5_1_1Link.html#ac9760f2c0906c061429a8b53ecb0fb4a">More...</a><br /></td></tr>
 <tr class="separator:ac9760f2c0906c061429a8b53ecb0fb4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac52df02391a5a19b4e70fc5fa390c098"><td class="memItemLeft" align="right" valign="top"><a id="ac52df02391a5a19b4e70fc5fa390c098" name="ac52df02391a5a19b4e70fc5fa390c098"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>isExternalLink</b> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
+<tr class="memitem:ac52df02391a5a19b4e70fc5fa390c098"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#ac52df02391a5a19b4e70fc5fa390c098">isExternalLink</a> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
+<tr class="memdesc:ac52df02391a5a19b4e70fc5fa390c098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a link is an external link.  <a href="classPLI_1_1HDF5_1_1Link.html#ac52df02391a5a19b4e70fc5fa390c098">More...</a><br /></td></tr>
 <tr class="separator:ac52df02391a5a19b4e70fc5fa390c098"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac570f98a38e7f4e24c560ce93b375822"><td class="memItemLeft" align="right" valign="top"><a id="ac570f98a38e7f4e24c560ce93b375822" name="ac570f98a38e7f4e24c560ce93b375822"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteLink</b> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
+<tr class="memitem:ac570f98a38e7f4e24c560ce93b375822"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#ac570f98a38e7f4e24c560ce93b375822">deleteLink</a> (const hid_t parentPtr, const std::string &amp;path)</td></tr>
+<tr class="memdesc:ac570f98a38e7f4e24c560ce93b375822"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a link from a HDF5 file.  <a href="classPLI_1_1HDF5_1_1Link.html#ac570f98a38e7f4e24c560ce93b375822">More...</a><br /></td></tr>
 <tr class="separator:ac570f98a38e7f4e24c560ce93b375822"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84b34a81a3fb8c0152e210138cc8b917"><td class="memItemLeft" align="right" valign="top"><a id="a84b34a81a3fb8c0152e210138cc8b917" name="a84b34a81a3fb8c0152e210138cc8b917"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>moveLink</b> (const hid_t parentPtr, const std::string &amp;srcPath, const std::string &amp;dstPath)</td></tr>
+<tr class="memitem:a84b34a81a3fb8c0152e210138cc8b917"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#a84b34a81a3fb8c0152e210138cc8b917">moveLink</a> (const hid_t parentPtr, const std::string &amp;srcPath, const std::string &amp;dstPath)</td></tr>
+<tr class="memdesc:a84b34a81a3fb8c0152e210138cc8b917"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves link inside of an HDF5 file.  <a href="classPLI_1_1HDF5_1_1Link.html#a84b34a81a3fb8c0152e210138cc8b917">More...</a><br /></td></tr>
 <tr class="separator:a84b34a81a3fb8c0152e210138cc8b917"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bf2655379cda6d13d06405cf2a0e749"><td class="memItemLeft" align="right" valign="top"><a id="a0bf2655379cda6d13d06405cf2a0e749" name="a0bf2655379cda6d13d06405cf2a0e749"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>copyLink</b> (const hid_t parentPtr, const std::string &amp;srcPath, const std::string &amp;dstPath)</td></tr>
+<tr class="memitem:a0bf2655379cda6d13d06405cf2a0e749"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Link.html#a0bf2655379cda6d13d06405cf2a0e749">copyLink</a> (const hid_t parentPtr, const std::string &amp;srcPath, const std::string &amp;dstPath)</td></tr>
+<tr class="memdesc:a0bf2655379cda6d13d06405cf2a0e749"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies link inside of an HDF5 file.  <a href="classPLI_1_1HDF5_1_1Link.html#a0bf2655379cda6d13d06405cf2a0e749">More...</a><br /></td></tr>
 <tr class="separator:a0bf2655379cda6d13d06405cf2a0e749"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Static class to create and manage links. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0bf2655379cda6d13d06405cf2a0e749" name="a0bf2655379cda6d13d06405cf2a0e749"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bf2655379cda6d13d06405cf2a0e749">&#9670;&nbsp;</a></span>copyLink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::Link::copyLink </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>parentPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>srcPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dstPath</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Copies link inside of an HDF5 file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group identifier </td></tr>
+    <tr><td class="paramname">srcPath</td><td>Source link path </td></tr>
+    <tr><td class="paramname">dstPath</td><td>Destination link path </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a89874ff15a8b7b8ee0bd8028aa6dd624" name="a89874ff15a8b7b8ee0bd8028aa6dd624"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89874ff15a8b7b8ee0bd8028aa6dd624">&#9670;&nbsp;</a></span>createExternal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::Link::createExternal </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>parentPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>externalPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>srcPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dstPath</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an external link from one HDF5 file to another. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group identifier </td></tr>
+    <tr><td class="paramname">externalPath</td><td>Full path to the external file </td></tr>
+    <tr><td class="paramname">srcPath</td><td>Path to the source object in the external file </td></tr>
+    <tr><td class="paramname">dstPath</td><td>Destination path of the link </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2a679b5185bd4513f470de870776459c" name="a2a679b5185bd4513f470de870776459c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a679b5185bd4513f470de870776459c">&#9670;&nbsp;</a></span>createHard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::Link::createHard </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>parentPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>srcPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dstPath</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a hard link inside a HDF5 file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group identifier </td></tr>
+    <tr><td class="paramname">srcPath</td><td>Path to the source object </td></tr>
+    <tr><td class="paramname">dstPath</td><td>Destination path of the link </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a71d2780a7a86def081fccdad857eb72d" name="a71d2780a7a86def081fccdad857eb72d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71d2780a7a86def081fccdad857eb72d">&#9670;&nbsp;</a></span>createSoft()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::Link::createSoft </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>parentPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>srcPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dstPath</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a soft link inside a HDF5 file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group identifier </td></tr>
+    <tr><td class="paramname">srcPath</td><td>Path to the source object </td></tr>
+    <tr><td class="paramname">dstPath</td><td>Destination path of the link </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac570f98a38e7f4e24c560ce93b375822" name="ac570f98a38e7f4e24c560ce93b375822"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac570f98a38e7f4e24c560ce93b375822">&#9670;&nbsp;</a></span>deleteLink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::Link::deleteLink </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>parentPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Removes a link from a HDF5 file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group identifier </td></tr>
+    <tr><td class="paramname">path</td><td>Path to the link </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a82ae485c441b68889da022721049115f" name="a82ae485c441b68889da022721049115f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82ae485c441b68889da022721049115f">&#9670;&nbsp;</a></span>exists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PLI::HDF5::Link::exists </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>parentPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if a link exists. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group identifier </td></tr>
+    <tr><td class="paramname">path</td><td>Path to the link </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true If it exists </dd>
+<dd>
+false If it doesn't exist </dd></dl>
+
+</div>
+</div>
+<a id="ac52df02391a5a19b4e70fc5fa390c098" name="ac52df02391a5a19b4e70fc5fa390c098"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac52df02391a5a19b4e70fc5fa390c098">&#9670;&nbsp;</a></span>isExternalLink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PLI::HDF5::Link::isExternalLink </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>parentPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if a link is an external link. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group identifier </td></tr>
+    <tr><td class="paramname">path</td><td>Path to the link </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true It is an external link </dd>
+<dd>
+false It is not an external link </dd></dl>
+
+</div>
+</div>
+<a id="ac9760f2c0906c061429a8b53ecb0fb4a" name="ac9760f2c0906c061429a8b53ecb0fb4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9760f2c0906c061429a8b53ecb0fb4a">&#9670;&nbsp;</a></span>isHardLink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PLI::HDF5::Link::isHardLink </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>parentPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if a link is a soft link. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group identifier </td></tr>
+    <tr><td class="paramname">path</td><td>Path to the link </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true It is a soft link </dd>
+<dd>
+false It is not a soft link static bool isSoftLink(const hid_t parentPtr, const std::string &amp;path); /**</dd></dl>
+<p>Checks if a link is a hard link </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group identifier </td></tr>
+    <tr><td class="paramname">path</td><td>Path to the link </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true It is a hard link </dd>
+<dd>
+false It is not a hard link </dd></dl>
+
+</div>
+</div>
+<a id="a84b34a81a3fb8c0152e210138cc8b917" name="a84b34a81a3fb8c0152e210138cc8b917"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84b34a81a3fb8c0152e210138cc8b917">&#9670;&nbsp;</a></span>moveLink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::Link::moveLink </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>parentPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>srcPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dstPath</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Moves link inside of an HDF5 file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group identifier </td></tr>
+    <tr><td class="paramname">srcPath</td><td>Source link path </td></tr>
+    <tr><td class="paramname">dstPath</td><td>Destination link path </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/PLIHDF5/<a class="el" href="link_8h_source.html">link.h</a></li>
 <li>src/link.cpp</li>

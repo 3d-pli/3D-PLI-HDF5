@@ -1,41 +1,236 @@
 \hypertarget{classPLI_1_1HDF5_1_1Link}{}\doxysection{PLI\+::HDF5\+::Link Class Reference}
 \label{classPLI_1_1HDF5_1_1Link}\index{PLI::HDF5::Link@{PLI::HDF5::Link}}
+
+
+Static class to create and manage links.  
+
+
+
+
+{\ttfamily \#include $<$link.\+h$>$}
+
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a71d2780a7a86def081fccdad857eb72d}\label{classPLI_1_1HDF5_1_1Link_a71d2780a7a86def081fccdad857eb72d}} 
-static void {\bfseries create\+Soft} (const hid\+\_\+t parent\+Ptr, const std\+::string \&src\+Path, const std\+::string \&dst\+Path)
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a2a679b5185bd4513f470de870776459c}\label{classPLI_1_1HDF5_1_1Link_a2a679b5185bd4513f470de870776459c}} 
-static void {\bfseries create\+Hard} (const hid\+\_\+t parent\+Ptr, const std\+::string \&src\+Path, const std\+::string \&dst\+Path)
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a89874ff15a8b7b8ee0bd8028aa6dd624}\label{classPLI_1_1HDF5_1_1Link_a89874ff15a8b7b8ee0bd8028aa6dd624}} 
-static void {\bfseries create\+External} (const hid\+\_\+t parent\+Ptr, const std\+::string \&external\+Path, const std\+::string \&src\+Path, const std\+::string \&dst\+Path)
-\item 
+static void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a71d2780a7a86def081fccdad857eb72d}{create\+Soft}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&src\+Path, const std\+::string \&dst\+Path)
+\begin{DoxyCompactList}\small\item\em Create a soft link inside a HDF5 file. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a2a679b5185bd4513f470de870776459c}{create\+Hard}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&src\+Path, const std\+::string \&dst\+Path)
+\begin{DoxyCompactList}\small\item\em Create a hard link inside a HDF5 file. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a89874ff15a8b7b8ee0bd8028aa6dd624}{create\+External}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&external\+Path, const std\+::string \&src\+Path, const std\+::string \&dst\+Path)
+\begin{DoxyCompactList}\small\item\em Create an external link from one HDF5 file to another. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_ac3bd6112b8ac7a35ca51b9a4af6f8a7d}\label{classPLI_1_1HDF5_1_1Link_ac3bd6112b8ac7a35ca51b9a4af6f8a7d}} 
 static H5\+L\+\_\+info\+\_\+t {\bfseries get\+Link\+Info} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
 \item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a82ae485c441b68889da022721049115f}\label{classPLI_1_1HDF5_1_1Link_a82ae485c441b68889da022721049115f}} 
-static bool {\bfseries exists} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a0a14d7073f8e08b635a79219c8f67c92}\label{classPLI_1_1HDF5_1_1Link_a0a14d7073f8e08b635a79219c8f67c92}} 
-static bool {\bfseries is\+Soft\+Link} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_ac9760f2c0906c061429a8b53ecb0fb4a}\label{classPLI_1_1HDF5_1_1Link_ac9760f2c0906c061429a8b53ecb0fb4a}} 
-static bool {\bfseries is\+Hard\+Link} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_ac52df02391a5a19b4e70fc5fa390c098}\label{classPLI_1_1HDF5_1_1Link_ac52df02391a5a19b4e70fc5fa390c098}} 
-static bool {\bfseries is\+External\+Link} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_ac570f98a38e7f4e24c560ce93b375822}\label{classPLI_1_1HDF5_1_1Link_ac570f98a38e7f4e24c560ce93b375822}} 
-static void {\bfseries delete\+Link} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a84b34a81a3fb8c0152e210138cc8b917}\label{classPLI_1_1HDF5_1_1Link_a84b34a81a3fb8c0152e210138cc8b917}} 
-static void {\bfseries move\+Link} (const hid\+\_\+t parent\+Ptr, const std\+::string \&src\+Path, const std\+::string \&dst\+Path)
-\item 
+static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a82ae485c441b68889da022721049115f}{exists}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Checks if a link exists. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ac9760f2c0906c061429a8b53ecb0fb4a}{is\+Hard\+Link}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Checks if a link is a soft link. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ac52df02391a5a19b4e70fc5fa390c098}{is\+External\+Link}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Checks if a link is an external link. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ac570f98a38e7f4e24c560ce93b375822}{delete\+Link}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Removes a link from a HDF5 file. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a84b34a81a3fb8c0152e210138cc8b917}{move\+Link}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&src\+Path, const std\+::string \&dst\+Path)
+\begin{DoxyCompactList}\small\item\em Moves link inside of an HDF5 file. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a0bf2655379cda6d13d06405cf2a0e749}{copy\+Link}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&src\+Path, const std\+::string \&dst\+Path)
+\begin{DoxyCompactList}\small\item\em Copies link inside of an HDF5 file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Static class to create and manage links. 
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a0bf2655379cda6d13d06405cf2a0e749}\label{classPLI_1_1HDF5_1_1Link_a0bf2655379cda6d13d06405cf2a0e749}} 
-static void {\bfseries copy\+Link} (const hid\+\_\+t parent\+Ptr, const std\+::string \&src\+Path, const std\+::string \&dst\+Path)
-\end{DoxyCompactItemize}
+\index{PLI::HDF5::Link@{PLI::HDF5::Link}!copyLink@{copyLink}}
+\index{copyLink@{copyLink}!PLI::HDF5::Link@{PLI::HDF5::Link}}
+\doxysubsubsection{\texorpdfstring{copyLink()}{copyLink()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Link\+::copy\+Link (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{src\+Path,  }\item[{const std\+::string \&}]{dst\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Copies link inside of an HDF5 file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group identifier \\
+\hline
+{\em src\+Path} & Source link path \\
+\hline
+{\em dst\+Path} & Destination link path \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a89874ff15a8b7b8ee0bd8028aa6dd624}\label{classPLI_1_1HDF5_1_1Link_a89874ff15a8b7b8ee0bd8028aa6dd624}} 
+\index{PLI::HDF5::Link@{PLI::HDF5::Link}!createExternal@{createExternal}}
+\index{createExternal@{createExternal}!PLI::HDF5::Link@{PLI::HDF5::Link}}
+\doxysubsubsection{\texorpdfstring{createExternal()}{createExternal()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Link\+::create\+External (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{external\+Path,  }\item[{const std\+::string \&}]{src\+Path,  }\item[{const std\+::string \&}]{dst\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create an external link from one HDF5 file to another. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group identifier \\
+\hline
+{\em external\+Path} & Full path to the external file \\
+\hline
+{\em src\+Path} & Path to the source object in the external file \\
+\hline
+{\em dst\+Path} & Destination path of the link \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a2a679b5185bd4513f470de870776459c}\label{classPLI_1_1HDF5_1_1Link_a2a679b5185bd4513f470de870776459c}} 
+\index{PLI::HDF5::Link@{PLI::HDF5::Link}!createHard@{createHard}}
+\index{createHard@{createHard}!PLI::HDF5::Link@{PLI::HDF5::Link}}
+\doxysubsubsection{\texorpdfstring{createHard()}{createHard()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Link\+::create\+Hard (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{src\+Path,  }\item[{const std\+::string \&}]{dst\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a hard link inside a HDF5 file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group identifier \\
+\hline
+{\em src\+Path} & Path to the source object \\
+\hline
+{\em dst\+Path} & Destination path of the link \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a71d2780a7a86def081fccdad857eb72d}\label{classPLI_1_1HDF5_1_1Link_a71d2780a7a86def081fccdad857eb72d}} 
+\index{PLI::HDF5::Link@{PLI::HDF5::Link}!createSoft@{createSoft}}
+\index{createSoft@{createSoft}!PLI::HDF5::Link@{PLI::HDF5::Link}}
+\doxysubsubsection{\texorpdfstring{createSoft()}{createSoft()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Link\+::create\+Soft (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{src\+Path,  }\item[{const std\+::string \&}]{dst\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a soft link inside a HDF5 file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group identifier \\
+\hline
+{\em src\+Path} & Path to the source object \\
+\hline
+{\em dst\+Path} & Destination path of the link \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_ac570f98a38e7f4e24c560ce93b375822}\label{classPLI_1_1HDF5_1_1Link_ac570f98a38e7f4e24c560ce93b375822}} 
+\index{PLI::HDF5::Link@{PLI::HDF5::Link}!deleteLink@{deleteLink}}
+\index{deleteLink@{deleteLink}!PLI::HDF5::Link@{PLI::HDF5::Link}}
+\doxysubsubsection{\texorpdfstring{deleteLink()}{deleteLink()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Link\+::delete\+Link (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Removes a link from a HDF5 file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group identifier \\
+\hline
+{\em path} & Path to the link \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a82ae485c441b68889da022721049115f}\label{classPLI_1_1HDF5_1_1Link_a82ae485c441b68889da022721049115f}} 
+\index{PLI::HDF5::Link@{PLI::HDF5::Link}!exists@{exists}}
+\index{exists@{exists}!PLI::HDF5::Link@{PLI::HDF5::Link}}
+\doxysubsubsection{\texorpdfstring{exists()}{exists()}}
+{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+Link\+::exists (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks if a link exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group identifier \\
+\hline
+{\em path} & Path to the link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If it exists 
+
+false If it doesn\textquotesingle{}t exist 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_ac52df02391a5a19b4e70fc5fa390c098}\label{classPLI_1_1HDF5_1_1Link_ac52df02391a5a19b4e70fc5fa390c098}} 
+\index{PLI::HDF5::Link@{PLI::HDF5::Link}!isExternalLink@{isExternalLink}}
+\index{isExternalLink@{isExternalLink}!PLI::HDF5::Link@{PLI::HDF5::Link}}
+\doxysubsubsection{\texorpdfstring{isExternalLink()}{isExternalLink()}}
+{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+Link\+::is\+External\+Link (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks if a link is an external link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group identifier \\
+\hline
+{\em path} & Path to the link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true It is an external link 
+
+false It is not an external link 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_ac9760f2c0906c061429a8b53ecb0fb4a}\label{classPLI_1_1HDF5_1_1Link_ac9760f2c0906c061429a8b53ecb0fb4a}} 
+\index{PLI::HDF5::Link@{PLI::HDF5::Link}!isHardLink@{isHardLink}}
+\index{isHardLink@{isHardLink}!PLI::HDF5::Link@{PLI::HDF5::Link}}
+\doxysubsubsection{\texorpdfstring{isHardLink()}{isHardLink()}}
+{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+Link\+::is\+Hard\+Link (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks if a link is a soft link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group identifier \\
+\hline
+{\em path} & Path to the link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true It is a soft link 
+
+false It is not a soft link static bool is\+Soft\+Link(const hid\+\_\+t parent\+Ptr, const std\+::string \&path); /$\ast$$\ast$
+\end{DoxyReturn}
+Checks if a link is a hard link 
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group identifier \\
+\hline
+{\em path} & Path to the link \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true It is a hard link 
+
+false It is not a hard link 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Link_a84b34a81a3fb8c0152e210138cc8b917}\label{classPLI_1_1HDF5_1_1Link_a84b34a81a3fb8c0152e210138cc8b917}} 
+\index{PLI::HDF5::Link@{PLI::HDF5::Link}!moveLink@{moveLink}}
+\index{moveLink@{moveLink}!PLI::HDF5::Link@{PLI::HDF5::Link}}
+\doxysubsubsection{\texorpdfstring{moveLink()}{moveLink()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Link\+::move\+Link (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{src\+Path,  }\item[{const std\+::string \&}]{dst\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Moves link inside of an HDF5 file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group identifier \\
+\hline
+{\em src\+Path} & Source link path \\
+\hline
+{\em dst\+Path} & Destination link path \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
