@@ -57,46 +57,60 @@ class Group {
    */
   explicit Group(const hid_t groupPtr) noexcept;
   /**
-   * @brief
-   *
-   * @param parentPtr
-   * @param groupName
-   * @return PLI::HDF5::Group
+   * @brief Opens a group
+   * Open an existing group. If the group does not exist, an exception is
+   * thrown.
+   * @param parentPtr Pointer to the parent group or file.
+   * @param groupName Name of the group to open.
+   * @return PLI::HDF5::Group Group object, if successful.
+   * @throws PLI::HDF5::Exceptions::GroupNotFoundException If the group does not
+   * exist.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If opening the
+   * group fails or the parentPtr is invalid.
    */
   static PLI::HDF5::Group open(hid_t parentPtr, const std::string& groupName);
   /**
-   * @brief
-   *
-   * @param parentPtr
-   * @param groupName
-   * @return PLI::HDF5::Group
+   * @brief Creates a group
+   * Create a new group. If the group already exists, an exception is thrown.
+   * @param parentPtr Pointer to the parent group or file.
+   * @param groupName Name of the group to create.
+   * @return PLI::HDF5::Group Group object, if successful.
+   * @throws PLI::HDF5::Exceptions::GroupExistsException If the group already
+   * exists.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If creating the
+   * group fails or the parentPtr is invalid.
    */
   static PLI::HDF5::Group create(hid_t parentPtr, const std::string& groupName);
   /**
-   * @brief
-   *
-   * @param parentPtr
-   * @param groupName
-   * @return true
-   * @return false
+   * @brief Checks if the group exists
+   * @param parentPtr Pointer to the parent group or file
+   * @param groupName Name of the group to check.
+   * @return true If the group exists.
+   * @return false If the group does not exist.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the parentPtr
+   * is invalid.
    */
   static bool exists(hid_t parentPtr, const std::string& groupName);
 
   /**
-   * @brief
-   *
+   * @brief Closes the group if it is valid.
+   * If the dataset is valid, it is closed. The group pointer is then set to
+   * an invalid value (-1) to ensure, that calls will result in an exception
+   * afterwards.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the group could
+   * not be closed.
    */
   void close();
   /**
-   * @brief
-   *
-   * @return hid_t
+   * @brief Get the raw HDF5 pointer of the group.
+   * Returns the raw HDF5 pointer of the group. This pointer can be used to
+   * access the group using the HDF5 library.
+   * @return hid_t Group ID stored in the object.
    */
   hid_t id() const noexcept;
   /**
-   * @brief
-   *
-   * @return hid_t
+   * @brief Convert the group to a the raw HDF5 pointer.
+   * @return hid_t Group ID stored in the object.
    */
   operator hid_t() const noexcept;
 
