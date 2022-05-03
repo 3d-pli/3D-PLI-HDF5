@@ -47,14 +47,61 @@
 
 namespace PLI {
 namespace HDF5 {
+/**
+ * @brief Add attributes to an HDF5 file, group, or dataset.
+ * This class allows to add, modify or delete attributes stored in an HDF5 file.
+ * The class works on the pointers returned by the HDF5 library. The pointers
+ * are available from the other classes of this library.
+ */
 class AttributeHandler {
  public:
+  /**
+   * @brief Construct a new Attribute Handler object
+   * Construct a new Attribute Handler object not associated with any HDF5
+   * object. The object cannot be used to store attributes until the
+   * setPtr(const hid_t parentPtr) method is called.
+   */
   AttributeHandler() noexcept;
+  /**
+   * @brief Construct a new Attribute Handler object
+   * Construct a new Attribute Handler object associated with the HDF5 object
+   * identified by the given pointer.
+   * @param parentPtr HDF5 object pointer.
+   */
   explicit AttributeHandler(const hid_t parentPtr) noexcept;
+  /**
+   * @brief Set the HDF5 object pointer.
+   * @param parentPtr HDF5 object pointer.
+   */
   void setPtr(const hid_t parentPtr) noexcept;
 
+  /**
+   * @brief Check if an attribute with the given attributeName exists in the
+   * HDF5 object pointer.
+   * @param attributeName Attribute Name which is searched for.
+   * @return true Attribute exsits.
+   * @return false Attribute does not exist.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer is invalid.
+   */
   bool attributeExists(const std::string& attributeName) const;
+  /**
+   * @brief Return the names of all attributes stored in the HDF5 object
+   * pointer. This method searches for all attribute names stored in the HDF5
+   * object pointer. For each attribute name a std::string is returned. The
+   * order of the names is defined by the HDF5 library. The search parameters
+   * are the same as for the HDF5 library function H5Aget_name_by_idx with
+   * H5_INDEX_NAME and H5_ITER_INC.
+   * @return const std::vector<std::string> Names of all attributes.
+   */
   const std::vector<std::string> attributeNames() const;
+  /**
+   * @brief Get the HDF5 data type of the attribute with the given
+   * attributeName.
+   * @param attributeName Attribute Name which is searched for.
+   * @return PLI::HDF5::Type Template type which contains the hid_t for the HDF5
+   * data type.
+   */
   PLI::HDF5::Type attributeType(const std::string& attributeName) const;
 
   template <typename T>
@@ -80,8 +127,33 @@ class AttributeHandler {
       PLI::HDF5::AttributeHandler dstHandler,
       const std::vector<std::string>& exceptions = std::vector<std::string>());
 
+  /**
+   * @brief Remove attribute with the given attributeName from the HDF5 object
+   * pointer. This method tries to delete the attribute with the given
+   * attributeName from the HDF5 object pointer. Please note that the behaviour
+   * of this method is undefined when the method attributePtr(const std::string&
+   * attributeName) is used and is not closed manually.
+   * @param attributeName Name of the attribute to be deleted.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library function
+   * H5Adelete returns an error. This may happen when the attribute does not
+   * exist or another error occured.
+   */
   void deleteAttribute(const std::string& attributeName);
 
+  /**
+   * @brief Get the raw pointer of the attribute with the given attributeName.
+   * This method opens the attribute with the given attributeName and returns
+   * the raw pointer. Because HDF5 allocates memory and expects the pointer to
+   * be closed manually, the pointer has to be closed manually. If not, the
+   * memory might get leaked.
+   * @param attributeName Attribute Name which is searched for.
+   * @return hid_t HDF5 attribute pointer of the attribute with the given
+   * attributeName.
+   * @throws PLI::HDF5::Exceptions::AttributeNotFoundException Attribute with
+   * the given attributeName does not exist.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
+   * pointer is invalid.
+   */
   hid_t attributePtr(const std::string& attributeName) const;
 
   template <typename T>
