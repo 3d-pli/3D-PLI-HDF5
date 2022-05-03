@@ -1,23 +1,30 @@
 \hypertarget{classPLI_1_1HDF5_1_1AttributeHandler}{}\doxysection{PLI\+::HDF5\+::Attribute\+Handler Class Reference}
 \label{classPLI_1_1HDF5_1_1AttributeHandler}\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+
+
+Add attributes to an HDF5 file, group, or dataset. This class allows to add, modify or delete attributes stored in an HDF5 file. The class works on the pointers returned by the HDF5 library. The pointers are available from the other classes of this library.  
+
+
+
+
+{\ttfamily \#include $<$attributes.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a26b87fea482e8d01cb4d5f8328699946}\label{classPLI_1_1HDF5_1_1AttributeHandler_a26b87fea482e8d01cb4d5f8328699946}} 
-{\bfseries Attribute\+Handler} (const hid\+\_\+t parent\+Ptr) noexcept
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a66fc467264a153321bd393f30181e2b9}\label{classPLI_1_1HDF5_1_1AttributeHandler_a66fc467264a153321bd393f30181e2b9}} 
-void {\bfseries set\+Ptr} (const hid\+\_\+t parent\+Ptr) noexcept
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a3b98a1b162d7a1fcc511499c35870e95}\label{classPLI_1_1HDF5_1_1AttributeHandler_a3b98a1b162d7a1fcc511499c35870e95}} 
-bool {\bfseries attribute\+Exists} (const std\+::string \&attribute\+Name) const
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a1ac96f87576cfb40887bc18702747352}\label{classPLI_1_1HDF5_1_1AttributeHandler_a1ac96f87576cfb40887bc18702747352}} 
-const std\+::vector$<$ std\+::string $>$ {\bfseries attribute\+Names} () const
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a2b9bd46779f748c57a96184ff91a8ac5}\label{classPLI_1_1HDF5_1_1AttributeHandler_a2b9bd46779f748c57a96184ff91a8ac5}} 
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} {\bfseries attribute\+Type} (const std\+::string \&attribute\+Name) const
-\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_aa1d5dd53c1a23dd9fa2212629a9c0796}\label{classPLI_1_1HDF5_1_1AttributeHandler_aa1d5dd53c1a23dd9fa2212629a9c0796}} 
+{\bfseries Attribute\+Handler} () noexcept
+\begin{DoxyCompactList}\small\item\em Construct a new Attribute Handler object Construct a new Attribute Handler object not associated with any HDF5 object. The object cannot be used to store attributes until the \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a66fc467264a153321bd393f30181e2b9}{set\+Ptr(const hid\+\_\+t parent\+Ptr)}} method is called. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a26b87fea482e8d01cb4d5f8328699946}{Attribute\+Handler}} (const hid\+\_\+t parent\+Ptr) noexcept
+\begin{DoxyCompactList}\small\item\em Construct a new Attribute Handler object Construct a new Attribute Handler object associated with the HDF5 object identified by the given pointer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a66fc467264a153321bd393f30181e2b9}{set\+Ptr}} (const hid\+\_\+t parent\+Ptr) noexcept
+\begin{DoxyCompactList}\small\item\em Set the HDF5 object pointer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a3b98a1b162d7a1fcc511499c35870e95}{attribute\+Exists}} (const std\+::string \&attribute\+Name) const
+\begin{DoxyCompactList}\small\item\em Check if an attribute with the given attribute\+Name exists in the HDF5 object pointer. \end{DoxyCompactList}\item 
+const std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a1ac96f87576cfb40887bc18702747352}{attribute\+Names}} () const
+\begin{DoxyCompactList}\small\item\em Return the names of all attributes stored in the HDF5 object pointer. This method searches for all attribute names stored in the HDF5 object pointer. For each attribute name a std\+::string is returned. The order of the names is defined by the HDF5 library. The search parameters are the same as for the HDF5 library function H5\+Aget\+\_\+name\+\_\+by\+\_\+idx with H5\+\_\+\+INDEX\+\_\+\+NAME and H5\+\_\+\+ITER\+\_\+\+INC. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a2b9bd46779f748c57a96184ff91a8ac5}{attribute\+Type}} (const std\+::string \&attribute\+Name) const
+\begin{DoxyCompactList}\small\item\em Get the HDF5 data type of the attribute with the given attribute\+Name. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_aea4a9b7141c4451b5e041f0b943bab99}\label{classPLI_1_1HDF5_1_1AttributeHandler_aea4a9b7141c4451b5e041f0b943bab99}} 
 {\footnotesize template$<$typename T $>$ }\\void {\bfseries create\+Attribute} (const std\+::string \&attribute\+Name, const std\+::vector$<$ T $>$ \&content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions)
 \item 
@@ -42,12 +49,10 @@ void {\bfseries copy\+All\+From} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Att
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a5c210b240c5274208e39178c0a067de8}\label{classPLI_1_1HDF5_1_1AttributeHandler_a5c210b240c5274208e39178c0a067de8}} 
 void {\bfseries copy\+All\+To} (\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} dst\+Handler, const std\+::vector$<$ std\+::string $>$ \&exceptions=std\+::vector$<$ std\+::string $>$())
 \item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_af746380e422151cca64b537cd83aa16c}\label{classPLI_1_1HDF5_1_1AttributeHandler_af746380e422151cca64b537cd83aa16c}} 
-void {\bfseries delete\+Attribute} (const std\+::string \&attribute\+Name)
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a640d218c8bfcbf19684a94ca7e290d7c}\label{classPLI_1_1HDF5_1_1AttributeHandler_a640d218c8bfcbf19684a94ca7e290d7c}} 
-hid\+\_\+t {\bfseries attribute\+Ptr} (const std\+::string \&attribute\+Name) const
-\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_af746380e422151cca64b537cd83aa16c}{delete\+Attribute}} (const std\+::string \&attribute\+Name)
+\begin{DoxyCompactList}\small\item\em Remove attribute with the given attribute\+Name from the HDF5 object pointer. This method tries to delete the attribute with the given attribute\+Name from the HDF5 object pointer. Please note that the behaviour of this method is undefined when the method attribute\+Ptr(const std\+::string\& attribute\+Name) is used and is not closed manually. \end{DoxyCompactList}\item 
+hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a640d218c8bfcbf19684a94ca7e290d7c}{attribute\+Ptr}} (const std\+::string \&attribute\+Name) const
+\begin{DoxyCompactList}\small\item\em Get the raw pointer of the attribute with the given attribute\+Name. This method opens the attribute with the given attribute\+Name and returns the raw pointer. Because HDF5 allocates memory and expects the pointer to be closed manually, the pointer has to be closed manually. If not, the memory might get leaked. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}\label{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}} 
 {\footnotesize template$<$typename T $>$ }\\const std\+::vector$<$ T $>$ {\bfseries get\+Attribute} (const std\+::string \&attribute\+Name) const
 \item 
@@ -66,6 +71,146 @@ void {\bfseries update\+Attribute} (const std\+::string \&attribute\+Name, const
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}\label{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}} 
 void {\bfseries update\+Attribute} (const std\+::string \&attribute\+Name, const void $\ast$content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Add attributes to an HDF5 file, group, or dataset. This class allows to add, modify or delete attributes stored in an HDF5 file. The class works on the pointers returned by the HDF5 library. The pointers are available from the other classes of this library. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a26b87fea482e8d01cb4d5f8328699946}\label{classPLI_1_1HDF5_1_1AttributeHandler_a26b87fea482e8d01cb4d5f8328699946}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!AttributeHandler@{AttributeHandler}}
+\index{AttributeHandler@{AttributeHandler}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{AttributeHandler()}{AttributeHandler()}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Attribute\+Handler\+::\+Attribute\+Handler (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+
+
+
+Construct a new Attribute Handler object Construct a new Attribute Handler object associated with the HDF5 object identified by the given pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & HDF5 object pointer. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a3b98a1b162d7a1fcc511499c35870e95}\label{classPLI_1_1HDF5_1_1AttributeHandler_a3b98a1b162d7a1fcc511499c35870e95}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!attributeExists@{attributeExists}}
+\index{attributeExists@{attributeExists}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{attributeExists()}{attributeExists()}}
+{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+Attribute\+Handler\+::attribute\+Exists (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name }\end{DoxyParamCaption}) const}
+
+
+
+Check if an attribute with the given attribute\+Name exists in the HDF5 object pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\+Name} & Attribute Name which is searched for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true Attribute exsits. 
+
+false Attribute does not exist. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & HDF5 object pointer is invalid. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a1ac96f87576cfb40887bc18702747352}\label{classPLI_1_1HDF5_1_1AttributeHandler_a1ac96f87576cfb40887bc18702747352}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!attributeNames@{attributeNames}}
+\index{attributeNames@{attributeNames}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{attributeNames()}{attributeNames()}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::string $>$ PLI\+::\+HDF5\+::\+Attribute\+Handler\+::attribute\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Return the names of all attributes stored in the HDF5 object pointer. This method searches for all attribute names stored in the HDF5 object pointer. For each attribute name a std\+::string is returned. The order of the names is defined by the HDF5 library. The search parameters are the same as for the HDF5 library function H5\+Aget\+\_\+name\+\_\+by\+\_\+idx with H5\+\_\+\+INDEX\+\_\+\+NAME and H5\+\_\+\+ITER\+\_\+\+INC. 
+
+\begin{DoxyReturn}{Returns}
+const std\+::vector$<$std\+::string$>$ Names of all attributes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a640d218c8bfcbf19684a94ca7e290d7c}\label{classPLI_1_1HDF5_1_1AttributeHandler_a640d218c8bfcbf19684a94ca7e290d7c}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!attributePtr@{attributePtr}}
+\index{attributePtr@{attributePtr}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{attributePtr()}{attributePtr()}}
+{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+Attribute\+Handler\+::attribute\+Ptr (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name }\end{DoxyParamCaption}) const}
+
+
+
+Get the raw pointer of the attribute with the given attribute\+Name. This method opens the attribute with the given attribute\+Name and returns the raw pointer. Because HDF5 allocates memory and expects the pointer to be closed manually, the pointer has to be closed manually. If not, the memory might get leaked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\+Name} & Attribute Name which is searched for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hid\+\_\+t HDF5 attribute pointer of the attribute with the given attribute\+Name. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Attribute\+Not\+Found\+Exception}}} & Attribute with the given attribute\+Name does not exist. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & HDF5 object pointer is invalid. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a2b9bd46779f748c57a96184ff91a8ac5}\label{classPLI_1_1HDF5_1_1AttributeHandler_a2b9bd46779f748c57a96184ff91a8ac5}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!attributeType@{attributeType}}
+\index{attributeType@{attributeType}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{attributeType()}{attributeType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} PLI\+::\+HDF5\+::\+Attribute\+Handler\+::attribute\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name }\end{DoxyParamCaption}) const}
+
+
+
+Get the HDF5 data type of the attribute with the given attribute\+Name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\+Name} & Attribute Name which is searched for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} Template type which contains the hid\+\_\+t for the HDF5 data type. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_af746380e422151cca64b537cd83aa16c}\label{classPLI_1_1HDF5_1_1AttributeHandler_af746380e422151cca64b537cd83aa16c}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!deleteAttribute@{deleteAttribute}}
+\index{deleteAttribute@{deleteAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{deleteAttribute()}{deleteAttribute()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::delete\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name }\end{DoxyParamCaption})}
+
+
+
+Remove attribute with the given attribute\+Name from the HDF5 object pointer. This method tries to delete the attribute with the given attribute\+Name from the HDF5 object pointer. Please note that the behaviour of this method is undefined when the method attribute\+Ptr(const std\+::string\& attribute\+Name) is used and is not closed manually. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\+Name} & Name of the attribute to be deleted. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & HDF5 library function H5\+Adelete returns an error. This may happen when the attribute does not exist or another error occured. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a66fc467264a153321bd393f30181e2b9}\label{classPLI_1_1HDF5_1_1AttributeHandler_a66fc467264a153321bd393f30181e2b9}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!setPtr@{setPtr}}
+\index{setPtr@{setPtr}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{setPtr()}{setPtr()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::set\+Ptr (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Set the HDF5 object pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & HDF5 object pointer. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

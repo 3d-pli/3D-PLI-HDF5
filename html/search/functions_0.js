@@ -5,5 +5,10 @@ var searchData=
   ['addreference_2',['addReference',['../classPLI_1_1PLIM.html#a80518890be2c725084b0683b43e0c9ba',1,'PLI::PLIM::addReference(const PLI::HDF5::AttributeHandler &amp;file)'],['../classPLI_1_1PLIM.html#add34e894ba12c21aead720796edb3fc3',1,'PLI::PLIM::addReference(const std::vector&lt; PLI::HDF5::AttributeHandler &gt; &amp;files)']]],
   ['addsoftware_3',['addSoftware',['../classPLI_1_1PLIM.html#a27fe20888c2b6355a699531f881161ea',1,'PLI::PLIM']]],
   ['addsoftwareparameters_4',['addSoftwareParameters',['../classPLI_1_1PLIM.html#a979ec407109eb171a70415dc97afe1c3',1,'PLI::PLIM']]],
-  ['addsoftwarerevision_5',['addSoftwareRevision',['../classPLI_1_1PLIM.html#ac5bd6172ef0808a283e6c7f1f502100a',1,'PLI::PLIM']]]
+  ['addsoftwarerevision_5',['addSoftwareRevision',['../classPLI_1_1PLIM.html#ac5bd6172ef0808a283e6c7f1f502100a',1,'PLI::PLIM']]],
+  ['attributeexists_6',['attributeExists',['../classPLI_1_1HDF5_1_1AttributeHandler.html#a3b98a1b162d7a1fcc511499c35870e95',1,'PLI::HDF5::AttributeHandler']]],
+  ['attributehandler_7',['AttributeHandler',['../classPLI_1_1HDF5_1_1AttributeHandler.html#aa1d5dd53c1a23dd9fa2212629a9c0796',1,'PLI::HDF5::AttributeHandler::AttributeHandler() noexcept'],['../classPLI_1_1HDF5_1_1AttributeHandler.html#a26b87fea482e8d01cb4d5f8328699946',1,'PLI::HDF5::AttributeHandler::AttributeHandler(const hid_t parentPtr) noexcept']]],
+  ['attributenames_8',['attributeNames',['../classPLI_1_1HDF5_1_1AttributeHandler.html#a1ac96f87576cfb40887bc18702747352',1,'PLI::HDF5::AttributeHandler']]],
+  ['attributeptr_9',['attributePtr',['../classPLI_1_1HDF5_1_1AttributeHandler.html#a640d218c8bfcbf19684a94ca7e290d7c',1,'PLI::HDF5::AttributeHandler']]],
+  ['attributetype_10',['attributeType',['../classPLI_1_1HDF5_1_1AttributeHandler.html#a2b9bd46779f748c57a96184ff91a8ac5',1,'PLI::HDF5::AttributeHandler']]]
 ];

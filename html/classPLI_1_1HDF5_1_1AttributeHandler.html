@@ -73,23 +73,32 @@ $(function() {
   <div class="headertitle"><div class="title">PLI::HDF5::AttributeHandler Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Add attributes to an HDF5 file, group, or dataset. This class allows to add, modify or delete attributes stored in an HDF5 file. The class works on the pointers returned by the HDF5 library. The pointers are available from the other classes of this library.  
+ <a href="classPLI_1_1HDF5_1_1AttributeHandler.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="attributes_8h_source.html">attributes.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a26b87fea482e8d01cb4d5f8328699946"><td class="memItemLeft" align="right" valign="top"><a id="a26b87fea482e8d01cb4d5f8328699946" name="a26b87fea482e8d01cb4d5f8328699946"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>AttributeHandler</b> (const hid_t parentPtr) noexcept</td></tr>
+<tr class="memitem:aa1d5dd53c1a23dd9fa2212629a9c0796"><td class="memItemLeft" align="right" valign="top"><a id="aa1d5dd53c1a23dd9fa2212629a9c0796" name="aa1d5dd53c1a23dd9fa2212629a9c0796"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>AttributeHandler</b> () noexcept</td></tr>
+<tr class="memdesc:aa1d5dd53c1a23dd9fa2212629a9c0796"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Attribute Handler object Construct a new Attribute Handler object not associated with any HDF5 object. The object cannot be used to store attributes until the <a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#a66fc467264a153321bd393f30181e2b9" title="Set the HDF5 object pointer.">setPtr(const hid_t parentPtr)</a> method is called. <br /></td></tr>
+<tr class="separator:aa1d5dd53c1a23dd9fa2212629a9c0796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26b87fea482e8d01cb4d5f8328699946"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#a26b87fea482e8d01cb4d5f8328699946">AttributeHandler</a> (const hid_t parentPtr) noexcept</td></tr>
+<tr class="memdesc:a26b87fea482e8d01cb4d5f8328699946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Attribute Handler object Construct a new Attribute Handler object associated with the HDF5 object identified by the given pointer.  <a href="classPLI_1_1HDF5_1_1AttributeHandler.html#a26b87fea482e8d01cb4d5f8328699946">More...</a><br /></td></tr>
 <tr class="separator:a26b87fea482e8d01cb4d5f8328699946"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66fc467264a153321bd393f30181e2b9"><td class="memItemLeft" align="right" valign="top"><a id="a66fc467264a153321bd393f30181e2b9" name="a66fc467264a153321bd393f30181e2b9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPtr</b> (const hid_t parentPtr) noexcept</td></tr>
+<tr class="memitem:a66fc467264a153321bd393f30181e2b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#a66fc467264a153321bd393f30181e2b9">setPtr</a> (const hid_t parentPtr) noexcept</td></tr>
+<tr class="memdesc:a66fc467264a153321bd393f30181e2b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the HDF5 object pointer.  <a href="classPLI_1_1HDF5_1_1AttributeHandler.html#a66fc467264a153321bd393f30181e2b9">More...</a><br /></td></tr>
 <tr class="separator:a66fc467264a153321bd393f30181e2b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b98a1b162d7a1fcc511499c35870e95"><td class="memItemLeft" align="right" valign="top"><a id="a3b98a1b162d7a1fcc511499c35870e95" name="a3b98a1b162d7a1fcc511499c35870e95"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>attributeExists</b> (const std::string &amp;attributeName) const</td></tr>
+<tr class="memitem:a3b98a1b162d7a1fcc511499c35870e95"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#a3b98a1b162d7a1fcc511499c35870e95">attributeExists</a> (const std::string &amp;attributeName) const</td></tr>
+<tr class="memdesc:a3b98a1b162d7a1fcc511499c35870e95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if an attribute with the given attributeName exists in the HDF5 object pointer.  <a href="classPLI_1_1HDF5_1_1AttributeHandler.html#a3b98a1b162d7a1fcc511499c35870e95">More...</a><br /></td></tr>
 <tr class="separator:a3b98a1b162d7a1fcc511499c35870e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ac96f87576cfb40887bc18702747352"><td class="memItemLeft" align="right" valign="top"><a id="a1ac96f87576cfb40887bc18702747352" name="a1ac96f87576cfb40887bc18702747352"></a>
-const std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>attributeNames</b> () const</td></tr>
+<tr class="memitem:a1ac96f87576cfb40887bc18702747352"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#a1ac96f87576cfb40887bc18702747352">attributeNames</a> () const</td></tr>
+<tr class="memdesc:a1ac96f87576cfb40887bc18702747352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the names of all attributes stored in the HDF5 object pointer. This method searches for all attribute names stored in the HDF5 object pointer. For each attribute name a std::string is returned. The order of the names is defined by the HDF5 library. The search parameters are the same as for the HDF5 library function H5Aget_name_by_idx with H5_INDEX_NAME and H5_ITER_INC.  <a href="classPLI_1_1HDF5_1_1AttributeHandler.html#a1ac96f87576cfb40887bc18702747352">More...</a><br /></td></tr>
 <tr class="separator:a1ac96f87576cfb40887bc18702747352"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b9bd46779f748c57a96184ff91a8ac5"><td class="memItemLeft" align="right" valign="top"><a id="a2b9bd46779f748c57a96184ff91a8ac5" name="a2b9bd46779f748c57a96184ff91a8ac5"></a>
-<a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>attributeType</b> (const std::string &amp;attributeName) const</td></tr>
+<tr class="memitem:a2b9bd46779f748c57a96184ff91a8ac5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#a2b9bd46779f748c57a96184ff91a8ac5">attributeType</a> (const std::string &amp;attributeName) const</td></tr>
+<tr class="memdesc:a2b9bd46779f748c57a96184ff91a8ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the HDF5 data type of the attribute with the given attributeName.  <a href="classPLI_1_1HDF5_1_1AttributeHandler.html#a2b9bd46779f748c57a96184ff91a8ac5">More...</a><br /></td></tr>
 <tr class="separator:a2b9bd46779f748c57a96184ff91a8ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea4a9b7141c4451b5e041f0b943bab99"><td class="memTemplParams" colspan="2"><a id="aea4a9b7141c4451b5e041f0b943bab99" name="aea4a9b7141c4451b5e041f0b943bab99"></a>
 template&lt;typename T &gt; </td></tr>
@@ -117,11 +126,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>copyAllFrom</b> (cons
 <tr class="memitem:a5c210b240c5274208e39178c0a067de8"><td class="memItemLeft" align="right" valign="top"><a id="a5c210b240c5274208e39178c0a067de8" name="a5c210b240c5274208e39178c0a067de8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>copyAllTo</b> (<a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html">PLI::HDF5::AttributeHandler</a> dstHandler, const std::vector&lt; std::string &gt; &amp;exceptions=std::vector&lt; std::string &gt;())</td></tr>
 <tr class="separator:a5c210b240c5274208e39178c0a067de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af746380e422151cca64b537cd83aa16c"><td class="memItemLeft" align="right" valign="top"><a id="af746380e422151cca64b537cd83aa16c" name="af746380e422151cca64b537cd83aa16c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteAttribute</b> (const std::string &amp;attributeName)</td></tr>
+<tr class="memitem:af746380e422151cca64b537cd83aa16c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#af746380e422151cca64b537cd83aa16c">deleteAttribute</a> (const std::string &amp;attributeName)</td></tr>
+<tr class="memdesc:af746380e422151cca64b537cd83aa16c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove attribute with the given attributeName from the HDF5 object pointer. This method tries to delete the attribute with the given attributeName from the HDF5 object pointer. Please note that the behaviour of this method is undefined when the method attributePtr(const std::string&amp;
+attributeName) is used and is not closed manually.  <a href="classPLI_1_1HDF5_1_1AttributeHandler.html#af746380e422151cca64b537cd83aa16c">More...</a><br /></td></tr>
 <tr class="separator:af746380e422151cca64b537cd83aa16c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a640d218c8bfcbf19684a94ca7e290d7c"><td class="memItemLeft" align="right" valign="top"><a id="a640d218c8bfcbf19684a94ca7e290d7c" name="a640d218c8bfcbf19684a94ca7e290d7c"></a>
-hid_t&#160;</td><td class="memItemRight" valign="bottom"><b>attributePtr</b> (const std::string &amp;attributeName) const</td></tr>
+<tr class="memitem:a640d218c8bfcbf19684a94ca7e290d7c"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#a640d218c8bfcbf19684a94ca7e290d7c">attributePtr</a> (const std::string &amp;attributeName) const</td></tr>
+<tr class="memdesc:a640d218c8bfcbf19684a94ca7e290d7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the raw pointer of the attribute with the given attributeName. This method opens the attribute with the given attributeName and returns the raw pointer. Because HDF5 allocates memory and expects the pointer to be closed manually, the pointer has to be closed manually. If not, the memory might get leaked.  <a href="classPLI_1_1HDF5_1_1AttributeHandler.html#a640d218c8bfcbf19684a94ca7e290d7c">More...</a><br /></td></tr>
 <tr class="separator:a640d218c8bfcbf19684a94ca7e290d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86555504af023958426ca9b26a96811f"><td class="memTemplParams" colspan="2"><a id="a86555504af023958426ca9b26a96811f" name="a86555504af023958426ca9b26a96811f"></a>
 template&lt;typename T &gt; </td></tr>
@@ -145,6 +155,227 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateAttribute</b> (
 void&#160;</td><td class="memItemRight" valign="bottom"><b>updateAttribute</b> (const std::string &amp;attributeName, const void *content, const std::vector&lt; hsize_t &gt; &amp;dimensions, const <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a> dataType)</td></tr>
 <tr class="separator:a1fea1be07809615518325f8d5d7345fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Add attributes to an HDF5 file, group, or dataset. This class allows to add, modify or delete attributes stored in an HDF5 file. The class works on the pointers returned by the HDF5 library. The pointers are available from the other classes of this library. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a26b87fea482e8d01cb4d5f8328699946" name="a26b87fea482e8d01cb4d5f8328699946"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26b87fea482e8d01cb4d5f8328699946">&#9670;&nbsp;</a></span>AttributeHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PLI::HDF5::AttributeHandler::AttributeHandler </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>parentPtr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new Attribute Handler object Construct a new Attribute Handler object associated with the HDF5 object identified by the given pointer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td>HDF5 object pointer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3b98a1b162d7a1fcc511499c35870e95" name="a3b98a1b162d7a1fcc511499c35870e95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b98a1b162d7a1fcc511499c35870e95">&#9670;&nbsp;</a></span>attributeExists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PLI::HDF5::AttributeHandler::attributeExists </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attributeName</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if an attribute with the given attributeName exists in the HDF5 object pointer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attributeName</td><td>Attribute Name which is searched for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true Attribute exsits. </dd>
+<dd>
+false Attribute does not exist. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException.html">PLI::HDF5::Exceptions::IdentifierNotValidException</a></td><td>HDF5 object pointer is invalid. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1ac96f87576cfb40887bc18702747352" name="a1ac96f87576cfb40887bc18702747352"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ac96f87576cfb40887bc18702747352">&#9670;&nbsp;</a></span>attributeNames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::string &gt; PLI::HDF5::AttributeHandler::attributeNames </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the names of all attributes stored in the HDF5 object pointer. This method searches for all attribute names stored in the HDF5 object pointer. For each attribute name a std::string is returned. The order of the names is defined by the HDF5 library. The search parameters are the same as for the HDF5 library function H5Aget_name_by_idx with H5_INDEX_NAME and H5_ITER_INC. </p>
+<dl class="section return"><dt>Returns</dt><dd>const std::vector&lt;std::string&gt; Names of all attributes. </dd></dl>
+
+</div>
+</div>
+<a id="a640d218c8bfcbf19684a94ca7e290d7c" name="a640d218c8bfcbf19684a94ca7e290d7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a640d218c8bfcbf19684a94ca7e290d7c">&#9670;&nbsp;</a></span>attributePtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">hid_t PLI::HDF5::AttributeHandler::attributePtr </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attributeName</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the raw pointer of the attribute with the given attributeName. This method opens the attribute with the given attributeName and returns the raw pointer. Because HDF5 allocates memory and expects the pointer to be closed manually, the pointer has to be closed manually. If not, the memory might get leaked. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attributeName</td><td>Attribute Name which is searched for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>hid_t HDF5 attribute pointer of the attribute with the given attributeName. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException.html">PLI::HDF5::Exceptions::AttributeNotFoundException</a></td><td>Attribute with the given attributeName does not exist. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException.html">PLI::HDF5::Exceptions::IdentifierNotValidException</a></td><td>HDF5 object pointer is invalid. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2b9bd46779f748c57a96184ff91a8ac5" name="a2b9bd46779f748c57a96184ff91a8ac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b9bd46779f748c57a96184ff91a8ac5">&#9670;&nbsp;</a></span>attributeType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a> PLI::HDF5::AttributeHandler::attributeType </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attributeName</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the HDF5 data type of the attribute with the given attributeName. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attributeName</td><td>Attribute Name which is searched for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a> Template type which contains the hid_t for the HDF5 data type. </dd></dl>
+
+</div>
+</div>
+<a id="af746380e422151cca64b537cd83aa16c" name="af746380e422151cca64b537cd83aa16c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af746380e422151cca64b537cd83aa16c">&#9670;&nbsp;</a></span>deleteAttribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::AttributeHandler::deleteAttribute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attributeName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove attribute with the given attributeName from the HDF5 object pointer. This method tries to delete the attribute with the given attributeName from the HDF5 object pointer. Please note that the behaviour of this method is undefined when the method attributePtr(const std::string&amp;
+attributeName) is used and is not closed manually. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attributeName</td><td>Name of the attribute to be deleted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException.html">PLI::HDF5::Exceptions::HDF5RuntimeException</a></td><td>HDF5 library function H5Adelete returns an error. This may happen when the attribute does not exist or another error occured. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a66fc467264a153321bd393f30181e2b9" name="a66fc467264a153321bd393f30181e2b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66fc467264a153321bd393f30181e2b9">&#9670;&nbsp;</a></span>setPtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::AttributeHandler::setPtr </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>parentPtr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the HDF5 object pointer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentPtr</td><td>HDF5 object pointer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/PLIHDF5/<a class="el" href="attributes_8h_source.html">attributes.h</a></li>
 <li>src/attributes.cpp</li>
