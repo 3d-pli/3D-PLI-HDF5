@@ -52,7 +52,7 @@
 \DoxyCodeLine{102   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
 \DoxyCodeLine{103   \textcolor{keyword}{static} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI::HDF5::Dataset}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a1a98addfb4ee2d850f80972b715d7b76}{create}}(\textcolor{keyword}{const} hid\_t parentPtr,}
 \DoxyCodeLine{104                                    \textcolor{keyword}{const} std::string\& datasetName,}
-\DoxyCodeLine{105                                    \textcolor{keyword}{const} std::vector<hsize\_t>\& dims,}
+\DoxyCodeLine{105                                    \textcolor{keyword}{const} std::vector<hsize\_t>\& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}},}
 \DoxyCodeLine{106                                    \textcolor{keyword}{const} std::vector<hsize\_t>\& chunkDims = \{\});}
 \DoxyCodeLine{117   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ae46347a834f5524f9038d00afd7289b0}{exists}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string\& datasetName);}
 \DoxyCodeLine{118 }
@@ -64,19 +64,19 @@
 \DoxyCodeLine{132                       \textcolor{keyword}{const} std::vector<hsize\_t>\& count) \textcolor{keyword}{const};}
 \DoxyCodeLine{133   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
 \DoxyCodeLine{134   \textcolor{keywordtype}{void} write(\textcolor{keyword}{const} std::vector<T>\& data, \textcolor{keyword}{const} std::vector<hsize\_t>\& offset,}
-\DoxyCodeLine{135              \textcolor{keyword}{const} std::vector<hsize\_t>\& dims);}
+\DoxyCodeLine{135              \textcolor{keyword}{const} std::vector<hsize\_t>\& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}});}
 \DoxyCodeLine{136 }
-\DoxyCodeLine{137   \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} type() \textcolor{keyword}{const};}
-\DoxyCodeLine{138   \textcolor{keywordtype}{int} ndims() \textcolor{keyword}{const};}
-\DoxyCodeLine{139   \textcolor{keyword}{const} std::vector<hsize\_t> dims() \textcolor{keyword}{const};}
-\DoxyCodeLine{140   hid\_t id() \textcolor{keyword}{const} \textcolor{keyword}{noexcept};}
-\DoxyCodeLine{141 }
-\DoxyCodeLine{142   \textcolor{keyword}{operator} hid\_t() \textcolor{keyword}{const} \textcolor{keyword}{noexcept};}
-\DoxyCodeLine{143 }
-\DoxyCodeLine{144  \textcolor{keyword}{private}:}
-\DoxyCodeLine{145   hid\_t m\_id;}
-\DoxyCodeLine{146 \};}
-\DoxyCodeLine{147 \}  \textcolor{comment}{// namespace HDF5}}
-\DoxyCodeLine{148 \}  \textcolor{comment}{// namespace PLI}}
+\DoxyCodeLine{143   \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}{type}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{150   \textcolor{keywordtype}{int} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ab1f82284d13d3426e0e6a9104673d02e}{ndims}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{160   \textcolor{keyword}{const} std::vector<hsize\_t> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{167   hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a4da86a08bd3ba2afcfea47e10576dba7}{id}}() \textcolor{keyword}{const} \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{173   \textcolor{keyword}{operator} hid\_t() \textcolor{keyword}{const} \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175  \textcolor{keyword}{private}:}
+\DoxyCodeLine{176   hid\_t m\_id;}
+\DoxyCodeLine{177 \};}
+\DoxyCodeLine{178 \}  \textcolor{comment}{// namespace HDF5}}
+\DoxyCodeLine{179 \}  \textcolor{comment}{// namespace PLI}}
 
 \end{DoxyCode}

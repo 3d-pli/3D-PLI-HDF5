@@ -68,6 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classPLI_1_1HDF5_1_1File-members.html">List of all members</a>  </div>
@@ -75,48 +76,448 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ad41a62cae2d952fe4648fd73585e85c5"><td class="memItemLeft" align="right" valign="top"><a id="ad41a62cae2d952fe4648fd73585e85c5" name="ad41a62cae2d952fe4648fd73585e85c5"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>OpenState</b> { <b>ReadOnly</b> = 0
+, <b>ReadWrite</b> = 1
+ }</td></tr>
+<tr class="separator:ad41a62cae2d952fe4648fd73585e85c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a506df5f077ae597a98f8d7a08b04d056"><td class="memItemLeft" align="right" valign="top"><a id="a506df5f077ae597a98f8d7a08b04d056" name="a506df5f077ae597a98f8d7a08b04d056"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>File</b> (const <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> &amp;otherFile)</td></tr>
+<tr class="memitem:ad6964fd8adfabd17faa96af53251a2fe"><td class="memItemLeft" align="right" valign="top"><a id="ad6964fd8adfabd17faa96af53251a2fe" name="ad6964fd8adfabd17faa96af53251a2fe"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>File</b> ()</td></tr>
+<tr class="memdesc:ad6964fd8adfabd17faa96af53251a2fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> object Create an empty file object. Calling other methods on this object will fail because no pointer to an HDF5 object is set. To open a file, use PLI::HDF5::File::open(const std::string&amp; fileName). To create a file, use <a class="el" href="classPLI_1_1HDF5_1_1File.html#a36f551c8afd5bf4e5e87abcae947a7c7" title="Create a new file object. Create a new file object. Per default, the file is created with MPI file ac...">PLI::HDF5::File::create(const std::string&amp; fileName)</a>. <br /></td></tr>
+<tr class="separator:ad6964fd8adfabd17faa96af53251a2fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a506df5f077ae597a98f8d7a08b04d056"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a506df5f077ae597a98f8d7a08b04d056">File</a> (const <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> &amp;otherFile)</td></tr>
+<tr class="memdesc:a506df5f077ae597a98f8d7a08b04d056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> object Construct a new file object by using the given pointer of another file object.  <a href="classPLI_1_1HDF5_1_1File.html#a506df5f077ae597a98f8d7a08b04d056">More...</a><br /></td></tr>
 <tr class="separator:a506df5f077ae597a98f8d7a08b04d056"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a486f8dbce1f554d68d173c6807797175"><td class="memItemLeft" align="right" valign="top"><a id="a486f8dbce1f554d68d173c6807797175" name="a486f8dbce1f554d68d173c6807797175"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>File</b> (const hid_t filePtr, const hid_t faplID)</td></tr>
+<tr class="memitem:a486f8dbce1f554d68d173c6807797175"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a486f8dbce1f554d68d173c6807797175">File</a> (const hid_t filePtr, const hid_t <a class="el" href="classPLI_1_1HDF5_1_1File.html#abea3b36b7f98ef3c425cac9fb1efab9f">faplID</a>)</td></tr>
+<tr class="memdesc:a486f8dbce1f554d68d173c6807797175"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> object Construct a new file object by using the given pointer of another file object.  <a href="classPLI_1_1HDF5_1_1File.html#a486f8dbce1f554d68d173c6807797175">More...</a><br /></td></tr>
 <tr class="separator:a486f8dbce1f554d68d173c6807797175"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a930eacc5e5c0ff2235c1d678447dd85e"><td class="memItemLeft" align="right" valign="top"><a id="a930eacc5e5c0ff2235c1d678447dd85e" name="a930eacc5e5c0ff2235c1d678447dd85e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
+<tr class="memitem:a930eacc5e5c0ff2235c1d678447dd85e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a930eacc5e5c0ff2235c1d678447dd85e">close</a> ()</td></tr>
+<tr class="memdesc:a930eacc5e5c0ff2235c1d678447dd85e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the file if it is valid. If the file is valid, it is closed. The file pointer is then set to an invalid value (-1) to ensure, that calls will result in an exception afterwards.  <a href="classPLI_1_1HDF5_1_1File.html#a930eacc5e5c0ff2235c1d678447dd85e">More...</a><br /></td></tr>
 <tr class="separator:a930eacc5e5c0ff2235c1d678447dd85e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adaf80744e54c4b7c04ead41a2b46b165"><td class="memItemLeft" align="right" valign="top"><a id="adaf80744e54c4b7c04ead41a2b46b165" name="adaf80744e54c4b7c04ead41a2b46b165"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reopen</b> ()</td></tr>
+<tr class="memitem:adaf80744e54c4b7c04ead41a2b46b165"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#adaf80744e54c4b7c04ead41a2b46b165">reopen</a> ()</td></tr>
+<tr class="memdesc:adaf80744e54c4b7c04ead41a2b46b165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reopen the file. This method tries to reopen the file for reading. If the original pointer is invalid or the reopen failed, an exception is thrown.  <a href="classPLI_1_1HDF5_1_1File.html#adaf80744e54c4b7c04ead41a2b46b165">More...</a><br /></td></tr>
 <tr class="separator:adaf80744e54c4b7c04ead41a2b46b165"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83b2e323c070259dbde4c23909097eeb"><td class="memItemLeft" align="right" valign="top"><a id="a83b2e323c070259dbde4c23909097eeb" name="a83b2e323c070259dbde4c23909097eeb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>flush</b> ()</td></tr>
+<tr class="memitem:a83b2e323c070259dbde4c23909097eeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a83b2e323c070259dbde4c23909097eeb">flush</a> ()</td></tr>
+<tr class="memdesc:a83b2e323c070259dbde4c23909097eeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes the file content in a local scope.  <a href="classPLI_1_1HDF5_1_1File.html#a83b2e323c070259dbde4c23909097eeb">More...</a><br /></td></tr>
 <tr class="separator:a83b2e323c070259dbde4c23909097eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9595536a728637c89589fb595e43230"><td class="memItemLeft" align="right" valign="top"><a id="ae9595536a728637c89589fb595e43230" name="ae9595536a728637c89589fb595e43230"></a>
-hid_t&#160;</td><td class="memItemRight" valign="bottom"><b>id</b> () const</td></tr>
+<tr class="memitem:ae9595536a728637c89589fb595e43230"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ae9595536a728637c89589fb595e43230">id</a> () const</td></tr>
+<tr class="memdesc:ae9595536a728637c89589fb595e43230"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the file pointer.  <a href="classPLI_1_1HDF5_1_1File.html#ae9595536a728637c89589fb595e43230">More...</a><br /></td></tr>
 <tr class="separator:ae9595536a728637c89589fb595e43230"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abea3b36b7f98ef3c425cac9fb1efab9f"><td class="memItemLeft" align="right" valign="top"><a id="abea3b36b7f98ef3c425cac9fb1efab9f" name="abea3b36b7f98ef3c425cac9fb1efab9f"></a>
-hid_t&#160;</td><td class="memItemRight" valign="bottom"><b>faplID</b> () const</td></tr>
+<tr class="memitem:abea3b36b7f98ef3c425cac9fb1efab9f"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#abea3b36b7f98ef3c425cac9fb1efab9f">faplID</a> () const</td></tr>
+<tr class="memdesc:abea3b36b7f98ef3c425cac9fb1efab9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the file access pointer.  <a href="classPLI_1_1HDF5_1_1File.html#abea3b36b7f98ef3c425cac9fb1efab9f">More...</a><br /></td></tr>
 <tr class="separator:abea3b36b7f98ef3c425cac9fb1efab9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c53c2e016fd0243cf5f4162e43637d2"><td class="memItemLeft" align="right" valign="top"><a id="a7c53c2e016fd0243cf5f4162e43637d2" name="a7c53c2e016fd0243cf5f4162e43637d2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>operator hid_t</b> () const</td></tr>
+<tr class="memitem:a7c53c2e016fd0243cf5f4162e43637d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a7c53c2e016fd0243cf5f4162e43637d2">operator hid_t</a> () const</td></tr>
+<tr class="memdesc:a7c53c2e016fd0243cf5f4162e43637d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the file to a the raw HDF5 pointer.  <a href="classPLI_1_1HDF5_1_1File.html#a7c53c2e016fd0243cf5f4162e43637d2">More...</a><br /></td></tr>
 <tr class="separator:a7c53c2e016fd0243cf5f4162e43637d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a36f551c8afd5bf4e5e87abcae947a7c7"><td class="memItemLeft" align="right" valign="top"><a id="a36f551c8afd5bf4e5e87abcae947a7c7" name="a36f551c8afd5bf4e5e87abcae947a7c7"></a>
-static <a class="el" href="classPLI_1_1HDF5_1_1File.html">PLI::HDF5::File</a>&#160;</td><td class="memItemRight" valign="bottom"><b>create</b> (const std::string &amp;fileName)</td></tr>
+<tr class="memitem:a36f551c8afd5bf4e5e87abcae947a7c7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classPLI_1_1HDF5_1_1File.html">PLI::HDF5::File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a36f551c8afd5bf4e5e87abcae947a7c7">create</a> (const std::string &amp;fileName)</td></tr>
+<tr class="memdesc:a36f551c8afd5bf4e5e87abcae947a7c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new file object. Create a new file object. Per default, the file is created with MPI file access.  <a href="classPLI_1_1HDF5_1_1File.html#a36f551c8afd5bf4e5e87abcae947a7c7">More...</a><br /></td></tr>
 <tr class="separator:a36f551c8afd5bf4e5e87abcae947a7c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1554d71ede8dd5d403313cda53f8dc6"><td class="memItemLeft" align="right" valign="top"><a id="aa1554d71ede8dd5d403313cda53f8dc6" name="aa1554d71ede8dd5d403313cda53f8dc6"></a>
-static <a class="el" href="classPLI_1_1HDF5_1_1File.html">PLI::HDF5::File</a>&#160;</td><td class="memItemRight" valign="bottom"><b>open</b> (const std::string &amp;fileName, const unsigned openState)</td></tr>
-<tr class="separator:aa1554d71ede8dd5d403313cda53f8dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4f7de370ce9655532fbcae6b920868b"><td class="memItemLeft" align="right" valign="top"><a id="ad4f7de370ce9655532fbcae6b920868b" name="ad4f7de370ce9655532fbcae6b920868b"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>isHDF5</b> (const std::string &amp;fileName)</td></tr>
+<tr class="memitem:a96ae5bca619994c5a17ec3c843c3d34c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classPLI_1_1HDF5_1_1File.html">PLI::HDF5::File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a96ae5bca619994c5a17ec3c843c3d34c">open</a> (const std::string &amp;fileName, const OpenState openState=OpenState::ReadOnly)</td></tr>
+<tr class="memdesc:a96ae5bca619994c5a17ec3c843c3d34c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open an existing file object. This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the openState variable, one can choose between opening the file in read-only mode or in read-write mode. Setting openState to PLI::HDF5::File::OpenState::ReadOnly will open the file in read-only mode. Setting openState to PLI::HDF5::File::OpenState::ReadWrite will open the file in read-write mode.  <a href="classPLI_1_1HDF5_1_1File.html#a96ae5bca619994c5a17ec3c843c3d34c">More...</a><br /></td></tr>
+<tr class="separator:a96ae5bca619994c5a17ec3c843c3d34c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4f7de370ce9655532fbcae6b920868b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ad4f7de370ce9655532fbcae6b920868b">isHDF5</a> (const std::string &amp;fileName)</td></tr>
+<tr class="memdesc:ad4f7de370ce9655532fbcae6b920868b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the file is a valid HDF5 file. This method checks if the file is a valid HDF5 file that can be opened with this library.  <a href="classPLI_1_1HDF5_1_1File.html#ad4f7de370ce9655532fbcae6b920868b">More...</a><br /></td></tr>
 <tr class="separator:ad4f7de370ce9655532fbcae6b920868b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7d1c6b269c872ce262222d5b5542885"><td class="memItemLeft" align="right" valign="top"><a id="ae7d1c6b269c872ce262222d5b5542885" name="ae7d1c6b269c872ce262222d5b5542885"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>fileExists</b> (const std::string &amp;fileName)</td></tr>
+<tr class="memitem:ae7d1c6b269c872ce262222d5b5542885"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ae7d1c6b269c872ce262222d5b5542885">fileExists</a> (const std::string &amp;fileName)</td></tr>
+<tr class="memdesc:ae7d1c6b269c872ce262222d5b5542885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the file exists.  <a href="classPLI_1_1HDF5_1_1File.html#ae7d1c6b269c872ce262222d5b5542885">More...</a><br /></td></tr>
 <tr class="separator:ae7d1c6b269c872ce262222d5b5542885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a506df5f077ae597a98f8d7a08b04d056" name="a506df5f077ae597a98f8d7a08b04d056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a506df5f077ae597a98f8d7a08b04d056">&#9670;&nbsp;</a></span>File() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PLI::HDF5::File::File </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> &amp;&#160;</td>
+          <td class="paramname"><em>otherFile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> object Construct a new file object by using the given pointer of another file object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">otherFile</td><td>Other file object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a486f8dbce1f554d68d173c6807797175" name="a486f8dbce1f554d68d173c6807797175"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a486f8dbce1f554d68d173c6807797175">&#9670;&nbsp;</a></span>File() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PLI::HDF5::File::File </td>
+          <td>(</td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>filePtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const hid_t&#160;</td>
+          <td class="paramname"><em>faplID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> object Construct a new file object by using the given pointer of another file object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filePtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> pointer. </td></tr>
+    <tr><td class="paramname">faplID</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> access pointer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a930eacc5e5c0ff2235c1d678447dd85e" name="a930eacc5e5c0ff2235c1d678447dd85e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a930eacc5e5c0ff2235c1d678447dd85e">&#9670;&nbsp;</a></span>close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::File::close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Closes the file if it is valid. If the file is valid, it is closed. The file pointer is then set to an invalid value (-1) to ensure, that calls will result in an exception afterwards. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException.html">PLI::HDF5::Exceptions::HDF5RuntimeException</a></td><td>If the file could not be closed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a36f551c8afd5bf4e5e87abcae947a7c7" name="a36f551c8afd5bf4e5e87abcae947a7c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36f551c8afd5bf4e5e87abcae947a7c7">&#9670;&nbsp;</a></span>create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classPLI_1_1HDF5_1_1File.html">PLI::HDF5::File</a> PLI::HDF5::File::create </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a new file object. Create a new file object. Per default, the file is created with MPI file access. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileName</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classPLI_1_1HDF5_1_1File.html">PLI::HDF5::File</a> <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> object, if successful. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">PLI::HDF5::Exception::FileExistsException</td><td>If the file already exists. </td></tr>
+    <tr><td class="paramname">PLI::HDF5::Exception::IdentifierNotValidException</td><td>If the file couldn't be created or the file access token failed. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException.html">PLI::HDF5::Exceptions::HDF5RuntimeException</a></td><td>Error during setting the MPI file access. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abea3b36b7f98ef3c425cac9fb1efab9f" name="abea3b36b7f98ef3c425cac9fb1efab9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abea3b36b7f98ef3c425cac9fb1efab9f">&#9670;&nbsp;</a></span>faplID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">hid_t PLI::HDF5::File::faplID </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the file access pointer. </p>
+<dl class="section return"><dt>Returns</dt><dd>hid_t <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> access pointer. </dd></dl>
+
+</div>
+</div>
+<a id="ae7d1c6b269c872ce262222d5b5542885" name="ae7d1c6b269c872ce262222d5b5542885"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7d1c6b269c872ce262222d5b5542885">&#9670;&nbsp;</a></span>fileExists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PLI::HDF5::File::fileExists </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the file exists. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileName</td><td>Filename of the file. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> exists. </dd>
+<dd>
+false <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> doesn't exist. </dd></dl>
+
+</div>
+</div>
+<a id="a83b2e323c070259dbde4c23909097eeb" name="a83b2e323c070259dbde4c23909097eeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83b2e323c070259dbde4c23909097eeb">&#9670;&nbsp;</a></span>flush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::File::flush </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Flushes the file content in a local scope. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException.html">PLI::HDF5::Exceptions::HDF5RuntimeException</a></td><td>If the file could not be flushed. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException.html">PLI::HDF5::Exceptions::IdentifierNotValidException</a></td><td>If the file pointer is invalid. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae9595536a728637c89589fb595e43230" name="ae9595536a728637c89589fb595e43230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9595536a728637c89589fb595e43230">&#9670;&nbsp;</a></span>id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">hid_t PLI::HDF5::File::id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the file pointer. </p>
+<dl class="section return"><dt>Returns</dt><dd>hid_t <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> pointer. </dd></dl>
+
+</div>
+</div>
+<a id="ad4f7de370ce9655532fbcae6b920868b" name="ad4f7de370ce9655532fbcae6b920868b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4f7de370ce9655532fbcae6b920868b">&#9670;&nbsp;</a></span>isHDF5()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PLI::HDF5::File::isHDF5 </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the file is a valid HDF5 file. This method checks if the file is a valid HDF5 file that can be opened with this library. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileName</td><td>Filename of the file. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> is a valid HDF5 file. </dd>
+<dd>
+false <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> isn't a valid HDF5 file. </dd></dl>
+
+</div>
+</div>
+<a id="a96ae5bca619994c5a17ec3c843c3d34c" name="a96ae5bca619994c5a17ec3c843c3d34c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96ae5bca619994c5a17ec3c843c3d34c">&#9670;&nbsp;</a></span>open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classPLI_1_1HDF5_1_1File.html">PLI::HDF5::File</a> PLI::HDF5::File::open </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const OpenState&#160;</td>
+          <td class="paramname"><em>openState</em> = <code>OpenState::ReadOnly</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Open an existing file object. This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the openState variable, one can choose between opening the file in read-only mode or in read-write mode. Setting openState to PLI::HDF5::File::OpenState::ReadOnly will open the file in read-only mode. Setting openState to PLI::HDF5::File::OpenState::ReadWrite will open the file in read-write mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileName</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> name which will be opened. </td></tr>
+    <tr><td class="paramname">openState</td><td>OpenState variable. Available values are PLI::HDF5::File::OpenState::ReadOnly and PLI::HDF5::File::OpenState::ReadWrite. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classPLI_1_1HDF5_1_1File.html">PLI::HDF5::File</a> <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> object if successful. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">PLI::HDF5::Exception::FileNotFoundException</td><td>If the file doesn't exist. </td></tr>
+    <tr><td class="paramname">PLI::HDF5::Exception::IdentifierNotValidException</td><td>If the file couldn't be opened or the file access token failed. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException.html">PLI::HDF5::Exceptions::HDF5RuntimeException</a></td><td>Error during setting the MPI file access. </td></tr>
+    <tr><td class="paramname">PLI::HDF5::Exceptions::InvalidHDF5Exception</td><td>If the file is not a valid HDF5 file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7c53c2e016fd0243cf5f4162e43637d2" name="a7c53c2e016fd0243cf5f4162e43637d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c53c2e016fd0243cf5f4162e43637d2">&#9670;&nbsp;</a></span>operator hid_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PLI::HDF5::File::operator hid_t </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert the file to a the raw HDF5 pointer. </p>
+<dl class="section return"><dt>Returns</dt><dd>hid_t <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> ID stored in the object. </dd></dl>
+
+</div>
+</div>
+<a id="adaf80744e54c4b7c04ead41a2b46b165" name="adaf80744e54c4b7c04ead41a2b46b165"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaf80744e54c4b7c04ead41a2b46b165">&#9670;&nbsp;</a></span>reopen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::File::reopen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reopen the file. This method tries to reopen the file for reading. If the original pointer is invalid or the reopen failed, an exception is thrown. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException.html">PLI::HDF5::Exceptions::IdentifierNotValidException</a></td><td>If the file pointer is invalid or the reopen failed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/PLIHDF5/<a class="el" href="file_8h_source.html">file.h</a></li>
 <li>src/file.cpp</li>
