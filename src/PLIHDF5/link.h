@@ -81,7 +81,8 @@ class Link {
    * @param path Path to the link
    * @return true It is a soft link
    * @return false It is not a soft link
-    static bool isSoftLink(const hid_t parentPtr, const std::string &path);
+   */
+  static bool isSoftLink(const hid_t parentPtr, const std::string &path);
   /**
    * @brief Checks if a link is a hard link
    * @param parentPtr File or group identifier
