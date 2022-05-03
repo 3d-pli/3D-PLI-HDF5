@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['plim_0',['PLIM',['../classPLI_1_1PLIM.html#aaf59bc288f4792cb1ed817afa65b164f',1,'PLI::PLIM::PLIM(PLI::HDF5::File file, const std::string &amp;dataset)'],['../classPLI_1_1PLIM.html#a3509feabfaf22f5f03dd303579152161',1,'PLI::PLIM::PLIM(PLI::HDF5::AttributeHandler dataset)']]]
+  ['getattribute_0',['getAttribute',['../classPLI_1_1HDF5_1_1AttributeHandler.html#a86555504af023958426ca9b26a96811f',1,'PLI::HDF5::AttributeHandler']]],
+  ['getattributedimensions_1',['getAttributeDimensions',['../classPLI_1_1HDF5_1_1AttributeHandler.html#aaa78d39294af69833ca283a4d4920015',1,'PLI::HDF5::AttributeHandler']]]
 ];

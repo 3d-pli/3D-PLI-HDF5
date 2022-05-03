@@ -77,42 +77,42 @@
 \DoxyCodeLine{200               \textcolor{keyword}{const} std::string\& srcName, \textcolor{keyword}{const} std::string\& dstName) \textcolor{keyword}{const};}
 \DoxyCodeLine{213   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a457b1a3dc7301b43ba396cb5e2f2bc4b}{copyFrom}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}}\& srcHandler,}
 \DoxyCodeLine{214                 \textcolor{keyword}{const} std::string\& srcName, \textcolor{keyword}{const} std::string\& dstName);}
-\DoxyCodeLine{215   \textcolor{keywordtype}{void} copyAllFrom(}
-\DoxyCodeLine{216       \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}}\& srcHandler,}
-\DoxyCodeLine{217       \textcolor{keyword}{const} std::vector<std::string>\& exceptions = std::vector<std::string>());}
-\DoxyCodeLine{218   \textcolor{keywordtype}{void} copyAllTo(}
-\DoxyCodeLine{219       \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}} dstHandler,}
-\DoxyCodeLine{220       \textcolor{keyword}{const} std::vector<std::string>\& exceptions = std::vector<std::string>());}
-\DoxyCodeLine{221 }
-\DoxyCodeLine{234   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_af746380e422151cca64b537cd83aa16c}{deleteAttribute}}(\textcolor{keyword}{const} std::string\& attributeName);}
-\DoxyCodeLine{235 }
-\DoxyCodeLine{250   hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a640d218c8bfcbf19684a94ca7e290d7c}{attributePtr}}(\textcolor{keyword}{const} std::string\& attributeName) \textcolor{keyword}{const};}
+\DoxyCodeLine{230   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a7c80eae7960d06e5097a21eaac67a061}{copyAllFrom}}(}
+\DoxyCodeLine{231       \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}}\& srcHandler,}
+\DoxyCodeLine{232       \textcolor{keyword}{const} std::vector<std::string>\& exceptions = std::vector<std::string>());}
+\DoxyCodeLine{248   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a5c210b240c5274208e39178c0a067de8}{copyAllTo}}(}
+\DoxyCodeLine{249       \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}} dstHandler,}
+\DoxyCodeLine{250       \textcolor{keyword}{const} std::vector<std::string>\& exceptions = std::vector<std::string>());}
 \DoxyCodeLine{251 }
-\DoxyCodeLine{252   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{253   \textcolor{keyword}{const} std::vector<T> getAttribute(\textcolor{keyword}{const} std::string\& attributeName) \textcolor{keyword}{const};}
-\DoxyCodeLine{254   \textcolor{keyword}{const} std::vector<hsize\_t> getAttributeDimensions(}
-\DoxyCodeLine{255       \textcolor{keyword}{const} std::string\& attributeName) \textcolor{keyword}{const};}
-\DoxyCodeLine{256 }
-\DoxyCodeLine{257   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{258   \textcolor{keywordtype}{void} updateAttribute(\textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} T\& content);}
-\DoxyCodeLine{259   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{260   \textcolor{keywordtype}{void} updateAttribute(\textcolor{keyword}{const} std::string\& attributeName,}
-\DoxyCodeLine{261                        \textcolor{keyword}{const} std::vector<T>\& content,}
-\DoxyCodeLine{262                        \textcolor{keyword}{const} std::vector<hsize\_t>\& dimensions);}
-\DoxyCodeLine{263   \textcolor{keywordtype}{void} updateAttribute(\textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* content,}
-\DoxyCodeLine{264                        \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} dataType);}
-\DoxyCodeLine{265   \textcolor{keywordtype}{void} updateAttribute(\textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* content,}
-\DoxyCodeLine{266                        \textcolor{keyword}{const} std::vector<hsize\_t>\& dimensions,}
-\DoxyCodeLine{267                        \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} dataType);}
-\DoxyCodeLine{268 }
-\DoxyCodeLine{269  \textcolor{keyword}{private}:}
-\DoxyCodeLine{270   \textcolor{keyword}{const} std::vector<unsigned char> getAttribute(}
-\DoxyCodeLine{271       \textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} dataType) \textcolor{keyword}{const};}
-\DoxyCodeLine{272   hid\_t m\_id;}
-\DoxyCodeLine{273 \};}
-\DoxyCodeLine{274 \}  \textcolor{comment}{// namespace HDF5}}
-\DoxyCodeLine{275 \}  \textcolor{comment}{// namespace PLI}}
-\DoxyCodeLine{276 }
-\DoxyCodeLine{277 \textcolor{preprocessor}{\#include "{}PLIHDF5/attributes.tpp"{}}}
+\DoxyCodeLine{264   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_af746380e422151cca64b537cd83aa16c}{deleteAttribute}}(\textcolor{keyword}{const} std::string\& attributeName);}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{280   hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a640d218c8bfcbf19684a94ca7e290d7c}{attributePtr}}(\textcolor{keyword}{const} std::string\& attributeName) \textcolor{keyword}{const};}
+\DoxyCodeLine{281 }
+\DoxyCodeLine{302   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{303   \textcolor{keyword}{const} std::vector<T> \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}{getAttribute}}(\textcolor{keyword}{const} std::string\& attributeName) \textcolor{keyword}{const};}
+\DoxyCodeLine{317   \textcolor{keyword}{const} std::vector<hsize\_t> \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}{getAttributeDimensions}}(}
+\DoxyCodeLine{318       \textcolor{keyword}{const} std::string\& attributeName) \textcolor{keyword}{const};}
+\DoxyCodeLine{319 }
+\DoxyCodeLine{338   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{339   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_af375ca7b2ebd88e203e4078c8a74d031}{updateAttribute}}(\textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} T\& content);}
+\DoxyCodeLine{358   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{359   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a5d1c16f2a247738c393b80435288a160}{updateAttribute}}(\textcolor{keyword}{const} std::string\& attributeName,}
+\DoxyCodeLine{360                        \textcolor{keyword}{const} std::vector<T>\& content,}
+\DoxyCodeLine{361                        \textcolor{keyword}{const} std::vector<hsize\_t>\& dimensions);}
+\DoxyCodeLine{379   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_af375ca7b2ebd88e203e4078c8a74d031}{updateAttribute}}(\textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* content,}
+\DoxyCodeLine{380                        \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} dataType);}
+\DoxyCodeLine{399   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_af375ca7b2ebd88e203e4078c8a74d031}{updateAttribute}}(\textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} \textcolor{keywordtype}{void}* content,}
+\DoxyCodeLine{400                        \textcolor{keyword}{const} std::vector<hsize\_t>\& dimensions,}
+\DoxyCodeLine{401                        \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} dataType);}
+\DoxyCodeLine{402 }
+\DoxyCodeLine{403  \textcolor{keyword}{private}:}
+\DoxyCodeLine{404   \textcolor{keyword}{const} std::vector<unsigned char> \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}{getAttribute}}(}
+\DoxyCodeLine{405       \textcolor{keyword}{const} std::string\& attributeName, \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} dataType) \textcolor{keyword}{const};}
+\DoxyCodeLine{406   hid\_t m\_id;}
+\DoxyCodeLine{407 \};}
+\DoxyCodeLine{408 \}  \textcolor{comment}{// namespace HDF5}}
+\DoxyCodeLine{409 \}  \textcolor{comment}{// namespace PLI}}
+\DoxyCodeLine{410 }
+\DoxyCodeLine{411 \textcolor{preprocessor}{\#include "{}PLIHDF5/attributes.tpp"{}}}
 
 \end{DoxyCode}

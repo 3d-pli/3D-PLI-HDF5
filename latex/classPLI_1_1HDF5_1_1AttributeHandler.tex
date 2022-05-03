@@ -37,34 +37,26 @@ void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a97d36c2ea661ea3ac646
 \begin{DoxyCompactList}\small\item\em Copy an attribute from this \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} to another one. This method copies an attribute from this \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} to another one. The datatype is defined by the source datatype. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a457b1a3dc7301b43ba396cb5e2f2bc4b}{copy\+From}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} \&src\+Handler, const std\+::string \&src\+Name, const std\+::string \&dst\+Name)
 \begin{DoxyCompactList}\small\item\em Copy an attribute from another \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} to this one. This method copies an attribute from another \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} to this one. The datatype is defined by the source datatype. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a7c80eae7960d06e5097a21eaac67a061}\label{classPLI_1_1HDF5_1_1AttributeHandler_a7c80eae7960d06e5097a21eaac67a061}} 
-void {\bfseries copy\+All\+From} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} \&src\+Handler, const std\+::vector$<$ std\+::string $>$ \&exceptions=std\+::vector$<$ std\+::string $>$())
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a5c210b240c5274208e39178c0a067de8}\label{classPLI_1_1HDF5_1_1AttributeHandler_a5c210b240c5274208e39178c0a067de8}} 
-void {\bfseries copy\+All\+To} (\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} dst\+Handler, const std\+::vector$<$ std\+::string $>$ \&exceptions=std\+::vector$<$ std\+::string $>$())
-\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a7c80eae7960d06e5097a21eaac67a061}{copy\+All\+From}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} \&src\+Handler, const std\+::vector$<$ std\+::string $>$ \&exceptions=std\+::vector$<$ std\+::string $>$())
+\begin{DoxyCompactList}\small\item\em Copy all attributes from another \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} to this one. This method copies all attributes from another \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} to this one. Exceptions can be defined through the exceptions parameter. Those attributes will be skipped instead. The datatype will be defined by the source datatype. The attribute names will be kept the same. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a5c210b240c5274208e39178c0a067de8}{copy\+All\+To}} (\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} dst\+Handler, const std\+::vector$<$ std\+::string $>$ \&exceptions=std\+::vector$<$ std\+::string $>$())
+\begin{DoxyCompactList}\small\item\em Copy all attributes to another \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} from this one. This method copies all attributes to another \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} from this one. Exceptions can be defined through the exceptions parameter. Those attributes will be skipped instead. The datatype will be defined by the source datatype. The attribute names will be kept the same. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_af746380e422151cca64b537cd83aa16c}{delete\+Attribute}} (const std\+::string \&attribute\+Name)
 \begin{DoxyCompactList}\small\item\em Remove attribute with the given attribute\+Name from the HDF5 object pointer. This method tries to delete the attribute with the given attribute\+Name from the HDF5 object pointer. Please note that the behaviour of this method is undefined when the method PLI\+::\+HDF5\+::\+Attribute\+Handler\+::attribute\+Ptr(const std\+::string\& attribute\+Name) is used and is not closed manually. \end{DoxyCompactList}\item 
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a640d218c8bfcbf19684a94ca7e290d7c}{attribute\+Ptr}} (const std\+::string \&attribute\+Name) const
 \begin{DoxyCompactList}\small\item\em Get the raw pointer of the attribute with the given attribute\+Name. This method opens the attribute with the given attribute\+Name and returns the raw pointer. Because HDF5 allocates memory and expects the pointer to be closed manually, the pointer has to be closed manually. If not, the memory might get leaked. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}\label{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}} 
-{\footnotesize template$<$typename T $>$ }\\const std\+::vector$<$ T $>$ {\bfseries get\+Attribute} (const std\+::string \&attribute\+Name) const
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}\label{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}} 
-const std\+::vector$<$ hsize\+\_\+t $>$ {\bfseries get\+Attribute\+Dimensions} (const std\+::string \&attribute\+Name) const
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_af375ca7b2ebd88e203e4078c8a74d031}\label{classPLI_1_1HDF5_1_1AttributeHandler_af375ca7b2ebd88e203e4078c8a74d031}} 
-{\footnotesize template$<$typename T $>$ }\\void {\bfseries update\+Attribute} (const std\+::string \&attribute\+Name, const T \&content)
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a5d1c16f2a247738c393b80435288a160}\label{classPLI_1_1HDF5_1_1AttributeHandler_a5d1c16f2a247738c393b80435288a160}} 
-{\footnotesize template$<$typename T $>$ }\\void {\bfseries update\+Attribute} (const std\+::string \&attribute\+Name, const std\+::vector$<$ T $>$ \&content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions)
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a1299a90851e07e37a486b38f91bd9625}\label{classPLI_1_1HDF5_1_1AttributeHandler_a1299a90851e07e37a486b38f91bd9625}} 
-void {\bfseries update\+Attribute} (const std\+::string \&attribute\+Name, const void $\ast$content, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}\label{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}} 
-void {\bfseries update\+Attribute} (const std\+::string \&attribute\+Name, const void $\ast$content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
-\end{DoxyCompactItemize}
+{\footnotesize template$<$typename T $>$ }\\const std\+::vector$<$ T $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}{get\+Attribute}} (const std\+::string \&attribute\+Name) const
+\begin{DoxyCompactList}\small\item\em Get the Attribute object This method returns the Attribute object with the given attribute\+Name. The type of the returned attribute is defined by the template. The conversion is done by the HDF5 library. \end{DoxyCompactList}\item 
+const std\+::vector$<$ hsize\+\_\+t $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}{get\+Attribute\+Dimensions}} (const std\+::string \&attribute\+Name) const
+\begin{DoxyCompactList}\small\item\em Get the Attribute Dimensions object This method checks the dimensions of the attribute with the given attribute\+Name. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_af375ca7b2ebd88e203e4078c8a74d031}{update\+Attribute}} (const std\+::string \&attribute\+Name, const T \&content)
+\begin{DoxyCompactList}\small\item\em Update attribute with new content. This method updates the attribute with the given attribute\+Name with the new content. The type of the attribute is defined by the template. This method is used for a single object. For a vector of objects, use the other options. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a5d1c16f2a247738c393b80435288a160}{update\+Attribute}} (const std\+::string \&attribute\+Name, const std\+::vector$<$ T $>$ \&content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions)
+\begin{DoxyCompactList}\small\item\em Update attribute with new content. This method updates the attribute with the given attribute\+Name with the new content. The type of the attribute is defined by the template. This method is used for a vector of objects. For a single object use the other options. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a1299a90851e07e37a486b38f91bd9625}{update\+Attribute}} (const std\+::string \&attribute\+Name, const void $\ast$content, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
+\begin{DoxyCompactList}\small\item\em Update attribute with new content. This method updates the attribute with the given attribute\+Name with the new content. The type of the attribute is defined by the template. This method is used for a single object. For a vector of objects, use the other options. The used datatype to store the object is defined by the \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}{update\+Attribute}} (const std\+::string \&attribute\+Name, const void $\ast$content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
+\begin{DoxyCompactList}\small\item\em Update attribute with new content. This method updates the attribute with the given attribute\+Name with the new content. The type of the attribute is defined by the template. This method is used for a vector of objects. For a single object use the other options. The used datatype to store the object is defined by the \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -170,6 +162,54 @@ Get the HDF5 data type of the attribute with the given attribute\+Name.
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} Template type which contains the hid\+\_\+t for the HDF5 data type. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a7c80eae7960d06e5097a21eaac67a061}\label{classPLI_1_1HDF5_1_1AttributeHandler_a7c80eae7960d06e5097a21eaac67a061}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!copyAllFrom@{copyAllFrom}}
+\index{copyAllFrom@{copyAllFrom}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{copyAllFrom()}{copyAllFrom()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::copy\+All\+From (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} \&}]{src\+Handler,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{exceptions = {\ttfamily std\+:\+:vector$<$std\+:\+:string$>$()} }\end{DoxyParamCaption})}
+
+
+
+Copy all attributes from another \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} to this one. This method copies all attributes from another \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} to this one. Exceptions can be defined through the exceptions parameter. Those attributes will be skipped instead. The datatype will be defined by the source datatype. The attribute names will be kept the same. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src\+Handler} & Source \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} from which the attributes are copied. \\
+\hline
+{\em exceptions} & Attributes which will not be copied during the method call. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & HDF5 object pointer or attribute pointer is not valid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & HDF5 library call failed. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a5c210b240c5274208e39178c0a067de8}\label{classPLI_1_1HDF5_1_1AttributeHandler_a5c210b240c5274208e39178c0a067de8}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!copyAllTo@{copyAllTo}}
+\index{copyAllTo@{copyAllTo}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{copyAllTo()}{copyAllTo()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::copy\+All\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}}}]{dst\+Handler,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{exceptions = {\ttfamily std\+:\+:vector$<$std\+:\+:string$>$()} }\end{DoxyParamCaption})}
+
+
+
+Copy all attributes to another \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} from this one. This method copies all attributes to another \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} from this one. Exceptions can be defined through the exceptions parameter. Those attributes will be skipped instead. The datatype will be defined by the source datatype. The attribute names will be kept the same. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dst\+Handler} & Destination \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} from which the attributes are copied. \\
+\hline
+{\em exceptions} & Attributes which will not be copied during the method call. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & HDF5 object pointer or attribute pointer is not valid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & HDF5 library call failed. \\
+\hline
+\end{DoxyExceptions}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a457b1a3dc7301b43ba396cb5e2f2bc4b}\label{classPLI_1_1HDF5_1_1AttributeHandler_a457b1a3dc7301b43ba396cb5e2f2bc4b}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!copyFrom@{copyFrom}}
 \index{copyFrom@{copyFrom}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
@@ -366,6 +406,66 @@ Remove attribute with the given attribute\+Name from the HDF5 object pointer. Th
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & HDF5 library function H5\+Adelete returns an error. This may happen when the attribute does not exist or another error occured. \\
 \hline
 \end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}\label{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!getAttribute@{getAttribute}}
+\index{getAttribute@{getAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{getAttribute()}{getAttribute()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const std\+::vector$<$ T $>$ PLI\+::\+HDF5\+::\+Attribute\+Handler\+::get\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name }\end{DoxyParamCaption}) const}
+
+
+
+Get the Attribute object This method returns the Attribute object with the given attribute\+Name. The type of the returned attribute is defined by the template. The conversion is done by the HDF5 library. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Supported data types are\+: bool, char, unsigned char, short, unsigned short, int, unsigned int, long, unsigned long, long long, unsigned long long, float, double, long double, std\+::string. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\+Name} & Name of the attribute to be returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+const std\+::vector$<$\+T$>$ Vector of the attribute content. To get the real dimensions of the attribute, use the method PLI\+::\+HDF5\+::\+Attribute\+::get\+Attribute\+Dimensions(const std\+::string\& attribute\+Name). 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Attribute\+Not\+Found\+Exception}}} & Attribute with the given attribute\+Name does not exist. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & HDF5 object pointer is invalid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & HDF5 library returned an error. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}\label{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!getAttributeDimensions@{getAttributeDimensions}}
+\index{getAttributeDimensions@{getAttributeDimensions}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{getAttributeDimensions()}{getAttributeDimensions()}}
+{\footnotesize\ttfamily const std\+::vector$<$ hsize\+\_\+t $>$ PLI\+::\+HDF5\+::\+Attribute\+Handler\+::get\+Attribute\+Dimensions (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name }\end{DoxyParamCaption}) const}
+
+
+
+Get the Attribute Dimensions object This method checks the dimensions of the attribute with the given attribute\+Name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\+Name} & Name of the attribute to be returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+const std\+::vector$<$hsize\+\_\+t$>$ Number of elements in each dimension. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Attribute\+Not\+Found\+Exception}}} & Attribute with the given attribute\+Name does not exist. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & HDF5 object pointer is invalid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & HDF5 library returned an error. \\
+\hline
+\end{DoxyExceptions}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a66fc467264a153321bd393f30181e2b9}\label{classPLI_1_1HDF5_1_1AttributeHandler_a66fc467264a153321bd393f30181e2b9}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!setPtr@{setPtr}}
 \index{setPtr@{setPtr}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
@@ -381,6 +481,130 @@ Set the HDF5 object pointer.
 {\em parent\+Ptr} & HDF5 object pointer. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a5d1c16f2a247738c393b80435288a160}\label{classPLI_1_1HDF5_1_1AttributeHandler_a5d1c16f2a247738c393b80435288a160}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!updateAttribute@{updateAttribute}}
+\index{updateAttribute@{updateAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{updateAttribute()}{updateAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::update\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const std\+::vector$<$ T $>$ \&}]{content,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dimensions }\end{DoxyParamCaption})}
+
+
+
+Update attribute with new content. This method updates the attribute with the given attribute\+Name with the new content. The type of the attribute is defined by the template. This method is used for a vector of objects. For a single object use the other options. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Supported data types are\+: bool, char, unsigned char, short, unsigned short, int, unsigned int, long, unsigned long, long long, unsigned long long, float, double, long double, std\+::string. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\+Name} & Name of the attribute to be updated. \\
+\hline
+{\em content} & New content of the attribute. \\
+\hline
+{\em dimensions} & Number of elements in each dimension. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Attribute\+Not\+Found\+Exception}}} & Attribute with the given attribute\+Name does not exist. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & HDF5 object pointer is invalid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & HDF5 library returned an error. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_af375ca7b2ebd88e203e4078c8a74d031}\label{classPLI_1_1HDF5_1_1AttributeHandler_af375ca7b2ebd88e203e4078c8a74d031}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!updateAttribute@{updateAttribute}}
+\index{updateAttribute@{updateAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{updateAttribute()}{updateAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::update\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const T \&}]{content }\end{DoxyParamCaption})}
+
+
+
+Update attribute with new content. This method updates the attribute with the given attribute\+Name with the new content. The type of the attribute is defined by the template. This method is used for a single object. For a vector of objects, use the other options. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Supported data types are\+: bool, char, unsigned char, short, unsigned short, int, unsigned int, long, unsigned long, long long, unsigned long long, float, double, long double, std\+::string. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\+Name} & Name of the attribute to be updated. \\
+\hline
+{\em content} & New content of the attribute. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Attribute\+Not\+Found\+Exception}}} & Attribute with the given attribute\+Name does not exist. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & HDF5 object pointer is invalid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & HDF5 library returned an error. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a1299a90851e07e37a486b38f91bd9625}\label{classPLI_1_1HDF5_1_1AttributeHandler_a1299a90851e07e37a486b38f91bd9625}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!updateAttribute@{updateAttribute}}
+\index{updateAttribute@{updateAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{updateAttribute()}{updateAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::update\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const void $\ast$}]{content,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}}]{data\+Type }\end{DoxyParamCaption})}
+
+
+
+Update attribute with new content. This method updates the attribute with the given attribute\+Name with the new content. The type of the attribute is defined by the template. This method is used for a single object. For a vector of objects, use the other options. The used datatype to store the object is defined by the \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\+Name} & Name of the attribute to be updated. \\
+\hline
+{\em content} & New content of the attribute. \\
+\hline
+{\em data\+Type} & HDF5 data type of the attribute. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Attribute\+Not\+Found\+Exception}}} & Attribute with the given attribute\+Name does not exist. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & HDF5 object pointer is invalid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & HDF5 library returned an error. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}\label{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!updateAttribute@{updateAttribute}}
+\index{updateAttribute@{updateAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{updateAttribute()}{updateAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::update\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const void $\ast$}]{content,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dimensions,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}}]{data\+Type }\end{DoxyParamCaption})}
+
+
+
+Update attribute with new content. This method updates the attribute with the given attribute\+Name with the new content. The type of the attribute is defined by the template. This method is used for a vector of objects. For a single object use the other options. The used datatype to store the object is defined by the \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\+Name} & Name of the attribute to be updated. \\
+\hline
+{\em content} & New content of the attribute. \\
+\hline
+{\em dimensions} & Number of elements in each dimension. \\
+\hline
+{\em data\+Type} & HDF5 data type of the attribute. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Attribute\+Not\+Found\+Exception}}} & Attribute with the given attribute\+Name does not exist. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & HDF5 object pointer is invalid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & HDF5 library returned an error. \\
+\hline
+\end{DoxyExceptions}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
