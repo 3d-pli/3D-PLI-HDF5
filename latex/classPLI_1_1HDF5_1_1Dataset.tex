@@ -3,15 +3,15 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a070ad55382ce59b326db7f28f82e9766}\label{classPLI_1_1HDF5_1_1Dataset_a070ad55382ce59b326db7f28f82e9766}} 
-{\bfseries Dataset} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \&other\+File) noexcept
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a747ef638ba68e302c9b90c3fe98cf8b6}\label{classPLI_1_1HDF5_1_1Dataset_a747ef638ba68e302c9b90c3fe98cf8b6}} 
-{\bfseries Dataset} (hid\+\_\+t dataset\+Ptr) noexcept
-\item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_ac21f50996e82918fbf5d71c9cedec281}\label{classPLI_1_1HDF5_1_1Dataset_ac21f50996e82918fbf5d71c9cedec281}} 
-void {\bfseries close} ()
-\item 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a8dd99e73f85ac7a3683f03dc65fabf6d}\label{classPLI_1_1HDF5_1_1Dataset_a8dd99e73f85ac7a3683f03dc65fabf6d}} 
+{\bfseries Dataset} () noexcept
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} object Create an empty dataset object. Calling other methods on this object will fail because no pointer to an HDF5 object is set. To open a dataset, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac93fec6eda72651ee9cf158afdc96b4d}{PLI\+::\+HDF5\+::\+Dataset\+::open(const hid\+\_\+t parent\+Ptr, const std\+::string\& dataset\+Name)}}. To create a dataset, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a1a98addfb4ee2d850f80972b715d7b76}{PLI\+::\+HDF5\+::\+Dataset\+::create(const hid\+\_\+t parent\+Ptr, const std\+::string\& dataset\+Name, const std\+::vector$<$hsize\+\_\+t$>$\& dims, const std\+::vector$<$hsize\+\_\+t$>$\& chunk\+Dims)}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a070ad55382ce59b326db7f28f82e9766}{Dataset}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \&other\+File) noexcept
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} object Construct a new dataset object by using the given pointer of another dataset object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a747ef638ba68e302c9b90c3fe98cf8b6}{Dataset}} (hid\+\_\+t dataset\+Ptr) noexcept
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} object Construct a new dataset object by using an existing HDF5 pointer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac21f50996e82918fbf5d71c9cedec281}{close}} ()
+\begin{DoxyCompactList}\small\item\em Closes the dataset if it is valid. If the dataset is valid, it is closed. The dataset pointer is then set to an invalid value (-\/1) to ensure, that calls will result in an exception afterwards. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_ac879f9258f2fa5f2d89faf5e6a477105}\label{classPLI_1_1HDF5_1_1Dataset_ac879f9258f2fa5f2d89faf5e6a477105}} 
 {\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ {\bfseries read\+Full\+Dataset} () const
 \item 
@@ -39,15 +39,156 @@ hid\+\_\+t {\bfseries id} () const noexcept
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_ac93fec6eda72651ee9cf158afdc96b4d}\label{classPLI_1_1HDF5_1_1Dataset_ac93fec6eda72651ee9cf158afdc96b4d}} 
-static \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} {\bfseries open} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name)
-\item 
+static \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac93fec6eda72651ee9cf158afdc96b4d}{open}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name)
+\begin{DoxyCompactList}\small\item\em Open an existing dataset. This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\static \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a1a98addfb4ee2d850f80972b715d7b76}{create}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name, const std\+::vector$<$ hsize\+\_\+t $>$ \&dims, const std\+::vector$<$ hsize\+\_\+t $>$ \&chunk\+Dims=\{\})
+\begin{DoxyCompactList}\small\item\em Create a new dataset with the given name. This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ae46347a834f5524f9038d00afd7289b0}{exists}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name)
+\begin{DoxyCompactList}\small\item\em Check if the dataset exists. Check if the dataset with the given name exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a070ad55382ce59b326db7f28f82e9766}\label{classPLI_1_1HDF5_1_1Dataset_a070ad55382ce59b326db7f28f82e9766}} 
+\index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!Dataset@{Dataset}}
+\index{Dataset@{Dataset}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
+\doxysubsubsection{\texorpdfstring{Dataset()}{Dataset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Dataset\+::\+Dataset (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \&}]{other\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+
+
+
+Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} object Construct a new dataset object by using the given pointer of another dataset object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other\+File} & Other dataset object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a747ef638ba68e302c9b90c3fe98cf8b6}\label{classPLI_1_1HDF5_1_1Dataset_a747ef638ba68e302c9b90c3fe98cf8b6}} 
+\index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!Dataset@{Dataset}}
+\index{Dataset@{Dataset}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
+\doxysubsubsection{\texorpdfstring{Dataset()}{Dataset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Dataset\+::\+Dataset (\begin{DoxyParamCaption}\item[{hid\+\_\+t}]{dataset\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+
+
+
+Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} object Construct a new dataset object by using an existing HDF5 pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dataset\+Ptr} & HDF5 pointer to an existing dataset. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_ac21f50996e82918fbf5d71c9cedec281}\label{classPLI_1_1HDF5_1_1Dataset_ac21f50996e82918fbf5d71c9cedec281}} 
+\index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!close@{close}}
+\index{close@{close}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Dataset\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes the dataset if it is valid. If the dataset is valid, it is closed. The dataset pointer is then set to an invalid value (-\/1) to ensure, that calls will result in an exception afterwards. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the dataset could not be closed. \\
+\hline
+\end{DoxyExceptions}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a1a98addfb4ee2d850f80972b715d7b76}\label{classPLI_1_1HDF5_1_1Dataset_a1a98addfb4ee2d850f80972b715d7b76}} 
-{\footnotesize template$<$typename T $>$ }\\static \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} {\bfseries create} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name, const std\+::vector$<$ hsize\+\_\+t $>$ \&dims, const std\+::vector$<$ hsize\+\_\+t $>$ \&chunk\+Dims=\{\})
-\item 
+\index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!create@{create}}
+\index{create@{create}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} PLI\+::\+HDF5\+::\+Dataset\+::create (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{dataset\+Name,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dims,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{chunk\+Dims = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a new dataset with the given name. This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Supported data types are\+: bool, char, unsigned char, short, unsigned short, int, unsigned int, long, unsigned long, long long, unsigned long long, float, double, long double. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & Raw HDF5 pointer to a file or group. \\
+\hline
+{\em dataset\+Name} & Name of the dataset to create. \\
+\hline
+{\em dims} & Dimensions of the new dataset. \\
+\hline
+{\em chunk\+Dims} & Chunking dimensions of the dataset. If not set, the chunking is disabled. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} New dataset object if successful. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the parent or dataset pointer is invalid. \\
+\hline
+{\em PLI\+::\+HDF5\+::\+Exceptions\+::\+Dataset\+Already\+Exists\+Exception} & If the dataset already exists. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the dataset could not be created. \\
+\hline
+\end{DoxyExceptions}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_ae46347a834f5524f9038d00afd7289b0}\label{classPLI_1_1HDF5_1_1Dataset_ae46347a834f5524f9038d00afd7289b0}} 
-static bool {\bfseries exists} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name)
-\end{DoxyCompactItemize}
+\index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!exists@{exists}}
+\index{exists@{exists}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
+\doxysubsubsection{\texorpdfstring{exists()}{exists()}}
+{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+Dataset\+::exists (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{dataset\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check if the dataset exists. Check if the dataset with the given name exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & Raw HDF5 pointer to a file or group. \\
+\hline
+{\em dataset\+Name} & Name of the dataset. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} exists. 
+
+false \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} does not exist. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the parent pointer is invalid. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_ac93fec6eda72651ee9cf158afdc96b4d}\label{classPLI_1_1HDF5_1_1Dataset_ac93fec6eda72651ee9cf158afdc96b4d}} 
+\index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!open@{open}}
+\index{open@{open}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} PLI\+::\+HDF5\+::\+Dataset\+::open (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{dataset\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Open an existing dataset. This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group pointer. \\
+\hline
+{\em dataset\+Name} & Name of the dataset to open. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} if successful. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the parent or dataset pointer is invalid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Dataset\+Not\+Found\+Exception}}} & If the dataset does not exist. \\
+\hline
+\end{DoxyExceptions}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

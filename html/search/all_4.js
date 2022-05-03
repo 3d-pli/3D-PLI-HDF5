@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['file_0',['File',['../classPLI_1_1HDF5_1_1File.html',1,'PLI::HDF5']]],
-  ['fileexistsexception_1',['FileExistsException',['../classPLI_1_1HDF5_1_1Exceptions_1_1FileExistsException.html',1,'PLI::HDF5::Exceptions']]],
-  ['filenotfoundexception_2',['FileNotFoundException',['../classPLI_1_1HDF5_1_1Exceptions_1_1FileNotFoundException.html',1,'PLI::HDF5::Exceptions']]]
+  ['exists_0',['exists',['../classPLI_1_1HDF5_1_1Dataset.html#ae46347a834f5524f9038d00afd7289b0',1,'PLI::HDF5::Dataset']]]
 ];
