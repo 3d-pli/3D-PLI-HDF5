@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['dataset_0',['Dataset',['../classPLI_1_1HDF5_1_1Dataset.html',1,'PLI::HDF5']]],
-  ['datasetexistsexception_1',['DatasetExistsException',['../classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException.html',1,'PLI::HDF5::Exceptions']]],
-  ['datasetnotfoundexception_2',['DatasetNotFoundException',['../classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException.html',1,'PLI::HDF5::Exceptions']]],
-  ['deleteattribute_3',['deleteAttribute',['../classPLI_1_1HDF5_1_1AttributeHandler.html#af746380e422151cca64b537cd83aa16c',1,'PLI::HDF5::AttributeHandler']]],
-  ['dimensionmismatchexception_4',['DimensionMismatchException',['../classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException.html',1,'PLI::HDF5::Exceptions']]]
+  ['copyfrom_0',['copyFrom',['../classPLI_1_1HDF5_1_1AttributeHandler.html#a457b1a3dc7301b43ba396cb5e2f2bc4b',1,'PLI::HDF5::AttributeHandler']]],
+  ['copyto_1',['copyTo',['../classPLI_1_1HDF5_1_1AttributeHandler.html#a97d36c2ea661ea3ac646b6a1079f03b5',1,'PLI::HDF5::AttributeHandler']]],
+  ['createattribute_2',['createAttribute',['../classPLI_1_1HDF5_1_1AttributeHandler.html#aea4a9b7141c4451b5e041f0b943bab99',1,'PLI::HDF5::AttributeHandler::createAttribute(const std::string &amp;attributeName, const std::vector&lt; T &gt; &amp;content, const std::vector&lt; hsize_t &gt; &amp;dimensions)'],['../classPLI_1_1HDF5_1_1AttributeHandler.html#a89e0337a08be8f86d483f0432670c94b',1,'PLI::HDF5::AttributeHandler::createAttribute(const std::string &amp;attributeName, const void *content, const std::vector&lt; hsize_t &gt; &amp;dimensions, const PLI::HDF5::Type dataType)'],['../classPLI_1_1HDF5_1_1AttributeHandler.html#ae0c73f1af9d1df88b1b726a9d830bb66',1,'PLI::HDF5::AttributeHandler::createAttribute(const std::string &amp;attributeName, const T &amp;content)'],['../classPLI_1_1HDF5_1_1AttributeHandler.html#ac418f6989013cc30b7b64ddbf12df2c0',1,'PLI::HDF5::AttributeHandler::createAttribute(const std::string &amp;attributeName, const void *content, const PLI::HDF5::Type dataType)']]]
 ];
