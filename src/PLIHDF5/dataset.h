@@ -196,14 +196,14 @@ class Dataset {
   /**
    * @brief Get the type of the dataset.
    * @return const PLI::HDF5::Type Type of the dataset
-   * @throws PLI::HDF5::Exception":IdentifierNotValidException If the dataset is
+   * @throws PLI::HDF5::Exceptions:IdentifierNotValidException If the dataset is
    * not valid or the type doesn't exist.
    */
   const PLI::HDF5::Type type() const;
   /**
    * @brief Returns the number of dimensions of the dataset.
    * @return int The number of dimensions of the dataset.
-   * @throws PLI::HDF5::Exception:IdentifierNotValidException If the dataset is
+   * @throws PLI::HDF5::Exceptions:IdentifierNotValidException If the dataset is
    * not valid.
    */
   int ndims() const;
@@ -211,9 +211,9 @@ class Dataset {
    * @brief Returns the number of elements of the dataset.
    * @return const std::vector<hsize_t> The number of elements of the dataset in
    * each dimension.
-   * @throws PLI::HDF5::Exception:IdentifierNotValidException If the dataset is
+   * @throws PLI::HDF5::Exceptions:IdentifierNotValidException If the dataset is
    * not valid.
-   * @throws PLI::HDF5::Exception:HDF5RuntimeException Error during closing the
+   * @throws PLI::HDF5::Exceptions:HDF5RuntimeException Error during closing the
    * dataspace of the dataset.
    */
   const std::vector<hsize_t> dims() const;
