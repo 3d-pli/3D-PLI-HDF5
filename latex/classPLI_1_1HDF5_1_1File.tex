@@ -48,6 +48,13 @@ static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad4f7de370ce9655532fbcae6b
 \begin{DoxyCompactList}\small\item\em Check if the file is a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. This method checks if the file is a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file that can be opened with this library. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae7d1c6b269c872ce262222d5b5542885}{file\+Exists}} (const std\+::string \&file\+Name)
 \begin{DoxyCompactList}\small\item\em Check if the file exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad6608149dde5f5098793411fc6e27a29}{m\+\_\+id}}
+\item 
+hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a857051f66bef03df4da39818db7b4206}{m\+\_\+fapl\+ID}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -298,7 +305,22 @@ Reopen the file. This method tries to reopen the file for reading. If the origin
 \end{DoxyExceptions}
 
 
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a857051f66bef03df4da39818db7b4206}\label{classPLI_1_1HDF5_1_1File_a857051f66bef03df4da39818db7b4206}} 
+\index{PLI::HDF5::File@{PLI::HDF5::File}!m\_faplID@{m\_faplID}}
+\index{m\_faplID@{m\_faplID}!PLI::HDF5::File@{PLI::HDF5::File}}
+\doxysubsubsection{\texorpdfstring{m\_faplID}{m\_faplID}}
+{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+File\+::m\+\_\+fapl\+ID\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad6608149dde5f5098793411fc6e27a29}\label{classPLI_1_1HDF5_1_1File_ad6608149dde5f5098793411fc6e27a29}} 
+\index{PLI::HDF5::File@{PLI::HDF5::File}!m\_id@{m\_id}}
+\index{m\_id@{m\_id}!PLI::HDF5::File@{PLI::HDF5::File}}
+\doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
+{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+File\+::m\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+PLIHDF5/\mbox{\hyperlink{file_8h}{file.\+h}}\item 
-src/\mbox{\hyperlink{file_8cpp}{file.\+cpp}}\end{DoxyCompactItemize}
+src/\+PLIHDF5/file.\+h\item 
+src/file.\+cpp\end{DoxyCompactItemize}

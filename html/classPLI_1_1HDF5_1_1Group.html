@@ -70,6 +70,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classPLI_1_1HDF5_1_1Group-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">PLI::HDF5::Group Class Reference</div></div>
 </div><!--header-->
@@ -110,6 +111,11 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac282b5bcff034bb2ac34e64634cb924d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#ac282b5bcff034bb2ac34e64634cb924d">exists</a> (hid_t parentPtr, const std::string &amp;groupName)</td></tr>
 <tr class="memdesc:ac282b5bcff034bb2ac34e64634cb924d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the group exists.  <a href="classPLI_1_1HDF5_1_1Group.html#ac282b5bcff034bb2ac34e64634cb924d">More...</a><br /></td></tr>
 <tr class="separator:ac282b5bcff034bb2ac34e64634cb924d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a1a5bb47eb16e71c5c20838cab9992ae6"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a1a5bb47eb16e71c5c20838cab9992ae6">m_id</a></td></tr>
+<tr class="separator:a1a5bb47eb16e71c5c20838cab9992ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> wrapper class. Create and / or open an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> group. </p>
@@ -418,9 +424,32 @@ false If the group does not exist. </dd></dl>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1a5bb47eb16e71c5c20838cab9992ae6" name="a1a5bb47eb16e71c5c20838cab9992ae6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a5bb47eb16e71c5c20838cab9992ae6">&#9670;&nbsp;</a></span>m_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">hid_t PLI::HDF5::Group::m_id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/PLIHDF5/<a class="el" href="group_8h_source.html">group.h</a></li>
-<li>src/<a class="el" href="group_8cpp.html">group.cpp</a></li>
+<li>src/group.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

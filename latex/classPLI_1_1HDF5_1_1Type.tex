@@ -46,6 +46,18 @@ template$<$$>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Typ
 \item 
 template$<$$>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_ac386822c6989f07902c89f274c0561aa}{create\+Type}} ()
 \end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_a61ed03bb9ffb317c608adb9b369a9f49}{convert\+IDTo\+Name}} (const hid\+\_\+t ID)
+\item 
+static hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_a5ad154dba3223f5a9c1d28250171e100}{convert\+Name\+To\+ID}} (const std\+::string \&name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_aed8d8bb0787865c23d9a49e3c1b30441}{m\+\_\+type\+ID}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -70,6 +82,18 @@ template$<$$>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Typ
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Type_a61ed03bb9ffb317c608adb9b369a9f49}\label{classPLI_1_1HDF5_1_1Type_a61ed03bb9ffb317c608adb9b369a9f49}} 
+\index{PLI::HDF5::Type@{PLI::HDF5::Type}!convertIDToName@{convertIDToName}}
+\index{convertIDToName@{convertIDToName}!PLI::HDF5::Type@{PLI::HDF5::Type}}
+\doxysubsubsection{\texorpdfstring{convertIDToName()}{convertIDToName()}}
+{\footnotesize\ttfamily std\+::string PLI\+::\+HDF5\+::\+Type\+::convert\+IDTo\+Name (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Type_a5ad154dba3223f5a9c1d28250171e100}\label{classPLI_1_1HDF5_1_1Type_a5ad154dba3223f5a9c1d28250171e100}} 
+\index{PLI::HDF5::Type@{PLI::HDF5::Type}!convertNameToID@{convertNameToID}}
+\index{convertNameToID@{convertNameToID}!PLI::HDF5::Type@{PLI::HDF5::Type}}
+\doxysubsubsection{\texorpdfstring{convertNameToID()}{convertNameToID()}}
+{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+Type\+::convert\+Name\+To\+ID (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}\label{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}} 
 \index{PLI::HDF5::Type@{PLI::HDF5::Type}!createType@{createType}}
 \index{createType@{createType}!PLI::HDF5::Type@{PLI::HDF5::Type}}
@@ -174,7 +198,16 @@ static \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} PLI\
 
 
 
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Type_aed8d8bb0787865c23d9a49e3c1b30441}\label{classPLI_1_1HDF5_1_1Type_aed8d8bb0787865c23d9a49e3c1b30441}} 
+\index{PLI::HDF5::Type@{PLI::HDF5::Type}!m\_typeID@{m\_typeID}}
+\index{m\_typeID@{m\_typeID}!PLI::HDF5::Type@{PLI::HDF5::Type}}
+\doxysubsubsection{\texorpdfstring{m\_typeID}{m\_typeID}}
+{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+Type\+::m\+\_\+type\+ID\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+PLIHDF5/\mbox{\hyperlink{type_8h}{type.\+h}}\item 
-src/\mbox{\hyperlink{type_8cpp}{type.\+cpp}}\end{DoxyCompactItemize}
+src/\+PLIHDF5/type.\+h\item 
+src/type.\+cpp\end{DoxyCompactItemize}

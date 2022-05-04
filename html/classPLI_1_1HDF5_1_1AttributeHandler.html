@@ -69,6 +69,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classPLI_1_1HDF5_1_1AttributeHandler-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">PLI::HDF5::AttributeHandler Class Reference</div></div>
 </div><!--header-->
@@ -152,6 +154,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1fea1be07809615518325f8d5d7345fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#a1fea1be07809615518325f8d5d7345fb">updateAttribute</a> (const std::string &amp;attributeName, const void *content, const std::vector&lt; hsize_t &gt; &amp;dimensions, const <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a> dataType)</td></tr>
 <tr class="memdesc:a1fea1be07809615518325f8d5d7345fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update attribute with new content. This method updates the attribute with the given attributeName with the new content. The type of the attribute is defined by the template. This method is used for a vector of objects. For a single object use the other options. The used datatype to store the object is defined by the <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a> parameter.  <a href="classPLI_1_1HDF5_1_1AttributeHandler.html#a1fea1be07809615518325f8d5d7345fb">More...</a><br /></td></tr>
 <tr class="separator:a1fea1be07809615518325f8d5d7345fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ae1a3af28d54ea3b97f53801dfc955953"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; unsigned char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#ae1a3af28d54ea3b97f53801dfc955953">getAttribute</a> (const std::string &amp;attributeName, const <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a> dataType) const</td></tr>
+<tr class="separator:ae1a3af28d54ea3b97f53801dfc955953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a4aeafecff8bb86bbeb3014006df6b667"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#a4aeafecff8bb86bbeb3014006df6b667">m_id</a></td></tr>
+<tr class="separator:a4aeafecff8bb86bbeb3014006df6b667"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Add attributes to an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> file, group, or dataset. This class allows to add, modify or delete attributes stored in an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> file. The class works on the pointers returned by the <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> library. The pointers are available from the other classes of this library. </p>
@@ -781,7 +793,7 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <a id="a86555504af023958426ca9b26a96811f" name="a86555504af023958426ca9b26a96811f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86555504af023958426ca9b26a96811f">&#9670;&nbsp;</a></span>getAttribute()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a86555504af023958426ca9b26a96811f">&#9670;&nbsp;</a></span>getAttribute() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -821,6 +833,42 @@ attributeName). </dd></dl>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ae1a3af28d54ea3b97f53801dfc955953" name="ae1a3af28d54ea3b97f53801dfc955953"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1a3af28d54ea3b97f53801dfc955953">&#9670;&nbsp;</a></span>getAttribute() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; unsigned char &gt; PLI::HDF5::AttributeHandler::getAttribute </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>attributeName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a>&#160;</td>
+          <td class="paramname"><em>dataType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1117,9 +1165,32 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4aeafecff8bb86bbeb3014006df6b667" name="a4aeafecff8bb86bbeb3014006df6b667"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4aeafecff8bb86bbeb3014006df6b667">&#9670;&nbsp;</a></span>m_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">hid_t PLI::HDF5::AttributeHandler::m_id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/PLIHDF5/<a class="el" href="attributes_8h_source.html">attributes.h</a></li>
-<li>src/<a class="el" href="attributes_8cpp.html">attributes.cpp</a></li>
+<li>src/attributes.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

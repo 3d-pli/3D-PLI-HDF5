@@ -56,6 +56,16 @@ void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a1299a90851e07e37a486
 \begin{DoxyCompactList}\small\item\em Update attribute with new content. This method updates the attribute with the given attribute\+Name with the new content. The type of the attribute is defined by the template. This method is used for a single object. For a vector of objects, use the other options. The used datatype to store the object is defined by the \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} parameter. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}{update\+Attribute}} (const std\+::string \&attribute\+Name, const void $\ast$content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
 \begin{DoxyCompactList}\small\item\em Update attribute with new content. This method updates the attribute with the given attribute\+Name with the new content. The type of the attribute is defined by the template. This method is used for a vector of objects. For a single object use the other options. The used datatype to store the object is defined by the \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::vector$<$ unsigned char $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_ae1a3af28d54ea3b97f53801dfc955953}{get\+Attribute}} (const std\+::string \&attribute\+Name, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a4aeafecff8bb86bbeb3014006df6b667}{m\+\_\+id}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -418,7 +428,7 @@ Remove attribute with the given attribute\+Name from the \mbox{\hyperlink{namesp
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}\label{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!getAttribute@{getAttribute}}
 \index{getAttribute@{getAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
-\doxysubsubsection{\texorpdfstring{getAttribute()}{getAttribute()}}
+\doxysubsubsection{\texorpdfstring{getAttribute()}{getAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 const std\+::vector$<$ T $>$ PLI\+::\+HDF5\+::\+Attribute\+Handler\+::get\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name }\end{DoxyParamCaption}) const}
 
@@ -448,6 +458,12 @@ const std\+::vector$<$\+T$>$ Vector of the attribute content. To get the real di
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library returned an error. \\
 \hline
 \end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_ae1a3af28d54ea3b97f53801dfc955953}\label{classPLI_1_1HDF5_1_1AttributeHandler_ae1a3af28d54ea3b97f53801dfc955953}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!getAttribute@{getAttribute}}
+\index{getAttribute@{getAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{getAttribute()}{getAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const std\+::vector$<$ unsigned char $>$ PLI\+::\+HDF5\+::\+Attribute\+Handler\+::get\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}}]{data\+Type }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}\label{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!getAttributeDimensions@{getAttributeDimensions}}
 \index{getAttributeDimensions@{getAttributeDimensions}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
@@ -616,7 +632,16 @@ Update attribute with new content. This method updates the attribute with the gi
 \end{DoxyExceptions}
 
 
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a4aeafecff8bb86bbeb3014006df6b667}\label{classPLI_1_1HDF5_1_1AttributeHandler_a4aeafecff8bb86bbeb3014006df6b667}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!m\_id@{m\_id}}
+\index{m\_id@{m\_id}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
+{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+Attribute\+Handler\+::m\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+PLIHDF5/\mbox{\hyperlink{attributes_8h}{attributes.\+h}}\item 
-src/\mbox{\hyperlink{attributes_8cpp}{attributes.\+cpp}}\end{DoxyCompactItemize}
+src/\+PLIHDF5/attributes.\+h\item 
+src/attributes.\+cpp\end{DoxyCompactItemize}

@@ -70,7 +70,7 @@ $(function() {
   <div class="headertitle"><div class="title">plihdf5.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="plihdf5_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">    MIT License</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"></span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">    Copyright (c) 2022 Forschungszentrum Jülich / Jan André Reuter &amp; Felix</span></div>
@@ -101,12 +101,12 @@ $(function() {
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="attributes_8h.html">PLIHDF5/attributes.h</a>&quot;</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="dataset_8h.html">PLIHDF5/dataset.h</a>&quot;</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;<a class="code" href="exceptions_8h.html">PLIHDF5/exceptions.h</a>&quot;</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &quot;<a class="code" href="file_8h.html">PLIHDF5/file.h</a>&quot;</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="group_8h.html">PLIHDF5/group.h</a>&quot;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="sha256_8h.html">PLIHDF5/sha256.h</a>&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;PLIHDF5/attributes.h&quot;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;PLIHDF5/dataset.h&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;PLIHDF5/exceptions.h&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &quot;PLIHDF5/file.h&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;PLIHDF5/group.h&quot;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;PLIHDF5/sha256.h&quot;</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacePLI.html">PLI</a> {</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classPLI_1_1PLIM.html">   50</a></span><span class="keyword">class </span><a class="code hl_class" href="classPLI_1_1PLIM.html">PLIM</a> {</div>
@@ -122,26 +122,21 @@ $(function() {
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPLI_1_1PLIM.html#a979ec407109eb171a70415dc97afe1c3">addSoftwareParameters</a>(<span class="keyword">const</span> std::string&amp; softwareParameters);</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  <a class="code hl_class" href="classPLI_1_1HDF5_1_1AttributeHandler.html">PLI::HDF5::AttributeHandler</a> m_attrHandler;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classPLI_1_1PLIM.html#aa87c96afddeb9c3dd8cc8fd823e0945e">  102</a></span>  <a class="code hl_class" href="classPLI_1_1HDF5_1_1AttributeHandler.html">PLI::HDF5::AttributeHandler</a> <a class="code hl_variable" href="classPLI_1_1PLIM.html#aa87c96afddeb9c3dd8cc8fd823e0945e">m_attrHandler</a>;</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>};</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}  <span class="comment">// namespace PLI</span></div>
-<div class="ttc" id="aattributes_8h_html"><div class="ttname"><a href="attributes_8h.html">attributes.h</a></div></div>
 <div class="ttc" id="aclassPLI_1_1HDF5_1_1AttributeHandler_html"><div class="ttname"><a href="classPLI_1_1HDF5_1_1AttributeHandler.html">PLI::HDF5::AttributeHandler</a></div><div class="ttdoc">Add attributes to an HDF5 file, group, or dataset. This class allows to add, modify or delete attribu...</div><div class="ttdef"><b>Definition:</b> attributes.h:62</div></div>
 <div class="ttc" id="aclassPLI_1_1HDF5_1_1File_html"><div class="ttname"><a href="classPLI_1_1HDF5_1_1File.html">PLI::HDF5::File</a></div><div class="ttdoc">HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.</div><div class="ttdef"><b>Definition:</b> file.h:48</div></div>
 <div class="ttc" id="aclassPLI_1_1PLIM_html"><div class="ttname"><a href="classPLI_1_1PLIM.html">PLI::PLIM</a></div><div class="ttdoc">The PLIM class contains a few functions to make the integration of a generated HDF5 file easier with ...</div><div class="ttdef"><b>Definition:</b> plihdf5.h:50</div></div>
 <div class="ttc" id="aclassPLI_1_1PLIM_html_a27fe20888c2b6355a699531f881161ea"><div class="ttname"><a href="classPLI_1_1PLIM.html#a27fe20888c2b6355a699531f881161ea">PLI::PLIM::addSoftware</a></div><div class="ttdeci">void addSoftware(const std::string &amp;softwareName)</div><div class="ttdoc">Adds the software name.</div><div class="ttdef"><b>Definition:</b> plihdf5.cpp:92</div></div>
 <div class="ttc" id="aclassPLI_1_1PLIM_html_a80518890be2c725084b0683b43e0c9ba"><div class="ttname"><a href="classPLI_1_1PLIM.html#a80518890be2c725084b0683b43e0c9ba">PLI::PLIM::addReference</a></div><div class="ttdeci">void addReference(const PLI::HDF5::AttributeHandler &amp;file)</div><div class="ttdoc">Adds the reference files used to generate this HDF5 file.</div><div class="ttdef"><b>Definition:</b> plihdf5.cpp:77</div></div>
 <div class="ttc" id="aclassPLI_1_1PLIM_html_a979ec407109eb171a70415dc97afe1c3"><div class="ttname"><a href="classPLI_1_1PLIM.html#a979ec407109eb171a70415dc97afe1c3">PLI::PLIM::addSoftwareParameters</a></div><div class="ttdeci">void addSoftwareParameters(const std::string &amp;softwareParameters)</div><div class="ttdoc">Adds the software parameters.</div><div class="ttdef"><b>Definition:</b> plihdf5.cpp:106</div></div>
+<div class="ttc" id="aclassPLI_1_1PLIM_html_aa87c96afddeb9c3dd8cc8fd823e0945e"><div class="ttname"><a href="classPLI_1_1PLIM.html#aa87c96afddeb9c3dd8cc8fd823e0945e">PLI::PLIM::m_attrHandler</a></div><div class="ttdeci">PLI::HDF5::AttributeHandler m_attrHandler</div><div class="ttdef"><b>Definition:</b> plihdf5.h:102</div></div>
 <div class="ttc" id="aclassPLI_1_1PLIM_html_aaf59bc288f4792cb1ed817afa65b164f"><div class="ttname"><a href="classPLI_1_1PLIM.html#aaf59bc288f4792cb1ed817afa65b164f">PLI::PLIM::PLIM</a></div><div class="ttdeci">PLIM(PLI::HDF5::File file, const std::string &amp;dataset)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> plihdf5.cpp:28</div></div>
 <div class="ttc" id="aclassPLI_1_1PLIM_html_abd48bbf9cd7ce0e01b371f236937704a"><div class="ttname"><a href="classPLI_1_1PLIM.html#abd48bbf9cd7ce0e01b371f236937704a">PLI::PLIM::addCreator</a></div><div class="ttdeci">void addCreator()</div><div class="ttdoc">Adds the creator of the HDF5 file to the HDF5 file.</div><div class="ttdef"><b>Definition:</b> plihdf5.cpp:40</div></div>
 <div class="ttc" id="aclassPLI_1_1PLIM_html_ac5bd6172ef0808a283e6c7f1f502100a"><div class="ttname"><a href="classPLI_1_1PLIM.html#ac5bd6172ef0808a283e6c7f1f502100a">PLI::PLIM::addSoftwareRevision</a></div><div class="ttdeci">void addSoftwareRevision(const std::string &amp;softwareRevision)</div><div class="ttdoc">Adds the software revision.</div><div class="ttdef"><b>Definition:</b> plihdf5.cpp:99</div></div>
 <div class="ttc" id="aclassPLI_1_1PLIM_html_adf187f24b21d163831e22cae137a6492"><div class="ttname"><a href="classPLI_1_1PLIM.html#adf187f24b21d163831e22cae137a6492">PLI::PLIM::addID</a></div><div class="ttdeci">void addID(const std::vector&lt; std::string &gt; &amp;idAttributes)</div><div class="ttdoc">Adds the ID of the HDF5 file to the HDF5 file.</div><div class="ttdef"><b>Definition:</b> plihdf5.cpp:56</div></div>
-<div class="ttc" id="adataset_8h_html"><div class="ttname"><a href="dataset_8h.html">dataset.h</a></div></div>
-<div class="ttc" id="aexceptions_8h_html"><div class="ttname"><a href="exceptions_8h.html">exceptions.h</a></div></div>
-<div class="ttc" id="afile_8h_html"><div class="ttname"><a href="file_8h.html">file.h</a></div></div>
-<div class="ttc" id="agroup_8h_html"><div class="ttname"><a href="group_8h.html">group.h</a></div></div>
 <div class="ttc" id="anamespacePLI_html"><div class="ttname"><a href="namespacePLI.html">PLI</a></div><div class="ttdoc">The PLI namespace.</div><div class="ttdef"><b>Definition:</b> attributes.h:51</div></div>
-<div class="ttc" id="asha256_8h_html"><div class="ttname"><a href="sha256_8h.html">sha256.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

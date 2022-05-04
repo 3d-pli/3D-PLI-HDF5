@@ -71,6 +71,7 @@ $(function() {
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classPLI_1_1HDF5_1_1File-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">PLI::HDF5::File Class Reference</div></div>
 </div><!--header-->
@@ -132,6 +133,13 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ae7d1c6b269c872ce262222d5b5542885"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ae7d1c6b269c872ce262222d5b5542885">fileExists</a> (const std::string &amp;fileName)</td></tr>
 <tr class="memdesc:ae7d1c6b269c872ce262222d5b5542885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the file exists.  <a href="classPLI_1_1HDF5_1_1File.html#ae7d1c6b269c872ce262222d5b5542885">More...</a><br /></td></tr>
 <tr class="separator:ae7d1c6b269c872ce262222d5b5542885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ad6608149dde5f5098793411fc6e27a29"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ad6608149dde5f5098793411fc6e27a29">m_id</a></td></tr>
+<tr class="separator:ad6608149dde5f5098793411fc6e27a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a857051f66bef03df4da39818db7b4206"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a857051f66bef03df4da39818db7b4206">m_faplID</a></td></tr>
+<tr class="separator:a857051f66bef03df4da39818db7b4206"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> wrapper class. Create and / or open an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> file to store or read data. </p>
@@ -536,9 +544,54 @@ false <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrappe
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a857051f66bef03df4da39818db7b4206" name="a857051f66bef03df4da39818db7b4206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a857051f66bef03df4da39818db7b4206">&#9670;&nbsp;</a></span>m_faplID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">hid_t PLI::HDF5::File::m_faplID</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6608149dde5f5098793411fc6e27a29" name="ad6608149dde5f5098793411fc6e27a29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6608149dde5f5098793411fc6e27a29">&#9670;&nbsp;</a></span>m_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">hid_t PLI::HDF5::File::m_id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/PLIHDF5/<a class="el" href="file_8h_source.html">file.h</a></li>
-<li>src/<a class="el" href="file_8cpp.html">file.cpp</a></li>
+<li>src/file.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

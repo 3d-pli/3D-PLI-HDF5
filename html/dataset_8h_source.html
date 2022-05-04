@@ -70,7 +70,7 @@ $(function() {
   <div class="headertitle"><div class="title">dataset.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="dataset_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">    MIT License</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"></span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">    Copyright (c) 2022 Forschungszentrum Jülich / Jan André Reuter &amp; Felix</span></div>
@@ -105,8 +105,8 @@ $(function() {
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="exceptions_8h.html">PLIHDF5/exceptions.h</a>&quot;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="type_8h.html">PLIHDF5/type.h</a>&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;PLIHDF5/exceptions.h&quot;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;PLIHDF5/type.h&quot;</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacePLI.html">PLI</a> {</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">namespace </span>HDF5 {</div>
@@ -142,13 +142,14 @@ $(function() {
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>  <span class="keyword">operator</span> hid_t() <span class="keyword">const</span> <span class="keyword">noexcept</span>;</div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>  hid_t m_id;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="classPLI_1_1HDF5_1_1Dataset.html#a2cdda1b28e3b230dd8bfa20f8d5030df">  186</a></span>  hid_t <a class="code hl_variable" href="classPLI_1_1HDF5_1_1Dataset.html#a2cdda1b28e3b230dd8bfa20f8d5030df">m_id</a>;</div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>};</div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>}  <span class="comment">// namespace HDF5</span></div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>}  <span class="comment">// namespace PLI</span></div>
 <div class="ttc" id="aclassPLI_1_1HDF5_1_1Dataset_html"><div class="ttname"><a href="classPLI_1_1HDF5_1_1Dataset.html">PLI::HDF5::Dataset</a></div><div class="ttdoc">HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.</div><div class="ttdef"><b>Definition:</b> dataset.h:51</div></div>
 <div class="ttc" id="aclassPLI_1_1HDF5_1_1Dataset_html_a13dea74ee786ed31f37b57a26295c167"><div class="ttname"><a href="classPLI_1_1HDF5_1_1Dataset.html#a13dea74ee786ed31f37b57a26295c167">PLI::HDF5::Dataset::type</a></div><div class="ttdeci">const PLI::HDF5::Type type() const</div><div class="ttdoc">Get the type of the dataset.</div><div class="ttdef"><b>Definition:</b> dataset.cpp:53</div></div>
 <div class="ttc" id="aclassPLI_1_1HDF5_1_1Dataset_html_a1a98addfb4ee2d850f80972b715d7b76"><div class="ttname"><a href="classPLI_1_1HDF5_1_1Dataset.html#a1a98addfb4ee2d850f80972b715d7b76">PLI::HDF5::Dataset::create</a></div><div class="ttdeci">static PLI::HDF5::Dataset create(const hid_t parentPtr, const std::string &amp;datasetName, const std::vector&lt; hsize_t &gt; &amp;dims, const std::vector&lt; hsize_t &gt; &amp;chunkDims={})</div><div class="ttdoc">Create a new dataset with the given name. This method tries to create a new dataset with the given na...</div><div class="ttdef"><b>Definition:</b> dataset.cpp:101</div></div>
+<div class="ttc" id="aclassPLI_1_1HDF5_1_1Dataset_html_a2cdda1b28e3b230dd8bfa20f8d5030df"><div class="ttname"><a href="classPLI_1_1HDF5_1_1Dataset.html#a2cdda1b28e3b230dd8bfa20f8d5030df">PLI::HDF5::Dataset::m_id</a></div><div class="ttdeci">hid_t m_id</div><div class="ttdef"><b>Definition:</b> dataset.h:186</div></div>
 <div class="ttc" id="aclassPLI_1_1HDF5_1_1Dataset_html_a2ddda9ea49d95aabbad8cd298d4b3d3e"><div class="ttname"><a href="classPLI_1_1HDF5_1_1Dataset.html#a2ddda9ea49d95aabbad8cd298d4b3d3e">PLI::HDF5::Dataset::dims</a></div><div class="ttdeci">const std::vector&lt; hsize_t &gt; dims() const</div><div class="ttdoc">Returns the number of elements of the dataset.</div><div class="ttdef"><b>Definition:</b> dataset.cpp:75</div></div>
 <div class="ttc" id="aclassPLI_1_1HDF5_1_1Dataset_html_a4da86a08bd3ba2afcfea47e10576dba7"><div class="ttname"><a href="classPLI_1_1HDF5_1_1Dataset.html#a4da86a08bd3ba2afcfea47e10576dba7">PLI::HDF5::Dataset::id</a></div><div class="ttdeci">hid_t id() const noexcept</div><div class="ttdoc">Get the raw HDF5 pointer of the dataset. Returns the raw HDF5 pointer of the dataset....</div><div class="ttdef"><b>Definition:</b> dataset.cpp:89</div></div>
 <div class="ttc" id="aclassPLI_1_1HDF5_1_1Dataset_html_a8dd99e73f85ac7a3683f03dc65fabf6d"><div class="ttname"><a href="classPLI_1_1HDF5_1_1Dataset.html#a8dd99e73f85ac7a3683f03dc65fabf6d">PLI::HDF5::Dataset::Dataset</a></div><div class="ttdeci">Dataset() noexcept</div><div class="ttdoc">Construct a new Dataset object Create an empty dataset object. Calling other methods on this object w...</div><div class="ttdef"><b>Definition:</b> dataset.cpp:91</div></div>
@@ -160,9 +161,7 @@ $(function() {
 <div class="ttc" id="aclassPLI_1_1HDF5_1_1Dataset_html_afb79e7faf27ea297fe340b47719a7a08"><div class="ttname"><a href="classPLI_1_1HDF5_1_1Dataset.html#afb79e7faf27ea297fe340b47719a7a08">PLI::HDF5::Dataset::read</a></div><div class="ttdeci">std::vector&lt; T &gt; read(const std::vector&lt; hsize_t &gt; &amp;offset, const std::vector&lt; hsize_t &gt; &amp;count) const</div><div class="ttdef"><b>Definition:</b> dataset.cpp:163</div></div>
 <div class="ttc" id="aclassPLI_1_1HDF5_1_1Dataset_html_afc24eff37ad33af394fc3c4bb2c1dc27"><div class="ttname"><a href="classPLI_1_1HDF5_1_1Dataset.html#afc24eff37ad33af394fc3c4bb2c1dc27">PLI::HDF5::Dataset::write</a></div><div class="ttdeci">void write(const std::vector&lt; T &gt; &amp;data, const std::vector&lt; hsize_t &gt; &amp;offset, const std::vector&lt; hsize_t &gt; &amp;dims)</div><div class="ttdef"><b>Definition:</b> dataset.cpp:195</div></div>
 <div class="ttc" id="aclassPLI_1_1HDF5_1_1Type_html"><div class="ttname"><a href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a></div><div class="ttdef"><b>Definition:</b> type.h:43</div></div>
-<div class="ttc" id="aexceptions_8h_html"><div class="ttname"><a href="exceptions_8h.html">exceptions.h</a></div></div>
 <div class="ttc" id="anamespacePLI_html"><div class="ttname"><a href="namespacePLI.html">PLI</a></div><div class="ttdoc">The PLI namespace.</div><div class="ttdef"><b>Definition:</b> attributes.h:51</div></div>
-<div class="ttc" id="atype_8h_html"><div class="ttname"><a href="type_8h.html">type.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

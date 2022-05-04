@@ -45,6 +45,11 @@ static \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}
 \begin{DoxyCompactList}\small\item\em Create a new dataset with the given name. This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ae46347a834f5524f9038d00afd7289b0}{exists}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name)
 \begin{DoxyCompactList}\small\item\em Check if the dataset exists. Check if the dataset with the given name exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2cdda1b28e3b230dd8bfa20f8d5030df}{m\+\_\+id}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -307,7 +312,16 @@ void PLI\+::\+HDF5\+::\+Dataset\+::write (\begin{DoxyParamCaption}\item[{const s
 
 
 
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a2cdda1b28e3b230dd8bfa20f8d5030df}\label{classPLI_1_1HDF5_1_1Dataset_a2cdda1b28e3b230dd8bfa20f8d5030df}} 
+\index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!m\_id@{m\_id}}
+\index{m\_id@{m\_id}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
+\doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
+{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+Dataset\+::m\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+PLIHDF5/\mbox{\hyperlink{dataset_8h}{dataset.\+h}}\item 
-src/\mbox{\hyperlink{dataset_8cpp}{dataset.\+cpp}}\end{DoxyCompactItemize}
+src/\+PLIHDF5/dataset.\+h\item 
+src/dataset.\+cpp\end{DoxyCompactItemize}
