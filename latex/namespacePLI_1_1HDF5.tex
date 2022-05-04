@@ -39,7 +39,11 @@ void \mbox{\hyperlink{namespacePLI_1_1HDF5_a7bece20d07576e8ec3feb4a16a3ce38b}{ch
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} \mbox{\hyperlink{namespacePLI_1_1HDF5_a7036041ef51baaaea1f3aa1263a765f7}{create\+File}} (const std\+::string \&file\+Name)
 \begin{DoxyCompactList}\small\item\em Create a new file object. Create a new file object. Per default, the file is created with MPI file access. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} \mbox{\hyperlink{namespacePLI_1_1HDF5_a793947fa88ab4a9dbb2931da321dfba5}{open\+File}} (const std\+::string \&file\+Name, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{File\+::\+Open\+State}} open\+State=File\+::\+Open\+State\+::\+Read\+Only)
-\begin{DoxyCompactList}\small\item\em Open an existing file object. This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the open\+State variable, one can choose between opening the file in read-\/only mode or in read-\/write mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only will open the file in read-\/only mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write will open the file in read-\/write mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Open an existing file object. This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the open\+State variable, one can choose between opening the file in read-\/only mode or in read-\/write mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only will open the file in read-\/only mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write will open the file in read-\/write mode. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \mbox{\hyperlink{namespacePLI_1_1HDF5_a906ea863179d6d9e70ad870ae8493b1c}{open\+Group}} (hid\+\_\+t parent\+Ptr, const std\+::string \&group\+Name)
+\begin{DoxyCompactList}\small\item\em Opens a group Open an existing group. If the group does not exist, an exception is thrown. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \mbox{\hyperlink{namespacePLI_1_1HDF5_afa37c2d03829282fd6865a975fe83525}{create\+Group}} (hid\+\_\+t parent\+Ptr, const std\+::string \&group\+Name)
+\begin{DoxyCompactList}\small\item\em Creates a group Create a new group. If the group already exists, an exception is thrown. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -124,6 +128,33 @@ Create a new file object. Create a new file object. Per default, the file is cre
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & Error during setting the MPI file access. \\
 \hline
 \end{DoxyExceptions}
+\mbox{\Hypertarget{namespacePLI_1_1HDF5_afa37c2d03829282fd6865a975fe83525}\label{namespacePLI_1_1HDF5_afa37c2d03829282fd6865a975fe83525}} 
+\index{PLI::HDF5@{PLI::HDF5}!createGroup@{createGroup}}
+\index{createGroup@{createGroup}!PLI::HDF5@{PLI::HDF5}}
+\doxysubsubsection{\texorpdfstring{createGroup()}{createGroup()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} PLI\+::\+HDF5\+::create\+Group (\begin{DoxyParamCaption}\item[{hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{group\+Name }\end{DoxyParamCaption})}
+
+
+
+Creates a group Create a new group. If the group already exists, an exception is thrown. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & Pointer to the parent group or file. \\
+\hline
+{\em group\+Name} & Name of the group to create. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object, if successful. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupExistsException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Group\+Exists\+Exception}}} & If the group already exists. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If creating the group fails or the parent\+Ptr is invalid. \\
+\hline
+\end{DoxyExceptions}
 \mbox{\Hypertarget{namespacePLI_1_1HDF5_ab40573c6538568ac633f7e87f8fa9159}\label{namespacePLI_1_1HDF5_ab40573c6538568ac633f7e87f8fa9159}} 
 \index{PLI::HDF5@{PLI::HDF5}!openDataset@{openDataset}}
 \index{openDataset@{openDataset}!PLI::HDF5@{PLI::HDF5}}
@@ -180,5 +211,32 @@ Open an existing file object. This method tries to open an existing file. If the
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & Error during setting the MPI file access. \\
 \hline
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Invalid\+HDF5\+File\+Exception}}} & If the file is not a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{namespacePLI_1_1HDF5_a906ea863179d6d9e70ad870ae8493b1c}\label{namespacePLI_1_1HDF5_a906ea863179d6d9e70ad870ae8493b1c}} 
+\index{PLI::HDF5@{PLI::HDF5}!openGroup@{openGroup}}
+\index{openGroup@{openGroup}!PLI::HDF5@{PLI::HDF5}}
+\doxysubsubsection{\texorpdfstring{openGroup()}{openGroup()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} PLI\+::\+HDF5\+::open\+Group (\begin{DoxyParamCaption}\item[{hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{group\+Name }\end{DoxyParamCaption})}
+
+
+
+Opens a group Open an existing group. If the group does not exist, an exception is thrown. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & Pointer to the parent group or file. \\
+\hline
+{\em group\+Name} & Name of the group to open. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object, if successful. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Group\+Not\+Found\+Exception}}} & If the group does not exist. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If opening the group fails or the parent\+Ptr is invalid. \\
 \hline
 \end{DoxyExceptions}
