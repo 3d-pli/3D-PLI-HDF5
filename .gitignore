@@ -3,6 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=c++,qtcreator,clion,cmake
 
 build/**
+docs/**
 
 ### C++ ###
 # Prerequisites
