@@ -36,6 +36,9 @@
 #include "PLIHDF5/group.h"
 #include "PLIHDF5/sha256.h"
 
+/**
+ * @brief The PLI namespace
+ */
 namespace PLI {
 /**
  * @brief The PLIM class contains a few functions to make the integration of a

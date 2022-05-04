@@ -45,7 +45,13 @@
 #include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/type.h"
 
+/**
+ * @brief The PLI namespace
+ */
 namespace PLI {
+/**
+ * @brief The HDF5 namespace
+ */
 namespace HDF5 {
 /**
  * @brief Add attributes to an HDF5 file, group, or dataset.

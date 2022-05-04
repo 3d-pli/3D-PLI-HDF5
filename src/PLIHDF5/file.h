@@ -33,7 +33,13 @@
 
 #include "PLIHDF5/exceptions.h"
 
+/**
+ * @brief The PLI namespace
+ */
 namespace PLI {
+/**
+ * @brief The HDF5 namespace
+ */
 namespace HDF5 {
 /**
  * @brief HDF5 File wrapper class.
