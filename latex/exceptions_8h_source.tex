@@ -34,145 +34,145 @@
 \DoxyCodeLine{30 \textcolor{preprocessor}{\#include <exception>}}
 \DoxyCodeLine{31 \textcolor{preprocessor}{\#include <string>}}
 \DoxyCodeLine{32 }
-\DoxyCodeLine{33 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacePLI}{PLI}} \{}
-\DoxyCodeLine{34 \textcolor{keyword}{namespace }HDF5 \{}
-\DoxyCodeLine{35 \textcolor{keyword}{namespace }Exceptions \{}
-\DoxyCodeLine{36 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException}{DatasetNotFoundException}} : \textcolor{keyword}{public} std::exception \{}
-\DoxyCodeLine{37  \textcolor{keyword}{public}:}
-\DoxyCodeLine{38   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException_ac42faa408c7e39cf5563257f68f78f45}{DatasetNotFoundException}}(\textcolor{keyword}{const} std::string\& message)}
-\DoxyCodeLine{39       : std::exception(), m\_message(message) \{\}}
-\DoxyCodeLine{40   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException_a867a131afec005d90456da3228c9c1b9}{\string~DatasetNotFoundException}}() noexcept \{\}}
-\DoxyCodeLine{41   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException_a08f8916001ff749698b3ccd9930c207b}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
-\DoxyCodeLine{42 }
-\DoxyCodeLine{43  \textcolor{keyword}{private}:}
-\DoxyCodeLine{44   std::string m\_message;}
-\DoxyCodeLine{45 \};}
-\DoxyCodeLine{46 }
-\DoxyCodeLine{47 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{IdentifierNotValidException}} : \textcolor{keyword}{public} std::exception \{}
-\DoxyCodeLine{48  \textcolor{keyword}{public}:}
-\DoxyCodeLine{49   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException_a869f86e1449bb10ba8ea562750f74f14}{IdentifierNotValidException}}(\textcolor{keyword}{const} std::string\& message)}
-\DoxyCodeLine{50       : std::exception(), m\_message(message) \{\}}
-\DoxyCodeLine{51   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException_a1323a155002b00313a8bbc8746b3ab70}{\string~IdentifierNotValidException}}() noexcept \{\}}
-\DoxyCodeLine{52   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException_a93af4aa4fc646f3ca93d8e4e4b79c93d}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
-\DoxyCodeLine{53 }
-\DoxyCodeLine{54  \textcolor{keyword}{private}:}
-\DoxyCodeLine{55   std::string m\_message;}
-\DoxyCodeLine{56 \};}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{58 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException}{AttributeNotFoundException}} : \textcolor{keyword}{public} std::exception \{}
-\DoxyCodeLine{59  \textcolor{keyword}{public}:}
-\DoxyCodeLine{60   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException_adbef5e1c7c9e7de5ad56b11cf4ce26a7}{AttributeNotFoundException}}(\textcolor{keyword}{const} std::string\& message)}
-\DoxyCodeLine{61       : std::exception(), m\_message(message) \{\}}
-\DoxyCodeLine{62   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException_a3b155d89dc19af0a63a8f08eb7745adb}{\string~AttributeNotFoundException}}() noexcept \{\}}
-\DoxyCodeLine{63   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException_ae0fb357ba6445d455f4d5520202ad7ae}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
-\DoxyCodeLine{64 }
-\DoxyCodeLine{65  \textcolor{keyword}{private}:}
-\DoxyCodeLine{66   std::string m\_message;}
-\DoxyCodeLine{67 \};}
-\DoxyCodeLine{68 }
-\DoxyCodeLine{69 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeExistsException}{AttributeExistsException}} : \textcolor{keyword}{public} std::exception \{}
-\DoxyCodeLine{70  \textcolor{keyword}{public}:}
-\DoxyCodeLine{71   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeExistsException_a6c649bf5b716b9bee6cd834b3e766cb8}{AttributeExistsException}}(\textcolor{keyword}{const} std::string\& message)}
-\DoxyCodeLine{72       : std::exception(), m\_message(message) \{\}}
-\DoxyCodeLine{73   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeExistsException_a65eb4f47c8a14b4ec0893d0c65c7556d}{\string~AttributeExistsException}}() noexcept \{\}}
-\DoxyCodeLine{74   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeExistsException_a3753523e77e916cba38b877af371a204}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
-\DoxyCodeLine{75 }
-\DoxyCodeLine{76  \textcolor{keyword}{private}:}
-\DoxyCodeLine{77   std::string m\_message;}
-\DoxyCodeLine{78 \};}
-\DoxyCodeLine{79 }
-\DoxyCodeLine{80 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException}{DatasetExistsException}} : \textcolor{keyword}{public} std::exception \{}
-\DoxyCodeLine{81  \textcolor{keyword}{public}:}
-\DoxyCodeLine{82   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException_afa72a778ba8988836babc11ec47a4d22}{DatasetExistsException}}(\textcolor{keyword}{const} std::string\& message)}
-\DoxyCodeLine{83       : std::exception(), m\_message(message) \{\}}
-\DoxyCodeLine{84   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException_a6b99c2f8702a3d24a6e3888dfdaa4972}{\string~DatasetExistsException}}() noexcept \{\}}
-\DoxyCodeLine{85   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException_adbd7c87b191d4f899e899da7adf922b4}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
-\DoxyCodeLine{86 }
-\DoxyCodeLine{87  \textcolor{keyword}{private}:}
-\DoxyCodeLine{88   std::string m\_message;}
-\DoxyCodeLine{89 \};}
-\DoxyCodeLine{90 }
-\DoxyCodeLine{91 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileNotFoundException}{FileNotFoundException}} : \textcolor{keyword}{public} std::exception \{}
-\DoxyCodeLine{92  \textcolor{keyword}{public}:}
-\DoxyCodeLine{93   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileNotFoundException_ae2b4dd1b4e2a1bc9f1afe464b52b0c6d}{FileNotFoundException}}(\textcolor{keyword}{const} std::string\& message)}
-\DoxyCodeLine{94       : std::exception(), m\_message(message) \{\}}
-\DoxyCodeLine{95   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileNotFoundException_a9b6dc10134764aa41dcf35bbff9644b8}{\string~FileNotFoundException}}() noexcept \{\}}
-\DoxyCodeLine{96   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileNotFoundException_a3525fbe8a8854f0b21fa063749f83113}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
-\DoxyCodeLine{97 }
-\DoxyCodeLine{98  \textcolor{keyword}{private}:}
-\DoxyCodeLine{99   std::string m\_message;}
-\DoxyCodeLine{100 \};}
-\DoxyCodeLine{101 }
-\DoxyCodeLine{102 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileExistsException}{FileExistsException}} : \textcolor{keyword}{public} std::exception \{}
-\DoxyCodeLine{103  \textcolor{keyword}{public}:}
-\DoxyCodeLine{104   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileExistsException_a9ca0493b0fb3929125412e9c001b15d6}{FileExistsException}}(\textcolor{keyword}{const} std::string\& message)}
-\DoxyCodeLine{105       : std::exception(), m\_message(message) \{\}}
-\DoxyCodeLine{106   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileExistsException_a1e917c8dfacbc0c59f6f99da4240f235}{\string~FileExistsException}}() noexcept \{\}}
-\DoxyCodeLine{107   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileExistsException_a6c124eb774d709d34e01b270250e1722}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
-\DoxyCodeLine{108 }
-\DoxyCodeLine{109  \textcolor{keyword}{private}:}
-\DoxyCodeLine{110   std::string m\_message;}
-\DoxyCodeLine{111 \};}
-\DoxyCodeLine{112 }
-\DoxyCodeLine{113 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupExistsException}{GroupExistsException}} : \textcolor{keyword}{public} std::exception \{}
-\DoxyCodeLine{114  \textcolor{keyword}{public}:}
-\DoxyCodeLine{115   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupExistsException_acfbefebe52b31c0ab513a5edbfe5d038}{GroupExistsException}}(\textcolor{keyword}{const} std::string\& message)}
-\DoxyCodeLine{116       : std::exception(), m\_message(message) \{\}}
-\DoxyCodeLine{117   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupExistsException_a6d48ddab3f17299c12c7e28dd060ec0f}{\string~GroupExistsException}}() noexcept \{\}}
-\DoxyCodeLine{118   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupExistsException_af420034866f213b9e1b898b0dd85b528}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
-\DoxyCodeLine{119 }
-\DoxyCodeLine{120  \textcolor{keyword}{private}:}
-\DoxyCodeLine{121   std::string m\_message;}
-\DoxyCodeLine{122 \};}
-\DoxyCodeLine{123 }
-\DoxyCodeLine{124 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException}{GroupNotFoundException}} : \textcolor{keyword}{public} std::exception \{}
-\DoxyCodeLine{125  \textcolor{keyword}{public}:}
-\DoxyCodeLine{126   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException_aba7ee8ac64a24b3772717682c7bf2ec0}{GroupNotFoundException}}(\textcolor{keyword}{const} std::string\& message)}
-\DoxyCodeLine{127       : std::exception(), m\_message(message) \{\}}
-\DoxyCodeLine{128   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException_a347d0fc34f995ac67b020e0535eca503}{\string~GroupNotFoundException}}() noexcept \{\}}
-\DoxyCodeLine{129   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException_ab547d6fb0de8a0d6fab8d8211164ac76}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
-\DoxyCodeLine{130 }
-\DoxyCodeLine{131  \textcolor{keyword}{private}:}
-\DoxyCodeLine{132   std::string m\_message;}
-\DoxyCodeLine{133 \};}
-\DoxyCodeLine{134 }
-\DoxyCodeLine{135 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException}{DimensionMismatchException}} : \textcolor{keyword}{public} std::exception \{}
-\DoxyCodeLine{136  \textcolor{keyword}{public}:}
-\DoxyCodeLine{137   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException_a74ee23577b9d523e9c9ad1bfe14a2a46}{DimensionMismatchException}}(\textcolor{keyword}{const} std::string\& message)}
-\DoxyCodeLine{138       : std::exception(), m\_message(message) \{\}}
-\DoxyCodeLine{139   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException_ad5108928e147fc433aaade995ba678db}{\string~DimensionMismatchException}}() noexcept \{\}}
-\DoxyCodeLine{140   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException_aa82bb11b6309b24ebcc3d25902669bf1}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
-\DoxyCodeLine{141 }
-\DoxyCodeLine{142  \textcolor{keyword}{private}:}
-\DoxyCodeLine{143   std::string m\_message;}
-\DoxyCodeLine{144 \};}
-\DoxyCodeLine{145 }
-\DoxyCodeLine{146 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException}{InvalidHDF5FileException}} : \textcolor{keyword}{public} std::exception \{}
-\DoxyCodeLine{147  \textcolor{keyword}{public}:}
-\DoxyCodeLine{148   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException_aea09af9cfbc26b3e853aa43f4f68b46b}{InvalidHDF5FileException}}(\textcolor{keyword}{const} std::string\& message)}
-\DoxyCodeLine{149       : std::exception(), m\_message(message) \{\}}
-\DoxyCodeLine{150   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException_a12caf3237aa7c51dc3673de242fb83b9}{\string~InvalidHDF5FileException}}() noexcept \{\}}
-\DoxyCodeLine{151   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException_aee3f1da4648d6d323e7d666249da98ad}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
-\DoxyCodeLine{152 }
-\DoxyCodeLine{153  \textcolor{keyword}{private}:}
-\DoxyCodeLine{154   std::string m\_message;}
-\DoxyCodeLine{155 \};}
-\DoxyCodeLine{156 }
-\DoxyCodeLine{157 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{HDF5RuntimeException}} : \textcolor{keyword}{public} std::exception \{}
-\DoxyCodeLine{158  \textcolor{keyword}{public}:}
-\DoxyCodeLine{159   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException_ae60268606e7340dccdcda163f33fa4e5}{HDF5RuntimeException}}(\textcolor{keyword}{const} std::string\& message)}
-\DoxyCodeLine{160       : std::exception(), m\_message(message) \{\}}
-\DoxyCodeLine{161   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException_ac2f5de9b8bed3b364e83cf6e9f23a955}{\string~HDF5RuntimeException}}() noexcept \{\}}
-\DoxyCodeLine{162   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException_a6a4d635102da82068f676f86ffe0d468}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
-\DoxyCodeLine{163 }
-\DoxyCodeLine{164  \textcolor{keyword}{private}:}
-\DoxyCodeLine{165   std::string m\_message;}
-\DoxyCodeLine{166 \};}
-\DoxyCodeLine{167 \}  \textcolor{comment}{// namespace Exceptions}}
-\DoxyCodeLine{168 \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacePLI_1_1HDF5_ac221711f37b19deb37331fc25e818729}{checkHDF5Call}}(\textcolor{keyword}{const} herr\_t hdf5ReturnValue,}
-\DoxyCodeLine{169                    \textcolor{keyword}{const} std::string\& message = \textcolor{stringliteral}{"{}None"{}});}
-\DoxyCodeLine{170 \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacePLI_1_1HDF5_a7bece20d07576e8ec3feb4a16a3ce38b}{checkHDF5Ptr}}(\textcolor{keyword}{const} hid\_t hdf5Ptr, \textcolor{keyword}{const} std::string\& message = \textcolor{stringliteral}{"{}None"{}});}
-\DoxyCodeLine{171 \}  \textcolor{comment}{// namespace HDF5}}
-\DoxyCodeLine{172 \}  \textcolor{comment}{// namespace PLI}}
+\DoxyCodeLine{36 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacePLI}{PLI}} \{}
+\DoxyCodeLine{40 \textcolor{keyword}{namespace }HDF5 \{}
+\DoxyCodeLine{44 \textcolor{keyword}{namespace }Exceptions \{}
+\DoxyCodeLine{45 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException}{DatasetNotFoundException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{46  \textcolor{keyword}{public}:}
+\DoxyCodeLine{47   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException_ac42faa408c7e39cf5563257f68f78f45}{DatasetNotFoundException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{48       : std::exception(), m\_message(message) \{\}}
+\DoxyCodeLine{49   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException_a867a131afec005d90456da3228c9c1b9}{\string~DatasetNotFoundException}}() noexcept \{\}}
+\DoxyCodeLine{50   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException_a08f8916001ff749698b3ccd9930c207b}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52  \textcolor{keyword}{private}:}
+\DoxyCodeLine{53   std::string m\_message;}
+\DoxyCodeLine{54 \};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{IdentifierNotValidException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{57  \textcolor{keyword}{public}:}
+\DoxyCodeLine{58   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException_a869f86e1449bb10ba8ea562750f74f14}{IdentifierNotValidException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{59       : std::exception(), m\_message(message) \{\}}
+\DoxyCodeLine{60   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException_a1323a155002b00313a8bbc8746b3ab70}{\string~IdentifierNotValidException}}() noexcept \{\}}
+\DoxyCodeLine{61   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException_a93af4aa4fc646f3ca93d8e4e4b79c93d}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63  \textcolor{keyword}{private}:}
+\DoxyCodeLine{64   std::string m\_message;}
+\DoxyCodeLine{65 \};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException}{AttributeNotFoundException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{68  \textcolor{keyword}{public}:}
+\DoxyCodeLine{69   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException_adbef5e1c7c9e7de5ad56b11cf4ce26a7}{AttributeNotFoundException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{70       : std::exception(), m\_message(message) \{\}}
+\DoxyCodeLine{71   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException_a3b155d89dc19af0a63a8f08eb7745adb}{\string~AttributeNotFoundException}}() noexcept \{\}}
+\DoxyCodeLine{72   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeNotFoundException_ae0fb357ba6445d455f4d5520202ad7ae}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74  \textcolor{keyword}{private}:}
+\DoxyCodeLine{75   std::string m\_message;}
+\DoxyCodeLine{76 \};}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeExistsException}{AttributeExistsException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{79  \textcolor{keyword}{public}:}
+\DoxyCodeLine{80   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeExistsException_a6c649bf5b716b9bee6cd834b3e766cb8}{AttributeExistsException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{81       : std::exception(), m\_message(message) \{\}}
+\DoxyCodeLine{82   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeExistsException_a65eb4f47c8a14b4ec0893d0c65c7556d}{\string~AttributeExistsException}}() noexcept \{\}}
+\DoxyCodeLine{83   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1AttributeExistsException_a3753523e77e916cba38b877af371a204}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85  \textcolor{keyword}{private}:}
+\DoxyCodeLine{86   std::string m\_message;}
+\DoxyCodeLine{87 \};}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException}{DatasetExistsException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{90  \textcolor{keyword}{public}:}
+\DoxyCodeLine{91   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException_afa72a778ba8988836babc11ec47a4d22}{DatasetExistsException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{92       : std::exception(), m\_message(message) \{\}}
+\DoxyCodeLine{93   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException_a6b99c2f8702a3d24a6e3888dfdaa4972}{\string~DatasetExistsException}}() noexcept \{\}}
+\DoxyCodeLine{94   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException_adbd7c87b191d4f899e899da7adf922b4}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96  \textcolor{keyword}{private}:}
+\DoxyCodeLine{97   std::string m\_message;}
+\DoxyCodeLine{98 \};}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileNotFoundException}{FileNotFoundException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{101  \textcolor{keyword}{public}:}
+\DoxyCodeLine{102   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileNotFoundException_ae2b4dd1b4e2a1bc9f1afe464b52b0c6d}{FileNotFoundException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{103       : std::exception(), m\_message(message) \{\}}
+\DoxyCodeLine{104   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileNotFoundException_a9b6dc10134764aa41dcf35bbff9644b8}{\string~FileNotFoundException}}() noexcept \{\}}
+\DoxyCodeLine{105   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileNotFoundException_a3525fbe8a8854f0b21fa063749f83113}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107  \textcolor{keyword}{private}:}
+\DoxyCodeLine{108   std::string m\_message;}
+\DoxyCodeLine{109 \};}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileExistsException}{FileExistsException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{112  \textcolor{keyword}{public}:}
+\DoxyCodeLine{113   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileExistsException_a9ca0493b0fb3929125412e9c001b15d6}{FileExistsException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{114       : std::exception(), m\_message(message) \{\}}
+\DoxyCodeLine{115   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileExistsException_a1e917c8dfacbc0c59f6f99da4240f235}{\string~FileExistsException}}() noexcept \{\}}
+\DoxyCodeLine{116   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1FileExistsException_a6c124eb774d709d34e01b270250e1722}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118  \textcolor{keyword}{private}:}
+\DoxyCodeLine{119   std::string m\_message;}
+\DoxyCodeLine{120 \};}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupExistsException}{GroupExistsException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{123  \textcolor{keyword}{public}:}
+\DoxyCodeLine{124   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupExistsException_acfbefebe52b31c0ab513a5edbfe5d038}{GroupExistsException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{125       : std::exception(), m\_message(message) \{\}}
+\DoxyCodeLine{126   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupExistsException_a6d48ddab3f17299c12c7e28dd060ec0f}{\string~GroupExistsException}}() noexcept \{\}}
+\DoxyCodeLine{127   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupExistsException_af420034866f213b9e1b898b0dd85b528}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129  \textcolor{keyword}{private}:}
+\DoxyCodeLine{130   std::string m\_message;}
+\DoxyCodeLine{131 \};}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException}{GroupNotFoundException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{134  \textcolor{keyword}{public}:}
+\DoxyCodeLine{135   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException_aba7ee8ac64a24b3772717682c7bf2ec0}{GroupNotFoundException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{136       : std::exception(), m\_message(message) \{\}}
+\DoxyCodeLine{137   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException_a347d0fc34f995ac67b020e0535eca503}{\string~GroupNotFoundException}}() noexcept \{\}}
+\DoxyCodeLine{138   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException_ab547d6fb0de8a0d6fab8d8211164ac76}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140  \textcolor{keyword}{private}:}
+\DoxyCodeLine{141   std::string m\_message;}
+\DoxyCodeLine{142 \};}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException}{DimensionMismatchException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{145  \textcolor{keyword}{public}:}
+\DoxyCodeLine{146   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException_a74ee23577b9d523e9c9ad1bfe14a2a46}{DimensionMismatchException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{147       : std::exception(), m\_message(message) \{\}}
+\DoxyCodeLine{148   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException_ad5108928e147fc433aaade995ba678db}{\string~DimensionMismatchException}}() noexcept \{\}}
+\DoxyCodeLine{149   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException_aa82bb11b6309b24ebcc3d25902669bf1}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151  \textcolor{keyword}{private}:}
+\DoxyCodeLine{152   std::string m\_message;}
+\DoxyCodeLine{153 \};}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException}{InvalidHDF5FileException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{156  \textcolor{keyword}{public}:}
+\DoxyCodeLine{157   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException_aea09af9cfbc26b3e853aa43f4f68b46b}{InvalidHDF5FileException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{158       : std::exception(), m\_message(message) \{\}}
+\DoxyCodeLine{159   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException_a12caf3237aa7c51dc3673de242fb83b9}{\string~InvalidHDF5FileException}}() noexcept \{\}}
+\DoxyCodeLine{160   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException_aee3f1da4648d6d323e7d666249da98ad}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162  \textcolor{keyword}{private}:}
+\DoxyCodeLine{163   std::string m\_message;}
+\DoxyCodeLine{164 \};}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{HDF5RuntimeException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{167  \textcolor{keyword}{public}:}
+\DoxyCodeLine{168   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException_ae60268606e7340dccdcda163f33fa4e5}{HDF5RuntimeException}}(\textcolor{keyword}{const} std::string\& message)}
+\DoxyCodeLine{169       : std::exception(), m\_message(message) \{\}}
+\DoxyCodeLine{170   \textcolor{keyword}{virtual} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException_ac2f5de9b8bed3b364e83cf6e9f23a955}{\string~HDF5RuntimeException}}() noexcept \{\}}
+\DoxyCodeLine{171   \textcolor{keyword}{virtual} \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException_a6a4d635102da82068f676f86ffe0d468}{what}}() const noexcept \{ \textcolor{keywordflow}{return} m\_message.c\_str(); \}}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173  \textcolor{keyword}{private}:}
+\DoxyCodeLine{174   std::string m\_message;}
+\DoxyCodeLine{175 \};}
+\DoxyCodeLine{176 \}  \textcolor{comment}{// namespace Exceptions}}
+\DoxyCodeLine{177 \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacePLI_1_1HDF5_ac221711f37b19deb37331fc25e818729}{checkHDF5Call}}(\textcolor{keyword}{const} herr\_t hdf5ReturnValue,}
+\DoxyCodeLine{178                    \textcolor{keyword}{const} std::string\& message = \textcolor{stringliteral}{"{}None"{}});}
+\DoxyCodeLine{179 \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacePLI_1_1HDF5_a7bece20d07576e8ec3feb4a16a3ce38b}{checkHDF5Ptr}}(\textcolor{keyword}{const} hid\_t hdf5Ptr, \textcolor{keyword}{const} std::string\& message = \textcolor{stringliteral}{"{}None"{}});}
+\DoxyCodeLine{180 \}  \textcolor{comment}{// namespace HDF5}}
+\DoxyCodeLine{181 \}  \textcolor{comment}{// namespace PLI}}
 
 \end{DoxyCode}
