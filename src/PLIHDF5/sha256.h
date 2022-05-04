@@ -31,6 +31,9 @@
 #include <sstream>
 #include <string>
 
+/**
+ * @brief The PLI namespace
+ */
 namespace PLI {
 /**
  * @brief Calculate SHA256 hash from a given string

@@ -30,8 +30,17 @@
 #include <exception>
 #include <string>
 
+/**
+ * @brief The PLI namespace
+ */
 namespace PLI {
+/**
+ * @brief The HDF5 namespace
+ */
 namespace HDF5 {
+/**
+ * @brief The exception namespace for errors of the API
+ */
 namespace Exceptions {
 class DatasetNotFoundException : public std::exception {
  public:

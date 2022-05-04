@@ -25,9 +25,13 @@
 
 #include "PLIHDF5/file.h"
 
-#include <iostream>
+PLI::HDF5::File PLI::HDF5::createFile(const std::string& fileName) {
+  PLI::HDF5::File file;
+  file.create(fileName);
+  return file;
+}
 
-PLI::HDF5::File PLI::HDF5::File::create(const std::string& fileName) {
+void PLI::HDF5::File::create(const std::string& fileName) {
   if (PLI::HDF5::File::fileExists(fileName)) {
     throw Exceptions::FileExistsException("File already exists: " + fileName);
   }
@@ -40,11 +44,20 @@ PLI::HDF5::File PLI::HDF5::File::create(const std::string& fileName) {
   hid_t filePtr =
       H5Fcreate(fileName.c_str(), H5F_ACC_EXCL, H5P_DEFAULT, fapl_id);
   checkHDF5Ptr(filePtr, "H5Fcreate");
-  return PLI::HDF5::File(filePtr, fapl_id);
+
+  this->m_id = filePtr;
+  this->m_faplID = fapl_id;
 }
 
-PLI::HDF5::File PLI::HDF5::File::open(const std::string& fileName,
-                                      const OpenState openState) {
+PLI::HDF5::File PLI::HDF5::openFile(const std::string& fileName,
+                                    const File::OpenState openState) {
+  PLI::HDF5::File file;
+  file.open(fileName, openState);
+  return file;
+}
+
+void PLI::HDF5::File::open(const std::string& fileName,
+                           const File::OpenState openState) {
   if (!PLI::HDF5::File::fileExists(fileName)) {
     throw Exceptions::FileNotFoundException("File not found: " + fileName);
   }
@@ -66,7 +79,9 @@ PLI::HDF5::File PLI::HDF5::File::open(const std::string& fileName,
 
   hid_t filePtr = H5Fopen(fileName.c_str(), access, fapl_id);
   checkHDF5Ptr(filePtr, "H5Fopen");
-  return PLI::HDF5::File(filePtr, fapl_id);
+
+  this->m_id = filePtr;
+  this->m_faplID = fapl_id;
 }
 
 void PLI::HDF5::File::close() {
@@ -100,9 +115,10 @@ hid_t PLI::HDF5::File::id() const { return this->m_id; }
 
 hid_t PLI::HDF5::File::faplID() const { return this->m_faplID; }
 
-PLI::HDF5::File::File() : m_id(-1) {}
+PLI::HDF5::File::File() : m_id(-1), m_faplID(-1) {}
 
-PLI::HDF5::File::File(const File& other) : m_id(other.id()) {}
+PLI::HDF5::File::File(const File& other)
+    : m_id(other.id()), m_faplID(other.faplID()) {}
 
 PLI::HDF5::File::File(const hid_t filePtr, const hid_t faplID)
     : m_id(filePtr), m_faplID(faplID) {}

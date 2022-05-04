@@ -25,19 +25,24 @@
 
 #include "PLIHDF5/group.h"
 
-PLI::HDF5::Group PLI::HDF5::Group::open(hid_t parentPtr,
-                                        const std::string& groupName) {
+void PLI::HDF5::Group::open(hid_t parentPtr, const std::string& groupName) {
   checkHDF5Ptr(parentPtr, "Group::open");
   if (!PLI::HDF5::Group::exists(parentPtr, groupName)) {
     throw Exceptions::GroupNotFoundException("Group not found: " + groupName);
   }
   hid_t groupPtr = H5Gopen(parentPtr, groupName.c_str(), H5P_DEFAULT);
   checkHDF5Ptr(groupPtr);
-  return PLI::HDF5::Group(groupPtr);
+  this->m_id = groupPtr;
 }
 
-PLI::HDF5::Group PLI::HDF5::Group::create(hid_t parentPtr,
-                                          const std::string& groupName) {
+PLI::HDF5::Group PLI::HDF5::openGroup(hid_t parentPtr,
+                                      const std::string& groupName) {
+  Group group;
+  group.open(parentPtr, groupName);
+  return group;
+}
+
+void PLI::HDF5::Group::create(hid_t parentPtr, const std::string& groupName) {
   checkHDF5Ptr(parentPtr, "Group::create");
   if (PLI::HDF5::Group::exists(parentPtr, groupName)) {
     throw Exceptions::GroupExistsException("Group already exists: " +
@@ -46,7 +51,14 @@ PLI::HDF5::Group PLI::HDF5::Group::create(hid_t parentPtr,
   hid_t groupPtr = H5Gcreate(parentPtr, groupName.c_str(), H5P_DEFAULT,
                              H5P_DEFAULT, H5P_DEFAULT);
   checkHDF5Ptr(groupPtr, "H5Gcreate");
-  return PLI::HDF5::Group(groupPtr);
+  this->m_id = groupPtr;
+}
+
+PLI::HDF5::Group PLI::HDF5::createGroup(hid_t parentPtr,
+                                        const std::string& groupName) {
+  Group group;
+  group.create(parentPtr, groupName);
+  return group;
 }
 
 bool PLI::HDF5::Group::exists(hid_t parentPtr, const std::string& groupName) {
