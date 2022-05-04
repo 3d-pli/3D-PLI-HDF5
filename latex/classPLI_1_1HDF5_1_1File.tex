@@ -2,7 +2,7 @@
 \label{classPLI_1_1HDF5_1_1File}\index{PLI::HDF5::File@{PLI::HDF5::File}}
 
 
-HDF5 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} wrapper class. Create and / or open an HDF5 file to store or read data.  
+\mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} wrapper class. Create and / or open an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file to store or read data.  
 
 
 
@@ -12,24 +12,22 @@ HDF5 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} wrapper class. Create and
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}\label{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}} 
-enum {\bfseries Open\+State} \{ {\bfseries Read\+Only} = 0
-, {\bfseries Read\+Write} = 1
+enum \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{Open\+State}} \{ \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5acae691865c93ce0d9ab73893f819c814}{Read\+Only}} = 0
+, \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a2913814e0a1b0b13e74603a9b094e19f}{Read\+Write}} = 1
  \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}\label{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}} 
-{\bfseries File} ()
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} object Create an empty file object. Calling other methods on this object will fail because no pointer to an HDF5 object is set. To open a file, use PLI\+::\+HDF5\+::\+File\+::open(const std\+::string\& file\+Name). To create a file, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a2b4b89b07ccf1301b6cbc06efc47a0ea}{PLI\+::\+HDF5\+::\+File\+::create(const std\+::string\& file\+Name)}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}{File}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} object Create an empty file object. Calling other methods on this object will fail because no pointer to an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object is set. To open a file, use PLI\+::\+HDF5\+::\+File\+::open(const std\+::string\& file\+Name). To create a file, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a2b4b89b07ccf1301b6cbc06efc47a0ea}{PLI\+::\+HDF5\+::\+File\+::create(const std\+::string\& file\+Name)}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a506df5f077ae597a98f8d7a08b04d056}{File}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} \&other\+File)
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} object Construct a new file object by using the given pointer of another file object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a486f8dbce1f554d68d173c6807797175}{File}} (const hid\+\_\+t file\+Ptr, const hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}{fapl\+ID}})
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} object Construct a new file object by using the given pointer of another file object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a2b4b89b07ccf1301b6cbc06efc47a0ea}{create}} (const std\+::string \&file\+Name)
 \begin{DoxyCompactList}\small\item\em Create a new file. Create a new file. Per default, the file is created with MPI file access. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a9d30180bacdbb792b5d72b4ace1ed07c}{open}} (const std\+::string \&file\+Name, const Open\+State open\+State)
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a9d30180bacdbb792b5d72b4ace1ed07c}{open}} (const std\+::string \&file\+Name, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{Open\+State}} open\+State)
 \begin{DoxyCompactList}\small\item\em Open an existing file. This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the open\+State variable, one can choose between opening the file in read-\/only mode or in read-\/write mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only will open the file in read-\/only mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write will open the file in read-\/write mode. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a930eacc5e5c0ff2235c1d678447dd85e}{close}} ()
 \begin{DoxyCompactList}\small\item\em Closes the file if it is valid. If the file is valid, it is closed. The file pointer is then set to an invalid value (-\/1) to ensure, that calls will result in an exception afterwards. \end{DoxyCompactList}\item 
@@ -42,24 +40,53 @@ hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae9595536a728637c89589fb595
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}{fapl\+ID}} () const
 \begin{DoxyCompactList}\small\item\em Get the file access pointer. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a7c53c2e016fd0243cf5f4162e43637d2}{operator hid\+\_\+t}} () const
-\begin{DoxyCompactList}\small\item\em Convert the file to a the raw HDF5 pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Convert the file to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad4f7de370ce9655532fbcae6b920868b}{is\+HDF5}} (const std\+::string \&file\+Name)
-\begin{DoxyCompactList}\small\item\em Check if the file is a valid HDF5 file. This method checks if the file is a valid HDF5 file that can be opened with this library. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Check if the file is a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. This method checks if the file is a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file that can be opened with this library. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae7d1c6b269c872ce262222d5b5542885}{file\+Exists}} (const std\+::string \&file\+Name)
 \begin{DoxyCompactList}\small\item\em Check if the file exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-HDF5 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} wrapper class. Create and / or open an HDF5 file to store or read data. 
+\mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} wrapper class. Create and / or open an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file to store or read data. 
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}\label{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}} 
+\index{PLI::HDF5::File@{PLI::HDF5::File}!OpenState@{OpenState}}
+\index{OpenState@{OpenState}!PLI::HDF5::File@{PLI::HDF5::File}}
+\doxysubsubsection{\texorpdfstring{OpenState}{OpenState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{PLI\+::\+HDF5\+::\+File\+::\+Open\+State}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ReadOnly@{ReadOnly}!PLI::HDF5::File@{PLI::HDF5::File}}\index{PLI::HDF5::File@{PLI::HDF5::File}!ReadOnly@{ReadOnly}}}\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5acae691865c93ce0d9ab73893f819c814}\label{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5acae691865c93ce0d9ab73893f819c814}} 
+Read\+Only&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ReadWrite@{ReadWrite}!PLI::HDF5::File@{PLI::HDF5::File}}\index{PLI::HDF5::File@{PLI::HDF5::File}!ReadWrite@{ReadWrite}}}\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a2913814e0a1b0b13e74603a9b094e19f}\label{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a2913814e0a1b0b13e74603a9b094e19f}} 
+Read\+Write&\\
+\hline
+
+\end{DoxyEnumFields}
+
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}\label{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}} 
+\index{PLI::HDF5::File@{PLI::HDF5::File}!File@{File}}
+\index{File@{File}!PLI::HDF5::File@{PLI::HDF5::File}}
+\doxysubsubsection{\texorpdfstring{File()}{File()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+File\+::\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} object Create an empty file object. Calling other methods on this object will fail because no pointer to an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object is set. To open a file, use PLI\+::\+HDF5\+::\+File\+::open(const std\+::string\& file\+Name). To create a file, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a2b4b89b07ccf1301b6cbc06efc47a0ea}{PLI\+::\+HDF5\+::\+File\+::create(const std\+::string\& file\+Name)}}. 
+
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a506df5f077ae597a98f8d7a08b04d056}\label{classPLI_1_1HDF5_1_1File_a506df5f077ae597a98f8d7a08b04d056}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!File@{File}}
 \index{File@{File}!PLI::HDF5::File@{PLI::HDF5::File}}
-\doxysubsubsection{\texorpdfstring{File()}{File()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{File()}{File()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily PLI\+::\+HDF5\+::\+File\+::\+File (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} \&}]{other\+File }\end{DoxyParamCaption})}
 
 
@@ -74,7 +101,7 @@ Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} object Constru
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a486f8dbce1f554d68d173c6807797175}\label{classPLI_1_1HDF5_1_1File_a486f8dbce1f554d68d173c6807797175}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!File@{File}}
 \index{File@{File}!PLI::HDF5::File@{PLI::HDF5::File}}
-\doxysubsubsection{\texorpdfstring{File()}{File()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{File()}{File()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily PLI\+::\+HDF5\+::\+File\+::\+File (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{file\+Ptr,  }\item[{const hid\+\_\+t}]{fapl\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
@@ -201,7 +228,7 @@ hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} pointer.
 
 
 
-Check if the file is a valid HDF5 file. This method checks if the file is a valid HDF5 file that can be opened with this library. 
+Check if the file is a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. This method checks if the file is a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file that can be opened with this library. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -209,15 +236,15 @@ Check if the file is a valid HDF5 file. This method checks if the file is a vali
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} is a valid HDF5 file. 
+true \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} is a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. 
 
-false \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} isn\textquotesingle{}t a valid HDF5 file. 
+false \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} isn\textquotesingle{}t a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a9d30180bacdbb792b5d72b4ace1ed07c}\label{classPLI_1_1HDF5_1_1File_a9d30180bacdbb792b5d72b4ace1ed07c}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!open@{open}}
 \index{open@{open}!PLI::HDF5::File@{PLI::HDF5::File}}
 \doxysubsubsection{\texorpdfstring{open()}{open()}}
-{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+File\+::open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{const Open\+State}]{open\+State }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+File\+::open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{Open\+State}}}]{open\+State }\end{DoxyParamCaption})}
 
 
 
@@ -238,7 +265,7 @@ Open an existing file. This method tries to open an existing file. If the file d
 \hline
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & Error during setting the MPI file access. \\
 \hline
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Invalid\+HDF5\+File\+Exception}}} & If the file is not a valid HDF5 file. \\
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Invalid\+HDF5\+File\+Exception}}} & If the file is not a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a7c53c2e016fd0243cf5f4162e43637d2}\label{classPLI_1_1HDF5_1_1File_a7c53c2e016fd0243cf5f4162e43637d2}} 
@@ -249,7 +276,7 @@ Open an existing file. This method tries to open an existing file. If the file d
 
 
 
-Convert the file to a the raw HDF5 pointer. 
+Convert the file to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer. 
 
 \begin{DoxyReturn}{Returns}
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} ID stored in the object. 
@@ -273,5 +300,5 @@ Reopen the file. This method tries to reopen the file for reading. If the origin
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+PLIHDF5/file.\+h\item 
-src/file.\+cpp\end{DoxyCompactItemize}
+src/\+PLIHDF5/\mbox{\hyperlink{file_8h}{file.\+h}}\item 
+src/\mbox{\hyperlink{file_8cpp}{file.\+cpp}}\end{DoxyCompactItemize}

@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>PLI</b></li><li class="navelem"><b>HDF5</b></li><li class="navelem"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">Dataset</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacePLI.html">PLI</a></li><li class="navelem"><a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a></li><li class="navelem"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">Dataset</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -75,40 +75,36 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>HDF5 <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> wrapper class. Create and store or read data in an HDF5 dataset.  
+<p><a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> wrapper class. Create and store or read data in an <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> dataset.  
  <a href="classPLI_1_1HDF5_1_1Dataset.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="dataset_8h_source.html">dataset.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8dd99e73f85ac7a3683f03dc65fabf6d"><td class="memItemLeft" align="right" valign="top"><a id="a8dd99e73f85ac7a3683f03dc65fabf6d" name="a8dd99e73f85ac7a3683f03dc65fabf6d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Dataset</b> () noexcept</td></tr>
-<tr class="memdesc:a8dd99e73f85ac7a3683f03dc65fabf6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Create an empty dataset object. Calling other methods on this object will fail because no pointer to an HDF5 object is set. To open a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ac93fec6eda72651ee9cf158afdc96b4d" title="Open an existing dataset. This method tries to open an existing dataset with the given name....">PLI::HDF5::Dataset::open(const hid_t parentPtr, const std::string&amp;
+<tr class="memitem:a8dd99e73f85ac7a3683f03dc65fabf6d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a8dd99e73f85ac7a3683f03dc65fabf6d">Dataset</a> () noexcept</td></tr>
+<tr class="memdesc:a8dd99e73f85ac7a3683f03dc65fabf6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Create an empty dataset object. Calling other methods on this object will fail because no pointer to an <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> object is set. To open a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ac93fec6eda72651ee9cf158afdc96b4d" title="Open an existing dataset. This method tries to open an existing dataset with the given name....">PLI::HDF5::Dataset::open(const hid_t parentPtr, const std::string&amp;
 datasetName)</a>. To create a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a1a98addfb4ee2d850f80972b715d7b76" title="Create a new dataset with the given name. This method tries to create a new dataset with the given na...">PLI::HDF5::Dataset::create(const
 hid_t parentPtr, const std::string&amp; datasetName, const
-std::vector&lt;hsize_t&gt;&amp; dims, const std::vector&lt;hsize_t&gt;&amp; chunkDims)</a>. <br /></td></tr>
+std::vector&lt;hsize_t&gt;&amp; dims, const std::vector&lt;hsize_t&gt;&amp; chunkDims)</a>.  <a href="classPLI_1_1HDF5_1_1Dataset.html#a8dd99e73f85ac7a3683f03dc65fabf6d">More...</a><br /></td></tr>
 <tr class="separator:a8dd99e73f85ac7a3683f03dc65fabf6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a070ad55382ce59b326db7f28f82e9766"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a070ad55382ce59b326db7f28f82e9766">Dataset</a> (const <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">Dataset</a> &amp;otherFile) noexcept</td></tr>
 <tr class="memdesc:a070ad55382ce59b326db7f28f82e9766"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Construct a new dataset object by using the given pointer of another dataset object.  <a href="classPLI_1_1HDF5_1_1Dataset.html#a070ad55382ce59b326db7f28f82e9766">More...</a><br /></td></tr>
 <tr class="separator:a070ad55382ce59b326db7f28f82e9766"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a747ef638ba68e302c9b90c3fe98cf8b6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a747ef638ba68e302c9b90c3fe98cf8b6">Dataset</a> (hid_t datasetPtr) noexcept</td></tr>
-<tr class="memdesc:a747ef638ba68e302c9b90c3fe98cf8b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Construct a new dataset object by using an existing HDF5 pointer.  <a href="classPLI_1_1HDF5_1_1Dataset.html#a747ef638ba68e302c9b90c3fe98cf8b6">More...</a><br /></td></tr>
+<tr class="memdesc:a747ef638ba68e302c9b90c3fe98cf8b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Construct a new dataset object by using an existing <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> pointer.  <a href="classPLI_1_1HDF5_1_1Dataset.html#a747ef638ba68e302c9b90c3fe98cf8b6">More...</a><br /></td></tr>
 <tr class="separator:a747ef638ba68e302c9b90c3fe98cf8b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac21f50996e82918fbf5d71c9cedec281"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ac21f50996e82918fbf5d71c9cedec281">close</a> ()</td></tr>
 <tr class="memdesc:ac21f50996e82918fbf5d71c9cedec281"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the dataset if it is valid. If the dataset is valid, it is closed. The dataset pointer is then set to an invalid value (-1) to ensure, that calls will result in an exception afterwards.  <a href="classPLI_1_1HDF5_1_1Dataset.html#ac21f50996e82918fbf5d71c9cedec281">More...</a><br /></td></tr>
 <tr class="separator:ac21f50996e82918fbf5d71c9cedec281"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac879f9258f2fa5f2d89faf5e6a477105"><td class="memTemplParams" colspan="2"><a id="ac879f9258f2fa5f2d89faf5e6a477105" name="ac879f9258f2fa5f2d89faf5e6a477105"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ac879f9258f2fa5f2d89faf5e6a477105"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>readFullDataset</b> () const</td></tr>
+<tr class="memitem:ac879f9258f2fa5f2d89faf5e6a477105"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac879f9258f2fa5f2d89faf5e6a477105"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ac879f9258f2fa5f2d89faf5e6a477105">readFullDataset</a> () const</td></tr>
 <tr class="separator:ac879f9258f2fa5f2d89faf5e6a477105"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb79e7faf27ea297fe340b47719a7a08"><td class="memTemplParams" colspan="2"><a id="afb79e7faf27ea297fe340b47719a7a08" name="afb79e7faf27ea297fe340b47719a7a08"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:afb79e7faf27ea297fe340b47719a7a08"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>read</b> (const std::vector&lt; hsize_t &gt; &amp;offset, const std::vector&lt; hsize_t &gt; &amp;count) const</td></tr>
+<tr class="memitem:afb79e7faf27ea297fe340b47719a7a08"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:afb79e7faf27ea297fe340b47719a7a08"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#afb79e7faf27ea297fe340b47719a7a08">read</a> (const std::vector&lt; hsize_t &gt; &amp;offset, const std::vector&lt; hsize_t &gt; &amp;count) const</td></tr>
 <tr class="separator:afb79e7faf27ea297fe340b47719a7a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc24eff37ad33af394fc3c4bb2c1dc27"><td class="memTemplParams" colspan="2"><a id="afc24eff37ad33af394fc3c4bb2c1dc27" name="afc24eff37ad33af394fc3c4bb2c1dc27"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:afc24eff37ad33af394fc3c4bb2c1dc27"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>write</b> (const std::vector&lt; T &gt; &amp;data, const std::vector&lt; hsize_t &gt; &amp;offset, const std::vector&lt; hsize_t &gt; &amp;<a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a2ddda9ea49d95aabbad8cd298d4b3d3e">dims</a>)</td></tr>
+<tr class="memitem:afc24eff37ad33af394fc3c4bb2c1dc27"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:afc24eff37ad33af394fc3c4bb2c1dc27"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#afc24eff37ad33af394fc3c4bb2c1dc27">write</a> (const std::vector&lt; T &gt; &amp;data, const std::vector&lt; hsize_t &gt; &amp;offset, const std::vector&lt; hsize_t &gt; &amp;<a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a2ddda9ea49d95aabbad8cd298d4b3d3e">dims</a>)</td></tr>
 <tr class="separator:afc24eff37ad33af394fc3c4bb2c1dc27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13dea74ee786ed31f37b57a26295c167"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a13dea74ee786ed31f37b57a26295c167">type</a> () const</td></tr>
 <tr class="memdesc:a13dea74ee786ed31f37b57a26295c167"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the dataset.  <a href="classPLI_1_1HDF5_1_1Dataset.html#a13dea74ee786ed31f37b57a26295c167">More...</a><br /></td></tr>
@@ -120,10 +116,10 @@ template&lt;typename T &gt; </td></tr>
 <tr class="memdesc:a2ddda9ea49d95aabbad8cd298d4b3d3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of elements of the dataset.  <a href="classPLI_1_1HDF5_1_1Dataset.html#a2ddda9ea49d95aabbad8cd298d4b3d3e">More...</a><br /></td></tr>
 <tr class="separator:a2ddda9ea49d95aabbad8cd298d4b3d3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4da86a08bd3ba2afcfea47e10576dba7"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a4da86a08bd3ba2afcfea47e10576dba7">id</a> () const noexcept</td></tr>
-<tr class="memdesc:a4da86a08bd3ba2afcfea47e10576dba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the raw HDF5 pointer of the dataset. Returns the raw HDF5 pointer of the dataset. This pointer can be used to access the dataset using the HDF5 library.  <a href="classPLI_1_1HDF5_1_1Dataset.html#a4da86a08bd3ba2afcfea47e10576dba7">More...</a><br /></td></tr>
+<tr class="memdesc:a4da86a08bd3ba2afcfea47e10576dba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the raw <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> pointer of the dataset. Returns the raw <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> pointer of the dataset. This pointer can be used to access the dataset using the <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> library.  <a href="classPLI_1_1HDF5_1_1Dataset.html#a4da86a08bd3ba2afcfea47e10576dba7">More...</a><br /></td></tr>
 <tr class="separator:a4da86a08bd3ba2afcfea47e10576dba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae471843cd9ab5999bf0b407988905d81"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ae471843cd9ab5999bf0b407988905d81">operator hid_t</a> () const noexcept</td></tr>
-<tr class="memdesc:ae471843cd9ab5999bf0b407988905d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the dataset to a the raw HDF5 pointer.  <a href="classPLI_1_1HDF5_1_1Dataset.html#ae471843cd9ab5999bf0b407988905d81">More...</a><br /></td></tr>
+<tr class="memdesc:ae471843cd9ab5999bf0b407988905d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the dataset to a the raw <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> pointer.  <a href="classPLI_1_1HDF5_1_1Dataset.html#ae471843cd9ab5999bf0b407988905d81">More...</a><br /></td></tr>
 <tr class="separator:ae471843cd9ab5999bf0b407988905d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -140,10 +136,40 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ae46347a834f5524f9038d00afd7289b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >HDF5 <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> wrapper class. Create and store or read data in an HDF5 dataset. </p>
+<div class="textblock"><p ><a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> wrapper class. Create and store or read data in an <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> dataset. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8dd99e73f85ac7a3683f03dc65fabf6d" name="a8dd99e73f85ac7a3683f03dc65fabf6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dd99e73f85ac7a3683f03dc65fabf6d">&#9670;&nbsp;</a></span>Dataset() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PLI::HDF5::Dataset::Dataset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Create an empty dataset object. Calling other methods on this object will fail because no pointer to an <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> object is set. To open a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ac93fec6eda72651ee9cf158afdc96b4d" title="Open an existing dataset. This method tries to open an existing dataset with the given name....">PLI::HDF5::Dataset::open(const hid_t parentPtr, const std::string&amp;
+datasetName)</a>. To create a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a1a98addfb4ee2d850f80972b715d7b76" title="Create a new dataset with the given name. This method tries to create a new dataset with the given na...">PLI::HDF5::Dataset::create(const
+hid_t parentPtr, const std::string&amp; datasetName, const
+std::vector&lt;hsize_t&gt;&amp; dims, const std::vector&lt;hsize_t&gt;&amp; chunkDims)</a>. </p>
+
+</div>
+</div>
 <a id="a070ad55382ce59b326db7f28f82e9766" name="a070ad55382ce59b326db7f28f82e9766"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a070ad55382ce59b326db7f28f82e9766">&#9670;&nbsp;</a></span>Dataset() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a070ad55382ce59b326db7f28f82e9766">&#9670;&nbsp;</a></span>Dataset() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -177,7 +203,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a747ef638ba68e302c9b90c3fe98cf8b6" name="a747ef638ba68e302c9b90c3fe98cf8b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a747ef638ba68e302c9b90c3fe98cf8b6">&#9670;&nbsp;</a></span>Dataset() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a747ef638ba68e302c9b90c3fe98cf8b6">&#9670;&nbsp;</a></span>Dataset() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,10 +226,10 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Construct a new dataset object by using an existing HDF5 pointer. </p>
+<p>Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Construct a new dataset object by using an existing <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> pointer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">datasetPtr</td><td>HDF5 pointer to an existing dataset. </td></tr>
+    <tr><td class="paramname">datasetPtr</td><td><a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> pointer to an existing dataset. </td></tr>
   </table>
   </dd>
 </dl>
@@ -293,7 +319,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parentPtr</td><td>Raw HDF5 pointer to a file or group. </td></tr>
+    <tr><td class="paramname">parentPtr</td><td>Raw <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> pointer to a file or group. </td></tr>
     <tr><td class="paramname">datasetName</td><td>Name of the dataset to create. </td></tr>
     <tr><td class="paramname">dims</td><td>Dimensions of the new dataset. </td></tr>
     <tr><td class="paramname">chunkDims</td><td>Chunking dimensions of the dataset. If not set, the chunking is disabled. </td></tr>
@@ -376,7 +402,7 @@ template&lt;typename T &gt; </div>
 <p>Check if the dataset exists. Check if the dataset with the given name exists. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parentPtr</td><td>Raw HDF5 pointer to a file or group. </td></tr>
+    <tr><td class="paramname">parentPtr</td><td>Raw <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> pointer to a file or group. </td></tr>
     <tr><td class="paramname">datasetName</td><td>Name of the dataset. </td></tr>
   </table>
   </dd>
@@ -416,7 +442,7 @@ false <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset 
 </table>
 </div><div class="memdoc">
 
-<p>Get the raw HDF5 pointer of the dataset. Returns the raw HDF5 pointer of the dataset. This pointer can be used to access the dataset using the HDF5 library. </p>
+<p>Get the raw <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> pointer of the dataset. Returns the raw <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> pointer of the dataset. This pointer can be used to access the dataset using the <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> library. </p>
 <dl class="section return"><dt>Returns</dt><dd>hid_t <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> ID stored in the object. </dd></dl>
 
 </div>
@@ -523,8 +549,54 @@ false <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset 
 </table>
 </div><div class="memdoc">
 
-<p>Convert the dataset to a the raw HDF5 pointer. </p>
+<p>Convert the dataset to a the raw <a class="el" href="namespacePLI_1_1HDF5.html">HDF5</a> pointer. </p>
 <dl class="section return"><dt>Returns</dt><dd>hid_t <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> ID stored in the object. </dd></dl>
+
+</div>
+</div>
+<a id="afb79e7faf27ea297fe340b47719a7a08" name="afb79e7faf27ea297fe340b47719a7a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb79e7faf27ea297fe340b47719a7a08">&#9670;&nbsp;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; T &gt; PLI::HDF5::Dataset::read </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; hsize_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; hsize_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac879f9258f2fa5f2d89faf5e6a477105" name="ac879f9258f2fa5f2d89faf5e6a477105"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac879f9258f2fa5f2d89faf5e6a477105">&#9670;&nbsp;</a></span>readFullDataset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; T &gt; PLI::HDF5::Dataset::readFullDataset</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -554,9 +626,45 @@ false <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset 
 
 </div>
 </div>
+<a id="afc24eff37ad33af394fc3c4bb2c1dc27" name="afc24eff37ad33af394fc3c4bb2c1dc27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc24eff37ad33af394fc3c4bb2c1dc27">&#9670;&nbsp;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void PLI::HDF5::Dataset::write </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; hsize_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; hsize_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dims</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/PLIHDF5/<a class="el" href="dataset_8h_source.html">dataset.h</a></li>
-<li>src/dataset.cpp</li>
+<li>src/<a class="el" href="dataset_8cpp.html">dataset.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

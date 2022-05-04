@@ -2,7 +2,7 @@
 \label{classPLI_1_1HDF5_1_1Group}\index{PLI::HDF5::Group@{PLI::HDF5::Group}}
 
 
-HDF5 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} wrapper class. Create and / or open an HDF5 group.  
+\mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} wrapper class. Create and / or open an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} group.  
 
 
 
@@ -12,17 +12,16 @@ HDF5 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} wrapper class. Create a
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a596fd620f7e16d3733b8d5dd3f1e9dcc}\label{classPLI_1_1HDF5_1_1Group_a596fd620f7e16d3733b8d5dd3f1e9dcc}} 
-{\bfseries Group} () noexcept
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object Create an empty group object. Calling other methods on this object will fail because no pointer to an HDF5 object is set. To open a group, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_aed1852d153f5c8ab32392b99e3d5d8e4}{PLI\+::\+HDF5\+::\+Group\+::open(hid\+\_\+t parent\+Ptr, const std\+::string\& group\+Name)}}. To create a grouop, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a4ec0e3a27ce904c0fda6617ebafb2176}{PLI\+::\+HDF5\+::\+Group\+::create(hid\+\_\+t parent\+Ptr, const std\+::string\& group\+Name)}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a596fd620f7e16d3733b8d5dd3f1e9dcc}{Group}} () noexcept
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object Create an empty group object. Calling other methods on this object will fail because no pointer to an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object is set. To open a group, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_aed1852d153f5c8ab32392b99e3d5d8e4}{PLI\+::\+HDF5\+::\+Group\+::open(hid\+\_\+t parent\+Ptr, const std\+::string\& group\+Name)}}. To create a grouop, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a4ec0e3a27ce904c0fda6617ebafb2176}{PLI\+::\+HDF5\+::\+Group\+::create(hid\+\_\+t parent\+Ptr, const std\+::string\& group\+Name)}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a757771b7db2e3799bee107390350e82a}{Group}} (const hid\+\_\+t group\+Ptr) noexcept
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object Construct a new group object by using the given HDF5 pointer of another group object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object Construct a new group object by using the given \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of another group object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a244fc843079f3488ee215b5df0f9403e}{close}} ()
 \begin{DoxyCompactList}\small\item\em Closes the group if it is valid. If the dataset is valid, it is closed. The group pointer is then set to an invalid value (-\/1) to ensure, that calls will result in an exception afterwards. \end{DoxyCompactList}\item 
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a456080f735a1da9d7937faeeaa745b49}{id}} () const noexcept
-\begin{DoxyCompactList}\small\item\em Get the raw HDF5 pointer of the group. Returns the raw HDF5 pointer of the group. This pointer can be used to access the group using the HDF5 library. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the group. Returns the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the group. This pointer can be used to access the group using the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a1331843612104a553c4b03f5825b5dcd}{operator hid\+\_\+t}} () const noexcept
-\begin{DoxyCompactList}\small\item\em Convert the group to a the raw HDF5 pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Convert the group to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,18 +34,28 @@ static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_ac282b5bcff034bb2ac34e646
 
 
 \doxysubsection{Detailed Description}
-HDF5 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} wrapper class. Create and / or open an HDF5 group. 
+\mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} wrapper class. Create and / or open an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} group. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a596fd620f7e16d3733b8d5dd3f1e9dcc}\label{classPLI_1_1HDF5_1_1Group_a596fd620f7e16d3733b8d5dd3f1e9dcc}} 
+\index{PLI::HDF5::Group@{PLI::HDF5::Group}!Group@{Group}}
+\index{Group@{Group}!PLI::HDF5::Group@{PLI::HDF5::Group}}
+\doxysubsubsection{\texorpdfstring{Group()}{Group()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Group\+::\+Group (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object Create an empty group object. Calling other methods on this object will fail because no pointer to an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object is set. To open a group, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_aed1852d153f5c8ab32392b99e3d5d8e4}{PLI\+::\+HDF5\+::\+Group\+::open(hid\+\_\+t parent\+Ptr, const std\+::string\& group\+Name)}}. To create a grouop, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a4ec0e3a27ce904c0fda6617ebafb2176}{PLI\+::\+HDF5\+::\+Group\+::create(hid\+\_\+t parent\+Ptr, const std\+::string\& group\+Name)}}. 
+
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a757771b7db2e3799bee107390350e82a}\label{classPLI_1_1HDF5_1_1Group_a757771b7db2e3799bee107390350e82a}} 
 \index{PLI::HDF5::Group@{PLI::HDF5::Group}!Group@{Group}}
 \index{Group@{Group}!PLI::HDF5::Group@{PLI::HDF5::Group}}
-\doxysubsubsection{\texorpdfstring{Group()}{Group()}}
+\doxysubsubsection{\texorpdfstring{Group()}{Group()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Group\+::\+Group (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{group\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [noexcept]}}
 
 
 
-Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object Construct a new group object by using the given HDF5 pointer of another group object. 
+Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object Construct a new group object by using the given \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of another group object. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -133,7 +142,7 @@ false If the group does not exist.
 
 
 
-Get the raw HDF5 pointer of the group. Returns the raw HDF5 pointer of the group. This pointer can be used to access the group using the HDF5 library. 
+Get the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the group. Returns the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the group. This pointer can be used to access the group using the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library. 
 
 \begin{DoxyReturn}{Returns}
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} ID stored in the object. 
@@ -173,7 +182,7 @@ Opens a group Open an existing group. If the group does not exist, an exception 
 
 
 
-Convert the group to a the raw HDF5 pointer. 
+Convert the group to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer. 
 
 \begin{DoxyReturn}{Returns}
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} ID stored in the object. 
@@ -182,5 +191,5 @@ hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} ID stored in the 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/\+PLIHDF5/group.\+h\item 
-src/group.\+cpp\end{DoxyCompactItemize}
+src/\+PLIHDF5/\mbox{\hyperlink{group_8h}{group.\+h}}\item 
+src/\mbox{\hyperlink{group_8cpp}{group.\+cpp}}\end{DoxyCompactItemize}

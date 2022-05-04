@@ -1,6 +1,6 @@
 \hypertarget{type_8h_source}{}\doxysection{type.\+h}
 \label{type_8h_source}\index{src/PLIHDF5/type.h@{src/PLIHDF5/type.h}}
-
+\mbox{\hyperlink{type_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 \textcolor{comment}{/*}}
 \DoxyCodeLine{2 \textcolor{comment}{    MIT License}}
@@ -34,22 +34,22 @@
 \DoxyCodeLine{30 }
 \DoxyCodeLine{31 \textcolor{preprocessor}{\#include <string>}}
 \DoxyCodeLine{32 }
-\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}PLIHDF5/exceptions.h"{}}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{exceptions_8h}{PLIHDF5/exceptions.h}}"{}}}
 \DoxyCodeLine{34 }
-\DoxyCodeLine{35 \textcolor{keyword}{namespace }PLI \{}
+\DoxyCodeLine{35 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacePLI}{PLI}} \{}
 \DoxyCodeLine{36 \textcolor{keyword}{namespace }HDF5 \{}
 \DoxyCodeLine{37 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}} \{}
 \DoxyCodeLine{38  \textcolor{keyword}{public}:}
 \DoxyCodeLine{39   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{40   \textcolor{keyword}{static} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} createType();}
+\DoxyCodeLine{40   \textcolor{keyword}{static} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}{createType}}();}
 \DoxyCodeLine{41 }
-\DoxyCodeLine{42   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}}(\textcolor{keyword}{const} std::string\& typeName);}
-\DoxyCodeLine{43   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}}(\textcolor{keyword}{const} hid\_t typeID);}
-\DoxyCodeLine{44   \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}}\& type);}
+\DoxyCodeLine{42   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_a2cf98b87a92741588c6b899add98064b}{Type}}(\textcolor{keyword}{const} std::string\& typeName);}
+\DoxyCodeLine{43   \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_a2cf98b87a92741588c6b899add98064b}{Type}}(\textcolor{keyword}{const} hid\_t typeID);}
+\DoxyCodeLine{44   \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_a2cf98b87a92741588c6b899add98064b}{Type}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}}\& type);}
 \DoxyCodeLine{45 }
 \DoxyCodeLine{46   \textcolor{keyword}{operator} hid\_t() \textcolor{keyword}{const};}
 \DoxyCodeLine{47   \textcolor{keyword}{operator} std::string() \textcolor{keyword}{const};}
-\DoxyCodeLine{48   \textcolor{keywordtype}{bool} operator==(\mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}}\& other) \textcolor{keyword}{const};}
+\DoxyCodeLine{48   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_a8555755d59e9eb8371674428c44f2855}{operator==}}(\mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}}\& other) \textcolor{keyword}{const};}
 \DoxyCodeLine{49 }
 \DoxyCodeLine{50  \textcolor{keyword}{private}:}
 \DoxyCodeLine{51   \textcolor{keyword}{static} std::string convertIDToName(\textcolor{keyword}{const} hid\_t ID);}
