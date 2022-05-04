@@ -35,7 +35,7 @@ class AttributeHandlerTest : public ::testing::Test {
   void SetUp() override {
     std::string temporaryDirectory = testing::TempDir();
     _filePath = temporaryDirectory + "test.h5";
-    _file = PLI::HDF5::File::create(_filePath);
+    _file = PLI::HDF5::createFile(_filePath);
     _attributeHandler = PLI::HDF5::AttributeHandler(_file);
   }
 
