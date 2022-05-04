@@ -25,11 +25,11 @@ void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac2da3c02f06d57236a1eecd0f11ba
 void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac21f50996e82918fbf5d71c9cedec281}{close}} ()
 \begin{DoxyCompactList}\small\item\em Closes the dataset if it is valid. If the dataset is valid, it is closed. The dataset pointer is then set to an invalid value (-\/1) to ensure, that calls will result in an exception afterwards. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac879f9258f2fa5f2d89faf5e6a477105}{read\+Full\+Dataset}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Read the whole dataset. This method reads the whole dataset and returns the data as a vector of the given type. Here, each MPI process will read the whole dataset. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afb79e7faf27ea297fe340b47719a7a08}{read}} (const std\+::vector$<$ hsize\+\_\+t $>$ \&offset, const std\+::vector$<$ hsize\+\_\+t $>$ \&count) const
-\item 
+\begin{DoxyCompactList}\small\item\em Read a sub-\/dataset. With this method, only a sub-\/area of the dataset can be read. The dimensions of the sub-\/dataset are given by the offset in each dimension and the count. The count is the number of elements to read in each dimension. The returned data type is determined by the template parameter. The conversion is handled by the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library. This method does not check if the selected area is valid. If it is out of bounds, an exception is thrown through an erronous \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} call. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afc24eff37ad33af394fc3c4bb2c1dc27}{write}} (const std\+::vector$<$ T $>$ \&data, const std\+::vector$<$ hsize\+\_\+t $>$ \&offset, const std\+::vector$<$ hsize\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}})
-\item 
+\begin{DoxyCompactList}\small\item\em Write a sub-\/dataset. With this method, a selected area of the dataset can be written. The dimensions of the area are given by the offset in each dimension and the count. The count is the number of elements to write in each dimension. The data type is determined by the template parameter. The conversion is handled by the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library. This method does not check if the selected area is valid. If it is out of bounds, an exception is thrown through an erronous \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} call. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}{type}} () const
 \begin{DoxyCompactList}\small\item\em Get the type of the dataset. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ab1f82284d13d3426e0e6a9104673d02e}{ndims}} () const
@@ -272,6 +272,32 @@ hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} ID stored in 
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 std\+::vector$<$ T $>$ PLI\+::\+HDF5\+::\+Dataset\+::read (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{offset,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{count }\end{DoxyParamCaption}) const}
 
+
+
+Read a sub-\/dataset. With this method, only a sub-\/area of the dataset can be read. The dimensions of the sub-\/dataset are given by the offset in each dimension and the count. The count is the number of elements to read in each dimension. The returned data type is determined by the template parameter. The conversion is handled by the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library. This method does not check if the selected area is valid. If it is out of bounds, an exception is thrown through an erronous \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} call. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Supported data types are\+: bool, char, unsigned char, short, unsigned short, int, unsigned int, long, unsigned long, long long, unsigned long long, float, double, long double. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em offset} & Offset in each dimension. \\
+\hline
+{\em count} & Number of elements to read in each dimension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+T$>$ 1D vector with the data. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the dataset could not be read. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the dataset pointer is invalid. \\
+\hline
+\end{DoxyExceptions}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_ac879f9258f2fa5f2d89faf5e6a477105}\label{classPLI_1_1HDF5_1_1Dataset_ac879f9258f2fa5f2d89faf5e6a477105}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!readFullDataset@{readFullDataset}}
 \index{readFullDataset@{readFullDataset}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
@@ -279,6 +305,25 @@ std\+::vector$<$ T $>$ PLI\+::\+HDF5\+::\+Dataset\+::read (\begin{DoxyParamCapti
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 std\+::vector$<$ T $>$ PLI\+::\+HDF5\+::\+Dataset\+::read\+Full\+Dataset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+Read the whole dataset. This method reads the whole dataset and returns the data as a vector of the given type. Here, each MPI process will read the whole dataset. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Supported data types are\+: bool, char, unsigned char, short, unsigned short, int, unsigned int, long, unsigned long, long long, unsigned long long, float, double, long double. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+T$>$ 1D vector with the data. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the dataset could not be read. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the dataset pointer is invalid. \\
+\hline
+\end{DoxyExceptions}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}\label{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!type@{type}}
 \index{type@{type}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
@@ -304,6 +349,31 @@ const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \mbox
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 void PLI\+::\+HDF5\+::\+Dataset\+::write (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{data,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{offset,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dims }\end{DoxyParamCaption})}
 
+
+
+Write a sub-\/dataset. With this method, a selected area of the dataset can be written. The dimensions of the area are given by the offset in each dimension and the count. The count is the number of elements to write in each dimension. The data type is determined by the template parameter. The conversion is handled by the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library. This method does not check if the selected area is valid. If it is out of bounds, an exception is thrown through an erronous \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} call. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Supported data types are\+: bool, char, unsigned char, short, unsigned short, int, unsigned int, long, unsigned long, long long, unsigned long long, float, double, long double. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data to write. \\
+\hline
+{\em offset} & Offset in each dimension. \\
+\hline
+{\em dims} & Number of elements to write in each dimension. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the dataset could not be written. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the dataset pointer is invalid. \\
+\hline
+\end{DoxyExceptions}
 
 
 \doxysubsection{Member Data Documentation}
