@@ -84,8 +84,8 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8dd99e73f85ac7a3683f03dc65fabf6d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a8dd99e73f85ac7a3683f03dc65fabf6d">Dataset</a> () noexcept</td></tr>
-<tr class="memdesc:a8dd99e73f85ac7a3683f03dc65fabf6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Create an empty dataset object. Calling other methods on this object will fail because no pointer to an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object is set. To open a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ac93fec6eda72651ee9cf158afdc96b4d" title="Open an existing dataset. This method tries to open an existing dataset with the given name....">PLI::HDF5::Dataset::open(const hid_t parentPtr, const std::string&amp;
-datasetName)</a>. To create a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a1a98addfb4ee2d850f80972b715d7b76" title="Create a new dataset with the given name. This method tries to create a new dataset with the given na...">PLI::HDF5::Dataset::create(const
+<tr class="memdesc:a8dd99e73f85ac7a3683f03dc65fabf6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Create an empty dataset object. Calling other methods on this object will fail because no pointer to an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object is set. To open a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ac2da3c02f06d57236a1eecd0f11baf47" title="Open an existing dataset. This method tries to open an existing dataset with the given name....">PLI::HDF5::Dataset::open(const hid_t parentPtr, const std::string&amp;
+datasetName)</a>. To create a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a5e06af1843ada081949a5b9f92956a95" title="Create a new dataset with the given name. This method tries to create a new dataset with the given na...">PLI::HDF5::Dataset::create(const
 hid_t parentPtr, const std::string&amp; datasetName, const
 std::vector&lt;hsize_t&gt;&amp; dims, const std::vector&lt;hsize_t&gt;&amp; chunkDims)</a>.  <a href="classPLI_1_1HDF5_1_1Dataset.html#a8dd99e73f85ac7a3683f03dc65fabf6d">More...</a><br /></td></tr>
 <tr class="separator:a8dd99e73f85ac7a3683f03dc65fabf6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -95,6 +95,13 @@ std::vector&lt;hsize_t&gt;&amp; dims, const std::vector&lt;hsize_t&gt;&amp; chun
 <tr class="memitem:a747ef638ba68e302c9b90c3fe98cf8b6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a747ef638ba68e302c9b90c3fe98cf8b6">Dataset</a> (hid_t datasetPtr) noexcept</td></tr>
 <tr class="memdesc:a747ef638ba68e302c9b90c3fe98cf8b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Construct a new dataset object by using an existing <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> pointer.  <a href="classPLI_1_1HDF5_1_1Dataset.html#a747ef638ba68e302c9b90c3fe98cf8b6">More...</a><br /></td></tr>
 <tr class="separator:a747ef638ba68e302c9b90c3fe98cf8b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2da3c02f06d57236a1eecd0f11baf47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ac2da3c02f06d57236a1eecd0f11baf47">open</a> (const hid_t parentPtr, const std::string &amp;datasetName)</td></tr>
+<tr class="memdesc:ac2da3c02f06d57236a1eecd0f11baf47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open an existing dataset. This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown.  <a href="classPLI_1_1HDF5_1_1Dataset.html#ac2da3c02f06d57236a1eecd0f11baf47">More...</a><br /></td></tr>
+<tr class="separator:ac2da3c02f06d57236a1eecd0f11baf47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e06af1843ada081949a5b9f92956a95"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a5e06af1843ada081949a5b9f92956a95"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a5e06af1843ada081949a5b9f92956a95">create</a> (const hid_t parentPtr, const std::string &amp;datasetName, const std::vector&lt; hsize_t &gt; &amp;<a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a2ddda9ea49d95aabbad8cd298d4b3d3e">dims</a>, const std::vector&lt; hsize_t &gt; &amp;chunkDims={})</td></tr>
+<tr class="memdesc:a5e06af1843ada081949a5b9f92956a95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new dataset with the given name. This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set.  <a href="classPLI_1_1HDF5_1_1Dataset.html#a5e06af1843ada081949a5b9f92956a95">More...</a><br /></td></tr>
+<tr class="separator:a5e06af1843ada081949a5b9f92956a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac21f50996e82918fbf5d71c9cedec281"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ac21f50996e82918fbf5d71c9cedec281">close</a> ()</td></tr>
 <tr class="memdesc:ac21f50996e82918fbf5d71c9cedec281"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the dataset if it is valid. If the dataset is valid, it is closed. The dataset pointer is then set to an invalid value (-1) to ensure, that calls will result in an exception afterwards.  <a href="classPLI_1_1HDF5_1_1Dataset.html#ac21f50996e82918fbf5d71c9cedec281">More...</a><br /></td></tr>
 <tr class="separator:ac21f50996e82918fbf5d71c9cedec281"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,13 +132,6 @@ std::vector&lt;hsize_t&gt;&amp; dims, const std::vector&lt;hsize_t&gt;&amp; chun
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ac93fec6eda72651ee9cf158afdc96b4d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">PLI::HDF5::Dataset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ac93fec6eda72651ee9cf158afdc96b4d">open</a> (const hid_t parentPtr, const std::string &amp;datasetName)</td></tr>
-<tr class="memdesc:ac93fec6eda72651ee9cf158afdc96b4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open an existing dataset. This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown.  <a href="classPLI_1_1HDF5_1_1Dataset.html#ac93fec6eda72651ee9cf158afdc96b4d">More...</a><br /></td></tr>
-<tr class="separator:ac93fec6eda72651ee9cf158afdc96b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a98addfb4ee2d850f80972b715d7b76"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a1a98addfb4ee2d850f80972b715d7b76"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">PLI::HDF5::Dataset</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a1a98addfb4ee2d850f80972b715d7b76">create</a> (const hid_t parentPtr, const std::string &amp;datasetName, const std::vector&lt; hsize_t &gt; &amp;<a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a2ddda9ea49d95aabbad8cd298d4b3d3e">dims</a>, const std::vector&lt; hsize_t &gt; &amp;chunkDims={})</td></tr>
-<tr class="memdesc:a1a98addfb4ee2d850f80972b715d7b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new dataset with the given name. This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set.  <a href="classPLI_1_1HDF5_1_1Dataset.html#a1a98addfb4ee2d850f80972b715d7b76">More...</a><br /></td></tr>
-<tr class="separator:a1a98addfb4ee2d850f80972b715d7b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae46347a834f5524f9038d00afd7289b0"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ae46347a834f5524f9038d00afd7289b0">exists</a> (const hid_t parentPtr, const std::string &amp;datasetName)</td></tr>
 <tr class="memdesc:ae46347a834f5524f9038d00afd7289b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the dataset exists. Check if the dataset with the given name exists.  <a href="classPLI_1_1HDF5_1_1Dataset.html#ae46347a834f5524f9038d00afd7289b0">More...</a><br /></td></tr>
 <tr class="separator:ae46347a834f5524f9038d00afd7289b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,8 +167,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Create an empty dataset object. Calling other methods on this object will fail because no pointer to an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object is set. To open a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ac93fec6eda72651ee9cf158afdc96b4d" title="Open an existing dataset. This method tries to open an existing dataset with the given name....">PLI::HDF5::Dataset::open(const hid_t parentPtr, const std::string&amp;
-datasetName)</a>. To create a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a1a98addfb4ee2d850f80972b715d7b76" title="Create a new dataset with the given name. This method tries to create a new dataset with the given na...">PLI::HDF5::Dataset::create(const
+<p>Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> object Create an empty dataset object. Calling other methods on this object will fail because no pointer to an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object is set. To open a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#ac2da3c02f06d57236a1eecd0f11baf47" title="Open an existing dataset. This method tries to open an existing dataset with the given name....">PLI::HDF5::Dataset::open(const hid_t parentPtr, const std::string&amp;
+datasetName)</a>. To create a dataset, use <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a5e06af1843ada081949a5b9f92956a95" title="Create a new dataset with the given name. This method tries to create a new dataset with the given na...">PLI::HDF5::Dataset::create(const
 hid_t parentPtr, const std::string&amp; datasetName, const
 std::vector&lt;hsize_t&gt;&amp; dims, const std::vector&lt;hsize_t&gt;&amp; chunkDims)</a>. </p>
 
@@ -193,7 +193,7 @@ std::vector&lt;hsize_t&gt;&amp; dims, const std::vector&lt;hsize_t&gt;&amp; chun
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -268,19 +268,16 @@ std::vector&lt;hsize_t&gt;&amp; dims, const std::vector&lt;hsize_t&gt;&amp; chun
 
 </div>
 </div>
-<a id="a1a98addfb4ee2d850f80972b715d7b76" name="a1a98addfb4ee2d850f80972b715d7b76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a98addfb4ee2d850f80972b715d7b76">&#9670;&nbsp;</a></span>create()</h2>
+<a id="a5e06af1843ada081949a5b9f92956a95" name="a5e06af1843ada081949a5b9f92956a95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e06af1843ada081949a5b9f92956a95">&#9670;&nbsp;</a></span>create()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">PLI::HDF5::Dataset</a> PLI::HDF5::Dataset::create </td>
+          <td class="memname">void PLI::HDF5::Dataset::create </td>
           <td>(</td>
           <td class="paramtype">const hid_t&#160;</td>
           <td class="paramname"><em>parentPtr</em>, </td>
@@ -309,11 +306,6 @@ template&lt;typename T &gt; </div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Create a new dataset with the given name. This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. </p>
@@ -332,7 +324,6 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">PLI::HDF5::Dataset</a> New dataset object if successful. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException.html">PLI::HDF5::Exceptions::IdentifierNotValidException</a></td><td>If the parent or dataset pointer is invalid. </td></tr>
@@ -479,17 +470,14 @@ false <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset 
 
 </div>
 </div>
-<a id="ac93fec6eda72651ee9cf158afdc96b4d" name="ac93fec6eda72651ee9cf158afdc96b4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac93fec6eda72651ee9cf158afdc96b4d">&#9670;&nbsp;</a></span>open()</h2>
+<a id="ac2da3c02f06d57236a1eecd0f11baf47" name="ac2da3c02f06d57236a1eecd0f11baf47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2da3c02f06d57236a1eecd0f11baf47">&#9670;&nbsp;</a></span>open()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">PLI::HDF5::Dataset</a> PLI::HDF5::Dataset::open </td>
+          <td class="memname">void PLI::HDF5::Dataset::open </td>
           <td>(</td>
           <td class="paramtype">const hid_t&#160;</td>
           <td class="paramname"><em>parentPtr</em>, </td>
@@ -506,11 +494,6 @@ false <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset 
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Open an existing dataset. This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown. </p>
@@ -521,7 +504,6 @@ false <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset 
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">PLI::HDF5::Dataset</a> <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> if successful. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException.html">PLI::HDF5::Exceptions::IdentifierNotValidException</a></td><td>If the parent or dataset pointer is invalid. </td></tr>
@@ -599,7 +581,10 @@ template&lt;typename T &gt; </div>
 template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; T &gt; PLI::HDF5::Dataset::readFullDataset</td>
+          <td class="memname">std::vector&lt; T &gt; PLI::HDF5::Dataset::readFullDataset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
