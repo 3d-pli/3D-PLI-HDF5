@@ -3,18 +3,19 @@
 #include "PLIHDF5/dataset.h"
 
 template <typename T>
-PLI::HDF5::Dataset createDataset(const hid_t parentPtr, const std::string& datasetName,
-                                 const std::vector<hsize_t>& dims,
-                                 const std::vector<hsize_t>& chunkDims = {}) {
-    PLI::HDF5::Dataset dataset;
-    dataset.create<T>(parentPtr, datasetName, dims, chunkDims);
-    return dataset;
+PLI::HDF5::Dataset PLI::HDF5::createDataset(
+    const hid_t parentPtr, const std::string &datasetName,
+    const std::vector<hsize_t> &dims, const std::vector<hsize_t> &chunkDims) {
+  PLI::HDF5::Dataset dataset;
+  dataset.create<T>(parentPtr, datasetName, dims, chunkDims);
+  return dataset;
 }
 
 template <typename T>
-void PLI::HDF5::Dataset::create(
-    const hid_t parentPtr, const std::string &datasetName,
-    const std::vector<hsize_t> &dims, const std::vector<hsize_t> &chunkDims) {
+void PLI::HDF5::Dataset::create(const hid_t parentPtr,
+                                const std::string &datasetName,
+                                const std::vector<hsize_t> &dims,
+                                const std::vector<hsize_t> &chunkDims) {
   if (PLI::HDF5::Dataset::exists(parentPtr, datasetName)) {
     throw Exceptions::DatasetExistsException("Dataset alreadt exists!");
   }
