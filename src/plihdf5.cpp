@@ -28,7 +28,7 @@
 PLI::PLIM::PLIM(PLI::HDF5::File handler, const std::string &dataset) {
   if (PLI::HDF5::Dataset::exists(handler, dataset)) {
     PLI::HDF5::Dataset datasetHandler =
-        PLI::HDF5::Dataset::open(handler, dataset);
+        PLI::HDF5::openDataset(handler, dataset);
     m_attrHandler = PLI::HDF5::AttributeHandler(datasetHandler);
   } else {
     throw PLI::HDF5::Exceptions::DatasetNotFoundException(dataset);
