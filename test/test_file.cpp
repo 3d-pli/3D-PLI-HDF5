@@ -28,7 +28,21 @@
 #include "PLIHDF5/file.h"
 #include "testEnvironment.h"
 
-TEST(PLI_HDF5_File, Constructor) {
+class PLI_HDF5_File : public ::testing::Test {
+ protected:
+  void SetUp() override {}
+
+  void TearDown() override {
+    _file.close();
+    if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
+  }
+
+  const std::string _filePath =
+      std::filesystem::temp_directory_path() / "test_file.h5";
+  PLI::HDF5::File _file;
+};
+
+TEST_F(PLI_HDF5_File, Constructor) {
   EXPECT_NO_THROW({ auto h5f = PLI::HDF5::File(); });
 
   EXPECT_NO_THROW({
@@ -39,110 +53,111 @@ TEST(PLI_HDF5_File, Constructor) {
   // TODO: File(const hid_t filePtr, const hid_t faplID);
 }
 
-TEST(PLI_HDF5_File, Destructor) {
+TEST_F(PLI_HDF5_File, Destructor) {
   EXPECT_NO_THROW({  // invoke deconstroctor
     auto h5f = PLI::HDF5::File();
   });
 }
 
-TEST(PLI_HDF5_File, Create) {
+TEST_F(PLI_HDF5_File, Create) {
   {  // create file
     auto h5f = PLI::HDF5::File();
-    h5f.create(kTmpFile);
+    h5f.create(_filePath);
   }
 
   {  // create existing file
     auto h5f = PLI::HDF5::File();
-    EXPECT_THROW(h5f.create(kTmpFile),
+    EXPECT_THROW(h5f.create(_filePath),
                  PLI::HDF5::Exceptions::FileExistsException);
   }
 }
 
-TEST(PLI_HDF5_File, Open) {
+TEST_F(PLI_HDF5_File, Open) {
   {  // create dummy file
     auto h5f = PLI::HDF5::File();
-    h5f.create(kTmpFile);
+    h5f.create(_filePath);
+    h5f.close();
   }
 
   {  // open dummy file
     auto h5f = PLI::HDF5::File();
-    EXPECT_TRUE(h5f.open(kTmpFile, PLI::HDF5::File::OpenState::ReadWrite));
+    EXPECT_NO_THROW(h5f.open(_filePath, PLI::HDF5::File::OpenState::ReadWrite));
   }
 }
 
-TEST(PLI_HDF5_File, IsHDF5) {
+TEST_F(PLI_HDF5_File, IsHDF5) {
   {  // create dummy file
     auto h5f = PLI::HDF5::File();
-    h5f.create(kTmpFile);
+    h5f.create(_filePath);
+    h5f.close();
   }
 
-  ASSERT_TRUE(PLI::HDF5::File::isHDF5(kTmpFile));
+  ASSERT_TRUE(PLI::HDF5::File::isHDF5(_filePath));
 }
 
-TEST(PLI_HDF5_File, FileExists) {
+TEST_F(PLI_HDF5_File, FileExists) {
   {  // create dummy file
     auto h5f = PLI::HDF5::File();
-    h5f.create(kTmpFile);
+    h5f.create(_filePath);
   }
-  EXPECT_TRUE(PLI::HDF5::File::fileExists(kTmpFile));
+  EXPECT_TRUE(PLI::HDF5::File::fileExists(_filePath));
 }
 
-TEST(PLI_HDF5_File, Close) {
+TEST_F(PLI_HDF5_File, Close) {
   EXPECT_NO_THROW({
     auto h5f = PLI::HDF5::File();
-    h5f.create(kTmpFile);
+    h5f.create(_filePath);
     h5f.close();
   });
 }
 
-TEST(PLI_HDF5_File, Reopen) {
-  {  // reopen non set file object
+TEST_F(PLI_HDF5_File, Reopen) {
+  {  // reopen none set file object
     auto h5f = PLI::HDF5::File();
     EXPECT_ANY_THROW(h5f.reopen());
   }
 
-  {  // reopen closes file object
+  EXPECT_NO_THROW({  // reopen closed file object
     auto h5f = PLI::HDF5::File();
-    h5f.create(kTmpFile);
-    h5f.close();
+    h5f.create(_filePath);
+    h5f.flush();
     h5f.reopen();
-    std::filesystem::remove(kTmpFile);
-  }
+    std::filesystem::remove(_filePath);
+  });
 
-  {  // reopen removed file
+  {  // reopen closed file
     auto h5f = PLI::HDF5::File();
-    h5f.create(kTmpFile);
+    h5f.create(_filePath);
     h5f.close();
-    std::filesystem::remove(kTmpFile);
-    EXPECT_ANY_THROW(
-        h5f.reopen());  // ???: InvalidHDF5FileException or HDF5RuntimeException
+    EXPECT_THROW(h5f.reopen(),
+                 PLI::HDF5::Exceptions::IdentifierNotValidException);
   }
 }
 
-TEST(PLI_HDF5_File, Flush) {
+TEST_F(PLI_HDF5_File, Flush) {
   EXPECT_ANY_THROW({  // flush non created file
     auto h5f = PLI::HDF5::File();
     h5f.flush();
     // TODO: specify throw
   });
-  std::filesystem::remove(kTmpFile);
+  std::filesystem::remove(_filePath);
 
   EXPECT_NO_THROW({  // flush empty file
     auto h5f = PLI::HDF5::File();
-    h5f.create(kTmpFile);
+    h5f.create(_filePath);
     h5f.flush();
   });
 }
 
-TEST(PLI_HDF5_File, ID) {
+TEST_F(PLI_HDF5_File, ID) {
   auto h5f = PLI::HDF5::File();
-  h5f.create(kTmpFile);
+  h5f.create(_filePath);
   ASSERT_TRUE(h5f.id() >= 0);
 }
 
-TEST(PLI_HDF5_File, FaplID) {
+TEST_F(PLI_HDF5_File, FaplID) {
   auto h5f = PLI::HDF5::File();
-  h5f.create(kTmpFile);
+  h5f.create(_filePath);
   ASSERT_TRUE(h5f.faplID() >= 0);
 }
 

@@ -25,34 +25,19 @@
 
 #pragma once
 
-#include <filesystem>
-#include <string>
-
 #include <gtest/gtest.h>
 #include <mpi.h>
 
-auto const kTmpDir = std::filesystem::temp_directory_path();
-auto const kTmpFile = kTmpDir / "3d-pli-hdf5.h5";
-
-class MPIEnvironment : public ::testing::Environment
-{
-public:
-  virtual void SetUp()
-  {
+class MPIEnvironment : public ::testing::Environment {
+ public:
+  virtual void SetUp() {
     char **argv;
     int argc = 0;
     int mpiError = MPI_Init(&argc, &argv);
     ASSERT_FALSE(mpiError);
-
-    if (std::filesystem::exists(kTmpFile))
-      std::filesystem::remove(kTmpFile);
   }
 
-  virtual void TearDown()
-  {
-    if (std::filesystem::exists(kTmpFile))
-      std::filesystem::remove(kTmpFile);
-
+  virtual void TearDown() {
     int mpiError = MPI_Finalize();
     ASSERT_FALSE(mpiError);
   }
