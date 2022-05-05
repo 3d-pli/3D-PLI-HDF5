@@ -51,7 +51,8 @@ class Type {
 
   operator hid_t() const;
   operator std::string() const;
-  bool operator==(Type& other) const;
+  bool operator==(const Type& other) const;
+  bool operator!=(const Type& other) const;
 
  private:
   static std::string convertIDToName(const hid_t ID);
