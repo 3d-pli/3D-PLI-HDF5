@@ -52,24 +52,41 @@ class PLI_HDF5_Dataset : public ::testing::Test {
 };
 
 TEST_F(PLI_HDF5_Dataset, Exists) {
-  EXPECT_FALSE(PLI::HDF5::Dataset::exists(_file, _dsetPath));
-  auto dset =
-      PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims);
-  EXPECT_TRUE(PLI::HDF5::Dataset::exists(_file, _dsetPath));
-  dset.close();
+  {  // checking non existing dset
+    EXPECT_FALSE(PLI::HDF5::Dataset::exists(_file, _dsetPath));
+  }
+
+  {  // checking existing dset
+    auto dset =
+        PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims);
+    EXPECT_TRUE(PLI::HDF5::Dataset::exists(_file, _dsetPath));
+    dset.close();
+  }
 }
 
 TEST_F(PLI_HDF5_Dataset, Close) {
-  EXPECT_NO_THROW(  // close empty dataset
-      auto dset = PLI::HDF5::Dataset(); dset.close(););
+  {  // close empty dataset
+    EXPECT_NO_THROW(auto dset = PLI::HDF5::Dataset(); dset.close(););
+  }
 
-  EXPECT_NO_THROW(  // create dataset
-      auto dset =
-          PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims);
-      dset.close());
+  {  // close dataset
+    EXPECT_NO_THROW(auto dset = PLI::HDF5::createDataset<float>(
+                        _file, _dsetPath, _dims, _chunk_dims);
+                    dset.close());
+  }
 }
 
-TEST_F(PLI_HDF5_Dataset, Write) {}
+TEST_F(PLI_HDF5_Dataset, Write) {
+  {  // write empty dataset
+    auto dset =
+        PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims);
+    const std::vector<float> data(
+        std::accumulate(_dims.begin(), _dims.end(), 1, std::multiplies<int>()));
+    const std::vector<hsize_t> offset{{0, 0, 0}};
+    EXPECT_NO_THROW(dset.write(data, offset, _dims););
+    dset.close();
+  }
+}
 
 TEST_F(PLI_HDF5_Dataset, Type) {}
 
@@ -78,8 +95,9 @@ TEST_F(PLI_HDF5_Dataset, NDims) {}
 TEST_F(PLI_HDF5_Dataset, Dims) {}
 
 TEST_F(PLI_HDF5_Dataset, ID) {
-  EXPECT_NO_THROW(  // empty dataset
-      auto dset = PLI::HDF5::Dataset(); dset.id(); dset.close(););
+  {  // empty dataset
+    EXPECT_NO_THROW(auto dset = PLI::HDF5::Dataset(); dset.id(); dset.close(););
+  }
 }
 
 TEST_F(PLI_HDF5_Dataset, Open) {
