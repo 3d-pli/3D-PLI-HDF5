@@ -17,7 +17,7 @@ void PLI::HDF5::Dataset::create(const hid_t parentPtr,
                                 const std::vector<hsize_t> &dims,
                                 const std::vector<hsize_t> &chunkDims) {
   if (PLI::HDF5::Dataset::exists(parentPtr, datasetName)) {
-    throw Exceptions::DatasetExistsException("Dataset alreadt exists!");
+    throw Exceptions::DatasetExistsException("Dataset already exists!");
   }
 
   hid_t dcpl_id = H5P_DEFAULT;
@@ -38,7 +38,7 @@ void PLI::HDF5::Dataset::create(const hid_t parentPtr,
   hid_t dataspacePtr = H5Screate_simple(dims.size(), dims.data(), nullptr);
   checkHDF5Ptr(dataspacePtr, "H5Screate_simple");
   hid_t datasetPtr = H5Dcreate(parentPtr, datasetName.c_str(), dataType,
-                               dataspacePtr, dcpl_id, H5P_DEFAULT, H5P_DEFAULT);
+                               dataspacePtr, H5P_DEFAULT, dcpl_id, H5P_DEFAULT);
   checkHDF5Ptr(datasetPtr, "H5Dcreate");
   checkHDF5Call(H5Sclose(dataspacePtr), "H5Sclose");
 

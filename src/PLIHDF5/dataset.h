@@ -131,11 +131,64 @@ class Dataset {
    * not be closed.
    */
   void close();
+  /**
+   * @brief Read the whole dataset.
+   * This method reads the whole dataset and returns the data as a vector of
+   * the given type. Here, each MPI process will read the whole dataset.
+   * @tparam T Supported data types are: bool, char, unsigned char, short,
+   * unsigned short, int, unsigned int, long, unsigned long, long long,
+   * unsigned long long, float, double, long double.
+   * @return std::vector<T> 1D vector with the data.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
+   * not be read.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
+   * pointer is invalid.
+   */
   template <typename T>
   std::vector<T> readFullDataset() const;
+  /**
+   * @brief Read a sub-dataset.
+   * With this method, only a sub-area of the dataset can be read. The
+   * dimensions of the sub-dataset are given by the offset in each dimension
+   * and the count. The count is the number of elements to read in each
+   * dimension. The returned data type is determined by the template parameter.
+   * The conversion is handled by the HDF5 library.
+   * This method does not check if the selected area is valid. If it is out of
+   * bounds, an exception is thrown through an erronous HDF5 call.
+   * @tparam T Supported data types are: bool, char, unsigned char, short,
+   * unsigned short, int, unsigned int, long, unsigned long, long long,
+   * unsigned long long, float, double, long double.
+   * @param offset Offset in each dimension.
+   * @param count Number of elements to read in each dimension.
+   * @return std::vector<T> 1D vector with the data.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
+   * not be read.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
+   * pointer is invalid.
+   */
   template <typename T>
   std::vector<T> read(const std::vector<hsize_t>& offset,
                       const std::vector<hsize_t>& count) const;
+  /**
+   * @brief Write a sub-dataset.
+   * With this method, a selected area of the dataset can be written. The
+   * dimensions of the area are given by the offset in each dimension and the
+   * count. The count is the number of elements to write in each dimension.
+   * The data type is determined by the template parameter. The conversion is
+   * handled by the HDF5 library.
+   * This method does not check if the selected area is valid. If it is out of
+   * bounds, an exception is thrown through an erronous HDF5 call.
+   * @tparam T Supported data types are: bool, char, unsigned char, short,
+   * unsigned short, int, unsigned int, long, unsigned long, long long,
+   * unsigned long long, float, double, long double.
+   * @param data Data to write.
+   * @param offset Offset in each dimension.
+   * @param dims Number of elements to write in each dimension.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
+   * not be written.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
+   * pointer is invalid.
+   */
   template <typename T>
   void write(const std::vector<T>& data, const std::vector<hsize_t>& offset,
              const std::vector<hsize_t>& dims);
@@ -143,25 +196,25 @@ class Dataset {
   /**
    * @brief Get the type of the dataset.
    * @return const PLI::HDF5::Type Type of the dataset
-   * @throws PLI::HDF5::Exception":IdentifierNotValidException If the dataset is
-   * not valid or the type doesn't exist.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
+   * is not valid or the type doesn't exist.
    */
   const PLI::HDF5::Type type() const;
   /**
    * @brief Returns the number of dimensions of the dataset.
    * @return int The number of dimensions of the dataset.
-   * @throws PLI::HDF5::Exception:IdentifierNotValidException If the dataset is
-   * not valid.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
+   * is not valid.
    */
   int ndims() const;
   /**
    * @brief Returns the number of elements of the dataset.
    * @return const std::vector<hsize_t> The number of elements of the dataset in
    * each dimension.
-   * @throws PLI::HDF5::Exception:IdentifierNotValidException If the dataset is
-   * not valid.
-   * @throws PLI::HDF5::Exception:HDF5RuntimeException Error during closing the
-   * dataspace of the dataset.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
+   * is not valid.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException Error during closing
+   * the dataspace of the dataset.
    */
   const std::vector<hsize_t> dims() const;
   /**
