@@ -34,10 +34,7 @@
 
 class PLI_HDF5_Dataset : public ::testing::Test {
  protected:
-  void SetUp() override {
-    _file = PLI::HDF5::createFile(_filePath);
-    std::cerr << _file << std::endl;
-  }
+  void SetUp() override { _file = PLI::HDF5::createFile(_filePath); }
 
   void TearDown() override {
     _file.close();
@@ -53,13 +50,21 @@ class PLI_HDF5_Dataset : public ::testing::Test {
 
 TEST_F(PLI_HDF5_Dataset, Exists) {
   EXPECT_FALSE(PLI::HDF5::Dataset::exists(_file, _dsetPath));
-
   auto dset =
       PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims);
   EXPECT_TRUE(PLI::HDF5::Dataset::exists(_file, _dsetPath));
+  dset.close();
 }
 
-TEST_F(PLI_HDF5_Dataset, Close) {}
+TEST_F(PLI_HDF5_Dataset, Close) {
+  EXPECT_NO_THROW(  // close empty dataset
+      auto dset = PLI::HDF5::Dataset(); dset.close(););
+
+  EXPECT_NO_THROW(  // create dataset
+      auto dset =
+          PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims);
+      dset.close());
+}
 
 TEST_F(PLI_HDF5_Dataset, Write) {}
 
@@ -69,21 +74,32 @@ TEST_F(PLI_HDF5_Dataset, NDims) {}
 
 TEST_F(PLI_HDF5_Dataset, Dims) {}
 
-TEST_F(PLI_HDF5_Dataset, ID) {}
+TEST_F(PLI_HDF5_Dataset, ID) {
+  EXPECT_NO_THROW(  // empty dataset
+      auto dset = PLI::HDF5::Dataset(); dset.id(); dset.close(););
+}
 
-TEST_F(PLI_HDF5_Dataset, Open) {}
+TEST_F(PLI_HDF5_Dataset, Open) {
+  EXPECT_NO_THROW(  // create dataset
+      auto dset =
+          PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims);
+      dset.close(); PLI::HDF5::openDataset(_file, _dsetPath););
+}
 
 TEST_F(PLI_HDF5_Dataset, Create) {
   EXPECT_NO_THROW(  // create dataset
-      PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims););
+      auto dset =
+          PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims);
+      dset.close());
 
   EXPECT_THROW(  // recreate dataset
-      PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims);
+      auto dset =
+          PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims);
       , PLI::HDF5::Exceptions::DatasetExistsException);
 
   EXPECT_THROW(  // create dataset in not existing group
-      PLI::HDF5::createDataset<float>(_file, "/not_existing_grp/dset", _dims,
-                                      _chunk_dims);
+      auto dset = PLI::HDF5::createDataset<float>(
+          _file, "/not_existing_grp/dset", _dims, _chunk_dims);
       , PLI::HDF5::Exceptions::IdentifierNotValidException);
 }
 
