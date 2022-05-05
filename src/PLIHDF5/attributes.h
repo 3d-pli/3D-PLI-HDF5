@@ -55,6 +55,7 @@ namespace PLI {
 namespace HDF5 {
 /**
  * @brief Add attributes to an HDF5 file, group, or dataset.
+ *
  * This class allows to add, modify or delete attributes stored in an HDF5 file.
  * The class works on the pointers returned by the HDF5 library. The pointers
  * are available from the other classes of this library.
@@ -63,6 +64,7 @@ class AttributeHandler {
  public:
   /**
    * @brief Construct a new Attribute Handler object
+   *
    * Construct a new Attribute Handler object not associated with any HDF5
    * object. The object cannot be used to store attributes until the
    * setPtr(const hid_t parentPtr) method is called.
@@ -93,7 +95,9 @@ class AttributeHandler {
   bool attributeExists(const std::string& attributeName) const;
   /**
    * @brief Return the names of all attributes stored in the HDF5 object
-   * pointer. This method searches for all attribute names stored in the HDF5
+   * pointer.
+   *
+   * This method searches for all attribute names stored in the HDF5
    * object pointer. For each attribute name a std::string is returned. The
    * order of the names is defined by the HDF5 library. The search parameters
    * are the same as for the HDF5 library function H5Aget_name_by_idx with
@@ -112,6 +116,7 @@ class AttributeHandler {
 
   /**
    * @brief Create a Attribute object
+   *
    * This method creates an attribute with the given name. The
    * content and dimensions are defined by the other arguments.
    * This method is intended to be used if more than one object needs to be
@@ -135,6 +140,7 @@ class AttributeHandler {
                        const std::vector<hsize_t>& dimensions);
   /**
    * @brief Create a Attribute object
+   *
    * This method creates an attribute with the given name. The
    * content and dimensions are defined by the other arguments.
    * This method is intended to be used if only one object needs to be stored.
@@ -155,6 +161,7 @@ class AttributeHandler {
                        const PLI::HDF5::Type dataType);
   /**
    * @brief Create a Attribute object
+   *
    * This method creates an attribute with the given name. This method will
    * only store a single parameter of the given type. The datatype is defined by
    * the template.
@@ -174,6 +181,7 @@ class AttributeHandler {
   void createAttribute(const std::string& attributeName, const T& content);
   /**
    * @brief Create a Attribute object
+   *
    * This method creates an attribute with the given name. This method will
    * only store a single parameter of the given type. The datatype is defined by
    * the type parameter.
@@ -192,6 +200,7 @@ class AttributeHandler {
 
   /**
    * @brief Copy an attribute from this AttributeHandler to another one.
+   *
    * This method copies an attribute from this AttributeHandler to another one.
    * The datatype is defined by the source datatype.
    * @param dstHandler Desination AttributeHandler.
@@ -206,6 +215,7 @@ class AttributeHandler {
               const std::string& srcName, const std::string& dstName) const;
   /**
    * @brief Copy an attribute from another AttributeHandler to this one.
+   *
    * This method copies an attribute from another AttributeHandler to this one.
    * The datatype is defined by the source datatype.
    * @param srcHandler Source AttributeHandler
@@ -220,6 +230,7 @@ class AttributeHandler {
                 const std::string& srcName, const std::string& dstName);
   /**
    * @brief Copy all attributes from another AttributeHandler to this one.
+   *
    * This method copies all attributes from another AttributeHandler to this
    * one. Exceptions can be defined through the exceptions parameter. Those
    * attributes will be skipped instead. The datatype will be defined by the
@@ -238,6 +249,7 @@ class AttributeHandler {
       const std::vector<std::string>& exceptions = std::vector<std::string>());
   /**
    * @brief Copy all attributes to another AttributeHandler from this one.
+   *
    * This method copies all attributes to another AttributeHandler from this
    * one. Exceptions can be defined through the exceptions parameter. Those
    * attributes will be skipped instead. The datatype will be defined by the
@@ -257,7 +269,9 @@ class AttributeHandler {
 
   /**
    * @brief Remove attribute with the given attributeName from the HDF5 object
-   * pointer. This method tries to delete the attribute with the given
+   * pointer.
+   *
+   * This method tries to delete the attribute with the given
    * attributeName from the HDF5 object pointer. Please note that the behaviour
    * of this method is undefined when the method
    * PLI::HDF5::AttributeHandler::attributePtr(const std::string& attributeName)
@@ -271,6 +285,7 @@ class AttributeHandler {
 
   /**
    * @brief Get the raw pointer of the attribute with the given attributeName.
+   *
    * This method opens the attribute with the given attributeName and returns
    * the raw pointer. Because HDF5 allocates memory and expects the pointer to
    * be closed manually, the pointer has to be closed manually. If not, the
@@ -287,6 +302,7 @@ class AttributeHandler {
 
   /**
    * @brief Get the Attribute object
+   *
    * This method returns the Attribute object with the given attributeName.
    * The type of the returned attribute is defined by the template.
    * The conversion is done by the HDF5 library.
@@ -309,6 +325,7 @@ class AttributeHandler {
   const std::vector<T> getAttribute(const std::string& attributeName) const;
   /**
    * @brief Get the Attribute Dimensions object
+   *
    * This method checks the dimensions of the attribute with the given
    * attributeName.
    * @param attributeName Name of the attribute to be returned.
@@ -325,6 +342,7 @@ class AttributeHandler {
 
   /**
    * @brief Update attribute with new content.
+   *
    * This method updates the attribute with the given attributeName with the new
    * content. The type of the attribute is defined by the template. This method
    * is used for a single object. For a vector of objects, use the other
@@ -345,6 +363,7 @@ class AttributeHandler {
   void updateAttribute(const std::string& attributeName, const T& content);
   /**
    * @brief Update attribute with new content.
+   *
    * This method updates the attribute with the given attributeName with the new
    * content. The type of the attribute is defined by the template. This method
    * is used for a vector of objects. For a single object use the other options.
@@ -367,6 +386,7 @@ class AttributeHandler {
                        const std::vector<hsize_t>& dimensions);
   /**
    * @brief Update attribute with new content.
+   *
    * This method updates the attribute with the given attributeName with the new
    * content. The type of the attribute is defined by the template. This method
    * is used for a single object. For a vector of objects, use the other
@@ -386,6 +406,7 @@ class AttributeHandler {
                        const PLI::HDF5::Type dataType);
   /**
    * @brief Update attribute with new content.
+   *
    * This method updates the attribute with the given attributeName with the new
    * content. The type of the attribute is defined by the template. This method
    * is used for a vector of objects. For a single object use the other options.

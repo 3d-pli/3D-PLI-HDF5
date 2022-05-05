@@ -52,6 +52,7 @@ class Dataset {
  public:
   /**
    * @brief Construct a new Dataset object
+   *
    * Create an empty dataset object. Calling other methods on this object will
    * fail because no pointer to an HDF5 object is set. To open a dataset, use
    * PLI::HDF5::Dataset::open(const hid_t parentPtr, const std::string&
@@ -62,6 +63,7 @@ class Dataset {
   Dataset() noexcept;
   /**
    * @brief Construct a new Dataset object
+   *
    * Construct a new dataset object by using the given pointer of another
    * dataset object.
    * @param otherFile Other dataset object.
@@ -69,12 +71,14 @@ class Dataset {
   Dataset(const Dataset& otherFile) noexcept;
   /**
    * @brief Construct a new Dataset object
+   *
    * Construct a new dataset object by using an existing HDF5 pointer.
    * @param datasetPtr HDF5 pointer to an existing dataset.
    */
   explicit Dataset(hid_t datasetPtr) noexcept;
   /**
    * @brief Open an existing dataset.
+   *
    * This method tries to open an existing dataset with the given name. If the
    * dataset does not exist, an exception is thrown.
    * @param parentPtr File or group pointer.
@@ -87,6 +91,7 @@ class Dataset {
   void open(const hid_t parentPtr, const std::string& datasetName);
   /**
    * @brief Create a new dataset with the given name.
+   *
    * This method tries to create a new dataset with the given name. If the
    * dataset already exists, an exception is thrown.
    * The dimensions of the dataset need to be set during the method call.
@@ -112,6 +117,7 @@ class Dataset {
               const std::vector<hsize_t>& chunkDims = {});
   /**
    * @brief Check if the dataset exists.
+   *
    * Check if the dataset with the given name exists.
    * @param parentPtr Raw HDF5 pointer to a file or group.
    * @param datasetName Name of the dataset.
@@ -124,6 +130,7 @@ class Dataset {
 
   /**
    * @brief Closes the dataset if it is valid.
+   *
    * If the dataset is valid, it is closed. The dataset pointer is then set to
    * an invalid value (-1) to ensure, that calls will result in an exception
    * afterwards.
@@ -133,6 +140,7 @@ class Dataset {
   void close();
   /**
    * @brief Read the whole dataset.
+   *
    * This method reads the whole dataset and returns the data as a vector of
    * the given type. Here, each MPI process will read the whole dataset.
    * @tparam T Supported data types are: bool, char, unsigned char, short,
@@ -148,6 +156,7 @@ class Dataset {
   std::vector<T> readFullDataset() const;
   /**
    * @brief Read a sub-dataset.
+   *
    * With this method, only a sub-area of the dataset can be read. The
    * dimensions of the sub-dataset are given by the offset in each dimension
    * and the count. The count is the number of elements to read in each
@@ -171,6 +180,7 @@ class Dataset {
                       const std::vector<hsize_t>& count) const;
   /**
    * @brief Write a sub-dataset.
+   *
    * With this method, a selected area of the dataset can be written. The
    * dimensions of the area are given by the offset in each dimension and the
    * count. The count is the number of elements to write in each dimension.
@@ -195,6 +205,7 @@ class Dataset {
 
   /**
    * @brief Get the type of the dataset.
+   *
    * @return const PLI::HDF5::Type Type of the dataset
    * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
    * is not valid or the type doesn't exist.
@@ -219,6 +230,7 @@ class Dataset {
   const std::vector<hsize_t> dims() const;
   /**
    * @brief Get the raw HDF5 pointer of the dataset.
+   *
    * Returns the raw HDF5 pointer of the dataset. This pointer can be used to
    * access the dataset using the HDF5 library.
    * @return hid_t Dataset ID stored in the object.
@@ -237,6 +249,7 @@ class Dataset {
 
 /**
  * @brief Open an existing dataset.
+ *
  * This method tries to open an existing dataset with the given name. If the
  * dataset does not exist, an exception is thrown.
  * @param parentPtr File or group pointer.
@@ -251,6 +264,7 @@ PLI::HDF5::Dataset openDataset(const hid_t parentPtr,
                                const std::string& datasetName);
 /**
  * @brief Create a new dataset with the given name.
+ *
  * This method tries to create a new dataset with the given name. If the
  * dataset already exists, an exception is thrown.
  * The dimensions of the dataset need to be set during the method call.
