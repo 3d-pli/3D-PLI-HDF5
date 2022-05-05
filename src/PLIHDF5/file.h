@@ -51,6 +51,7 @@ class File {
 
   /**
    * @brief Construct a new File object
+   *
    * Create an empty file object. Calling other methods on this object will fail
    * because no pointer to an HDF5 object is set. To open a file, use
    * PLI::HDF5::File::open(const std::string& fileName). To create a file, use
@@ -59,6 +60,7 @@ class File {
   File();
   /**
    * @brief Construct a new File object
+   *
    * Construct a new file object by using the given pointer of another file
    * object.
    * @param otherFile Other file object.
@@ -66,6 +68,7 @@ class File {
   File(const File& otherFile);
   /**
    * @brief Construct a new File object
+   *
    * Construct a new file object by using the given pointer of another file
    * object.
    * @param filePtr File pointer.
@@ -75,6 +78,7 @@ class File {
 
   /**
    * @brief Create a new file.
+   *
    * Create a new file. Per default, the file is created with
    * MPI file access.
    * @param fileName File name.
@@ -88,6 +92,7 @@ class File {
   void create(const std::string& fileName);
   /**
    * @brief Open an existing file.
+   *
    * This method tries to open an existing file. If the file doesnt exist, an
    * exception is thrown. The file will be opened with MPI file access. By using
    * the openState variable, one can choose between opening the file in
@@ -112,6 +117,7 @@ class File {
 
   /**
    * @brief Check if the file is a valid HDF5 file.
+   *
    * This method checks if the file is a valid HDF5 file that can be opened with
    * this library.
    * @param fileName Filename of the file.
@@ -129,6 +135,7 @@ class File {
 
   /**
    * @brief Closes the file if it is valid.
+   *
    * If the file is valid, it is closed. The file pointer is then set to
    * an invalid value (-1) to ensure, that calls will result in an exception
    * afterwards.
@@ -138,6 +145,7 @@ class File {
   void close();
   /**
    * @brief Reopen the file.
+   *
    * This method tries to reopen the file for reading. If the original pointer
    * is invalid or the reopen failed, an exception is thrown.
    * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the file
@@ -177,6 +185,7 @@ class File {
 
 /**
  * @brief Create a new file object.
+ *
  * Create a new file object. Per default, the file is created with
  * MPI file access.
  * @param fileName File name.
@@ -192,6 +201,7 @@ PLI::HDF5::File createFile(const std::string& fileName);
 
 /**
  * @brief Open an existing file object.
+ *
  * This method tries to open an existing file. If the file doesnt exist, an
  * exception is thrown. The file will be opened with MPI file access. By using
  * the openState variable, one can choose between opening the file in

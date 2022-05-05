@@ -48,6 +48,7 @@ class Group {
  public:
   /**
    * @brief Construct a new Group object
+   *
    * Create an empty group object. Calling other methods on this object will
    * fail because no pointer to an HDF5 object is set. To open a group, use
    * PLI::HDF5::Group::open(hid_t parentPtr, const std::string& groupName). To
@@ -57,6 +58,7 @@ class Group {
   Group() noexcept;
   /**
    * @brief Construct a new Group object
+   *
    * Construct a new group object by using the given HDF5 pointer of another
    * group object.
    * @param otherGroup Other group object.
@@ -64,6 +66,7 @@ class Group {
   explicit Group(const hid_t groupPtr) noexcept;
   /**
    * @brief Opens a group
+   *
    * Open an existing group. If the group does not exist, an exception is
    * thrown.
    * @param parentPtr Pointer to the parent group or file.
@@ -76,6 +79,7 @@ class Group {
   void open(hid_t parentPtr, const std::string& groupName);
   /**
    * @brief Creates a group
+   *
    * Create a new group. If the group already exists, an exception is thrown.
    * @param parentPtr Pointer to the parent group or file.
    * @param groupName Name of the group to create.
@@ -98,6 +102,7 @@ class Group {
 
   /**
    * @brief Closes the group if it is valid.
+   *
    * If the dataset is valid, it is closed. The group pointer is then set to
    * an invalid value (-1) to ensure, that calls will result in an exception
    * afterwards.
@@ -107,6 +112,7 @@ class Group {
   void close();
   /**
    * @brief Get the raw HDF5 pointer of the group.
+   *
    * Returns the raw HDF5 pointer of the group. This pointer can be used to
    * access the group using the HDF5 library.
    * @return hid_t Group ID stored in the object.
