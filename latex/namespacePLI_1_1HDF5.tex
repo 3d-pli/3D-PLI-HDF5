@@ -14,7 +14,7 @@ namespace \mbox{\hyperlink{namespacePLI_1_1HDF5_1_1Exceptions}{Exceptions}}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}}
-\begin{DoxyCompactList}\small\item\em Add attributes to an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file, group, or dataset. This class allows to add, modify or delete attributes stored in an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. The class works on the pointers returned by the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library. The pointers are available from the other classes of this library. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Add attributes to an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file, group, or dataset. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} wrapper class. Create and store or read data in an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} dataset. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}}
@@ -29,17 +29,17 @@ class \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \mbox{\hyperlink{namespacePLI_1_1HDF5_ab40573c6538568ac633f7e87f8fa9159}{open\+Dataset}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name)
-\begin{DoxyCompactList}\small\item\em Open an existing dataset. This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Open an existing dataset. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \mbox{\hyperlink{namespacePLI_1_1HDF5_aed80fd77e0d8828173c0e8848c135a43}{create\+Dataset}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name, const std\+::vector$<$ hsize\+\_\+t $>$ \&dims, const std\+::vector$<$ hsize\+\_\+t $>$ \&chunk\+Dims=\{\})
-\begin{DoxyCompactList}\small\item\em Create a new dataset with the given name. This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Create a new dataset with the given name. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacePLI_1_1HDF5_ac221711f37b19deb37331fc25e818729}{check\+HDF5\+Call}} (const herr\+\_\+t hdf5\+Return\+Value, const std\+::string \&message=\char`\"{}None\char`\"{})
 \item 
 void \mbox{\hyperlink{namespacePLI_1_1HDF5_a7bece20d07576e8ec3feb4a16a3ce38b}{check\+HDF5\+Ptr}} (const hid\+\_\+t hdf5\+Ptr, const std\+::string \&message=\char`\"{}None\char`\"{})
 \item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} \mbox{\hyperlink{namespacePLI_1_1HDF5_a7036041ef51baaaea1f3aa1263a765f7}{create\+File}} (const std\+::string \&file\+Name)
-\begin{DoxyCompactList}\small\item\em Create a new file object. Create a new file object. Per default, the file is created with MPI file access. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Create a new file object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} \mbox{\hyperlink{namespacePLI_1_1HDF5_a793947fa88ab4a9dbb2931da321dfba5}{open\+File}} (const std\+::string \&file\+Name, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{File\+::\+Open\+State}} open\+State=File\+::\+Open\+State\+::\+Read\+Only)
-\begin{DoxyCompactList}\small\item\em Open an existing file object. This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the open\+State variable, one can choose between opening the file in read-\/only mode or in read-\/write mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only will open the file in read-\/only mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write will open the file in read-\/write mode. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Open an existing file object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \mbox{\hyperlink{namespacePLI_1_1HDF5_a906ea863179d6d9e70ad870ae8493b1c}{open\+Group}} (hid\+\_\+t parent\+Ptr, const std\+::string \&group\+Name)
 \begin{DoxyCompactList}\small\item\em Opens a group Open an existing group. If the group does not exist, an exception is thrown. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \mbox{\hyperlink{namespacePLI_1_1HDF5_afa37c2d03829282fd6865a975fe83525}{create\+Group}} (hid\+\_\+t parent\+Ptr, const std\+::string \&group\+Name)
@@ -71,9 +71,9 @@ The \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} namespace.
 
 
 
-Create a new dataset with the given name. This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. 
+Create a new dataset with the given name. 
 
-
+This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. 
 \begin{DoxyTemplParams}{Template Parameters}
 {\em T} & Supported data types are\+: bool, char, unsigned char, short, unsigned short, int, unsigned int, long, unsigned long, long long, unsigned long long, float, double, long double. \\
 \hline
@@ -109,9 +109,9 @@ Create a new dataset with the given name. This method tries to create a new data
 
 
 
-Create a new file object. Create a new file object. Per default, the file is created with MPI file access. 
+Create a new file object. 
 
-
+Create a new file object. Per default, the file is created with MPI file access. 
 \begin{DoxyParams}{Parameters}
 {\em file\+Name} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} name. \\
 \hline
@@ -163,9 +163,9 @@ Creates a group Create a new group. If the group already exists, an exception is
 
 
 
-Open an existing dataset. This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown. 
+Open an existing dataset. 
 
-
+This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown. 
 \begin{DoxyParams}{Parameters}
 {\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group pointer. \\
 \hline
@@ -190,9 +190,9 @@ Open an existing dataset. This method tries to open an existing dataset with the
 
 
 
-Open an existing file object. This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the open\+State variable, one can choose between opening the file in read-\/only mode or in read-\/write mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only will open the file in read-\/only mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write will open the file in read-\/write mode. 
+Open an existing file object. 
 
-
+This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the open\+State variable, one can choose between opening the file in read-\/only mode or in read-\/write mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only will open the file in read-\/only mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write will open the file in read-\/write mode. 
 \begin{DoxyParams}{Parameters}
 {\em file\+Name} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} name which will be opened. \\
 \hline

@@ -87,7 +87,7 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html">AttributeHandler</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add attributes to an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> file, group, or dataset. This class allows to add, modify or delete attributes stored in an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> file. The class works on the pointers returned by the <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> library. The pointers are available from the other classes of this library.  <a href="classPLI_1_1HDF5_1_1AttributeHandler.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add attributes to an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> file, group, or dataset.  <a href="classPLI_1_1HDF5_1_1AttributeHandler.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">Dataset</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> wrapper class. Create and store or read data in an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> dataset.  <a href="classPLI_1_1HDF5_1_1Dataset.html#details">More...</a><br /></td></tr>
@@ -107,21 +107,21 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab40573c6538568ac633f7e87f8fa9159"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">PLI::HDF5::Dataset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePLI_1_1HDF5.html#ab40573c6538568ac633f7e87f8fa9159">openDataset</a> (const hid_t parentPtr, const std::string &amp;datasetName)</td></tr>
-<tr class="memdesc:ab40573c6538568ac633f7e87f8fa9159"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open an existing dataset. This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown.  <a href="namespacePLI_1_1HDF5.html#ab40573c6538568ac633f7e87f8fa9159">More...</a><br /></td></tr>
+<tr class="memdesc:ab40573c6538568ac633f7e87f8fa9159"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open an existing dataset.  <a href="namespacePLI_1_1HDF5.html#ab40573c6538568ac633f7e87f8fa9159">More...</a><br /></td></tr>
 <tr class="separator:ab40573c6538568ac633f7e87f8fa9159"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed80fd77e0d8828173c0e8848c135a43"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aed80fd77e0d8828173c0e8848c135a43"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">PLI::HDF5::Dataset</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePLI_1_1HDF5.html#aed80fd77e0d8828173c0e8848c135a43">createDataset</a> (const hid_t parentPtr, const std::string &amp;datasetName, const std::vector&lt; hsize_t &gt; &amp;dims, const std::vector&lt; hsize_t &gt; &amp;chunkDims={})</td></tr>
-<tr class="memdesc:aed80fd77e0d8828173c0e8848c135a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new dataset with the given name. This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set.  <a href="namespacePLI_1_1HDF5.html#aed80fd77e0d8828173c0e8848c135a43">More...</a><br /></td></tr>
+<tr class="memdesc:aed80fd77e0d8828173c0e8848c135a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new dataset with the given name.  <a href="namespacePLI_1_1HDF5.html#aed80fd77e0d8828173c0e8848c135a43">More...</a><br /></td></tr>
 <tr class="separator:aed80fd77e0d8828173c0e8848c135a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac221711f37b19deb37331fc25e818729"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePLI_1_1HDF5.html#ac221711f37b19deb37331fc25e818729">checkHDF5Call</a> (const herr_t hdf5ReturnValue, const std::string &amp;message=&quot;None&quot;)</td></tr>
 <tr class="separator:ac221711f37b19deb37331fc25e818729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7bece20d07576e8ec3feb4a16a3ce38b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePLI_1_1HDF5.html#a7bece20d07576e8ec3feb4a16a3ce38b">checkHDF5Ptr</a> (const hid_t hdf5Ptr, const std::string &amp;message=&quot;None&quot;)</td></tr>
 <tr class="separator:a7bece20d07576e8ec3feb4a16a3ce38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7036041ef51baaaea1f3aa1263a765f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1File.html">PLI::HDF5::File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePLI_1_1HDF5.html#a7036041ef51baaaea1f3aa1263a765f7">createFile</a> (const std::string &amp;fileName)</td></tr>
-<tr class="memdesc:a7036041ef51baaaea1f3aa1263a765f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new file object. Create a new file object. Per default, the file is created with MPI file access.  <a href="namespacePLI_1_1HDF5.html#a7036041ef51baaaea1f3aa1263a765f7">More...</a><br /></td></tr>
+<tr class="memdesc:a7036041ef51baaaea1f3aa1263a765f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new file object.  <a href="namespacePLI_1_1HDF5.html#a7036041ef51baaaea1f3aa1263a765f7">More...</a><br /></td></tr>
 <tr class="separator:a7036041ef51baaaea1f3aa1263a765f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a793947fa88ab4a9dbb2931da321dfba5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1File.html">PLI::HDF5::File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePLI_1_1HDF5.html#a793947fa88ab4a9dbb2931da321dfba5">openFile</a> (const std::string &amp;fileName, const <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5">File::OpenState</a> openState=File::OpenState::ReadOnly)</td></tr>
-<tr class="memdesc:a793947fa88ab4a9dbb2931da321dfba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open an existing file object. This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the openState variable, one can choose between opening the file in read-only mode or in read-write mode. Setting openState to PLI::HDF5::File::OpenState::ReadOnly will open the file in read-only mode. Setting openState to PLI::HDF5::File::OpenState::ReadWrite will open the file in read-write mode.  <a href="namespacePLI_1_1HDF5.html#a793947fa88ab4a9dbb2931da321dfba5">More...</a><br /></td></tr>
+<tr class="memdesc:a793947fa88ab4a9dbb2931da321dfba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open an existing file object.  <a href="namespacePLI_1_1HDF5.html#a793947fa88ab4a9dbb2931da321dfba5">More...</a><br /></td></tr>
 <tr class="separator:a793947fa88ab4a9dbb2931da321dfba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a906ea863179d6d9e70ad870ae8493b1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Group.html">PLI::HDF5::Group</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePLI_1_1HDF5.html#a906ea863179d6d9e70ad870ae8493b1c">openGroup</a> (hid_t parentPtr, const std::string &amp;groupName)</td></tr>
 <tr class="memdesc:a906ea863179d6d9e70ad870ae8493b1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a group Open an existing group. If the group does not exist, an exception is thrown.  <a href="namespacePLI_1_1HDF5.html#a906ea863179d6d9e70ad870ae8493b1c">More...</a><br /></td></tr>
@@ -229,8 +229,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Create a new dataset with the given name. This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Create a new dataset with the given name. </p>
+<p >This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>Supported data types are: bool, char, unsigned char, short, unsigned short, int, unsigned int, long, unsigned long, long long, unsigned long long, float, double, long double. </td></tr>
   </table>
@@ -273,8 +273,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Create a new file object. Create a new file object. Per default, the file is created with MPI file access. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Create a new file object. </p>
+<p >Create a new file object. Per default, the file is created with MPI file access. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fileName</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> name. </td></tr>
   </table>
@@ -363,8 +363,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Open an existing dataset. This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Open an existing dataset. </p>
+<p >This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">parentPtr</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> or group pointer. </td></tr>
     <tr><td class="paramname">datasetName</td><td>Name of the dataset to open. </td></tr>
@@ -408,8 +408,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Open an existing file object. This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the openState variable, one can choose between opening the file in read-only mode or in read-write mode. Setting openState to PLI::HDF5::File::OpenState::ReadOnly will open the file in read-only mode. Setting openState to PLI::HDF5::File::OpenState::ReadWrite will open the file in read-write mode. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Open an existing file object. </p>
+<p >This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the openState variable, one can choose between opening the file in read-only mode or in read-write mode. Setting openState to PLI::HDF5::File::OpenState::ReadOnly will open the file in read-only mode. Setting openState to PLI::HDF5::File::OpenState::ReadWrite will open the file in read-write mode. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fileName</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> name which will be opened. </td></tr>
     <tr><td class="paramname">openState</td><td>OpenState variable. Available values are PLI::HDF5::File::OpenState::ReadOnly and PLI::HDF5::File::OpenState::ReadWrite. </td></tr>
