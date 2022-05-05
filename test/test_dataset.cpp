@@ -25,52 +25,67 @@
 
 #include <gtest/gtest.h>
 
+#include <filesystem>
+#include <numeric>
+
 #include "PLIHDF5/dataset.h"
 #include "PLIHDF5/file.h"
 #include "testEnvironment.h"
 
-class DatasetFixtureTest : public ::testing::Test {
+class PLI_HDF5_Dataset : public ::testing::Test {
  protected:
   void SetUp() override {
-    _filePath = "test_dataset.h5";
-    _copyFilePath = "test_dataset.h5.bak";
-    // std::filesystem::copy_file(
-    //     _filePath, _copyFilePath,
-    //     std::filesystem::copy_options::overwrite_existing);
-    // _file = PLI::HDF5::File::open(_filePath, H5F_ACC_RDWR);
-    // _dataset = PLI::HDF5::Dataset::open(_file, "test");
+    _file = PLI::HDF5::createFile(_filePath);
+    std::cerr << _file << std::endl;
   }
 
   void TearDown() override {
-    _dataset.close();
     _file.close();
-    // std::filesystem::copy_file(
-    //     _copyFilePath, _filePath,
-    //     std::filesystem::copy_options::overwrite_existing);
+    if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
   }
-
-  std::string _filePath, _copyFilePath;
+  const std::vector<hsize_t> _dims{{256, 256, 9}};
+  const std::vector<hsize_t> _chunk_dims{{256, 256, 9}};
+  const std::string _filePath =
+      std::filesystem::temp_directory_path() / "test_group.h5";
+  const std::string _dsetPath = "/Image";
   PLI::HDF5::File _file;
-  PLI::HDF5::Dataset _dataset;
 };
 
-TEST_F(DatasetFixtureTest, Exists) {}
+TEST_F(PLI_HDF5_Dataset, Exists) {
+  EXPECT_FALSE(PLI::HDF5::Dataset::exists(_file, _dsetPath));
 
-TEST_F(DatasetFixtureTest, Close) {}
+  auto dset =
+      PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims);
+  EXPECT_TRUE(PLI::HDF5::Dataset::exists(_file, _dsetPath));
+}
 
-TEST_F(DatasetFixtureTest, Write) {}
+TEST_F(PLI_HDF5_Dataset, Close) {}
 
-TEST_F(DatasetFixtureTest, Type) {}
+TEST_F(PLI_HDF5_Dataset, Write) {}
 
-TEST_F(DatasetFixtureTest, NDims) {}
+TEST_F(PLI_HDF5_Dataset, Type) {}
 
-TEST_F(DatasetFixtureTest, Dims) {}
+TEST_F(PLI_HDF5_Dataset, NDims) {}
 
-TEST_F(DatasetFixtureTest, ID) {}
+TEST_F(PLI_HDF5_Dataset, Dims) {}
 
-TEST(DatasetTest, Open) {}
+TEST_F(PLI_HDF5_Dataset, ID) {}
 
-TEST(DatasetTest, Create) {}
+TEST_F(PLI_HDF5_Dataset, Open) {}
+
+TEST_F(PLI_HDF5_Dataset, Create) {
+  EXPECT_NO_THROW(  // create dataset
+      PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims););
+
+  EXPECT_THROW(  // recreate dataset
+      PLI::HDF5::createDataset<float>(_file, _dsetPath, _dims, _chunk_dims);
+      , PLI::HDF5::Exceptions::DatasetExistsException);
+
+  EXPECT_THROW(  // create dataset in not existing group
+      PLI::HDF5::createDataset<float>(_file, "/not_existing_grp/dset", _dims,
+                                      _chunk_dims);
+      , PLI::HDF5::Exceptions::IdentifierNotValidException);
+}
 
 int main(int argc, char* argv[]) {
   int result = 0;
