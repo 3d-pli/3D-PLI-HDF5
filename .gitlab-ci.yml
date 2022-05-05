@@ -5,6 +5,8 @@ stages:
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
+  OMPI_ALLOW_RUN_AS_ROOT: 1 
+  OMPI_ALLOW_RUN_AS_ROOT_CONFIRM: 1
 
 before_script:
   - apt-get update -qq
