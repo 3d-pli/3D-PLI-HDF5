@@ -26,7 +26,6 @@
 #include <gtest/gtest.h>
 
 #include "PLIHDF5/link.h"
-#include "testEnvironment.h"
 
 TEST(TestLink, CreateSoft) {}
 
@@ -51,9 +50,10 @@ TEST(TestLink, CopyLink) {}
 int main(int argc, char* argv[]) {
   int result = 0;
 
+  MPI_Init(&argc, &argv);
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::AddGlobalTestEnvironment(new MPIEnvironment);
-
   result = RUN_ALL_TESTS();
+
+  MPI_Finalize();
   return result;
 }

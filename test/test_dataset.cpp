@@ -27,7 +27,6 @@
 
 #include "PLIHDF5/dataset.h"
 #include "PLIHDF5/file.h"
-#include "testEnvironment.h"
 
 class DatasetFixtureTest : public ::testing::Test {
  protected:
@@ -75,9 +74,10 @@ TEST(DatasetTest, Create) {}
 int main(int argc, char* argv[]) {
   int result = 0;
 
+  MPI_Init(&argc, &argv);
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::AddGlobalTestEnvironment(new MPIEnvironment);
-
   result = RUN_ALL_TESTS();
+
+  MPI_Finalize();
   return result;
 }

@@ -26,7 +26,6 @@
 #include <gtest/gtest.h>
 
 #include "PLIHDF5/group.h"
-#include "testEnvironment.h"
 
 TEST(TestGroup, Open) {}
 
@@ -41,9 +40,10 @@ TEST(TestGroup, ID) {}
 int main(int argc, char* argv[]) {
   int result = 0;
 
+  MPI_Init(&argc, &argv);
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::AddGlobalTestEnvironment(new MPIEnvironment);
-
   result = RUN_ALL_TESTS();
+
+  MPI_Finalize();
   return result;
 }

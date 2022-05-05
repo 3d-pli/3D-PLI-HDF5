@@ -24,9 +24,9 @@
  */
 
 #include <gtest/gtest.h>
+#include <mpi.h>
 
 #include "PLIHDF5/sha256.h"
-#include "testEnvironment.h"
 
 TEST(TestSHA256, ToSHA256) {
   std::string string = "Hello World!";
@@ -39,9 +39,10 @@ TEST(TestSHA256, ToSHA256) {
 int main(int argc, char* argv[]) {
   int result = 0;
 
+  MPI_Init(&argc, &argv);
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::AddGlobalTestEnvironment(new MPIEnvironment);
-
   result = RUN_ALL_TESTS();
+
+  MPI_Finalize();
   return result;
 }
