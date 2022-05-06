@@ -222,8 +222,49 @@ TEST_F(PLI_HDF5_Dataset, create) {
 }
 
 TEST_F(PLI_HDF5_Dataset, readFullDataset) {}
-TEST_F(PLI_HDF5_Dataset, read) {}
-TEST_F(PLI_HDF5_Dataset, hid_t) {}
+
+TEST_F(PLI_HDF5_Dataset, read) {
+  // write test dataset
+  std::vector<int> data(std::accumulate(_dims.begin(), _dims.end(), 1,
+                                        std::multiplies<std::size_t>()));
+  std::iota(data.begin(), data.end(), 0);
+  auto dset =
+      PLI::HDF5::createDataset<int>(_file, "/Image", _dims, _chunk_dims);
+  const std::vector<hsize_t> offset{{0, 0, 0}};
+  dset.write(data, offset, _dims);
+
+  {  // read dataset
+    const auto data_in = dset.read<int>(offset, _dims);
+    EXPECT_TRUE(data_in == data);
+    EXPECT_TRUE(data_in[data_in.size() - 1] == data_in.size() - 1);
+    dset.close();
+  }
+
+  {  // read subset
+    auto dset = PLI::HDF5::openDataset(_file, "/Image");
+    const std::vector<hsize_t> offset_in{{1, 1, 1}};
+    const std::vector<hsize_t> dims_in{{2, 2, 2}};
+    const auto size = std::accumulate(dims_in.begin(), dims_in.end(), 1,
+                                      std::multiplies<std::size_t>());
+    std::vector<int> data_in;
+    std::vector<int> data_comp(size);
+    EXPECT_NO_THROW(data_in = dset.read<int>(offset_in, dims_in));
+    EXPECT_TRUE(data_in.size() == size);
+
+    auto ii = 0u;
+    for (auto i = offset_in[0]; i < offset_in[0] + dims_in[0]; i++)
+      for (auto j = offset_in[1]; j < offset_in[1] + dims_in[1]; j++)
+        for (auto k = offset_in[2]; k < offset_in[2] + dims_in[2]; k++) {
+          data_comp[ii++] = data[i * _dims[1] * _dims[2] + j * _dims[2] + k];
+        }
+
+    EXPECT_TRUE(data == data_comp);
+
+    dset.close();
+  }
+}
+
+// TEST_F(PLI_HDF5_Dataset, hid_t) {} // operator??
 
 int main(int argc, char* argv[]) {
   int result = 0;
