@@ -6,6 +6,7 @@ var searchData=
   ['opengroup_3',['openGroup',['../namespacePLI_1_1HDF5.html#a906ea863179d6d9e70ad870ae8493b1c',1,'PLI::HDF5']]],
   ['openstate_4',['OpenState',['../classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5',1,'PLI::HDF5::File']]],
   ['operator_20hid_5ft_5',['operator hid_t',['../classPLI_1_1HDF5_1_1Dataset.html#ae471843cd9ab5999bf0b407988905d81',1,'PLI::HDF5::Dataset::operator hid_t()'],['../classPLI_1_1HDF5_1_1File.html#a7c53c2e016fd0243cf5f4162e43637d2',1,'PLI::HDF5::File::operator hid_t()'],['../classPLI_1_1HDF5_1_1Group.html#a1331843612104a553c4b03f5825b5dcd',1,'PLI::HDF5::Group::operator hid_t()'],['../classPLI_1_1HDF5_1_1Type.html#a55f790fde4567ad2a45bee1e26cb387f',1,'PLI::HDF5::Type::operator hid_t() const']]],
-  ['operator_3d_3d_6',['operator==',['../classPLI_1_1HDF5_1_1Type.html#a8555755d59e9eb8371674428c44f2855',1,'PLI::HDF5::Type']]],
-  ['string_7',['string',['../classPLI_1_1HDF5_1_1Type.html#a39535681908f4b9185128451d3c6e3db',1,'PLI::HDF5::Type']]]
+  ['operator_21_3d_6',['operator!=',['../classPLI_1_1HDF5_1_1Type.html#a94347409e80ae9acebba16eb96335fb2',1,'PLI::HDF5::Type']]],
+  ['operator_3d_3d_7',['operator==',['../classPLI_1_1HDF5_1_1Type.html#a6e48a283d90827122af5ff918a5f2eec',1,'PLI::HDF5::Type']]],
+  ['string_8',['string',['../classPLI_1_1HDF5_1_1Type.html#a39535681908f4b9185128451d3c6e3db',1,'PLI::HDF5::Type']]]
 ];
