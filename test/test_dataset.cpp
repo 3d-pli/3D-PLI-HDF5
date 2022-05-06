@@ -59,7 +59,7 @@ class PLI_HDF5_Dataset : public ::testing::Test {
   PLI::HDF5::File _file;
 };
 
-TEST_F(PLI_HDF5_Dataset, Exists) {
+TEST_F(PLI_HDF5_Dataset, exists) {
   {  // checking non existing dset
     EXPECT_FALSE(PLI::HDF5::Dataset::exists(_file, "/Image"));
   }
@@ -72,7 +72,7 @@ TEST_F(PLI_HDF5_Dataset, Exists) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, Close) {
+TEST_F(PLI_HDF5_Dataset, close) {
   {  // close empty dataset
     auto dset = PLI::HDF5::Dataset();
     EXPECT_NO_THROW(dset.close(););
@@ -85,7 +85,7 @@ TEST_F(PLI_HDF5_Dataset, Close) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, Write) {
+TEST_F(PLI_HDF5_Dataset, write) {
   {  // write closed dset
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image_0", _dims, _chunk_dims);
@@ -130,7 +130,7 @@ TEST_F(PLI_HDF5_Dataset, Write) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, Type) {
+TEST_F(PLI_HDF5_Dataset, type) {
   {  // call
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image_1", _dims, _chunk_dims);
@@ -139,7 +139,7 @@ TEST_F(PLI_HDF5_Dataset, Type) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, NDims) {
+TEST_F(PLI_HDF5_Dataset, ndims) {
   {  // call
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image_1", _dims, _chunk_dims);
@@ -148,7 +148,7 @@ TEST_F(PLI_HDF5_Dataset, NDims) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, Dims) {
+TEST_F(PLI_HDF5_Dataset, dims) {
   {  // call
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image_1", _dims, _chunk_dims);
@@ -157,7 +157,7 @@ TEST_F(PLI_HDF5_Dataset, Dims) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, ID) {
+TEST_F(PLI_HDF5_Dataset, id) {
   {  // empty dataset
     auto dset = PLI::HDF5::Dataset();
     EXPECT_NO_THROW(dset.id(););
@@ -165,42 +165,53 @@ TEST_F(PLI_HDF5_Dataset, ID) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, Open) {
+TEST_F(PLI_HDF5_Dataset, open) {
   {  // create dataset
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image", _dims, _chunk_dims);
     dset.close();
-    EXPECT_NO_THROW(auto dset = PLI::HDF5::openDataset(_file, "/Image");
-                    dset.close(););
+
+    EXPECT_NO_THROW(dset.open(_file, "/Image"));
+    dset.close();
+    EXPECT_NO_THROW(dset = PLI::HDF5::openDataset(_file, "/Image"));
+    dset.close();
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, Create) {
+TEST_F(PLI_HDF5_Dataset, create) {
   {  // create dataset
-    EXPECT_NO_THROW(auto dset = PLI::HDF5::createDataset<float>(
-                        _file, "/Image", _dims, _chunk_dims);
-                    dset.close(););
+    auto dset = PLI::HDF5::Dataset();
+    EXPECT_NO_THROW(dset = PLI::HDF5::createDataset<float>(_file, "/foo", _dims,
+                                                           _chunk_dims));
+    dset.close();
+    EXPECT_NO_THROW(dset.create<float>(_file, "/bar", _dims, _chunk_dims));
+    dset.close();
   }
 
   {  // recreate dataset
-    EXPECT_THROW(auto dset = PLI::HDF5::createDataset<float>(
-                     _file, "/Image", _dims, _chunk_dims);
-                 , PLI::HDF5::Exceptions::DatasetExistsException);
+    EXPECT_THROW(
+        PLI::HDF5::createDataset<float>(_file, "/foo", _dims, _chunk_dims);
+        , PLI::HDF5::Exceptions::DatasetExistsException);
   }
 
-  {  // create dataset wiht grp in path
-    EXPECT_THROW(auto dset = PLI::HDF5::createDataset<float>(
+  {  // create dataset with grp in path
+    EXPECT_THROW(PLI::HDF5::createDataset<float>(
                      _file, "/not_existing_grp/dset", _dims, _chunk_dims);
                  , PLI::HDF5::Exceptions::IdentifierNotValidException);
   }
 
   {  // create dataset in not existing group
     const hsize_t id = 42;
-    EXPECT_THROW(auto dset = PLI::HDF5::createDataset<float>(
-                     id, "/Image", _dims, _chunk_dims);
-                 , PLI::HDF5::Exceptions::IdentifierNotValidException);
+    EXPECT_THROW(
+        PLI::HDF5::createDataset<float>(id, "/Image", _dims, _chunk_dims);
+        , PLI::HDF5::Exceptions::IdentifierNotValidException);
   }
 }
+TEST_F(PLI_HDF5_Dataset, Constructor) {}
+TEST_F(PLI_HDF5_Dataset, Destructor) {}
+TEST_F(PLI_HDF5_Dataset, ReadFullDataset) {}
+TEST_F(PLI_HDF5_Dataset, Read) {}
+TEST_F(PLI_HDF5_Dataset, Hid_t) {}
 
 int main(int argc, char* argv[]) {
   int result = 0;
