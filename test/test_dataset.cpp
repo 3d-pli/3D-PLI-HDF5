@@ -34,12 +34,21 @@
 class PLI_HDF5_Dataset : public ::testing::Test {
  protected:
   void SetUp() override {
+    try {
+      _file.close();
+    } catch (...) {
+      // can occur due to testing failures. leave pointer open and continue.
+    }
     if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
     _file = PLI::HDF5::createFile(_filePath);
   }
 
   void TearDown() override {
+    try {
     _file.close();
+    } catch (...) {
+      // can occur due to testing failures. leave pointer open and continue.
+    }
     if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
   }
   const std::vector<hsize_t> _dims{{256, 256, 9}};
