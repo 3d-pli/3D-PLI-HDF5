@@ -45,16 +45,17 @@ class PLI_HDF5_Dataset : public ::testing::Test {
 
   void TearDown() override {
     try {
-    _file.close();
+      _file.close();
     } catch (...) {
       // can occur due to testing failures. leave pointer open and continue.
     }
     if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
   }
+
   const std::vector<hsize_t> _dims{{256, 256, 9}};
   const std::vector<hsize_t> _chunk_dims{{256, 256, 9}};
   const std::string _filePath =
-      std::filesystem::temp_directory_path() / "test_group.h5";
+      std::filesystem::temp_directory_path() / "test_dataset.h5";
   PLI::HDF5::File _file;
 };
 
@@ -152,9 +153,16 @@ TEST_F(PLI_HDF5_Dataset, Create) {
                  , PLI::HDF5::Exceptions::DatasetExistsException);
   }
 
-  {  // create dataset in not existing group
+  {  // create dataset wiht grp in path
     EXPECT_THROW(auto dset = PLI::HDF5::createDataset<float>(
                      _file, "/not_existing_grp/dset", _dims, _chunk_dims);
+                 , PLI::HDF5::Exceptions::IdentifierNotValidException);
+  }
+
+  {  // create dataset in not existing group
+    const hsize_t id = 42;
+    EXPECT_THROW(auto dset = PLI::HDF5::createDataset<float>(
+                     id, "/Image", _dims, _chunk_dims);
                  , PLI::HDF5::Exceptions::IdentifierNotValidException);
   }
 }
