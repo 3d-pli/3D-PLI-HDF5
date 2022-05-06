@@ -59,6 +59,9 @@ class PLI_HDF5_Dataset : public ::testing::Test {
   PLI::HDF5::File _file;
 };
 
+TEST_F(PLI_HDF5_Dataset, Constructor) {}
+TEST_F(PLI_HDF5_Dataset, Destructor) {}
+
 TEST_F(PLI_HDF5_Dataset, exists) {
   {  // checking non existing dset
     EXPECT_FALSE(PLI::HDF5::Dataset::exists(_file, "/Image"));
@@ -207,11 +210,10 @@ TEST_F(PLI_HDF5_Dataset, create) {
         , PLI::HDF5::Exceptions::IdentifierNotValidException);
   }
 }
-TEST_F(PLI_HDF5_Dataset, Constructor) {}
-TEST_F(PLI_HDF5_Dataset, Destructor) {}
-TEST_F(PLI_HDF5_Dataset, ReadFullDataset) {}
-TEST_F(PLI_HDF5_Dataset, Read) {}
-TEST_F(PLI_HDF5_Dataset, Hid_t) {}
+
+TEST_F(PLI_HDF5_Dataset, readFullDataset) {}
+TEST_F(PLI_HDF5_Dataset, read) {}
+TEST_F(PLI_HDF5_Dataset, hid_t) {}
 
 int main(int argc, char* argv[]) {
   int result = 0;
