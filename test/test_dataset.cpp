@@ -110,9 +110,19 @@ TEST_F(PLI_HDF5_Dataset, write) {
     dset.close();
   }
 
-  {  // write tile
+  {  // write different type
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image_2", _dims, _chunk_dims);
+    const std::vector<double> data(std::accumulate(
+        _dims.begin(), _dims.end(), 1, std::multiplies<std::size_t>()));
+    const std::vector<hsize_t> offset{{0, 0, 0}};
+    EXPECT_NO_THROW(dset.write(data, offset, _dims););
+    dset.close();
+  }
+
+  {  // write tile (of different type)
+    auto dset =
+        PLI::HDF5::createDataset<float>(_file, "/Image_3", _dims, _chunk_dims);
     const std::vector<hsize_t> dims{{2, 2, 9}};
     const std::vector<hsize_t> offset{{10, 10, 0}};
     const std::vector<float> data(std::accumulate(
@@ -123,7 +133,7 @@ TEST_F(PLI_HDF5_Dataset, write) {
 
   {  // write offset outside of dset
     auto dset =
-        PLI::HDF5::createDataset<float>(_file, "/Image_3", _dims, _chunk_dims);
+        PLI::HDF5::createDataset<float>(_file, "/Image_4", _dims, _chunk_dims);
     const std::vector<float> data(
         std::accumulate(_dims.begin(), _dims.end(), 1, std::multiplies<int>()));
     const std::vector<hsize_t> offset{{10, 10, 10}};
