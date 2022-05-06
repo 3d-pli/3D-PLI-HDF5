@@ -130,15 +130,38 @@ TEST_F(PLI_HDF5_Dataset, Write) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, Type) {}
+TEST_F(PLI_HDF5_Dataset, Type) {
+  {  // call
+    auto dset =
+        PLI::HDF5::createDataset<float>(_file, "/Image_1", _dims, _chunk_dims);
+    EXPECT_NO_THROW(dset.type());
+    dset.close();
+  }
+}
 
-TEST_F(PLI_HDF5_Dataset, NDims) {}
+TEST_F(PLI_HDF5_Dataset, NDims) {
+  {  // call
+    auto dset =
+        PLI::HDF5::createDataset<float>(_file, "/Image_1", _dims, _chunk_dims);
+    EXPECT_TRUE(dset.ndims() == _dims.size());
+    dset.close();
+  }
+}
 
-TEST_F(PLI_HDF5_Dataset, Dims) {}
+TEST_F(PLI_HDF5_Dataset, Dims) {
+  {  // call
+    auto dset =
+        PLI::HDF5::createDataset<float>(_file, "/Image_1", _dims, _chunk_dims);
+    EXPECT_TRUE(dset.dims() == _dims);
+    dset.close();
+  }
+}
 
 TEST_F(PLI_HDF5_Dataset, ID) {
   {  // empty dataset
-    EXPECT_NO_THROW(auto dset = PLI::HDF5::Dataset(); dset.id(); dset.close(););
+    auto dset = PLI::HDF5::Dataset();
+    EXPECT_NO_THROW(dset.id(););
+    dset.close();
   }
 }
 
