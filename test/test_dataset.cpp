@@ -52,8 +52,8 @@ class PLI_HDF5_Dataset : public ::testing::Test {
     if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
   }
 
-  const std::vector<hsize_t> _dims{{256, 256, 9}};
-  const std::vector<hsize_t> _chunk_dims{{256, 256, 9}};
+  const std::vector<hsize_t> _dims{{128, 128, 4}};
+  const std::vector<hsize_t> _chunk_dims{{128, 128, 4}};
   const std::string _filePath =
       std::filesystem::temp_directory_path() / "test_dataset.h5";
   PLI::HDF5::File _file;
@@ -120,11 +120,11 @@ TEST_F(PLI_HDF5_Dataset, write) {
     dset.close();
   }
 
-  {  // write tile (of different type)
+  {  // write tile
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image_3", _dims, _chunk_dims);
-    const std::vector<hsize_t> dims{{2, 2, 9}};
-    const std::vector<hsize_t> offset{{10, 10, 0}};
+    const std::vector<hsize_t> dims{{2, 2, 2}};
+    const std::vector<hsize_t> offset{{1, 1, 1}};
     const std::vector<float> data(std::accumulate(
         dims.begin(), dims.end(), 1, std::multiplies<std::size_t>()));
     EXPECT_NO_THROW(dset.write(data, offset, dims););
@@ -136,7 +136,7 @@ TEST_F(PLI_HDF5_Dataset, write) {
         PLI::HDF5::createDataset<float>(_file, "/Image_4", _dims, _chunk_dims);
     const std::vector<float> data(
         std::accumulate(_dims.begin(), _dims.end(), 1, std::multiplies<int>()));
-    const std::vector<hsize_t> offset{{10, 10, 10}};
+    const std::vector<hsize_t> offset{{1, 1, 1}};
     EXPECT_THROW(dset.write(data, offset, _dims);
                  , PLI::HDF5::Exceptions::HDF5RuntimeException);
     dset.close();
