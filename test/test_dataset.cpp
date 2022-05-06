@@ -100,22 +100,34 @@ TEST_F(PLI_HDF5_Dataset, Write) {
   {  // write
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image_1", _dims, _chunk_dims);
-    const std::vector<float> data(
-        std::accumulate(_dims.begin(), _dims.end(), 1, std::multiplies<int>()));
+    const std::vector<float> data(std::accumulate(
+        _dims.begin(), _dims.end(), 1, std::multiplies<std::size_t>()));
     const std::vector<hsize_t> offset{{0, 0, 0}};
     EXPECT_NO_THROW(dset.write(data, offset, _dims););
     dset.close();
   }
 
-  // {  // write offset outside of dset
-  //   auto dset = PLI::HDF5::createDataset<float>(_file, "/", _dims,
-  //   _chunk_dims); const std::vector<float> data(
-  //       std::accumulate(_dims.begin(), _dims.end(), 1,
-  //       std::multiplies<int>()));
-  //   const std::vector<hsize_t> offset{{0, 0, 0}};
-  //   EXPECT_NO_THROW(dset.write(data, offset, _dims););
-  //   dset.close();
-  // }
+  {  // write tile
+    auto dset =
+        PLI::HDF5::createDataset<float>(_file, "/Image_2", _dims, _chunk_dims);
+    const std::vector<hsize_t> dims{{2, 2, 9}};
+    const std::vector<hsize_t> offset{{10, 10, 0}};
+    const std::vector<float> data(std::accumulate(
+        dims.begin(), dims.end(), 1, std::multiplies<std::size_t>()));
+    EXPECT_NO_THROW(dset.write(data, offset, dims););
+    dset.close();
+  }
+
+  {  // write offset outside of dset
+    auto dset =
+        PLI::HDF5::createDataset<float>(_file, "/Image_3", _dims, _chunk_dims);
+    const std::vector<float> data(
+        std::accumulate(_dims.begin(), _dims.end(), 1, std::multiplies<int>()));
+    const std::vector<hsize_t> offset{{10, 10, 10}};
+    EXPECT_THROW(dset.write(data, offset, _dims);
+                 , PLI::HDF5::Exceptions::HDF5RuntimeException);
+    dset.close();
+  }
 }
 
 TEST_F(PLI_HDF5_Dataset, Type) {}
