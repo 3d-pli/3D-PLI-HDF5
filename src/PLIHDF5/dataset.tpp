@@ -121,6 +121,7 @@ void PLI::HDF5::Dataset::write(const std::vector<T> &data,
                                     nullptr, dims.data(), nullptr),
                 "H5Sselect_hyperslab");
 
+  PLI::HDF5::Type dataType = PLI::HDF5::Type::createType<T>();
   checkHDF5Call(
       H5Dwrite(this->m_id, dataType, H5S_ALL, dataSpacePtr, xf_id, data.data()),
       "H5Dwrite");
