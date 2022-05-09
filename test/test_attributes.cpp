@@ -28,14 +28,13 @@
 
 #include "PLIHDF5/attributes.h"
 #include "PLIHDF5/file.h"
-#include "testEnvironment.h"
 
 class AttributeHandlerTest : public ::testing::Test {
  protected:
   void SetUp() override {
     std::string temporaryDirectory = testing::TempDir();
     _filePath = temporaryDirectory + "test.h5";
-    _file = PLI::HDF5::File::create(_filePath);
+    _file = PLI::HDF5::createFile(_filePath);
     _attributeHandler = PLI::HDF5::AttributeHandler(_file);
   }
 
@@ -82,9 +81,10 @@ TEST_F(AttributeHandlerTest, Id) {}
 int main(int argc, char* argv[]) {
   int result = 0;
 
+  MPI_Init(&argc, &argv);
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::AddGlobalTestEnvironment(new MPIEnvironment);
-
   result = RUN_ALL_TESTS();
+
+  MPI_Finalize();
   return result;
 }

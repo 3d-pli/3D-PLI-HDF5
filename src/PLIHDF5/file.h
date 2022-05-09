@@ -33,32 +33,198 @@
 
 #include "PLIHDF5/exceptions.h"
 
+/**
+ * @brief The PLI namespace
+ */
 namespace PLI {
+/**
+ * @brief The HDF5 namespace
+ */
 namespace HDF5 {
+/**
+ * @brief HDF5 File wrapper class.
+ * Create and / or open an HDF5 file to store or read data.
+ */
 class File {
  public:
-  ~File();
+  enum OpenState { ReadOnly = 0, ReadWrite = 1 };
+
+  /**
+   * @brief Construct a new File object
+   *
+   * Create an empty file object. Calling other methods on this object will fail
+   * because no pointer to an HDF5 object is set. To open a file, use
+   * PLI::HDF5::File::open(const std::string& fileName). To create a file, use
+   * PLI::HDF5::File::create(const std::string& fileName).
+   */
   File();
-  explicit File(const File& otherFile);
+  /**
+   * @brief Construct a new File object
+   *
+   * Construct a new file object by using the given pointer of another file
+   * object.
+   * @param otherFile Other file object.
+   */
+  File(const File& otherFile);
+  /**
+   * @brief Construct a new File object
+   *
+   * Construct a new file object by using the given pointer of another file
+   * object.
+   * @param filePtr File pointer.
+   * @param faplID File access pointer.
+   */
   explicit File(const hid_t filePtr, const hid_t faplID);
-  static PLI::HDF5::File create(const std::string& fileName);
-  static PLI::HDF5::File open(const std::string& fileName,
-                              const unsigned openState);
+
+  /**
+   * @brief Create a new file.
+   *
+   * Create a new file. Per default, the file is created with
+   * MPI file access.
+   * @param fileName File name.
+   * @throw PLI::HDF5::Exceptions::FileExistsException If the file already
+   * exists.
+   * @throw PLI::HDF5::Exceptions::IdentifierNotValidException If the file
+   * couldn't be created or the file access token failed.
+   * @throw PLI::HDF5::Exceptions::HDF5RuntimeException Error during setting the
+   * MPI file access.
+   */
+  void create(const std::string& fileName);
+  /**
+   * @brief Open an existing file.
+   *
+   * This method tries to open an existing file. If the file doesnt exist, an
+   * exception is thrown. The file will be opened with MPI file access. By using
+   * the openState variable, one can choose between opening the file in
+   * read-only mode or in read-write mode. Setting openState to
+   * PLI::HDF5::File::OpenState::ReadOnly will open the file in read-only mode.
+   * Setting openState to PLI::HDF5::File::OpenState::ReadWrite will open the
+   * file in read-write mode.
+   * @param fileName File name which will be opened.
+   * @param openState OpenState variable. Available values are
+   * PLI::HDF5::File::OpenState::ReadOnly and
+   * PLI::HDF5::File::OpenState::ReadWrite.
+   * @throws PLI::HDF5::Exceptions::FileNotFoundException If the file doesn't
+   * exist.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the file
+   * couldn't be opened or the file access token failed.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException Error during setting
+   * the MPI file access.
+   * @throws PLI::HDF5::Exceptions::InvalidHDF5FileException If the file is not
+   * a valid HDF5 file.
+   */
+  void open(const std::string& fileName, const OpenState openState);
+
+  /**
+   * @brief Check if the file is a valid HDF5 file.
+   *
+   * This method checks if the file is a valid HDF5 file that can be opened with
+   * this library.
+   * @param fileName Filename of the file.
+   * @return true File is a valid HDF5 file.
+   * @return false File isn't a valid HDF5 file.
+   */
   static bool isHDF5(const std::string& fileName);
+  /**
+   * @brief Check if the file exists.
+   * @param fileName Filename of the file.
+   * @return true File exists.
+   * @return false File doesn't exist.
+   */
   static bool fileExists(const std::string& fileName);
 
+  /**
+   * @brief Closes the file if it is valid.
+   *
+   * If the file is valid, it is closed. The file pointer is then set to
+   * an invalid value (-1) to ensure, that calls will result in an exception
+   * afterwards.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the file could
+   * not be closed.
+   */
   void close();
+  /**
+   * @brief Reopen the file.
+   *
+   * This method tries to reopen the file for reading. If the original pointer
+   * is invalid or the reopen failed, an exception is thrown.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the file
+   * pointer is invalid or the reopen failed.
+   */
   void reopen();
+  /**
+   * @brief Flushes the file content in a local scope.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the file could not
+   * be flushed.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the file
+   * pointer is invalid.
+   */
   void flush();
 
+  /**
+   * @brief Get the file pointer.
+   * @return hid_t File pointer.
+   */
   hid_t id() const;
+  /**
+   * @brief Get the file access pointer.
+   * @return hid_t File access pointer.
+   */
   hid_t faplID() const;
 
+  /**
+   * @brief Convert the file to a the raw HDF5 pointer.
+   * @return hid_t File ID stored in the object.
+   */
   operator hid_t() const;
 
  private:
   hid_t m_id;
   hid_t m_faplID;
 };
+
+/**
+ * @brief Create a new file object.
+ *
+ * Create a new file object. Per default, the file is created with
+ * MPI file access.
+ * @param fileName File name.
+ * @return PLI::HDF5::File File object, if successful.
+ * @throw PLI::HDF5::Exceptions::FileExistsException If the file already
+ * exists.
+ * @throw PLI::HDF5::Exceptions::IdentifierNotValidException If the file
+ * couldn't be created or the file access token failed.
+ * @throw PLI::HDF5::Exceptions::HDF5RuntimeException Error during setting the
+ * MPI file access.
+ */
+PLI::HDF5::File createFile(const std::string& fileName);
+
+/**
+ * @brief Open an existing file object.
+ *
+ * This method tries to open an existing file. If the file doesnt exist, an
+ * exception is thrown. The file will be opened with MPI file access. By using
+ * the openState variable, one can choose between opening the file in
+ * read-only mode or in read-write mode. Setting openState to
+ * PLI::HDF5::File::OpenState::ReadOnly will open the file in read-only mode.
+ * Setting openState to PLI::HDF5::File::OpenState::ReadWrite will open the
+ * file in read-write mode.
+ * @param fileName File name which will be opened.
+ * @param openState OpenState variable. Available values are
+ * PLI::HDF5::File::OpenState::ReadOnly and
+ * PLI::HDF5::File::OpenState::ReadWrite.
+ * @return PLI::HDF5::File File object if successful.
+ * @throws PLI::HDF5::Exceptions::FileNotFoundException If the file doesn't
+ * exist.
+ * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the file
+ * couldn't be opened or the file access token failed.
+ * @throws PLI::HDF5::Exceptions::HDF5RuntimeException Error during setting
+ * the MPI file access.
+ * @throws PLI::HDF5::Exceptions::InvalidHDF5FileException If the file is not
+ * a valid HDF5 file.
+ */
+PLI::HDF5::File openFile(
+    const std::string& fileName,
+    const File::OpenState openState = File::OpenState::ReadOnly);
 }  // namespace HDF5
 }  // namespace PLI

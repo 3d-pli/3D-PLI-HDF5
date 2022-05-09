@@ -30,8 +30,18 @@
 #include <exception>
 #include <string>
 
+/**
+ * @brief The PLI namespace
+ */
 namespace PLI {
+/**
+ * @brief The HDF5 namespace
+ */
 namespace HDF5 {
+/**
+ * @brief The exception namespace for errors of the API
+ */
+namespace Exceptions {
 class DatasetNotFoundException : public std::exception {
  public:
   explicit DatasetNotFoundException(const std::string& message)
@@ -163,12 +173,9 @@ class HDF5RuntimeException : public std::exception {
  private:
   std::string m_message;
 };
-
+}  // namespace Exceptions
 void checkHDF5Call(const herr_t hdf5ReturnValue,
                    const std::string& message = "None");
 void checkHDF5Ptr(const hid_t hdf5Ptr, const std::string& message = "None");
 }  // namespace HDF5
-
-namespace Solr {}
-
 }  // namespace PLI

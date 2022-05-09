@@ -36,19 +36,66 @@
 #include "PLIHDF5/group.h"
 #include "PLIHDF5/sha256.h"
 
+/**
+ * @brief The PLI namespace
+ */
 namespace PLI {
+/**
+ * @brief The PLIM class contains a few functions to make the integration of a
+ * generated HDF5 file easier with the Solr database used in the work group.
+ * @details The class is a wrapper around the HDF5 library. It provides
+ * functions to add the necessary information to the HDF5 file to make it
+ * compatible with the Solr database.
+ */
 class PLIM {
  public:
+  /**
+   * @brief Constructor
+   * @param file HDF5 file object used to store the information.
+   * @param dataset HDF5 dataset object used to store the information.
+   */
   explicit PLIM(PLI::HDF5::File file, const std::string& dataset);
+  /**
+   * @brief Constructor
+   * @param dataset AttributeHandler containing the attributes of the desired
+   * dataset where information is stored.
+   */
   explicit PLIM(PLI::HDF5::AttributeHandler dataset);
-
-  bool validSolrHDF5(const std::string& solrJSON);
+  /**
+   * @brief Adds the creator of the HDF5 file to the HDF5 file.
+   */
   void addCreator();
+  /**
+   * @brief Adds the ID of the HDF5 file to the HDF5 file.
+   * @param idAttributes List of attributes that are used to generate the ID.
+   */
   void addID(const std::vector<std::string>& idAttributes);
+  /**
+   * @brief Adds the reference files used to generate this HDF5 file.
+   * @param file Reference attribute handler used to generate this HDF5 file.
+   */
   void addReference(const PLI::HDF5::AttributeHandler& file);
+  /**
+   * @brief Adds the reference files used to generate this HDF5 file.
+   * @param files List of reference attribute handlers used to generate this
+   * HDF5 file.
+   */
   void addReference(const std::vector<PLI::HDF5::AttributeHandler>& files);
+  /**
+   * @brief Adds the software name.
+   * @param softwareName Software name used to generate this HDF5 file.
+   */
   void addSoftware(const std::string& softwareName);
+  /**
+   * @brief Adds the software revision.
+   * @param softwareRevision Software revision used to generate this HDF5 file.
+   */
   void addSoftwareRevision(const std::string& softwareRevision);
+  /**
+   * @brief Adds the software parameters.
+   * @param softwareParameters Software parameters used to generate this HDF5
+   * file.
+   */
   void addSoftwareParameters(const std::string& softwareParameters);
 
  private:

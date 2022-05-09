@@ -1,10 +1,15 @@
 stages:
   - lint
   - build
+  - package
+  - install
 #   - test
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
+  OMPI_ALLOW_RUN_AS_ROOT: 1 
+  OMPI_ALLOW_RUN_AS_ROOT_CONFIRM: 1
+  DEBIAN_FRONTEND: noninteractive
 
 before_script:
   - apt-get update -qq
@@ -51,9 +56,54 @@ build:ubuntu:
     - cd build
     - cmake -DPLIHDF5_USE_LINTING=OFF ..
     - make
-#   artifacts:
-#     paths:
-#       - build/
+
+package:ubuntu22.04:
+  stage: package
+  image: ubuntu:22.04
+  script:
+    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev dpkg-dev lsb-release
+    - mkdir build
+    - cd build
+    - cmake -DBUILD_TESTING=OFF -DPLIHDF5_USE_LINTING=OFF ..
+    - make
+    - cpack
+  artifacts:
+    paths:
+      - build/plihdf5_1.0.0_amd64-devel.deb
+      - build/plihdf5_1.0.0_amd64-runtime.deb
+
+package:ubuntu20.04:
+  stage: package
+  image: ubuntu:20.04
+  script:
+    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev dpkg-dev lsb-release
+    - mkdir build
+    - cd build
+    - cmake -DBUILD_TESTING=OFF -DPLIHDF5_USE_LINTING=OFF ..
+    - make
+    - cpack
+  artifacts:
+    paths:
+      - build/plihdf5_1.0.0_amd64-devel.deb
+      - build/plihdf5_1.0.0_amd64-runtime.deb
+
+install:ubuntu20.04:
+  stage: install
+  image: ubuntu:20.04
+  dependencies:
+    - package:ubuntu20.04
+  script:
+    - apt-get update -qq
+    - apt-get install -y ./build/plihdf5_1.0.0_amd64-devel.deb ./build/plihdf5_1.0.0_amd64-runtime.deb
+
+install:ubuntu22.04:
+  stage: install
+  image: ubuntu:22.04
+  dependencies:
+    - package:ubuntu22.04
+  script:
+    - apt-get update -qq
+    - apt-get install -y ./build/plihdf5_1.0.0_amd64-devel.deb ./build/plihdf5_1.0.0_amd64-runtime.deb
 
 # test:ubuntu:
 #   stage: test

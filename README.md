@@ -4,9 +4,9 @@
 
 HDF5 is a widely used file format for storing and sharing scientific data. It is used in the Fiber Architecture Group to store brain data and pyramids of images. The pyramids allow easy visualization of the data with external tools.
 
-However, using HDF5 is painful when using C / C++. The library itself is written in C. While headers for C++ are provided, important features like MPI are not available. 
+However, using HDF5 can be troublesome when using C / C++. The library itself is written in C. While headers for C++ are provided, important features like MPI are not available. 
 
-To improve the usability of the library, this repository contains a C++ library wrapping features of HDF5.
+To improve the usability of the library, this repository contains a C++ library wrapping features of HDF5 to make the usage in 3D-PLI projects easier.
 
 ## Install instructions
 
@@ -25,7 +25,7 @@ If you want to use linting during the compilation:
 ### Compile the project manually
 
 ```bash
-git clone git@jugit.fz-juelich.de:prototypes/3d-pli-hdf5.git
+git clone https://github.com/3d-pli/3D-PLI-HDF5.git
 cd 3d-pli-hdf5
 mkdir build
 cd build
@@ -35,7 +35,7 @@ make
 
 ### Install the library from source  
 ```bash
-git clone git@jugit.fz-juelich.de:prototypes/3d-pli-hdf5.git
+git clone https://github.com/3d-pli/3D-PLI-HDF5.git
 cd 3d-pli-hdf5
 mkdir build
 cd build
@@ -47,7 +47,7 @@ make install
 ### Build DEB package
 **TODO**
 ```bash
-git clone git@jugit.fz-juelich.de:prototypes/3d-pli-hdf5.git
+git clone https://github.com/3d-pli/3D-PLI-HDF5.git
 cd 3d-pli-hdf5
 mkdir build
 cd build
