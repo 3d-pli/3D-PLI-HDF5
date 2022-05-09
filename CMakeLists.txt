@@ -14,7 +14,7 @@ include_directories(${HDF5_INCLUDE_DIRS})
 if(NOT HDF5_IS_PARALLEL)
     message(FATAL_ERROR "HDF5 is not parallel")
 endif()
-set(PLIHDF5_LINK_LIBRARIES ${HDF5_LIBRARIES} ${HDF5_HL_LIBRARIES})
+set(PLIHDF5_LINK_LIBRARIES ${HDF5_LIBRARIES} ${HDF5_HL_LIBRARIES} )
 
 # MPI Support
 find_package(MPI REQUIRED COMPONENTS C CXX)
@@ -27,9 +27,9 @@ include_directories(${OpenSSL_INCLUDE_DIR})
 set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} OpenSSL::SSL)
 
 # JSON
-set(JSON_BuildTests OFF CACHE INTERNAL "")
-add_subdirectory(extern/json)
-set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} nlohmann_json::nlohmann_json)
+#set(JSON_BuildTests OFF CACHE INTERNAL "")
+#add_subdirectory(extern/json)
+#set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} nlohmann_json::nlohmann_json)
 
 # Source files / headers
 include_directories(src)
