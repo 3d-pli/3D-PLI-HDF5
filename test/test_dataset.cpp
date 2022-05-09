@@ -250,16 +250,16 @@ TEST_F(PLI_HDF5_Dataset, read) {
     EXPECT_NO_THROW(data_in = dset.read<int>(offset_in, dims_in));
     EXPECT_TRUE(data_in.size() == size);
 
-    std::vector<int> data_comp(size);
-
     auto ii = 0u;
-    for (auto i = offset_in[0]; i < offset_in[0] + dims_in[0]; i++)
-      for (auto j = offset_in[1]; j < offset_in[1] + dims_in[1]; j++)
+    for (auto i = offset_in[0]; i < offset_in[0] + dims_in[0]; i++) {
+      for (auto j = offset_in[1]; j < offset_in[1] + dims_in[1]; j++) {
         for (auto k = offset_in[2]; k < offset_in[2] + dims_in[2]; k++) {
-          data_comp[ii++] = data[i * _dims[1] * _dims[2] + j * _dims[2] + k];
+          EXPECT_TRUE(data_in[ii++] ==
+                      data[i * _dims[1] * _dims[2] + j * _dims[2] + k]);
         }
+      }
+    }
 
-    EXPECT_TRUE(std::equal(data_in.begin(), data_in.end(), data_comp.begin()));
     dset.close();
   }
 }
