@@ -112,11 +112,6 @@ void PLI::HDF5::Dataset::write(const std::vector<T> &data,
                                const std::vector<hsize_t> &dims) {
   hid_t dataSpacePtr = H5Dget_space(this->m_id);
   checkHDF5Ptr(dataSpacePtr, "H5Dget_space");
-  // Check if the type matches the type of the dataset
-  PLI::HDF5::Type dataType = PLI::HDF5::Type::createType<T>();
-  if (dataType != PLI::HDF5::Type(H5Dget_type(this->m_id))) {
-    throw Exceptions::HDF5RuntimeException("Datatypes do not match.");
-  }
 
   hid_t xf_id = H5Pcreate(H5P_DATASET_XFER);
   checkHDF5Ptr(xf_id, "H5Pcreate");
