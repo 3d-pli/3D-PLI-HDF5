@@ -30,6 +30,7 @@
 #include <mpi.h>
 
 #include <algorithm>
+#include <numeric>
 #include <string>
 #include <vector>
 
