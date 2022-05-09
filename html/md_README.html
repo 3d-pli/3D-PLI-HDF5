@@ -106,19 +106,20 @@ Install the library from source</h2>
 <div class="line">make install</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
 Build DEB package</h2>
-<p ><b>TODO</b> </p><div class="fragment"><div class="line">git clone https://github.com/3d-pli/3D-PLI-HDF5.git</div>
+<div class="fragment"><div class="line">git clone https://github.com/3d-pli/3D-PLI-HDF5.git</div>
 <div class="line">cd 3d-pli-hdf5</div>
 <div class="line">mkdir build</div>
 <div class="line">cd build</div>
 <div class="line">cmake ..</div>
 <div class="line">make</div>
-<div class="line">cpack -G DEB</div>
+<div class="line">cpack</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
 Install the library as a DEB package</h2>
-<p ><b>TODO</b> </p><div class="fragment"><div class="line">dpkg -i 3d-pli-hdf5_0.1.0-1_amd64.deb</div>
+<p >To install the package, either build it yourself or download the packages from the releases / pipeline artifacts. Then, you can run the following commands to install the package. </p><div class="fragment"><div class="line">apt-get update -qq</div>
+<div class="line">apt-get install -y ./plihdf5_1.0.0_amd64-devel.deb ./plihdf5_1.0.0_amd64-runtime.deb</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
 API documentation</h1>
-<p >The API documentation is generated from the source code. The methods itself are documented in the source code. To view the documentation outside of the repository, you can go to the wiki page of the repository: <a href="https://jugit.fz-juelich.de/prototypes/3d-pli-hdf5/-/wikis/home">Here</a> </p>
+<p >The API documentation is generated from the source code. The methods itself are documented in the source code. To view the documentation outside of the repository, you can go to the wiki page of the repository: <a href="https://3d-pli.github.io/3D-PLI-HDF5/html/">Here</a> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

@@ -43,7 +43,7 @@ If you want to use linting during the compilation\+:
 
 \end{DoxyCode}
 \hypertarget{md_README_autotoc_md6}{}\doxysubsection{Build DEB package}\label{md_README_autotoc_md6}
-{\bfseries{TODO}} 
+
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git clone https://github.com/3d-\/pli/3D-\/PLI-\/HDF5.git}
 \DoxyCodeLine{cd 3d-\/pli-\/hdf5}
@@ -51,14 +51,15 @@ If you want to use linting during the compilation\+:
 \DoxyCodeLine{cd build}
 \DoxyCodeLine{cmake ..}
 \DoxyCodeLine{make}
-\DoxyCodeLine{cpack -\/G DEB}
+\DoxyCodeLine{cpack}
 
 \end{DoxyCode}
 \hypertarget{md_README_autotoc_md7}{}\doxysubsection{Install the library as a DEB package}\label{md_README_autotoc_md7}
-{\bfseries{TODO}} 
+To install the package, either build it yourself or download the packages from the releases / pipeline artifacts. Then, you can run the following commands to install the package. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{dpkg -\/i 3d-\/pli-\/hdf5\_0.1.0-\/1\_amd64.deb}
+\DoxyCodeLine{apt-\/get update -\/qq}
+\DoxyCodeLine{apt-\/get install -\/y ./plihdf5\_1.0.0\_amd64-\/devel.deb ./plihdf5\_1.0.0\_amd64-\/runtime.deb}
 
 \end{DoxyCode}
 \hypertarget{md_README_autotoc_md8}{}\doxysection{API documentation}\label{md_README_autotoc_md8}
-The API documentation is generated from the source code. The methods itself are documented in the source code. To view the documentation outside of the repository, you can go to the wiki page of the repository\+: \href{https://jugit.fz-juelich.de/prototypes/3d-pli-hdf5/-/wikis/home}{\texttt{ Here}} 
+The API documentation is generated from the source code. The methods itself are documented in the source code. To view the documentation outside of the repository, you can go to the wiki page of the repository\+: \href{https://3d-pli.github.io/3D-PLI-HDF5/html/}{\texttt{ Here}} 
