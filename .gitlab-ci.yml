@@ -8,6 +8,7 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
   OMPI_ALLOW_RUN_AS_ROOT: 1 
   OMPI_ALLOW_RUN_AS_ROOT_CONFIRM: 1
+  DEBIAN_FRONTEND: noninteractive
 
 before_script:
   - apt-get update -qq
@@ -67,8 +68,8 @@ package:ubuntu22.04:
     - cpack
   artifacts:
     paths:
-      - build/PLIHDF5_1.0.0_amd64-devel.deb
-      - build/PLIHDF5_1.0.0_amd64-runtime.deb
+      - build/plihdf5_1.0.0_amd64-devel.deb
+      - build/plihdf5_1.0.0_amd64-runtime.deb
 
 package:ubuntu20.04:
   stage: package
@@ -82,8 +83,8 @@ package:ubuntu20.04:
     - cpack
   artifacts:
     paths:
-      - build/PLIHDF5_1.0.0_amd64-devel.deb
-      - build/PLIHDF5_1.0.0_amd64-runtime.deb
+      - build/plihdf5_1.0.0_amd64-devel.deb
+      - build/plihdf5_1.0.0_amd64-runtime.deb
 
 # test:ubuntu:
 #   stage: test
