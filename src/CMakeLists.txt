@@ -57,5 +57,4 @@ install( DIRECTORY "PLIHDF5"
          DESTINATION include
          COMPONENT devel
          FILES_MATCHING PATTERN "*.tpp" )
-
 install( TARGETS PLIHDF5 DESTINATION lib COMPONENT runtime )
