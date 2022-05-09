@@ -28,3 +28,15 @@ else()
 endif()
 target_link_libraries(PLIHDF5 ${PLIHDF5_LINK_LIBRARIES})
 
+################################################################################
+# Installation
+################################################################################
+install( DIRECTORY "PLIHDF5"
+         DESTINATION include
+         COMPONENT devel
+         FILES_MATCHING PATTERN "*.h" )
+install( DIRECTORY "PLIHDF5"
+         DESTINATION include
+         COMPONENT devel
+         FILES_MATCHING PATTERN "*.tpp" )
+install( TARGETS PLIHDF5 DESTINATION lib COMPONENT runtime )

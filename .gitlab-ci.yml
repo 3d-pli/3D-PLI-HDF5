@@ -1,6 +1,7 @@
 stages:
   - lint
   - build
+  - package
 #   - test
 
 variables:
@@ -53,9 +54,36 @@ build:ubuntu:
     - cd build
     - cmake -DPLIHDF5_USE_LINTING=OFF ..
     - make
-#   artifacts:
-#     paths:
-#       - build/
+
+package:ubuntu22.04:
+  stage: package
+  image: ubuntu:22.04
+  script:
+    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev dpkg-dev lsb-release
+    - mkdir build
+    - cd build
+    - cmake -DBUILD_TESTING=OFF -DPLIHDF5_USE_LINTING=OFF ..
+    - make
+    - cpack
+  artifacts:
+    paths:
+      - build/PLIHDF5_1.0.0_amd64-devel.deb
+      - build/PLIHDF5_1.0.0_amd64-runtime.deb
+
+package:ubuntu20.04:
+  stage: package
+  image: ubuntu:20.04
+  script:
+    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev dpkg-dev lsb-release
+    - mkdir build
+    - cd build
+    - cmake -DBUILD_TESTING=OFF -DPLIHDF5_USE_LINTING=OFF ..
+    - make
+    - cpack
+  artifacts:
+    paths:
+      - build/PLIHDF5_1.0.0_amd64-devel.deb
+      - build/PLIHDF5_1.0.0_amd64-runtime.deb
 
 # test:ubuntu:
 #   stage: test

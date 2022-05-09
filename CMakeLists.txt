@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.19)
-project(PLIHDF5 LANGUAGES C CXX VERSION 1.0.0)
+project(plihdf5 LANGUAGES C CXX VERSION 1.0.0)
 
 # Set some CMake standards
 set(default_build_type "Debug")
@@ -34,6 +34,9 @@ set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} nlohmann_json::nlohmann_jso
 # Source files / headers
 include_directories(src)
 add_subdirectory(src)
+
+# Packaging
+include(cmake/package.cmake)
 
 # Testing
 set(BUILD_TESTING ON CACHE BOOL "Enable testing")
