@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.19)
-project(PLIHDF5 LANGUAGES C CXX VERSION 1.0.0)
+cmake_minimum_required(VERSION 3.16)
+project(plihdf5 LANGUAGES C CXX VERSION 1.0.0)
 
 # Set some CMake standards
 set(default_build_type "Debug")
@@ -14,7 +14,7 @@ include_directories(${HDF5_INCLUDE_DIRS})
 if(NOT HDF5_IS_PARALLEL)
     message(FATAL_ERROR "HDF5 is not parallel")
 endif()
-set(PLIHDF5_LINK_LIBRARIES hdf5::hdf5 hdf5::hdf5_hl)
+set(PLIHDF5_LINK_LIBRARIES ${HDF5_LIBRARIES} ${HDF5_HL_LIBRARIES})
 
 # MPI Support
 find_package(MPI REQUIRED COMPONENTS C CXX)
@@ -34,6 +34,9 @@ set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} nlohmann_json::nlohmann_jso
 # Source files / headers
 include_directories(src)
 add_subdirectory(src)
+
+# Packaging
+include(cmake/package.cmake)
 
 # Testing
 set(BUILD_TESTING ON CACHE BOOL "Enable testing")
