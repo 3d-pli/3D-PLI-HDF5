@@ -83,11 +83,11 @@ std::vector<T> PLI::HDF5::Dataset::read(
   hid_t dataspacePtr = H5Dget_space(this->m_id);
   checkHDF5Ptr(dataspacePtr, "H5Dget_space");
   PLI::HDF5::Type returnType = PLI::HDF5::Type::createType<T>();
+  hid_t memspacePtr = H5Screate_simple(count.size(), count.data(), nullptr);
+  checkHDF5Ptr(memspacePtr, "H5Screate_simple");
 
-  size_t numElements = 1;
-  std::for_each(
-      count.begin(), count.end(),
-      [&numElements](const hsize_t dimension) { numElements *= dimension; });
+  size_t numElements = std::accumulate(count.begin(), count.end(), 1,
+                                        std::multiplies<std::size_t>());
   std::vector<T> returnData;
   returnData.resize(numElements);
 
@@ -98,11 +98,12 @@ std::vector<T> PLI::HDF5::Dataset::read(
   checkHDF5Call(H5Sselect_hyperslab(dataspacePtr, H5S_SELECT_SET, offset.data(),
                                     nullptr, count.data(), nullptr),
                 "H5Sselect_hyperslab");
-  checkHDF5Call(H5Dread(this->m_id, returnType, H5S_ALL, dataspacePtr, xf_id,
+  checkHDF5Call(H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr, xf_id,
                         returnData.data()),
                 "H5Dread");
 
   checkHDF5Call(H5Pclose(xf_id), "H5Pclose");
+  checkHDF5Call(H5Sclose(memspacePtr), "H5Sclose");
   checkHDF5Call(H5Sclose(dataspacePtr), "H5Sclose");
   return returnData;
 }

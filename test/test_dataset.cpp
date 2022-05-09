@@ -78,7 +78,7 @@ TEST_F(PLI_HDF5_Dataset, exists) {
 TEST_F(PLI_HDF5_Dataset, close) {
   {  // close empty dataset
     auto dset = PLI::HDF5::Dataset();
-    EXPECT_NO_THROW(dset.close(););
+    EXPECT_NO_THROW(dset.close());
   }
 
   {  // close dataset
@@ -96,8 +96,8 @@ TEST_F(PLI_HDF5_Dataset, write) {
     const std::vector<float> data(
         std::accumulate(_dims.begin(), _dims.end(), 1, std::multiplies<int>()));
     const std::vector<hsize_t> offset{{0, 0, 0}};
-    EXPECT_THROW(dset.write(data, offset, _dims);
-                 , PLI::HDF5::Exceptions::IdentifierNotValidException);
+    EXPECT_THROW(dset.write(data, offset, _dims),
+                 PLI::HDF5::Exceptions::IdentifierNotValidException);
   }
 
   {  // write
@@ -106,7 +106,7 @@ TEST_F(PLI_HDF5_Dataset, write) {
     const std::vector<float> data(std::accumulate(
         _dims.begin(), _dims.end(), 1, std::multiplies<std::size_t>()));
     const std::vector<hsize_t> offset{{0, 0, 0}};
-    EXPECT_NO_THROW(dset.write(data, offset, _dims););
+    EXPECT_NO_THROW(dset.write(data, offset, _dims));
     dset.close();
   }
 
@@ -116,7 +116,7 @@ TEST_F(PLI_HDF5_Dataset, write) {
     const std::vector<double> data(std::accumulate(
         _dims.begin(), _dims.end(), 1, std::multiplies<std::size_t>()));
     const std::vector<hsize_t> offset{{0, 0, 0}};
-    EXPECT_NO_THROW(dset.write(data, offset, _dims););
+    EXPECT_NO_THROW(dset.write(data, offset, _dims));
     dset.close();
   }
 
@@ -127,7 +127,7 @@ TEST_F(PLI_HDF5_Dataset, write) {
     const std::vector<hsize_t> offset{{1, 1, 1}};
     const std::vector<float> data(std::accumulate(
         dims.begin(), dims.end(), 1, std::multiplies<std::size_t>()));
-    EXPECT_NO_THROW(dset.write(data, offset, dims););
+    EXPECT_NO_THROW(dset.write(data, offset, dims));
     dset.close();
   }
 
@@ -137,8 +137,8 @@ TEST_F(PLI_HDF5_Dataset, write) {
     const std::vector<float> data(
         std::accumulate(_dims.begin(), _dims.end(), 1, std::multiplies<int>()));
     const std::vector<hsize_t> offset{{1, 1, 1}};
-    EXPECT_THROW(dset.write(data, offset, _dims);
-                 , PLI::HDF5::Exceptions::HDF5RuntimeException);
+    EXPECT_THROW(dset.write(data, offset, _dims),
+                 PLI::HDF5::Exceptions::HDF5RuntimeException);
     dset.close();
   }
 }
@@ -173,7 +173,7 @@ TEST_F(PLI_HDF5_Dataset, dims) {
 TEST_F(PLI_HDF5_Dataset, id) {
   {  // empty dataset
     auto dset = PLI::HDF5::Dataset();
-    EXPECT_NO_THROW(dset.id(););
+    EXPECT_NO_THROW(dset.id());
     dset.close();
   }
 }
@@ -193,7 +193,7 @@ TEST_F(PLI_HDF5_Dataset, open) {
 
 TEST_F(PLI_HDF5_Dataset, create) {
   {  // create dataset
-    auto dset = PLI::HDF5::Dataset();
+    PLI::HDF5::Dataset dset;
     EXPECT_NO_THROW(dset = PLI::HDF5::createDataset<float>(_file, "/foo", _dims,
                                                            _chunk_dims));
     dset.close();
@@ -203,21 +203,21 @@ TEST_F(PLI_HDF5_Dataset, create) {
 
   {  // recreate dataset
     EXPECT_THROW(
-        PLI::HDF5::createDataset<float>(_file, "/foo", _dims, _chunk_dims);
-        , PLI::HDF5::Exceptions::DatasetExistsException);
+        PLI::HDF5::createDataset<float>(_file, "/foo", _dims, _chunk_dims),
+        PLI::HDF5::Exceptions::DatasetExistsException);
   }
 
   {  // create dataset with grp in path
     EXPECT_THROW(PLI::HDF5::createDataset<float>(
-                     _file, "/not_existing_grp/dset", _dims, _chunk_dims);
-                 , PLI::HDF5::Exceptions::IdentifierNotValidException);
+                     _file, "/not_existing_grp/dset", _dims, _chunk_dims),
+                 PLI::HDF5::Exceptions::IdentifierNotValidException);
   }
 
   {  // create dataset in not existing group
     const hsize_t id = 42;
     EXPECT_THROW(
-        PLI::HDF5::createDataset<float>(id, "/Image", _dims, _chunk_dims);
-        , PLI::HDF5::Exceptions::IdentifierNotValidException);
+        PLI::HDF5::createDataset<float>(id, "/Image", _dims, _chunk_dims),
+        PLI::HDF5::Exceptions::IdentifierNotValidException);
   }
 }
 
@@ -241,7 +241,7 @@ TEST_F(PLI_HDF5_Dataset, read) {
   }
 
   {  // read subset
-    auto dset = PLI::HDF5::openDataset(_file, "/Image");
+    dset = PLI::HDF5::openDataset(_file, "/Image");
     const std::vector<hsize_t> offset_in{{1, 1, 1}};
     const std::vector<hsize_t> dims_in{{2, 2, 2}};
     const auto size = std::accumulate(dims_in.begin(), dims_in.end(), 1,
@@ -256,19 +256,10 @@ TEST_F(PLI_HDF5_Dataset, read) {
     for (auto i = offset_in[0]; i < offset_in[0] + dims_in[0]; i++)
       for (auto j = offset_in[1]; j < offset_in[1] + dims_in[1]; j++)
         for (auto k = offset_in[2]; k < offset_in[2] + dims_in[2]; k++) {
-          std::cout << "ii: " << ii;
-          std::cout << ", i: " << i;
-          std::cout << ", j: " << j;
-          std::cout << ", k: " << k;
-          std::cout << ", data: "
-                    << data[i * _dims[1] * _dims[2] + j * _dims[2] + k];
-          std::cout << ", data_in: " << data_in[ii];
-          std::cout << std::endl;
           data_comp[ii++] = data[i * _dims[1] * _dims[2] + j * _dims[2] + k];
         }
 
-    EXPECT_TRUE(data == data_comp);
-
+    EXPECT_TRUE(std::equal(data_in.begin(), data_in.end(), data_comp.begin()));
     dset.close();
   }
 }
