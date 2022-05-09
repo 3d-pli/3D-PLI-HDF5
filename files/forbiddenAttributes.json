@@ -1,5 +1,5 @@
 {
-    forbiddenAttributes : [
+    "forbiddenAttributes" : [
         "created_by",
         "creation_time",
         "dashboard_id",

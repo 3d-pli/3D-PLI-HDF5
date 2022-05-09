@@ -32,7 +32,13 @@
 
 #include "PLIHDF5/exceptions.h"
 
+/**
+ * @brief The PLI namespace
+ */
 namespace PLI {
+/**
+ * @brief The HDF5 namespace
+ */
 namespace HDF5 {
 class Type {
  public:
@@ -45,7 +51,8 @@ class Type {
 
   operator hid_t() const;
   operator std::string() const;
-  bool operator==(Type& other) const;
+  bool operator==(const Type& other) const;
+  bool operator!=(const Type& other) const;
 
  private:
   static std::string convertIDToName(const hid_t ID);

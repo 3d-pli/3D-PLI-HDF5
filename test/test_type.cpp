@@ -28,7 +28,6 @@
 #include <string>
 
 #include "PLIHDF5/type.h"
-#include "testEnvironment.h"
 
 template <typename T>
 class TypeTest : public ::testing::Test {
@@ -53,9 +52,10 @@ TYPED_TEST(TypeTest, CreateTypeFromID) {}
 int main(int argc, char* argv[]) {
   int result = 0;
 
+  MPI_Init(&argc, &argv);
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::AddGlobalTestEnvironment(new MPIEnvironment);
-
   result = RUN_ALL_TESTS();
+
+  MPI_Finalize();
   return result;
 }
