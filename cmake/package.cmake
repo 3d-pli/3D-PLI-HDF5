@@ -5,9 +5,11 @@ find_program( LSB_RELEASE_EXEC lsb_release )
 ##########
 export(TARGETS PLIHDF5 FILE ${PROJECT_BINARY_DIR}/PLIHDF5Targets.cmake)
 export(PACKAGE PLIHDF5)
+message("${CMAKE_INSTALL_PREFIX}/${INSTALL_CMAKE_DIR}")
 # Create the PLIHDF5Config.cmake and PLIHDF5ConfigVersion files
-file(RELATIVE_PATH REL_INCLUDE_DIR "${INSTALL_CMAKE_DIR}"
-   "${INSTALL_INCLUDE_DIR}")
+file(RELATIVE_PATH REL_INCLUDE_DIR 
+    "${CMAKE_INSTALL_PREFIX}/${INSTALL_CMAKE_DIR}"
+    "${CMAKE_INSTALL_PREFIX}/${INSTALL_INCLUDE_DIR}")
 # ... for the build tree
 set(CONF_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}" "${PROJECT_BINARY_DIR}")
 configure_file(cmake/PLIHDF5Config.cmake.in
@@ -24,11 +26,11 @@ configure_file(cmake/PLIHDF5ConfigVersion.cmake.in
 install(FILES
   "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/PLIHDF5Config.cmake"
   "${PROJECT_BINARY_DIR}/PLIHDF5ConfigVersion.cmake"
-  DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
+  DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT devel)
 
 # Install the export set for use with the install-tree
 install(EXPORT PLIHDF5Targets DESTINATION
-"${INSTALL_CMAKE_DIR}" COMPONENT dev)
+"${INSTALL_CMAKE_DIR}" COMPONENT devel)
 
 ##########
 # Create packages

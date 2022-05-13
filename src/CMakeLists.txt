@@ -51,15 +51,15 @@ target_link_libraries(PLIHDF5 ${PLIHDF5_LINK_LIBRARIES} )
 
 install( DIRECTORY "PLIHDF5"
          EXPORT PLIHDF5Targets
-         DESTINATION include
+         DESTINATION "${INSTALL_INCLUDE_DIR}"
          COMPONENT devel
          FILES_MATCHING PATTERN "*.h" )
 install( DIRECTORY "PLIHDF5"
          EXPORT PLIHDF5Targets
-         DESTINATION include
+         DESTINATION "${INSTALL_INCLUDE_DIR}"
          COMPONENT devel
          FILES_MATCHING PATTERN "*.tpp" )
 install( TARGETS PLIHDF5 
          EXPORT PLIHDF5Targets
-         DESTINATION lib 
+         DESTINATION "${INSTALL_LIB_DIR}"
          COMPONENT runtime )
