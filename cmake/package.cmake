@@ -5,7 +5,6 @@ find_program( LSB_RELEASE_EXEC lsb_release )
 ##########
 export(TARGETS PLIHDF5 FILE ${PROJECT_BINARY_DIR}/PLIHDF5Targets.cmake)
 export(PACKAGE PLIHDF5)
-message("${CMAKE_INSTALL_PREFIX}/${INSTALL_CMAKE_DIR}")
 # Create the PLIHDF5Config.cmake and PLIHDF5ConfigVersion files
 file(RELATIVE_PATH REL_INCLUDE_DIR 
     "${CMAKE_INSTALL_PREFIX}/${INSTALL_CMAKE_DIR}"

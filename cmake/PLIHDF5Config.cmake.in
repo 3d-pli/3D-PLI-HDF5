@@ -3,6 +3,12 @@
 #  PLIHDF5_INCLUDE_DIRS - include directories for plihdf5
 #  PLIHDF5_LIBRARIES    - libraries to link against
 
+include(CMakeFindDependencyMacro)
+set(HDF5_PREFER_PARALLEL ON)
+find_dependency(HDF5 REQUIRED COMPONENTS C HL)
+find_dependency(MPI REQUIRED COMPONENTS C CXX)
+find_dependency(OpenSSL REQUIRED)
+
 # Compute paths
 get_filename_component(PLIHDF5_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 set(PLIHDF5_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
