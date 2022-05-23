@@ -14,9 +14,9 @@ get_filename_component(PLIHDF5_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 set(PLIHDF5_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
 
 # Our library dependencies (contains definitions for IMPORTED targets)
-if(NOT TARGET plihdf5 AND NOT PLIHDF5_BINARY_DIR)
+if(NOT TARGET PLIHDF5 AND NOT PLIHDF5_BINARY_DIR)
   include("${PLIHDF5_CMAKE_DIR}/PLIHDF5Targets.cmake")
 endif()
 
 # These are IMPORTED targets created by PLIHDF5Targets.cmake
-set(PLIHDF5_LIBRARIES plihdf5)
+set(PLIHDF5_LIBRARIES PLIHDF5)
