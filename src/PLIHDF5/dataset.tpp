@@ -111,6 +111,12 @@ template <typename T>
 void PLI::HDF5::Dataset::write(const std::vector<T> &data,
                                const std::vector<hsize_t> &offset,
                                const std::vector<hsize_t> &dims) {
+  if (offset.size() != dims.size()) {
+    throw Exceptions::HDF5RuntimeException(
+        "Offset dimensions must have the same size as "
+        "dims dimensions.");
+  }
+
   hid_t dataSpacePtr = H5Dget_space(this->m_id);
   checkHDF5Ptr(dataSpacePtr, "H5Dget_space");
 
