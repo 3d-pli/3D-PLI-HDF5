@@ -141,6 +141,13 @@ TEST_F(PLI_HDF5_Dataset, write) {
                  , PLI::HDF5::Exceptions::HDF5RuntimeException);
     dset.close();
   }
+
+  {
+      // write diff offset and dims
+  }
+
+  {  // write data length != dims size
+  }
 }
 
 TEST_F(PLI_HDF5_Dataset, type) {
@@ -218,6 +225,13 @@ TEST_F(PLI_HDF5_Dataset, create) {
     EXPECT_THROW(
         PLI::HDF5::createDataset<float>(id, "/Image", _dims, _chunk_dims);
         , PLI::HDF5::Exceptions::IdentifierNotValidException);
+  }
+
+  {  // create wrong dims and chunk size
+    auto chunk_dims = _dims;
+    chunk_dims.pop_back();
+    EXPECT_ANY_THROW(
+        PLI::HDF5::createDataset<float>(_file, "/Image_", _dims, chunk_dims););
   }
 }
 
