@@ -98,7 +98,10 @@ std::vector<T> PLI::HDF5::Dataset::read(
   checkHDF5Call(H5Sselect_hyperslab(dataspacePtr, H5S_SELECT_SET, offset.data(),
                                     nullptr, count.data(), nullptr),
                 "H5Sselect_hyperslab");
-  checkHDF5Call(H5Dread(this->m_id, returnType, H5S_ALL, dataspacePtr, xf_id,
+                
+  hid_t memspacePtr = H5Screate_simple(this->dims().size(), this->dims(), nullptr);
+  checkHDF5Ptr(memspacePtr, "H5Screate_simple");
+  checkHDF5Call(H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr, xf_id,
                         returnData.data()),
                 "H5Dread");
 
@@ -129,8 +132,11 @@ void PLI::HDF5::Dataset::write(const std::vector<T> &data,
                 "H5Sselect_hyperslab");
 
   PLI::HDF5::Type dataType = PLI::HDF5::Type::createType<T>();
+
+  hid_t memspacePtr = H5Screate_simple(this->dims().size(), this->dims(), nullptr);
+  checkHDF5Ptr(memspacePtr, "H5Screate_simple");
   checkHDF5Call(
-      H5Dwrite(this->m_id, dataType, H5S_ALL, dataSpacePtr, xf_id, data.data()),
+      H5Dwrite(this->m_id, dataType, memspacePtr, dataSpacePtr, xf_id, data.data()),
       "H5Dwrite");
 
   checkHDF5Call(H5Pclose(xf_id), "H5Pclose");
