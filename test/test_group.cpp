@@ -33,22 +33,31 @@
 class PLI_HDF5_Group : public ::testing::Test {
  protected:
   void SetUp() override {
+    int32_t rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
     try {
       _file.close();
     } catch (...) {
       // can occur due to testing failures. leave pointer open and continue.
     }
-    if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
+    if (rank == 0 && std::filesystem::exists(_filePath))
+      std::filesystem::remove(_filePath);
+    MPI_Barrier(MPI_COMM_WORLD);
     _file = PLI::HDF5::createFile(_filePath);
   }
 
   void TearDown() override {
+    int32_t rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     try {
       _file.close();
     } catch (...) {
       // can occur due to testing failures. leave pointer open and continue.
     }
-    if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
+    if (rank == 0 && std::filesystem::exists(_filePath))
+      std::filesystem::remove(_filePath);
+    MPI_Barrier(MPI_COMM_WORLD);
   }
 
   const std::string _filePath =
@@ -60,54 +69,54 @@ TEST_F(PLI_HDF5_Group, Open) {
   {  // open existing
     auto grp = PLI::HDF5::createGroup(_file, "foo");
     grp.close();
-    EXPECT_NO_THROW(grp = PLI::HDF5::openGroup(_file, "foo"););
+    EXPECT_NO_THROW(grp = PLI::HDF5::openGroup(_file, "foo"));
     grp.close();
   }
 
   {  // open sub path
     auto grp = PLI::HDF5::createGroup(_file, "foo/bar");
     grp.close();
-    EXPECT_NO_THROW(grp = PLI::HDF5::openGroup(_file, "foo/bar"););
+    EXPECT_NO_THROW(grp = PLI::HDF5::openGroup(_file, "foo/bar"));
     grp.close();
   }
 
   {  // open sub path
     auto grp = PLI::HDF5::openGroup(_file, "foo");
-    EXPECT_NO_THROW(grp = PLI::HDF5::openGroup(grp, "bar"););
+    EXPECT_NO_THROW(grp = PLI::HDF5::openGroup(grp, "bar"));
     grp.close();
   }
 
   {  // open non existing
-    EXPECT_THROW(PLI::HDF5::openGroup(_file, "bar");
-                 , PLI::HDF5::Exceptions::GroupNotFoundException);
+    EXPECT_THROW(PLI::HDF5::openGroup(_file, "bar"),
+                 PLI::HDF5::Exceptions::GroupNotFoundException);
   }
 }
 
 TEST_F(PLI_HDF5_Group, Create) {
   {  // create
     PLI::HDF5::Group grp;
-    EXPECT_NO_THROW(grp = PLI::HDF5::createGroup(_file, "foo"););
+    EXPECT_NO_THROW(grp = PLI::HDF5::createGroup(_file, "foo"));
     grp.close();
   }
 
   {  // create subgrp
     PLI::HDF5::Group grp;
-    EXPECT_NO_THROW(grp = PLI::HDF5::createGroup(_file, "foo/bar"););
+    EXPECT_NO_THROW(grp = PLI::HDF5::createGroup(_file, "foo/bar"));
     grp.close();
   }
 
   {  // create subgrp from grp
     auto grp = PLI::HDF5::openGroup(_file, "foo");
     PLI::HDF5::Group subgrp;
-    EXPECT_NO_THROW(subgrp = PLI::HDF5::createGroup(grp, "BAR"););
+    EXPECT_NO_THROW(subgrp = PLI::HDF5::createGroup(grp, "BAR"));
     subgrp.close();
     grp.close();
   }
 
   {  // create already existing grp
     PLI::HDF5::Group grp;
-    EXPECT_THROW(PLI::HDF5::createGroup(_file, "foo");
-                 , PLI::HDF5::Exceptions::GroupExistsException);
+    EXPECT_THROW(PLI::HDF5::createGroup(_file, "foo"),
+                 PLI::HDF5::Exceptions::GroupExistsException);
   }
 }
 
@@ -127,7 +136,7 @@ TEST_F(PLI_HDF5_Group, Close) {
   {  //
     PLI::HDF5::Group grp;
     grp = PLI::HDF5::createGroup(_file, "foo");
-    EXPECT_NO_THROW(grp.close(););
+    EXPECT_NO_THROW(grp.close());
   }
 }
 

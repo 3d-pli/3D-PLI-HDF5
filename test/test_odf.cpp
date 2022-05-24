@@ -34,11 +34,19 @@
 class PLI_HDF5_ODF : public ::testing::Test {
  protected:
   void SetUp() override {
-    if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
+    int32_t rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    if (rank == 0 && std::filesystem::exists(_filePath))
+      std::filesystem::remove(_filePath);
+    MPI_Barrier(MPI_COMM_WORLD);
   }
 
   void TearDown() override {
-    if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
+    int32_t rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    if (rank == 0 && std::filesystem::exists(_filePath))
+      std::filesystem::remove(_filePath);
+    MPI_Barrier(MPI_COMM_WORLD);
   }
 
   const std::string _filePath =
@@ -66,7 +74,7 @@ TEST_F(PLI_HDF5_ODF, odf) {
                k * dims[3]] = 1;
 
     auto dset = PLI::HDF5::createDataset<float>(file, "/ODF", dims, chunk_dims);
-    EXPECT_NO_THROW(dset.write(data, offset, dims););
+    EXPECT_NO_THROW(dset.write(data, offset, dims));
 
     dset.close();
     file.close();

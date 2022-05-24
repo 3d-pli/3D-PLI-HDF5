@@ -44,6 +44,7 @@ class PLI_HDF5_Dataset : public ::testing::Test {
     }
     if (rank == 0 && std::filesystem::exists(_filePath))
       std::filesystem::remove(_filePath);
+    MPI_Barrier(MPI_COMM_WORLD);
     _file = PLI::HDF5::createFile(_filePath);
   }
 

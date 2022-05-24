@@ -48,6 +48,7 @@ class AttributeHandlerTest : public ::testing::Test {
       bool success = std::filesystem::remove(_filePath);
       ASSERT_TRUE(success);
     }
+    MPI_Barrier(MPI_COMM_WORLD);
   }
 
   std::string _filePath;

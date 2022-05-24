@@ -27,29 +27,32 @@
 
 #include "PLIHDF5/file.h"
 
+void removeFile(const std::string& path) {
+  int32_t rank;
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  if (rank == 0 && std::filesystem::exists(path)) std::filesystem::remove(path);
+  MPI_Barrier(MPI_COMM_WORLD);
+}
+
 class PLI_HDF5_File : public ::testing::Test {
  protected:
   void SetUp() override {}
 
-  void TearDown() override {
-    _file.close();
-    if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
-  }
+  void TearDown() override { removeFile(_filePath); }
 
   const std::string _filePath =
       std::filesystem::temp_directory_path() / "test_file.h5";
-  PLI::HDF5::File _file;
 };
 
 TEST_F(PLI_HDF5_File, Constructor) {
-  EXPECT_NO_THROW({ auto h5f = PLI::HDF5::File(); });
+  EXPECT_NO_THROW(auto h5f = PLI::HDF5::File());
 
   EXPECT_NO_THROW({
     auto h5f_0 = PLI::HDF5::File();
     auto h5f_1 = PLI::HDF5::File(h5f_0);
   });
 
-  // TODO: File(const hid_t filePtr, const hid_t faplID);
+  // TODO(fmatuschke): File(const hid_t filePtr, const hid_t faplID);
 }
 
 TEST_F(PLI_HDF5_File, Destructor) {
@@ -62,6 +65,7 @@ TEST_F(PLI_HDF5_File, Create) {
   {  // create file
     auto h5f = PLI::HDF5::File();
     h5f.create(_filePath);
+    h5f.close();
   }
 
   {  // create existing file
@@ -114,6 +118,7 @@ TEST_F(PLI_HDF5_File, Reopen) {
   {  // reopen none set file object
     auto h5f = PLI::HDF5::File();
     EXPECT_ANY_THROW(h5f.reopen());
+    h5f.close();
   }
 
   EXPECT_NO_THROW({  // reopen closed file object
@@ -121,8 +126,9 @@ TEST_F(PLI_HDF5_File, Reopen) {
     h5f.create(_filePath);
     h5f.flush();
     h5f.reopen();
-    std::filesystem::remove(_filePath);
+    h5f.close();
   });
+  removeFile(_filePath);
 
   {  // reopen closed file
     auto h5f = PLI::HDF5::File();
@@ -137,30 +143,34 @@ TEST_F(PLI_HDF5_File, Flush) {
   EXPECT_ANY_THROW({  // flush non created file
     auto h5f = PLI::HDF5::File();
     h5f.flush();
-    // TODO: specify throw
+    h5f.close();
+    // TODO(fmatuschke): specify throw
   });
-  std::filesystem::remove(_filePath);
+  removeFile(_filePath);
 
   EXPECT_NO_THROW({  // flush empty file
     auto h5f = PLI::HDF5::File();
     h5f.create(_filePath);
     h5f.flush();
+    h5f.close();
   });
 }
 
 TEST_F(PLI_HDF5_File, ID) {
   auto h5f = PLI::HDF5::File();
   h5f.create(_filePath);
-  ASSERT_TRUE(h5f.id() >= 0);
+  ASSERT_GE(h5f.id(), 0);
+  h5f.close();
 }
 
 TEST_F(PLI_HDF5_File, FaplID) {
   auto h5f = PLI::HDF5::File();
   h5f.create(_filePath);
-  ASSERT_TRUE(h5f.faplID() >= 0);
+  ASSERT_GE(h5f.faplID(), 0);
+  h5f.close();
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   int result = 0;
 
   MPI_Init(&argc, &argv);
