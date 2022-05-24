@@ -3,18 +3,19 @@
 #include "PLIHDF5/dataset.h"
 
 template <typename T>
-PLI::HDF5::Dataset createDataset(const hid_t parentPtr, const std::string& datasetName,
-                                 const std::vector<hsize_t>& dims,
-                                 const std::vector<hsize_t>& chunkDims = {}) {
-    PLI::HDF5::Dataset dataset;
-    dataset.create<T>(parentPtr, datasetName, dims, chunkDims);
-    return dataset;
+PLI::HDF5::Dataset PLI::HDF5::createDataset(
+    const hid_t parentPtr, const std::string &datasetName,
+    const std::vector<hsize_t> &dims, const std::vector<hsize_t> &chunkDims) {
+  PLI::HDF5::Dataset dataset;
+  dataset.create<T>(parentPtr, datasetName, dims, chunkDims);
+  return dataset;
 }
 
 template <typename T>
-void PLI::HDF5::Dataset::create(
-    const hid_t parentPtr, const std::string &datasetName,
-    const std::vector<hsize_t> &dims, const std::vector<hsize_t> &chunkDims) {
+void PLI::HDF5::Dataset::create(const hid_t parentPtr,
+                                const std::string &datasetName,
+                                const std::vector<hsize_t> &dims,
+                                const std::vector<hsize_t> &chunkDims) {
   if (PLI::HDF5::Dataset::exists(parentPtr, datasetName)) {
     throw Exceptions::DatasetExistsException("Dataset already exists!");
   }
@@ -82,11 +83,11 @@ std::vector<T> PLI::HDF5::Dataset::read(
   hid_t dataspacePtr = H5Dget_space(this->m_id);
   checkHDF5Ptr(dataspacePtr, "H5Dget_space");
   PLI::HDF5::Type returnType = PLI::HDF5::Type::createType<T>();
+  hid_t memspacePtr = H5Screate_simple(count.size(), count.data(), nullptr);
+  checkHDF5Ptr(memspacePtr, "H5Screate_simple");
 
-  size_t numElements = 1;
-  std::for_each(
-      count.begin(), count.end(),
-      [&numElements](const hsize_t dimension) { numElements *= dimension; });
+  size_t numElements = std::accumulate(count.begin(), count.end(), 1,
+                                        std::multiplies<std::size_t>());
   std::vector<T> returnData;
   returnData.resize(numElements);
 
@@ -97,14 +98,12 @@ std::vector<T> PLI::HDF5::Dataset::read(
   checkHDF5Call(H5Sselect_hyperslab(dataspacePtr, H5S_SELECT_SET, offset.data(),
                                     nullptr, count.data(), nullptr),
                 "H5Sselect_hyperslab");
-                
-  hid_t memspacePtr = H5Screate_simple(this->dims().size(), this->dims(), nullptr);
-  checkHDF5Ptr(memspacePtr, "H5Screate_simple");
-  checkHDF5Call(H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr, xf_id,
-                        returnData.data()),
+  checkHDF5Call(H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr,
+                        xf_id, returnData.data()),
                 "H5Dread");
 
   checkHDF5Call(H5Pclose(xf_id), "H5Pclose");
+  checkHDF5Call(H5Sclose(memspacePtr), "H5Sclose");
   checkHDF5Call(H5Sclose(dataspacePtr), "H5Sclose");
   return returnData;
 }
@@ -132,11 +131,11 @@ void PLI::HDF5::Dataset::write(const std::vector<T> &data,
 
   PLI::HDF5::Type dataType = PLI::HDF5::Type::createType<T>();
 
-  hid_t memspacePtr = H5Screate_simple(this->dims().size(), this->dims(), nullptr);
+  hid_t memspacePtr = H5Screate_simple(dims.size(), dims.data(), nullptr);
   checkHDF5Ptr(memspacePtr, "H5Screate_simple");
-  checkHDF5Call(
-      H5Dwrite(this->m_id, dataType, memspacePtr, dataSpacePtr, xf_id, data.data()),
-      "H5Dwrite");
+  checkHDF5Call(H5Dwrite(this->m_id, dataType, memspacePtr, dataSpacePtr, xf_id,
+                         data.data()),
+                "H5Dwrite");
 
   checkHDF5Call(H5Pclose(xf_id), "H5Pclose");
   checkHDF5Call(H5Sclose(dataSpacePtr), "H5Sclose");
