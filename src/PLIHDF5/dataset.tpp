@@ -32,6 +32,7 @@ void PLI::HDF5::Dataset::create(const hid_t parentPtr,
     checkHDF5Ptr(dcpl_id, "H5Pcreate");
     checkHDF5Call(H5Pset_chunk(dcpl_id, chunkDims.size(), chunkDims.data()),
                   "H5Pset_chunk");
+    checkHDF5Call(H5Pset_fletcher32(dcpl_id), "H5Pset_fletcher32");
   }
 
   PLI::HDF5::Type dataType = PLI::HDF5::Type::createType<T>();
