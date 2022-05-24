@@ -82,6 +82,7 @@ TEST_F(PLI_HDF5_ODF, odf) {
     auto data = dset.read<float>(offset, count);
 
     // read full dataset
+    auto dim = dset.dims();
     auto data_all = dset.readFullDataset<float>();
 
     // accessing elements:
