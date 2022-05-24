@@ -46,12 +46,14 @@ class PLI_HDF5_ODF : public ::testing::Test {
 };
 
 TEST_F(PLI_HDF5_ODF, odf) {
+  const int n_coeff = 28;
+
   {  // write
     auto file = PLI::HDF5::createFile(_filePath);
 
     // generate temporary data
-    const std::vector<hsize_t> chunk_dims{{5, 5, 5, 6}};
-    const std::vector<hsize_t> dims{{10, 10, 10, 6}};
+    const std::vector<hsize_t> chunk_dims{{5, 5, 5, n_coeff}};
+    const std::vector<hsize_t> dims{{10, 10, 10, n_coeff}};
     const std::vector<hsize_t> offset{{0, 0, 0, 0}};
     std::vector<float> data(std::accumulate(dims.begin(), dims.end(), 1,
                                             std::multiplies<size_t>()));
@@ -60,7 +62,6 @@ TEST_F(PLI_HDF5_ODF, odf) {
     for (hsize_t i = 3; i < 7; i++)
       for (hsize_t j = 3; j < 7; j++)
         for (hsize_t k = 3; k < 7; k++)
-
           data[i * dims[1] * dims[2] * dims[3] + j * dims[2] * dims[3] +
                k * dims[3]] = 1;
 
@@ -71,14 +72,21 @@ TEST_F(PLI_HDF5_ODF, odf) {
     file.close();
   }
 
-  {  // lesen
+  {  // read
     auto file = PLI::HDF5::openFile(_filePath);
-    const std::vector<hsize_t> count{{1, 5, 5, 6}};
-    const std::vector<hsize_t> offset{{0, 0, 0, 0}};
-
     auto dset = PLI::HDF5::openDataset(file, "/ODF");
+
+    // read sub dataset
+    const std::vector<hsize_t> offset{{0, 0, 0, 0}};
+    const std::vector<hsize_t> count{{1, 5, 5, n_coeff}};
     auto data = dset.read<float>(offset, count);
+
+    // read full dataset
     auto data_all = dset.readFullDataset<float>();
+
+    // accessing elements:
+    // data_all[z*dim[1]*dim[2]*dim[3]+y*dim[2]*dim[3]+x*dim[3]+c]
+
     dset.close();
     file.close();
   }
