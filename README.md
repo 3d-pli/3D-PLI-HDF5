@@ -45,7 +45,6 @@ make install
 ```
 
 ### Build DEB package
-**TODO**
 ```bash
 git clone https://github.com/3d-pli/3D-PLI-HDF5.git
 cd 3d-pli-hdf5
@@ -53,18 +52,19 @@ mkdir build
 cd build
 cmake ..
 make
-cpack -G DEB
+cpack
 ```
 
 ### Install the library as a DEB package
-**TODO**
+To install the package, either build it yourself or download the packages from the releases / pipeline artifacts.
+Then, you can run the following commands to install the package.
 ```bash
-dpkg -i 3d-pli-hdf5_0.1.0-1_amd64.deb
+apt-get update -qq
+apt-get install -y ./plihdf5_1.0.0_amd64-devel.deb ./plihdf5_1.0.0_amd64-runtime.deb
 ```
-
 
 ## API documentation
 
 The API documentation is generated from the source code.
-The methods itself are documented in the source code. To view the documentation outside of the repository, you can go to the wiki page of the repository: [Here](https://jugit.fz-juelich.de/prototypes/3d-pli-hdf5/-/wikis/home)
+The methods itself are documented in the source code. To view the documentation outside of the repository, you can go to the wiki page of the repository: [Here](https://3d-pli.github.io/3D-PLI-HDF5/html/)
 

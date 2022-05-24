@@ -98,8 +98,8 @@ std::vector<T> PLI::HDF5::Dataset::read(
   checkHDF5Call(H5Sselect_hyperslab(dataspacePtr, H5S_SELECT_SET, offset.data(),
                                     nullptr, count.data(), nullptr),
                 "H5Sselect_hyperslab");
-  checkHDF5Call(H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr, xf_id,
-                        returnData.data()),
+  checkHDF5Call(H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr,
+                        xf_id, returnData.data()),
                 "H5Dread");
 
   checkHDF5Call(H5Pclose(xf_id), "H5Pclose");
@@ -112,6 +112,12 @@ template <typename T>
 void PLI::HDF5::Dataset::write(const std::vector<T> &data,
                                const std::vector<hsize_t> &offset,
                                const std::vector<hsize_t> &dims) {
+  if (offset.size() != dims.size()) {
+    throw Exceptions::HDF5RuntimeException(
+        "Offset dimensions must have the same size as "
+        "dims dimensions.");
+  }
+
   hid_t dataSpacePtr = H5Dget_space(this->m_id);
   checkHDF5Ptr(dataSpacePtr, "H5Dget_space");
 
@@ -124,9 +130,12 @@ void PLI::HDF5::Dataset::write(const std::vector<T> &data,
                 "H5Sselect_hyperslab");
 
   PLI::HDF5::Type dataType = PLI::HDF5::Type::createType<T>();
-  checkHDF5Call(
-      H5Dwrite(this->m_id, dataType, H5S_ALL, dataSpacePtr, xf_id, data.data()),
-      "H5Dwrite");
+
+  hid_t memspacePtr = H5Screate_simple(dims.size(), dims.data(), nullptr);
+  checkHDF5Ptr(memspacePtr, "H5Screate_simple");
+  checkHDF5Call(H5Dwrite(this->m_id, dataType, memspacePtr, dataSpacePtr, xf_id,
+                         data.data()),
+                "H5Dwrite");
 
   checkHDF5Call(H5Pclose(xf_id), "H5Pclose");
   checkHDF5Call(H5Sclose(dataSpacePtr), "H5Sclose");

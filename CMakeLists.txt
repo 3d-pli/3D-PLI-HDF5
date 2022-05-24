@@ -1,11 +1,24 @@
-cmake_minimum_required(VERSION 3.19)
-project(PLIHDF5 LANGUAGES C CXX VERSION 1.0.0)
+cmake_minimum_required(VERSION 3.16)
+project(plihdf5 LANGUAGES C CXX VERSION 1.0.0)
 
 # Set some CMake standards
-set(default_build_type "Debug")
+set(default_build_type "Release")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Offer the user the choice of overriding the installation directories
+set(INSTALL_LIB_DIR lib CACHE PATH "Installation directory for libraries")
+set(INSTALL_BIN_DIR bin CACHE PATH "Installation directory for executables")
+set(INSTALL_INCLUDE_DIR include CACHE PATH
+  "Installation directory for header files")
+if(WIN32 AND NOT CYGWIN)
+  set(DEF_INSTALL_CMAKE_DIR CMake)
+else()
+  set(DEF_INSTALL_CMAKE_DIR lib/cmake/PLIHDF5)
+endif()
+set(INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
+  "Installation directory for CMake files")
 
 # HDF5 Support
 set(HDF5_PREFER_PARALLEL ON)
@@ -14,7 +27,7 @@ include_directories(${HDF5_INCLUDE_DIRS})
 if(NOT HDF5_IS_PARALLEL)
     message(FATAL_ERROR "HDF5 is not parallel")
 endif()
-set(PLIHDF5_LINK_LIBRARIES hdf5::hdf5 hdf5::hdf5_hl)
+set(PLIHDF5_LINK_LIBRARIES ${HDF5_LIBRARIES} ${HDF5_HL_LIBRARIES} )
 
 # MPI Support
 find_package(MPI REQUIRED COMPONENTS C CXX)
@@ -27,13 +40,16 @@ include_directories(${OpenSSL_INCLUDE_DIR})
 set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} OpenSSL::SSL)
 
 # JSON
-set(JSON_BuildTests OFF CACHE INTERNAL "")
-add_subdirectory(extern/json)
-set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} nlohmann_json::nlohmann_json)
+# set(JSON_BuildTests OFF CACHE INTERNAL "")
+# add_subdirectory(extern/json)
+# set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} nlohmann_json::nlohmann_json)
 
 # Source files / headers
 include_directories(src)
 add_subdirectory(src)
+
+# Packaging
+include(cmake/package.cmake)
 
 # Testing
 set(BUILD_TESTING ON CACHE BOOL "Enable testing")

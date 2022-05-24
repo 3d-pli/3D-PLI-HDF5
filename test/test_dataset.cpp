@@ -141,6 +141,13 @@ TEST_F(PLI_HDF5_Dataset, write) {
                  PLI::HDF5::Exceptions::HDF5RuntimeException);
     dset.close();
   }
+
+  {
+      // write diff offset and dims
+  }
+
+  {  // write data length != dims size
+  }
 }
 
 TEST_F(PLI_HDF5_Dataset, type) {
@@ -219,6 +226,13 @@ TEST_F(PLI_HDF5_Dataset, create) {
         PLI::HDF5::createDataset<float>(id, "/Image", _dims, _chunk_dims),
         PLI::HDF5::Exceptions::IdentifierNotValidException);
   }
+
+  {  // create wrong dims and chunk size
+    auto chunk_dims = _dims;
+    chunk_dims.pop_back();
+    EXPECT_ANY_THROW(
+        PLI::HDF5::createDataset<float>(_file, "/Image_", _dims, chunk_dims));
+  }
 }
 
 TEST_F(PLI_HDF5_Dataset, readFullDataset) {}
@@ -228,12 +242,16 @@ TEST_F(PLI_HDF5_Dataset, read) {
   std::vector<int> data(std::accumulate(_dims.begin(), _dims.end(), 1,
                                         std::multiplies<std::size_t>()));
   std::iota(data.begin(), data.end(), 0);
-  auto dset =
-      PLI::HDF5::createDataset<int>(_file, "/Image", _dims, _chunk_dims);
   const std::vector<hsize_t> offset{{0, 0, 0}};
-  dset.write(data, offset, _dims);
+  {
+    auto dset =
+        PLI::HDF5::createDataset<int>(_file, "/Image", _dims, _chunk_dims);
+    dset.write(data, offset, _dims);
+    dset.close();
+  }
 
   {  // read dataset
+    auto dset = PLI::HDF5::openDataset(_file, "/Image");
     const auto data_in = dset.read<int>(offset, _dims);
     EXPECT_TRUE(data_in == data);
     EXPECT_TRUE(data_in[data_in.size() - 1] == data_in.size() - 1);
@@ -241,24 +259,24 @@ TEST_F(PLI_HDF5_Dataset, read) {
   }
 
   {  // read subset
-    dset = PLI::HDF5::openDataset(_file, "/Image");
+    auto dset = PLI::HDF5::openDataset(_file, "/Image");
     const std::vector<hsize_t> offset_in{{1, 1, 1}};
     const std::vector<hsize_t> dims_in{{2, 2, 2}};
     const auto size = std::accumulate(dims_in.begin(), dims_in.end(), 1,
                                       std::multiplies<std::size_t>());
     std::vector<int> data_in;
+    std::vector<int> data_comp(size);
     EXPECT_NO_THROW(data_in = dset.read<int>(offset_in, dims_in));
     EXPECT_TRUE(data_in.size() == size);
 
     auto ii = 0u;
-    for (auto i = offset_in[0]; i < offset_in[0] + dims_in[0]; i++) {
-      for (auto j = offset_in[1]; j < offset_in[1] + dims_in[1]; j++) {
+    for (auto i = offset_in[0]; i < offset_in[0] + dims_in[0]; i++)
+      for (auto j = offset_in[1]; j < offset_in[1] + dims_in[1]; j++)
         for (auto k = offset_in[2]; k < offset_in[2] + dims_in[2]; k++) {
-          EXPECT_TRUE(data_in[ii++] ==
-                      data[i * _dims[1] * _dims[2] + j * _dims[2] + k]);
+          data_comp[ii++] = data[i * _dims[1] * _dims[2] + j * _dims[2] + k];
         }
-      }
-    }
+
+    EXPECT_TRUE(data == data_comp);
 
     dset.close();
   }
