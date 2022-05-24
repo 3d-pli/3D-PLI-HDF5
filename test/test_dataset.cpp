@@ -276,7 +276,7 @@ TEST_F(PLI_HDF5_Dataset, read) {
           data_comp[ii++] = data[i * _dims[1] * _dims[2] + j * _dims[2] + k];
         }
 
-    EXPECT_TRUE(data == data_comp);
+    EXPECT_TRUE(data_in == data_comp);
 
     dset.close();
   }
