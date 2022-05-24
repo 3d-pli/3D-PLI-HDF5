@@ -53,7 +53,7 @@ std::vector<T> PLI::HDF5::Dataset::readFullDataset() const {
   hsize_t sumOfElements;
   sumOfElements = H5Sget_simple_extent_npoints(dataspacePtr);
 
-  std::vector<hsize_t> dims = this->dims();
+  std::vector<hsize_t> _dims = this->dims();
   std::vector<T> returnData;
   returnData.resize(sumOfElements);
 
@@ -63,7 +63,7 @@ std::vector<T> PLI::HDF5::Dataset::readFullDataset() const {
   checkHDF5Ptr(xf_id, "H5Pcreate");
   checkHDF5Call(H5Pset_dxpl_mpio(xf_id, H5FD_MPIO_COLLECTIVE),
                 "H5Pset_dxpl_mpio");
-  hid_t memspacePtr = H5Screate_simple(dims.size(), dims.data(), nullptr);
+  hid_t memspacePtr = H5Screate_simple(_dims.size(), _dims.data(), nullptr);
   checkHDF5Ptr(memspacePtr, "H5Screate_simple");
   checkHDF5Call(H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr,
                         xf_id, returnData.data()),

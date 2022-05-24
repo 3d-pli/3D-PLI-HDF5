@@ -34,8 +34,8 @@ template <typename T>
 void PLI::HDF5::AttributeHandler::createAttribute(
     const std::string &attributeName, const std::vector<T> &content,
     const std::vector<hsize_t> &dimensions) {
-  PLI::HDF5::Type attributeType = PLI::HDF5::Type::createType<T>();
-  this->createAttribute(attributeName, content.data(), dimensions, attributeType);
+  PLI::HDF5::Type _attributeType = PLI::HDF5::Type::createType<T>();
+  this->createAttribute(attributeName, content.data(), dimensions, _attributeType);
 }
 
 template <typename T>
@@ -47,8 +47,8 @@ const std::vector<T> PLI::HDF5::AttributeHandler::getAttribute(
   }
   hid_t attributeID = H5Aopen(this->m_id, attributeName.c_str(), H5P_DEFAULT);
   checkHDF5Ptr(attributeID, "H5Aopen");
-  hid_t attributeType = PLI::HDF5::Type::createType<T>();
-  checkHDF5Ptr(attributeType, "PLI::HDF5::Type");
+  hid_t _attributeType = PLI::HDF5::Type::createType<T>();
+  checkHDF5Ptr(_attributeType, "PLI::HDF5::Type");
   hid_t attributeSpace = H5Aget_space(attributeID);
   checkHDF5Ptr(attributeSpace, "H5Aget_space");
   int ndims = H5Sget_simple_extent_ndims(attributeSpace);
@@ -62,7 +62,7 @@ const std::vector<T> PLI::HDF5::AttributeHandler::getAttribute(
   }
   std::vector<T> returnContainer;
   returnContainer.resize(numElements);
-  checkHDF5Call(H5Aread(attributeID, attributeType, returnContainer.data()), "H5Aread");
+  checkHDF5Call(H5Aread(attributeID, _attributeType, returnContainer.data()), "H5Aread");
 
   checkHDF5Call(H5Sclose(attributeSpace), "H5Sclose");
   checkHDF5Call(H5Aclose(attributeID), "H5Aclose");
