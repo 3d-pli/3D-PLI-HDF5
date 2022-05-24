@@ -39,10 +39,15 @@ class AttributeHandlerTest : public ::testing::Test {
   }
 
   void TearDown() override {
+    int32_t rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
     _attributeHandler = PLI::HDF5::AttributeHandler(-1);
     _file.close();
-    bool success = std::filesystem::remove(_filePath);
-    ASSERT_TRUE(success);
+    if (rank == 0) {
+      bool success = std::filesystem::remove(_filePath);
+      ASSERT_TRUE(success);
+    }
   }
 
   std::string _filePath;

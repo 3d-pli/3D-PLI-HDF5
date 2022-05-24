@@ -34,22 +34,30 @@
 class PLI_HDF5_Dataset : public ::testing::Test {
  protected:
   void SetUp() override {
+    int32_t rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
     try {
       _file.close();
     } catch (...) {
       // can occur due to testing failures. leave pointer open and continue.
     }
-    if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
+    if (rank == 0 && std::filesystem::exists(_filePath))
+      std::filesystem::remove(_filePath);
     _file = PLI::HDF5::createFile(_filePath);
   }
 
   void TearDown() override {
+    int32_t rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
     try {
       _file.close();
     } catch (...) {
       // can occur due to testing failures. leave pointer open and continue.
     }
-    if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
+    if (rank == 0 && std::filesystem::exists(_filePath))
+      std::filesystem::remove(_filePath);
   }
 
   const std::vector<hsize_t> _dims{{128, 128, 4}};
@@ -116,7 +124,8 @@ TEST_F(PLI_HDF5_Dataset, write) {
     const std::vector<double> data(std::accumulate(
         _dims.begin(), _dims.end(), 1, std::multiplies<std::size_t>()));
     const std::vector<hsize_t> offset{{0, 0, 0}};
-    EXPECT_NO_THROW(dset.write(data, offset, _dims));
+    EXPECT_THROW(dset.write(data, offset, _dims),
+                 PLI::HDF5::Exceptions::HDF5RuntimeException);
     dset.close();
   }
 
