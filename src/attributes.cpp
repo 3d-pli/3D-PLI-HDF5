@@ -164,15 +164,30 @@ void PLI::HDF5::AttributeHandler::createAttribute(
 void PLI::HDF5::AttributeHandler::createAttribute(
     const std::string &attributeName, const void *content,
     const Type dataType) {
-  if (attributeExists(attributeName)) {
-    throw Exceptions::AttributeExistsException(
-        "Attribute with name " + attributeName + " already exists");
-  }
-  hid_t attrPtr = H5Acreate(m_id, attributeName.c_str(), dataType, H5P_DEFAULT,
-                            H5P_DEFAULT, H5P_DEFAULT);
-  checkHDF5Ptr(attrPtr, "H5Acreate");
-  checkHDF5Call(H5Awrite(attrPtr, dataType, &content), "H5Awrite");
-  checkHDF5Call(H5Aclose(attrPtr));
+  createAttribute(attributeName, content, {1}, dataType);
+}
+
+template <>
+void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
+    const std::string &attributeName, const std::string &content) {
+  // Create datatype
+  hid_t attrType = H5Tcreate(H5T_STRING, content.size() + 1);
+  H5Tset_strpad(attrType, H5T_STR_NULLTERM);
+  H5Tset_cset(attrType, H5T_CSET_ASCII);
+
+  hsize_t arrSize[1] = {1};
+  hid_t attrSpace = H5Screate_simple(1, arrSize, nullptr);
+
+  // Create attribute
+  hid_t attrHandle = H5Acreate(m_id, attributeName.c_str(), attrType, attrSpace,
+                               H5P_DEFAULT, H5P_DEFAULT);
+
+  // Write attribute
+  H5Awrite(attrHandle, attrType, content.c_str());
+
+  // Close all open references
+  H5Aclose(attrHandle);
+  H5Tclose(attrType);
 }
 
 void PLI::HDF5::AttributeHandler::deleteAttribute(

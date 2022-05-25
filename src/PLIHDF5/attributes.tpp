@@ -24,6 +24,10 @@
 #pragma once
 #include "PLIHDF5/attributes.h"
 
+template <> 
+void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
+  const std::string &attributeName, const std::string &content);
+
 template <typename T>
 void PLI::HDF5::AttributeHandler::createAttribute(
     const std::string &attributeName, const T &content) {
