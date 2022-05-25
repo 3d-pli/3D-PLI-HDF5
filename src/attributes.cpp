@@ -266,6 +266,12 @@ const std::vector<unsigned char> PLI::HDF5::AttributeHandler::getAttribute(
   return returnContainer;
 }
 
+template <>
+const std::vector<std::string> PLI::HDF5::AttributeHandler::getAttribute(
+    const std::string &attributeName) const {
+  return {};
+}
+
 const std::vector<hsize_t> PLI::HDF5::AttributeHandler::getAttributeDimensions(
     const std::string &attributeName) const {
   if (!this->attributeExists(attributeName)) {
@@ -325,4 +331,17 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
 
   checkHDF5Call(H5Awrite(attributeID, dataType, &content), "H5Awrite");
   checkHDF5Call(H5Aclose(attributeID), "H5Aclose");
+}
+
+template <>
+void PLI::HDF5::AttributeHandler::updateAttribute(
+    const std::string &attributeName, const std::string &content) {
+  return;
+}
+
+template <>
+void PLI::HDF5::AttributeHandler::updateAttribute(
+    const std::string &attributeName, const std::vector<std::string> &content,
+    const std::vector<hsize_t> &dimensions) {
+  return;
 }

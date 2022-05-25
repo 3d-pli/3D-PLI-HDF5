@@ -47,9 +47,9 @@ set(PLIHDF5_SOURCES
 
 add_library(PLIHDF5 SHARED ${PLIHDF5_SOURCES})
 if(MSVC)
-  target_compile_options(PLIHDF5 PRIVATE /W4 /WX)
+  # target_compile_options(PLIHDF5 PRIVATE /W4 /WX)
 else()
-  target_compile_options(PLIHDF5 PRIVATE -Wall -Wextra -Wpedantic -Werror -Wshadow -O)
+  # target_compile_options(PLIHDF5 PRIVATE -Wall -Wextra -Wpedantic -Werror -Wshadow -O)
 endif()
 target_link_libraries(PLIHDF5 ${PLIHDF5_LINK_LIBRARIES} )
 

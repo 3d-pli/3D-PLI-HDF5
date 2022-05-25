@@ -24,20 +24,11 @@
 #pragma once
 #include "PLIHDF5/attributes.h"
 
-template <> 
-void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
-  const std::string &attributeName, const std::string &content);
-
 template <typename T>
 void PLI::HDF5::AttributeHandler::createAttribute(
     const std::string &attributeName, const T &content) {
   createAttribute(attributeName, &content, PLI::HDF5::Type::createType<T>());
 }
-
-template <> 
-void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
-  const std::string &attributeName, const std::vector<std::string> &content,
-  const std::vector<hsize_t> &dimensions);
 
 template <typename T>
 void PLI::HDF5::AttributeHandler::createAttribute(
@@ -46,6 +37,15 @@ void PLI::HDF5::AttributeHandler::createAttribute(
   PLI::HDF5::Type _attributeType = PLI::HDF5::Type::createType<T>();
   this->createAttribute(attributeName, content.data(), dimensions, _attributeType);
 }
+
+template <> 
+void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
+  const std::string &attributeName, const std::string &content);
+
+template <> 
+void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
+  const std::string &attributeName, const std::vector<std::string> &content,
+  const std::vector<hsize_t> &dimensions);
 
 template <typename T>
 const std::vector<T> PLI::HDF5::AttributeHandler::getAttribute(
@@ -79,11 +79,19 @@ const std::vector<T> PLI::HDF5::AttributeHandler::getAttribute(
   return returnContainer;
 }
 
+template <>
+const std::vector<std::string> PLI::HDF5::AttributeHandler::getAttribute(
+    const std::string &attributeName) const;
+
 template <typename T>
 void PLI::HDF5::AttributeHandler::updateAttribute(
     const std::string &attributeName, const T &content) {
   updateAttribute(attributeName, content, PLI::HDF5::Type::createType<T>());
 }
+
+template <>
+void PLI::HDF5::AttributeHandler::updateAttribute(
+    const std::string &attributeName, const std::string &content);
 
 template <typename T>
 void PLI::HDF5::AttributeHandler::updateAttribute(
@@ -92,3 +100,8 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
   updateAttribute(attributeName, content.data(), dimensions,
                   Type::createType<T>());
 }
+
+template <>
+void PLI::HDF5::AttributeHandler::updateAttribute(
+    const std::string &attributeName, const std::vector<std::string> &content,
+    const std::vector<hsize_t> &dimensions);
