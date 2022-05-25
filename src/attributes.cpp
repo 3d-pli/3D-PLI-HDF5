@@ -172,22 +172,26 @@ void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
     const std::string &attributeName, const std::string &content) {
   // Create datatype
   hid_t attrType = H5Tcreate(H5T_STRING, content.size() + 1);
-  H5Tset_strpad(attrType, H5T_STR_NULLTERM);
-  H5Tset_cset(attrType, H5T_CSET_ASCII);
+  checkHDF5Ptr(attrType, "H5Tcreate");
+  checkHDF5Call(H5Tset_strpad(attrType, H5T_STR_NULLTERM), "H5Tset_strpad");
+  checkHDF5Call(H5Tset_cset(attrType, H5T_CSET_ASCII), "H5Tset_cset");
 
   hsize_t arrSize[1] = {1};
   hid_t attrSpace = H5Screate_simple(1, arrSize, nullptr);
+  checkHDF5Ptr(attrSpace, "H5Screate_simple");
 
   // Create attribute
   hid_t attrHandle = H5Acreate(m_id, attributeName.c_str(), attrType, attrSpace,
                                H5P_DEFAULT, H5P_DEFAULT);
+  checkHDF5Ptr(attrHandle, "H5Acreate");
 
   // Write attribute
-  H5Awrite(attrHandle, attrType, content.c_str());
+  checkHDF5Call(H5Awrite(attrHandle, attrType, content.c_str()), "H5Awrite");
 
   // Close all open references
-  H5Aclose(attrHandle);
-  H5Tclose(attrType);
+  checkHDF5Call(H5Aclose(attrHandle), "H5Aclose");
+  checkHDF5Call(H5Sclose(attrSpace), "H5Sclose");
+  checkHDF5Call(H5Tclose(attrType), "H5Tclose");
 }
 
 void PLI::HDF5::AttributeHandler::deleteAttribute(
