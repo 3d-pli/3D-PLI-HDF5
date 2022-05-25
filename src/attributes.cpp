@@ -25,6 +25,8 @@
 
 #include "PLIHDF5/attributes.h"
 
+#include <iostream>
+
 PLI::HDF5::AttributeHandler::AttributeHandler() noexcept : m_id(-1) {}
 
 PLI::HDF5::AttributeHandler::AttributeHandler(const hid_t parentPtr) noexcept
@@ -151,6 +153,7 @@ void PLI::HDF5::AttributeHandler::createAttribute(
     throw Exceptions::AttributeExistsException(
         "Attribute with name " + attributeName + " already exists");
   }
+
   hid_t spacePtr =
       H5Screate_simple(dimensions.size(), dimensions.data(), nullptr);
   checkHDF5Ptr(spacePtr, "H5Screate_simple");
@@ -170,14 +173,29 @@ void PLI::HDF5::AttributeHandler::createAttribute(
 template <>
 void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
     const std::string &attributeName, const std::string &content) {
+  createAttribute<std::string>(attributeName, {content}, {1});
+}
+
+template <>
+void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
+    const std::string &attributeName, const std::vector<std::string> &content,
+    const std::vector<hsize_t> &dimensions) {
+  // Get largest string element
+  size_t maxStringSize = 0;
+  for (auto string : content) {
+    if (string.size() > maxStringSize) {
+      maxStringSize = string.size();
+    }
+  }
+
   // Create datatype
-  hid_t attrType = H5Tcreate(H5T_STRING, content.size() + 1);
+  hid_t attrType = H5Tcreate(H5T_STRING, maxStringSize + 1);
   checkHDF5Ptr(attrType, "H5Tcreate");
   checkHDF5Call(H5Tset_strpad(attrType, H5T_STR_NULLTERM), "H5Tset_strpad");
   checkHDF5Call(H5Tset_cset(attrType, H5T_CSET_ASCII), "H5Tset_cset");
 
-  hsize_t arrSize[1] = {1};
-  hid_t attrSpace = H5Screate_simple(1, arrSize, nullptr);
+  hid_t attrSpace =
+      H5Screate_simple(dimensions.size(), dimensions.data(), nullptr);
   checkHDF5Ptr(attrSpace, "H5Screate_simple");
 
   // Create attribute
@@ -185,8 +203,20 @@ void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
                                H5P_DEFAULT, H5P_DEFAULT);
   checkHDF5Ptr(attrHandle, "H5Acreate");
 
+  // Create a char array containing both strings
+  char *strToWrite = new char[content.size() * (maxStringSize + 1)];
+  for (size_t i = 0; i < content.size(); ++i) {
+    // Write the string to the corresponding pointer position and shift the
+    // pointer accordingly
+    strncpy(strToWrite + i * (maxStringSize + 1), content[i].c_str(),
+            content[i].size());
+  }
+
   // Write attribute
-  checkHDF5Call(H5Awrite(attrHandle, attrType, content.c_str()), "H5Awrite");
+  checkHDF5Call(H5Awrite(attrHandle, attrType, strToWrite), "H5Awrite");
+
+  // Delete the allocated memory
+  delete[] strToWrite;
 
   // Close all open references
   checkHDF5Call(H5Aclose(attrHandle), "H5Aclose");

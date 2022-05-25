@@ -34,6 +34,11 @@ void PLI::HDF5::AttributeHandler::createAttribute(
   createAttribute(attributeName, &content, PLI::HDF5::Type::createType<T>());
 }
 
+template <> 
+void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
+  const std::string &attributeName, const std::vector<std::string> &content,
+  const std::vector<hsize_t> &dimensions);
+
 template <typename T>
 void PLI::HDF5::AttributeHandler::createAttribute(
     const std::string &attributeName, const std::vector<T> &content,

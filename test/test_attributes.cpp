@@ -133,9 +133,18 @@ TEST_F(AttributeHandlerTest, CreateAttribute) {
     ASSERT_NO_THROW(_attributeHandler.createAttribute<std::string>(
         "simple_string_attribute", testString));
 
-    auto readAttr =
-        _attributeHandler.getAttribute<const char*>("simple_string_attribute");
-    ASSERT_EQ(testString, readAttr[0]);
+    // auto readAttr =
+    //     _attributeHandler.getAttribute<const
+    //     char*>("simple_string_attribute");
+    // ASSERT_EQ(testString, readAttr[0]);
+  }
+
+  // Create a vector of strings
+  {
+    std::vector<std::string> stringArray = {
+        "This is string 1", "This is string 2", "This is string 3"};
+    ASSERT_NO_THROW(_attributeHandler.createAttribute<std::string>(
+        "vector_string", stringArray, {stringArray.size()}));
   }
 }
 
