@@ -269,7 +269,7 @@ const std::vector<unsigned char> PLI::HDF5::AttributeHandler::getAttribute(
 template <>
 const std::vector<std::string> PLI::HDF5::AttributeHandler::getAttribute(
     const std::string &attributeName) const {
-  return {};
+  return {attributeName};
 }
 
 const std::vector<hsize_t> PLI::HDF5::AttributeHandler::getAttributeDimensions(
@@ -336,12 +336,19 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
 template <>
 void PLI::HDF5::AttributeHandler::updateAttribute(
     const std::string &attributeName, const std::string &content) {
-  return;
+  this->updateAttribute<std::string>(attributeName, {content}, {1});
 }
 
 template <>
 void PLI::HDF5::AttributeHandler::updateAttribute(
     const std::string &attributeName, const std::vector<std::string> &content,
     const std::vector<hsize_t> &dimensions) {
-  return;
+  if (!this->attributeExists(attributeName)) {
+    throw Exceptions::AttributeNotFoundException(
+        "Could not update attribute because it "
+        "does not exist.");
+  }
+
+  this->deleteAttribute(attributeName);
+  this->createAttribute<std::string>(attributeName, content, dimensions);
 }
