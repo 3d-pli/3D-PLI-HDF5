@@ -158,6 +158,7 @@ void PLI::HDF5::AttributeHandler::createAttribute(
                             H5P_DEFAULT, H5P_DEFAULT);
   checkHDF5Ptr(attrPtr, "H5Acreate");
   checkHDF5Call(H5Awrite(attrPtr, dataType, content), "H5Awrite");
+  checkHDF5Call(H5Aclose(attrPtr));
 }
 
 void PLI::HDF5::AttributeHandler::createAttribute(
@@ -171,6 +172,7 @@ void PLI::HDF5::AttributeHandler::createAttribute(
                             H5P_DEFAULT, H5P_DEFAULT);
   checkHDF5Ptr(attrPtr, "H5Acreate");
   checkHDF5Call(H5Awrite(attrPtr, dataType, &content), "H5Awrite");
+  checkHDF5Call(H5Aclose(attrPtr));
 }
 
 void PLI::HDF5::AttributeHandler::deleteAttribute(
