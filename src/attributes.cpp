@@ -269,7 +269,55 @@ const std::vector<unsigned char> PLI::HDF5::AttributeHandler::getAttribute(
 template <>
 const std::vector<std::string> PLI::HDF5::AttributeHandler::getAttribute(
     const std::string &attributeName) const {
-  return {attributeName};
+  // Open the attribute, its type and its dataspace
+  hid_t attrHandle = H5Aopen(m_id, attributeName.c_str(), H5P_DEFAULT);
+  checkHDF5Ptr(attrHandle, "H5Aopen");
+  hid_t attrType = H5Aget_type(attrHandle);
+  checkHDF5Ptr(attrType, "H5Aget_type");
+  hid_t attrSpace = H5Aget_space(attrHandle);
+  checkHDF5Ptr(attrSpace, "H5Aget_space");
+  size_t attrElemSize = H5Tget_size(H5Aget_type(attrHandle));
+  if (attrElemSize == 0) {
+    throw PLI::HDF5::Exceptions::HDF5RuntimeException(
+        "H5Tget_size returned 0. This should not happen.");
+  }
+  // Get the dimension count
+  int ndims = H5Sget_simple_extent_ndims(attrSpace);
+  if (ndims < 0) {
+    throw PLI::HDF5::Exceptions::HDF5RuntimeException(
+        "H5Sget_simple_extent_ndims failed with value " +
+        std::to_string(ndims));
+  }
+
+  // Get sizes of dimensions
+  std::vector<hsize_t> dimSizes(ndims);
+  checkHDF5Call(H5Sget_simple_extent_dims(attrSpace, dimSizes.data(), nullptr),
+                "H5Sget_simple_extent_dims");
+
+  // Calculate total number of values
+  hsize_t totalElementCount = 1;
+  for (size_t i = 0; i < dimSizes.size(); ++i) {
+    totalElementCount *= dimSizes[i];
+  }
+
+  std::vector<std::string> returnVector;
+  returnVector.resize(totalElementCount);
+
+  // Read the attribute
+  std::string attributeContent(totalElementCount * attrElemSize, '\0');
+  checkHDF5Call(H5Aread(attrHandle, attrType, attributeContent.data()),
+                "H5Aread");
+
+  for (hsize_t i = 0; i < totalElementCount; ++i) {
+    returnVector[i] = &(attributeContent[i * attrElemSize]);
+  }
+
+  // Close all open references
+  checkHDF5Call(H5Sclose(attrSpace), "H5Sclose");
+  checkHDF5Call(H5Tclose(attrType), "H5Tclose");
+  checkHDF5Call(H5Aclose(attrHandle), "H5Aclose");
+
+  return returnVector;
 }
 
 const std::vector<hsize_t> PLI::HDF5::AttributeHandler::getAttributeDimensions(
