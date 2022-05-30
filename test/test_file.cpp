@@ -52,7 +52,10 @@ TEST_F(PLI_HDF5_File, Constructor) {
     auto h5f_1 = PLI::HDF5::File(h5f_0);
   });
 
-  // TODO(fmatuschke): File(const hid_t filePtr, const hid_t faplID);
+  EXPECT_NO_THROW({
+    auto h5f_0 = PLI::HDF5::File();
+    auto h5f_1 = PLI::HDF5::File(h5f_0.id(), h5f_0.faplID());
+  });
 }
 
 TEST_F(PLI_HDF5_File, Destructor) {
@@ -140,12 +143,13 @@ TEST_F(PLI_HDF5_File, Reopen) {
 }
 
 TEST_F(PLI_HDF5_File, Flush) {
-  EXPECT_ANY_THROW({  // flush non created file
-    auto h5f = PLI::HDF5::File();
-    h5f.flush();
-    h5f.close();
-    // TODO(fmatuschke): specify throw
-  });
+  EXPECT_THROW(
+      {  // flush non created file
+        auto h5f = PLI::HDF5::File();
+        h5f.flush();
+        h5f.close();
+      },
+      PLI::HDF5::Exceptions::IdentifierNotValidException);
   removeFile(_filePath);
 
   EXPECT_NO_THROW({  // flush empty file
