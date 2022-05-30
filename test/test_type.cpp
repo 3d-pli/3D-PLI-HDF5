@@ -45,10 +45,6 @@ TYPED_TEST(TypeTest, CreateType) {
   EXPECT_TRUE(PLI::HDF5::Type::createType<TypeParam>() == this->m_type);
 }
 
-TYPED_TEST(TypeTest, CreateTypeFromName) {}
-
-TYPED_TEST(TypeTest, CreateTypeFromID) {}
-
 int main(int argc, char* argv[]) {
   int result = 0;
 
