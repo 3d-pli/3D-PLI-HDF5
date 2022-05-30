@@ -199,10 +199,97 @@ TEST_F(AttributeHandlerTest, CopyTo) {
         newAttrHandler.getAttribute<std::string>("new_string_attribute");
 
     ASSERT_EQ(readAttrOrig, readAttrNew);
+    newGroup.close();
+  }
+
+  // Copy attribute to the same group with a different name
+  {
+    int testInt = 1;
+    _attributeHandler.createAttribute<int>("simple_int_attribute", testInt);
+    ASSERT_NO_THROW(_attributeHandler.copyTo(
+        _attributeHandler, "simple_int_attribute", "new_int_attribute"));
+
+    auto readAttr = _attributeHandler.getAttribute<int>("new_int_attribute");
+    ASSERT_EQ(testInt, readAttr[0]);
+  }
+
+  // Try to copy non existing attribute
+  {
+    ASSERT_THROW(
+        _attributeHandler.copyTo(_attributeHandler, "non_existing", "new_name"),
+        PLI::HDF5::Exceptions::AttributeNotFoundException);
   }
 }
 
-TEST_F(AttributeHandlerTest, CopyFrom) {}
+TEST_F(AttributeHandlerTest, CopyFrom) {
+  {
+    // Create a attribute which will be copied to another group
+    std::vector<int32_t> simpleVector;
+    simpleVector.resize(10);
+    for (size_t i = 0; i < simpleVector.size(); ++i) {
+      simpleVector[i] = i;
+    }
+    _attributeHandler.createAttribute<int32_t>(
+        "simple_vector_attribute", simpleVector, {simpleVector.size()});
+
+    // Create a new group and copy the attribute to it
+    PLI::HDF5::Group newGroup = PLI::HDF5::createGroup(_file, "NewGroup");
+    PLI::HDF5::AttributeHandler newAttrHandler =
+        PLI::HDF5::AttributeHandler(newGroup);
+    ASSERT_NO_THROW(newAttrHandler.copyFrom(
+        _attributeHandler, "simple_vector_attribute", "new_vector_attribute"));
+
+    // Read both attributes and compare them
+    auto readAttrOrig =
+        _attributeHandler.getAttribute<int32_t>("simple_vector_attribute");
+    auto readAttrNew =
+        newAttrHandler.getAttribute<int32_t>("new_vector_attribute");
+
+    ASSERT_EQ(readAttrOrig, readAttrNew);
+    newGroup.close();
+  }
+
+  // Test string as it's behaviour is special
+  {
+    std::string testString = "This is a test";
+    _attributeHandler.createAttribute<std::string>("simple_string_attribute",
+                                                   testString);
+
+    // Open the new group and copy the attribute to it
+    PLI::HDF5::Group newGroup = PLI::HDF5::openGroup(_file, "NewGroup");
+    PLI::HDF5::AttributeHandler newAttrHandler =
+        PLI::HDF5::AttributeHandler(newGroup);
+    ASSERT_NO_THROW(newAttrHandler.copyFrom(
+        _attributeHandler, "simple_string_attribute", "new_string_attribute"));
+
+    // Read both attributes and compare them
+    auto readAttrOrig =
+        _attributeHandler.getAttribute<std::string>("simple_string_attribute");
+    auto readAttrNew =
+        newAttrHandler.getAttribute<std::string>("new_string_attribute");
+
+    ASSERT_EQ(readAttrOrig, readAttrNew);
+    newGroup.close();
+  }
+
+  // Copy attribute to the same group with a different name
+  {
+    int testInt = 1;
+    _attributeHandler.createAttribute<int>("simple_int_attribute", testInt);
+    ASSERT_NO_THROW(_attributeHandler.copyFrom(
+        _attributeHandler, "simple_int_attribute", "new_int_attribute"));
+
+    auto readAttr = _attributeHandler.getAttribute<int>("new_int_attribute");
+    ASSERT_EQ(testInt, readAttr[0]);
+  }
+
+  // Try to copy non existing attribute
+  {
+    ASSERT_THROW(_attributeHandler.copyFrom(_attributeHandler, "non_existing",
+                                            "new_name"),
+                 PLI::HDF5::Exceptions::AttributeNotFoundException);
+  }
+}
 
 TEST_F(AttributeHandlerTest, CopyAllTo) {}
 

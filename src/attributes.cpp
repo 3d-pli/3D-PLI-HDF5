@@ -105,16 +105,20 @@ void PLI::HDF5::AttributeHandler::copyTo(AttributeHandler dstHandler,
 void PLI::HDF5::AttributeHandler::copyFrom(const AttributeHandler &srcHandler,
                                            const std::string &srcName,
                                            const std::string &dstName) {
-  if (srcHandler.attributeExists(srcName)) {
+  if (this->attributeExists(dstName)) {
     this->updateAttribute(
         dstName,
-        this->getAttribute(srcName, this->attributeType(srcName)).data(),
-        this->getAttributeDimensions(srcName), this->attributeType(srcName));
+        srcHandler.getAttribute(srcName, srcHandler.attributeType(srcName))
+            .data(),
+        srcHandler.getAttributeDimensions(srcName),
+        srcHandler.attributeType(srcName));
   } else {
     this->createAttribute(
         dstName,
-        this->getAttribute(srcName, this->attributeType(srcName)).data(),
-        this->getAttributeDimensions(srcName), this->attributeType(srcName));
+        srcHandler.getAttribute(srcName, srcHandler.attributeType(srcName))
+            .data(),
+        srcHandler.getAttributeDimensions(srcName),
+        srcHandler.attributeType(srcName));
   }
 }
 
