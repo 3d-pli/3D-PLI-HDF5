@@ -81,7 +81,21 @@ TEST_F(AttributeHandlerTest, AttributeExists) {
   ASSERT_TRUE(_attributeHandler.attributeExists("existing"));
 }
 
-TEST_F(AttributeHandlerTest, AttributeNames) {}
+TEST_F(AttributeHandlerTest, AttributeNames) {
+  std::vector<std::string> attributeNames = {"Attribute 1", "Attribute_2",
+                                             "Attribute 3", "Attribute_4"};
+
+  for (auto& name : attributeNames) {
+    _attributeHandler.createAttribute<int>(name, 1);
+  }
+
+  auto names = _attributeHandler.attributeNames();
+  ASSERT_EQ(attributeNames.size(), names.size());
+  for (auto& name : names) {
+    ASSERT_TRUE(std::find(attributeNames.begin(), attributeNames.end(), name) !=
+                attributeNames.end());
+  }
+}
 
 TEST_F(AttributeHandlerTest, AttributeType) {}
 

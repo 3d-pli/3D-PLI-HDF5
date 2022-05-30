@@ -57,14 +57,16 @@ const std::vector<std::string> PLI::HDF5::AttributeHandler::attributeNames()
     // Get length of the attribute name
     ssize_t nameLength =
         H5Aget_name_by_idx(this->m_id, ".", H5_INDEX_NAME, H5_ITER_INC,
-                           hsize_t(i), nullptr, 0, H5P_DEFAULT);
+                           hsize_t(i), nullptr, 0, H5P_DEFAULT) +
+        1;
     // Create attribute with the length
-    std::string attrName = std::string();
-    attrName.resize(nameLength);
+    std::unique_ptr<char[]> attrName(new char[nameLength]);
     // Get the actual attribute name
     H5Aget_name_by_idx(this->m_id, ".", H5_INDEX_NAME, H5_ITER_INC, hsize_t(i),
-                       attrName.data(), nameLength, H5P_DEFAULT);
-    attributes.at(i) = std::string(attrName);
+                       attrName.get(), nameLength, H5P_DEFAULT);
+    attributes[i] = attrName.get();
+    attrName.release();
+    std::cerr << attributes.at(i) << std::endl;
   }
 
   return attributes;
