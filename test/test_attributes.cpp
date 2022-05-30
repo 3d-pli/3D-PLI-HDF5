@@ -105,7 +105,44 @@ TEST_F(AttributeHandlerTest, AttributeNames) {
   }
 }
 
-TEST_F(AttributeHandlerTest, AttributeType) {}
+TEST_F(AttributeHandlerTest, AttributeType) {
+  _attributeHandler.createAttribute<int>("int", 1);
+  _attributeHandler.createAttribute<float>("float", 1.0);
+  _attributeHandler.createAttribute<double>("double", 1.0);
+  _attributeHandler.createAttribute<std::string>("string", "string");
+  _attributeHandler.createAttribute<int>("vector_int", {1, 2, 3}, {3});
+  _attributeHandler.createAttribute<float>("vector_float", {1.0, 2.0, 3.0},
+                                           {3});
+  _attributeHandler.createAttribute<double>("vector_double", {1.0, 2.0, 3.0},
+                                            {3});
+  _attributeHandler.createAttribute<std::string>("vector_string",
+                                                 {"1", "2", "3"}, {3});
+
+  ASSERT_EQ(_attributeHandler.attributeType("int"),
+            PLI::HDF5::Type::createType<int>());
+  ASSERT_EQ(_attributeHandler.attributeType("float"),
+            PLI::HDF5::Type::createType<float>());
+  ASSERT_EQ(_attributeHandler.attributeType("double"),
+            PLI::HDF5::Type::createType<double>());
+  ASSERT_EQ(_attributeHandler.attributeType("vector_int"),
+            PLI::HDF5::Type::createType<int>());
+  ASSERT_EQ(_attributeHandler.attributeType("vector_float"),
+            PLI::HDF5::Type::createType<float>());
+  ASSERT_EQ(_attributeHandler.attributeType("vector_double"),
+            PLI::HDF5::Type::createType<double>());
+
+  hid_t stringType = H5Tcreate(H5T_STRING, 7);
+  ASSERT_EQ(_attributeHandler.attributeType("string"),
+            PLI::HDF5::Type(stringType));
+  H5Tclose(stringType);
+  stringType = H5Tcreate(H5T_STRING, 2);
+  ASSERT_EQ(_attributeHandler.attributeType("vector_string"),
+            PLI::HDF5::Type(stringType));
+  H5Tclose(stringType);
+
+  ASSERT_THROW(_attributeHandler.attributeType("non_existing"),
+               PLI::HDF5::Exceptions::AttributeNotFoundException);
+}
 
 TEST_F(AttributeHandlerTest, CreateAttribute) {
   // Create one single entry from template
