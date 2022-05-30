@@ -151,7 +151,56 @@ TEST_F(AttributeHandlerTest, CreateAttribute) {
   }
 }
 
-TEST_F(AttributeHandlerTest, CopyTo) {}
+TEST_F(AttributeHandlerTest, CopyTo) {
+  {
+    // Create a attribute which will be copied to another group
+    std::vector<int32_t> simpleVector;
+    simpleVector.resize(10);
+    for (size_t i = 0; i < simpleVector.size(); ++i) {
+      simpleVector[i] = i;
+    }
+    _attributeHandler.createAttribute<int32_t>(
+        "simple_vector_attribute", simpleVector, {simpleVector.size()});
+
+    // Create a new group and copy the attribute to it
+    PLI::HDF5::Group newGroup = PLI::HDF5::createGroup(_file, "NewGroup");
+    PLI::HDF5::AttributeHandler newAttrHandler =
+        PLI::HDF5::AttributeHandler(newGroup);
+    ASSERT_NO_THROW(_attributeHandler.copyTo(
+        newAttrHandler, "simple_vector_attribute", "new_vector_attribute"));
+
+    // Read both attributes and compare them
+    auto readAttrOrig =
+        _attributeHandler.getAttribute<int32_t>("simple_vector_attribute");
+    auto readAttrNew =
+        newAttrHandler.getAttribute<int32_t>("new_vector_attribute");
+
+    ASSERT_EQ(readAttrOrig, readAttrNew);
+    newGroup.close();
+  }
+
+  // Test string as it's behaviour is special
+  {
+    std::string testString = "This is a test";
+    _attributeHandler.createAttribute<std::string>("simple_string_attribute",
+                                                   testString);
+
+    // Open the new group and copy the attribute to it
+    PLI::HDF5::Group newGroup = PLI::HDF5::openGroup(_file, "NewGroup");
+    PLI::HDF5::AttributeHandler newAttrHandler =
+        PLI::HDF5::AttributeHandler(newGroup);
+    ASSERT_NO_THROW(_attributeHandler.copyTo(
+        newAttrHandler, "simple_string_attribute", "new_string_attribute"));
+
+    // Read both attributes and compare them
+    auto readAttrOrig =
+        _attributeHandler.getAttribute<std::string>("simple_string_attribute");
+    auto readAttrNew =
+        newAttrHandler.getAttribute<std::string>("new_string_attribute");
+
+    ASSERT_EQ(readAttrOrig, readAttrNew);
+  }
+}
 
 TEST_F(AttributeHandlerTest, CopyFrom) {}
 
