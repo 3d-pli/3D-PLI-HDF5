@@ -321,7 +321,51 @@ TEST_F(AttributeHandlerTest, DeleteAttribute) {
 
 TEST_F(AttributeHandlerTest, GetAttribute) {}
 
-TEST_F(AttributeHandlerTest, GetAttributeDimensions) {}
+TEST_F(AttributeHandlerTest, GetAttributeDimensions) {
+  // Test one single attribute. Expected dimensions {1}
+  {
+    int simpleAttribute;
+    _attributeHandler.createAttribute<int32_t>("simple_int", simpleAttribute);
+
+    auto dimensions = _attributeHandler.getAttributeDimensions("simple_int");
+    ASSERT_EQ(dimensions, std::vector<hsize_t>{1});
+  }
+
+  // Test a 1D vector
+  {
+    std::vector<int32_t> simpleVector;
+    simpleVector.resize(10);
+    for (size_t i = 0; i < simpleVector.size(); ++i) {
+      simpleVector[i] = i;
+    }
+    _attributeHandler.createAttribute<int32_t>(
+        "simple_vector_attribute", simpleVector, {simpleVector.size()});
+    auto dimensions =
+        _attributeHandler.getAttributeDimensions("simple_vector_attribute");
+    ASSERT_EQ(dimensions, std::vector<hsize_t>{10});
+  }
+
+  // Test a 2D vector
+  {
+    std::vector<int32_t> simpleVector;
+    simpleVector.resize(11 * 12);
+    for (size_t i = 0; i < simpleVector.size(); ++i) {
+      simpleVector[i] = i;
+    }
+    _attributeHandler.createAttribute<int32_t>("simple_vector_2d_attribute",
+                                               simpleVector, {11, 12});
+    auto dimensions =
+        _attributeHandler.getAttributeDimensions("simple_vector_2d_attribute");
+    std::vector<hsize_t> comparisonVector = {11, 12};
+    ASSERT_EQ(dimensions, comparisonVector);
+  }
+
+  // Test a non existing attribute
+  {
+    ASSERT_THROW(_attributeHandler.getAttributeDimensions("non_existing"),
+                 PLI::HDF5::Exceptions::AttributeNotFoundException);
+  }
+}
 
 TEST_F(AttributeHandlerTest, UpdateAttribute) {}
 
