@@ -66,7 +66,6 @@ const std::vector<std::string> PLI::HDF5::AttributeHandler::attributeNames()
                        attrName.get(), nameLength, H5P_DEFAULT);
     attributes[i] = attrName.get();
     attrName.release();
-    std::cerr << attributes.at(i) << std::endl;
   }
 
   return attributes;
@@ -132,7 +131,7 @@ void PLI::HDF5::AttributeHandler::copyAllFrom(
       srcHandler.attributeNames();
 
   for (const std::string &attributeName : srcHandlerAttribtuteNames) {
-    if (std::find(exceptions.cbegin(), exceptions.cend(), attributeName) !=
+    if (std::find(exceptions.cbegin(), exceptions.cend(), attributeName) ==
         std::cend(exceptions)) {
       this->copyFrom(srcHandler, attributeName, attributeName);
     }
@@ -145,7 +144,7 @@ void PLI::HDF5::AttributeHandler::copyAllTo(
   std::vector<std::string> srcHandlerAttribtuteNames = this->attributeNames();
 
   for (const std::string &attributeName : srcHandlerAttribtuteNames) {
-    if (std::find(exceptions.cbegin(), exceptions.cend(), attributeName) !=
+    if (std::find(exceptions.cbegin(), exceptions.cend(), attributeName) ==
         std::cend(exceptions)) {
       this->copyTo(dstHandler, attributeName, attributeName);
     }

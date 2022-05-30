@@ -350,9 +350,119 @@ TEST_F(AttributeHandlerTest, CopyFrom) {
   }
 }
 
-TEST_F(AttributeHandlerTest, CopyAllTo) {}
+TEST_F(AttributeHandlerTest, CopyAllTo) {
+  // Create a new group and copy the attribute to it
+  PLI::HDF5::Group newGroup = PLI::HDF5::createGroup(_file, "NewGroup");
+  PLI::HDF5::AttributeHandler newAttrHandler =
+      PLI::HDF5::AttributeHandler(newGroup);
 
-TEST_F(AttributeHandlerTest, CopyAllFrom) {}
+  // Create a few test attributes
+  {
+    _attributeHandler.createAttribute<float>("simple_float_attribute", 1.0f);
+    _attributeHandler.createAttribute<int32_t>("simple_int_attribute", 1);
+    _attributeHandler.createAttribute<std::string>("simple_string_attribute",
+                                                   "This is a test");
+  }
+
+  // Copy all attributes to the new group
+  {
+    ASSERT_NO_THROW(_attributeHandler.copyAllTo(newAttrHandler));
+
+    auto floatOrig =
+        _attributeHandler.getAttribute<float>("simple_float_attribute");
+    auto floatNew =
+        newAttrHandler.getAttribute<float>("simple_float_attribute");
+    ASSERT_EQ(floatOrig, floatNew);
+
+    auto intOrig =
+        _attributeHandler.getAttribute<int32_t>("simple_int_attribute");
+    auto intNew = newAttrHandler.getAttribute<int32_t>("simple_int_attribute");
+    ASSERT_EQ(intOrig, intNew);
+
+    auto stringOrig =
+        _attributeHandler.getAttribute<std::string>("simple_string_attribute");
+    auto stringNew =
+        newAttrHandler.getAttribute<std::string>("simple_string_attribute");
+    ASSERT_EQ(stringOrig, stringNew);
+  }
+
+  // Create another new attribute
+  {
+    std::vector<int32_t> simpleVector;
+    simpleVector.resize(10);
+    for (size_t i = 0; i < simpleVector.size(); ++i) {
+      simpleVector[i] = i;
+    }
+    newAttrHandler.createAttribute<int32_t>(
+        "simple_vector_attribute", simpleVector, {simpleVector.size()});
+  }
+
+  // Copy attributes but put last attribute as an exception
+  {
+    auto attrNames = newAttrHandler.attributeNames();
+    ASSERT_NO_THROW(_attributeHandler.copyAllTo(newAttrHandler,
+                                                {"simple_vector_attribute"}));
+    auto newAttrNames = newAttrHandler.attributeNames();
+    ASSERT_EQ(attrNames.size(), newAttrNames.size());
+  }
+}
+
+TEST_F(AttributeHandlerTest, CopyAllFrom) {
+  // Create a new group and copy the attribute to it
+  PLI::HDF5::Group newGroup = PLI::HDF5::createGroup(_file, "NewGroup");
+  PLI::HDF5::AttributeHandler newAttrHandler =
+      PLI::HDF5::AttributeHandler(newGroup);
+
+  // Create a few test attributes
+  {
+    _attributeHandler.createAttribute<float>("simple_float_attribute", 1.0f);
+    _attributeHandler.createAttribute<int32_t>("simple_int_attribute", 1);
+    _attributeHandler.createAttribute<std::string>("simple_string_attribute",
+                                                   "This is a test");
+  }
+
+  // Copy all attributes to the new group
+  {
+    ASSERT_NO_THROW(newAttrHandler.copyAllFrom(_attributeHandler));
+
+    auto floatOrig =
+        _attributeHandler.getAttribute<float>("simple_float_attribute");
+    auto floatNew =
+        newAttrHandler.getAttribute<float>("simple_float_attribute");
+    ASSERT_EQ(floatOrig, floatNew);
+
+    auto intOrig =
+        _attributeHandler.getAttribute<int32_t>("simple_int_attribute");
+    auto intNew = newAttrHandler.getAttribute<int32_t>("simple_int_attribute");
+    ASSERT_EQ(intOrig, intNew);
+
+    auto stringOrig =
+        _attributeHandler.getAttribute<std::string>("simple_string_attribute");
+    auto stringNew =
+        newAttrHandler.getAttribute<std::string>("simple_string_attribute");
+    ASSERT_EQ(stringOrig, stringNew);
+  }
+
+  // Create another new attribute
+  {
+    std::vector<int32_t> simpleVector;
+    simpleVector.resize(10);
+    for (size_t i = 0; i < simpleVector.size(); ++i) {
+      simpleVector[i] = i;
+    }
+    newAttrHandler.createAttribute<int32_t>(
+        "simple_vector_attribute", simpleVector, {simpleVector.size()});
+  }
+
+  // Copy attributes but put last attribute as an exception
+  {
+    auto attrNames = newAttrHandler.attributeNames();
+    ASSERT_NO_THROW(newAttrHandler.copyAllFrom(_attributeHandler,
+                                               {"simple_vector_attribute"}));
+    auto newAttrNames = newAttrHandler.attributeNames();
+    ASSERT_EQ(attrNames.size(), newAttrNames.size());
+  }
+}
 
 TEST_F(AttributeHandlerTest, DeleteAttribute) {
   // Delete an existing attribute
