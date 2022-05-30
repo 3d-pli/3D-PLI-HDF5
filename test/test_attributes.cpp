@@ -82,18 +82,26 @@ TEST_F(AttributeHandlerTest, AttributeExists) {
 }
 
 TEST_F(AttributeHandlerTest, AttributeNames) {
-  std::vector<std::string> attributeNames = {"Attribute 1", "Attribute_2",
-                                             "Attribute 3", "Attribute_4"};
-
-  for (auto& name : attributeNames) {
-    _attributeHandler.createAttribute<int>(name, 1);
+  // Test for empty group
+  {
+    auto names = _attributeHandler.attributeNames();
+    ASSERT_EQ(names.size(), 0);
   }
+  // Test for a few attributes
+  {
+    std::vector<std::string> attributeNames = {"Attribute 1", "Attribute_2",
+                                               "Attribute 3", "Attribute_4"};
 
-  auto names = _attributeHandler.attributeNames();
-  ASSERT_EQ(attributeNames.size(), names.size());
-  for (auto& name : names) {
-    ASSERT_TRUE(std::find(attributeNames.begin(), attributeNames.end(), name) !=
-                attributeNames.end());
+    for (auto& name : attributeNames) {
+      _attributeHandler.createAttribute<int>(name, 1);
+    }
+
+    auto names = _attributeHandler.attributeNames();
+    ASSERT_EQ(attributeNames.size(), names.size());
+    for (auto& name : names) {
+      ASSERT_TRUE(std::find(attributeNames.begin(), attributeNames.end(),
+                            name) != attributeNames.end());
+    }
   }
 }
 
