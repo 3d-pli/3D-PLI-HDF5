@@ -295,7 +295,29 @@ TEST_F(AttributeHandlerTest, CopyAllTo) {}
 
 TEST_F(AttributeHandlerTest, CopyAllFrom) {}
 
-TEST_F(AttributeHandlerTest, DeleteAttribute) {}
+TEST_F(AttributeHandlerTest, DeleteAttribute) {
+  // Delete an existing attribute
+  {
+    std::vector<int32_t> simpleVector;
+    simpleVector.resize(10);
+    for (size_t i = 0; i < simpleVector.size(); ++i) {
+      simpleVector[i] = i;
+    }
+    _attributeHandler.createAttribute<int32_t>(
+        "simple_vector_attribute", simpleVector, {simpleVector.size()});
+
+    ASSERT_TRUE(_attributeHandler.attributeExists("simple_vector_attribute"));
+    ASSERT_NO_THROW(
+        _attributeHandler.deleteAttribute("simple_vector_attribute"));
+    ASSERT_FALSE(_attributeHandler.attributeExists("simple_vector_attribute"));
+  }
+
+  // Try to delete attribute that does not exist
+  {
+    ASSERT_THROW(_attributeHandler.deleteAttribute("non_existing"),
+                 PLI::HDF5::Exceptions::AttributeNotFoundException);
+  }
+}
 
 TEST_F(AttributeHandlerTest, GetAttribute) {}
 

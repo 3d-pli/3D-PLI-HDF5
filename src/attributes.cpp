@@ -230,6 +230,10 @@ void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
 
 void PLI::HDF5::AttributeHandler::deleteAttribute(
     const std::string &attributeName) {
+  if (!attributeExists(attributeName)) {
+    throw Exceptions::AttributeNotFoundException(
+        "Attribute with name " + attributeName + " does not exist");
+  }
   checkHDF5Call(H5Adelete(this->m_id, attributeName.c_str()), "H5Adelete");
 }
 
