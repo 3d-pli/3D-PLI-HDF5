@@ -471,7 +471,22 @@ TEST_F(AttributeHandlerTest, UpdateAttribute) {
   }
 }
 
-TEST_F(AttributeHandlerTest, Id) {}
+TEST_F(AttributeHandlerTest, AttributePtr) {
+  // Create a test attribute and get its ptr
+  {
+    int testInt = 1;
+    _attributeHandler.createAttribute<int>("simple_int", testInt);
+    hid_t attributePtr = _attributeHandler.attributePtr("simple_int");
+    ASSERT_GT(attributePtr, 0);
+    H5Aclose(attributePtr);
+  }
+
+  // Try to get a non existing attribute
+  {
+    ASSERT_THROW(_attributeHandler.attributePtr("non_existing"),
+                 PLI::HDF5::Exceptions::AttributeNotFoundException);
+  }
+}
 
 int main(int argc, char* argv[]) {
   int result = 0;
