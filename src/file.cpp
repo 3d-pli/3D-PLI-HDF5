@@ -104,10 +104,12 @@ void PLI::HDF5::File::flush() {
 }
 
 bool PLI::HDF5::File::isHDF5(const std::string& fileName) {
+  MPI_Barrier(MPI_COMM_WORLD);
   return H5Fis_hdf5(fileName.c_str()) > 0;
 }
 
 bool PLI::HDF5::File::fileExists(const std::string& fileName) {
+  MPI_Barrier(MPI_COMM_WORLD);
   return std::filesystem::exists(fileName);
 }
 

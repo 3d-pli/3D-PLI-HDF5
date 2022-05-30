@@ -47,6 +47,7 @@ void PLI::HDF5::Dataset::open(const hid_t parentPtr,
 bool PLI::HDF5::Dataset::exists(const hid_t parentPtr,
                                 const std::string &datasetName) {
   checkHDF5Ptr(parentPtr, "PLI::HDF5::Dataset::exists");
+  MPI_Barrier(MPI_COMM_WORLD);
   return H5Lexists(parentPtr, datasetName.c_str(), H5P_DEFAULT) > 0;
 }
 

@@ -119,14 +119,3 @@ template <>
 PLI::HDF5::Type PLI::HDF5::Type::createType<double>() {
   return PLI::HDF5::Type("H5T_NATIVE_DOUBLE");
 }
-
-// String
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<std::string>() {
-  return PLI::HDF5::Type("H5T_NATIVE_CHAR");
-}
-
-template <>
-PLI::HDF5::Type PLI::HDF5::Type::createType<const char *>() {
-  return PLI::HDF5::Type("H5T_NATIVE_CHAR");
-}
