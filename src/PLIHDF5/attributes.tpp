@@ -86,7 +86,7 @@ const std::vector<std::string> PLI::HDF5::AttributeHandler::getAttribute(
 template <typename T>
 void PLI::HDF5::AttributeHandler::updateAttribute(
     const std::string &attributeName, const T &content) {
-  updateAttribute(attributeName, content, PLI::HDF5::Type::createType<T>());
+  updateAttribute(attributeName, &content, PLI::HDF5::Type::createType<T>());
 }
 
 template <>

@@ -211,6 +211,9 @@ void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
 
   // Create a char array containing both strings
   char *strToWrite = new char[content.size() * (maxStringSize + 1)];
+  // Set all of strToWrite to \0
+  std::fill(strToWrite, strToWrite + content.size() * (maxStringSize + 1),
+            '\0');
   for (size_t i = 0; i < content.size(); ++i) {
     // Write the string to the corresponding pointer position and shift the
     // pointer accordingly
@@ -361,7 +364,7 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
   }
   hid_t attributeID = H5Aopen(this->m_id, attributeName.c_str(), H5P_DEFAULT);
   checkHDF5Ptr(attributeID, "H5Aopen");
-  checkHDF5Call(H5Awrite(attributeID, dataType, &content), "H5Awrite");
+  checkHDF5Call(H5Awrite(attributeID, dataType, content), "H5Awrite");
   checkHDF5Call(H5Aclose(attributeID), "H5Aclose");
 }
 
@@ -387,7 +390,7 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
     }
   }
 
-  checkHDF5Call(H5Awrite(attributeID, dataType, &content), "H5Awrite");
+  checkHDF5Call(H5Awrite(attributeID, dataType, content), "H5Awrite");
   checkHDF5Call(H5Aclose(attributeID), "H5Aclose");
 }
 

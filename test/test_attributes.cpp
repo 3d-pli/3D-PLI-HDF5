@@ -426,7 +426,50 @@ TEST_F(AttributeHandlerTest, GetAttributeDimensions) {
   }
 }
 
-TEST_F(AttributeHandlerTest, UpdateAttribute) {}
+TEST_F(AttributeHandlerTest, UpdateAttribute) {
+  // Creation of attribute
+  {
+    _attributeHandler.createAttribute<int32_t>("simple_int", 1);
+    _attributeHandler.createAttribute<int32_t>(
+        "simple_vector", std::vector<int32_t>{1, 2, 3, 4, 5}, {5});
+    _attributeHandler.createAttribute<std::string>("simple_string",
+                                                   "this is a test");
+  }
+
+  // Update attribute
+  {
+    auto readAttr = _attributeHandler.getAttribute<int32_t>("simple_int");
+    ASSERT_EQ(readAttr[0], 1);
+    int newVal = 2;
+    _attributeHandler.updateAttribute<int32_t>("simple_int", newVal);
+    readAttr = _attributeHandler.getAttribute<int32_t>("simple_int");
+    ASSERT_EQ(readAttr[0], 2);
+  }
+  // Update vector
+  {
+    std::vector<int32_t> comparisonVector = {1, 2, 3, 4, 5};
+    auto readAttr = _attributeHandler.getAttribute<int32_t>("simple_vector");
+    ASSERT_EQ(readAttr, comparisonVector);
+
+    comparisonVector = {2, 3, 4, 5, 6};
+    _attributeHandler.updateAttribute<int32_t>("simple_vector",
+                                               comparisonVector, {5});
+    readAttr = _attributeHandler.getAttribute<int32_t>("simple_vector");
+    ASSERT_EQ(readAttr, comparisonVector);
+  }
+
+  // Update string
+  {
+    auto readAttr =
+        _attributeHandler.getAttribute<std::string>("simple_string");
+    ASSERT_EQ(readAttr[0], "this is a test");
+
+    std::string newVal = "new";
+    _attributeHandler.updateAttribute<std::string>("simple_string", newVal);
+    readAttr = _attributeHandler.getAttribute<std::string>("simple_string");
+    ASSERT_EQ(readAttr[0], "new");
+  }
+}
 
 TEST_F(AttributeHandlerTest, Id) {}
 
