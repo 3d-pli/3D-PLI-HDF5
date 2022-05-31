@@ -27,6 +27,7 @@
 
 #include "../PLIHDF5/dataset.h"
 #include "../PLIHDF5/file.h"
+#include "np_array.h"
 
 namespace py = pybind11;
 
