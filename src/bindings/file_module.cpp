@@ -33,11 +33,38 @@ namespace py = pybind11;
 PYBIND11_MODULE(pli_hdf5, m) {
   m.doc() = "PLI HDF5";
 
+  // TODO(Felix): mpi_init
   py::class_<PLI::HDF5::File>(m, "File")
       .def(py::init())
-      .def_property_readonly("id", &PLI::HDF5::File::id);
+      .def("create", &PLI::HDF5::File::create, py::arg("file_name"))
+      .def(
+          "open",
+          [](PLI::HDF5::File &self, const std::string &file_name,
+             const std::string &open_state) {
+            PLI::HDF5::File::OpenState open_state_enum;
+            if (open_state == "r")
+              open_state_enum = PLI::HDF5::File::OpenState::ReadOnly;
+            else if (open_state == "r+")
+              open_state_enum = PLI::HDF5::File::OpenState::ReadWrite;
+            else
+              throw std::invalid_argument("Only 'r' and 'r+' are supported");
+            return self.open(file_name, open_state_enum);
+          },
+          py::arg("file_name"), py::arg("open_state"))
+      .def("isHDF5",
+           &PLI::HDF5::File::isHDF5)  // FIXME(felix): py::arg("file_name")
+      .def("file_exists",
+           &PLI::HDF5::File::fileExists)  // FIXME(felix): py::arg("file_name")
+      .def("close", &PLI::HDF5::File::close)
+      .def("reopen", &PLI::HDF5::File::reopen)
+      .def("flush", &PLI::HDF5::File::flush)
+      .def_property_readonly("id", &PLI::HDF5::File::id)
+      .def_property_readonly("faplID", &PLI::HDF5::File::faplID);
 
   py::class_<PLI::HDF5::Dataset>(m, "Dataset")
       .def(py::init())
       .def_property_readonly("id", &PLI::HDF5::Dataset::id);
+
+  // # TODO(Felix): add version from cmake
+  // m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
 }
