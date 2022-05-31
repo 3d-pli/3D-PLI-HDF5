@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
 project(plihdf5 LANGUAGES C CXX VERSION 1.0.0)
 
+# Verbose options
+SET(CMAKE_COLOR_MAKEFILE ON)
+SET(CMAKE_VERBOSE_MAKEFILE OFF)
+
 # Set some CMake standards
 set(default_build_type "Release")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -43,6 +47,10 @@ set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} OpenSSL::SSL)
 # set(JSON_BuildTests OFF CACHE INTERNAL "")
 # add_subdirectory(extern/json)
 # set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} nlohmann_json::nlohmann_json)
+
+# Pybind11
+find_package(Python COMPONENTS Interpreter Development REQUIRED)
+add_subdirectory(extern/pybind11)
 
 # Source files / headers
 include_directories(src)

@@ -46,6 +46,7 @@ set(PLIHDF5_SOURCES
     )
 
 add_library(PLIHDF5 SHARED ${PLIHDF5_SOURCES})
+set_property(TARGET PLIHDF5 PROPERTY POSITION_INDEPENDENT_CODE True)
 if(MSVC)
   target_compile_options(PLIHDF5 PRIVATE /W4 /WX)
 else()
@@ -73,3 +74,15 @@ install( TARGETS PLIHDF5
          EXPORT PLIHDF5Targets
          DESTINATION "${INSTALL_LIB_DIR}"
          COMPONENT runtime )
+
+
+################################################################################
+# Pybind11 bindings
+################################################################################
+
+pybind11_add_module(pli_hdf5
+  bindings/file_module.cpp
+  $<TARGET_OBJECTS:PLIHDF5>
+)
+target_link_libraries(pli_hdf5 PRIVATE ${PLIHDF5_LINK_LIBRARIES})
+target_include_directories(pli_hdf5 SYSTEM PUBLIC ${INSTALL_INCLUDE_DIR})
