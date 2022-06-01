@@ -109,3 +109,24 @@ void PLI::PLIM::addSoftwareParameters(const std::string &softwareParameters) {
   }
   m_attrHandler.createAttribute("software_parameters", softwareParameters);
 }
+
+void PLI::PLIM::addCreationTime() {
+  if (m_attrHandler.attributeExists("creation_time")) {
+    m_attrHandler.deleteAttribute("creation_time");
+  }
+  std::time_t time =
+      std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+  std::tm now_tm = *std::localtime(&time);
+
+  char buffer[21];
+  strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &now_tm);
+
+  m_attrHandler.createAttribute("creation_time", std::string(buffer));
+}
+
+void PLI::PLIM::addImageModality(const std::string &modalityName) {
+  if (m_attrHandler.attributeExists("image_modality")) {
+    m_attrHandler.deleteAttribute("image_modality");
+  }
+  m_attrHandler.createAttribute("image_modality", modalityName);
+}

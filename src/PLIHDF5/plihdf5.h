@@ -26,6 +26,7 @@
 #pragma once
 
 #include <algorithm>
+#include <chrono>  // NOLINT [build/c++11]
 #include <string>
 #include <vector>
 
@@ -97,6 +98,15 @@ class PLIM {
    * file.
    */
   void addSoftwareParameters(const std::string& softwareParameters);
+  /**
+   * @brief Adds the creation time of the HDF5 file
+   */
+  void addCreationTime();
+  /**
+   * @brief Adds the name of the modality stored in the HDF5 file.
+   * @param modality Modality name stored.
+   */
+  void addImageModality(const std::string& modalityName);
 
  private:
   PLI::HDF5::AttributeHandler m_attrHandler;
