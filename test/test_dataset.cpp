@@ -152,11 +152,24 @@ TEST_F(PLI_HDF5_Dataset, write) {
     dset.close();
   }
 
-  {
-      // write diff offset and dims
+  {  // Call other write / create methods
+    PLI::HDF5::Type type = PLI::HDF5::Type::createType<float>();
+    auto dset =
+        PLI::HDF5::createDataset(_file, "/Image_5", _dims, _chunk_dims, type);
+    const std::vector<float> data(std::accumulate(
+        _dims.begin(), _dims.end(), 1, std::multiplies<std::size_t>()));
+    const std::vector<hsize_t> offset{{0, 0, 0}};
+    EXPECT_NO_THROW(dset.write(data.data(), offset, _dims, type));
   }
 
-  {  // write data length != dims size
+  {  // Call other write / create methods
+    PLI::HDF5::Type type = PLI::HDF5::Type::createType<float>();
+    auto dset = PLI::HDF5::Dataset();
+    dset.create(_file, "/Image_6", _dims, _chunk_dims, type);
+    const std::vector<float> data(std::accumulate(
+        _dims.begin(), _dims.end(), 1, std::multiplies<std::size_t>()));
+    const std::vector<hsize_t> offset{{0, 0, 0}};
+    EXPECT_NO_THROW(dset.write<float>(data.data(), offset, _dims));
   }
 }
 
