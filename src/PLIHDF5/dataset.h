@@ -116,6 +116,34 @@ class Dataset {
   void create(const hid_t parentPtr, const std::string& datasetName,
               const std::vector<hsize_t>& dims,
               const std::vector<hsize_t>& chunkDims = {});
+
+  /**
+   * @brief Create a new dataset with the given name.
+   *
+   * This method tries to create a new dataset with the given name. If the
+   * dataset already exists, an exception is thrown.
+   * The dimensions of the dataset need to be set during the method call.
+   * Optionally, the chunk dimensions can be set.
+   * @tparam T Supported data types are: bool, char, unsigned char, short,
+   * unsigned short, int, unsigned int, long, unsigned long, long long,
+   * unsigned long long, float, double, long double.
+   * @param parentPtr Raw HDF5 pointer to a file or group.
+   * @param datasetName Name of the dataset to create.
+   * @param dims Dimensions of the new dataset.
+   * @param chunkDims Chunking dimensions of the dataset. If not set, the
+   * chunking is disabled.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the parent or
+   * dataset pointer is invalid.
+   * @throws PLI::HDF5::Exceptions::DatasetExistsException If the dataset
+   * already exists.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
+   * not be created.
+   */
+  void create(
+      const hid_t parentPtr, const std::string& datasetName,
+      const std::vector<hsize_t>& dims,
+      const std::vector<hsize_t>& chunkDims = {},
+      const PLI::HDF5::Type& dataType = PLI::HDF5::Type::createType<float>());
   /**
    * @brief Check if the dataset exists.
    *
@@ -155,6 +183,7 @@ class Dataset {
    */
   template <typename T>
   std::vector<T> readFullDataset() const;
+
   /**
    * @brief Read a sub-dataset.
    *
@@ -179,6 +208,7 @@ class Dataset {
   template <typename T>
   std::vector<T> read(const std::vector<hsize_t>& offset,
                       const std::vector<hsize_t>& count) const;
+
   /**
    * @brief Write a sub-dataset.
    *
@@ -203,6 +233,53 @@ class Dataset {
   template <typename T>
   void write(const std::vector<T>& data, const std::vector<hsize_t>& offset,
              const std::vector<hsize_t>& dims);
+
+  /**
+   * @brief Write a sub-dataset.
+   *
+   * With this method, a selected area of the dataset can be written. The
+   * dimensions of the area are given by the offset in each dimension and the
+   * count. The count is the number of elements to write in each dimension.
+   * The data type is determined by the template parameter. The conversion is
+   * handled by the HDF5 library.
+   * This method does not check if the selected area is valid. If it is out of
+   * bounds, an exception is thrown through an erronous HDF5 call.
+   * @tparam T Supported data types are: bool, char, unsigned char, short,
+   * unsigned short, int, unsigned int, long, unsigned long, long long,
+   * unsigned long long, float, double, long double.
+   * @param data Data to write.
+   * @param offset Offset in each dimension.
+   * @param dims Number of elements to write in each dimension.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
+   * not be written.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
+   * pointer is invalid.
+   */
+  template <typename T>
+  void write(const void* data, const std::vector<hsize_t>& offset,
+             const std::vector<hsize_t>& dims);
+
+  /**
+   * @brief Write a sub-dataset.
+   *
+   * With this method, a selected area of the dataset can be written. The
+   * dimensions of the area are given by the offset in each dimension and the
+   * count. The count is the number of elements to write in each dimension.
+   * The data type is determined by the template parameter. The conversion is
+   * handled by the HDF5 library.
+   * This method does not check if the selected area is valid. If it is out of
+   * bounds, an exception is thrown through an erronous HDF5 call.
+   * @param data Data to write.
+   * @param offset Offset in each dimension.
+   * @param dims Number of elements to write in each dimension.
+   * @param type Datatype of the data.
+   * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
+   * not be written.
+   * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
+   * pointer is invalid.
+   */
+  void write(const void* data, const std::vector<hsize_t>& offset,
+             const std::vector<hsize_t>& dims, const PLI::HDF5::Type& type);
 
   /**
    * @brief Get the type of the dataset.
@@ -245,6 +322,7 @@ class Dataset {
   operator hid_t() const noexcept;
 
  private:
+  hid_t createXfID() const;
   hid_t m_id;
 };
 
@@ -291,6 +369,33 @@ PLI::HDF5::Dataset createDataset(const hid_t parentPtr,
                                  const std::string& datasetName,
                                  const std::vector<hsize_t>& dims,
                                  const std::vector<hsize_t>& chunkDims = {});
+
+/**
+ * @brief Create a new dataset with the given name.
+ *
+ * This method tries to create a new dataset with the given name. If the
+ * dataset already exists, an exception is thrown.
+ * The dimensions of the dataset need to be set during the method call.
+ * Optionally, the chunk dimensions can be set.
+ * @param parentPtr Raw HDF5 pointer to a file or group.
+ * @param datasetName Name of the dataset to create.
+ * @param dims Dimensions of the new dataset.
+ * @param chunkDims Chunking dimensions of the dataset. If not set, the
+ * chunking is disabled.
+ * @param dataType Datatype of the dataset. Default = float.
+ * @return PLI::HDF5::Dataset New dataset object if successful.
+ * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the parent or
+ * dataset pointer is invalid.
+ * @throws PLI::HDF5::Exceptions::DatasetExistsException If the dataset
+ * already exists.
+ * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
+ * not be created.
+ */
+PLI::HDF5::Dataset createDataset(
+    const hid_t parentPtr, const std::string& datasetName,
+    const std::vector<hsize_t>& dims,
+    const std::vector<hsize_t>& chunkDims = {},
+    const PLI::HDF5::Type& dataType = PLI::HDF5::Type::createType<float>());
 
 }  // namespace HDF5
 }  // namespace PLI

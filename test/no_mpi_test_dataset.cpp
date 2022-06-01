@@ -31,34 +31,25 @@
 #include "PLIHDF5/dataset.h"
 #include "PLIHDF5/file.h"
 
-class PLI_HDF5_Dataset : public ::testing::Test {
+class PLI_HDF5_Dataset_Non_MPI : public ::testing::Test {
  protected:
   void SetUp() override {
-    int32_t rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-
     try {
       _file.close();
     } catch (...) {
       // can occur due to testing failures. leave pointer open and continue.
     }
-    if (rank == 0 && std::filesystem::exists(_filePath))
-      std::filesystem::remove(_filePath);
-    MPI_Barrier(MPI_COMM_WORLD);
+    if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
     _file = PLI::HDF5::createFile(_filePath);
   }
 
   void TearDown() override {
-    int32_t rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-
     try {
       _file.close();
     } catch (...) {
       // can occur due to testing failures. leave pointer open and continue.
     }
-    if (rank == 0 && std::filesystem::exists(_filePath))
-      std::filesystem::remove(_filePath);
+    if (std::filesystem::exists(_filePath)) std::filesystem::remove(_filePath);
   }
 
   const std::vector<hsize_t> _dims{{128, 128, 4}};
@@ -68,10 +59,10 @@ class PLI_HDF5_Dataset : public ::testing::Test {
   PLI::HDF5::File _file;
 };
 
-TEST_F(PLI_HDF5_Dataset, Constructor) {}
-TEST_F(PLI_HDF5_Dataset, Destructor) {}
+TEST_F(PLI_HDF5_Dataset_Non_MPI, Constructor) {}
+TEST_F(PLI_HDF5_Dataset_Non_MPI, Destructor) {}
 
-TEST_F(PLI_HDF5_Dataset, exists) {
+TEST_F(PLI_HDF5_Dataset_Non_MPI, exists) {
   {  // checking non existing dset
     EXPECT_FALSE(PLI::HDF5::Dataset::exists(_file, "/Image"));
   }
@@ -84,7 +75,7 @@ TEST_F(PLI_HDF5_Dataset, exists) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, close) {
+TEST_F(PLI_HDF5_Dataset_Non_MPI, close) {
   {  // close empty dataset
     auto dset = PLI::HDF5::Dataset();
     EXPECT_NO_THROW(dset.close());
@@ -97,7 +88,7 @@ TEST_F(PLI_HDF5_Dataset, close) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, write) {
+TEST_F(PLI_HDF5_Dataset_Non_MPI, write) {
   {  // write closed dset
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image_0", _dims, _chunk_dims);
@@ -125,8 +116,7 @@ TEST_F(PLI_HDF5_Dataset, write) {
     const std::vector<double> data(std::accumulate(
         _dims.begin(), _dims.end(), 1, std::multiplies<std::size_t>()));
     const std::vector<hsize_t> offset{{0, 0, 0}};
-    EXPECT_THROW(dset.write(data, offset, _dims),
-                 PLI::HDF5::Exceptions::HDF5RuntimeException);
+    EXPECT_NO_THROW(dset.write(data, offset, _dims));
     dset.close();
   }
 
@@ -173,7 +163,7 @@ TEST_F(PLI_HDF5_Dataset, write) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, type) {
+TEST_F(PLI_HDF5_Dataset_Non_MPI, type) {
   {  // call
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image_1", _dims, _chunk_dims);
@@ -182,7 +172,7 @@ TEST_F(PLI_HDF5_Dataset, type) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, ndims) {
+TEST_F(PLI_HDF5_Dataset_Non_MPI, ndims) {
   {  // call
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image_1", _dims, _chunk_dims);
@@ -191,7 +181,7 @@ TEST_F(PLI_HDF5_Dataset, ndims) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, dims) {
+TEST_F(PLI_HDF5_Dataset_Non_MPI, dims) {
   {  // call
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image_1", _dims, _chunk_dims);
@@ -200,7 +190,7 @@ TEST_F(PLI_HDF5_Dataset, dims) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, id) {
+TEST_F(PLI_HDF5_Dataset_Non_MPI, id) {
   {  // empty dataset
     auto dset = PLI::HDF5::Dataset();
     EXPECT_NO_THROW(dset.id());
@@ -208,7 +198,7 @@ TEST_F(PLI_HDF5_Dataset, id) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, open) {
+TEST_F(PLI_HDF5_Dataset_Non_MPI, open) {
   {  // create dataset
     auto dset =
         PLI::HDF5::createDataset<float>(_file, "/Image", _dims, _chunk_dims);
@@ -221,7 +211,7 @@ TEST_F(PLI_HDF5_Dataset, open) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, create) {
+TEST_F(PLI_HDF5_Dataset_Non_MPI, create) {
   {  // create dataset
     PLI::HDF5::Dataset dset;
     EXPECT_NO_THROW(dset = PLI::HDF5::createDataset<float>(_file, "/foo", _dims,
@@ -258,9 +248,9 @@ TEST_F(PLI_HDF5_Dataset, create) {
   }
 }
 
-TEST_F(PLI_HDF5_Dataset, readFullDataset) {}
+TEST_F(PLI_HDF5_Dataset_Non_MPI, readFullDataset) {}
 
-TEST_F(PLI_HDF5_Dataset, read) {
+TEST_F(PLI_HDF5_Dataset_Non_MPI, read) {
   // write test dataset
   std::vector<int> data(std::accumulate(_dims.begin(), _dims.end(), 1,
                                         std::multiplies<std::size_t>()));
@@ -305,15 +295,13 @@ TEST_F(PLI_HDF5_Dataset, read) {
   }
 }
 
-// TEST_F(PLI_HDF5_Dataset, hid_t) {} // operator??
+// TEST_F(PLI_HDF5_Dataset_Non_MPI, hid_t) {} // operator??
 
 int main(int argc, char* argv[]) {
   int result = 0;
 
-  MPI_Init(&argc, &argv);
   ::testing::InitGoogleTest(&argc, argv);
   result = RUN_ALL_TESTS();
 
-  MPI_Finalize();
   return result;
 }

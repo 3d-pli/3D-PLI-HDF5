@@ -1,1 +1,16 @@
+# v1.0.1
+## Added
+    - Added methods in PLI::HDF5::Dataset
+        - Added PLI::HDF5::Dataset::create without template but with PLI::HDF5::Type
+        - Added PLI::HDF5::Dataset::write with void* instead of std::vector<T>
+        - Added PLI::HDF5::Dataset::write without template but with PLI::HDF5::Type and void* as the data pointer
+    - Added PLI::HDF5::createDataset without template but with PLI::HDF5::Type
+    - Added PLI::PLIM::addCreationTime and PLI::PLIM::addImageModality
+    - Added tests for non MPI execution
+    - Added tests for the new methods to create datasets
 
+## Changed
+    - If MPI is not initialized during the creation / opening of a file / dataset, the access token will not use MPI. This allows the usage of the toolbox in programs not using MPI.
+    - Refactoring of file and dataset methods using the HDF5 MPI implementation to keep the DRY principle.
+
+## Fixed

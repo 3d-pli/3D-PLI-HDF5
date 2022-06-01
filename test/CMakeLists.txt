@@ -19,3 +19,11 @@ foreach(file ${files})
   set_property(TARGET ${test_name} PROPERTY CROSSCOMPILING_EMULATOR '${MPIEXEC_EXECUTABLE} --oversubscribe ${MPIEXEC_NUMPROC_FLAG} 4')
   gtest_discover_tests(${test_name})
 endforeach()
+
+add_executable(test_file_non_mpi no_mpi_test_file.cpp)
+target_link_libraries(test_file_non_mpi PLIHDF5 ${PLIHDF5_LINK_LIBRARIES} gtest_main)
+gtest_discover_tests(test_file_non_mpi)
+
+add_executable(test_dataset_non_mpi no_mpi_test_dataset.cpp)
+target_link_libraries(test_dataset_non_mpi PLIHDF5 ${PLIHDF5_LINK_LIBRARIES} gtest_main)
+gtest_discover_tests(test_dataset_non_mpi)
