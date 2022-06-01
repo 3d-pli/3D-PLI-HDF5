@@ -64,9 +64,9 @@ void PLI::HDF5::File::open(const std::string& fileName,
 
   hid_t access;
   if (openState == 0) {
-    access = H5F_ACC_RDWR;
-  } else {
     access = H5F_ACC_RDONLY;
+  } else {
+    access = H5F_ACC_RDWR;
   }
 
   hid_t fapl_id = createFaplID();

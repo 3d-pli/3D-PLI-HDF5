@@ -14,3 +14,5 @@
     - Refactoring of file and dataset methods using the HDF5 MPI implementation to keep the DRY principle.
 
 ## Fixed
+    - Fixed issues which could result in SegFaults in rare cases
+    - Fix wrong HDF5 attribute when opening files

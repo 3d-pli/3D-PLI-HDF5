@@ -131,8 +131,9 @@ void PLI::HDF5::AttributeHandler::copyAllFrom(
       srcHandler.attributeNames();
 
   for (const std::string &attributeName : srcHandlerAttribtuteNames) {
-    if (std::find(exceptions.cbegin(), exceptions.cend(), attributeName) ==
-        std::cend(exceptions)) {
+    if (exceptions.size() == 0 ||
+        std::find(exceptions.cbegin(), exceptions.cend(), attributeName) ==
+            std::cend(exceptions)) {
       this->copyFrom(srcHandler, attributeName, attributeName);
     }
   }
@@ -142,12 +143,10 @@ void PLI::HDF5::AttributeHandler::copyAllTo(
     AttributeHandler dstHandler, const std::vector<std::string> &exceptions) {
   // Get all attribute names first
   std::vector<std::string> srcHandlerAttribtuteNames = this->attributeNames();
-  if (srcHandlerAttribtuteNames.empty()) {
-    return;
-  }
 
   for (const std::string &attributeName : srcHandlerAttribtuteNames) {
-    if (exceptions.size() > 0 &&
+    std::cout << attributeName << std::endl;
+    if (exceptions.size() == 0 ||
         std::find(exceptions.cbegin(), exceptions.cend(), attributeName) ==
             std::cend(exceptions)) {
       this->copyTo(dstHandler, attributeName, attributeName);
@@ -384,6 +383,16 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
 
   std::vector<hsize_t> attributeSpaceSize =
       this->getAttributeDimensions(attributeName);
+
+  if (attributeSpaceSize.size() != dimensions.size()) {
+    throw Exceptions::DimensionMismatchException(
+        "Dimension mismatch in updateAttribute. "
+        "Attribute " +
+        attributeName + " has " + std::to_string(attributeSpaceSize.size()) +
+        " dimensions, but " + std::to_string(dimensions.size()) +
+        " were given.");
+  }
+
   for (size_t i = 0; i < attributeSpaceSize.size(); ++i) {
     if (attributeSpaceSize.at(i) != dimensions.at(i)) {
       throw Exceptions::DimensionMismatchException(
