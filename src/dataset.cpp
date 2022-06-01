@@ -180,3 +180,16 @@ PLI::HDF5::Dataset::Dataset(const Dataset& dataset) noexcept
     : m_id(dataset.id()) {}
 
 PLI::HDF5::Dataset::operator hid_t() const noexcept { return this->m_id; }
+
+hid_t PLI::HDF5::Dataset::createXfID() const {
+  hid_t xf_id = H5Pcreate(H5P_DATASET_XFER);
+  checkHDF5Ptr(xf_id, "H5Pcreate");
+
+  int flag;
+  MPI_Initialized(&flag);
+  if (flag) {
+    checkHDF5Call(H5Pset_dxpl_mpio(xf_id, H5FD_MPIO_COLLECTIVE),
+                  "H5Pset_dxpl_mpio");
+  }
+  return xf_id;
+}

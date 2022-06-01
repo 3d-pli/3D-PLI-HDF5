@@ -179,6 +179,8 @@ class File {
   operator hid_t() const;
 
  private:
+  static bool checkMPI();
+  hid_t createFaplID() const;
   hid_t m_id;
   hid_t m_faplID;
 };

@@ -34,10 +34,7 @@ std::vector<T> PLI::HDF5::Dataset::readFullDataset() const {
 
   PLI::HDF5::Type returnType = PLI::HDF5::Type::createType<T>();
 
-  hid_t xf_id = H5Pcreate(H5P_DATASET_XFER);
-  checkHDF5Ptr(xf_id, "H5Pcreate");
-  checkHDF5Call(H5Pset_dxpl_mpio(xf_id, H5FD_MPIO_COLLECTIVE),
-                "H5Pset_dxpl_mpio");
+  hid_t xf_id = createXfID();
   hid_t memspacePtr = H5Screate_simple(_dims.size(), _dims.data(), nullptr);
   checkHDF5Ptr(memspacePtr, "H5Screate_simple");
   checkHDF5Call(H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr,
@@ -66,10 +63,7 @@ std::vector<T> PLI::HDF5::Dataset::read(
   std::vector<T> returnData;
   returnData.resize(numElements);
 
-  hid_t xf_id = H5Pcreate(H5P_DATASET_XFER);
-  checkHDF5Ptr(xf_id, "H5Pcreate");
-  checkHDF5Call(H5Pset_dxpl_mpio(xf_id, H5FD_MPIO_COLLECTIVE),
-                "H5Pset_dxpl_mpio");
+  hid_t xf_id = createXfID();
   checkHDF5Call(H5Sselect_hyperslab(dataspacePtr, H5S_SELECT_SET, offset.data(),
                                     nullptr, count.data(), nullptr),
                 "H5Sselect_hyperslab");

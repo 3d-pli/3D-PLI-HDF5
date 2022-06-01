@@ -322,6 +322,7 @@ class Dataset {
   operator hid_t() const noexcept;
 
  private:
+  hid_t createXfID() const;
   hid_t m_id;
 };
 

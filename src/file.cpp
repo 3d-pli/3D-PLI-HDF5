@@ -36,11 +36,7 @@ void PLI::HDF5::File::create(const std::string& fileName) {
     throw Exceptions::FileExistsException("File already exists: " + fileName);
   }
 
-  hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
-  checkHDF5Ptr(fapl_id, "H5Pcreate");
-  checkHDF5Call(H5Pset_fapl_mpio(fapl_id, MPI_COMM_WORLD, MPI_INFO_NULL),
-                "H5Pset_fapl_mpio");
-
+  hid_t fapl_id = createFaplID();
   hid_t filePtr =
       H5Fcreate(fileName.c_str(), H5F_ACC_EXCL, H5P_DEFAULT, fapl_id);
   checkHDF5Ptr(filePtr, "H5Fcreate");
@@ -73,10 +69,7 @@ void PLI::HDF5::File::open(const std::string& fileName,
     access = H5F_ACC_RDONLY;
   }
 
-  hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
-  checkHDF5Ptr(fapl_id, "H5Pcreate");
-  checkHDF5Call(H5Pset_fapl_mpio(fapl_id, MPI_COMM_WORLD, MPI_INFO_NULL));
-
+  hid_t fapl_id = createFaplID();
   hid_t filePtr = H5Fopen(fileName.c_str(), access, fapl_id);
   checkHDF5Ptr(filePtr, "H5Fopen");
 
@@ -104,12 +97,16 @@ void PLI::HDF5::File::flush() {
 }
 
 bool PLI::HDF5::File::isHDF5(const std::string& fileName) {
-  MPI_Barrier(MPI_COMM_WORLD);
+  if (checkMPI()) {
+    MPI_Barrier(MPI_COMM_WORLD);
+  }
   return H5Fis_hdf5(fileName.c_str()) > 0;
 }
 
 bool PLI::HDF5::File::fileExists(const std::string& fileName) {
-  MPI_Barrier(MPI_COMM_WORLD);
+  if (checkMPI()) {
+    MPI_Barrier(MPI_COMM_WORLD);
+  }
   return std::filesystem::exists(fileName);
 }
 
@@ -126,3 +123,18 @@ PLI::HDF5::File::File(const hid_t filePtr, const hid_t faplID)
     : m_id(filePtr), m_faplID(faplID) {}
 
 PLI::HDF5::File::operator hid_t() const { return this->m_id; }
+
+hid_t PLI::HDF5::File::createFaplID() const {
+  hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
+  checkHDF5Ptr(fapl_id, "H5Pcreate");
+  if (checkMPI()) {
+    checkHDF5Call(H5Pset_fapl_mpio(fapl_id, MPI_COMM_WORLD, MPI_INFO_NULL));
+  }
+  return fapl_id;
+}
+
+bool PLI::HDF5::File::checkMPI() {
+  int flag;
+  MPI_Initialized(&flag);
+  return flag;
+}
