@@ -142,10 +142,14 @@ void PLI::HDF5::AttributeHandler::copyAllTo(
     AttributeHandler dstHandler, const std::vector<std::string> &exceptions) {
   // Get all attribute names first
   std::vector<std::string> srcHandlerAttribtuteNames = this->attributeNames();
+  if (srcHandlerAttribtuteNames.empty()) {
+    return;
+  }
 
   for (const std::string &attributeName : srcHandlerAttribtuteNames) {
-    if (std::find(exceptions.cbegin(), exceptions.cend(), attributeName) ==
-        std::cend(exceptions)) {
+    if (exceptions.size() > 0 &&
+        std::find(exceptions.cbegin(), exceptions.cend(), attributeName) ==
+            std::cend(exceptions)) {
       this->copyTo(dstHandler, attributeName, attributeName);
     }
   }

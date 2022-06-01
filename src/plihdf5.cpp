@@ -40,7 +40,12 @@ PLI::PLIM::PLIM(PLI::HDF5::AttributeHandler handler) : m_attrHandler(handler) {}
 void PLI::PLIM::addCreator() {
   std::string username;
 #ifdef __GNUC__
-  username = std::getenv("USER");
+  char *user = std::getenv("USER");
+  if (user) {
+    username = user;
+  } else {
+    username = "unknown";
+  }
 #else
   char username_arr[UNLEN + 1];
   DWORD username_len = UNLEN + 1;
