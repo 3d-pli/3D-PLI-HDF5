@@ -124,6 +124,12 @@ PLI::HDF5::File::File(const hid_t filePtr, const hid_t faplID)
 
 PLI::HDF5::File::operator hid_t() const { return this->m_id; }
 
+PLI::HDF5::File PLI::HDF5::File::operator=(const File& other) noexcept {
+  this->m_id = other.id();
+  this->m_faplID = other.faplID();
+  return *this;
+}
+
 hid_t PLI::HDF5::File::createFaplID() const {
   hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
   checkHDF5Ptr(fapl_id, "H5Pcreate");

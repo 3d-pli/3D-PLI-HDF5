@@ -178,6 +178,8 @@ class File {
    */
   operator hid_t() const;
 
+  PLI::HDF5::File operator=(const PLI::HDF5::File& otherFile) noexcept;
+
  private:
   static bool checkMPI();
   hid_t createFaplID() const;

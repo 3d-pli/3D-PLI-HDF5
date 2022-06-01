@@ -35,7 +35,9 @@
 #include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/file.h"
 #include "PLIHDF5/group.h"
+#include "PLIHDF5/link.h"
 #include "PLIHDF5/sha256.h"
+#include "PLIHDF5/type.h"
 
 /**
  * @brief The PLI namespace

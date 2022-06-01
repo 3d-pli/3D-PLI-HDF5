@@ -47,6 +47,11 @@ bool PLI::HDF5::Type::operator!=(const Type &other) const {
   return !(*this == other);
 }
 
+PLI::HDF5::Type PLI::HDF5::Type::operator=(const Type &other) {
+  this->m_typeID = other.m_typeID;
+  return *this;
+}
+
 std::string PLI::HDF5::Type::convertIDToName(const hid_t ID) {
   size_t typeNameLength = 0;
   // Make a first call to get the length of the typename
