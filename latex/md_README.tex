@@ -1,10 +1,10 @@
-\hypertarget{md_README_autotoc_md1}{}\doxysection{Introduction}\label{md_README_autotoc_md1}
+\hypertarget{md_README_autotoc_md5}{}\doxysection{Introduction}\label{md_README_autotoc_md5}
 HDF5 is a widely used file format for storing and sharing scientific data. It is used in the Fiber Architecture Group to store brain data and pyramids of images. The pyramids allow easy visualization of the data with external tools.
 
 However, using HDF5 can be troublesome when using C / C++. The library itself is written in C. While headers for C++ are provided, important features like MPI are not available.
 
-To improve the usability of the library, this repository contains a C++ library wrapping features of HDF5 to make the usage in 3D-\/\+PLI projects easier.\hypertarget{md_README_autotoc_md2}{}\doxysection{Install instructions}\label{md_README_autotoc_md2}
-\hypertarget{md_README_autotoc_md3}{}\doxysubsection{Requirements}\label{md_README_autotoc_md3}
+To improve the usability of the library, this repository contains a C++ library wrapping features of HDF5 to make the usage in 3D-\/\+PLI projects easier.\hypertarget{md_README_autotoc_md6}{}\doxysection{Install instructions}\label{md_README_autotoc_md6}
+\hypertarget{md_README_autotoc_md7}{}\doxysubsection{Requirements}\label{md_README_autotoc_md7}
 
 \begin{DoxyItemize}
 \item CMake 3.\+19 or newer
@@ -19,7 +19,7 @@ If you want to use linting during the compilation\+:
 \item Clang-\/format
 \item cppcheck
 \item cpplint
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md4}{}\doxysubsection{Compile the project manually}\label{md_README_autotoc_md4}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md8}{}\doxysubsection{Compile the project manually}\label{md_README_autotoc_md8}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git clone https://github.com/3d-\/pli/3D-\/PLI-\/HDF5.git}
@@ -30,7 +30,7 @@ If you want to use linting during the compilation\+:
 \DoxyCodeLine{make}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md5}{}\doxysubsection{Install the library from source}\label{md_README_autotoc_md5}
+\hypertarget{md_README_autotoc_md9}{}\doxysubsection{Install the library from source}\label{md_README_autotoc_md9}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git clone https://github.com/3d-\/pli/3D-\/PLI-\/HDF5.git}
@@ -42,7 +42,7 @@ If you want to use linting during the compilation\+:
 \DoxyCodeLine{make install}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md6}{}\doxysubsection{Build DEB package}\label{md_README_autotoc_md6}
+\hypertarget{md_README_autotoc_md10}{}\doxysubsection{Build DEB package}\label{md_README_autotoc_md10}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git clone https://github.com/3d-\/pli/3D-\/PLI-\/HDF5.git}
@@ -54,12 +54,12 @@ If you want to use linting during the compilation\+:
 \DoxyCodeLine{cpack}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md7}{}\doxysubsection{Install the library as a DEB package}\label{md_README_autotoc_md7}
+\hypertarget{md_README_autotoc_md11}{}\doxysubsection{Install the library as a DEB package}\label{md_README_autotoc_md11}
 To install the package, either build it yourself or download the packages from the releases / pipeline artifacts. Then, you can run the following commands to install the package. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{apt-\/get update -\/qq}
 \DoxyCodeLine{apt-\/get install -\/y ./plihdf5\_1.0.0\_amd64-\/devel.deb ./plihdf5\_1.0.0\_amd64-\/runtime.deb}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md8}{}\doxysection{API documentation}\label{md_README_autotoc_md8}
+\hypertarget{md_README_autotoc_md12}{}\doxysection{API documentation}\label{md_README_autotoc_md12}
 The API documentation is generated from the source code. The methods itself are documented in the source code. To view the documentation outside of the repository, you can go to the wiki page of the repository\+: \href{https://3d-pli.github.io/3D-PLI-HDF5/html/}{\texttt{ Here}} 

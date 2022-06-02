@@ -1,0 +1,30 @@
+\hypertarget{md_CHANGELOG_autotoc_md1}{}\doxysection{Added}\label{md_CHANGELOG_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Added methods in \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}}
+\begin{DoxyItemize}
+\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a5e06af1843ada081949a5b9f92956a95}{PLI\+::\+HDF5\+::\+Dataset\+::create}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}
+\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afc24eff37ad33af394fc3c4bb2c1dc27}{PLI\+::\+HDF5\+::\+Dataset\+::write}} with void$\ast$ instead of std\+::vector$<$\+T$>$
+\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afc24eff37ad33af394fc3c4bb2c1dc27}{PLI\+::\+HDF5\+::\+Dataset\+::write}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} and void$\ast$ as the data pointer
+\end{DoxyItemize}
+\item Added \mbox{\hyperlink{namespacePLI_1_1HDF5_aed80fd77e0d8828173c0e8848c135a43}{PLI\+::\+HDF5\+::create\+Dataset}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}
+\item Added \mbox{\hyperlink{classPLI_1_1PLIM_ae63caa54990e93c76b2b709079f90f44}{PLI\+::\+PLIM\+::add\+Creation\+Time}} and \mbox{\hyperlink{classPLI_1_1PLIM_a370f51ea69573cc5642f85e3663b360f}{PLI\+::\+PLIM\+::add\+Image\+Modality}}
+\item Added tests for non MPI execution
+\item Added tests for the new methods to create datasets
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md2}{}\doxysection{Changed}\label{md_CHANGELOG_autotoc_md2}
+
+\begin{DoxyItemize}
+\item If MPI is not initialized during the creation / opening of a file / dataset, the access token will not use MPI. This allows the usage of the toolbox in programs not using MPI.
+\item Refactoring of file and dataset methods using the HDF5 MPI implementation to keep the DRY principle.
+\item Copy\+All\+To and Copy\+All\+From will now throw an exception after it tried to copy all attributes.
+\item One element attributes are now saved as H5\+S\+\_\+\+SCALAR instead of a vector ~\newline
+
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md3}{}\doxysection{Fixed}\label{md_CHANGELOG_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Fixed issues which could result in Seg\+Faults in rare cases
+\item Fix wrong HDF5 attribute when opening files
+\item Fix issue with some PLIM methods not deleting the old attribute if it did exist
+\item Fix issues with copying scalar attributes
+\item Fixed an issue which returned an empty vector for \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}{PLI\+::\+HDF5\+::\+Attribute\+Handler\+::get\+Attribute\+Dimensions}} when the attribute was an H5\+S\+\_\+\+SCALAR 
+\end{DoxyItemize}
