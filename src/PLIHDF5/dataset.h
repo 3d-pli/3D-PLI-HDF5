@@ -320,7 +320,7 @@ class Dataset {
    * @return hid_t Dataset ID stored in the object.
    */
   operator hid_t() const noexcept;
-  PLI::HDF5::Dataset& operator=(const PLI::HDF5::Dataset& other) noexcept;
+  Dataset& operator=(const PLI::HDF5::Dataset& other) noexcept;
 
  private:
   hid_t createXfID() const;

@@ -178,7 +178,7 @@ class File {
    */
   operator hid_t() const;
 
-  PLI::HDF5::File& operator=(const PLI::HDF5::File& otherFile) noexcept;
+  File& operator=(const PLI::HDF5::File& otherFile) noexcept;
 
  private:
   static bool checkMPI();

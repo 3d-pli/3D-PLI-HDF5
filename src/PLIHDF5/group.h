@@ -132,7 +132,7 @@ class Group {
    */
   operator hid_t() const noexcept;
 
-  PLI::HDF5::Group& operator=(const PLI::HDF5::Group& otherGroup) noexcept;
+  Group& operator=(const PLI::HDF5::Group& otherGroup) noexcept;
 
  private:
   hid_t m_id;
