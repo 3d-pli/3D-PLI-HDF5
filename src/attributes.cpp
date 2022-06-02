@@ -130,12 +130,27 @@ void PLI::HDF5::AttributeHandler::copyAllFrom(
   std::vector<std::string> srcHandlerAttribtuteNames =
       srcHandler.attributeNames();
 
+  bool exceptionFound = false;
+
   for (const std::string &attributeName : srcHandlerAttribtuteNames) {
     if (exceptions.size() == 0 ||
         std::find(exceptions.cbegin(), exceptions.cend(), attributeName) ==
             std::cend(exceptions)) {
-      this->copyFrom(srcHandler, attributeName, attributeName);
+      try {
+        this->copyFrom(srcHandler, attributeName, attributeName);
+      } catch (const Exceptions::AttributeNotFoundException &e) {
+        exceptionFound = true;
+      } catch (const Exceptions::HDF5RuntimeException &e) {
+        exceptionFound = true;
+      } catch (const Exceptions::DimensionMismatchException &e) {
+        exceptionFound = true;
+      }
     }
+  }
+
+  if (exceptionFound) {
+    throw Exceptions::HDF5RuntimeException(
+        "Could not copy all attributes to destination.");
   }
 }
 
@@ -144,13 +159,27 @@ void PLI::HDF5::AttributeHandler::copyAllTo(
   // Get all attribute names first
   std::vector<std::string> srcHandlerAttribtuteNames = this->attributeNames();
 
+  bool exceptionFound = false;
+
   for (const std::string &attributeName : srcHandlerAttribtuteNames) {
-    std::cout << attributeName << std::endl;
     if (exceptions.size() == 0 ||
         std::find(exceptions.cbegin(), exceptions.cend(), attributeName) ==
             std::cend(exceptions)) {
-      this->copyTo(dstHandler, attributeName, attributeName);
+      try {
+        this->copyTo(dstHandler, attributeName, attributeName);
+      } catch (const Exceptions::AttributeNotFoundException &e) {
+        exceptionFound = true;
+      } catch (const Exceptions::HDF5RuntimeException &e) {
+        exceptionFound = true;
+      } catch (const Exceptions::DimensionMismatchException &e) {
+        exceptionFound = true;
+      }
     }
+  }
+
+  if (exceptionFound) {
+    throw Exceptions::HDF5RuntimeException(
+        "Could not copy all attributes to destination.");
   }
 }
 

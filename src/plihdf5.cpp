@@ -81,6 +81,9 @@ void PLI::PLIM::addID(const std::vector<std::string> &idAttributes) {
 
 void PLI::PLIM::addReference(const PLI::HDF5::AttributeHandler &file) {
   std::vector<std::string> fileID = file.getAttribute<std::string>("id");
+  if (m_attrHandler.attributeExists("reference_images")) {
+    m_attrHandler.deleteAttribute("reference_images");
+  }
   m_attrHandler.createAttribute("reference_images", fileID[0]);
 }
 
@@ -91,6 +94,9 @@ void PLI::PLIM::addReference(
                  [](PLI::HDF5::AttributeHandler file) -> std::string {
                    return file.getAttribute<std::string>("id")[0];
                  });
+  if (m_attrHandler.attributeExists("reference_images")) {
+    m_attrHandler.deleteAttribute("reference_images");
+  }
   m_attrHandler.createAttribute("reference_images", fileIDs, {fileIDs.size()});
 }
 
