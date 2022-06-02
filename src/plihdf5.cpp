@@ -40,7 +40,12 @@ PLI::PLIM::PLIM(PLI::HDF5::AttributeHandler handler) : m_attrHandler(handler) {}
 void PLI::PLIM::addCreator() {
   std::string username;
 #ifdef __GNUC__
-  username = std::getenv("USER");
+  char *user = std::getenv("USER");
+  if (user) {
+    username = user;
+  } else {
+    username = "unknown";
+  }
 #else
   char username_arr[UNLEN + 1];
   DWORD username_len = UNLEN + 1;
@@ -76,6 +81,9 @@ void PLI::PLIM::addID(const std::vector<std::string> &idAttributes) {
 
 void PLI::PLIM::addReference(const PLI::HDF5::AttributeHandler &file) {
   std::vector<std::string> fileID = file.getAttribute<std::string>("id");
+  if (m_attrHandler.attributeExists("reference_images")) {
+    m_attrHandler.deleteAttribute("reference_images");
+  }
   m_attrHandler.createAttribute("reference_images", fileID[0]);
 }
 
@@ -86,6 +94,9 @@ void PLI::PLIM::addReference(
                  [](PLI::HDF5::AttributeHandler file) -> std::string {
                    return file.getAttribute<std::string>("id")[0];
                  });
+  if (m_attrHandler.attributeExists("reference_images")) {
+    m_attrHandler.deleteAttribute("reference_images");
+  }
   m_attrHandler.createAttribute("reference_images", fileIDs, {fileIDs.size()});
 }
 

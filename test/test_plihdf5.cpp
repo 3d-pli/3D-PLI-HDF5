@@ -27,19 +27,79 @@
 
 #include "PLIHDF5/plihdf5.h"
 
-TEST(TestPLIM, AddCreator) {}
+class PLIMTest : public ::testing::Test {
+ protected:
+  void SetUp() override {
+    int32_t rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    if (rank == 0 && std::filesystem::exists(_filePath)) {
+      bool success = std::filesystem::remove(_filePath);
+      ASSERT_TRUE(success);
+    }
 
-TEST(TestPLIM, AddID) {}
+    std::string temporaryDirectory = testing::TempDir();
+    _filePath = temporaryDirectory + "test.h5";
+    _file = PLI::HDF5::createFile(_filePath);
+    _group = PLI::HDF5::createGroup(_file, "Group");
+    _attributeHandler = PLI::HDF5::AttributeHandler(_group);
+  }
 
-TEST(TestPLIM, AddReference) {}
+  void TearDown() override {
+    int32_t rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    try {
+      _group.close();
+      _file.close();
+    } catch (PLI::HDF5::Exceptions::HDF5RuntimeException& e) {
+    }
+    if (rank == 0) {
+      bool success = std::filesystem::remove(_filePath);
+      ASSERT_TRUE(success);
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+  }
 
-TEST(TestPLIM, AddMultipleReferences) {}
+  std::string _filePath;
+  PLI::HDF5::File _file;
+  PLI::HDF5::Group _group;
+  PLI::HDF5::AttributeHandler _attributeHandler;
+};
 
-TEST(TestPLIM, AddSoftware) {}
+TEST_F(PLIMTest, AddCreator) {}
 
-TEST(TestPLIM, AddSoftwareRevision) {}
+TEST_F(PLIMTest, AddID) {}
 
-TEST(TestPLIM, AddSoftwareParameters) {}
+TEST_F(PLIMTest, AddReference) {}
+
+TEST_F(PLIMTest, AddMultipleReferences) {}
+
+TEST_F(PLIMTest, AddSoftware) {}
+
+TEST_F(PLIMTest, AddSoftwareRevision) {}
+
+TEST_F(PLIMTest, AddSoftwareParameters) {}
+
+TEST_F(PLIMTest, CopyAfterCreation) {
+  auto _group2 = PLI::HDF5::createGroup(_file, "test_group2");
+  auto _attrHandler2 = PLI::HDF5::AttributeHandler(_group2);
+
+  auto _plim = PLI::PLIM(_attributeHandler);
+  _plim.addCreator();
+  _plim.addSoftware("test_plihdf5");
+  _plim.addSoftwareParameters("None");
+  _plim.addSoftwareRevision("0.1");
+
+  auto _plim2 = PLI::PLIM(_attrHandler2);
+  _plim2.addCreator();
+  _plim2.addSoftware("test_plihdf5");
+  _plim2.addSoftwareParameters("None");
+  _plim2.addSoftwareRevision("0.1");
+
+  ASSERT_NO_THROW(_attributeHandler.copyAllTo(_attrHandler2));
+  ASSERT_NO_THROW(_attrHandler2.copyAllFrom(_attributeHandler));
+
+  _group2.close();
+}
 
 int main(int argc, char* argv[]) {
   int result = 0;
