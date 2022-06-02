@@ -126,11 +126,18 @@ void PLI::HDF5::AttributeHandler::copyAllFrom(
       srcHandler.attributeNames();
 
   bool exceptionFound = false;
+  // Get exceptions from JSON file if they are not defined manually
+  std::vector<std::string> copyExceptions;
+  PLI::HDF5::Config *config = PLI::HDF5::Config::getInstance();
+  if (exceptions.empty()) {
+    copyExceptions = config->getExcludedCopyAttributes();
+  } else {
+    copyExceptions = exceptions;
+  }
 
   for (const std::string &attributeName : srcHandlerAttribtuteNames) {
-    if (exceptions.size() == 0 ||
-        std::find(exceptions.cbegin(), exceptions.cend(), attributeName) ==
-            std::cend(exceptions)) {
+    if (std::find(copyExceptions.cbegin(), copyExceptions.cend(),
+                  attributeName) == std::cend(copyExceptions)) {
       try {
         this->copyFrom(srcHandler, attributeName, attributeName);
       } catch (const Exceptions::AttributeNotFoundException &e) {
@@ -158,11 +165,18 @@ void PLI::HDF5::AttributeHandler::copyAllTo(
   std::vector<std::string> srcHandlerAttribtuteNames = this->attributeNames();
 
   bool exceptionFound = false;
+  // Get exceptions from JSON file if they are not defined manually
+  std::vector<std::string> copyExceptions;
+  PLI::HDF5::Config *config = PLI::HDF5::Config::getInstance();
+  if (exceptions.empty()) {
+    copyExceptions = config->getExcludedCopyAttributes();
+  } else {
+    copyExceptions = exceptions;
+  }
 
   for (const std::string &attributeName : srcHandlerAttribtuteNames) {
-    if (exceptions.size() == 0 ||
-        std::find(exceptions.cbegin(), exceptions.cend(), attributeName) ==
-            std::cend(exceptions)) {
+    if (std::find(copyExceptions.cbegin(), copyExceptions.cend(),
+                  attributeName) == std::cend(copyExceptions)) {
       try {
         this->copyTo(dstHandler, attributeName, attributeName);
       } catch (const Exceptions::AttributeNotFoundException &e) {

@@ -10,6 +10,9 @@ set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 include(GoogleTest)
 
+configure_file(${PROJECT_SOURCE_DIR}/test/test_attributes.cpp.in
+               ${PROJECT_SOURCE_DIR}/test/test_attributes.cpp)
+
 file(GLOB files "test_*.cpp")
 foreach(file ${files})
   get_filename_component(file_name ${file} NAME)

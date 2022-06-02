@@ -5,8 +5,8 @@ find_program(TOOLS_CPPLINT NAMES cpplint)
 option(PLIHDF5_USE_LINTING "Enable linting during compilation to check for code style." ON)
 if(PLIHDF5_USE_LINTING)
   if(TOOLS_CPPCHECK)
-    set(CMAKE_C_CPPCHECK ${TOOLS_CPPCHECK}; -q; template=gcc; --error-exitcode=1; --enable=all; --suppress=unmatchedSuppression; --suppress=missingIncludeSystem; --suppress=unusedFunction)
-    set(CMAKE_CXX_CPPCHECK ${TOOLS_CPPCHECK}; -q; template=gcc; --error-exitcode=1; --enable=all; --suppress=unmatchedSuppression; --suppress=missingIncludeSystem; --suppress=unusedFunction)
+    set(CMAKE_C_CPPCHECK ${TOOLS_CPPCHECK}; -q; template=gcc; --error-exitcode=1; --enable=all; --suppress=unmatchedSuppression; --suppress=missingIncludeSystem; --suppress=unusedFunction; --suppress=preprocessorErrorDirective)
+    set(CMAKE_CXX_CPPCHECK ${TOOLS_CPPCHECK}; -q; template=gcc; --error-exitcode=1; --enable=all; --suppress=unmatchedSuppression; --suppress=missingIncludeSystem; --suppress=unusedFunction; --suppress=preprocessorErrorDirective)
   endif()
   if(TOOLS_CPPLINT)
     set(CMAKE_C_CPPLINT ${TOOLS_CPPLINT}; --verbose=1)
@@ -18,9 +18,7 @@ if(PLIHDF5_USE_LINTING)
   endif()
 endif()
 
-message("PLIHDF5_ATTRIBUTE_SETTINGS_FILE_PATH: ${PLIHDF5_ATTRIBUTE_SETTINGS_FILE_PATH}")
-configure_file(PLIHDF5/config.h.in PLIHDF5/config.h)
-
+configure_file(${PROJECT_SOURCE_DIR}/src/PLIHDF5/config.h.in ${PROJECT_SOURCE_DIR}/src/PLIHDF5/config.h)
 set(PLIHDF5_HEADERS
     PLIHDF5/attributes.h
     PLIHDF5/attributes.tpp
@@ -35,19 +33,18 @@ set(PLIHDF5_HEADERS
     PLIHDF5/config.h
 )
 
-
 set(PLIHDF5_SOURCES
-        plihdf5.cpp
-        config.cpp
-        file.cpp
-        attributes.cpp
-        group.cpp
-        dataset.cpp
-        link.cpp
-        type.cpp
-        sha256.cpp
-        exceptions.cpp
-    )
+    plihdf5.cpp
+    config.cpp
+    file.cpp
+    attributes.cpp
+    group.cpp
+    dataset.cpp
+    link.cpp
+    type.cpp
+    sha256.cpp
+    exceptions.cpp
+)
 
 add_library(PLIHDF5 SHARED ${PLIHDF5_SOURCES})
 if(MSVC)

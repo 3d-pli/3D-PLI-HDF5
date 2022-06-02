@@ -25,15 +25,67 @@
 
 #include "PLIHDF5/config.h"
 
+std::unique_ptr<PLI::HDF5::Config> PLI::HDF5::Config::instance = nullptr;
+
+PLI::HDF5::Config::Config() {
+  // Check if shell variable PLIHDF5_ATTRIBUTE_SETTINGS_FILE_PATH is set.
+  // If yes, use it as config file path.
+  // If not, use default config file path.
+  const char* env = std::getenv("PLIHDF5_ATTRIBUTE_SETTINGS_FILE_PATH");
+  if (env != nullptr) {
+    configFilePath = env;
+  } else {
+    configFilePath = installedConfigFilePath;
+  }
+}
+
+PLI::HDF5::Config* PLI::HDF5::Config::getInstance() {
+  if (instance == nullptr) {
+    instance = std::unique_ptr<Config>(new Config());
+  }
+  return instance.get();
+}
+
 std::string PLI::HDF5::Config::getConfigFilePath() noexcept {
+  if (configFilePath.empty()) {
+    configFilePath = installedConfigFilePath;
+  }
   return configFilePath;
 }
 
-void PLI::HDF5::Config::setConfigFilePath(
-    const std::string& configFilePath) noexcept {
-  PLI::HDF5::Config::configFilePath = configFilePath;
+void PLI::HDF5::Config::setConfigFilePath(const std::string& path) noexcept {
+  PLI::HDF5::Config::configFilePath = path;
 }
 
-std::vector<std::string> PLI::HDF5::Config::getExcludedCopyAttributes() {}
+std::vector<std::string> PLI::HDF5::Config::getExcludedCopyAttributes() {
+  using json = nlohmann::json;
+  json j;
 
-std::vector<std::string> PLI::HDF5::Config::getIDAttributes() {}
+  std::ifstream configFile(getConfigFilePath());
+  if (!configFile.is_open()) {
+    return {};
+  }
+  configFile >> j;
+
+  std::vector<std::string> excludedCopyAttributes;
+  std::copy(j["excluded_copy_attributes"].begin(),
+            j["excluded_copy_attributes"].end(),
+            std::back_inserter(excludedCopyAttributes));
+  return excludedCopyAttributes;
+}
+
+std::vector<std::string> PLI::HDF5::Config::getIDAttributes() {
+  using json = nlohmann::json;
+  json j;
+
+  std::ifstream configFile(getConfigFilePath());
+  if (!configFile.is_open()) {
+    return {};
+  }
+  configFile >> j;
+
+  std::vector<std::string> idAttributes;
+  std::copy(j["id_attributes"].begin(), j["id_attributes"].end(),
+            std::back_inserter(idAttributes));
+  return idAttributes;
+}

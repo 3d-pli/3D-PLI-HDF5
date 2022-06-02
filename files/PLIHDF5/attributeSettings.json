@@ -1,5 +1,5 @@
 {
-    "excludedCopyAttributes" : [
+    "excluded_copy_attributes" : [
         "created_by",
         "creation_time",
         "dashboard_id",
@@ -13,7 +13,7 @@
         "path",
         "scale"
     ],
-    "idAttributes" : [
+    "id_attributes" : [
         "brain_id",
         "brain_part_id",
         "section_id",

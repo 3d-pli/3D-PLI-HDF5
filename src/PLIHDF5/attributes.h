@@ -43,6 +43,7 @@
 #include <string>
 #include <vector>
 
+#include "PLIHDF5/config.h"
 #include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/type.h"
 

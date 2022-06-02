@@ -29,6 +29,7 @@
 #include <vector>
 
 #include "PLIHDF5/attributes.h"
+#include "PLIHDF5/config.h"
 #include "PLIHDF5/file.h"
 #include "PLIHDF5/group.h"
 
@@ -414,6 +415,32 @@ TEST_F(AttributeHandlerTest, CopyAllTo) {
     auto newAttrNames = newAttrHandler.attributeNames();
     ASSERT_EQ(attrNames.size(), newAttrNames.size());
   }
+
+  {  // Create a few attributes that are on the "banned list" and try to copy
+     // them
+    auto group1 = PLI::HDF5::createGroup(newGroup, "Group1");
+    auto attrHandler1 = PLI::HDF5::AttributeHandler(group1);
+    auto group2 = PLI::HDF5::createGroup(newGroup, "Group2");
+    auto attrHandler2 = PLI::HDF5::AttributeHandler(group2);
+
+    auto config = PLI::HDF5::Config::getInstance();
+    config->setConfigFilePath(
+        "${PROJECT_SOURCE_DIR}/files/PLIHDF5/attributeSettings.json");
+
+    auto excludedAttrs = config->getExcludedCopyAttributes();
+    for (auto attr : excludedAttrs) {
+      attrHandler1.createAttribute<int32_t>(attr, 1);
+    }
+    ASSERT_NO_THROW(attrHandler1.copyAllTo(attrHandler2));
+
+    auto newAttrNames = attrHandler2.attributeNames();
+    ASSERT_TRUE(newAttrNames.empty());
+
+    group1.close();
+    group2.close();
+  }
+
+  newGroup.close();
 }
 
 TEST_F(AttributeHandlerTest, CopyAllFrom) {
@@ -471,6 +498,32 @@ TEST_F(AttributeHandlerTest, CopyAllFrom) {
     auto newAttrNames = newAttrHandler.attributeNames();
     ASSERT_EQ(attrNames.size(), newAttrNames.size());
   }
+
+  {  // Create a few attributes that are on the "banned list" and try to copy
+     // them
+    auto group1 = PLI::HDF5::createGroup(newGroup, "Group1");
+    auto attrHandler1 = PLI::HDF5::AttributeHandler(group1);
+    auto group2 = PLI::HDF5::createGroup(newGroup, "Group2");
+    auto attrHandler2 = PLI::HDF5::AttributeHandler(group2);
+
+    auto config = PLI::HDF5::Config::getInstance();
+    config->setConfigFilePath(
+        "${PROJECT_SOURCE_DIR}/files/PLIHDF5/attributeSettings.json");
+
+    auto excludedAttrs = config->getExcludedCopyAttributes();
+    for (auto attr : excludedAttrs) {
+      attrHandler1.createAttribute<int32_t>(attr, 1);
+    }
+    ASSERT_NO_THROW(attrHandler2.copyAllFrom(attrHandler1));
+
+    auto newAttrNames = attrHandler2.attributeNames();
+    ASSERT_TRUE(newAttrNames.empty());
+
+    group1.close();
+    group2.close();
+  }
+
+  newGroup.close();
 }
 
 TEST_F(AttributeHandlerTest, DeleteAttribute) {

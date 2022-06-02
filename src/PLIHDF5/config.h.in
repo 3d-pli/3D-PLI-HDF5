@@ -25,28 +25,34 @@
 
 #pragma once
 
-#include <vector>
+#include <fstream>
+#include <nlohmann/json.hpp>
 #include <string>
+#include <vector>
 
 namespace PLI {
 namespace HDF5 {
 class Config {
-    public:
-        Config() = delete;
-        Config(const Config&) = delete;
-        Config(Config&&) = delete;
-        Config& operator=(const Config&) = delete;
-        Config& operator=(Config&&) = delete;
+ public:
+  std::string getConfigFilePath() noexcept;
+  void setConfigFilePath(const std::string& configFilePath) noexcept;
 
-        static std::string getConfigFilePath() noexcept;
-        static void setConfigFilePath(const std::string& configFilePath) noexcept;
+  std::vector<std::string> getExcludedCopyAttributes();
+  std::vector<std::string> getIDAttributes();
 
-        static std::vector<std::string> getExcludedCopyAttributes();
-        static std::vector<std::string> getIDAttributes();
+  static Config* getInstance();
 
-    private:
-        static constexpr auto installedConfigFilePath = "${PLIHDF5_ATTRIBUTE_SETTINGS_FILE_PATH}";
-        static std::string configFilePath;
+ private:
+  Config();
+  Config(const Config&) = delete;
+  Config(Config&&) = delete;
+  Config& operator=(const Config&) = delete;
+  Config& operator=(Config&&) = delete;
+
+  static constexpr auto installedConfigFilePath =
+      "${PLIHDF5_ATTRIBUTE_SETTINGS_FILE_PATH}";
+  static std::unique_ptr<Config> instance;
+  std::string configFilePath;
 };
-}
-}
+}  // namespace HDF5
+}  // namespace PLI
