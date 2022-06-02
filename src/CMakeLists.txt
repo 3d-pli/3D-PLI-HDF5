@@ -18,6 +18,8 @@ if(PLIHDF5_USE_LINTING)
   endif()
 endif()
 
+message("PLIHDF5_ATTRIBUTE_SETTINGS_FILE_PATH: ${PLIHDF5_ATTRIBUTE_SETTINGS_FILE_PATH}")
+configure_file(PLIHDF5/config.h.in PLIHDF5/config.h)
 
 set(PLIHDF5_HEADERS
     PLIHDF5/attributes.h
@@ -30,11 +32,13 @@ set(PLIHDF5_HEADERS
     PLIHDF5/plihdf5.h
     PLIHDF5/sha256.h
     PLIHDF5/type.h
-   )
+    PLIHDF5/config.h
+)
 
 
 set(PLIHDF5_SOURCES
         plihdf5.cpp
+        config.cpp
         file.cpp
         attributes.cpp
         group.cpp

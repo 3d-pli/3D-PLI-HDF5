@@ -47,9 +47,9 @@ set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} OpenSSL::SSL)
 # set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} nlohmann_json::nlohmann_json)
 
 # Source files / headers
+add_subdirectory(files)
 include_directories(src)
 add_subdirectory(src)
-add_subdirectory(files)
 
 # Packaging
 include(cmake/package.cmake)
