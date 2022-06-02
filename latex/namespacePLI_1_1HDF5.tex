@@ -32,6 +32,8 @@ class \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}}
 \begin{DoxyCompactList}\small\item\em Open an existing dataset. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \mbox{\hyperlink{namespacePLI_1_1HDF5_aed80fd77e0d8828173c0e8848c135a43}{create\+Dataset}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name, const std\+::vector$<$ hsize\+\_\+t $>$ \&dims, const std\+::vector$<$ hsize\+\_\+t $>$ \&chunk\+Dims=\{\})
 \begin{DoxyCompactList}\small\item\em Create a new dataset with the given name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \mbox{\hyperlink{namespacePLI_1_1HDF5_a4946c8018f7a5ab9da2ea0cf950b8a7b}{create\+Dataset}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name, const std\+::vector$<$ hsize\+\_\+t $>$ \&dims, const std\+::vector$<$ hsize\+\_\+t $>$ \&chunk\+Dims=\{\}, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&data\+Type=\mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}{PLI\+::\+HDF5\+::\+Type\+::create\+Type}}$<$ float $>$())
+\begin{DoxyCompactList}\small\item\em Create a new dataset with the given name. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacePLI_1_1HDF5_ac221711f37b19deb37331fc25e818729}{check\+HDF5\+Call}} (const herr\+\_\+t hdf5\+Return\+Value, const std\+::string \&message=\char`\"{}None\char`\"{})
 \item 
 void \mbox{\hyperlink{namespacePLI_1_1HDF5_a7bece20d07576e8ec3feb4a16a3ce38b}{check\+HDF5\+Ptr}} (const hid\+\_\+t hdf5\+Ptr, const std\+::string \&message=\char`\"{}None\char`\"{})
@@ -65,7 +67,7 @@ The \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} namespace.
 \mbox{\Hypertarget{namespacePLI_1_1HDF5_aed80fd77e0d8828173c0e8848c135a43}\label{namespacePLI_1_1HDF5_aed80fd77e0d8828173c0e8848c135a43}} 
 \index{PLI::HDF5@{PLI::HDF5}!createDataset@{createDataset}}
 \index{createDataset@{createDataset}!PLI::HDF5@{PLI::HDF5}}
-\doxysubsubsection{\texorpdfstring{createDataset()}{createDataset()}}
+\doxysubsubsection{\texorpdfstring{createDataset()}{createDataset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} PLI\+::\+HDF5\+::create\+Dataset (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{dataset\+Name,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dims,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{chunk\+Dims = {\ttfamily \{\}} }\end{DoxyParamCaption})}
 
@@ -87,6 +89,41 @@ This method tries to create a new dataset with the given name. If the dataset al
 {\em dims} & Dimensions of the new dataset. \\
 \hline
 {\em chunk\+Dims} & Chunking dimensions of the dataset. If not set, the chunking is disabled. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} New dataset object if successful. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the parent or dataset pointer is invalid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Dataset\+Exists\+Exception}}} & If the dataset already exists. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the dataset could not be created. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{namespacePLI_1_1HDF5_a4946c8018f7a5ab9da2ea0cf950b8a7b}\label{namespacePLI_1_1HDF5_a4946c8018f7a5ab9da2ea0cf950b8a7b}} 
+\index{PLI::HDF5@{PLI::HDF5}!createDataset@{createDataset}}
+\index{createDataset@{createDataset}!PLI::HDF5@{PLI::HDF5}}
+\doxysubsubsection{\texorpdfstring{createDataset()}{createDataset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} PLI\+::\+HDF5\+::create\+Dataset (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{dataset\+Name,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dims,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{chunk\+Dims = {\ttfamily \{\}},  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&}]{data\+Type = {\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}{PLI\+::\+HDF5\+::\+Type\+::create\+Type}}$<$float$>$()} }\end{DoxyParamCaption})}
+
+
+
+Create a new dataset with the given name. 
+
+This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. 
+\begin{DoxyParams}{Parameters}
+{\em parent\+Ptr} & Raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer to a file or group. \\
+\hline
+{\em dataset\+Name} & Name of the dataset to create. \\
+\hline
+{\em dims} & Dimensions of the new dataset. \\
+\hline
+{\em chunk\+Dims} & Chunking dimensions of the dataset. If not set, the chunking is disabled. \\
+\hline
+{\em data\+Type} & Datatype of the dataset. Default = float. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

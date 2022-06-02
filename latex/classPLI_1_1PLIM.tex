@@ -29,7 +29,11 @@ void \mbox{\hyperlink{classPLI_1_1PLIM_a27fe20888c2b6355a699531f881161ea}{add\+S
 void \mbox{\hyperlink{classPLI_1_1PLIM_ac5bd6172ef0808a283e6c7f1f502100a}{add\+Software\+Revision}} (const std\+::string \&software\+Revision)
 \begin{DoxyCompactList}\small\item\em Adds the software revision. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPLI_1_1PLIM_a979ec407109eb171a70415dc97afe1c3}{add\+Software\+Parameters}} (const std\+::string \&software\+Parameters)
-\begin{DoxyCompactList}\small\item\em Adds the software parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Adds the software parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1PLIM_ae63caa54990e93c76b2b709079f90f44}{add\+Creation\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Adds the creation time of the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1PLIM_a370f51ea69573cc5642f85e3663b360f}{add\+Image\+Modality}} (const std\+::string \&modality\+Name)
+\begin{DoxyCompactList}\small\item\em Adds the name of the modality stored in the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -78,6 +82,16 @@ Constructor.
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPLI_1_1PLIM_ae63caa54990e93c76b2b709079f90f44}\label{classPLI_1_1PLIM_ae63caa54990e93c76b2b709079f90f44}} 
+\index{PLI::PLIM@{PLI::PLIM}!addCreationTime@{addCreationTime}}
+\index{addCreationTime@{addCreationTime}!PLI::PLIM@{PLI::PLIM}}
+\doxysubsubsection{\texorpdfstring{addCreationTime()}{addCreationTime()}}
+{\footnotesize\ttfamily void PLI\+::\+PLIM\+::add\+Creation\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Adds the creation time of the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. 
+
 \mbox{\Hypertarget{classPLI_1_1PLIM_abd48bbf9cd7ce0e01b371f236937704a}\label{classPLI_1_1PLIM_abd48bbf9cd7ce0e01b371f236937704a}} 
 \index{PLI::PLIM@{PLI::PLIM}!addCreator@{addCreator}}
 \index{addCreator@{addCreator}!PLI::PLIM@{PLI::PLIM}}
@@ -101,6 +115,21 @@ Adds the ID of the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file to the \mb
 
 \begin{DoxyParams}{Parameters}
 {\em id\+Attributes} & List of attributes that are used to generate the ID. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1PLIM_a370f51ea69573cc5642f85e3663b360f}\label{classPLI_1_1PLIM_a370f51ea69573cc5642f85e3663b360f}} 
+\index{PLI::PLIM@{PLI::PLIM}!addImageModality@{addImageModality}}
+\index{addImageModality@{addImageModality}!PLI::PLIM@{PLI::PLIM}}
+\doxysubsubsection{\texorpdfstring{addImageModality()}{addImageModality()}}
+{\footnotesize\ttfamily void PLI\+::\+PLIM\+::add\+Image\+Modality (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{modality\+Name }\end{DoxyParamCaption})}
+
+
+
+Adds the name of the modality stored in the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em modality} & Modality name stored. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classPLI_1_1PLIM_a80518890be2c725084b0683b43e0c9ba}\label{classPLI_1_1PLIM_a80518890be2c725084b0683b43e0c9ba}} 

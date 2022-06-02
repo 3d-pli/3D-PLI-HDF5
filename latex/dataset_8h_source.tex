@@ -53,40 +53,63 @@
 \DoxyCodeLine{116   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a5e06af1843ada081949a5b9f92956a95}{create}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string\& datasetName,}
 \DoxyCodeLine{117               \textcolor{keyword}{const} std::vector<hsize\_t>\& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}},}
 \DoxyCodeLine{118               \textcolor{keyword}{const} std::vector<hsize\_t>\& chunkDims = \{\});}
-\DoxyCodeLine{130   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ae46347a834f5524f9038d00afd7289b0}{exists}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string\& datasetName);}
-\DoxyCodeLine{131 }
-\DoxyCodeLine{141   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac21f50996e82918fbf5d71c9cedec281}{close}}();}
-\DoxyCodeLine{156   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{157   std::vector<T> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac879f9258f2fa5f2d89faf5e6a477105}{readFullDataset}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{179   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{180   std::vector<T> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afb79e7faf27ea297fe340b47719a7a08}{read}}(\textcolor{keyword}{const} std::vector<hsize\_t>\& offset,}
-\DoxyCodeLine{181                       \textcolor{keyword}{const} std::vector<hsize\_t>\& count) \textcolor{keyword}{const};}
-\DoxyCodeLine{203   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{204   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afc24eff37ad33af394fc3c4bb2c1dc27}{write}}(\textcolor{keyword}{const} std::vector<T>\& data, \textcolor{keyword}{const} std::vector<hsize\_t>\& offset,}
-\DoxyCodeLine{205              \textcolor{keyword}{const} std::vector<hsize\_t>\& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}});}
-\DoxyCodeLine{206 }
-\DoxyCodeLine{214   \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}{type}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{221   \textcolor{keywordtype}{int} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ab1f82284d13d3426e0e6a9104673d02e}{ndims}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{231   \textcolor{keyword}{const} std::vector<hsize\_t> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{239   hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a4da86a08bd3ba2afcfea47e10576dba7}{id}}() const noexcept;}
-\DoxyCodeLine{240 }
-\DoxyCodeLine{245   operator hid\_t() const noexcept;}
-\DoxyCodeLine{246 }
-\DoxyCodeLine{247  private:}
-\DoxyCodeLine{248   hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2cdda1b28e3b230dd8bfa20f8d5030df}{m\_id}};}
-\DoxyCodeLine{249 \};}
-\DoxyCodeLine{250 }
-\DoxyCodeLine{264 \mbox{\hyperlink{namespacePLI}{PLI}}::HDF5::\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \mbox{\hyperlink{namespacePLI_1_1HDF5_ab40573c6538568ac633f7e87f8fa9159}{openDataset}}(const hid\_t parentPtr,}
-\DoxyCodeLine{265                                const std::\textcolor{keywordtype}{string}\& datasetName);}
-\DoxyCodeLine{289 template <typename T>}
-\DoxyCodeLine{290 \mbox{\hyperlink{namespacePLI}{PLI}}::HDF5::\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \mbox{\hyperlink{namespacePLI_1_1HDF5_aed80fd77e0d8828173c0e8848c135a43}{createDataset}}(const hid\_t parentPtr,}
-\DoxyCodeLine{291                                  const std::\textcolor{keywordtype}{string}\& datasetName,}
-\DoxyCodeLine{292                                  const std::vector<hsize\_t>\& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}},}
-\DoxyCodeLine{293                                  const std::vector<hsize\_t>\& chunkDims = \{\});}
-\DoxyCodeLine{294 }
-\DoxyCodeLine{295 \}  \textcolor{comment}{// namespace HDF5}}
-\DoxyCodeLine{296 \}  \textcolor{comment}{// namespace PLI}}
-\DoxyCodeLine{297 }
-\DoxyCodeLine{298 \textcolor{preprocessor}{\#include "{}PLIHDF5/dataset.tpp"{}}}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{142   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a5e06af1843ada081949a5b9f92956a95}{create}}(}
+\DoxyCodeLine{143       \textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string\& datasetName,}
+\DoxyCodeLine{144       \textcolor{keyword}{const} std::vector<hsize\_t>\& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}},}
+\DoxyCodeLine{145       \textcolor{keyword}{const} std::vector<hsize\_t>\& chunkDims = \{\},}
+\DoxyCodeLine{146       \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}}\& dataType = PLI::HDF5::Type::createType<float>());}
+\DoxyCodeLine{158   \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ae46347a834f5524f9038d00afd7289b0}{exists}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string\& datasetName);}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{169   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac21f50996e82918fbf5d71c9cedec281}{close}}();}
+\DoxyCodeLine{184   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{185   std::vector<T> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac879f9258f2fa5f2d89faf5e6a477105}{readFullDataset}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{208   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{209   std::vector<T> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afb79e7faf27ea297fe340b47719a7a08}{read}}(\textcolor{keyword}{const} std::vector<hsize\_t>\& offset,}
+\DoxyCodeLine{210                       \textcolor{keyword}{const} std::vector<hsize\_t>\& count) \textcolor{keyword}{const};}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{233   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{234   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afc24eff37ad33af394fc3c4bb2c1dc27}{write}}(\textcolor{keyword}{const} std::vector<T>\& data, \textcolor{keyword}{const} std::vector<hsize\_t>\& offset,}
+\DoxyCodeLine{235              \textcolor{keyword}{const} std::vector<hsize\_t>\& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}});}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{258   \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{259   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ad355297e0e269a0e9b496cc802f1c83b}{write}}(\textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} std::vector<hsize\_t>\& offset,}
+\DoxyCodeLine{260              \textcolor{keyword}{const} std::vector<hsize\_t>\& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}});}
+\DoxyCodeLine{261 }
+\DoxyCodeLine{281   \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afc24eff37ad33af394fc3c4bb2c1dc27}{write}}(\textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keyword}{const} std::vector<hsize\_t>\& offset,}
+\DoxyCodeLine{282              \textcolor{keyword}{const} std::vector<hsize\_t>\& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}}, \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}}\& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}{type}});}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{291   \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}{type}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{298   \textcolor{keywordtype}{int} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ab1f82284d13d3426e0e6a9104673d02e}{ndims}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{308   \textcolor{keyword}{const} std::vector<hsize\_t> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{316   hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a4da86a08bd3ba2afcfea47e10576dba7}{id}}() const noexcept;}
+\DoxyCodeLine{317 }
+\DoxyCodeLine{322   operator hid\_t() const noexcept;}
+\DoxyCodeLine{323   \mbox{\hyperlink{namespacePLI}{PLI}}::HDF5::\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} operator=(const \mbox{\hyperlink{namespacePLI}{PLI}}::HDF5::\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}}\& other) noexcept;}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{325  private:}
+\DoxyCodeLine{326   hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a33e12a51e065d400bddc8827140093c5}{createXfID}}() const;}
+\DoxyCodeLine{327   hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2cdda1b28e3b230dd8bfa20f8d5030df}{m\_id}};}
+\DoxyCodeLine{328 \};}
+\DoxyCodeLine{329 }
+\DoxyCodeLine{343 \mbox{\hyperlink{namespacePLI}{PLI}}::HDF5::\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \mbox{\hyperlink{namespacePLI_1_1HDF5_ab40573c6538568ac633f7e87f8fa9159}{openDataset}}(const hid\_t parentPtr,}
+\DoxyCodeLine{344                                const std::\textcolor{keywordtype}{string}\& datasetName);}
+\DoxyCodeLine{368 template <typename T>}
+\DoxyCodeLine{369 \mbox{\hyperlink{namespacePLI}{PLI}}::HDF5::\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \mbox{\hyperlink{namespacePLI_1_1HDF5_aed80fd77e0d8828173c0e8848c135a43}{createDataset}}(const hid\_t parentPtr,}
+\DoxyCodeLine{370                                  const std::\textcolor{keywordtype}{string}\& datasetName,}
+\DoxyCodeLine{371                                  const std::vector<hsize\_t>\& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}},}
+\DoxyCodeLine{372                                  const std::vector<hsize\_t>\& chunkDims = \{\});}
+\DoxyCodeLine{373 }
+\DoxyCodeLine{395 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI::HDF5::Dataset}} \mbox{\hyperlink{namespacePLI_1_1HDF5_aed80fd77e0d8828173c0e8848c135a43}{createDataset}}(}
+\DoxyCodeLine{396     \textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string\& datasetName,}
+\DoxyCodeLine{397     \textcolor{keyword}{const} std::vector<hsize\_t>\& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}},}
+\DoxyCodeLine{398     \textcolor{keyword}{const} std::vector<hsize\_t>\& chunkDims = \{\},}
+\DoxyCodeLine{399     \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}}\& dataType = PLI::HDF5::Type::createType<float>());}
+\DoxyCodeLine{400 }
+\DoxyCodeLine{401 \}  \textcolor{comment}{// namespace HDF5}}
+\DoxyCodeLine{402 \}  \textcolor{comment}{// namespace PLI}}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{404 \textcolor{preprocessor}{\#include "{}PLIHDF5/dataset.tpp"{}}}
 
 \end{DoxyCode}

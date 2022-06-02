@@ -40,7 +40,9 @@ hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae9595536a728637c89589fb595
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}{fapl\+ID}} () const
 \begin{DoxyCompactList}\small\item\em Get the file access pointer. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a7c53c2e016fd0243cf5f4162e43637d2}{operator hid\+\_\+t}} () const
-\begin{DoxyCompactList}\small\item\em Convert the file to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Convert the file to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a2216e427265bc2878f97749571ee166d}{operator=}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} \&other\+File) noexcept
+\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -48,6 +50,16 @@ static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad4f7de370ce9655532fbcae6b
 \begin{DoxyCompactList}\small\item\em Check if the file is a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae7d1c6b269c872ce262222d5b5542885}{file\+Exists}} (const std\+::string \&file\+Name)
 \begin{DoxyCompactList}\small\item\em Check if the file exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ac3d442651cea72e8ec97b64efa878678}{create\+Fapl\+ID}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a160692c0e464d49e1822031fccb7ce17}{check\+MPI}} ()
+\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -125,6 +137,12 @@ Construct a new file object by using the given pointer of another file object.
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a160692c0e464d49e1822031fccb7ce17}\label{classPLI_1_1HDF5_1_1File_a160692c0e464d49e1822031fccb7ce17}} 
+\index{PLI::HDF5::File@{PLI::HDF5::File}!checkMPI@{checkMPI}}
+\index{checkMPI@{checkMPI}!PLI::HDF5::File@{PLI::HDF5::File}}
+\doxysubsubsection{\texorpdfstring{checkMPI()}{checkMPI()}}
+{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+File\+::check\+MPI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a930eacc5e5c0ff2235c1d678447dd85e}\label{classPLI_1_1HDF5_1_1File_a930eacc5e5c0ff2235c1d678447dd85e}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!close@{close}}
 \index{close@{close}!PLI::HDF5::File@{PLI::HDF5::File}}
@@ -164,6 +182,12 @@ Create a new file. Per default, the file is created with MPI file access.
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & Error during setting the MPI file access. \\
 \hline
 \end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ac3d442651cea72e8ec97b64efa878678}\label{classPLI_1_1HDF5_1_1File_ac3d442651cea72e8ec97b64efa878678}} 
+\index{PLI::HDF5::File@{PLI::HDF5::File}!createFaplID@{createFaplID}}
+\index{createFaplID@{createFaplID}!PLI::HDF5::File@{PLI::HDF5::File}}
+\doxysubsubsection{\texorpdfstring{createFaplID()}{createFaplID()}}
+{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+File\+::create\+Fapl\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}\label{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!faplID@{faplID}}
 \index{faplID@{faplID}!PLI::HDF5::File@{PLI::HDF5::File}}
@@ -288,6 +312,12 @@ Convert the file to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} poin
 \begin{DoxyReturn}{Returns}
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} ID stored in the object. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a2216e427265bc2878f97749571ee166d}\label{classPLI_1_1HDF5_1_1File_a2216e427265bc2878f97749571ee166d}} 
+\index{PLI::HDF5::File@{PLI::HDF5::File}!operator=@{operator=}}
+\index{operator=@{operator=}!PLI::HDF5::File@{PLI::HDF5::File}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} PLI\+::\+HDF5\+::\+File\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} \&}]{other\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_adaf80744e54c4b7c04ead41a2b46b165}\label{classPLI_1_1HDF5_1_1File_adaf80744e54c4b7c04ead41a2b46b165}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!reopen@{reopen}}
 \index{reopen@{reopen}!PLI::HDF5::File@{PLI::HDF5::File}}
