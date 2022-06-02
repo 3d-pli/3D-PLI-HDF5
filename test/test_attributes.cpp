@@ -208,6 +208,15 @@ TEST_F(AttributeHandlerTest, CreateAttribute) {
         _attributeHandler.getAttribute<std::string>("vector_string");
     ASSERT_EQ(stringArray, readAttr);
   }
+
+  {  // Create vector of integer values and use the pointer method
+    std::vector<int32_t> intArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    ASSERT_NO_THROW(_attributeHandler.createAttribute(
+        "vector_int", intArray.data(), {intArray.size()},
+        PLI::HDF5::Type::createType<int32_t>()));
+    auto readAttr = _attributeHandler.getAttribute<int32_t>("vector_int");
+    ASSERT_EQ(intArray, readAttr);
+  }
 }
 
 TEST_F(AttributeHandlerTest, CopyTo) {
