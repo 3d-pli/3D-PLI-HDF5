@@ -65,6 +65,14 @@ class Group {
    */
   explicit Group(const hid_t groupPtr) noexcept;
   /**
+   * @brief Construct a new Group object
+   *
+   * Construct a new group object by using another
+   * group object.
+   * @param otherGroup Other group object.
+   */
+  Group(const Group& otherGroup) noexcept;
+  /**
    * @brief Opens a group
    *
    * Open an existing group. If the group does not exist, an exception is
