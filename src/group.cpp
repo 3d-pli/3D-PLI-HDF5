@@ -80,3 +80,9 @@ PLI::HDF5::Group::Group(const hid_t groupPtr) noexcept : m_id(groupPtr) {}
 PLI::HDF5::Group::Group() noexcept : m_id(-1) {}
 
 PLI::HDF5::Group::operator hid_t() const noexcept { return this->m_id; }
+
+PLI::HDF5::Group& PLI::HDF5::Group::operator=(
+    const PLI::HDF5::Group& otherGroup) noexcept {
+  this->m_id = otherGroup.id();
+  return *this;
+}
