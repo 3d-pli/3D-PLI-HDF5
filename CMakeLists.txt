@@ -42,8 +42,7 @@ include_directories(${OpenSSL_INCLUDE_DIR})
 set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} OpenSSL::SSL)
 
 # JSON
-set(JSON_BuildTests OFF CACHE INTERNAL "")
-add_subdirectory(extern/json)
+find_package(nlohmann_json REQUIRED)
 set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} nlohmann_json::nlohmann_json)
 
 # Source files / headers

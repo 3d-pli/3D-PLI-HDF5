@@ -20,7 +20,7 @@ lint:cppcheck:
   stage: lint
   image: ubuntu:22.04
   script:
-    - apt-get install -y cppcheck libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev
+    - apt-get install -y cppcheck libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev nlohmann-json-dev
     - cppcheck --std=c++17 --language=c++ --error-exitcode=1 --enable=all --suppress=unmatchedSuppression --suppress=missingIncludeSystem --suppress=unusedFunction src/*.cpp src/PLIHDF5/*
 
 lint:clang-format:
@@ -34,7 +34,7 @@ lint:clang-tidy:
   stage: lint
   image: ubuntu:22.04
   script:
-    - apt-get install -y clang-tidy cmake libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev g++ gcc
+    - apt-get install -y clang-tidy cmake libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev g++ gcc nlohmann-json-dev
     - mkdir build
     - cd build
     - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
@@ -51,7 +51,7 @@ build:ubuntu:
   stage: build
   image: ubuntu:22.04
   script:
-    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev
+    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev nlohmann-json-dev
     - mkdir build
     - cd build
     - cmake -DPLIHDF5_USE_LINTING=OFF ..
@@ -61,7 +61,7 @@ package:ubuntu22.04:
   stage: package
   image: ubuntu:22.04
   script:
-    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev dpkg-dev lsb-release
+    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev nlohmann-json-dev dpkg-dev lsb-release
     - mkdir build
     - cd build
     - cmake -DBUILD_TESTING=OFF -DPLIHDF5_USE_LINTING=OFF ..
@@ -76,7 +76,7 @@ package:ubuntu20.04:
   stage: package
   image: ubuntu:20.04
   script:
-    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev dpkg-dev lsb-release
+    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev nlohmann-json-dev dpkg-dev lsb-release 
     - mkdir build
     - cd build
     - cmake -DBUILD_TESTING=OFF -DPLIHDF5_USE_LINTING=OFF ..
