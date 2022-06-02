@@ -47,7 +47,7 @@ bool PLI::HDF5::Type::operator!=(const Type &other) const {
   return !(*this == other);
 }
 
-PLI::HDF5::Type PLI::HDF5::Type::operator=(const Type &other) {
+PLI::HDF5::Type &PLI::HDF5::Type::operator=(const Type &other) {
   this->m_typeID = other.m_typeID;
   return *this;
 }

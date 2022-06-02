@@ -53,7 +53,7 @@ class Type {
   operator std::string() const;
   bool operator==(const Type& other) const;
   bool operator!=(const Type& other) const;
-  PLI::HDF5::Type operator=(const Type& other);
+  PLI::HDF5::Type& operator=(const Type& other);
 
  private:
   static std::string convertIDToName(const hid_t ID);

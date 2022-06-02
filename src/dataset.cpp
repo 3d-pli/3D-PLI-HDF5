@@ -177,7 +177,7 @@ PLI::HDF5::Dataset::Dataset(const Dataset& dataset) noexcept
 
 PLI::HDF5::Dataset::operator hid_t() const noexcept { return this->m_id; }
 
-PLI::HDF5::Dataset PLI::HDF5::Dataset::operator=(
+PLI::HDF5::Dataset& PLI::HDF5::Dataset::operator=(
     const Dataset& dataset) noexcept {
   this->m_id = dataset.id();
   return *this;
