@@ -69,8 +69,8 @@ package:ubuntu22.04:
     - cpack
   artifacts:
     paths:
-      - build/plihdf5_1.0.0_amd64-devel.deb
-      - build/plihdf5_1.0.0_amd64-runtime.deb
+      - build/plihdf5_1.0.1_amd64-devel.deb
+      - build/plihdf5_1.0.1_amd64-runtime.deb
 
 package:ubuntu20.04:
   stage: package
@@ -84,8 +84,8 @@ package:ubuntu20.04:
     - cpack
   artifacts:
     paths:
-      - build/plihdf5_1.0.0_amd64-devel.deb
-      - build/plihdf5_1.0.0_amd64-runtime.deb
+      - build/plihdf5_1.0.1_amd64-devel.deb
+      - build/plihdf5_1.0.1_amd64-runtime.deb
 
 install:ubuntu20.04:
   stage: install
@@ -94,7 +94,7 @@ install:ubuntu20.04:
     - package:ubuntu20.04
   script:
     - apt-get update -qq
-    - apt-get install -y ./build/plihdf5_1.0.0_amd64-devel.deb ./build/plihdf5_1.0.0_amd64-runtime.deb
+    - apt-get install -y ./build/plihdf5_1.0.1_amd64-devel.deb ./build/plihdf5_1.0.1_amd64-runtime.deb
 
 install:ubuntu22.04:
   stage: install
@@ -103,7 +103,7 @@ install:ubuntu22.04:
     - package:ubuntu22.04
   script:
     - apt-get update -qq
-    - apt-get install -y ./build/plihdf5_1.0.0_amd64-devel.deb ./build/plihdf5_1.0.0_amd64-runtime.deb
+    - apt-get install -y ./build/plihdf5_1.0.1_amd64-devel.deb ./build/plihdf5_1.0.1_amd64-runtime.deb
 # test:ubuntu:
 #   stage: test
 #   image: ubuntu:22.04
