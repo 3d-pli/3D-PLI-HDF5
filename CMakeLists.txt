@@ -12,6 +12,8 @@ set(INSTALL_LIB_DIR lib CACHE PATH "Installation directory for libraries")
 set(INSTALL_BIN_DIR bin CACHE PATH "Installation directory for executables")
 set(INSTALL_INCLUDE_DIR include CACHE PATH
   "Installation directory for header files")
+set(INSTALL_SHARE_DIR share CACHE PATH
+  "Installation directory for data files")
 if(WIN32 AND NOT CYGWIN)
   set(DEF_INSTALL_CMAKE_DIR CMake)
 else()
@@ -47,6 +49,7 @@ set(PLIHDF5_LINK_LIBRARIES ${PLIHDF5_LINK_LIBRARIES} OpenSSL::SSL)
 # Source files / headers
 include_directories(src)
 add_subdirectory(src)
+add_subdirectory(files)
 
 # Packaging
 include(cmake/package.cmake)

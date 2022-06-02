@@ -1,0 +1,13 @@
+{
+    "idAttributes" : [
+        "brain_id",
+        "brain_part_id",
+        "section_id",
+        "image_modality",
+        "creation_time",
+        "created_by",
+        "software",
+        "software_revision",
+        "software_parameters"
+    ]
+}
