@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(plihdf5 LANGUAGES C CXX VERSION 1.0.0)
+project(plihdf5 LANGUAGES C CXX VERSION 1.0.1)
 
 # Set some CMake standards
 set(default_build_type "Release")
