@@ -29,6 +29,7 @@
 #include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
+#include <filesystem>
 
 namespace PLI {
 namespace HDF5 {
