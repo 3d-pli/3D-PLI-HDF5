@@ -51,6 +51,13 @@ class Config {
 
   static constexpr auto installedConfigFilePath =
       "${PLIHDF5_ATTRIBUTE_SETTINGS_FILE_PATH}";
+  static constexpr auto installedConfigFolderOptions = 
+  {
+    "/usr/",
+    "/usr/local/",
+    "/opt/",
+  };
+
   static std::unique_ptr<Config> instance;
   std::string configFilePath;
 };

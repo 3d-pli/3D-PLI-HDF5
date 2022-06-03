@@ -425,7 +425,7 @@ TEST_F(AttributeHandlerTest, CopyAllTo) {
 
     auto config = PLI::HDF5::Config::getInstance();
     config->setConfigFilePath(
-        "${PROJECT_SOURCE_DIR}/files/PLIHDF5/attributeSettings.json");
+        std::string("${PROJECT_SOURCE_DIR}/files/PLIHDF5/attributeSettings.json"));
 
     auto excludedAttrs = config->getExcludedCopyAttributes();
     for (auto attr : excludedAttrs) {

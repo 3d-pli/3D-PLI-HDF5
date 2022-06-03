@@ -25,6 +25,8 @@
 
 #include "PLIHDF5/config.h"
 
+#include <iostream>
+
 std::unique_ptr<PLI::HDF5::Config> PLI::HDF5::Config::instance = nullptr;
 
 PLI::HDF5::Config::Config() {
@@ -35,7 +37,7 @@ PLI::HDF5::Config::Config() {
   if (env != nullptr) {
     configFilePath = env;
   } else {
-    configFilePath = installedConfigFilePath;
+    configFilePath = "";
   }
 }
 
@@ -48,22 +50,34 @@ PLI::HDF5::Config* PLI::HDF5::Config::getInstance() {
 
 std::string PLI::HDF5::Config::getConfigFilePath() noexcept {
   if (configFilePath.empty()) {
-    configFilePath = installedConfigFilePath;
+    for (auto& folder : installedConfigFolderOptions) {
+      std::string path =
+          std::string(folder) + "/" + std::string(installedConfigFilePath);
+      if (std::filesystem::exists(path)) {
+        configFilePath = path;
+        break;
+      }
+    }
   }
   return configFilePath;
 }
 
 void PLI::HDF5::Config::setConfigFilePath(const std::string& path) noexcept {
-  PLI::HDF5::Config::configFilePath = path;
+  std::cout << path << std::endl;
+  configFilePath = path;
 }
 
 std::vector<std::string> PLI::HDF5::Config::getExcludedCopyAttributes() {
   using json = nlohmann::json;
   json j;
 
+  if (!std::filesystem::exists(getConfigFilePath())) {
+    return {};
+  }
   std::ifstream configFile(getConfigFilePath());
   if (!configFile.is_open()) {
-    return {};
+    throw std::runtime_error("Config file " + getConfigFilePath() +
+                             " could not be opened.");
   }
   configFile >> j;
 
@@ -78,9 +92,14 @@ std::vector<std::string> PLI::HDF5::Config::getIDAttributes() {
   using json = nlohmann::json;
   json j;
 
+  if (!std::filesystem::exists(getConfigFilePath())) {
+    throw std::runtime_error("Config file " + getConfigFilePath() +
+                             " does not exist.");
+  }
   std::ifstream configFile(getConfigFilePath());
   if (!configFile.is_open()) {
-    return {};
+    throw std::runtime_error("Config file " + getConfigFilePath() +
+                             " could not be opened.");
   }
   configFile >> j;
 
