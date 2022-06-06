@@ -33,7 +33,7 @@ void PLI::HDF5::AttributeHandler::createAttribute(
 template <typename T>
 void PLI::HDF5::AttributeHandler::createAttribute(
     const std::string &attributeName, const std::vector<T> &content,
-    const std::vector<hsize_t> &dimensions) {
+    const std::vector<size_t> &dimensions) {
   PLI::HDF5::Type _attributeType = PLI::HDF5::Type::createType<T>();
   this->createAttribute(attributeName, content.data(), dimensions, _attributeType);
 }
@@ -45,7 +45,7 @@ void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
 template <> 
 void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
   const std::string &attributeName, const std::vector<std::string> &content,
-  const std::vector<hsize_t> &dimensions);
+  const std::vector<size_t> &dimensions);
 
 template <typename T>
 const std::vector<T> PLI::HDF5::AttributeHandler::getAttribute(
@@ -96,7 +96,7 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
 template <typename T>
 void PLI::HDF5::AttributeHandler::updateAttribute(
     const std::string &attributeName, const std::vector<T> &content,
-    const std::vector<hsize_t> &dimensions) {
+    const std::vector<size_t> &dimensions) {
   updateAttribute(attributeName, content.data(), dimensions,
                   Type::createType<T>());
 }
@@ -104,4 +104,4 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
 template <>
 void PLI::HDF5::AttributeHandler::updateAttribute(
     const std::string &attributeName, const std::vector<std::string> &content,
-    const std::vector<hsize_t> &dimensions);
+    const std::vector<size_t> &dimensions);

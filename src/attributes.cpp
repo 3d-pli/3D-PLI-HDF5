@@ -93,7 +93,7 @@ void PLI::HDF5::AttributeHandler::copyTo(AttributeHandler dstHandler,
   const PLI::HDF5::Type srcType = this->attributeType(srcName);
   const std::vector<unsigned char> srcAttribute =
       this->getAttribute(srcName, srcType);
-  const std::vector<hsize_t> srcDims = this->getAttributeDimensions(srcName);
+  const std::vector<size_t> srcDims = this->getAttributeDimensions(srcName);
 
   if (dstHandler.attributeExists(dstName)) {
     dstHandler.updateAttribute(dstName, srcAttribute.data(), srcDims, srcType);
@@ -108,7 +108,7 @@ void PLI::HDF5::AttributeHandler::copyFrom(const AttributeHandler &srcHandler,
   const PLI::HDF5::Type srcType = srcHandler.attributeType(srcName);
   const std::vector<unsigned char> srcAttribute =
       srcHandler.getAttribute(srcName, srcType);
-  const std::vector<hsize_t> srcDims =
+  const std::vector<size_t> srcDims =
       srcHandler.getAttributeDimensions(srcName);
 
   if (this->attributeExists(dstName)) {
@@ -200,7 +200,7 @@ void PLI::HDF5::AttributeHandler::copyAllTo(
 
 void PLI::HDF5::AttributeHandler::createAttribute(
     const std::string &attributeName, const void *content,
-    const std::vector<hsize_t> &dimensions, const Type dataType) {
+    const std::vector<size_t> &dimensions, const Type dataType) {
   if (attributeExists(attributeName)) {
     throw Exceptions::AttributeExistsException(
         "Attribute with name " + attributeName + " already exists");
@@ -210,7 +210,9 @@ void PLI::HDF5::AttributeHandler::createAttribute(
   if (dimensions.size() == 1 && dimensions.at(0) == 1) {
     spacePtr = H5Screate(H5S_SCALAR);
   } else {
-    spacePtr = H5Screate_simple(dimensions.size(), dimensions.data(), nullptr);
+    std::vector<hsize_t> _dimensions(dimensions.begin(), dimensions.end());
+    spacePtr =
+        H5Screate_simple(_dimensions.size(), _dimensions.data(), nullptr);
   }
   checkHDF5Ptr(spacePtr, "H5Screate_simple");
 
@@ -236,7 +238,7 @@ void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
 template <>
 void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
     const std::string &attributeName, const std::vector<std::string> &content,
-    const std::vector<hsize_t> &dimensions) {
+    const std::vector<size_t> &dimensions) {
   // Get largest string element
   size_t maxStringSize = 0;
   for (auto string : content) {
@@ -255,7 +257,9 @@ void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
   if (dimensions.size() == 1 && dimensions.at(0) == 1) {
     attrSpace = H5Screate(H5S_SCALAR);
   } else {
-    attrSpace = H5Screate_simple(dimensions.size(), dimensions.data(), nullptr);
+    std::vector<hsize_t> _dimensions(dimensions.begin(), dimensions.end());
+    attrSpace =
+        H5Screate_simple(_dimensions.size(), _dimensions.data(), nullptr);
     checkHDF5Ptr(attrSpace, "H5Screate_simple");
   }
 
@@ -319,8 +323,8 @@ const std::vector<unsigned char> PLI::HDF5::AttributeHandler::getAttribute(
   hid_t attributeID = H5Aopen(this->m_id, attributeName.c_str(), H5P_DEFAULT);
   checkHDF5Ptr(attributeID, "H5Aopen");
 
-  std::vector<hsize_t> dims = this->getAttributeDimensions(attributeName);
-  hsize_t numElements = 1;
+  std::vector<size_t> dims = this->getAttributeDimensions(attributeName);
+  size_t numElements = 1;
   for (size_t i = 0; i < dims.size(); ++i) {
     numElements *= dims[i];
   }
@@ -387,7 +391,7 @@ const std::vector<std::string> PLI::HDF5::AttributeHandler::getAttribute(
   return returnVector;
 }
 
-const std::vector<hsize_t> PLI::HDF5::AttributeHandler::getAttributeDimensions(
+const std::vector<size_t> PLI::HDF5::AttributeHandler::getAttributeDimensions(
     const std::string &attributeName) const {
   if (!this->attributeExists(attributeName)) {
     throw Exceptions::AttributeNotFoundException(
@@ -408,7 +412,7 @@ const std::vector<hsize_t> PLI::HDF5::AttributeHandler::getAttributeDimensions(
   if (dims.empty()) {
     return {1};
   }
-  return dims;
+  return std::vector<size_t>(dims.begin(), dims.end());
 }
 
 void PLI::HDF5::AttributeHandler::updateAttribute(
@@ -425,7 +429,7 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
 
 void PLI::HDF5::AttributeHandler::updateAttribute(
     const std::string &attributeName, const void *content,
-    const std::vector<hsize_t> &dimensions, const Type dataType) {
+    const std::vector<size_t> &dimensions, const Type dataType) {
   if (!this->attributeExists(attributeName)) {
     throw Exceptions::AttributeNotFoundException(
         "Could not update attribute because it "
@@ -444,7 +448,7 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
 template <>
 void PLI::HDF5::AttributeHandler::updateAttribute(
     const std::string &attributeName, const std::vector<std::string> &content,
-    const std::vector<hsize_t> &dimensions) {
+    const std::vector<size_t> &dimensions) {
   if (!this->attributeExists(attributeName)) {
     throw Exceptions::AttributeNotFoundException(
         "Could not update attribute because it "

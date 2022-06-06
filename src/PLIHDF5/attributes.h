@@ -139,7 +139,7 @@ class AttributeHandler {
   template <typename T>
   void createAttribute(const std::string& attributeName,
                        const std::vector<T>& content,
-                       const std::vector<hsize_t>& dimensions);
+                       const std::vector<size_t>& dimensions);
   /**
    * @brief Create a Attribute object
    *
@@ -159,7 +159,7 @@ class AttributeHandler {
    * failed.
    */
   void createAttribute(const std::string& attributeName, const void* content,
-                       const std::vector<hsize_t>& dimensions,
+                       const std::vector<size_t>& dimensions,
                        const PLI::HDF5::Type dataType);
   /**
    * @brief Create a Attribute object
@@ -331,7 +331,7 @@ class AttributeHandler {
    * This method checks the dimensions of the attribute with the given
    * attributeName.
    * @param attributeName Name of the attribute to be returned.
-   * @return const std::vector<hsize_t> Number of elements in each dimension.
+   * @return const std::vector<size_t> Number of elements in each dimension.
    * @throws PLI::HDF5::Exceptions::AttributeNotFoundException Attribute with
    * the given attributeName does not exist.
    * @throws PLI::HDF5::Exceptions::IdentifierNotValidException HDF5 object
@@ -339,7 +339,7 @@ class AttributeHandler {
    * @throws PLI::HDF5::Exceptions::HDF5RuntimeException HDF5 library returned
    * an error.
    */
-  const std::vector<hsize_t> getAttributeDimensions(
+  const std::vector<size_t> getAttributeDimensions(
       const std::string& attributeName) const;
 
   /**
@@ -385,7 +385,7 @@ class AttributeHandler {
   template <typename T>
   void updateAttribute(const std::string& attributeName,
                        const std::vector<T>& content,
-                       const std::vector<hsize_t>& dimensions);
+                       const std::vector<size_t>& dimensions);
   /**
    * @brief Update attribute with new content.
    *
@@ -426,7 +426,7 @@ class AttributeHandler {
    * an error.
    */
   void updateAttribute(const std::string& attributeName, const void* content,
-                       const std::vector<hsize_t>& dimensions,
+                       const std::vector<size_t>& dimensions,
                        const PLI::HDF5::Type dataType);
 
  private:

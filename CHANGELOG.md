@@ -21,3 +21,17 @@
     - Fix issue with some PLIM methods not deleting the old attribute if it did exist
     - Fix issues with copying scalar attributes
     - Fixed an issue which returned an empty vector for PLI::HDF5::AttributeHandler::getAttributeDimensions when the attribute was an H5S_SCALAR
+
+# v1.0.2
+## Added
+    - Added Dataset::isChunked to check if a created dataset contains chunks.
+    - Added Dataset::chunkDims to retrieve the chunk dimensions of a created dataset.
+    - Added PLI::HDF5::Config class
+        - With this class, one can set settings for the attribute copying and PLI::PLIM id calculation.
+        - Per default, the tool does search in /usr/share/PLIHDF5 and /usr/local/share/PLIHDF5. A manual path can be set by calling a respective method or using the PLIHDF5_ATTRIBUTE_SETTINGS_FILE_PATH shell variable.
+    - Added nlohmann_json as a dependency of the project.
+
+## Changed
+    - Changed hsize_t throughout the toolbox to size_t to improve compatability with other programs.
+
+## Fixed

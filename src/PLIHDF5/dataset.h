@@ -59,7 +59,7 @@ class Dataset {
    * PLI::HDF5::Dataset::open(const hid_t parentPtr, const std::string&
    * datasetName). To create a dataset, use PLI::HDF5::Dataset::create(const
    * hid_t parentPtr, const std::string& datasetName, const
-   * std::vector<hsize_t>& dims, const std::vector<hsize_t>& chunkDims).
+   * std::vector<size_t>& dims, const std::vector<size_t>& chunkDims).
    */
   Dataset() noexcept;
   /**
@@ -114,8 +114,8 @@ class Dataset {
    */
   template <typename T>
   void create(const hid_t parentPtr, const std::string& datasetName,
-              const std::vector<hsize_t>& dims,
-              const std::vector<hsize_t>& chunkDims = {});
+              const std::vector<size_t>& dims,
+              const std::vector<size_t>& chunkDims = {});
 
   /**
    * @brief Create a new dataset with the given name.
@@ -141,8 +141,8 @@ class Dataset {
    */
   void create(
       const hid_t parentPtr, const std::string& datasetName,
-      const std::vector<hsize_t>& dims,
-      const std::vector<hsize_t>& chunkDims = {},
+      const std::vector<size_t>& dims,
+      const std::vector<size_t>& chunkDims = {},
       const PLI::HDF5::Type& dataType = PLI::HDF5::Type::createType<float>());
   /**
    * @brief Check if the dataset exists.
@@ -156,6 +156,20 @@ class Dataset {
    * pointer is invalid.
    */
   static bool exists(const hid_t parentPtr, const std::string& datasetName);
+
+  /**
+   * @brief This method checks if the dataset is created with chunks enabled.
+   * @return true Chunks are enabled.
+   * @return false Chunks are disabled.
+   */
+  bool isChunked() const;
+
+  /**
+   * @brief Returns the size of the chunks chosen when creating the dataset. If
+   * the dataset is not chunked, an exception is thrown.
+   * @return std::vector<size_t> Size of the chunks.
+   */
+  std::vector<size_t> chunkDims() const;
 
   /**
    * @brief Closes the dataset if it is valid.
@@ -206,8 +220,8 @@ class Dataset {
    * pointer is invalid.
    */
   template <typename T>
-  std::vector<T> read(const std::vector<hsize_t>& offset,
-                      const std::vector<hsize_t>& count) const;
+  std::vector<T> read(const std::vector<size_t>& offset,
+                      const std::vector<size_t>& count) const;
 
   /**
    * @brief Write a sub-dataset.
@@ -231,8 +245,8 @@ class Dataset {
    * pointer is invalid.
    */
   template <typename T>
-  void write(const std::vector<T>& data, const std::vector<hsize_t>& offset,
-             const std::vector<hsize_t>& dims);
+  void write(const std::vector<T>& data, const std::vector<size_t>& offset,
+             const std::vector<size_t>& dims);
 
   /**
    * @brief Write a sub-dataset.
@@ -256,8 +270,8 @@ class Dataset {
    * pointer is invalid.
    */
   template <typename T>
-  void write(const void* data, const std::vector<hsize_t>& offset,
-             const std::vector<hsize_t>& dims);
+  void write(const void* data, const std::vector<size_t>& offset,
+             const std::vector<size_t>& dims);
 
   /**
    * @brief Write a sub-dataset.
@@ -278,8 +292,8 @@ class Dataset {
    * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
    * pointer is invalid.
    */
-  void write(const void* data, const std::vector<hsize_t>& offset,
-             const std::vector<hsize_t>& dims, const PLI::HDF5::Type& type);
+  void write(const void* data, const std::vector<size_t>& offset,
+             const std::vector<size_t>& dims, const PLI::HDF5::Type& type);
 
   /**
    * @brief Get the type of the dataset.
@@ -298,14 +312,14 @@ class Dataset {
   int ndims() const;
   /**
    * @brief Returns the number of elements of the dataset.
-   * @return const std::vector<hsize_t> The number of elements of the dataset in
+   * @return const std::vector<size_t> The number of elements of the dataset in
    * each dimension.
    * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
    * is not valid.
    * @throws PLI::HDF5::Exceptions::HDF5RuntimeException Error during closing
    * the dataspace of the dataset.
    */
-  const std::vector<hsize_t> dims() const;
+  const std::vector<size_t> dims() const;
   /**
    * @brief Get the raw HDF5 pointer of the dataset.
    *
@@ -368,8 +382,8 @@ PLI::HDF5::Dataset openDataset(const hid_t parentPtr,
 template <typename T>
 PLI::HDF5::Dataset createDataset(const hid_t parentPtr,
                                  const std::string& datasetName,
-                                 const std::vector<hsize_t>& dims,
-                                 const std::vector<hsize_t>& chunkDims = {});
+                                 const std::vector<size_t>& dims,
+                                 const std::vector<size_t>& chunkDims = {});
 
 /**
  * @brief Create a new dataset with the given name.
@@ -394,8 +408,7 @@ PLI::HDF5::Dataset createDataset(const hid_t parentPtr,
  */
 PLI::HDF5::Dataset createDataset(
     const hid_t parentPtr, const std::string& datasetName,
-    const std::vector<hsize_t>& dims,
-    const std::vector<hsize_t>& chunkDims = {},
+    const std::vector<size_t>& dims, const std::vector<size_t>& chunkDims = {},
     const PLI::HDF5::Type& dataType = PLI::HDF5::Type::createType<float>());
 
 }  // namespace HDF5
