@@ -70,12 +70,12 @@ $(function() {
 Added</h1>
 <ul>
 <li>Added methods in <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">PLI::HDF5::Dataset</a><ul>
-<li>Added <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a5e06af1843ada081949a5b9f92956a95" title="Create a new dataset with the given name.">PLI::HDF5::Dataset::create</a> without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a></li>
-<li>Added <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#afc24eff37ad33af394fc3c4bb2c1dc27" title="Write a sub-dataset.">PLI::HDF5::Dataset::write</a> with void* instead of std::vector&lt;T&gt;</li>
-<li>Added <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#afc24eff37ad33af394fc3c4bb2c1dc27" title="Write a sub-dataset.">PLI::HDF5::Dataset::write</a> without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a> and void* as the data pointer</li>
+<li>Added <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a5f74b960fcaa874b8ad2a9b2cfd57895" title="Create a new dataset with the given name.">PLI::HDF5::Dataset::create</a> without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a></li>
+<li>Added <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a9161cdb98507e1f67bc8333f34d5dab5" title="Write a sub-dataset.">PLI::HDF5::Dataset::write</a> with void* instead of std::vector&lt;T&gt;</li>
+<li>Added <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a9161cdb98507e1f67bc8333f34d5dab5" title="Write a sub-dataset.">PLI::HDF5::Dataset::write</a> without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a> and void* as the data pointer</li>
 </ul>
 </li>
-<li>Added <a class="el" href="namespacePLI_1_1HDF5.html#aed80fd77e0d8828173c0e8848c135a43" title="Create a new dataset with the given name.">PLI::HDF5::createDataset</a> without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a></li>
+<li>Added <a class="el" href="namespacePLI_1_1HDF5.html#acfad7de8893ad7b0e576d097adec734d" title="Create a new dataset with the given name.">PLI::HDF5::createDataset</a> without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a></li>
 <li>Added <a class="el" href="classPLI_1_1PLIM.html#ae63caa54990e93c76b2b709079f90f44" title="Adds the creation time of the HDF5 file.">PLI::PLIM::addCreationTime</a> and <a class="el" href="classPLI_1_1PLIM.html#a370f51ea69573cc5642f85e3663b360f" title="Adds the name of the modality stored in the HDF5 file.">PLI::PLIM::addImageModality</a></li>
 <li>Added tests for non MPI execution</li>
 <li>Added tests for the new methods to create datasets</li>
@@ -96,8 +96,29 @@ Fixed</h1>
 <li>Fix wrong HDF5 attribute when opening files</li>
 <li>Fix issue with some PLIM methods not deleting the old attribute if it did exist</li>
 <li>Fix issues with copying scalar attributes</li>
-<li>Fixed an issue which returned an empty vector for <a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#aaa78d39294af69833ca283a4d4920015" title="Get the Attribute Dimensions object.">PLI::HDF5::AttributeHandler::getAttributeDimensions</a> when the attribute was an H5S_SCALAR </li>
+<li>Fixed an issue which returned an empty vector for <a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#a8db74f417c81f4edc7066f629a777f22" title="Get the Attribute Dimensions object.">PLI::HDF5::AttributeHandler::getAttributeDimensions</a> when the attribute was an H5S_SCALAR</li>
 </ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+v1.0.2</h1>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Added</h2>
+<ul>
+<li>Added Dataset::isChunked to check if a created dataset contains chunks.</li>
+<li>Added Dataset::chunkDims to retrieve the chunk dimensions of a created dataset.</li>
+<li>Added PLI::HDF5::Config class<ul>
+<li>With this class, one can set settings for the attribute copying and <a class="el" href="classPLI_1_1PLIM.html" title="The PLIM class contains a few functions to make the integration of a generated HDF5 file easier with ...">PLI::PLIM</a> id calculation.</li>
+<li>Per default, the tool does search in /usr/share/PLIHDF5 and /usr/local/share/PLIHDF5. A manual path can be set by calling a respective method or using the PLIHDF5_ATTRIBUTE_SETTINGS_FILE_PATH shell variable.</li>
+</ul>
+</li>
+<li>Added nlohmann_json as a dependency of the project.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Changed</h2>
+<ul>
+<li>Changed hsize_t throughout the toolbox to size_t to improve compatability with other programs.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Fixed</h2>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

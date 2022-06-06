@@ -24,9 +24,9 @@ const std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1At
 \begin{DoxyCompactList}\small\item\em Return the names of all attributes stored in the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object pointer. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a2b9bd46779f748c57a96184ff91a8ac5}{attribute\+Type}} (const std\+::string \&attribute\+Name) const
 \begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} data type of the attribute with the given attribute\+Name. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_aea4a9b7141c4451b5e041f0b943bab99}{create\+Attribute}} (const std\+::string \&attribute\+Name, const std\+::vector$<$ T $>$ \&content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions)
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a50e0b2eed2e43c85f52a45fabe2fc161}{create\+Attribute}} (const std\+::string \&attribute\+Name, const std\+::vector$<$ T $>$ \&content, const std\+::vector$<$ size\+\_\+t $>$ \&dimensions)
 \begin{DoxyCompactList}\small\item\em Create a Attribute object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a89e0337a08be8f86d483f0432670c94b}{create\+Attribute}} (const std\+::string \&attribute\+Name, const void $\ast$content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_af1ca5cd1212f30115c4408bfe3078e6e}{create\+Attribute}} (const std\+::string \&attribute\+Name, const void $\ast$content, const std\+::vector$<$ size\+\_\+t $>$ \&dimensions, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
 \begin{DoxyCompactList}\small\item\em Create a Attribute object. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_ae0c73f1af9d1df88b1b726a9d830bb66}{create\+Attribute}} (const std\+::string \&attribute\+Name, const T \&content)
 \begin{DoxyCompactList}\small\item\em Create a Attribute object. \end{DoxyCompactList}\item 
@@ -46,21 +46,21 @@ hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a640d218c8bfcbf
 \begin{DoxyCompactList}\small\item\em Get the raw pointer of the attribute with the given attribute\+Name. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\const std\+::vector$<$ T $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a86555504af023958426ca9b26a96811f}{get\+Attribute}} (const std\+::string \&attribute\+Name) const
 \begin{DoxyCompactList}\small\item\em Get the Attribute object. \end{DoxyCompactList}\item 
-const std\+::vector$<$ hsize\+\_\+t $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}{get\+Attribute\+Dimensions}} (const std\+::string \&attribute\+Name) const
+const std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a8db74f417c81f4edc7066f629a777f22}{get\+Attribute\+Dimensions}} (const std\+::string \&attribute\+Name) const
 \begin{DoxyCompactList}\small\item\em Get the Attribute Dimensions object. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_af375ca7b2ebd88e203e4078c8a74d031}{update\+Attribute}} (const std\+::string \&attribute\+Name, const T \&content)
 \begin{DoxyCompactList}\small\item\em Update attribute with new content. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a5d1c16f2a247738c393b80435288a160}{update\+Attribute}} (const std\+::string \&attribute\+Name, const std\+::vector$<$ T $>$ \&content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions)
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_ab49c3cc2ce0b8ec7c62678f71196bb5e}{update\+Attribute}} (const std\+::string \&attribute\+Name, const std\+::vector$<$ T $>$ \&content, const std\+::vector$<$ size\+\_\+t $>$ \&dimensions)
 \begin{DoxyCompactList}\small\item\em Update attribute with new content. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a1299a90851e07e37a486b38f91bd9625}{update\+Attribute}} (const std\+::string \&attribute\+Name, const void $\ast$content, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
 \begin{DoxyCompactList}\small\item\em Update attribute with new content. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}{update\+Attribute}} (const std\+::string \&attribute\+Name, const void $\ast$content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a99789d26d70af23c069b9d102d556726}{update\+Attribute}} (const std\+::string \&attribute\+Name, const void $\ast$content, const std\+::vector$<$ size\+\_\+t $>$ \&dimensions, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type)
 \begin{DoxyCompactList}\small\item\em Update attribute with new content. \end{DoxyCompactList}\item 
 template$<$$>$ const std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a53f475aefd2bb9de9bbf867f88fb44cb}{get\+Attribute}} (const std\+::string \&attribute\+Name) const
 \item 
 template$<$$>$ void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a077199fe5a00d6a8f8867096096ac7a4}{update\+Attribute}} (const std\+::string \&attribute\+Name, const std\+::string \&content)
 \item 
-template$<$$>$ void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_ac8beec94d5d30d17e0168ce0e509de28}{update\+Attribute}} (const std\+::string \&attribute\+Name, const std\+::vector$<$ std\+::string $>$ \&content, const std\+::vector$<$ hsize\+\_\+t $>$ \&dimensions)
+template$<$$>$ void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_aaef7e83f7ef443a1ef56b451c2dc067f}{update\+Attribute}} (const std\+::string \&attribute\+Name, const std\+::vector$<$ std\+::string $>$ \&content, const std\+::vector$<$ size\+\_\+t $>$ \&dimensions)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
@@ -289,12 +289,12 @@ This method copies an attribute from this \mbox{\hyperlink{classPLI_1_1HDF5_1_1A
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library call failed. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_aea4a9b7141c4451b5e041f0b943bab99}\label{classPLI_1_1HDF5_1_1AttributeHandler_aea4a9b7141c4451b5e041f0b943bab99}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a50e0b2eed2e43c85f52a45fabe2fc161}\label{classPLI_1_1HDF5_1_1AttributeHandler_a50e0b2eed2e43c85f52a45fabe2fc161}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!createAttribute@{createAttribute}}
 \index{createAttribute@{createAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
 \doxysubsubsection{\texorpdfstring{createAttribute()}{createAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::create\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const std\+::vector$<$ T $>$ \&}]{content,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dimensions }\end{DoxyParamCaption})}
+void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::create\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const std\+::vector$<$ T $>$ \&}]{content,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dimensions }\end{DoxyParamCaption})}
 
 
 
@@ -383,11 +383,11 @@ This method creates an attribute with the given name. This method will only stor
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library call failed. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a89e0337a08be8f86d483f0432670c94b}\label{classPLI_1_1HDF5_1_1AttributeHandler_a89e0337a08be8f86d483f0432670c94b}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_af1ca5cd1212f30115c4408bfe3078e6e}\label{classPLI_1_1HDF5_1_1AttributeHandler_af1ca5cd1212f30115c4408bfe3078e6e}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!createAttribute@{createAttribute}}
 \index{createAttribute@{createAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
 \doxysubsubsection{\texorpdfstring{createAttribute()}{createAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
-{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::create\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const void $\ast$}]{content,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dimensions,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}}]{data\+Type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::create\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const void $\ast$}]{content,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dimensions,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}}]{data\+Type }\end{DoxyParamCaption})}
 
 
 
@@ -479,11 +479,11 @@ const std\+::vector$<$\+T$>$ Vector of the attribute content. To get the real di
 \doxysubsubsection{\texorpdfstring{getAttribute()}{getAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily const std\+::vector$<$ unsigned char $>$ PLI\+::\+HDF5\+::\+Attribute\+Handler\+::get\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}}]{data\+Type }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}\label{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a8db74f417c81f4edc7066f629a777f22}\label{classPLI_1_1HDF5_1_1AttributeHandler_a8db74f417c81f4edc7066f629a777f22}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!getAttributeDimensions@{getAttributeDimensions}}
 \index{getAttributeDimensions@{getAttributeDimensions}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
 \doxysubsubsection{\texorpdfstring{getAttributeDimensions()}{getAttributeDimensions()}}
-{\footnotesize\ttfamily const std\+::vector$<$ hsize\+\_\+t $>$ PLI\+::\+HDF5\+::\+Attribute\+Handler\+::get\+Attribute\+Dimensions (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily const std\+::vector$<$ size\+\_\+t $>$ PLI\+::\+HDF5\+::\+Attribute\+Handler\+::get\+Attribute\+Dimensions (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name }\end{DoxyParamCaption}) const}
 
 
 
@@ -495,7 +495,7 @@ This method checks the dimensions of the attribute with the given attribute\+Nam
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-const std\+::vector$<$hsize\+\_\+t$>$ Number of elements in each dimension. 
+const std\+::vector$<$size\+\_\+t$>$ Number of elements in each dimension. 
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
@@ -528,19 +528,19 @@ Set the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object pointer.
 {\footnotesize\ttfamily template$<$$>$ \\
 void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::update\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const std\+::string \&}]{content }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_ac8beec94d5d30d17e0168ce0e509de28}\label{classPLI_1_1HDF5_1_1AttributeHandler_ac8beec94d5d30d17e0168ce0e509de28}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_aaef7e83f7ef443a1ef56b451c2dc067f}\label{classPLI_1_1HDF5_1_1AttributeHandler_aaef7e83f7ef443a1ef56b451c2dc067f}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!updateAttribute@{updateAttribute}}
 \index{updateAttribute@{updateAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
 \doxysubsubsection{\texorpdfstring{updateAttribute()}{updateAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
 {\footnotesize\ttfamily template$<$$>$ \\
-void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::update\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{content,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dimensions }\end{DoxyParamCaption})}
+void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::update\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{content,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dimensions }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a5d1c16f2a247738c393b80435288a160}\label{classPLI_1_1HDF5_1_1AttributeHandler_a5d1c16f2a247738c393b80435288a160}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_ab49c3cc2ce0b8ec7c62678f71196bb5e}\label{classPLI_1_1HDF5_1_1AttributeHandler_ab49c3cc2ce0b8ec7c62678f71196bb5e}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!updateAttribute@{updateAttribute}}
 \index{updateAttribute@{updateAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
 \doxysubsubsection{\texorpdfstring{updateAttribute()}{updateAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::update\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const std\+::vector$<$ T $>$ \&}]{content,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dimensions }\end{DoxyParamCaption})}
+void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::update\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const std\+::vector$<$ T $>$ \&}]{content,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dimensions }\end{DoxyParamCaption})}
 
 
 
@@ -629,11 +629,11 @@ This method updates the attribute with the given attribute\+Name with the new co
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library returned an error. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}\label{classPLI_1_1HDF5_1_1AttributeHandler_a1fea1be07809615518325f8d5d7345fb}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a99789d26d70af23c069b9d102d556726}\label{classPLI_1_1HDF5_1_1AttributeHandler_a99789d26d70af23c069b9d102d556726}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!updateAttribute@{updateAttribute}}
 \index{updateAttribute@{updateAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
 \doxysubsubsection{\texorpdfstring{updateAttribute()}{updateAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
-{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::update\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const void $\ast$}]{content,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dimensions,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}}]{data\+Type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::update\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const void $\ast$}]{content,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dimensions,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}}]{data\+Type }\end{DoxyParamCaption})}
 
 
 

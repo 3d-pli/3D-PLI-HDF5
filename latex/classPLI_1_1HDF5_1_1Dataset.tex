@@ -20,27 +20,31 @@
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac2da3c02f06d57236a1eecd0f11baf47}{open}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name)
 \begin{DoxyCompactList}\small\item\em Open an existing dataset. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a5e06af1843ada081949a5b9f92956a95}{create}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name, const std\+::vector$<$ hsize\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}}, const std\+::vector$<$ hsize\+\_\+t $>$ \&chunk\+Dims=\{\})
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a5f74b960fcaa874b8ad2a9b2cfd57895}{create}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name, const std\+::vector$<$ size\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}}, const std\+::vector$<$ size\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}{chunk\+Dims}}=\{\})
 \begin{DoxyCompactList}\small\item\em Create a new dataset with the given name. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a411091a545a3765e1ba02dc8e08f37b5}{create}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name, const std\+::vector$<$ hsize\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}}, const std\+::vector$<$ hsize\+\_\+t $>$ \&chunk\+Dims=\{\}, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&data\+Type=\mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}{PLI\+::\+HDF5\+::\+Type\+::create\+Type}}$<$ float $>$())
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a4212044f251faf08f8e34cae560f90c6}{create}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name, const std\+::vector$<$ size\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}}, const std\+::vector$<$ size\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}{chunk\+Dims}}=\{\}, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&data\+Type=\mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}{PLI\+::\+HDF5\+::\+Type\+::create\+Type}}$<$ float $>$())
 \begin{DoxyCompactList}\small\item\em Create a new dataset with the given name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a468a4ac3d54d409aa02cfee8b24273c5}{is\+Chunked}} () const
+\begin{DoxyCompactList}\small\item\em This method checks if the dataset is created with chunks enabled. \end{DoxyCompactList}\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}{chunk\+Dims}} () const
+\begin{DoxyCompactList}\small\item\em Returns the size of the chunks chosen when creating the dataset. If the dataset is not chunked, an exception is thrown. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac21f50996e82918fbf5d71c9cedec281}{close}} ()
 \begin{DoxyCompactList}\small\item\em Closes the dataset if it is valid. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac879f9258f2fa5f2d89faf5e6a477105}{read\+Full\+Dataset}} () const
 \begin{DoxyCompactList}\small\item\em Read the whole dataset. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afb79e7faf27ea297fe340b47719a7a08}{read}} (const std\+::vector$<$ hsize\+\_\+t $>$ \&offset, const std\+::vector$<$ hsize\+\_\+t $>$ \&count) const
+{\footnotesize template$<$typename T $>$ }\\std\+::vector$<$ T $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a15554710fb441dd5fb427d18c4506593}{read}} (const std\+::vector$<$ size\+\_\+t $>$ \&offset, const std\+::vector$<$ size\+\_\+t $>$ \&count) const
 \begin{DoxyCompactList}\small\item\em Read a sub-\/dataset. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afc24eff37ad33af394fc3c4bb2c1dc27}{write}} (const std\+::vector$<$ T $>$ \&data, const std\+::vector$<$ hsize\+\_\+t $>$ \&offset, const std\+::vector$<$ hsize\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}})
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a9161cdb98507e1f67bc8333f34d5dab5}{write}} (const std\+::vector$<$ T $>$ \&data, const std\+::vector$<$ size\+\_\+t $>$ \&offset, const std\+::vector$<$ size\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}})
 \begin{DoxyCompactList}\small\item\em Write a sub-\/dataset. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ad355297e0e269a0e9b496cc802f1c83b}{write}} (const void $\ast$data, const std\+::vector$<$ hsize\+\_\+t $>$ \&offset, const std\+::vector$<$ hsize\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}})
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a59947a642d04aeece3ebe986042ed6fd}{write}} (const void $\ast$data, const std\+::vector$<$ size\+\_\+t $>$ \&offset, const std\+::vector$<$ size\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}})
 \begin{DoxyCompactList}\small\item\em Write a sub-\/dataset. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7be85d112457cde826994193278e809d}{write}} (const void $\ast$data, const std\+::vector$<$ hsize\+\_\+t $>$ \&offset, const std\+::vector$<$ hsize\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}}, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}{type}})
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a916a37d382cce7b5e52e03a8ed2a9e41}{write}} (const void $\ast$data, const std\+::vector$<$ size\+\_\+t $>$ \&offset, const std\+::vector$<$ size\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}}, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}{type}})
 \begin{DoxyCompactList}\small\item\em Write a sub-\/dataset. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}{type}} () const
 \begin{DoxyCompactList}\small\item\em Get the type of the dataset. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ab1f82284d13d3426e0e6a9104673d02e}{ndims}} () const
 \begin{DoxyCompactList}\small\item\em Returns the number of dimensions of the dataset. \end{DoxyCompactList}\item 
-const std\+::vector$<$ hsize\+\_\+t $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}{dims}} () const
+const std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}} () const
 \begin{DoxyCompactList}\small\item\em Returns the number of elements of the dataset. \end{DoxyCompactList}\item 
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a4da86a08bd3ba2afcfea47e10576dba7}{id}} () const noexcept
 \begin{DoxyCompactList}\small\item\em Get the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the dataset. \end{DoxyCompactList}\item 
@@ -79,7 +83,7 @@ hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a2cdda1b28e3b230dd8bfa20
 
 Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} object. 
 
-Create an empty dataset object. Calling other methods on this object will fail because no pointer to an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object is set. To open a dataset, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac2da3c02f06d57236a1eecd0f11baf47}{PLI\+::\+HDF5\+::\+Dataset\+::open(const hid\+\_\+t parent\+Ptr, const std\+::string\& dataset\+Name)}}. To create a dataset, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a5e06af1843ada081949a5b9f92956a95}{PLI\+::\+HDF5\+::\+Dataset\+::create(const hid\+\_\+t parent\+Ptr, const std\+::string\& dataset\+Name, const std\+::vector$<$hsize\+\_\+t$>$\& dims, const std\+::vector$<$hsize\+\_\+t$>$\& chunk\+Dims)}}. \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a070ad55382ce59b326db7f28f82e9766}\label{classPLI_1_1HDF5_1_1Dataset_a070ad55382ce59b326db7f28f82e9766}} 
+Create an empty dataset object. Calling other methods on this object will fail because no pointer to an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object is set. To open a dataset, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac2da3c02f06d57236a1eecd0f11baf47}{PLI\+::\+HDF5\+::\+Dataset\+::open(const hid\+\_\+t parent\+Ptr, const std\+::string\& dataset\+Name)}}. To create a dataset, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a5f74b960fcaa874b8ad2a9b2cfd57895}{PLI\+::\+HDF5\+::\+Dataset\+::create(const hid\+\_\+t parent\+Ptr, const std\+::string\& dataset\+Name, const std\+::vector$<$size\+\_\+t$>$\& dims, const std\+::vector$<$size\+\_\+t$>$\& chunk\+Dims)}}. \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a070ad55382ce59b326db7f28f82e9766}\label{classPLI_1_1HDF5_1_1Dataset_a070ad55382ce59b326db7f28f82e9766}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!Dataset@{Dataset}}
 \index{Dataset@{Dataset}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
 \doxysubsubsection{\texorpdfstring{Dataset()}{Dataset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
@@ -112,6 +116,19 @@ Construct a new dataset object by using an existing \mbox{\hyperlink{namespacePL
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}\label{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}} 
+\index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!chunkDims@{chunkDims}}
+\index{chunkDims@{chunkDims}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
+\doxysubsubsection{\texorpdfstring{chunkDims()}{chunkDims()}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ PLI\+::\+HDF5\+::\+Dataset\+::chunk\+Dims (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the size of the chunks chosen when creating the dataset. If the dataset is not chunked, an exception is thrown. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$size\+\_\+t$>$ Size of the chunks. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_ac21f50996e82918fbf5d71c9cedec281}\label{classPLI_1_1HDF5_1_1Dataset_ac21f50996e82918fbf5d71c9cedec281}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!close@{close}}
 \index{close@{close}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
@@ -127,12 +144,12 @@ If the dataset is valid, it is closed. The dataset pointer is then set to an inv
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the dataset could not be closed. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a5e06af1843ada081949a5b9f92956a95}\label{classPLI_1_1HDF5_1_1Dataset_a5e06af1843ada081949a5b9f92956a95}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a5f74b960fcaa874b8ad2a9b2cfd57895}\label{classPLI_1_1HDF5_1_1Dataset_a5f74b960fcaa874b8ad2a9b2cfd57895}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!create@{create}}
 \index{create@{create}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
 \doxysubsubsection{\texorpdfstring{create()}{create()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-void PLI\+::\+HDF5\+::\+Dataset\+::create (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{dataset\+Name,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dims,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{chunk\+Dims = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+void PLI\+::\+HDF5\+::\+Dataset\+::create (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{dataset\+Name,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dims,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{chunk\+Dims = {\ttfamily \{\}} }\end{DoxyParamCaption})}
 
 
 
@@ -163,11 +180,11 @@ This method tries to create a new dataset with the given name. If the dataset al
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the dataset could not be created. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a411091a545a3765e1ba02dc8e08f37b5}\label{classPLI_1_1HDF5_1_1Dataset_a411091a545a3765e1ba02dc8e08f37b5}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a4212044f251faf08f8e34cae560f90c6}\label{classPLI_1_1HDF5_1_1Dataset_a4212044f251faf08f8e34cae560f90c6}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!create@{create}}
 \index{create@{create}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
 \doxysubsubsection{\texorpdfstring{create()}{create()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Dataset\+::create (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{dataset\+Name,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dims,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{chunk\+Dims = {\ttfamily \{\}},  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&}]{data\+Type = {\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}{PLI\+::\+HDF5\+::\+Type\+::create\+Type}}$<$float$>$()} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Dataset\+::create (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{dataset\+Name,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dims,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{chunk\+Dims = {\ttfamily \{\}},  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&}]{data\+Type = {\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}{PLI\+::\+HDF5\+::\+Type\+::create\+Type}}$<$float$>$()} }\end{DoxyParamCaption})}
 
 
 
@@ -204,18 +221,18 @@ This method tries to create a new dataset with the given name. If the dataset al
 \doxysubsubsection{\texorpdfstring{createXfID()}{createXfID()}}
 {\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+Dataset\+::create\+Xf\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}\label{classPLI_1_1HDF5_1_1Dataset_a2ddda9ea49d95aabbad8cd298d4b3d3e}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}\label{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!dims@{dims}}
 \index{dims@{dims}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
 \doxysubsubsection{\texorpdfstring{dims()}{dims()}}
-{\footnotesize\ttfamily const std\+::vector$<$ hsize\+\_\+t $>$ PLI\+::\+HDF5\+::\+Dataset\+::dims (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily const std\+::vector$<$ size\+\_\+t $>$ PLI\+::\+HDF5\+::\+Dataset\+::dims (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
 Returns the number of elements of the dataset. 
 
 \begin{DoxyReturn}{Returns}
-const std\+::vector$<$hsize\+\_\+t$>$ The number of elements of the dataset in each dimension. 
+const std\+::vector$<$size\+\_\+t$>$ The number of elements of the dataset in each dimension. 
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
@@ -263,6 +280,21 @@ Get the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the dataset
 
 Returns the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the dataset. This pointer can be used to access the dataset using the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library. \begin{DoxyReturn}{Returns}
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} ID stored in the object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a468a4ac3d54d409aa02cfee8b24273c5}\label{classPLI_1_1HDF5_1_1Dataset_a468a4ac3d54d409aa02cfee8b24273c5}} 
+\index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!isChunked@{isChunked}}
+\index{isChunked@{isChunked}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
+\doxysubsubsection{\texorpdfstring{isChunked()}{isChunked()}}
+{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+Dataset\+::is\+Chunked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+This method checks if the dataset is created with chunks enabled. 
+
+\begin{DoxyReturn}{Returns}
+true Chunks are enabled. 
+
+false Chunks are disabled. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_ab1f82284d13d3426e0e6a9104673d02e}\label{classPLI_1_1HDF5_1_1Dataset_ab1f82284d13d3426e0e6a9104673d02e}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!ndims@{ndims}}
@@ -325,12 +357,12 @@ hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} ID stored in 
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \& PLI\+::\+HDF5\+::\+Dataset\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
 
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_afb79e7faf27ea297fe340b47719a7a08}\label{classPLI_1_1HDF5_1_1Dataset_afb79e7faf27ea297fe340b47719a7a08}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a15554710fb441dd5fb427d18c4506593}\label{classPLI_1_1HDF5_1_1Dataset_a15554710fb441dd5fb427d18c4506593}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!read@{read}}
 \index{read@{read}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
 \doxysubsubsection{\texorpdfstring{read()}{read()}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-std\+::vector$<$ T $>$ PLI\+::\+HDF5\+::\+Dataset\+::read (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{offset,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{count }\end{DoxyParamCaption}) const}
+std\+::vector$<$ T $>$ PLI\+::\+HDF5\+::\+Dataset\+::read (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{offset,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{count }\end{DoxyParamCaption}) const}
 
 
 
@@ -402,12 +434,12 @@ const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \mbox
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the dataset is not valid or the type doesn\textquotesingle{}t exist. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_afc24eff37ad33af394fc3c4bb2c1dc27}\label{classPLI_1_1HDF5_1_1Dataset_afc24eff37ad33af394fc3c4bb2c1dc27}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a9161cdb98507e1f67bc8333f34d5dab5}\label{classPLI_1_1HDF5_1_1Dataset_a9161cdb98507e1f67bc8333f34d5dab5}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!write@{write}}
 \index{write@{write}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
 \doxysubsubsection{\texorpdfstring{write()}{write()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-void PLI\+::\+HDF5\+::\+Dataset\+::write (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{data,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{offset,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dims }\end{DoxyParamCaption})}
+void PLI\+::\+HDF5\+::\+Dataset\+::write (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{data,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{offset,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dims }\end{DoxyParamCaption})}
 
 
 
@@ -434,12 +466,12 @@ With this method, a selected area of the dataset can be written. The dimensions 
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the dataset pointer is invalid. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_ad355297e0e269a0e9b496cc802f1c83b}\label{classPLI_1_1HDF5_1_1Dataset_ad355297e0e269a0e9b496cc802f1c83b}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a59947a642d04aeece3ebe986042ed6fd}\label{classPLI_1_1HDF5_1_1Dataset_a59947a642d04aeece3ebe986042ed6fd}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!write@{write}}
 \index{write@{write}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
 \doxysubsubsection{\texorpdfstring{write()}{write()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-void PLI\+::\+HDF5\+::\+Dataset\+::write (\begin{DoxyParamCaption}\item[{const void $\ast$}]{data,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{offset,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dims }\end{DoxyParamCaption})}
+void PLI\+::\+HDF5\+::\+Dataset\+::write (\begin{DoxyParamCaption}\item[{const void $\ast$}]{data,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{offset,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dims }\end{DoxyParamCaption})}
 
 
 
@@ -466,11 +498,11 @@ With this method, a selected area of the dataset can be written. The dimensions 
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the dataset pointer is invalid. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a7be85d112457cde826994193278e809d}\label{classPLI_1_1HDF5_1_1Dataset_a7be85d112457cde826994193278e809d}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a916a37d382cce7b5e52e03a8ed2a9e41}\label{classPLI_1_1HDF5_1_1Dataset_a916a37d382cce7b5e52e03a8ed2a9e41}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!write@{write}}
 \index{write@{write}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
 \doxysubsubsection{\texorpdfstring{write()}{write()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Dataset\+::write (\begin{DoxyParamCaption}\item[{const void $\ast$}]{data,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{offset,  }\item[{const std\+::vector$<$ hsize\+\_\+t $>$ \&}]{dims,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&}]{type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Dataset\+::write (\begin{DoxyParamCaption}\item[{const void $\ast$}]{data,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{offset,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dims,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&}]{type }\end{DoxyParamCaption})}
 
 
 

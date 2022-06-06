@@ -6,5 +6,5 @@ var searchData=
   ['deleteattribute_3',['deleteAttribute',['../classPLI_1_1HDF5_1_1AttributeHandler.html#af746380e422151cca64b537cd83aa16c',1,'PLI::HDF5::AttributeHandler']]],
   ['deletelink_4',['deleteLink',['../classPLI_1_1HDF5_1_1Link.html#ac570f98a38e7f4e24c560ce93b375822',1,'PLI::HDF5::Link']]],
   ['dimensionmismatchexception_5',['DimensionMismatchException',['../classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException.html#a74ee23577b9d523e9c9ad1bfe14a2a46',1,'PLI::HDF5::Exceptions::DimensionMismatchException']]],
-  ['dims_6',['dims',['../classPLI_1_1HDF5_1_1Dataset.html#a2ddda9ea49d95aabbad8cd298d4b3d3e',1,'PLI::HDF5::Dataset']]]
+  ['dims_6',['dims',['../classPLI_1_1HDF5_1_1Dataset.html#a656e58691eef2d22e4bfbcc47e965a19',1,'PLI::HDF5::Dataset']]]
 ];

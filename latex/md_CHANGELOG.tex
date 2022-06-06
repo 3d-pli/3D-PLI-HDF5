@@ -3,11 +3,11 @@
 \begin{DoxyItemize}
 \item Added methods in \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}}
 \begin{DoxyItemize}
-\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a5e06af1843ada081949a5b9f92956a95}{PLI\+::\+HDF5\+::\+Dataset\+::create}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}
-\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afc24eff37ad33af394fc3c4bb2c1dc27}{PLI\+::\+HDF5\+::\+Dataset\+::write}} with void$\ast$ instead of std\+::vector$<$\+T$>$
-\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_afc24eff37ad33af394fc3c4bb2c1dc27}{PLI\+::\+HDF5\+::\+Dataset\+::write}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} and void$\ast$ as the data pointer
+\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a5f74b960fcaa874b8ad2a9b2cfd57895}{PLI\+::\+HDF5\+::\+Dataset\+::create}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}
+\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a9161cdb98507e1f67bc8333f34d5dab5}{PLI\+::\+HDF5\+::\+Dataset\+::write}} with void$\ast$ instead of std\+::vector$<$\+T$>$
+\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a9161cdb98507e1f67bc8333f34d5dab5}{PLI\+::\+HDF5\+::\+Dataset\+::write}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} and void$\ast$ as the data pointer
 \end{DoxyItemize}
-\item Added \mbox{\hyperlink{namespacePLI_1_1HDF5_aed80fd77e0d8828173c0e8848c135a43}{PLI\+::\+HDF5\+::create\+Dataset}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}
+\item Added \mbox{\hyperlink{namespacePLI_1_1HDF5_acfad7de8893ad7b0e576d097adec734d}{PLI\+::\+HDF5\+::create\+Dataset}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}
 \item Added \mbox{\hyperlink{classPLI_1_1PLIM_ae63caa54990e93c76b2b709079f90f44}{PLI\+::\+PLIM\+::add\+Creation\+Time}} and \mbox{\hyperlink{classPLI_1_1PLIM_a370f51ea69573cc5642f85e3663b360f}{PLI\+::\+PLIM\+::add\+Image\+Modality}}
 \item Added tests for non MPI execution
 \item Added tests for the new methods to create datasets
@@ -26,5 +26,21 @@
 \item Fix wrong HDF5 attribute when opening files
 \item Fix issue with some PLIM methods not deleting the old attribute if it did exist
 \item Fix issues with copying scalar attributes
-\item Fixed an issue which returned an empty vector for \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_aaa78d39294af69833ca283a4d4920015}{PLI\+::\+HDF5\+::\+Attribute\+Handler\+::get\+Attribute\+Dimensions}} when the attribute was an H5\+S\+\_\+\+SCALAR 
+\item Fixed an issue which returned an empty vector for \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a8db74f417c81f4edc7066f629a777f22}{PLI\+::\+HDF5\+::\+Attribute\+Handler\+::get\+Attribute\+Dimensions}} when the attribute was an H5\+S\+\_\+\+SCALAR
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md4}{}\doxysection{v1.\+0.\+2}\label{md_CHANGELOG_autotoc_md4}
+\hypertarget{md_CHANGELOG_autotoc_md5}{}\doxysubsection{Added}\label{md_CHANGELOG_autotoc_md5}
+
+\begin{DoxyItemize}
+\item Added Dataset\+::is\+Chunked to check if a created dataset contains chunks.
+\item Added Dataset\+::chunk\+Dims to retrieve the chunk dimensions of a created dataset.
+\item Added PLI\+::\+HDF5\+::\+Config class
+\begin{DoxyItemize}
+\item With this class, one can set settings for the attribute copying and \mbox{\hyperlink{classPLI_1_1PLIM}{PLI\+::\+PLIM}} id calculation.
+\item Per default, the tool does search in /usr/share/\+PLIHDF5 and /usr/local/share/\+PLIHDF5. A manual path can be set by calling a respective method or using the PLIHDF5\+\_\+\+ATTRIBUTE\+\_\+\+SETTINGS\+\_\+\+FILE\+\_\+\+PATH shell variable.
 \end{DoxyItemize}
+\item Added nlohmann\+\_\+json as a dependency of the project.
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md6}{}\doxysubsection{Changed}\label{md_CHANGELOG_autotoc_md6}
+
+\begin{DoxyItemize}
+\item Changed hsize\+\_\+t throughout the toolbox to size\+\_\+t to improve compatability with other programs.
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md7}{}\doxysubsection{Fixed}\label{md_CHANGELOG_autotoc_md7}
