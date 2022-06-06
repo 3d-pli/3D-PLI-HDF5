@@ -8,6 +8,7 @@ set(HDF5_PREFER_PARALLEL ON)
 find_dependency(HDF5 REQUIRED COMPONENTS C HL)
 find_dependency(MPI REQUIRED COMPONENTS C CXX)
 find_dependency(OpenSSL REQUIRED)
+find_dependency(nlohmann_json REQUIRED)
 
 # Compute paths
 get_filename_component(PLIHDF5_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
