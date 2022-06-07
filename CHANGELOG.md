@@ -33,6 +33,7 @@
 
 ## Changed
 - Changed hsize_t throughout the toolbox to size_t to improve compatability with other programs.
+- Adding the ID through PLI::PLIM will now use the config attributes per default, except when the user sets the ID attributes manually.
 
 ## Fixed
 - Add exception when chunk dimensions are smaller than dataset dimensions. Previously, an HDF5 error was thrown because it wasn't checked before calling HDF5 methods.

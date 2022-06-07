@@ -61,7 +61,15 @@ void PLI::PLIM::addCreator() {
 void PLI::PLIM::addID(const std::vector<std::string> &idAttributes) {
   std::string hashCode;
 
-  for (const std::string &attribute : idAttributes) {
+  std::vector<std::string> _idAttributes;
+  if (idAttributes.empty()) {
+    auto config = PLI::HDF5::Config::getInstance();
+    _idAttributes = config->getIDAttributes();
+  } else {
+    _idAttributes = idAttributes;
+  }
+
+  for (const std::string &attribute : _idAttributes) {
     if (m_attrHandler.attributeExists(attribute)) {
       std::vector<std::string> attributeString =
           m_attrHandler.getAttribute<std::string>(attribute);

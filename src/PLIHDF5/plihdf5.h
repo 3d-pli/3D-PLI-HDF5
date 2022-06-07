@@ -31,6 +31,7 @@
 #include <vector>
 
 #include "PLIHDF5/attributes.h"
+#include "PLIHDF5/config.h"
 #include "PLIHDF5/dataset.h"
 #include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/file.h"
@@ -72,7 +73,7 @@ class PLIM {
    * @brief Adds the ID of the HDF5 file to the HDF5 file.
    * @param idAttributes List of attributes that are used to generate the ID.
    */
-  void addID(const std::vector<std::string>& idAttributes);
+  void addID(const std::vector<std::string>& idAttributes = {});
   /**
    * @brief Adds the reference files used to generate this HDF5 file.
    * @param file Reference attribute handler used to generate this HDF5 file.
