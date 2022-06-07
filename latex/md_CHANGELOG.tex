@@ -44,3 +44,7 @@
 \begin{DoxyItemize}
 \item Changed hsize\+\_\+t throughout the toolbox to size\+\_\+t to improve compatability with other programs.
 \end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md7}{}\doxysubsection{Fixed}\label{md_CHANGELOG_autotoc_md7}
+
+\begin{DoxyItemize}
+\item Add exception when chunk dimensions are smaller than dataset dimensions. Previously, an HDF5 error was thrown because it wasn\textquotesingle{}t checked before calling HDF5 methods. 
+\end{DoxyItemize}
