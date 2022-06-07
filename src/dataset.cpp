@@ -102,6 +102,13 @@ void PLI::HDF5::Dataset::create(const hid_t parentPtr,
           "dataset dimensions.");
     }
 
+    for (size_t i = 0; i < dims.size(); i++) {
+      if (dims[i] < chunkDims[i]) {
+        throw Exceptions::HDF5RuntimeException(
+            "Chunk dimensions must be smaller than dataset dimensions.");
+      }
+    }
+
     dcpl_id = H5Pcreate(H5P_DATASET_CREATE);
     checkHDF5Ptr(dcpl_id, "H5Pcreate");
     std::vector<hsize_t> _chunkDims(chunkDims.begin(), chunkDims.end());
