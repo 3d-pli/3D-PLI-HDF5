@@ -37,7 +37,7 @@
 #include "PLIHDF5/file.h"
 #include "PLIHDF5/group.h"
 #include "PLIHDF5/link.h"
-#include "PLIHDF5/sha256.h"
+#include "PLIHDF5/sha512.h"
 #include "PLIHDF5/type.h"
 
 /**

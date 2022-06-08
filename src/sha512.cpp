@@ -23,24 +23,18 @@
    IN THE SOFTWARE.
  */
 
-#pragma once
+#include "PLIHDF5/sha512.h"
 
-#include <openssl/sha.h>
+std::string PLI::toSHA512(const std::string &hashString) noexcept {
+  unsigned char hash[SHA512_DIGEST_LENGTH];
+  SHA512(reinterpret_cast<const unsigned char *>(hashString.c_str()),
+         hashString.length(), hash);
 
-#include <iomanip>
-#include <sstream>
-#include <string>
+  std::stringstream ss;
+  for (int i = 0; i < SHA512_DIGEST_LENGTH; i++) {
+    ss << std::hex << std::setw(2) << std::setfill('0')
+       << static_cast<int>(hash[i]);
+  }
 
-/**
- * @brief The PLI namespace
- */
-namespace PLI {
-/**
- * @brief Calculate SHA256 hash from a given string
- * This method converts a given string to a SHA256 hash using the OpenSSL
- * library.
- * @param string String that will be converted.
- * @return std::string SHA256 encoded string
- */
-std::string toSHA256(const std::string& string) noexcept;
-}  // namespace PLI
+  return ss.str();
+}

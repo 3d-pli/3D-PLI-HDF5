@@ -28,7 +28,7 @@ set(PLIHDF5_HEADERS
     PLIHDF5/group.h
     PLIHDF5/link.h
     PLIHDF5/plihdf5.h
-    PLIHDF5/sha256.h
+    PLIHDF5/sha512.h
     PLIHDF5/type.h
     PLIHDF5/config.h
 )
@@ -42,7 +42,7 @@ set(PLIHDF5_SOURCES
     dataset.cpp
     link.cpp
     type.cpp
-    sha256.cpp
+    sha512.cpp
     exceptions.cpp
 )
 

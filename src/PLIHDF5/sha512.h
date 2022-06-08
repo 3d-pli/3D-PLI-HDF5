@@ -23,26 +23,24 @@
    IN THE SOFTWARE.
  */
 
-#include <gtest/gtest.h>
-#include <mpi.h>
+#pragma once
 
-#include "PLIHDF5/sha256.h"
+#include <openssl/sha.h>
 
-TEST(TestSHA256, ToSHA256) {
-  std::string string = "Hello World!";
-  std::string expected =
-      "7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069";
-  std::string actual = PLI::toSHA256(string);
-  EXPECT_EQ(expected, actual);
-}
+#include <iomanip>
+#include <sstream>
+#include <string>
 
-int main(int argc, char* argv[]) {
-  int result = 0;
-
-  MPI_Init(&argc, &argv);
-  ::testing::InitGoogleTest(&argc, argv);
-  result = RUN_ALL_TESTS();
-
-  MPI_Finalize();
-  return result;
-}
+/**
+ * @brief The PLI namespace
+ */
+namespace PLI {
+/**
+ * @brief Calculate SHA256 hash from a given string
+ * This method converts a given string to a SHA256 hash using the OpenSSL
+ * library.
+ * @param string String that will be converted.
+ * @return std::string SHA256 encoded string
+ */
+std::string toSHA512(const std::string& string) noexcept;
+}  // namespace PLI

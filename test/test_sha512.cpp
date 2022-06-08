@@ -23,18 +23,27 @@
    IN THE SOFTWARE.
  */
 
-#include "PLIHDF5/sha256.h"
+#include <gtest/gtest.h>
+#include <mpi.h>
 
-std::string PLI::toSHA256(const std::string &hashString) noexcept {
-  unsigned char hash[SHA256_DIGEST_LENGTH];
-  SHA256(reinterpret_cast<const unsigned char *>(hashString.c_str()),
-         hashString.length(), hash);
+#include "PLIHDF5/sha512.h"
 
-  std::stringstream ss;
-  for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
-    ss << std::hex << std::setw(2) << std::setfill('0')
-       << static_cast<int>(hash[i]);
-  }
+TEST(TestSHA512, ToSHA512) {
+  std::string string = "Hello World!";
+  std::string expected =
+      "861844d6704e8573fec34d967e20bcfef3d424cf48be04e6dc08f2bd58c729743371015e"
+      "ad891cc3cf1c9d34b49264b510751b1ff9e537937bc46b5d6ff4ecc8";
+  std::string actual = PLI::toSHA512(string);
+  EXPECT_EQ(expected, actual);
+}
 
-  return ss.str();
+int main(int argc, char* argv[]) {
+  int result = 0;
+
+  MPI_Init(&argc, &argv);
+  ::testing::InitGoogleTest(&argc, argv);
+  result = RUN_ALL_TESTS();
+
+  MPI_Finalize();
+  return result;
 }

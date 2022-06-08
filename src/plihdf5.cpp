@@ -84,7 +84,7 @@ void PLI::PLIM::addID(const std::vector<std::string> &idAttributes) {
   if (m_attrHandler.attributeExists("id")) {
     m_attrHandler.deleteAttribute("id");
   }
-  m_attrHandler.createAttribute("id", toSHA256(hashCode));
+  m_attrHandler.createAttribute("id", toSHA512(hashCode));
 }
 
 void PLI::PLIM::addReference(const PLI::HDF5::AttributeHandler &file) {
