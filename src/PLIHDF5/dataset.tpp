@@ -63,7 +63,7 @@ std::vector<T> PLI::HDF5::Dataset::read(
   hid_t memspacePtr = H5Screate_simple(_count.size(), _count.data(), nullptr);
   checkHDF5Ptr(memspacePtr, "H5Screate_simple");
 
-  size_t numElements = std::accumulate(count.begin(), count.end(), 1,
+  size_t numElements = std::accumulate(count.begin(), count.end(), 1ull,
                                         std::multiplies<std::size_t>());
   std::vector<T> returnData;
   returnData.resize(numElements);
