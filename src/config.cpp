@@ -41,7 +41,7 @@ PLI::HDF5::Config::Config() {
   }
 
   _exceptionPrintingEnabled = true;
-  H5Eget_auto2(H5E_DEFAULT, &_exceptionFunction, &_clientData);
+  checkHDF5Call(H5Eget_auto2(H5E_DEFAULT, &_exceptionFunction, &_clientData));
 }
 
 PLI::HDF5::Config* PLI::HDF5::Config::getInstance() {
@@ -119,8 +119,8 @@ bool PLI::HDF5::Config::exceptionPrintingEnabled() const {
 void PLI::HDF5::Config::setExceptionPrintingEnabled(const bool enable) {
   _exceptionPrintingEnabled = enable;
   if (enable) {
-    H5Eset_auto2(H5E_DEFAULT, _exceptionFunction, _clientData);
+    checkHDF5Call(H5Eset_auto2(H5E_DEFAULT, _exceptionFunction, _clientData));
   } else {
-    H5Eset_auto2(H5E_DEFAULT, nullptr, nullptr);
+    checkHDF5Call(H5Eset_auto2(H5E_DEFAULT, nullptr, nullptr));
   }
 }

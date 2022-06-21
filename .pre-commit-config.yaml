@@ -10,3 +10,8 @@ repos:
       - id: cppcheck
         args: [--std=c++17, --language=c++]
       - id: cpplint
+  - repo: https://github.com/cheshirekow/cmake-format-precommit 
+    rev: v0.6.13
+    hooks:
+      - id: cmake-format
+      - id: cmake-lint
