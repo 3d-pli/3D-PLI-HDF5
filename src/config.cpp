@@ -39,6 +39,9 @@ PLI::HDF5::Config::Config() {
   } else {
     configFilePath = "";
   }
+
+  _exceptionPrintingEnabled = true;
+  H5Eget_auto2(H5E_DEFAULT, &_exceptionFunction, &_clientData);
 }
 
 PLI::HDF5::Config* PLI::HDF5::Config::getInstance() {
@@ -107,4 +110,17 @@ std::vector<std::string> PLI::HDF5::Config::getIDAttributes() {
   std::copy(j["id_attributes"].begin(), j["id_attributes"].end(),
             std::back_inserter(idAttributes));
   return idAttributes;
+}
+
+bool PLI::HDF5::Config::exceptionPrintingEnabled() const {
+  return _exceptionPrintingEnabled;
+}
+
+void PLI::HDF5::Config::setExceptionPrintingEnabled(const bool enable) {
+  _exceptionPrintingEnabled = enable;
+  if (enable) {
+    H5Eset_auto2(H5E_DEFAULT, _exceptionFunction, _clientData);
+  } else {
+    H5Eset_auto2(H5E_DEFAULT, nullptr, nullptr);
+  }
 }

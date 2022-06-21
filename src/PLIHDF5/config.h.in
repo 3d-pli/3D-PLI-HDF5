@@ -30,6 +30,7 @@
 #include <string>
 #include <vector>
 #include <filesystem>
+#include <hdf5.h>
 
 namespace PLI {
 namespace HDF5 {
@@ -40,6 +41,9 @@ class Config {
 
   std::vector<std::string> getExcludedCopyAttributes();
   std::vector<std::string> getIDAttributes();
+
+  bool exceptionPrintingEnabled() const;
+  void setExceptionPrintingEnabled(const bool enable);
 
   static Config* getInstance();
 
@@ -61,6 +65,11 @@ class Config {
 
   static std::unique_ptr<Config> instance;
   std::string configFilePath;
+
+  // HDF5 error handling
+  bool _exceptionPrintingEnabled;
+  void* _clientData;
+  H5E_auto2_t _exceptionFunction;
 };
 }  // namespace HDF5
 }  // namespace PLI
