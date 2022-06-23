@@ -41,25 +41,24 @@ namespace PLI {
  */
 namespace HDF5 {
 class Type {
- public:
-  template <typename T>
-  static PLI::HDF5::Type createType();
+  public:
+    template <typename T> static PLI::HDF5::Type createType();
 
-  explicit Type(const std::string& typeName);
-  explicit Type(const hid_t typeID);
-  Type(const Type& type);
+    explicit Type(const std::string &typeName);
+    explicit Type(const hid_t typeID);
+    Type(const Type &type);
 
-  operator hid_t() const;
-  operator std::string() const;
-  bool operator==(const Type& other) const;
-  bool operator!=(const Type& other) const;
-  Type& operator=(const Type& other);
+    operator hid_t() const;
+    operator std::string() const;
+    bool operator==(const Type &other) const;
+    bool operator!=(const Type &other) const;
+    Type &operator=(const Type &other);
 
- private:
-  static std::string convertIDToName(const hid_t ID);
-  static hid_t convertNameToID(const std::string& name);
+  private:
+    static std::string convertIDToName(const hid_t ID);
+    static hid_t convertNameToID(const std::string &name);
 
-  hid_t m_typeID;
+    hid_t m_typeID;
 };
-}  // namespace HDF5
-}  // namespace PLI
+} // namespace HDF5
+} // namespace PLI

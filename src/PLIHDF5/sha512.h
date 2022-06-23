@@ -42,5 +42,5 @@ namespace PLI {
  * @param string String that will be converted.
  * @return std::string SHA256 encoded string
  */
-std::string toSHA512(const std::string& string) noexcept;
-}  // namespace PLI
+std::string toSHA512(const std::string &string) noexcept;
+} // namespace PLI

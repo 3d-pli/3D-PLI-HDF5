@@ -11,43 +11,53 @@ variables:
   OMPI_ALLOW_RUN_AS_ROOT_CONFIRM: 1
   DEBIAN_FRONTEND: noninteractive
 
-before_script:
-  - apt-get update -qq
-  - apt-get install -y git
-  - git submodule update --init --recursive
+.before_script_template:
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y git
+    - git submodule update --init --recursive
+
+.before_script_template_lint:
+  before_script:
+    - dnf update -y
+    - dnf install dnf-plugins-core -y
+    - dnf config-manager --set-enabled powertools
+    - dnf install -y cmake gcc-toolset-11 gtest gtest-devel
 
 lint:cppcheck:
+  extends: .before_script_template_lint
   stage: lint
-  image: ubuntu:22.04
+  image: rockylinux:8
   script:
-    - apt-get install -y cppcheck libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev nlohmann-json3-dev
-    - cppcheck --std=c++17 --language=c++ --error-exitcode=1 --enable=all --suppress=unmatchedSuppression --suppress=missingIncludeSystem --suppress=unusedFunction src/*.cpp src/PLIHDF5/*
+    - dnf install -y cppcheck
+    - cppcheck --std=c++17
+      --language=c++
+      --error-exitcode=1
+      --enable=all
+      --suppress=unmatchedSuppression
+      --suppress=missingIncludeSystem
+      --suppress=unusedFunction
+      src/*.cpp src/*/*.h bin/*.cpp
 
 lint:clang-format:
+  extends: .before_script_template_lint
   stage: lint
-  image: ubuntu:22.04
+  image: rockylinux:8
   script:
-    - apt-get install -y clang-format
-    - clang-format --style=Google -i src/*.cpp src/PLIHDF5/*
-
-lint:clang-tidy:
-  stage: lint
-  image: ubuntu:22.04
-  script:
-    - apt-get install -y clang-tidy cmake libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev g++ gcc nlohmann-json3-dev
-    - mkdir build
-    - cd build
-    - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
-    - clang-tidy -p=. ../src/*.cpp ../src/PLIHDF5/*
+    - dnf install -y clang-tools-extra
+    - clang-format --style=file -i src/*.cpp src/*/*.h
 
 lint:cpplint:
+  extends: .before_script_template_lint
   stage: lint
-  image: ubuntu:22.04
+  image: rockylinux:8
   script:
-    - apt-get install -y cpplint
-    - cpplint src/*.cpp src/PLIHDF5/*
+    - dnf install -y python3 python3-pip
+    - pip3 install cpplint
+    - cpplint --filter=-readability/fn_size,-whitespace/indent,-whitespace/comments src/*.cpp src/*/*.h bin/*.cpp
 
 build:ubuntu:
+  extends: .before_script_template
   stage: build
   image: ubuntu:22.04
   script:
@@ -58,6 +68,7 @@ build:ubuntu:
     - make
 
 package:ubuntu22.04:
+  extends: .before_script_template
   stage: package
   image: ubuntu:22.04
   script:
@@ -73,10 +84,11 @@ package:ubuntu22.04:
       - build/plihdf5_1.0.1_amd64-runtime.deb
 
 package:ubuntu20.04:
+  extends: .before_script_template
   stage: package
   image: ubuntu:20.04
   script:
-    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev nlohmann-json3-dev dpkg-dev lsb-release 
+    - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev nlohmann-json3-dev dpkg-dev lsb-release
     - mkdir build
     - cd build
     - cmake -DBUILD_TESTING=OFF -DPLIHDF5_USE_LINTING=OFF ..
@@ -88,6 +100,7 @@ package:ubuntu20.04:
       - build/plihdf5_1.0.1_amd64-runtime.deb
 
 install:ubuntu20.04:
+  extends: .before_script_template
   stage: install
   image: ubuntu:20.04
   dependencies:
@@ -97,6 +110,7 @@ install:ubuntu20.04:
     - apt-get install -y ./build/plihdf5_1.0.1_amd64-devel.deb ./build/plihdf5_1.0.1_amd64-runtime.deb
 
 install:ubuntu22.04:
+  extends: .before_script_template
   stage: install
   image: ubuntu:22.04
   dependencies:

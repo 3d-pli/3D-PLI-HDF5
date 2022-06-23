@@ -5,6 +5,7 @@ find_program(TOOLS_CPPLINT NAMES cpplint)
 
 option(PLIHDF5_USE_LINTING
        "Enable linting during compilation to check for code style." ON)
+
 if(PLIHDF5_USE_LINTING)
   if(TOOLS_CPPCHECK)
     set(CMAKE_C_CPPCHECK
@@ -28,10 +29,12 @@ if(PLIHDF5_USE_LINTING)
         --suppress=unusedFunction;
         --suppress=preprocessorErrorDirective)
   endif()
+
   if(TOOLS_CPPLINT)
-    set(CMAKE_C_CPPLINT ${TOOLS_CPPLINT}; --verbose=1)
-    set(CMAKE_CXX_CPPLINT ${TOOLS_CPPLINT}; --verbose=1)
+    set(CMAKE_C_CPPLINT ${TOOLS_CPPLINT}; --verbose=1 --linelength=120)
+    set(CMAKE_CXX_CPPLINT ${TOOLS_CPPLINT}; --verbose=1 --linelength=120)
   endif()
+
   if(TOOLS_CLANG_TIDY)
     set(CMAKE_C_CLANG_TIDY ${TOOLS_CLANG_TIDY})
     set(CMAKE_CXX_CLANG_TIDY ${TOOLS_CLANG_TIDY})
@@ -66,21 +69,22 @@ set(PLIHDF5_SOURCES
     exceptions.cpp)
 
 add_library(PLIHDF5 SHARED ${PLIHDF5_SOURCES})
+
 if(MSVC)
   target_compile_options(PLIHDF5 PRIVATE /W4 /WX)
 else()
   target_compile_options(PLIHDF5 PRIVATE -Wall -Wextra -Wpedantic -Werror
                                          -Wshadow -O)
 endif()
+
 target_compile_features(
-  PLIHDF5 PRIVATE cxx_std_17 cxx_constexpr cxx_defaulted_functions
+  PLIHDF5 PRIVATE cxx_std_20 cxx_constexpr cxx_defaulted_functions
                   cxx_deleted_functions cxx_noexcept)
 target_link_libraries(PLIHDF5 ${PLIHDF5_LINK_LIBRARIES})
 
 # ##############################################################################
 # Installation
 # ##############################################################################
-
 install(
   DIRECTORY "PLIHDF5" EXPORT PLIHDF5Targets
   DESTINATION "${INSTALL_INCLUDE_DIR}"
