@@ -10,10 +10,12 @@ To improve the usability of the library, this repository contains a C++ library 
 \item CMake 3.\+19 or newer
 \item HDF5 with C and HL
 \item MPI
-\item C++17 compatible compiler
+\item C++20 compatible compiler
 \end{DoxyItemize}
 
 If you want to use linting during the compilation\+:
+
+
 \begin{DoxyItemize}
 \item Clang-\/tidy
 \item Clang-\/format
@@ -23,7 +25,7 @@ If you want to use linting during the compilation\+:
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git clone https://github.com/3d-\/pli/3D-\/PLI-\/HDF5.git}
-\DoxyCodeLine{cd 3d-\/pli-\/hdf5}
+\DoxyCodeLine{cd 3D-\/PLI-\/HDF5}
 \DoxyCodeLine{mkdir build}
 \DoxyCodeLine{cd build}
 \DoxyCodeLine{cmake ..}
@@ -34,7 +36,7 @@ If you want to use linting during the compilation\+:
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git clone https://github.com/3d-\/pli/3D-\/PLI-\/HDF5.git}
-\DoxyCodeLine{cd 3d-\/pli-\/hdf5}
+\DoxyCodeLine{cd 3D-\/PLI-\/HDF5}
 \DoxyCodeLine{mkdir build}
 \DoxyCodeLine{cd build}
 \DoxyCodeLine{cmake ..}
@@ -46,7 +48,7 @@ If you want to use linting during the compilation\+:
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git clone https://github.com/3d-\/pli/3D-\/PLI-\/HDF5.git}
-\DoxyCodeLine{cd 3d-\/pli-\/hdf5}
+\DoxyCodeLine{cd 3D-\/PLI-\/HDF5}
 \DoxyCodeLine{mkdir build}
 \DoxyCodeLine{cd build}
 \DoxyCodeLine{cmake ..}
@@ -55,7 +57,9 @@ If you want to use linting during the compilation\+:
 
 \end{DoxyCode}
 \hypertarget{md_README_autotoc_md15}{}\doxysubsection{Install the library as a DEB package}\label{md_README_autotoc_md15}
-To install the package, either build it yourself or download the packages from the releases / pipeline artifacts. Then, you can run the following commands to install the package. 
+To install the package, either build it yourself or download the packages from the releases / pipeline artifacts. Then, you can run the following commands to install the package.
+
+
 \begin{DoxyCode}{0}
 \DoxyCodeLine{apt-\/get update -\/qq}
 \DoxyCodeLine{apt-\/get install -\/y ./plihdf5\_1.0.0\_amd64-\/devel.deb ./plihdf5\_1.0.0\_amd64-\/runtime.deb}

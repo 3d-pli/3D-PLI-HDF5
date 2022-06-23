@@ -79,9 +79,10 @@ Requirements</h2>
 <li>CMake 3.19 or newer</li>
 <li>HDF5 with C and HL</li>
 <li>MPI</li>
-<li>C++17 compatible compiler</li>
+<li>C++20 compatible compiler</li>
 </ul>
-<p >If you want to use linting during the compilation:</p><ul>
+<p >If you want to use linting during the compilation:</p>
+<ul>
 <li>Clang-tidy</li>
 <li>Clang-format</li>
 <li>cppcheck</li>
@@ -90,7 +91,7 @@ Requirements</h2>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Compile the project manually</h2>
 <div class="fragment"><div class="line">git clone https://github.com/3d-pli/3D-PLI-HDF5.git</div>
-<div class="line">cd 3d-pli-hdf5</div>
+<div class="line">cd 3D-PLI-HDF5</div>
 <div class="line">mkdir build</div>
 <div class="line">cd build</div>
 <div class="line">cmake ..</div>
@@ -98,7 +99,7 @@ Compile the project manually</h2>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
 Install the library from source</h2>
 <div class="fragment"><div class="line">git clone https://github.com/3d-pli/3D-PLI-HDF5.git</div>
-<div class="line">cd 3d-pli-hdf5</div>
+<div class="line">cd 3D-PLI-HDF5</div>
 <div class="line">mkdir build</div>
 <div class="line">cd build</div>
 <div class="line">cmake ..</div>
@@ -107,7 +108,7 @@ Install the library from source</h2>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
 Build DEB package</h2>
 <div class="fragment"><div class="line">git clone https://github.com/3d-pli/3D-PLI-HDF5.git</div>
-<div class="line">cd 3d-pli-hdf5</div>
+<div class="line">cd 3D-PLI-HDF5</div>
 <div class="line">mkdir build</div>
 <div class="line">cd build</div>
 <div class="line">cmake ..</div>
@@ -115,7 +116,8 @@ Build DEB package</h2>
 <div class="line">cpack</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
 Install the library as a DEB package</h2>
-<p >To install the package, either build it yourself or download the packages from the releases / pipeline artifacts. Then, you can run the following commands to install the package. </p><div class="fragment"><div class="line">apt-get update -qq</div>
+<p >To install the package, either build it yourself or download the packages from the releases / pipeline artifacts. Then, you can run the following commands to install the package.</p>
+<div class="fragment"><div class="line">apt-get update -qq</div>
 <div class="line">apt-get install -y ./plihdf5_1.0.0_amd64-devel.deb ./plihdf5_1.0.0_amd64-runtime.deb</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md16"></a>
 API documentation</h1>
