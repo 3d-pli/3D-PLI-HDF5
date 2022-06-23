@@ -15,7 +15,7 @@ To improve the usability of the library, this repository contains a C++ library 
 - CMake 3.19 or newer
 - HDF5 with C and HL
 - MPI
-- C++17 compatible compiler
+- C++20 compatible compiler
 
 If you want to use linting during the compilation:
 

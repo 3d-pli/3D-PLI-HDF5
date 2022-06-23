@@ -2,9 +2,9 @@ name: Lint
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -29,7 +29,7 @@ jobs:
       - name: Install Requirements
         run: pip3 install cpplint
       - name: Run CppLint
-        run: cpplint ${{github.workspace}}/src/*.cpp ${{github.workspace}}/src/PLIHDF5/*
+        run: cpplint --filter=-readability/fn_size,-whitespace/indent,-whitespace/comments ${{github.workspace}}/src/*.cpp ${{github.workspace}}/src/PLIHDF5/*
 
   lint-clang-tidy:
     runs-on: ubuntu-latest
@@ -45,14 +45,14 @@ jobs:
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       - name: Run Clang-Tidy
         run: clang-tidy -p=${{github.workspace}}/build ${{github.workspace}}/src/*.cpp ${{github.workspace}}/src/PLIHDF5/*
-      
+
   lint-clang-format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3    
+      - uses: actions/checkout@v3
       - name: Install Requirements
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y clang-format
       - name: Run Clang-Format
-        run: clang-format --style=Google -i ${{github.workspace}}/src/*.cpp ${{github.workspace}}/src/PLIHDF5/*
+        run: clang-format --style=file -i ${{github.workspace}}/src/*.cpp ${{github.workspace}}/src/PLIHDF5/*

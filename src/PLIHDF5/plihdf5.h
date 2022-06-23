@@ -26,7 +26,7 @@
 #pragma once
 
 #include <algorithm>
-#include <chrono>  // NOLINT [build/c++11]
+#include <chrono> // NOLINT [build/c++11]
 #include <string>
 #include <vector>
 
@@ -52,66 +52,67 @@ namespace PLI {
  * compatible with the Solr database.
  */
 class PLIM {
- public:
-  /**
-   * @brief Constructor
-   * @param file HDF5 file object used to store the information.
-   * @param dataset HDF5 dataset object used to store the information.
-   */
-  explicit PLIM(PLI::HDF5::File file, const std::string& dataset);
-  /**
-   * @brief Constructor
-   * @param dataset AttributeHandler containing the attributes of the desired
-   * dataset where information is stored.
-   */
-  explicit PLIM(PLI::HDF5::AttributeHandler dataset);
-  /**
-   * @brief Adds the creator of the HDF5 file to the HDF5 file.
-   */
-  void addCreator();
-  /**
-   * @brief Adds the ID of the HDF5 file to the HDF5 file.
-   * @param idAttributes List of attributes that are used to generate the ID.
-   */
-  void addID(const std::vector<std::string>& idAttributes = {});
-  /**
-   * @brief Adds the reference files used to generate this HDF5 file.
-   * @param file Reference attribute handler used to generate this HDF5 file.
-   */
-  void addReference(const PLI::HDF5::AttributeHandler& file);
-  /**
-   * @brief Adds the reference files used to generate this HDF5 file.
-   * @param files List of reference attribute handlers used to generate this
-   * HDF5 file.
-   */
-  void addReference(const std::vector<PLI::HDF5::AttributeHandler>& files);
-  /**
-   * @brief Adds the software name.
-   * @param softwareName Software name used to generate this HDF5 file.
-   */
-  void addSoftware(const std::string& softwareName);
-  /**
-   * @brief Adds the software revision.
-   * @param softwareRevision Software revision used to generate this HDF5 file.
-   */
-  void addSoftwareRevision(const std::string& softwareRevision);
-  /**
-   * @brief Adds the software parameters.
-   * @param softwareParameters Software parameters used to generate this HDF5
-   * file.
-   */
-  void addSoftwareParameters(const std::string& softwareParameters);
-  /**
-   * @brief Adds the creation time of the HDF5 file
-   */
-  void addCreationTime();
-  /**
-   * @brief Adds the name of the modality stored in the HDF5 file.
-   * @param modality Modality name stored.
-   */
-  void addImageModality(const std::string& modalityName);
+  public:
+    /**
+     * @brief Constructor
+     * @param file HDF5 file object used to store the information.
+     * @param dataset HDF5 dataset object used to store the information.
+     */
+    explicit PLIM(PLI::HDF5::File file, const std::string &dataset);
+    /**
+     * @brief Constructor
+     * @param dataset AttributeHandler containing the attributes of the desired
+     * dataset where information is stored.
+     */
+    explicit PLIM(PLI::HDF5::AttributeHandler dataset);
+    /**
+     * @brief Adds the creator of the HDF5 file to the HDF5 file.
+     */
+    void addCreator();
+    /**
+     * @brief Adds the ID of the HDF5 file to the HDF5 file.
+     * @param idAttributes List of attributes that are used to generate the ID.
+     */
+    void addID(const std::vector<std::string> &idAttributes = {});
+    /**
+     * @brief Adds the reference files used to generate this HDF5 file.
+     * @param file Reference attribute handler used to generate this HDF5 file.
+     */
+    void addReference(const PLI::HDF5::AttributeHandler &file);
+    /**
+     * @brief Adds the reference files used to generate this HDF5 file.
+     * @param files List of reference attribute handlers used to generate this
+     * HDF5 file.
+     */
+    void addReference(const std::vector<PLI::HDF5::AttributeHandler> &files);
+    /**
+     * @brief Adds the software name.
+     * @param softwareName Software name used to generate this HDF5 file.
+     */
+    void addSoftware(const std::string &softwareName);
+    /**
+     * @brief Adds the software revision.
+     * @param softwareRevision Software revision used to generate this HDF5
+     * file.
+     */
+    void addSoftwareRevision(const std::string &softwareRevision);
+    /**
+     * @brief Adds the software parameters.
+     * @param softwareParameters Software parameters used to generate this HDF5
+     * file.
+     */
+    void addSoftwareParameters(const std::string &softwareParameters);
+    /**
+     * @brief Adds the creation time of the HDF5 file
+     */
+    void addCreationTime();
+    /**
+     * @brief Adds the name of the modality stored in the HDF5 file.
+     * @param modality Modality name stored.
+     */
+    void addImageModality(const std::string &modalityName);
 
- private:
-  PLI::HDF5::AttributeHandler m_attrHandler;
+  private:
+    PLI::HDF5::AttributeHandler m_attrHandler;
 };
-}  // namespace PLI
+} // namespace PLI

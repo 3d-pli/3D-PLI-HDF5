@@ -4,14 +4,18 @@ repos:
     rev: v1.3.5
     hooks:
       - id: clang-format
-        args: [--style=Google, -i]
-      - id: clang-tidy
-        args: [-p=build]
+        args: [--style=file, -i]
       - id: cppcheck
-        args: [--std=c++17, --language=c++]
+        args: [--std=c++17, --language=c++, --inline-suppr]
       - id: cpplint
-  - repo: https://github.com/cheshirekow/cmake-format-precommit 
+        args: ["--filter=-whitespace/indent,-whitespace/comments"]
+  - repo: https://github.com/cheshirekow/cmake-format-precommit
     rev: v0.6.13
     hooks:
       - id: cmake-format
       - id: cmake-lint
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
