@@ -434,6 +434,8 @@ class AttributeHandler {
     const std::vector<unsigned char>
     getAttribute(const std::string &attributeName,
                  const PLI::HDF5::Type dataType) const;
+    void createAttribute(const std::string &attributeName, const void *content,
+                         const Type dataType, const hid_t dataSpace);
     hid_t m_id;
 };
 } // namespace HDF5

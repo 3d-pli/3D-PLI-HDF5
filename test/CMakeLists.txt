@@ -1,7 +1,8 @@
 include(FetchContent)
 
-string(JOIN "/" _url https://github.com/google/googletest/archive/
-       609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip)
+string(
+  JOIN "/" _url
+  https://github.com/google/googletest/archive/refs/tags/release-1.12.0.zip)
 
 FetchContent_Declare(googletest URL ${_url})
 

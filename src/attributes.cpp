@@ -201,24 +201,15 @@ void PLI::HDF5::AttributeHandler::copyAllTo(
 }
 
 void PLI::HDF5::AttributeHandler::createAttribute(
-    const std::string &attributeName, const void *content,
-    const std::vector<size_t> &dimensions, const Type dataType) {
+    const std::string &attributeName, const void *content, const Type dataType,
+    const hid_t dataSpace) {
     if (attributeExists(attributeName)) {
         throw Exceptions::AttributeExistsException(
             "Attribute with name " + attributeName + " already exists");
     }
+    checkHDF5Ptr(dataSpace, "H5Screate");
 
-    hid_t spacePtr;
-    if (dimensions.size() == 1 && dimensions.at(0) == 1) {
-        spacePtr = H5Screate(H5S_SCALAR);
-    } else {
-        std::vector<hsize_t> _dimensions(dimensions.begin(), dimensions.end());
-        spacePtr =
-            H5Screate_simple(_dimensions.size(), _dimensions.data(), nullptr);
-    }
-    checkHDF5Ptr(spacePtr, "H5Screate_simple");
-
-    hid_t attrPtr = H5Acreate(m_id, attributeName.c_str(), dataType, spacePtr,
+    hid_t attrPtr = H5Acreate(m_id, attributeName.c_str(), dataType, dataSpace,
                               H5P_DEFAULT, H5P_DEFAULT);
     checkHDF5Ptr(attrPtr, "H5Acreate");
     checkHDF5Call(H5Awrite(attrPtr, dataType, content), "H5Awrite");
@@ -228,13 +219,37 @@ void PLI::HDF5::AttributeHandler::createAttribute(
 void PLI::HDF5::AttributeHandler::createAttribute(
     const std::string &attributeName, const void *content,
     const Type dataType) {
-    createAttribute(attributeName, content, {1}, dataType);
+    hid_t spacePtr = H5Screate(H5S_SCALAR);
+    checkHDF5Ptr(spacePtr, "H5Screate_simple");
+    createAttribute(attributeName, content, dataType, spacePtr);
+}
+
+void PLI::HDF5::AttributeHandler::createAttribute(
+    const std::string &attributeName, const void *content,
+    const std::vector<size_t> &dimensions, const Type dataType) {
+    if (attributeExists(attributeName)) {
+        throw Exceptions::AttributeExistsException(
+            "Attribute with name " + attributeName + " already exists");
+    }
+    std::vector<hsize_t> _dimensions(dimensions.begin(), dimensions.end());
+    hid_t spacePtr =
+        H5Screate_simple(_dimensions.size(), _dimensions.data(), nullptr);
+    checkHDF5Ptr(spacePtr, "H5Screate");
+    createAttribute(attributeName, content, dataType, spacePtr);
 }
 
 template <>
 void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
     const std::string &attributeName, const std::string &content) {
-    createAttribute<std::string>(attributeName, {content}, {1});
+    hid_t attrType = H5Tcreate(H5T_STRING, content.size() + 1);
+    checkHDF5Ptr(attrType, "H5Tcreate");
+    checkHDF5Call(H5Tset_strpad(attrType, H5T_STR_NULLTERM), "H5Tset_strpad");
+    checkHDF5Call(H5Tset_cset(attrType, H5T_CSET_ASCII), "H5Tset_cset");
+
+    hid_t attrSpace = H5Screate(H5S_SCALAR);
+    checkHDF5Ptr(attrSpace, "H5Screate");
+    createAttribute(attributeName, content.data(), PLI::HDF5::Type(attrType),
+                    attrSpace);
 }
 
 template <>
@@ -255,20 +270,10 @@ void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
     checkHDF5Call(H5Tset_strpad(attrType, H5T_STR_NULLTERM), "H5Tset_strpad");
     checkHDF5Call(H5Tset_cset(attrType, H5T_CSET_ASCII), "H5Tset_cset");
 
-    hid_t attrSpace;
-    if (dimensions.size() == 1 && dimensions.at(0) == 1) {
-        attrSpace = H5Screate(H5S_SCALAR);
-    } else {
-        std::vector<hsize_t> _dimensions(dimensions.begin(), dimensions.end());
-        attrSpace =
-            H5Screate_simple(_dimensions.size(), _dimensions.data(), nullptr);
-        checkHDF5Ptr(attrSpace, "H5Screate_simple");
-    }
-
-    // Create attribute
-    hid_t attrHandle = H5Acreate(m_id, attributeName.c_str(), attrType,
-                                 attrSpace, H5P_DEFAULT, H5P_DEFAULT);
-    checkHDF5Ptr(attrHandle, "H5Acreate");
+    std::vector<hsize_t> _dimensions(dimensions.begin(), dimensions.end());
+    hid_t attrSpace =
+        H5Screate_simple(_dimensions.size(), _dimensions.data(), nullptr);
+    checkHDF5Ptr(attrSpace, "H5Screate_simple");
 
     // Create a char array containing both strings
     char *strToWrite = new char[content.size() * (maxStringSize + 1)];
@@ -282,14 +287,13 @@ void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
                 content[i].size());
     }
 
-    // Write attribute
-    checkHDF5Call(H5Awrite(attrHandle, attrType, strToWrite), "H5Awrite");
+    createAttribute(attributeName, reinterpret_cast<void *>(strToWrite),
+                    PLI::HDF5::Type(attrType), attrSpace);
 
     // Delete the allocated memory
     delete[] strToWrite;
 
     // Close all open references
-    checkHDF5Call(H5Aclose(attrHandle), "H5Aclose");
     checkHDF5Call(H5Sclose(attrSpace), "H5Sclose");
     checkHDF5Call(H5Tclose(attrType), "H5Tclose");
 }
