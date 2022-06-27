@@ -93,7 +93,7 @@ void PLI::PLIM::addReference(const PLI::HDF5::AttributeHandler &file) {
     if (m_attrHandler.attributeExists("reference_images")) {
         m_attrHandler.deleteAttribute("reference_images");
     }
-    m_attrHandler.createAttribute("reference_images", fileID[0]);
+    m_attrHandler.createAttribute("reference_images", fileID, {fileID.size()});
 }
 
 void PLI::PLIM::addReference(
