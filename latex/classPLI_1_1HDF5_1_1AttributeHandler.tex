@@ -66,6 +66,8 @@ template$<$$>$ void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_aaef7e
 \begin{DoxyCompactItemize}
 \item 
 const std\+::vector$<$ unsigned char $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_ae1a3af28d54ea3b97f53801dfc955953}{get\+Attribute}} (const std\+::string \&attribute\+Name, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} data\+Type) const
+\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a20f6629abc3e2540e3e487bb6e667ee2}{create\+Attribute}} (const std\+::string \&attribute\+Name, const void $\ast$content, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}} data\+Type, const hid\+\_\+t data\+Space)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -292,7 +294,7 @@ This method copies an attribute from this \mbox{\hyperlink{classPLI_1_1HDF5_1_1A
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a50e0b2eed2e43c85f52a45fabe2fc161}\label{classPLI_1_1HDF5_1_1AttributeHandler_a50e0b2eed2e43c85f52a45fabe2fc161}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!createAttribute@{createAttribute}}
 \index{createAttribute@{createAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
-\doxysubsubsection{\texorpdfstring{createAttribute()}{createAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+\doxysubsubsection{\texorpdfstring{createAttribute()}{createAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::create\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const std\+::vector$<$ T $>$ \&}]{content,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dimensions }\end{DoxyParamCaption})}
 
@@ -326,7 +328,7 @@ This method creates an attribute with the given name. The content and dimensions
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_ae0c73f1af9d1df88b1b726a9d830bb66}\label{classPLI_1_1HDF5_1_1AttributeHandler_ae0c73f1af9d1df88b1b726a9d830bb66}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!createAttribute@{createAttribute}}
 \index{createAttribute@{createAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
-\doxysubsubsection{\texorpdfstring{createAttribute()}{createAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+\doxysubsubsection{\texorpdfstring{createAttribute()}{createAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::create\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const T \&}]{content }\end{DoxyParamCaption})}
 
@@ -358,7 +360,7 @@ This method creates an attribute with the given name. This method will only stor
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_ac418f6989013cc30b7b64ddbf12df2c0}\label{classPLI_1_1HDF5_1_1AttributeHandler_ac418f6989013cc30b7b64ddbf12df2c0}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!createAttribute@{createAttribute}}
 \index{createAttribute@{createAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
-\doxysubsubsection{\texorpdfstring{createAttribute()}{createAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+\doxysubsubsection{\texorpdfstring{createAttribute()}{createAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
 {\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::create\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const void $\ast$}]{content,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}}]{data\+Type }\end{DoxyParamCaption})}
 
 
@@ -386,7 +388,7 @@ This method creates an attribute with the given name. This method will only stor
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_af1ca5cd1212f30115c4408bfe3078e6e}\label{classPLI_1_1HDF5_1_1AttributeHandler_af1ca5cd1212f30115c4408bfe3078e6e}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!createAttribute@{createAttribute}}
 \index{createAttribute@{createAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
-\doxysubsubsection{\texorpdfstring{createAttribute()}{createAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+\doxysubsubsection{\texorpdfstring{createAttribute()}{createAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
 {\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::create\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const void $\ast$}]{content,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dimensions,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}}]{data\+Type }\end{DoxyParamCaption})}
 
 
@@ -413,6 +415,12 @@ This method creates an attribute with the given name. The content and dimensions
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library call failed. \\
 \hline
 \end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_a20f6629abc3e2540e3e487bb6e667ee2}\label{classPLI_1_1HDF5_1_1AttributeHandler_a20f6629abc3e2540e3e487bb6e667ee2}} 
+\index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!createAttribute@{createAttribute}}
+\index{createAttribute@{createAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
+\doxysubsubsection{\texorpdfstring{createAttribute()}{createAttribute()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Attribute\+Handler\+::create\+Attribute (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{attribute\+Name,  }\item[{const void $\ast$}]{content,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}}}]{data\+Type,  }\item[{const hid\+\_\+t}]{data\+Space }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1AttributeHandler_af746380e422151cca64b537cd83aa16c}\label{classPLI_1_1HDF5_1_1AttributeHandler_af746380e422151cca64b537cd83aa16c}} 
 \index{PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}!deleteAttribute@{deleteAttribute}}
 \index{deleteAttribute@{deleteAttribute}!PLI::HDF5::AttributeHandler@{PLI::HDF5::AttributeHandler}}
