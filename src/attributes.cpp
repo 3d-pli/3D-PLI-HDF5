@@ -114,9 +114,20 @@ void PLI::HDF5::AttributeHandler::copyFrom(const AttributeHandler &srcHandler,
         srcHandler.getAttributeDimensions(srcName);
 
     if (this->attributeExists(dstName)) {
-        this->updateAttribute(dstName, srcAttribute.data(), srcDims, srcType);
+        if (srcDims.empty()) {
+            this->updateAttribute(dstName, srcAttribute.data(), srcType);
+        } else {
+            this->updateAttribute(dstName, srcAttribute.data(), srcDims,
+                                  srcType);
+        }
     } else {
-        this->createAttribute(dstName, srcAttribute.data(), srcDims, srcType);
+        if (srcDims.empty()) {
+            // H5S_SCALAR is not a valid dataspace.
+            this->createAttribute(dstName, srcAttribute.data(), srcType);
+        } else {
+            this->createAttribute(dstName, srcAttribute.data(), srcDims,
+                                  srcType);
+        }
     }
 }
 
@@ -417,9 +428,6 @@ const std::vector<size_t> PLI::HDF5::AttributeHandler::getAttributeDimensions(
     checkHDF5Call(H5Sclose(attributeSpace), "H5Sclose");
     checkHDF5Call(H5Aclose(attributeID), "H5Aclose");
 
-    if (dims.empty()) {
-        return {1};
-    }
     return std::vector<size_t>(dims.begin(), dims.end());
 }
 
@@ -450,7 +458,14 @@ void PLI::HDF5::AttributeHandler::updateAttribute(
 template <>
 void PLI::HDF5::AttributeHandler::updateAttribute(
     const std::string &attributeName, const std::string &content) {
-    this->updateAttribute<std::string>(attributeName, {content}, {1});
+    if (!this->attributeExists(attributeName)) {
+        throw Exceptions::AttributeNotFoundException(
+            "Could not update attribute because it "
+            "does not exist.");
+    }
+
+    this->deleteAttribute(attributeName);
+    this->createAttribute<std::string>(attributeName, content);
 }
 
 template <>

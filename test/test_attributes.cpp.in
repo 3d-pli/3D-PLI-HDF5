@@ -614,7 +614,7 @@ TEST_F(AttributeHandlerTest, GetAttributeDimensions) {
 
         auto dimensions =
             _attributeHandler.getAttributeDimensions("simple_int");
-        ASSERT_EQ(dimensions, std::vector<size_t>{1});
+        ASSERT_EQ(dimensions, std::vector<size_t>{});
     }
 
     // Test a 1D vector
