@@ -13,7 +13,7 @@
 - If MPI is not initialized during the creation / opening of a file / dataset, the access token will not use MPI. This allows the usage of the toolbox in programs not using MPI.
 - Refactoring of file and dataset methods using the HDF5 MPI implementation to keep the DRY principle.
 - CopyAllTo and CopyAllFrom will now throw an exception after it tried to copy all attributes.
-- One element attributes are now saved as H5S_SCALAR instead of a vector    
+- One element attributes are now saved as H5S_SCALAR instead of a vector
 
 ## Fixed
 - Fixed issues which could result in SegFaults in rare cases
@@ -34,6 +34,8 @@
 ## Changed
 - Changed hsize_t throughout the toolbox to size_t to improve compatability with other programs.
 - Adding the ID through PLI::PLIM will now use the config attributes per default, except when the user sets the ID attributes manually.
+- Changed size of scalar HDF5 attributes to be returned as an empty vector instead of a vector with {1}
 
 ## Fixed
 - Add exception when chunk dimensions are smaller than dataset dimensions. Previously, an HDF5 error was thrown because it wasn't checked before calling HDF5 methods.
+- Fixed issues regarding the dimensionality of attributes.
