@@ -17,8 +17,7 @@
 \item If MPI is not initialized during the creation / opening of a file / dataset, the access token will not use MPI. This allows the usage of the toolbox in programs not using MPI.
 \item Refactoring of file and dataset methods using the HDF5 MPI implementation to keep the DRY principle.
 \item Copy\+All\+To and Copy\+All\+From will now throw an exception after it tried to copy all attributes.
-\item One element attributes are now saved as H5\+S\+\_\+\+SCALAR instead of a vector ~\newline
-
+\item One element attributes are now saved as H5\+S\+\_\+\+SCALAR instead of a vector
 \end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md3}{}\doxysection{Fixed}\label{md_CHANGELOG_autotoc_md3}
 
 \begin{DoxyItemize}
@@ -44,8 +43,10 @@
 \begin{DoxyItemize}
 \item Changed hsize\+\_\+t throughout the toolbox to size\+\_\+t to improve compatability with other programs.
 \item Adding the ID through \mbox{\hyperlink{classPLI_1_1PLIM}{PLI\+::\+PLIM}} will now use the config attributes per default, except when the user sets the ID attributes manually.
+\item Changed size of scalar HDF5 attributes to be returned as an empty vector instead of a vector with \{1\}
 \end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md7}{}\doxysubsection{Fixed}\label{md_CHANGELOG_autotoc_md7}
 
 \begin{DoxyItemize}
-\item Add exception when chunk dimensions are smaller than dataset dimensions. Previously, an HDF5 error was thrown because it wasn\textquotesingle{}t checked before calling HDF5 methods. 
+\item Add exception when chunk dimensions are smaller than dataset dimensions. Previously, an HDF5 error was thrown because it wasn\textquotesingle{}t checked before calling HDF5 methods.
+\item Fixed issues regarding the dimensionality of attributes. 
 \end{DoxyItemize}

@@ -86,8 +86,7 @@ Changed</h1>
 <li>If MPI is not initialized during the creation / opening of a file / dataset, the access token will not use MPI. This allows the usage of the toolbox in programs not using MPI.</li>
 <li>Refactoring of file and dataset methods using the HDF5 MPI implementation to keep the DRY principle.</li>
 <li>CopyAllTo and CopyAllFrom will now throw an exception after it tried to copy all attributes.</li>
-<li>One element attributes are now saved as H5S_SCALAR instead of a vector <br  />
-</li>
+<li>One element attributes are now saved as H5S_SCALAR instead of a vector</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Fixed</h1>
@@ -117,11 +116,13 @@ Changed</h2>
 <ul>
 <li>Changed hsize_t throughout the toolbox to size_t to improve compatability with other programs.</li>
 <li>Adding the ID through <a class="el" href="classPLI_1_1PLIM.html" title="The PLIM class contains a few functions to make the integration of a generated HDF5 file easier with ...">PLI::PLIM</a> will now use the config attributes per default, except when the user sets the ID attributes manually.</li>
+<li>Changed size of scalar HDF5 attributes to be returned as an empty vector instead of a vector with {1}</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md7"></a>
 Fixed</h2>
 <ul>
-<li>Add exception when chunk dimensions are smaller than dataset dimensions. Previously, an HDF5 error was thrown because it wasn't checked before calling HDF5 methods. </li>
+<li>Add exception when chunk dimensions are smaller than dataset dimensions. Previously, an HDF5 error was thrown because it wasn't checked before calling HDF5 methods.</li>
+<li>Fixed issues regarding the dimensionality of attributes. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
