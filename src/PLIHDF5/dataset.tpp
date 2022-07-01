@@ -21,7 +21,7 @@ void PLI::HDF5::Dataset::create(const hid_t parentPtr,
 }
 
 template <typename T>
-std::vector<T> PLI::HDF5::Dataset::readFullDataset() const {
+std::vector<T> PLI::HDF5::Dataset::readFullDataset(const bool useMPIFileAccess) const {
   checkHDF5Ptr(this->m_id, "Dataset ID");
   hid_t dataspacePtr = H5Dget_space(this->m_id);
   checkHDF5Ptr(dataspacePtr, "H5Dget_space");
@@ -35,7 +35,7 @@ std::vector<T> PLI::HDF5::Dataset::readFullDataset() const {
 
   PLI::HDF5::Type returnType = PLI::HDF5::Type::createType<T>();
 
-  hid_t xf_id = createXfID();
+  hid_t xf_id = createXfID(useMPIFileAccess);
   hid_t memspacePtr = H5Screate_simple(_dims_hdf5.size(), _dims_hdf5.data(), nullptr);
   checkHDF5Ptr(memspacePtr, "H5Screate_simple");
   checkHDF5Call(H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr,
@@ -51,7 +51,8 @@ std::vector<T> PLI::HDF5::Dataset::readFullDataset() const {
 template <typename T>
 std::vector<T> PLI::HDF5::Dataset::read(
     const std::vector<size_t> &offset,
-    const std::vector<size_t> &count) const {
+    const std::vector<size_t> &count,
+    const bool useMPIFileAccess) const {
   // Convert offset and count to hsize_t arrays for H5Sselect_hyperslab
   std::vector<hsize_t> _offset(offset.begin(), offset.end());
   std::vector<hsize_t> _count(count.begin(), count.end());
@@ -68,7 +69,7 @@ std::vector<T> PLI::HDF5::Dataset::read(
   std::vector<T> returnData;
   returnData.resize(numElements);
 
-  hid_t xf_id = createXfID();
+  hid_t xf_id = createXfID(useMPIFileAccess);
   checkHDF5Call(H5Sselect_hyperslab(dataspacePtr, H5S_SELECT_SET, _offset.data(),
                                     nullptr, _count.data(), nullptr),
                 "H5Sselect_hyperslab");
@@ -85,12 +86,13 @@ std::vector<T> PLI::HDF5::Dataset::read(
 template <typename T>
 void PLI::HDF5::Dataset::write(const std::vector<T> &data,
                                const std::vector<size_t> &offset,
-                               const std::vector<size_t> &dims) {
-  this->write<T>(data.data(), offset, dims);
+                               const std::vector<size_t> &dims,
+                               const bool useMPIFileAccess) {
+  this->write<T>(data.data(), offset, dims, useMPIFileAccess);
 }
 
 template <typename T>
 void PLI::HDF5::Dataset::write(const void* data, const std::vector<size_t>& offset,
-            const std::vector<size_t>& dims) {
-   this->write(data, offset, dims, PLI::HDF5::Type::createType<T>());           
+            const std::vector<size_t>& dims, const bool useMPIFileAccess) {
+   this->write(data, offset, dims, PLI::HDF5::Type::createType<T>(), useMPIFileAccess);
 }

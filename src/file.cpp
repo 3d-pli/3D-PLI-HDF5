@@ -25,19 +25,21 @@
 
 #include "PLIHDF5/file.h"
 
-PLI::HDF5::File PLI::HDF5::createFile(const std::string &fileName) {
+PLI::HDF5::File PLI::HDF5::createFile(const std::string &fileName,
+                                      const bool useMPIFileAccess) {
     PLI::HDF5::File file;
-    file.create(fileName);
+    file.create(fileName, useMPIFileAccess);
     return file;
 }
 
-void PLI::HDF5::File::create(const std::string &fileName) {
+void PLI::HDF5::File::create(const std::string &fileName,
+                             const bool useMPIFileAccess) {
     if (PLI::HDF5::File::fileExists(fileName)) {
         throw Exceptions::FileExistsException("File already exists: " +
                                               fileName);
     }
 
-    hid_t fapl_id = createFaplID();
+    hid_t fapl_id = createFaplID(useMPIFileAccess);
     hid_t filePtr =
         H5Fcreate(fileName.c_str(), H5F_ACC_EXCL, H5P_DEFAULT, fapl_id);
     checkHDF5Ptr(filePtr, "H5Fcreate");
@@ -47,14 +49,16 @@ void PLI::HDF5::File::create(const std::string &fileName) {
 }
 
 PLI::HDF5::File PLI::HDF5::openFile(const std::string &fileName,
-                                    const File::OpenState openState) {
+                                    const File::OpenState openState,
+                                    const bool useMPIFileAccess) {
     PLI::HDF5::File file;
-    file.open(fileName, openState);
+    file.open(fileName, openState, useMPIFileAccess);
     return file;
 }
 
 void PLI::HDF5::File::open(const std::string &fileName,
-                           const File::OpenState openState) {
+                           const File::OpenState openState,
+                           const bool useMPIFileAccess) {
     if (!PLI::HDF5::File::fileExists(fileName)) {
         throw Exceptions::FileNotFoundException("File not found: " + fileName);
     }
@@ -70,7 +74,7 @@ void PLI::HDF5::File::open(const std::string &fileName,
         access = H5F_ACC_RDWR;
     }
 
-    hid_t fapl_id = createFaplID();
+    hid_t fapl_id = createFaplID(useMPIFileAccess);
     hid_t filePtr = H5Fopen(fileName.c_str(), access, fapl_id);
     checkHDF5Ptr(filePtr, "H5Fopen");
 
@@ -131,10 +135,10 @@ PLI::HDF5::File &PLI::HDF5::File::operator=(const File &other) noexcept {
     return *this;
 }
 
-hid_t PLI::HDF5::File::createFaplID() const {
+hid_t PLI::HDF5::File::createFaplID(bool useMPIFileAccess) const {
     hid_t fapl_id = H5Pcreate(H5P_FILE_ACCESS);
     checkHDF5Ptr(fapl_id, "H5Pcreate");
-    if (checkMPI()) {
+    if (useMPIFileAccess && checkMPI()) {
         checkHDF5Call(H5Pset_fapl_mpio(fapl_id, MPI_COMM_WORLD, MPI_INFO_NULL));
     }
     return fapl_id;

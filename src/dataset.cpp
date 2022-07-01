@@ -142,7 +142,8 @@ void PLI::HDF5::Dataset::close() {
 void PLI::HDF5::Dataset::write(const void *data,
                                const std::vector<size_t> &offset,
                                const std::vector<size_t> &dims,
-                               const PLI::HDF5::Type &type) {
+                               const PLI::HDF5::Type &type,
+                               const bool useMPIFileAccess) {
     std::vector<hsize_t> _dims(dims.begin(), dims.end());
     std::vector<hsize_t> _offset(offset.begin(), offset.end());
 
@@ -155,7 +156,7 @@ void PLI::HDF5::Dataset::write(const void *data,
     hid_t dataSpacePtr = H5Dget_space(this->m_id);
     checkHDF5Ptr(dataSpacePtr, "H5Dget_space");
 
-    hid_t xf_id = createXfID();
+    hid_t xf_id = createXfID(useMPIFileAccess);
     checkHDF5Call(H5Sselect_hyperslab(dataSpacePtr, H5S_SELECT_SET,
                                       _offset.data(), nullptr, _dims.data(),
                                       nullptr),
@@ -226,13 +227,13 @@ PLI::HDF5::Dataset::operator=(const Dataset &dataset) noexcept {
     return *this;
 }
 
-hid_t PLI::HDF5::Dataset::createXfID() const {
+hid_t PLI::HDF5::Dataset::createXfID(bool useMPIFileAccess) const {
     hid_t xf_id = H5Pcreate(H5P_DATASET_XFER);
     checkHDF5Ptr(xf_id, "H5Pcreate");
 
     int flag;
     MPI_Initialized(&flag);
-    if (flag) {
+    if (useMPIFileAccess && flag) {
         checkHDF5Call(H5Pset_dxpl_mpio(xf_id, H5FD_MPIO_COLLECTIVE),
                       "H5Pset_dxpl_mpio");
     }

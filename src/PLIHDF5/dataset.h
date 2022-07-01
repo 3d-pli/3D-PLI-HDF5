@@ -195,7 +195,8 @@ class Dataset {
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
      * pointer is invalid.
      */
-    template <typename T> std::vector<T> readFullDataset() const;
+    template <typename T>
+    std::vector<T> readFullDataset(const bool useMPIFileAccess = true) const;
 
     /**
      * @brief Read a sub-dataset.
@@ -220,7 +221,8 @@ class Dataset {
      */
     template <typename T>
     std::vector<T> read(const std::vector<size_t> &offset,
-                        const std::vector<size_t> &count) const;
+                        const std::vector<size_t> &count,
+                        const bool useMPIFileAccess = true) const;
 
     /**
      * @brief Write a sub-dataset.
@@ -245,7 +247,8 @@ class Dataset {
      */
     template <typename T>
     void write(const std::vector<T> &data, const std::vector<size_t> &offset,
-               const std::vector<size_t> &dims);
+               const std::vector<size_t> &dims,
+               const bool useMPIFileAccess = true);
 
     /**
      * @brief Write a sub-dataset.
@@ -270,7 +273,8 @@ class Dataset {
      */
     template <typename T>
     void write(const void *data, const std::vector<size_t> &offset,
-               const std::vector<size_t> &dims);
+               const std::vector<size_t> &dims,
+               const bool useMPIFileAccess = true);
 
     /**
      * @brief Write a sub-dataset.
@@ -292,7 +296,8 @@ class Dataset {
      * pointer is invalid.
      */
     void write(const void *data, const std::vector<size_t> &offset,
-               const std::vector<size_t> &dims, const PLI::HDF5::Type &type);
+               const std::vector<size_t> &dims, const PLI::HDF5::Type &type,
+               const bool useMPIFileAccess = true);
 
     /**
      * @brief Get the type of the dataset.
@@ -336,7 +341,7 @@ class Dataset {
     Dataset &operator=(const PLI::HDF5::Dataset &other) noexcept;
 
   private:
-    hid_t createXfID() const;
+    hid_t createXfID(bool useMPIFileAccess) const;
     hid_t m_id;
 };
 

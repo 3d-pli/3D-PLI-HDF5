@@ -89,7 +89,8 @@ class File {
      * @throw PLI::HDF5::Exceptions::HDF5RuntimeException Error during setting
      * the MPI file access.
      */
-    void create(const std::string &fileName);
+    void create(const std::string &fileName,
+                const bool useMPIFileAccess = true);
     /**
      * @brief Open an existing file.
      *
@@ -113,7 +114,8 @@ class File {
      * @throws PLI::HDF5::Exceptions::InvalidHDF5FileException If the file is
      * not a valid HDF5 file.
      */
-    void open(const std::string &fileName, const OpenState openState);
+    void open(const std::string &fileName, const OpenState openState,
+              const bool useMPIFileAccess = true);
 
     /**
      * @brief Check if the file is a valid HDF5 file.
@@ -182,7 +184,7 @@ class File {
 
   private:
     static bool checkMPI();
-    hid_t createFaplID() const;
+    hid_t createFaplID(bool useMPIFileAccess) const;
     hid_t m_id;
     hid_t m_faplID;
 };
@@ -201,7 +203,8 @@ class File {
  * @throw PLI::HDF5::Exceptions::HDF5RuntimeException Error during setting the
  * MPI file access.
  */
-PLI::HDF5::File createFile(const std::string &fileName);
+PLI::HDF5::File createFile(const std::string &fileName,
+                           const bool useMPIFileAccess = true);
 
 /**
  * @brief Open an existing file object.
@@ -229,6 +232,7 @@ PLI::HDF5::File createFile(const std::string &fileName);
  */
 PLI::HDF5::File
 openFile(const std::string &fileName,
-         const File::OpenState openState = File::OpenState::ReadOnly);
+         const File::OpenState openState = File::OpenState::ReadOnly,
+         const bool useMPIFileAccess = true);
 } // namespace HDF5
 } // namespace PLI
