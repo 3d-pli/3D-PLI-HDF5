@@ -234,7 +234,7 @@ hid_t PLI::HDF5::Dataset::createXfID(bool useMPIFileAccess) const {
     int flag;
     MPI_Initialized(&flag);
     if (useMPIFileAccess && flag) {
-        checkHDF5Call(H5Pset_dxpl_mpio(xf_id, H5FD_MPIO_COLLECTIVE),
+        checkHDF5Call(H5Pset_dxpl_mpio(xf_id, H5FD_MPIO_INDEPENDENT),
                       "H5Pset_dxpl_mpio");
     }
     return xf_id;

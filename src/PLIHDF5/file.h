@@ -82,6 +82,8 @@ class File {
      * Create a new file. Per default, the file is created with
      * MPI file access.
      * @param fileName File name.
+     * @param useMPIFileAccess If true, the file will be opened with MPI access.
+     * Actions need to be done collectively.
      * @throw PLI::HDF5::Exceptions::FileExistsException If the file already
      * exists.
      * @throw PLI::HDF5::Exceptions::IdentifierNotValidException If the file
@@ -105,6 +107,8 @@ class File {
      * @param openState OpenState variable. Available values are
      * PLI::HDF5::File::OpenState::ReadOnly and
      * PLI::HDF5::File::OpenState::ReadWrite.
+     * @param useMPIFileAccess If true, the file will be opened with MPI access.
+     * Actions need to be done collectively.
      * @throws PLI::HDF5::Exceptions::FileNotFoundException If the file doesn't
      * exist.
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the file
@@ -122,6 +126,7 @@ class File {
      *
      * This method checks if the file is a valid HDF5 file that can be opened
      * with this library.
+     * Warning: This method is not thread-safe.
      * @param fileName Filename of the file.
      * @return true File is a valid HDF5 file.
      * @return false File isn't a valid HDF5 file.
@@ -129,6 +134,7 @@ class File {
     static bool isHDF5(const std::string &fileName);
     /**
      * @brief Check if the file exists.
+     * Warning: This method is not thread-safe.
      * @param fileName Filename of the file.
      * @return true File exists.
      * @return false File doesn't exist.
@@ -195,6 +201,8 @@ class File {
  * Create a new file object. Per default, the file is created with
  * MPI file access.
  * @param fileName File name.
+ * @param useMPIFileAccess If true, the file will be opened with MPI access.
+ * Actions need to be done collectively.
  * @return PLI::HDF5::File File object, if successful.
  * @throw PLI::HDF5::Exceptions::FileExistsException If the file already
  * exists.
@@ -220,6 +228,8 @@ PLI::HDF5::File createFile(const std::string &fileName,
  * @param openState OpenState variable. Available values are
  * PLI::HDF5::File::OpenState::ReadOnly and
  * PLI::HDF5::File::OpenState::ReadWrite.
+ * @param useMPIFileAccess If true, the file will be opened with MPI access.
+ * Actions need to be done collectively.
  * @return PLI::HDF5::File File object if successful.
  * @throws PLI::HDF5::Exceptions::FileNotFoundException If the file doesn't
  * exist.
