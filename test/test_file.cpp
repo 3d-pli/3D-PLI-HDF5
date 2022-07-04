@@ -49,16 +49,37 @@ TEST_F(PLI_HDF5_File, Constructor) {
     EXPECT_NO_THROW(auto h5f = PLI::HDF5::File());
 
     EXPECT_NO_THROW({
-        auto h5f_0 = PLI::HDF5::File();
+        auto h5f_0 = PLI::HDF5::createFile(_filePath);
         auto h5f_1 = PLI::HDF5::File(h5f_0);
         ASSERT_EQ(h5f_1.id(), h5f_0.id());
+        ASSERT_EQ(h5f_1.faplID(), h5f_0.faplID());
+        ASSERT_EQ(h5f_1.usesMPIFileAccess(), h5f_0.usesMPIFileAccess());
+        h5f_0.close();
+        removeFile(_filePath);
     });
 
     EXPECT_NO_THROW({
-        auto h5f_0 = PLI::HDF5::File();
+        auto h5f_0 = PLI::HDF5::createFile(_filePath);
         auto h5f_1 = PLI::HDF5::File(h5f_0.id(), h5f_0.faplID());
         ASSERT_EQ(h5f_1.id(), h5f_0.id());
         ASSERT_EQ(h5f_1.faplID(), h5f_0.faplID());
+        ASSERT_EQ(h5f_1.usesMPIFileAccess(), h5f_0.usesMPIFileAccess());
+        h5f_0.close();
+        removeFile(_filePath);
+    });
+
+    EXPECT_NO_THROW({
+        int32_t rank;
+        MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+        if (rank == 0) {
+            auto h5f_0 = PLI::HDF5::createFile(_filePath, false);
+            auto h5f_1 = PLI::HDF5::File(h5f_0);
+            ASSERT_EQ(h5f_1.id(), h5f_0.id());
+            ASSERT_EQ(h5f_1.faplID(), h5f_0.faplID());
+            ASSERT_EQ(h5f_1.usesMPIFileAccess(), h5f_0.usesMPIFileAccess());
+            h5f_0.close();
+        }
+        removeFile(_filePath);
     });
 }
 
@@ -179,6 +200,32 @@ TEST_F(PLI_HDF5_File, FaplID) {
     h5f.create(_filePath);
     ASSERT_GE(h5f.faplID(), 0);
     h5f.close();
+}
+
+TEST_F(PLI_HDF5_File, SequentialFile) {
+    // Disable MPI
+    {
+        int32_t rank;
+        MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+        if (rank == 0) {
+            PLI::HDF5::File h5f;
+            EXPECT_NO_THROW(h5f = PLI::HDF5::createFile(_filePath, false));
+            ASSERT_FALSE(h5f.usesMPIFileAccess());
+            h5f.close();
+        }
+
+        removeFile(_filePath);
+    }
+
+    // Enable MPI
+    {
+        PLI::HDF5::File h5f;
+        EXPECT_NO_THROW(h5f = PLI::HDF5::createFile(_filePath, true));
+        ASSERT_TRUE(h5f.usesMPIFileAccess());
+        h5f.close();
+        removeFile(_filePath);
+    }
 }
 
 int main(int argc, char *argv[]) {
