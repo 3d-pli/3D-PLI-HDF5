@@ -117,7 +117,8 @@ void PLI::HDF5::Dataset::create(const hid_t parentPtr,
         checkHDF5Call(
             H5Pset_chunk(dcpl_id, _chunkDims.size(), _chunkDims.data()),
             "H5Pset_chunk");
-        // checkHDF5Call(H5Pset_fill_value(dcpl_id, dataType, 0));
+        checkHDF5Call(H5Pset_fill_value(dcpl_id, dataType, 0));
+        // Disabled because of issues with H5FD_MPIO_INDEPENDENT
         // checkHDF5Call(H5Pset_fletcher32(dcpl_id), "H5Pset_fletcher32");
     }
 
