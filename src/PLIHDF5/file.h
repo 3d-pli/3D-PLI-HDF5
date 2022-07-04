@@ -142,6 +142,14 @@ class File {
     static bool fileExists(const std::string &fileName);
 
     /**
+     * @brief Returns if MPI File Access was enabled when creating / opening the
+     * file This function will return false if MPI is not available.
+     * @return true MPI File Access is enabled
+     * @return false MPI File Access is diabled
+     */
+    bool usesMPIFileAccess() const;
+
+    /**
      * @brief Closes the file if it is valid.
      *
      * If the file is valid, it is closed. The file pointer is then set to
@@ -190,9 +198,10 @@ class File {
 
   private:
     static bool checkMPI();
-    hid_t createFaplID(bool useMPIFileAccess) const;
+    hid_t createFaplID() const;
     hid_t m_id;
     hid_t m_faplID;
+    bool m_useMPIFileAccess;
 };
 
 /**
