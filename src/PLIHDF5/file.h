@@ -198,10 +198,9 @@ class File {
 
   private:
     static bool checkMPI();
-    hid_t createFaplID() const;
+    hid_t createFaplID(const bool useMPIFileAccess) const;
     hid_t m_id;
     hid_t m_faplID;
-    bool m_useMPIFileAccess;
 };
 
 /**
