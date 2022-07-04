@@ -78,7 +78,7 @@ else()
 endif()
 
 target_compile_features(
-  PLIHDF5 PRIVATE cxx_std_20 cxx_constexpr cxx_defaulted_functions
+  PLIHDF5 PRIVATE cxx_std_17 cxx_constexpr cxx_defaulted_functions
                   cxx_deleted_functions cxx_noexcept)
 target_link_libraries(PLIHDF5 ${PLIHDF5_LINK_LIBRARIES})
 
