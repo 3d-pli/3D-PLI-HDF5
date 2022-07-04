@@ -25,6 +25,8 @@
 
 #include "PLIHDF5/dataset.h"
 
+#include <iostream>
+
 PLI::HDF5::Dataset
 PLI::HDF5::createDataset(const hid_t parentPtr, const std::string &datasetName,
                          const std::vector<size_t> &dims,
@@ -235,6 +237,7 @@ hid_t PLI::HDF5::Dataset::createXfID(bool useMPIFileAccess) const {
     int flag;
     MPI_Initialized(&flag);
     if (useMPIFileAccess && flag) {
+        std::cout << "Setting MPI access" << std::endl;
         checkHDF5Call(H5Pset_dxpl_mpio(xf_id, H5FD_MPIO_INDEPENDENT),
                       "H5Pset_dxpl_mpio");
     }

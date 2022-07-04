@@ -164,6 +164,55 @@ TEST_F(PLI_HDF5_Dataset, write) {
     }
 }
 
+TEST(PLI_HDF5_Dataset_, write_mpi_toggle) {
+    int32_t rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+    const std::vector<size_t> _dims{{128, 128, 4}};
+    const std::vector<size_t> _chunk_dims{{128, 128, 4}};
+    const std::string _filePath =
+        std::filesystem::temp_directory_path() / "test_dataset.h5";
+
+    if (rank == 0) { // Write with only one rank when using MPI
+        try {
+            PLI::HDF5::File file = PLI::HDF5::createFile(_filePath, false);
+            auto dset = PLI::HDF5::createDataset<float>(file, "/Image_0", _dims,
+                                                        _chunk_dims);
+            const std::vector<float> data(std::accumulate(
+                _dims.begin(), _dims.end(), 1, std::multiplies<int>()));
+            const std::vector<size_t> offset{{0, 0, 0}};
+            EXPECT_NO_THROW(dset.write(data, offset, _dims, false));
+
+            dset.close();
+            file.close();
+        } catch (const std::exception &e) {
+        }
+        if (std::filesystem::exists(_filePath))
+            std::filesystem::remove(_filePath);
+    }
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    { // Write with multiple ranks but file was initialized with only one MPI
+      // process
+        try {
+            PLI::HDF5::File file = PLI::HDF5::createFile(_filePath);
+            auto dset = PLI::HDF5::createDataset<float>(file, "/Image_0", _dims,
+                                                        _chunk_dims);
+            const std::vector<float> data(std::accumulate(
+                _dims.begin(), _dims.end(), 1, std::multiplies<int>()));
+            const std::vector<size_t> offset{{0, 0, 0}};
+            EXPECT_NO_THROW(dset.write(data, offset, _dims, false));
+
+            dset.close();
+            file.close();
+        } catch (const std::exception &e) {
+        }
+        if (std::filesystem::exists(_filePath))
+            std::filesystem::remove(_filePath);
+    }
+}
+
 TEST_F(PLI_HDF5_Dataset, type) {
     { // call
         auto dset = PLI::HDF5::createDataset<float>(_file, "/Image_1", _dims,
@@ -248,8 +297,6 @@ TEST_F(PLI_HDF5_Dataset, create) {
                                                          _dims, chunk_dims));
     }
 }
-
-TEST_F(PLI_HDF5_Dataset, readFullDataset) {}
 
 TEST_F(PLI_HDF5_Dataset, read) {
     // write test dataset
