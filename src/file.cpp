@@ -131,9 +131,12 @@ PLI::HDF5::File::File(const hid_t filePtr, const hid_t faplID)
     // Determine the MPI state through our file access property list.
     MPI_Comm communicator;
     MPI_Info info;
-    H5Pget_fapl_mpio(m_faplID, &communicator, &info);
-
-    this->m_communicator = communicator;
+    herr_t returnCode = H5Pget_fapl_mpio(m_faplID, &communicator, &info);
+    if (returnCode < 0) {
+        this->m_communicator.reset();
+    } else {
+        this->m_communicator = communicator;
+    }
 }
 
 PLI::HDF5::File &PLI::HDF5::File::operator=(const File &other) noexcept {

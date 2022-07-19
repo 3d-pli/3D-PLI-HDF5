@@ -82,8 +82,7 @@ TEST_F(PLI_HDF5_Group, Open) {
 
     { // open sub path
         auto grp = PLI::HDF5::openGroup(_file, "foo");
-        grp.close();
-        EXPECT_NO_THROW(grp = PLI::HDF5::openGroup(grp, "bar"));
+        EXPECT_NO_THROW(PLI::HDF5::openGroup(grp, "bar"));
     }
 
     { // open non existing
