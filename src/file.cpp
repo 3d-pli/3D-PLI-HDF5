@@ -87,8 +87,11 @@ void PLI::HDF5::File::open(const std::string &fileName,
 }
 
 void PLI::HDF5::File::close() {
-    if (this->m_id > 0) {
+    if (H5Iis_valid(this->m_faplID)) {
         checkHDF5Call(H5Idec_ref(this->m_faplID), "H5Idec_ref");
+        this->m_faplID = int64_t(-1);
+    }
+    if (H5Iis_valid(this->m_id)) {
         checkHDF5Call(H5Idec_ref(this->m_id), "H5Idec_ref");
         this->m_id = int64_t(-1);
     }
@@ -141,6 +144,7 @@ PLI::HDF5::File &PLI::HDF5::File::operator=(const File &other) noexcept {
     checkHDF5Call(H5Iinc_ref(this->m_id), "H5Iinc_ref");
     this->m_faplID = other.faplID();
     checkHDF5Call(H5Iinc_ref(this->m_faplID), "H5Iinc_ref");
+    this->m_communicator = other.communicator();
     return *this;
 }
 
