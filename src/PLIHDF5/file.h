@@ -29,9 +29,11 @@
 #include <mpi.h>
 
 #include <filesystem>
+#include <optional>
 #include <string>
 
 #include "PLIHDF5/exceptions.h"
+#include "PLIHDF5/object.h"
 
 /**
  * @brief The PLI namespace
@@ -45,7 +47,7 @@ namespace HDF5 {
  * @brief HDF5 File wrapper class.
  * Create and / or open an HDF5 file to store or read data.
  */
-class File {
+class File : public Object {
   public:
     enum OpenState { ReadOnly = 0, ReadWrite = 1 };
 
@@ -57,7 +59,7 @@ class File {
      * PLI::HDF5::File::open(const std::string& fileName). To create a file, use
      * PLI::HDF5::File::create(const std::string& fileName).
      */
-    File();
+    File(const std::optional<MPI_Comm> communicator = {});
     /**
      * @brief Construct a new File object
      *
@@ -76,6 +78,8 @@ class File {
      */
     explicit File(const hid_t filePtr, const hid_t faplID);
 
+    ~File();
+
     /**
      * @brief Create a new file.
      *
@@ -92,7 +96,7 @@ class File {
      * the MPI file access.
      */
     void create(const std::string &fileName,
-                const bool useMPIFileAccess = true);
+                const std::optional<MPI_Comm> communicator = {});
     /**
      * @brief Open an existing file.
      *
@@ -119,7 +123,7 @@ class File {
      * not a valid HDF5 file.
      */
     void open(const std::string &fileName, const OpenState openState,
-              const bool useMPIFileAccess = true);
+              const std::optional<MPI_Comm> communicator = {});
 
     /**
      * @brief Check if the file is a valid HDF5 file.
@@ -178,28 +182,15 @@ class File {
     void flush();
 
     /**
-     * @brief Get the file pointer.
-     * @return hid_t File pointer.
-     */
-    hid_t id() const;
-    /**
      * @brief Get the file access pointer.
      * @return hid_t File access pointer.
      */
     hid_t faplID() const;
 
-    /**
-     * @brief Convert the file to a the raw HDF5 pointer.
-     * @return hid_t File ID stored in the object.
-     */
-    operator hid_t() const;
-
     File &operator=(const PLI::HDF5::File &otherFile) noexcept;
 
   private:
-    static bool checkMPI();
-    hid_t createFaplID(const bool useMPIFileAccess) const;
-    hid_t m_id;
+    hid_t createFaplID() const;
     hid_t m_faplID;
 };
 
@@ -220,7 +211,7 @@ class File {
  * MPI file access.
  */
 PLI::HDF5::File createFile(const std::string &fileName,
-                           const bool useMPIFileAccess = true);
+                           const std::optional<MPI_Comm> communicator = {});
 
 /**
  * @brief Open an existing file object.
@@ -251,6 +242,6 @@ PLI::HDF5::File createFile(const std::string &fileName,
 PLI::HDF5::File
 openFile(const std::string &fileName,
          const File::OpenState openState = File::OpenState::ReadOnly,
-         const bool useMPIFileAccess = true);
+         const std::optional<MPI_Comm> communicator = {});
 } // namespace HDF5
 } // namespace PLI
