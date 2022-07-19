@@ -71,9 +71,10 @@ bool PLI::HDF5::Group::exists(const Object &parentPtr,
     return H5Lexists(parentPtr, groupName.c_str(), H5P_DEFAULT) > 0;
 }
 
-PLI::HDF5::Group::~Group() {
-    std::cerr << __func__ << std::endl;
-    if (this->m_id > 0) {
+PLI::HDF5::Group::~Group() { close(); }
+
+void PLI::HDF5::Group::close() {
+    if (H5Iis_valid(this->m_id)) {
         checkHDF5Call(H5Idec_ref(this->m_id), "H5Idec_ref");
     }
     this->m_id = -1;
@@ -86,10 +87,12 @@ PLI::HDF5::Group::Group(const hid_t groupPtr,
 PLI::HDF5::Group::Group(const Group &group) noexcept
     : PLI::HDF5::Object(group.id(), group.communicator()) {}
 
-PLI::HDF5::Group::Group() noexcept { PLI::HDF5::Object(-1); }
+PLI::HDF5::Group::Group() noexcept { PLI::HDF5::Object(); }
 
 PLI::HDF5::Group &
 PLI::HDF5::Group::operator=(const PLI::HDF5::Group &otherGroup) noexcept {
+    this->close();
+
     this->m_id = otherGroup.id();
     checkHDF5Call(H5Iinc_ref(m_id), "H5Iinc_ref");
 
