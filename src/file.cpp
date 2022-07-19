@@ -28,13 +28,15 @@
 
 PLI::HDF5::File
 PLI::HDF5::createFile(const std::string &fileName,
+                      const PLI::HDF5::File::CreateState creationState,
                       const std::optional<MPI_Comm> communicator) {
     PLI::HDF5::File file;
-    file.create(fileName, communicator);
+    file.create(fileName, creationState, communicator);
     return file;
 }
 
 void PLI::HDF5::File::create(const std::string &fileName,
+                             const CreateState creationState,
                              const std::optional<MPI_Comm> communicator) {
     if (PLI::HDF5::File::fileExists(fileName)) {
         throw Exceptions::FileExistsException("File already exists: " +
@@ -42,8 +44,13 @@ void PLI::HDF5::File::create(const std::string &fileName,
     }
     this->m_communicator = communicator;
     hid_t fapl_id = createFaplID();
-    hid_t filePtr =
-        H5Fcreate(fileName.c_str(), H5F_ACC_EXCL, H5P_DEFAULT, fapl_id);
+    hid_t access;
+    if (creationState == CreateState::OverrideExisting) {
+        access = H5F_ACC_TRUNC;
+    } else {
+        access = H5F_ACC_EXCL;
+    }
+    hid_t filePtr = H5Fcreate(fileName.c_str(), access, H5P_DEFAULT, fapl_id);
     checkHDF5Ptr(filePtr, "H5Fcreate");
 
     this->m_id = filePtr;
@@ -72,7 +79,7 @@ void PLI::HDF5::File::open(const std::string &fileName,
     this->m_communicator = communicator;
 
     hid_t access;
-    if (openState == 0) {
+    if (openState == OpenState::ReadOnly) {
         access = H5F_ACC_RDONLY;
     } else {
         access = H5F_ACC_RDWR;

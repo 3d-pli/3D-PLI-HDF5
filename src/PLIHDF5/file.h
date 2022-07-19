@@ -49,7 +49,8 @@ namespace HDF5 {
  */
 class File : public Object {
   public:
-    enum OpenState { ReadOnly = 0, ReadWrite = 1 };
+    enum class OpenState { ReadOnly = 0, ReadWrite = 1 };
+    enum class CreateState { OverrideExisting = 0, FailIfExists = 1 };
 
     /**
      * @brief Construct a new File object
@@ -95,7 +96,7 @@ class File : public Object {
      * @throw PLI::HDF5::Exceptions::HDF5RuntimeException Error during setting
      * the MPI file access.
      */
-    void create(const std::string &fileName,
+    void create(const std::string &fileName, const CreateState creationState,
                 const std::optional<MPI_Comm> communicator = {});
     /**
      * @brief Open an existing file.
@@ -211,6 +212,7 @@ class File : public Object {
  * MPI file access.
  */
 PLI::HDF5::File createFile(const std::string &fileName,
+                           const PLI::HDF5::File::CreateState creationState,
                            const std::optional<MPI_Comm> communicator = {});
 
 /**
