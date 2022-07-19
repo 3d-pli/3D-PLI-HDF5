@@ -31,6 +31,7 @@
 #include <string>
 
 #include "PLIHDF5/exceptions.h"
+#include "PLIHDF5/object.h"
 
 /**
  * @brief The PLI namespace
@@ -44,7 +45,7 @@ namespace HDF5 {
  * @brief HDF5 Group wrapper class.
  * Create and / or open an HDF5 group.
  */
-class Group {
+class Group : public Object {
   public:
     /**
      * @brief Construct a new Group object
@@ -63,7 +64,8 @@ class Group {
      * group object.
      * @param otherGroup Other group object.
      */
-    explicit Group(const hid_t groupPtr) noexcept;
+    explicit Group(const hid_t groupPtr,
+                   const std::optional<MPI_Comm> communicator = {}) noexcept;
     /**
      * @brief Construct a new Group object
      *
@@ -72,6 +74,8 @@ class Group {
      * @param otherGroup Other group object.
      */
     Group(const Group &otherGroup) noexcept;
+
+    ~Group();
     /**
      * @brief Opens a group
      *
@@ -84,7 +88,7 @@ class Group {
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If opening the
      * group fails or the parentPtr is invalid.
      */
-    void open(hid_t parentPtr, const std::string &groupName);
+    void open(const Object &parentPtr, const std::string &groupName);
     /**
      * @brief Creates a group
      *
@@ -96,7 +100,7 @@ class Group {
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If creating
      * the group fails or the parentPtr is invalid.
      */
-    void create(hid_t parentPtr, const std::string &groupName);
+    void create(const Object &parentPtr, const std::string &groupName);
     /**
      * @brief Checks if the group exists
      * @param parentPtr Pointer to the parent group or file
@@ -106,36 +110,8 @@ class Group {
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the
      * parentPtr is invalid.
      */
-    static bool exists(hid_t parentPtr, const std::string &groupName);
-
-    /**
-     * @brief Closes the group if it is valid.
-     *
-     * If the dataset is valid, it is closed. The group pointer is then set to
-     * an invalid value (-1) to ensure, that calls will result in an exception
-     * afterwards.
-     * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the group could
-     * not be closed.
-     */
-    void close();
-    /**
-     * @brief Get the raw HDF5 pointer of the group.
-     *
-     * Returns the raw HDF5 pointer of the group. This pointer can be used to
-     * access the group using the HDF5 library.
-     * @return hid_t Group ID stored in the object.
-     */
-    hid_t id() const noexcept;
-    /**
-     * @brief Convert the group to a the raw HDF5 pointer.
-     * @return hid_t Group ID stored in the object.
-     */
-    operator hid_t() const noexcept;
-
+    static bool exists(const Object &parentPtr, const std::string &groupName);
     Group &operator=(const PLI::HDF5::Group &otherGroup) noexcept;
-
-  private:
-    hid_t m_id;
 };
 
 /**
@@ -150,7 +126,8 @@ class Group {
  * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If opening the
  * group fails or the parentPtr is invalid.
  */
-PLI::HDF5::Group openGroup(hid_t parentPtr, const std::string &groupName);
+PLI::HDF5::Group openGroup(const Object &parentPtr,
+                           const std::string &groupName);
 /**
  * @brief Creates a group
  * Create a new group. If the group already exists, an exception is thrown.
@@ -162,6 +139,7 @@ PLI::HDF5::Group openGroup(hid_t parentPtr, const std::string &groupName);
  * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If creating the
  * group fails or the parentPtr is invalid.
  */
-PLI::HDF5::Group createGroup(hid_t parentPtr, const std::string &groupName);
+PLI::HDF5::Group createGroup(const Object &parentPtr,
+                             const std::string &groupName);
 } // namespace HDF5
 } // namespace PLI
