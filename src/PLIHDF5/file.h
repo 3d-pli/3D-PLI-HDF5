@@ -96,7 +96,9 @@ class File : public Object {
      * @throw PLI::HDF5::Exceptions::HDF5RuntimeException Error during setting
      * the MPI file access.
      */
-    void create(const std::string &fileName, const CreateState creationState,
+    void create(const std::string &fileName,
+                const CreateState creationState =
+                    PLI::HDF5::File::CreateState::FailIfExists,
                 const std::optional<MPI_Comm> communicator = {});
     /**
      * @brief Open an existing file.
@@ -212,7 +214,8 @@ class File : public Object {
  * MPI file access.
  */
 PLI::HDF5::File createFile(const std::string &fileName,
-                           const PLI::HDF5::File::CreateState creationState,
+                           const PLI::HDF5::File::CreateState creationState =
+                               PLI::HDF5::File::CreateState::FailIfExists,
                            const std::optional<MPI_Comm> communicator = {});
 
 /**
