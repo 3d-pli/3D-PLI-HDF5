@@ -51,17 +51,26 @@ TEST_F(PLI_HDF5_File_Non_MPI, Constructor) {
         auto h5f_0 = PLI::HDF5::File();
         h5f_0.create(_filePath);
         auto h5f_1 = PLI::HDF5::File(h5f_0);
+        ASSERT_EQ(h5f_1.id(), h5f_0.id());
+        ASSERT_EQ(h5f_1.faplID(), h5f_0.faplID());
+        ASSERT_EQ(h5f_1.usesMPIFileAccess(), h5f_0.usesMPIFileAccess());
+        removeFile(_filePath);
     });
 
     EXPECT_NO_THROW({
         auto h5f_0 = PLI::HDF5::File();
+        h5f_0.create(_filePath);
         auto h5f_1 = PLI::HDF5::File(h5f_0.id(), h5f_0.faplID());
+        ASSERT_EQ(h5f_1.id(), h5f_0.id());
+        ASSERT_EQ(h5f_1.faplID(), h5f_0.faplID());
+        ASSERT_EQ(h5f_1.usesMPIFileAccess(), h5f_0.usesMPIFileAccess());
+        removeFile(_filePath);
     });
 }
 
 TEST_F(PLI_HDF5_File_Non_MPI, Destructor) {
     EXPECT_NO_THROW({ // invoke deconstroctor
-        auto h5f = PLI::HDF5::File();
+        PLI::HDF5::File();
     });
 }
 

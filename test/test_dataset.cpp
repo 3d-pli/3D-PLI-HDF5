@@ -46,7 +46,7 @@ class PLI_HDF5_Dataset : public ::testing::Test {
         if (rank == 0 && std::filesystem::exists(_filePath))
             std::filesystem::remove(_filePath);
         MPI_Barrier(MPI_COMM_WORLD);
-        _file = PLI::HDF5::createFile(_filePath);
+        _file = PLI::HDF5::createFile(_filePath, MPI_COMM_WORLD);
     }
 
     void TearDown() override {
@@ -175,34 +175,13 @@ TEST(PLI_HDF5_Dataset_, write_mpi_toggle) {
 
     if (rank == 0) { // Write with only one rank when using MPI
         try {
-            PLI::HDF5::File file = PLI::HDF5::createFile(_filePath, false);
-            auto dset = PLI::HDF5::createDataset<float>(file, "/Image_0", _dims,
-                                                        _chunk_dims);
-            const std::vector<float> data(std::accumulate(
-                _dims.begin(), _dims.end(), 1, std::multiplies<int>()));
-            const std::vector<size_t> offset{{0, 0, 0}};
-            EXPECT_NO_THROW(dset.write(data, offset, _dims, false));
-
-            dset.close();
-            file.close();
-        } catch (const std::exception &e) {
-        }
-        if (std::filesystem::exists(_filePath))
-            std::filesystem::remove(_filePath);
-    }
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    { // Write with multiple ranks but file was initialized with only one MPI
-      // process
-        try {
             PLI::HDF5::File file = PLI::HDF5::createFile(_filePath);
             auto dset = PLI::HDF5::createDataset<float>(file, "/Image_0", _dims,
                                                         _chunk_dims);
             const std::vector<float> data(std::accumulate(
                 _dims.begin(), _dims.end(), 1, std::multiplies<int>()));
             const std::vector<size_t> offset{{0, 0, 0}};
-            EXPECT_NO_THROW(dset.write(data, offset, _dims, false));
+            EXPECT_NO_THROW(dset.write(data, offset, _dims));
 
             dset.close();
             file.close();
@@ -281,13 +260,6 @@ TEST_F(PLI_HDF5_Dataset, create) {
         EXPECT_THROW(PLI::HDF5::createDataset<float>(
                          _file, "/not_existing_grp/dset", _dims, _chunk_dims),
                      PLI::HDF5::Exceptions::IdentifierNotValidException);
-    }
-
-    { // create dataset in not existing group
-        const hsize_t id = 42;
-        EXPECT_THROW(
-            PLI::HDF5::createDataset<float>(id, "/Image", _dims, _chunk_dims),
-            PLI::HDF5::Exceptions::IdentifierNotValidException);
     }
 
     { // create wrong dims and chunk size

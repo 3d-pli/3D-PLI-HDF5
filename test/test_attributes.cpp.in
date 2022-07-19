@@ -45,7 +45,7 @@ class AttributeHandlerTest : public ::testing::Test {
 
         std::string temporaryDirectory = testing::TempDir();
         _filePath = temporaryDirectory + "test.h5";
-        _file = PLI::HDF5::createFile(_filePath);
+        _file = PLI::HDF5::createFile(_filePath, MPI_COMM_WORLD);
         _group = PLI::HDF5::createGroup(_file, "Group");
         _attributeHandler = PLI::HDF5::AttributeHandler(_group);
     }
@@ -54,7 +54,6 @@ class AttributeHandlerTest : public ::testing::Test {
         int32_t rank;
         MPI_Comm_rank(MPI_COMM_WORLD, &rank);
         try {
-            _group.close();
             _file.close();
         } catch (PLI::HDF5::Exceptions::HDF5RuntimeException &e) {
         }
@@ -288,7 +287,6 @@ TEST_F(AttributeHandlerTest, CopyTo) {
             newAttrHandler.getAttribute<int32_t>("new_vector_attribute");
 
         ASSERT_EQ(readAttrOrig, readAttrNew);
-        newGroup.close();
     }
 
     // Test string as it's behaviour is special
@@ -311,7 +309,6 @@ TEST_F(AttributeHandlerTest, CopyTo) {
             newAttrHandler.getAttribute<std::string>("new_string_attribute");
 
         ASSERT_EQ(readAttrOrig, readAttrNew);
-        newGroup.close();
     }
 
     // Copy attribute to the same group with a different name
@@ -360,7 +357,6 @@ TEST_F(AttributeHandlerTest, CopyFrom) {
             newAttrHandler.getAttribute<int32_t>("new_vector_attribute");
 
         ASSERT_EQ(readAttrOrig, readAttrNew);
-        newGroup.close();
     }
 
     // Test string as it's behaviour is special
@@ -384,7 +380,6 @@ TEST_F(AttributeHandlerTest, CopyFrom) {
             newAttrHandler.getAttribute<std::string>("new_string_attribute");
 
         ASSERT_EQ(readAttrOrig, readAttrNew);
-        newGroup.close();
     }
 
     // Copy attribute to the same group with a different name
@@ -484,12 +479,7 @@ TEST_F(AttributeHandlerTest, CopyAllTo) {
 
         auto newAttrNames = attrHandler2.attributeNames();
         ASSERT_TRUE(newAttrNames.empty());
-
-        group1.close();
-        group2.close();
     }
-
-    newGroup.close();
 }
 
 TEST_F(AttributeHandlerTest, CopyAllFrom) {
@@ -569,12 +559,7 @@ TEST_F(AttributeHandlerTest, CopyAllFrom) {
 
         auto newAttrNames = attrHandler2.attributeNames();
         ASSERT_TRUE(newAttrNames.empty());
-
-        group1.close();
-        group2.close();
     }
-
-    newGroup.close();
 }
 
 TEST_F(AttributeHandlerTest, DeleteAttribute) {

@@ -32,82 +32,87 @@
 #include "PLIHDF5/file.h"
 
 class PLI_HDF5_ODF : public ::testing::Test {
- protected:
-  void SetUp() override {
-    int32_t rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    if (rank == 0 && std::filesystem::exists(_filePath))
-      std::filesystem::remove(_filePath);
-    MPI_Barrier(MPI_COMM_WORLD);
-  }
+  protected:
+    void SetUp() override {
+        int32_t rank;
+        MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+        if (rank == 0 && std::filesystem::exists(_filePath))
+            std::filesystem::remove(_filePath);
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
 
-  void TearDown() override {
-    int32_t rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    if (rank == 0 && std::filesystem::exists(_filePath))
-      std::filesystem::remove(_filePath);
-    MPI_Barrier(MPI_COMM_WORLD);
-  }
+    void TearDown() override {
+        int32_t rank;
+        MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+        if (rank == 0 && std::filesystem::exists(_filePath))
+            std::filesystem::remove(_filePath);
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
 
-  const std::string _filePath =
-      std::filesystem::temp_directory_path() / "test_odf.h5";
+    const std::string _filePath =
+        std::filesystem::temp_directory_path() / "test_odf.h5";
 };
 
 TEST_F(PLI_HDF5_ODF, odf) {
-  const int n_coeff = 28;
+    const int n_coeff = 28;
 
-  {  // write
-    auto file = PLI::HDF5::createFile(_filePath);
+    { // write
+        auto file = PLI::HDF5::createFile(_filePath, MPI_COMM_WORLD);
 
-    // generate temporary data
-    const std::vector<size_t> chunk_dims{{5, 5, 5, n_coeff}};
-    const std::vector<size_t> dims{{10, 10, 10, n_coeff}};
-    const std::vector<size_t> offset{{0, 0, 0, 0}};
-    std::vector<float> data(std::accumulate(dims.begin(), dims.end(), 1,
-                                            std::multiplies<size_t>()));
-    std::fill(data.begin(), data.end(), 0);
+        // generate temporary data
+        const std::vector<size_t> chunk_dims{{5, 5, 5, n_coeff}};
+        const std::vector<size_t> dims{{10, 10, 10, n_coeff}};
+        const std::vector<size_t> offset{{0, 0, 0, 0}};
+        std::vector<float> data(std::accumulate(dims.begin(), dims.end(), 1,
+                                                std::multiplies<size_t>()));
+        std::fill(data.begin(), data.end(), 0);
 
-    for (size_t i = 3; i < 7; i++)
-      for (size_t j = 3; j < 7; j++)
-        for (size_t k = 3; k < 7; k++)
-          data[i * dims[1] * dims[2] * dims[3] + j * dims[2] * dims[3] +
-               k * dims[3]] = 1;
+        for (size_t i = 3; i < 7; i++)
+            for (size_t j = 3; j < 7; j++)
+                for (size_t k = 3; k < 7; k++)
+                    data[i * dims[1] * dims[2] * dims[3] +
+                         j * dims[2] * dims[3] + k * dims[3]] = 1;
 
-    auto dset = PLI::HDF5::createDataset<float>(file, "/ODF", dims, chunk_dims);
-    EXPECT_NO_THROW(dset.write(data, offset, dims));
+        auto dset =
+            PLI::HDF5::createDataset<float>(file, "/ODF", dims, chunk_dims);
+        EXPECT_NO_THROW(dset.write(data, offset, dims));
 
-    dset.close();
-    file.close();
-  }
+        dset.close();
+        file.close();
+    }
 
-  {  // read
-    auto file = PLI::HDF5::openFile(_filePath);
-    auto dset = PLI::HDF5::openDataset(file, "/ODF");
+    { // read
+        auto file = PLI::HDF5::openFile(
+            _filePath, PLI::HDF5::File::OpenState::ReadOnly, MPI_COMM_WORLD);
+        auto dset = PLI::HDF5::openDataset(file, "/ODF");
 
-    // read sub dataset
-    const std::vector<size_t> offset{{0, 0, 0, 0}};
-    const std::vector<size_t> count{{1, 5, 5, n_coeff}};
-    auto data = dset.read<float>(offset, count);
+        // read sub dataset
+        const std::vector<size_t> offset{{0, 0, 0, 0}};
+        const std::vector<size_t> count{{1, 5, 5, n_coeff}};
+        auto data = dset.read<float>(offset, count);
+        ASSERT_FALSE(data.empty());
 
-    // read full dataset
-    auto dim = dset.dims();
-    auto data_all = dset.readFullDataset<float>();
+        // read full dataset
+        auto dim = dset.dims();
+        ASSERT_EQ(dim.size(), count.size());
+        auto data_all = dset.readFullDataset<float>();
+        ASSERT_FALSE(data_all.empty());
 
-    // accessing elements:
-    // data_all[z*dim[1]*dim[2]*dim[3]+y*dim[2]*dim[3]+x*dim[3]+c]
+        // accessing elements:
+        // data_all[z*dim[1]*dim[2]*dim[3]+y*dim[2]*dim[3]+x*dim[3]+c]
 
-    dset.close();
-    file.close();
-  }
+        dset.close();
+        file.close();
+    }
 }
 
-int main(int argc, char* argv[]) {
-  int result = 0;
+int main(int argc, char *argv[]) {
+    int result = 0;
 
-  MPI_Init(&argc, &argv);
-  ::testing::InitGoogleTest(&argc, argv);
-  result = RUN_ALL_TESTS();
+    MPI_Init(&argc, &argv);
+    ::testing::InitGoogleTest(&argc, argv);
+    result = RUN_ALL_TESTS();
 
-  MPI_Finalize();
-  return result;
+    MPI_Finalize();
+    return result;
 }
