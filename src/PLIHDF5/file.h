@@ -67,7 +67,7 @@ class File : public Object {
      * object.
      * @param otherFile Other file object.
      */
-    explicit File(const File &otherFile);
+    File(const File &otherFile);
     /**
      * @brief Construct a new File object
      *
