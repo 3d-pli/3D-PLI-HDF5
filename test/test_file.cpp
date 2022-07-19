@@ -108,6 +108,8 @@ TEST_F(PLI_HDF5_File, Open) {
         h5f.close();
     }
 
+    MPI_Barrier(MPI_COMM_WORLD);
+
     { // open dummy file
         auto h5f = PLI::HDF5::File();
         EXPECT_NO_THROW(h5f.open(
