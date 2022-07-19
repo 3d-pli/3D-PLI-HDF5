@@ -54,7 +54,8 @@ set(PLIHDF5_HEADERS
     PLIHDF5/plihdf5.h
     PLIHDF5/sha512.h
     PLIHDF5/type.h
-    PLIHDF5/config.h)
+    PLIHDF5/config.h
+    PLIHDF5/object.h)
 
 set(PLIHDF5_SOURCES
     plihdf5.cpp
@@ -66,7 +67,8 @@ set(PLIHDF5_SOURCES
     link.cpp
     type.cpp
     sha512.cpp
-    exceptions.cpp)
+    exceptions.cpp
+    object.cpp)
 
 add_library(PLIHDF5 SHARED ${PLIHDF5_SOURCES})
 
