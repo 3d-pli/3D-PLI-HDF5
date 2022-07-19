@@ -35,6 +35,7 @@
 #include <vector>
 
 #include "PLIHDF5/exceptions.h"
+#include "PLIHDF5/object.h"
 #include "PLIHDF5/type.h"
 
 /**
@@ -49,7 +50,7 @@ namespace HDF5 {
  * @brief HDF5 Dataset wrapper class.
  * Create and store or read data in an HDF5 dataset.
  */
-class Dataset {
+class Dataset : public Object {
   public:
     /**
      * @brief Construct a new Dataset object
@@ -76,7 +77,10 @@ class Dataset {
      * Construct a new dataset object by using an existing HDF5 pointer.
      * @param datasetPtr HDF5 pointer to an existing dataset.
      */
-    explicit Dataset(hid_t datasetPtr) noexcept;
+    explicit Dataset(hid_t datasetPtr,
+                     const std::optional<MPI_Comm> communicator = {}) noexcept;
+
+    ~Dataset();
     /**
      * @brief Open an existing dataset.
      *
@@ -89,7 +93,7 @@ class Dataset {
      * @throws PLI::HDF5::Exceptions::DatasetNotFoundException If the dataset
      * does not exist.
      */
-    void open(const hid_t parentPtr, const std::string &datasetName);
+    void open(const Object &parentPtr, const std::string &datasetName);
     /**
      * @brief Create a new dataset with the given name.
      *
@@ -113,7 +117,7 @@ class Dataset {
      * not be created.
      */
     template <typename T>
-    void create(const hid_t parentPtr, const std::string &datasetName,
+    void create(const Object &parentPtr, const std::string &datasetName,
                 const std::vector<size_t> &dims,
                 const std::vector<size_t> &chunkDims = {});
 
@@ -140,7 +144,7 @@ class Dataset {
      * not be created.
      */
     void create(
-        const hid_t parentPtr, const std::string &datasetName,
+        const Object &parentPtr, const std::string &datasetName,
         const std::vector<size_t> &dims,
         const std::vector<size_t> &chunkDims = {},
         const PLI::HDF5::Type &dataType = PLI::HDF5::Type::createType<float>());
@@ -155,7 +159,7 @@ class Dataset {
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the parent
      * pointer is invalid.
      */
-    static bool exists(const hid_t parentPtr, const std::string &datasetName);
+    static bool exists(const Object &parentPtr, const std::string &datasetName);
 
     /**
      * @brief This method checks if the dataset is created with chunks enabled.
@@ -197,8 +201,7 @@ class Dataset {
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
      * pointer is invalid.
      */
-    template <typename T>
-    std::vector<T> readFullDataset(const bool useMPIFileAccess = true) const;
+    template <typename T> std::vector<T> readFullDataset() const;
 
     /**
      * @brief Read a sub-dataset.
@@ -225,8 +228,7 @@ class Dataset {
      */
     template <typename T>
     std::vector<T> read(const std::vector<size_t> &offset,
-                        const std::vector<size_t> &count,
-                        const bool useMPIFileAccess = true) const;
+                        const std::vector<size_t> &count) const;
 
     /**
      * @brief Write a sub-dataset.
@@ -253,8 +255,7 @@ class Dataset {
      */
     template <typename T>
     void write(const std::vector<T> &data, const std::vector<size_t> &offset,
-               const std::vector<size_t> &dims,
-               const bool useMPIFileAccess = true);
+               const std::vector<size_t> &dims);
 
     /**
      * @brief Write a sub-dataset.
@@ -281,8 +282,7 @@ class Dataset {
      */
     template <typename T>
     void write(const void *data, const std::vector<size_t> &offset,
-               const std::vector<size_t> &dims,
-               const bool useMPIFileAccess = true);
+               const std::vector<size_t> &dims);
 
     /**
      * @brief Write a sub-dataset.
@@ -306,8 +306,7 @@ class Dataset {
      * pointer is invalid.
      */
     void write(const void *data, const std::vector<size_t> &offset,
-               const std::vector<size_t> &dims, const PLI::HDF5::Type &type,
-               const bool useMPIFileAccess = true);
+               const std::vector<size_t> &dims, const PLI::HDF5::Type &type);
 
     /**
      * @brief Get the type of the dataset.
@@ -334,25 +333,11 @@ class Dataset {
      * the dataspace of the dataset.
      */
     const std::vector<size_t> dims() const;
-    /**
-     * @brief Get the raw HDF5 pointer of the dataset.
-     *
-     * Returns the raw HDF5 pointer of the dataset. This pointer can be used to
-     * access the dataset using the HDF5 library.
-     * @return hid_t Dataset ID stored in the object.
-     */
-    hid_t id() const noexcept;
 
-    /**
-     * @brief Convert the dataset to a the raw HDF5 pointer.
-     * @return hid_t Dataset ID stored in the object.
-     */
-    operator hid_t() const noexcept;
     Dataset &operator=(const PLI::HDF5::Dataset &other) noexcept;
 
   private:
-    hid_t createXfID(bool useMPIFileAccess) const;
-    hid_t m_id;
+    hid_t createXfID() const;
 };
 
 /**
@@ -368,7 +353,7 @@ class Dataset {
  * @throws PLI::HDF5::Exceptions::DatasetNotFoundException If the dataset does
  * not exist.
  */
-PLI::HDF5::Dataset openDataset(const hid_t parentPtr,
+PLI::HDF5::Dataset openDataset(const Object &parentPtr,
                                const std::string &datasetName);
 /**
  * @brief Create a new dataset with the given name.
@@ -394,7 +379,7 @@ PLI::HDF5::Dataset openDataset(const hid_t parentPtr,
  * not be created.
  */
 template <typename T>
-PLI::HDF5::Dataset createDataset(const hid_t parentPtr,
+PLI::HDF5::Dataset createDataset(const Object &parentPtr,
                                  const std::string &datasetName,
                                  const std::vector<size_t> &dims,
                                  const std::vector<size_t> &chunkDims = {});
@@ -421,7 +406,7 @@ PLI::HDF5::Dataset createDataset(const hid_t parentPtr,
  * not be created.
  */
 PLI::HDF5::Dataset createDataset(
-    const hid_t parentPtr, const std::string &datasetName,
+    const Object &parentPtr, const std::string &datasetName,
     const std::vector<size_t> &dims, const std::vector<size_t> &chunkDims = {},
     const PLI::HDF5::Type &dataType = PLI::HDF5::Type::createType<float>());
 

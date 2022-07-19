@@ -25,24 +25,23 @@
 
 #include "PLIHDF5/dataset.h"
 
-PLI::HDF5::Dataset
-PLI::HDF5::createDataset(const hid_t parentPtr, const std::string &datasetName,
-                         const std::vector<size_t> &dims,
-                         const std::vector<size_t> &chunkDims,
-                         const PLI::HDF5::Type &dataType) {
+PLI::HDF5::Dataset PLI::HDF5::createDataset(
+    const Object &parentPtr, const std::string &datasetName,
+    const std::vector<size_t> &dims, const std::vector<size_t> &chunkDims,
+    const PLI::HDF5::Type &dataType) {
     PLI::HDF5::Dataset dataset;
     dataset.create(parentPtr, datasetName, dims, chunkDims, dataType);
     return dataset;
 }
 
-PLI::HDF5::Dataset PLI::HDF5::openDataset(const hid_t parentPtr,
+PLI::HDF5::Dataset PLI::HDF5::openDataset(const Object &parentPtr,
                                           const std::string &datasetName) {
     PLI::HDF5::Dataset dataset;
     dataset.open(parentPtr, datasetName);
     return dataset;
 }
 
-void PLI::HDF5::Dataset::open(const hid_t parentPtr,
+void PLI::HDF5::Dataset::open(const Object &parentPtr,
                               const std::string &datasetName) {
     checkHDF5Ptr(parentPtr, "PLI::HDF5::Dataset::open");
     if (!exists(parentPtr, datasetName)) {
@@ -52,9 +51,10 @@ void PLI::HDF5::Dataset::open(const hid_t parentPtr,
     hid_t datasetPtr = H5Dopen(parentPtr, datasetName.c_str(), H5P_DEFAULT);
     checkHDF5Ptr(datasetPtr, "H5Dopen");
     this->m_id = datasetPtr;
+    this->m_communicator = parentPtr.communicator();
 }
 
-bool PLI::HDF5::Dataset::exists(const hid_t parentPtr,
+bool PLI::HDF5::Dataset::exists(const Object &parentPtr,
                                 const std::string &datasetName) {
     checkHDF5Ptr(parentPtr, "PLI::HDF5::Dataset::exists");
     return H5Lexists(parentPtr, datasetName.c_str(), H5P_DEFAULT) > 0;
@@ -85,7 +85,7 @@ std::vector<size_t> PLI::HDF5::Dataset::chunkDims() const {
     return std::vector<size_t>(_chunkDims.begin(), _chunkDims.end());
 }
 
-void PLI::HDF5::Dataset::create(const hid_t parentPtr,
+void PLI::HDF5::Dataset::create(const Object &parentPtr,
                                 const std::string &datasetName,
                                 const std::vector<size_t> &dims,
                                 const std::vector<size_t> &chunkDims,
@@ -131,20 +131,22 @@ void PLI::HDF5::Dataset::create(const hid_t parentPtr,
     checkHDF5Call(H5Sclose(dataspacePtr), "H5Sclose");
 
     this->m_id = datasetPtr;
+    this->m_communicator = parentPtr.communicator();
 }
 
 void PLI::HDF5::Dataset::close() {
-    if (this->m_id > 0) {
-        checkHDF5Call(H5Dclose(this->m_id), "H5Dclose");
+    if (H5Iis_valid(m_id)) {
+        checkHDF5Call(H5Idec_ref(this->m_id), "H5Idec_ref");
     }
     this->m_id = -1;
 }
 
+PLI::HDF5::Dataset::~Dataset() { close(); }
+
 void PLI::HDF5::Dataset::write(const void *data,
                                const std::vector<size_t> &offset,
                                const std::vector<size_t> &dims,
-                               const PLI::HDF5::Type &type,
-                               const bool useMPIFileAccess) {
+                               const PLI::HDF5::Type &type) {
     std::vector<hsize_t> _dims(dims.begin(), dims.end());
     std::vector<hsize_t> _offset(offset.begin(), offset.end());
 
@@ -157,7 +159,7 @@ void PLI::HDF5::Dataset::write(const void *data,
     hid_t dataSpacePtr = H5Dget_space(this->m_id);
     checkHDF5Ptr(dataSpacePtr, "H5Dget_space");
 
-    hid_t xf_id = createXfID(useMPIFileAccess);
+    hid_t xf_id = createXfID();
     checkHDF5Call(H5Sselect_hyperslab(dataSpacePtr, H5S_SELECT_SET,
                                       _offset.data(), nullptr, _dims.data(),
                                       nullptr),
@@ -209,32 +211,29 @@ const std::vector<size_t> PLI::HDF5::Dataset::dims() const {
     return std::vector<size_t>(dims.begin(), dims.end());
 }
 
-hid_t PLI::HDF5::Dataset::id() const noexcept { return this->m_id; }
+PLI::HDF5::Dataset::Dataset() noexcept : Object() {}
 
-PLI::HDF5::Dataset::Dataset() noexcept : m_id(-1) {}
-
-PLI::HDF5::Dataset::Dataset(hid_t datasetPtr) noexcept {
+PLI::HDF5::Dataset::Dataset(
+    hid_t datasetPtr, const std::optional<MPI_Comm> communicator) noexcept {
     this->m_id = datasetPtr;
+    this->m_communicator = communicator;
 }
 
 PLI::HDF5::Dataset::Dataset(const Dataset &dataset) noexcept
-    : m_id(dataset.id()) {}
-
-PLI::HDF5::Dataset::operator hid_t() const noexcept { return this->m_id; }
+    : Object(dataset.id(), dataset.communicator()) {}
 
 PLI::HDF5::Dataset &
 PLI::HDF5::Dataset::operator=(const Dataset &dataset) noexcept {
     this->m_id = dataset.id();
+    checkHDF5Call(H5Iinc_ref(dataset.id()), "H5Iinc_ref");
     return *this;
 }
 
-hid_t PLI::HDF5::Dataset::createXfID(bool useMPIFileAccess) const {
+hid_t PLI::HDF5::Dataset::createXfID() const {
     hid_t xf_id = H5Pcreate(H5P_DATASET_XFER);
     checkHDF5Ptr(xf_id, "H5Pcreate");
 
-    int flag;
-    MPI_Initialized(&flag);
-    if (useMPIFileAccess && flag) {
+    if (m_communicator) {
         checkHDF5Call(H5Pset_dxpl_mpio(xf_id, H5FD_MPIO_INDEPENDENT),
                       "H5Pset_dxpl_mpio");
     }
