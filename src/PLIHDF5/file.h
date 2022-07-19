@@ -59,7 +59,7 @@ class File : public Object {
      * PLI::HDF5::File::open(const std::string& fileName). To create a file, use
      * PLI::HDF5::File::create(const std::string& fileName).
      */
-    File(const std::optional<MPI_Comm> communicator = {});
+    explicit File(const std::optional<MPI_Comm> communicator = {});
     /**
      * @brief Construct a new File object
      *
@@ -67,7 +67,7 @@ class File : public Object {
      * object.
      * @param otherFile Other file object.
      */
-    File(const File &otherFile);
+    explicit File(const File &otherFile);
     /**
      * @brief Construct a new File object
      *
