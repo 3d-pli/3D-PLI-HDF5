@@ -35,7 +35,7 @@ void PLI::HDF5::checkHDF5Call(const herr_t hdf5ReturnValue,
 }
 
 void PLI::HDF5::checkHDF5Ptr(const hid_t hdf5Ptr, const std::string &message) {
-    if (hdf5Ptr < 0) {
+    if (!H5Iis_valid(hdf5Ptr)) {
         throw PLI::HDF5::Exceptions::IdentifierNotValidException(
             "[" + message + "]: Pointer to HDF5 object is invalid.");
     }
