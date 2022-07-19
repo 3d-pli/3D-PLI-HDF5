@@ -124,10 +124,7 @@ PLI::HDF5::File::File(const std::optional<MPI_Comm> communicator)
 PLI::HDF5::File::File(const File &other)
     : Object(other.id(), other.communicator()), m_faplID(other.faplID()) {}
 
-PLI::HDF5::File::~File() {
-    std::cerr << __func__ << std::endl;
-    close();
-}
+PLI::HDF5::File::~File() { close(); }
 
 PLI::HDF5::File::File(const hid_t filePtr, const hid_t faplID)
     : Object(filePtr), m_faplID(faplID) {
@@ -140,6 +137,8 @@ PLI::HDF5::File::File(const hid_t filePtr, const hid_t faplID)
 }
 
 PLI::HDF5::File &PLI::HDF5::File::operator=(const File &other) noexcept {
+    this->close();
+
     this->m_id = other.id();
     checkHDF5Call(H5Iinc_ref(this->m_id), "H5Iinc_ref");
     this->m_faplID = other.faplID();
