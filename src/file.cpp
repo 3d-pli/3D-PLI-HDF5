@@ -38,16 +38,16 @@ PLI::HDF5::createFile(const std::string &fileName,
 void PLI::HDF5::File::create(const std::string &fileName,
                              const CreateState creationState,
                              const std::optional<MPI_Comm> communicator) {
-    if (PLI::HDF5::File::fileExists(fileName)) {
-        throw Exceptions::FileExistsException("File already exists: " +
-                                              fileName);
-    }
     this->m_communicator = communicator;
     hid_t fapl_id = createFaplID();
     hid_t access;
     if (creationState == CreateState::OverrideExisting) {
         access = H5F_ACC_TRUNC;
     } else {
+        if (PLI::HDF5::File::fileExists(fileName)) {
+            throw Exceptions::FileExistsException("File already exists: " +
+                                                  fileName);
+        }
         access = H5F_ACC_EXCL;
     }
     hid_t filePtr = H5Fcreate(fileName.c_str(), access, H5P_DEFAULT, fapl_id);

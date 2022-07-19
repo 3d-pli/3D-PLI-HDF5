@@ -46,7 +46,9 @@ class PLI_HDF5_Dataset : public ::testing::Test {
         if (rank == 0 && std::filesystem::exists(_filePath))
             std::filesystem::remove(_filePath);
         MPI_Barrier(MPI_COMM_WORLD);
-        _file = PLI::HDF5::createFile(_filePath, MPI_COMM_WORLD);
+        _file = PLI::HDF5::createFile(
+            _filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+            MPI_COMM_WORLD);
     }
 
     void TearDown() override {

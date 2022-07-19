@@ -57,7 +57,9 @@ TEST_F(PLI_HDF5_ODF, odf) {
     const int n_coeff = 28;
 
     { // write
-        auto file = PLI::HDF5::createFile(_filePath, MPI_COMM_WORLD);
+        auto file = PLI::HDF5::createFile(
+            _filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+            MPI_COMM_WORLD);
 
         // generate temporary data
         const std::vector<size_t> chunk_dims{{5, 5, 5, n_coeff}};

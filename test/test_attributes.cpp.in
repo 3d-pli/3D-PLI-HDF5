@@ -45,7 +45,9 @@ class AttributeHandlerTest : public ::testing::Test {
 
         std::string temporaryDirectory = testing::TempDir();
         _filePath = temporaryDirectory + "test.h5";
-        _file = PLI::HDF5::createFile(_filePath, MPI_COMM_WORLD);
+        _file = PLI::HDF5::createFile(_filePath,
+            PLI::HDF5::File::CreateState::OverrideExisting,
+            MPI_COMM_WORLD);
         _group = PLI::HDF5::createGroup(_file, "Group");
         _attributeHandler = PLI::HDF5::AttributeHandler(_group);
     }

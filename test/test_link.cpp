@@ -48,15 +48,18 @@ class PLI_HDF5_Link : public ::testing::Test {
             std::filesystem::remove(_parentPath);
         MPI_Barrier(MPI_COMM_WORLD);
         // Create main file for tests
-        _parentFile = PLI::HDF5::createFile(_parentPath, MPI_COMM_WORLD);
+        _parentFile = PLI::HDF5::createFile(
+            _parentPath, PLI::HDF5::File::CreateState::OverrideExisting,
+            MPI_COMM_WORLD);
         // Create a dummy group to test links
         PLI::HDF5::createGroup(_parentFile, _groupLocation);
         // Create a dummy file for external links
         if (rank == 0 && std::filesystem::exists(_destinationPath))
             std::filesystem::remove(_destinationPath);
         MPI_Barrier(MPI_COMM_WORLD);
-        _destinationFile =
-            PLI::HDF5::createFile(_destinationPath, MPI_COMM_WORLD);
+        _destinationFile = PLI::HDF5::createFile(
+            _destinationPath, PLI::HDF5::File::CreateState::OverrideExisting,
+            MPI_COMM_WORLD);
     }
 
     void TearDown() override {
