@@ -75,7 +75,6 @@ class Group : public Object {
      */
     Group(const Group &otherGroup) noexcept;
 
-    ~Group();
     /**
      * @brief Opens a group
      *
@@ -101,16 +100,6 @@ class Group : public Object {
      * the group fails or the parentPtr is invalid.
      */
     void create(const Object &parentPtr, const std::string &groupName);
-    /**
-     * @brief Closes the group if it is valid.
-     *
-     * If the dataset is valid, it is closed. The group pointer is then set to
-     * an invalid value (-1) to ensure, that calls will result in an exception
-     * afterwards.
-     * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the group could
-     * not be closed.
-     */
-    void close();
     /**
      * @brief Checks if the group exists
      * @param parentPtr Pointer to the parent group or file

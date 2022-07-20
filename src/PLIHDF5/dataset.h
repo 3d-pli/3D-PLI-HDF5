@@ -80,7 +80,6 @@ class Dataset : public Object {
     explicit Dataset(hid_t datasetPtr,
                      const std::optional<MPI_Comm> communicator = {}) noexcept;
 
-    ~Dataset();
     /**
      * @brief Open an existing dataset.
      *
@@ -175,16 +174,6 @@ class Dataset : public Object {
      */
     std::vector<size_t> chunkDims() const;
 
-    /**
-     * @brief Closes the dataset if it is valid.
-     *
-     * If the dataset is valid, it is closed. The dataset pointer is then set to
-     * an invalid value (-1) to ensure, that calls will result in an exception
-     * afterwards.
-     * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
-     * not be closed.
-     */
-    void close();
     /**
      * @brief Read the whole dataset.
      *

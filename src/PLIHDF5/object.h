@@ -28,6 +28,7 @@
 #include <hdf5.h>
 #include <mpi.h>
 #include <optional>
+#include <vector>
 
 #include "PLIHDF5/exceptions.h"
 
@@ -37,13 +38,18 @@ class Object {
     explicit Object(const std::optional<MPI_Comm> &communicator = {}) noexcept;
     explicit Object(const hid_t id,
                     const std::optional<MPI_Comm> &communicator = {}) noexcept;
+    ~Object();
 
     hid_t id() const noexcept;
     std::optional<MPI_Comm> communicator() const noexcept;
     operator hid_t() const noexcept;
 
+    void close();
+
   protected:
     std::optional<MPI_Comm> m_communicator;
     hid_t m_id;
+
+    void closeFileObjects(unsigned int types);
 };
 } // namespace PLI::HDF5

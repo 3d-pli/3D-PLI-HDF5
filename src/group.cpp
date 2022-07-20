@@ -71,15 +71,6 @@ bool PLI::HDF5::Group::exists(const Object &parentPtr,
     return H5Lexists(parentPtr, groupName.c_str(), H5P_DEFAULT) > 0;
 }
 
-PLI::HDF5::Group::~Group() { close(); }
-
-void PLI::HDF5::Group::close() {
-    if (H5Iis_valid(this->m_id)) {
-        checkHDF5Call(H5Idec_ref(this->m_id), "H5Idec_ref");
-    }
-    this->m_id = -1;
-}
-
 PLI::HDF5::Group::Group(const hid_t groupPtr,
                         const std::optional<MPI_Comm> communicator) noexcept
     : PLI::HDF5::Object(groupPtr, communicator) {}

@@ -134,15 +134,6 @@ void PLI::HDF5::Dataset::create(const Object &parentPtr,
     this->m_communicator = parentPtr.communicator();
 }
 
-void PLI::HDF5::Dataset::close() {
-    if (H5Iis_valid(m_id)) {
-        checkHDF5Call(H5Idec_ref(this->m_id), "H5Idec_ref");
-    }
-    this->m_id = -1;
-}
-
-PLI::HDF5::Dataset::~Dataset() { close(); }
-
 void PLI::HDF5::Dataset::write(const void *data,
                                const std::vector<size_t> &offset,
                                const std::vector<size_t> &dims,

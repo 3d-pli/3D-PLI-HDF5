@@ -79,8 +79,6 @@ class File : public Object {
      */
     explicit File(const hid_t filePtr, const hid_t faplID);
 
-    ~File();
-
     /**
      * @brief Create a new file.
      *
@@ -155,16 +153,6 @@ class File : public Object {
     bool usesMPIFileAccess() const;
 
     /**
-     * @brief Closes the file if it is valid.
-     *
-     * If the file is valid, it is closed. The file pointer is then set to
-     * an invalid value (-1) to ensure, that calls will result in an exception
-     * afterwards.
-     * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the file could
-     * not be closed.
-     */
-    void close();
-    /**
      * @brief Reopen the file.
      *
      * This method tries to reopen the file for reading. If the original pointer
@@ -212,8 +200,7 @@ class File : public Object {
  * MPI file access.
  */
 PLI::HDF5::File createFile(const std::string &fileName,
-                           const PLI::HDF5::File::CreateState creationState =
-                               PLI::HDF5::File::CreateState::FailIfExists,
+                           const PLI::HDF5::File::CreateState creationState,
                            const std::optional<MPI_Comm> communicator = {});
 
 /**
@@ -242,9 +229,8 @@ PLI::HDF5::File createFile(const std::string &fileName,
  * @throws PLI::HDF5::Exceptions::InvalidHDF5FileException If the file is not
  * a valid HDF5 file.
  */
-PLI::HDF5::File
-openFile(const std::string &fileName,
-         const File::OpenState openState = File::OpenState::ReadOnly,
-         const std::optional<MPI_Comm> communicator = {});
+PLI::HDF5::File openFile(const std::string &fileName,
+                         const File::OpenState openState,
+                         const std::optional<MPI_Comm> communicator = {});
 } // namespace HDF5
 } // namespace PLI

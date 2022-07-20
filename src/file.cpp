@@ -93,17 +93,6 @@ void PLI::HDF5::File::open(const std::string &fileName,
     this->m_faplID = fapl_id;
 }
 
-void PLI::HDF5::File::close() {
-    if (H5Iis_valid(this->m_faplID)) {
-        checkHDF5Call(H5Idec_ref(this->m_faplID), "H5Idec_ref");
-        this->m_faplID = int64_t(-1);
-    }
-    if (H5Iis_valid(this->m_id)) {
-        checkHDF5Call(H5Idec_ref(this->m_id), "H5Idec_ref");
-        this->m_id = int64_t(-1);
-    }
-}
-
 void PLI::HDF5::File::reopen() {
     checkHDF5Ptr(this->m_id, "H5Fopen");
     this->m_id = H5Freopen(this->m_id);
@@ -130,8 +119,6 @@ PLI::HDF5::File::File(const std::optional<MPI_Comm> communicator)
 
 PLI::HDF5::File::File(const File &other)
     : Object(other.id(), other.communicator()), m_faplID(other.faplID()) {}
-
-PLI::HDF5::File::~File() { close(); }
 
 PLI::HDF5::File::File(const hid_t filePtr, const hid_t faplID)
     : Object(filePtr), m_faplID(faplID) {
