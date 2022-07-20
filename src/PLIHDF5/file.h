@@ -47,7 +47,7 @@ namespace HDF5 {
  * @brief HDF5 File wrapper class.
  * Create and / or open an HDF5 file to store or read data.
  */
-class File : public Object {
+class File : public Folder {
   public:
     enum class OpenState { ReadOnly = 0, ReadWrite = 1 };
     enum class CreateState { OverrideExisting = 0, FailIfExists = 1 };

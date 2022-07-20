@@ -45,7 +45,7 @@ namespace HDF5 {
  * @brief HDF5 Group wrapper class.
  * Create and / or open an HDF5 group.
  */
-class Group : public Object {
+class Group : public Folder {
   public:
     /**
      * @brief Construct a new Group object
@@ -113,32 +113,5 @@ class Group : public Object {
     Group &operator=(const PLI::HDF5::Group &otherGroup) noexcept;
 };
 
-/**
- * @brief Opens a group
- * Open an existing group. If the group does not exist, an exception is
- * thrown.
- * @param parentPtr Pointer to the parent group or file.
- * @param groupName Name of the group to open.
- * @return PLI::HDF5::Group Group object, if successful.
- * @throws PLI::HDF5::Exceptions::GroupNotFoundException If the group does not
- * exist.
- * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If opening the
- * group fails or the parentPtr is invalid.
- */
-PLI::HDF5::Group openGroup(const Object &parentPtr,
-                           const std::string &groupName);
-/**
- * @brief Creates a group
- * Create a new group. If the group already exists, an exception is thrown.
- * @param parentPtr Pointer to the parent group or file.
- * @param groupName Name of the group to create.
- * @return PLI::HDF5::Group Group object, if successful.
- * @throws PLI::HDF5::Exceptions::GroupExistsException If the group already
- * exists.
- * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If creating the
- * group fails or the parentPtr is invalid.
- */
-PLI::HDF5::Group createGroup(const Object &parentPtr,
-                             const std::string &groupName);
 } // namespace HDF5
 } // namespace PLI

@@ -52,7 +52,7 @@ class PLI_HDF5_Link : public ::testing::Test {
             _parentPath, PLI::HDF5::File::CreateState::OverrideExisting,
             MPI_COMM_WORLD);
         // Create a dummy group to test links
-        PLI::HDF5::createGroup(_parentFile, _groupLocation);
+        _parentFile.createGroup(_groupLocation);
         // Create a dummy file for external links
         if (rank == 0 && std::filesystem::exists(_destinationPath))
             std::filesystem::remove(_destinationPath);

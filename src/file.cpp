@@ -115,13 +115,13 @@ bool PLI::HDF5::File::fileExists(const std::string &fileName) {
 hid_t PLI::HDF5::File::faplID() const { return this->m_faplID; }
 
 PLI::HDF5::File::File(const std::optional<MPI_Comm> communicator)
-    : Object(communicator), m_faplID(-1) {}
+    : Folder(communicator), m_faplID(-1) {}
 
 PLI::HDF5::File::File(const File &other)
-    : Object(other.id(), other.communicator()), m_faplID(other.faplID()) {}
+    : Folder(other.id(), other.communicator()), m_faplID(other.faplID()) {}
 
 PLI::HDF5::File::File(const hid_t filePtr, const hid_t faplID)
-    : Object(filePtr), m_faplID(faplID) {
+    : Folder(filePtr), m_faplID(faplID) {
     // Determine the MPI state through our file access property list.
     MPI_Comm communicator;
     MPI_Info info;

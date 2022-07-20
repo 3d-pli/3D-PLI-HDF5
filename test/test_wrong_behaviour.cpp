@@ -52,7 +52,7 @@ TEST_F(PrepareWrongBehaviour, CloseFileBeforeOther) {
             _filePath, PLI::HDF5::File::CreateState::OverrideExisting,
             MPI_COMM_WORLD);
 
-        group = PLI::HDF5::createGroup(file, "/Image");
+        group = file.createGroup("/Image");
     });
     ASSERT_THROW(group.create(group, "/NextImage"),
                  PLI::HDF5::Exceptions::IdentifierNotValidException);

@@ -75,8 +75,7 @@ TEST_F(PLI_HDF5_ODF, odf) {
                     data[i * dims[1] * dims[2] * dims[3] +
                          j * dims[2] * dims[3] + k * dims[3]] = 1;
 
-        auto dset =
-            PLI::HDF5::createDataset<float>(file, "/ODF", dims, chunk_dims);
+        auto dset = file.createDataset<float>("/ODF", dims, chunk_dims);
         EXPECT_NO_THROW(dset.write(data, offset, dims));
 
         dset.close();
@@ -86,7 +85,7 @@ TEST_F(PLI_HDF5_ODF, odf) {
     { // read
         auto file = PLI::HDF5::openFile(
             _filePath, PLI::HDF5::File::OpenState::ReadOnly, MPI_COMM_WORLD);
-        auto dset = PLI::HDF5::openDataset(file, "/ODF");
+        auto dset = file.openDataset("/ODF");
 
         // read sub dataset
         const std::vector<size_t> offset{{0, 0, 0, 0}};

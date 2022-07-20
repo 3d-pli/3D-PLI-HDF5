@@ -47,6 +47,7 @@ set(PLIHDF5_HEADERS
     PLIHDF5/attributes.h
     PLIHDF5/attributes.tpp
     PLIHDF5/dataset.h
+    PLIHDF5/dataset.tpp
     PLIHDF5/exceptions.h
     PLIHDF5/file.h
     PLIHDF5/group.h

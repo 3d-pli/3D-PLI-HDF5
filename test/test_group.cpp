@@ -71,24 +71,24 @@ class PLI_HDF5_Group : public ::testing::Test {
 
 TEST_F(PLI_HDF5_Group, Open) {
     { // open existing
-        auto grp = PLI::HDF5::createGroup(_file, "foo");
+        auto grp = _file.createGroup("foo");
         grp.close();
-        EXPECT_NO_THROW(grp = PLI::HDF5::openGroup(_file, "foo"));
+        EXPECT_NO_THROW(grp = _file.openGroup("foo"));
     }
 
     { // open sub path
-        auto grp = PLI::HDF5::createGroup(_file, "foo/bar");
+        auto grp = _file.createGroup("foo/bar");
         grp.close();
-        EXPECT_NO_THROW(grp = PLI::HDF5::openGroup(_file, "foo/bar"));
+        EXPECT_NO_THROW(grp = _file.openGroup("foo/bar"));
     }
 
     { // open sub path
-        auto grp = PLI::HDF5::openGroup(_file, "foo");
-        EXPECT_NO_THROW(PLI::HDF5::openGroup(grp, "bar"));
+        auto grp = _file.openGroup("foo");
+        EXPECT_NO_THROW(grp.openGroup("bar"));
     }
 
     { // open non existing
-        EXPECT_THROW(PLI::HDF5::openGroup(_file, "bar"),
+        EXPECT_THROW(_file.openGroup("bar"),
                      PLI::HDF5::Exceptions::GroupNotFoundException);
     }
 }
@@ -96,30 +96,30 @@ TEST_F(PLI_HDF5_Group, Open) {
 TEST_F(PLI_HDF5_Group, Create) {
     { // create
         PLI::HDF5::Group grp;
-        EXPECT_NO_THROW(grp = PLI::HDF5::createGroup(_file, "foo"));
+        EXPECT_NO_THROW(grp = _file.createGroup("foo"));
     }
 
     { // create subgrp
         PLI::HDF5::Group grp;
-        EXPECT_NO_THROW(grp = PLI::HDF5::createGroup(_file, "foo/bar"));
+        EXPECT_NO_THROW(grp = _file.createGroup("foo/bar"));
     }
 
     { // create subgrp from grp
-        auto grp = PLI::HDF5::openGroup(_file, "foo");
+        auto grp = _file.openGroup("foo");
         PLI::HDF5::Group subgrp;
-        EXPECT_NO_THROW(subgrp = PLI::HDF5::createGroup(grp, "BAR"));
+        EXPECT_NO_THROW(subgrp = grp.createGroup("BAR"));
     }
 
     { // create already existing grp
         PLI::HDF5::Group grp;
-        EXPECT_THROW(PLI::HDF5::createGroup(_file, "foo"),
+        EXPECT_THROW(_file.createGroup("foo"),
                      PLI::HDF5::Exceptions::GroupExistsException);
     }
 }
 
 TEST_F(PLI_HDF5_Group, Exists) {
     { // existing grp
-        auto grp = PLI::HDF5::createGroup(_file, "foo");
+        auto grp = _file.createGroup("foo");
         grp.close();
         EXPECT_TRUE(PLI::HDF5::Group::exists(_file, "foo"));
     }

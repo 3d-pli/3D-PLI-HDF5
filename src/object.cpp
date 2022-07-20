@@ -77,3 +77,9 @@ void PLI::HDF5::Object::closeFileObjects(unsigned int types) {
         }
     }
 }
+
+PLI::HDF5::Folder::Folder(const std::optional<MPI_Comm> &communicator) noexcept
+    : Object(communicator) {}
+PLI::HDF5::Folder::Folder(const hid_t id,
+                          const std::optional<MPI_Comm> &communicator) noexcept
+    : Object(id, communicator) {}

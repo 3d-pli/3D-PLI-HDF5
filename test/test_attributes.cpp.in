@@ -48,7 +48,7 @@ class AttributeHandlerTest : public ::testing::Test {
         _file = PLI::HDF5::createFile(_filePath,
             PLI::HDF5::File::CreateState::OverrideExisting,
             MPI_COMM_WORLD);
-        _group = PLI::HDF5::createGroup(_file, "Group");
+        _group = _file.createGroup("Group");
         _attributeHandler = PLI::HDF5::AttributeHandler(_group);
     }
 
@@ -276,7 +276,7 @@ TEST_F(AttributeHandlerTest, CopyTo) {
             "simple_vector_attribute", simpleVector, {simpleVector.size()});
 
         // Create a new group and copy the attribute to it
-        PLI::HDF5::Group newGroup = PLI::HDF5::createGroup(_file, "NewGroup");
+        PLI::HDF5::Group newGroup = _file.createGroup("NewGroup");
         PLI::HDF5::AttributeHandler newAttrHandler =
             PLI::HDF5::AttributeHandler(newGroup);
         ASSERT_NO_THROW(_attributeHandler.copyTo(
@@ -298,7 +298,7 @@ TEST_F(AttributeHandlerTest, CopyTo) {
             "simple_string_attribute", testString);
 
         // Open the new group and copy the attribute to it
-        PLI::HDF5::Group newGroup = PLI::HDF5::openGroup(_file, "NewGroup");
+        PLI::HDF5::Group newGroup = _file.openGroup("NewGroup");
         PLI::HDF5::AttributeHandler newAttrHandler =
             PLI::HDF5::AttributeHandler(newGroup);
         ASSERT_NO_THROW(_attributeHandler.copyTo(
@@ -345,7 +345,7 @@ TEST_F(AttributeHandlerTest, CopyFrom) {
             "simple_vector_attribute", simpleVector, {simpleVector.size()});
 
         // Create a new group and copy the attribute to it
-        PLI::HDF5::Group newGroup = PLI::HDF5::createGroup(_file, "NewGroup");
+        PLI::HDF5::Group newGroup = _file.createGroup("NewGroup");
         PLI::HDF5::AttributeHandler newAttrHandler =
             PLI::HDF5::AttributeHandler(newGroup);
         ASSERT_NO_THROW(newAttrHandler.copyFrom(_attributeHandler,
@@ -368,7 +368,7 @@ TEST_F(AttributeHandlerTest, CopyFrom) {
             "simple_string_attribute", testString);
 
         // Open the new group and copy the attribute to it
-        PLI::HDF5::Group newGroup = PLI::HDF5::openGroup(_file, "NewGroup");
+        PLI::HDF5::Group newGroup = _file.openGroup("NewGroup");
         PLI::HDF5::AttributeHandler newAttrHandler =
             PLI::HDF5::AttributeHandler(newGroup);
         ASSERT_NO_THROW(newAttrHandler.copyFrom(_attributeHandler,
@@ -406,7 +406,7 @@ TEST_F(AttributeHandlerTest, CopyFrom) {
 
 TEST_F(AttributeHandlerTest, CopyAllTo) {
     // Create a new group and copy the attribute to it
-    PLI::HDF5::Group newGroup = PLI::HDF5::createGroup(_file, "NewGroup");
+    PLI::HDF5::Group newGroup = _file.createGroup("NewGroup");
     PLI::HDF5::AttributeHandler newAttrHandler =
         PLI::HDF5::AttributeHandler(newGroup);
 
@@ -464,9 +464,9 @@ TEST_F(AttributeHandlerTest, CopyAllTo) {
 
     { // Create a few attributes that are on the "banned list" and try to copy
       // them
-        auto group1 = PLI::HDF5::createGroup(newGroup, "Group1");
+        auto group1 = newGroup.createGroup("Group1");
         auto attrHandler1 = PLI::HDF5::AttributeHandler(group1);
-        auto group2 = PLI::HDF5::createGroup(newGroup, "Group2");
+        auto group2 = newGroup.createGroup("Group2");
         auto attrHandler2 = PLI::HDF5::AttributeHandler(group2);
 
         auto config = PLI::HDF5::Config::getInstance();
@@ -486,7 +486,7 @@ TEST_F(AttributeHandlerTest, CopyAllTo) {
 
 TEST_F(AttributeHandlerTest, CopyAllFrom) {
     // Create a new group and copy the attribute to it
-    PLI::HDF5::Group newGroup = PLI::HDF5::createGroup(_file, "NewGroup");
+    PLI::HDF5::Group newGroup = _file.createGroup("NewGroup");
     PLI::HDF5::AttributeHandler newAttrHandler =
         PLI::HDF5::AttributeHandler(newGroup);
 
@@ -544,9 +544,9 @@ TEST_F(AttributeHandlerTest, CopyAllFrom) {
 
     { // Create a few attributes that are on the "banned list" and try to copy
       // them
-        auto group1 = PLI::HDF5::createGroup(newGroup, "Group1");
+        auto group1 = newGroup.createGroup("Group1");
         auto attrHandler1 = PLI::HDF5::AttributeHandler(group1);
-        auto group2 = PLI::HDF5::createGroup(newGroup, "Group2");
+        auto group2 = newGroup.createGroup("Group2");
         auto attrHandler2 = PLI::HDF5::AttributeHandler(group2);
 
         auto config = PLI::HDF5::Config::getInstance();

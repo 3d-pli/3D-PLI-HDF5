@@ -38,13 +38,6 @@ void PLI::HDF5::Group::open(const Object &parentPtr,
     this->m_id = groupPtr;
 }
 
-PLI::HDF5::Group PLI::HDF5::openGroup(const Object &parentPtr,
-                                      const std::string &groupName) {
-    Group group;
-    group.open(parentPtr, groupName);
-    return group;
-}
-
 void PLI::HDF5::Group::create(const Object &parentPtr,
                               const std::string &groupName) {
     checkHDF5Ptr(parentPtr, "Group::create");
@@ -58,13 +51,6 @@ void PLI::HDF5::Group::create(const Object &parentPtr,
     this->m_id = groupPtr;
 }
 
-PLI::HDF5::Group PLI::HDF5::createGroup(const Object &parentPtr,
-                                        const std::string &groupName) {
-    Group group;
-    group.create(parentPtr, groupName);
-    return group;
-}
-
 bool PLI::HDF5::Group::exists(const Object &parentPtr,
                               const std::string &groupName) {
     checkHDF5Ptr(parentPtr, "Group::exists");
@@ -73,10 +59,10 @@ bool PLI::HDF5::Group::exists(const Object &parentPtr,
 
 PLI::HDF5::Group::Group(const hid_t groupPtr,
                         const std::optional<MPI_Comm> communicator) noexcept
-    : PLI::HDF5::Object(groupPtr, communicator) {}
+    : PLI::HDF5::Folder(groupPtr, communicator) {}
 
 PLI::HDF5::Group::Group(const Group &group) noexcept
-    : PLI::HDF5::Object(group.id(), group.communicator()) {}
+    : PLI::HDF5::Folder(group.id(), group.communicator()) {}
 
 PLI::HDF5::Group::Group() noexcept { PLI::HDF5::Object(); }
 
@@ -89,4 +75,15 @@ PLI::HDF5::Group::operator=(const PLI::HDF5::Group &otherGroup) noexcept {
 
     this->m_communicator = otherGroup.communicator();
     return *this;
+}
+
+PLI::HDF5::Group PLI::HDF5::Folder::createGroup(const std::string &groupName) {
+    Group group;
+    group.create(*this, groupName);
+    return group;
+}
+PLI::HDF5::Group PLI::HDF5::Folder::openGroup(const std::string &groupName) {
+    Group group;
+    group.open(*this, groupName);
+    return group;
 }

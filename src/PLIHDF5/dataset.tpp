@@ -3,16 +3,17 @@
 #include "PLIHDF5/dataset.h"
 
 template <typename T>
-PLI::HDF5::Dataset PLI::HDF5::createDataset(
-    const Object &parentPtr, const std::string &datasetName,
-    const std::vector<size_t> &dims, const std::vector<size_t> &chunkDims) {
+PLI::HDF5::Dataset
+PLI::HDF5::Folder::createDataset(const std::string &datasetName,
+                                 const std::vector<size_t> &dims,
+                                 const std::vector<size_t> &chunkDims) {
     PLI::HDF5::Dataset dataset;
-    dataset.create<T>(parentPtr, datasetName, dims, chunkDims);
+    dataset.create<T>(*this, datasetName, dims, chunkDims);
     return dataset;
 }
 
 template <typename T>
-void PLI::HDF5::Dataset::create(const Object &parentPtr,
+void PLI::HDF5::Dataset::create(const Folder &parentPtr,
                                 const std::string &datasetName,
                                 const std::vector<size_t> &dims,
                                 const std::vector<size_t> &chunkDims) {

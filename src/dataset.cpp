@@ -25,23 +25,22 @@
 
 #include "PLIHDF5/dataset.h"
 
-PLI::HDF5::Dataset PLI::HDF5::createDataset(
-    const Object &parentPtr, const std::string &datasetName,
-    const std::vector<size_t> &dims, const std::vector<size_t> &chunkDims,
-    const PLI::HDF5::Type &dataType) {
+PLI::HDF5::Dataset PLI::HDF5::Folder::createDataset(
+    const std::string &datasetName, const std::vector<size_t> &dims,
+    const std::vector<size_t> &chunkDims, const PLI::HDF5::Type &dataType) {
     PLI::HDF5::Dataset dataset;
-    dataset.create(parentPtr, datasetName, dims, chunkDims, dataType);
+    dataset.create(*this, datasetName, dims, chunkDims, dataType);
     return dataset;
 }
 
-PLI::HDF5::Dataset PLI::HDF5::openDataset(const Object &parentPtr,
-                                          const std::string &datasetName) {
+PLI::HDF5::Dataset
+PLI::HDF5::Folder::openDataset(const std::string &datasetName) {
     PLI::HDF5::Dataset dataset;
-    dataset.open(parentPtr, datasetName);
+    dataset.open(*this, datasetName);
     return dataset;
 }
 
-void PLI::HDF5::Dataset::open(const Object &parentPtr,
+void PLI::HDF5::Dataset::open(const Folder &parentPtr,
                               const std::string &datasetName) {
     checkHDF5Ptr(parentPtr, "PLI::HDF5::Dataset::open");
     if (!exists(parentPtr, datasetName)) {
@@ -54,7 +53,7 @@ void PLI::HDF5::Dataset::open(const Object &parentPtr,
     this->m_communicator = parentPtr.communicator();
 }
 
-bool PLI::HDF5::Dataset::exists(const Object &parentPtr,
+bool PLI::HDF5::Dataset::exists(const Folder &parentPtr,
                                 const std::string &datasetName) {
     checkHDF5Ptr(parentPtr, "PLI::HDF5::Dataset::exists");
     return H5Lexists(parentPtr, datasetName.c_str(), H5P_DEFAULT) > 0;
@@ -85,7 +84,7 @@ std::vector<size_t> PLI::HDF5::Dataset::chunkDims() const {
     return std::vector<size_t>(_chunkDims.begin(), _chunkDims.end());
 }
 
-void PLI::HDF5::Dataset::create(const Object &parentPtr,
+void PLI::HDF5::Dataset::create(const Folder &parentPtr,
                                 const std::string &datasetName,
                                 const std::vector<size_t> &dims,
                                 const std::vector<size_t> &chunkDims,

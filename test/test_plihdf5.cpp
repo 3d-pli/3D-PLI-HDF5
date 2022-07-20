@@ -42,7 +42,7 @@ class PLIMTest : public ::testing::Test {
         _file = PLI::HDF5::createFile(
             _filePath, PLI::HDF5::File::CreateState::OverrideExisting,
             MPI_COMM_WORLD);
-        _group = PLI::HDF5::createGroup(_file, "Group");
+        _group = _file.createGroup("Group");
         _attributeHandler = PLI::HDF5::AttributeHandler(_group);
     }
 
@@ -81,7 +81,7 @@ TEST_F(PLIMTest, AddSoftwareRevision) {}
 TEST_F(PLIMTest, AddSoftwareParameters) {}
 
 TEST_F(PLIMTest, CopyAfterCreation) {
-    auto _group2 = PLI::HDF5::createGroup(_file, "test_group2");
+    auto _group2 = _file.createGroup("test_group2");
     auto _attrHandler2 = PLI::HDF5::AttributeHandler(_group2);
 
     auto _plim = PLI::PLIM(_attributeHandler);
