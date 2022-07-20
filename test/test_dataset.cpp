@@ -177,7 +177,8 @@ TEST(PLI_HDF5_Dataset_, write_mpi_toggle) {
 
     if (rank == 0) { // Write with only one rank when using MPI
         try {
-            PLI::HDF5::File file = PLI::HDF5::createFile(_filePath);
+            PLI::HDF5::File file = PLI::HDF5::createFile(
+                _filePath, PLI::HDF5::File::CreateState::OverrideExisting);
             auto dset = PLI::HDF5::createDataset<float>(file, "/Image_0", _dims,
                                                         _chunk_dims);
             const std::vector<float> data(std::accumulate(

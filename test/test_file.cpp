@@ -227,7 +227,9 @@ TEST_F(PLI_HDF5_File, SequentialFile) {
 
         if (rank == 0) {
             PLI::HDF5::File h5f;
-            EXPECT_NO_THROW(h5f = PLI::HDF5::createFile(_filePath));
+            EXPECT_NO_THROW(
+                h5f = PLI::HDF5::createFile(
+                    _filePath, PLI::HDF5::File::CreateState::OverrideExisting));
             ASSERT_FALSE(h5f.usesMPIFileAccess());
             h5f.close();
         }
