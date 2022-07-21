@@ -1,3 +1,24 @@
+# v2.0.0
+## Added
+    - Added automatic test pipeline in GitLab instances
+    - The project now uses pre-commit hooks for formatting and linting
+    - Added config file and config class containing information for PLI::PLIM
+    - Added methods to enable / disable HDF5 exception output. Default = enabled
+
+## Changed
+    - Using MPI is now optional. When creating a file, one can specify the MPI_Comm to choose which processes will read / write a file. This communicator will be transferred through all nested objects.
+    - Removed PLI::HDF5::create[...] and PLI::HDF5::open[...] in favour of direct class methods.
+    - Changed default coding format from Google to LLVM
+    - Refactoring of the toolbox (especially CMakeFiles) to improve readability
+    - Changed hsize_t to size_t throughout the toolbox to prevent that users have to import hdf5.h only for hsize_t
+    - Changed SHA256 to SHA512
+
+## Fixed
+    - Added exception if chunk size is smaller than dataset size
+    - Fixed issue resulting in wrong read datasets if the dataset is larger than 2.1B pixels.
+    - Fix issues where HDF5 headers were not found when using PLIHDF5
+    - Fix issues where attributes were not written as scalar / vector when expected.
+
 # v1.0.1
 ## Added
 - Added methods in PLI::HDF5::Dataset
