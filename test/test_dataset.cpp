@@ -145,7 +145,7 @@ TEST_F(PLI_HDF5_Dataset, write) {
         const std::vector<float> data(std::accumulate(
             _dims.begin(), _dims.end(), 1, std::multiplies<std::size_t>()));
         const std::vector<size_t> offset{{0, 0, 0}};
-        EXPECT_NO_THROW(dset.write(data.data(), offset, _dims, type));
+        EXPECT_NO_THROW(dset.write(data.data(), offset, _dims, {}, type));
     }
 
     { // Call other write / create methods
