@@ -136,9 +136,14 @@ void PLI::HDF5::Dataset::create(const Folder &parentPtr,
 void PLI::HDF5::Dataset::write(const void *data,
                                const std::vector<size_t> &offset,
                                const std::vector<size_t> &dims,
+                               const std::vector<size_t> &stride,
                                const PLI::HDF5::Type &type) {
     std::vector<hsize_t> _dims(dims.begin(), dims.end());
     std::vector<hsize_t> _offset(offset.begin(), offset.end());
+    std::vector<hsize_t> _stride(offset.size(), 1);
+    if (!stride.empty()) {
+        _stride = std::vector<hsize_t>(stride.begin(), stride.end());
+    }
 
     if (offset.size() != dims.size()) {
         throw Exceptions::HDF5RuntimeException(
@@ -151,8 +156,8 @@ void PLI::HDF5::Dataset::write(const void *data,
 
     hid_t xf_id = createXfID();
     checkHDF5Call(H5Sselect_hyperslab(dataSpacePtr, H5S_SELECT_SET,
-                                      _offset.data(), nullptr, _dims.data(),
-                                      nullptr),
+                                      _offset.data(), _stride.data(),
+                                      _dims.data(), nullptr),
                   "H5Sselect_hyperslab");
 
     hid_t memspacePtr = H5Screate_simple(_dims.size(), _dims.data(), nullptr);

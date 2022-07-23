@@ -217,7 +217,8 @@ class Dataset : public Object {
      */
     template <typename T>
     std::vector<T> read(const std::vector<size_t> &offset,
-                        const std::vector<size_t> &count) const;
+                        const std::vector<size_t> &count,
+                        const std::vector<size_t> &stride = {}) const;
 
     /**
      * @brief Write a sub-dataset.
@@ -244,7 +245,8 @@ class Dataset : public Object {
      */
     template <typename T>
     void write(const std::vector<T> &data, const std::vector<size_t> &offset,
-               const std::vector<size_t> &dims);
+               const std::vector<size_t> &dims,
+               const std::vector<size_t> &stride = {});
 
     /**
      * @brief Write a sub-dataset.
@@ -271,7 +273,8 @@ class Dataset : public Object {
      */
     template <typename T>
     void write(const void *data, const std::vector<size_t> &offset,
-               const std::vector<size_t> &dims);
+               const std::vector<size_t> &dims,
+               const std::vector<size_t> &stride = {});
 
     /**
      * @brief Write a sub-dataset.
@@ -295,7 +298,8 @@ class Dataset : public Object {
      * pointer is invalid.
      */
     void write(const void *data, const std::vector<size_t> &offset,
-               const std::vector<size_t> &dims, const PLI::HDF5::Type &type);
+               const std::vector<size_t> &dims,
+               const std::vector<size_t> &stride, const PLI::HDF5::Type &type);
 
     /**
      * @brief Get the type of the dataset.

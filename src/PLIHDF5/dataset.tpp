@@ -53,10 +53,15 @@ std::vector<T> PLI::HDF5::Dataset::readFullDataset() const {
 template <typename T>
 std::vector<T>
 PLI::HDF5::Dataset::read(const std::vector<size_t> &offset,
-                         const std::vector<size_t> &count) const {
+                         const std::vector<size_t> &count,
+                         const std::vector<size_t> &stride) const {
     // Convert offset and count to hsize_t arrays for H5Sselect_hyperslab
     std::vector<hsize_t> _offset(offset.begin(), offset.end());
     std::vector<hsize_t> _count(count.begin(), count.end());
+    std::vector<hsize_t> _stride(offset.size(), 1);
+    if (!stride.empty()) {
+        _stride = std::vector<hsize_t>(stride.begin(), stride.end());
+    }
 
     checkHDF5Ptr(this->m_id, "Dataset ID");
     hid_t dataspacePtr = H5Dget_space(this->m_id);
@@ -72,7 +77,7 @@ PLI::HDF5::Dataset::read(const std::vector<size_t> &offset,
 
     hid_t xf_id = createXfID();
     checkHDF5Call(H5Sselect_hyperslab(dataspacePtr, H5S_SELECT_SET,
-                                      _offset.data(), nullptr, _count.data(),
+                                      _offset.data(), _stride.data(), _count.data(),
                                       nullptr),
                   "H5Sselect_hyperslab");
     checkHDF5Call(H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr,
@@ -88,13 +93,15 @@ PLI::HDF5::Dataset::read(const std::vector<size_t> &offset,
 template <typename T>
 void PLI::HDF5::Dataset::write(const std::vector<T> &data,
                                const std::vector<size_t> &offset,
-                               const std::vector<size_t> &dims) {
-    this->write<T>(data.data(), offset, dims);
+                               const std::vector<size_t> &dims,
+                               const std::vector<size_t> &stride) {
+    this->write<T>(data.data(), offset, dims, stride);
 }
 
 template <typename T>
 void PLI::HDF5::Dataset::write(const void *data,
                                const std::vector<size_t> &offset,
-                               const std::vector<size_t> &dims) {
-    this->write(data, offset, dims, PLI::HDF5::Type::createType<T>());
+                               const std::vector<size_t> &dims,
+                               const std::vector<size_t> &stride) {
+    this->write(data, offset, dims, stride, PLI::HDF5::Type::createType<T>());
 }
