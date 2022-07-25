@@ -85,8 +85,8 @@ class File : public Folder {
      * Create a new file. Per default, the file is created with
      * MPI file access.
      * @param fileName File name.
-     * @param useMPIFileAccess If true, the file will be opened with MPI access.
-     * Actions need to be done collectively.
+     * @param communicator If an MPI_Comm is set, the file will be opened with
+     * MPI access. Actions need to be done collectively.
      * @throw PLI::HDF5::Exceptions::FileExistsException If the file already
      * exists.
      * @throw PLI::HDF5::Exceptions::IdentifierNotValidException If the file
@@ -110,8 +110,8 @@ class File : public Folder {
      * @param openState OpenState variable. Available values are
      * PLI::HDF5::File::OpenState::ReadOnly and
      * PLI::HDF5::File::OpenState::ReadWrite.
-     * @param useMPIFileAccess If true, the file will be opened with MPI access.
-     * Actions need to be done collectively.
+     * @param communicator If an MPI_Comm is set, the file will be opened with
+     * MPI access.
      * @throws PLI::HDF5::Exceptions::FileNotFoundException If the file doesn't
      * exist.
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the file
@@ -189,8 +189,8 @@ class File : public Folder {
  * Create a new file object. Per default, the file is created with
  * MPI file access.
  * @param fileName File name.
- * @param useMPIFileAccess If true, the file will be opened with MPI access.
- * Actions need to be done collectively.
+ * @param communicator If an MPI_Comm is set, the file will be opened with MPI
+ * access.
  * @return PLI::HDF5::File File object, if successful.
  * @throw PLI::HDF5::Exceptions::FileExistsException If the file already
  * exists.
@@ -217,8 +217,8 @@ PLI::HDF5::File createFile(const std::string &fileName,
  * @param openState OpenState variable. Available values are
  * PLI::HDF5::File::OpenState::ReadOnly and
  * PLI::HDF5::File::OpenState::ReadWrite.
- * @param useMPIFileAccess If true, the file will be opened with MPI access.
- * Actions need to be done collectively.
+ * @param communicator If an MPI_Comm is set, the file will be opened with MPI
+ * access.
  * @return PLI::HDF5::File File object if successful.
  * @throws PLI::HDF5::Exceptions::FileNotFoundException If the file doesn't
  * exist.

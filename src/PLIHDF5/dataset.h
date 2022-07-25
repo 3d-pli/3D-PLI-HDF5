@@ -182,8 +182,6 @@ class Dataset : public Object {
      * @tparam T Supported data types are: bool, char, unsigned char, short,
      * unsigned short, int, unsigned int, long, unsigned long, long long,
      * unsigned long long, float, double, long double.
-     * @param useMPIFileAccess If true, the file will be read with MPI access.
-     * Actions need to be done collectively.
      * @return std::vector<T> 1D vector with the data.
      * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
      * not be read.
@@ -207,8 +205,7 @@ class Dataset : public Object {
      * unsigned long long, float, double, long double.
      * @param offset Offset in each dimension.
      * @param count Number of elements to read in each dimension.
-     *  * @param useMPIFileAccess If true, the dataset will be read with MPI
-     * access. Actions need to be done collectively.
+     * @param stride Stride between each element
      * @return std::vector<T> 1D vector with the data.
      * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
      * not be read.
@@ -236,8 +233,7 @@ class Dataset : public Object {
      * @param data Data to write.
      * @param offset Offset in each dimension.
      * @param dims Number of elements to write in each dimension.
-     * @param useMPIFileAccess If true, the dataset will be written with MPI
-     * access. Actions need to be done collectively.
+     * @param stride Stride between each element
      * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
      * not be written.
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
@@ -264,8 +260,7 @@ class Dataset : public Object {
      * @param data Data to write.
      * @param offset Offset in each dimension.
      * @param dims Number of elements to write in each dimension.
-     * @param useMPIFileAccess If true, the dataset will be written with MPI
-     * access. Actions need to be done collectively.
+     * @param stride Stride between each element
      * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
      * not be written.
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
@@ -289,9 +284,8 @@ class Dataset : public Object {
      * @param data Data to write.
      * @param offset Offset in each dimension.
      * @param dims Number of elements to write in each dimension.
+     * @param stride Stride between each element
      * @param type Datatype of the data.
-     * @param useMPIFileAccess If true, the dataset will be written with MPI
-     * access. Actions need to be done collectively.
      * @throws PLI::HDF5::Exceptions::HDF5RuntimeException If the dataset could
      * not be written.
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the dataset
