@@ -25,7 +25,7 @@
 
 #include "PLIHDF5/link.h"
 
-H5L_info_t PLI::HDF5::Link::getLinkInfo(const hid_t parentPtr,
+H5L_info_t PLI::HDF5::Link::getLinkInfo(const Folder &parentPtr,
                                         const std::string &path) {
     H5L_info_t linkInfo;
     checkHDF5Ptr(parentPtr, "getLinkInfo");
@@ -34,7 +34,7 @@ H5L_info_t PLI::HDF5::Link::getLinkInfo(const hid_t parentPtr,
     return linkInfo;
 }
 
-void PLI::HDF5::Link::createSoft(const hid_t parentPtr,
+void PLI::HDF5::Link::createSoft(const Folder &parentPtr,
                                  const std::string &srcPath,
                                  const std::string &dstPath) {
     checkHDF5Ptr(parentPtr, "createSoft");
@@ -43,7 +43,7 @@ void PLI::HDF5::Link::createSoft(const hid_t parentPtr,
                   "H5Lcreate_soft");
 }
 
-void PLI::HDF5::Link::createHard(const hid_t parentPtr,
+void PLI::HDF5::Link::createHard(const Folder &parentPtr,
                                  const std::string &srcPath,
                                  const std::string &dstPath) {
     checkHDF5Ptr(parentPtr, "createHard");
@@ -52,7 +52,7 @@ void PLI::HDF5::Link::createHard(const hid_t parentPtr,
                   "H5Lcreate_hard");
 }
 
-void PLI::HDF5::Link::createExternal(const hid_t parentPtr,
+void PLI::HDF5::Link::createExternal(const Folder &parentPtr,
                                      const std::string &externalPath,
                                      const std::string &srcPath,
                                      const std::string &dstPath) {
@@ -63,33 +63,33 @@ void PLI::HDF5::Link::createExternal(const hid_t parentPtr,
                   "H5Lcreate_external");
 }
 
-bool PLI::HDF5::Link::exists(const hid_t parentPtr, const std::string &path) {
+bool PLI::HDF5::Link::exists(const Folder &parentPtr, const std::string &path) {
     checkHDF5Ptr(parentPtr, "exists");
     return H5Lexists(parentPtr, path.c_str(), H5P_DEFAULT) > 0;
 }
 
-bool PLI::HDF5::Link::isSoftLink(const hid_t parentPtr,
+bool PLI::HDF5::Link::isSoftLink(const Folder &parentPtr,
                                  const std::string &path) {
     return getLinkInfo(parentPtr, path).type == H5L_TYPE_SOFT;
 }
 
-bool PLI::HDF5::Link::isHardLink(const hid_t parentPtr,
+bool PLI::HDF5::Link::isHardLink(const Folder &parentPtr,
                                  const std::string &path) {
     return getLinkInfo(parentPtr, path).type == H5L_TYPE_HARD;
 }
 
-bool PLI::HDF5::Link::isExternalLink(const hid_t parentPtr,
+bool PLI::HDF5::Link::isExternalLink(const Folder &parentPtr,
                                      const std::string &path) {
     return getLinkInfo(parentPtr, path).type == H5L_TYPE_EXTERNAL;
 }
 
-void PLI::HDF5::Link::deleteLink(const hid_t parentPtr,
+void PLI::HDF5::Link::deleteLink(const Folder &parentPtr,
                                  const std::string &path) {
     checkHDF5Ptr(parentPtr, "deleteLink");
     checkHDF5Call(H5Ldelete(parentPtr, path.c_str(), H5P_DEFAULT), "H5Ldelete");
 }
 
-void PLI::HDF5::Link::moveLink(const hid_t parentPtr,
+void PLI::HDF5::Link::moveLink(const Folder &parentPtr,
                                const std::string &srcPath,
                                const std::string &dstPath) {
     checkHDF5Ptr(parentPtr, "moveLink");
@@ -98,7 +98,7 @@ void PLI::HDF5::Link::moveLink(const hid_t parentPtr,
                   "H5Lmove");
 }
 
-void PLI::HDF5::Link::copyLink(const hid_t parentPtr,
+void PLI::HDF5::Link::copyLink(const Folder &parentPtr,
                                const std::string &srcPath,
                                const std::string &dstPath) {
     checkHDF5Ptr(parentPtr, "copyLink");

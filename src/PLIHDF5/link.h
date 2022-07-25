@@ -31,6 +31,7 @@
 #include <string>
 
 #include "PLIHDF5/exceptions.h"
+#include "PLIHDF5/object.h"
 
 /**
  * @brief The PLI namespace
@@ -51,7 +52,7 @@ class Link {
      * @param srcPath Path to the source object
      * @param dstPath Destination path of the link
      */
-    static void createSoft(const hid_t parentPtr, const std::string &srcPath,
+    static void createSoft(const Folder &parentPtr, const std::string &srcPath,
                            const std::string &dstPath);
     /**
      * @brief Create a hard link inside a HDF5 file
@@ -59,7 +60,7 @@ class Link {
      * @param srcPath Path to the source object
      * @param dstPath Destination path of the link
      */
-    static void createHard(const hid_t parentPtr, const std::string &srcPath,
+    static void createHard(const Folder &parentPtr, const std::string &srcPath,
                            const std::string &dstPath);
     /**
      * @brief Create an external link from one HDF5 file to another
@@ -68,11 +69,11 @@ class Link {
      * @param srcPath Path to the source object in the external file
      * @param dstPath Destination path of the link
      */
-    static void createExternal(const hid_t parentPtr,
+    static void createExternal(const Folder &parentPtr,
                                const std::string &externalPath,
                                const std::string &srcPath,
                                const std::string &dstPath);
-    static H5L_info_t getLinkInfo(const hid_t parentPtr,
+    static H5L_info_t getLinkInfo(const Folder &parentPtr,
                                   const std::string &path);
     /**
      * @brief Checks if a link exists
@@ -81,7 +82,7 @@ class Link {
      * @return true If it exists
      * @return false If it doesn't exist
      */
-    static bool exists(const hid_t parentPtr, const std::string &path);
+    static bool exists(const Folder &parentPtr, const std::string &path);
     /**
      * @brief Checks if a link is a soft link
      * @param parentPtr File or group identifier
@@ -89,7 +90,7 @@ class Link {
      * @return true It is a soft link
      * @return false It is not a soft link
      */
-    static bool isSoftLink(const hid_t parentPtr, const std::string &path);
+    static bool isSoftLink(const Folder &parentPtr, const std::string &path);
     /**
      * @brief Checks if a link is a hard link
      * @param parentPtr File or group identifier
@@ -97,7 +98,7 @@ class Link {
      * @return true It is a hard link
      * @return false It is not a hard link
      */
-    static bool isHardLink(const hid_t parentPtr, const std::string &path);
+    static bool isHardLink(const Folder &parentPtr, const std::string &path);
     /**
      * @brief Checks if a link is an external link
      * @param parentPtr File or group identifier
@@ -105,20 +106,21 @@ class Link {
      * @return true It is an external link
      * @return false It is not an external link
      */
-    static bool isExternalLink(const hid_t parentPtr, const std::string &path);
+    static bool isExternalLink(const Folder &parentPtr,
+                               const std::string &path);
     /**
      * @brief Removes a link from a HDF5 file
      * @param parentPtr File or group identifier
      * @param path Path to the link
      */
-    static void deleteLink(const hid_t parentPtr, const std::string &path);
+    static void deleteLink(const Folder &parentPtr, const std::string &path);
     /**
      * @brief Moves link inside of an HDF5 file.
      * @param parentPtr File or group identifier
      * @param srcPath Source link path
      * @param dstPath Destination link path
      */
-    static void moveLink(const hid_t parentPtr, const std::string &srcPath,
+    static void moveLink(const Folder &parentPtr, const std::string &srcPath,
                          const std::string &dstPath);
     /**
      * @brief Copies link inside of an HDF5 file.
@@ -126,7 +128,7 @@ class Link {
      * @param srcPath Source link path
      * @param dstPath Destination link path
      */
-    static void copyLink(const hid_t parentPtr, const std::string &srcPath,
+    static void copyLink(const Folder &parentPtr, const std::string &srcPath,
                          const std::string &dstPath);
 };
 } // namespace HDF5
