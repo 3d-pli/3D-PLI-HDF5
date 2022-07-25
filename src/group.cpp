@@ -26,7 +26,7 @@
 #include "PLIHDF5/group.h"
 #include <iostream>
 
-void PLI::HDF5::Group::open(const Object &parentPtr,
+void PLI::HDF5::Group::open(const Folder &parentPtr,
                             const std::string &groupName) {
     checkHDF5Ptr(parentPtr, "Group::open");
     if (!PLI::HDF5::Group::exists(parentPtr, groupName)) {
@@ -38,7 +38,7 @@ void PLI::HDF5::Group::open(const Object &parentPtr,
     this->m_id = groupPtr;
 }
 
-void PLI::HDF5::Group::create(const Object &parentPtr,
+void PLI::HDF5::Group::create(const Folder &parentPtr,
                               const std::string &groupName) {
     checkHDF5Ptr(parentPtr, "Group::create");
     if (PLI::HDF5::Group::exists(parentPtr, groupName)) {
@@ -51,7 +51,7 @@ void PLI::HDF5::Group::create(const Object &parentPtr,
     this->m_id = groupPtr;
 }
 
-bool PLI::HDF5::Group::exists(const Object &parentPtr,
+bool PLI::HDF5::Group::exists(const Folder &parentPtr,
                               const std::string &groupName) {
     checkHDF5Ptr(parentPtr, "Group::exists");
     return H5Lexists(parentPtr, groupName.c_str(), H5P_DEFAULT) > 0;
@@ -64,7 +64,7 @@ PLI::HDF5::Group::Group(const hid_t groupPtr,
 PLI::HDF5::Group::Group(const Group &group) noexcept
     : PLI::HDF5::Folder(group.id(), group.communicator()) {}
 
-PLI::HDF5::Group::Group() noexcept { PLI::HDF5::Object(); }
+PLI::HDF5::Group::Group() noexcept : PLI::HDF5::Folder() {}
 
 PLI::HDF5::Group &
 PLI::HDF5::Group::operator=(const PLI::HDF5::Group &otherGroup) noexcept {

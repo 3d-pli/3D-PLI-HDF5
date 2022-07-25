@@ -80,36 +80,36 @@ class Group : public Folder {
      *
      * Open an existing group. If the group does not exist, an exception is
      * thrown.
-     * @param parentPtr Pointer to the parent group or file.
+     * @param parentPtr Instance of parent group or file.
      * @param groupName Name of the group to open.
      * @throws PLI::HDF5::Exceptions::GroupNotFoundException If the group does
      * not exist.
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If opening the
      * group fails or the parentPtr is invalid.
      */
-    void open(const Object &parentPtr, const std::string &groupName);
+    void open(const Folder &parentPtr, const std::string &groupName);
     /**
      * @brief Creates a group
      *
      * Create a new group. If the group already exists, an exception is thrown.
-     * @param parentPtr Pointer to the parent group or file.
+     * @param parentPtr Instance of parent group or file.
      * @param groupName Name of the group to create.
      * @throws PLI::HDF5::Exceptions::GroupExistsException If the group already
      * exists.
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If creating
      * the group fails or the parentPtr is invalid.
      */
-    void create(const Object &parentPtr, const std::string &groupName);
+    void create(const Folder &parentPtr, const std::string &groupName);
     /**
      * @brief Checks if the group exists
-     * @param parentPtr Pointer to the parent group or file
+     * @param parentPtr Instance of parent group or file.
      * @param groupName Name of the group to check.
      * @return true If the group exists.
      * @return false If the group does not exist.
      * @throws PLI::HDF5::Exceptions::IdentifierNotValidException If the
      * parentPtr is invalid.
      */
-    static bool exists(const Object &parentPtr, const std::string &groupName);
+    static bool exists(const Folder &parentPtr, const std::string &groupName);
     Group &operator=(const PLI::HDF5::Group &otherGroup) noexcept;
 };
 
