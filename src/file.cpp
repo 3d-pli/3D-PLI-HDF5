@@ -131,6 +131,7 @@ PLI::HDF5::File::File(const hid_t filePtr, const hid_t faplID)
     } else {
         this->m_communicator = communicator;
     }
+    checkHDF5Call(H5Iinc_ref(this->m_faplID), "H5Iinc_ref");
 }
 
 PLI::HDF5::File &PLI::HDF5::File::operator=(const File &other) noexcept {
