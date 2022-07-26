@@ -72,7 +72,6 @@ PLI::HDF5::Group::operator=(const PLI::HDF5::Group &otherGroup) noexcept {
 
     this->m_id = otherGroup.id();
     checkHDF5Call(H5Iinc_ref(m_id), "H5Iinc_ref");
-
     this->m_communicator = otherGroup.communicator();
     return *this;
 }
