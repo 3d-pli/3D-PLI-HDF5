@@ -55,6 +55,7 @@ set(PLIHDF5_HEADERS
     PLIHDF5/plihdf5.h
     PLIHDF5/sha512.h
     PLIHDF5/type.h
+    PLIHDF5/chunking.h
     PLIHDF5/config.h
     PLIHDF5/object.h)
 
@@ -67,6 +68,7 @@ set(PLIHDF5_SOURCES
     dataset.cpp
     link.cpp
     type.cpp
+    chunking.cpp
     sha512.cpp
     exceptions.cpp
     object.cpp)

@@ -32,8 +32,10 @@
 #include <algorithm>
 #include <numeric>
 #include <string>
+#include <tuple>
 #include <vector>
 
+#include "PLIHDF5/chunking.h"
 #include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/object.h"
 #include "PLIHDF5/type.h"
@@ -322,6 +324,11 @@ class Dataset : public Object {
     const std::vector<size_t> dims() const;
 
     Dataset &operator=(const PLI::HDF5::Dataset &other) noexcept;
+
+    std::vector<std::tuple<std::vector<hsize_t>, std::vector<hsize_t>>>
+    getChunkOffsets();
+
+    std::vector<hid_t> getChunkHyperslabs();
 
   private:
     hid_t createXfID() const;

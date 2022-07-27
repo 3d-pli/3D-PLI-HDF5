@@ -25,46 +25,18 @@
 
 #pragma once
 
-#include <hdf5.h>
-#include <hdf5_hl.h>
-
-#include <string>
+#include <optional>
+#include <tuple>
+#include <vector>
 
 #include "PLIHDF5/exceptions.h"
+#include "PLIHDF5/type.h"
 
-/**
- * @brief The PLI namespace
- */
 namespace PLI {
-/**
- * @brief The HDF5 namespace
- */
 namespace HDF5 {
-class Type {
-  public:
-    template <typename T> static PLI::HDF5::Type createType();
-
-    explicit Type(const std::string &typeName);
-    explicit Type(const hid_t typeID);
-    Type(const Type &type);
-
-    operator hid_t() const;
-    operator std::string() const;
-    bool operator==(const Type &other) const;
-    bool operator!=(const Type &other) const;
-    Type &operator=(const Type &other);
-
-  private:
-    static std::string convertIDToName(const hid_t ID);
-    static hid_t convertNameToID(const std::string &name);
-
-    hid_t m_typeID;
-};
-
-// TODO(all): different namespace/file?
-template <typename T, typename U> T container_cast(U &&input) {
-    return T(std::begin(input), std::end(input));
-}
-
+std::vector<std::tuple<std::vector<hsize_t>, std::vector<hsize_t>>>
+chunkedOffsets(const std::vector<hsize_t> &dataDims,
+               const std::vector<hsize_t> &chunkDims,
+               std::optional<const std::vector<hsize_t>> chunkOffset = {});
 } // namespace HDF5
 } // namespace PLI
