@@ -25,11 +25,11 @@
 
 #include "PLIHDF5/chunking.h"
 
-std::vector<std::tuple<std::vector<hsize_t>, std::vector<hsize_t>>>
-PLI::HDF5::chunkedOffsets(
+std::vector<PLI::HDF5::ChunkParam> PLI::HDF5::chunkedOffsets(
     const std::vector<hsize_t> &dataDims, const std::vector<hsize_t> &chunkDims,
     std::optional<const std::vector<hsize_t>> chunkOffset) {
-    std::vector<std::tuple<std::vector<hsize_t>, std::vector<hsize_t>>> result;
+
+    std::vector<PLI::HDF5::ChunkParam> result;
 
     if (dataDims.size() < 2)
         throw PLI::HDF5::Exceptions::DimensionMismatchException(
@@ -48,7 +48,7 @@ PLI::HDF5::chunkedOffsets(
                 count[i] = dataDims[i] - offset[i];
         }
 
-        result.push_back(std::make_tuple(offset, count));
+        result.push_back(PLI::HDF5::ChunkParam(offset, count));
 
         // increment offset at correct dimension, begin with last
         auto i = static_cast<int64_t>(dataDims.size()) - 1;

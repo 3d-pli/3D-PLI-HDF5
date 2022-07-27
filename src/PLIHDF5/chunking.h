@@ -26,7 +26,6 @@
 #pragma once
 
 #include <optional>
-#include <tuple>
 #include <vector>
 
 #include "PLIHDF5/exceptions.h"
@@ -34,7 +33,17 @@
 
 namespace PLI {
 namespace HDF5 {
-std::vector<std::tuple<std::vector<hsize_t>, std::vector<hsize_t>>>
+
+struct ChunkParam {
+    ChunkParam(const std::vector<hsize_t> &offset_,
+               const std::vector<hsize_t> &dim_)
+        : offset(offset_), dim(dim_){};
+
+    std::vector<hsize_t> offset;
+    std::vector<hsize_t> dim;
+};
+
+std::vector<ChunkParam>
 chunkedOffsets(const std::vector<hsize_t> &dataDims,
                const std::vector<hsize_t> &chunkDims,
                std::optional<const std::vector<hsize_t>> chunkOffset = {});

@@ -325,8 +325,7 @@ class Dataset : public Object {
 
     Dataset &operator=(const PLI::HDF5::Dataset &other) noexcept;
 
-    std::vector<std::tuple<std::vector<hsize_t>, std::vector<hsize_t>>>
-    getChunkOffsets();
+    std::vector<PLI::HDF5::ChunkParam> getChunkOffsets();
 
     std::vector<hid_t> getChunkHyperslabs();
 

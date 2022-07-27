@@ -30,7 +30,7 @@ foreach(file ${files})
   set_property(
     TARGET ${test_name}
     PROPERTY CROSSCOMPILING_EMULATOR
-             '${MPIEXEC_EXECUTABLE} --oversubscribe ${MPIEXEC_NUMPROC_FLAG} 4')
+             '${MPIEXEC_EXECUTABLE} --oversubscribe ${MPIEXEC_NUMPROC_FLAG} 1')
   gtest_discover_tests(${test_name})
 endforeach()
 

@@ -235,8 +235,7 @@ hid_t PLI::HDF5::Dataset::createXfID() const {
     return xf_id;
 }
 
-std::vector<std::tuple<std::vector<hsize_t>, std::vector<hsize_t>>>
-PLI::HDF5::Dataset::getChunkOffsets() {
+std::vector<PLI::HDF5::ChunkParam> PLI::HDF5::Dataset::getChunkOffsets() {
     // read metadata
     const auto dims =
         PLI::HDF5::container_cast<std::vector<hsize_t>>(this->dims());
@@ -251,11 +250,11 @@ std::vector<hid_t> PLI::HDF5::Dataset::getChunkHyperslabs() {
     const auto dims = this->dims();
     const std::vector<hsize_t> dims_(dims.begin(), dims.end());
 
-    for (auto &elm : this->getChunkOffsets()) {
+    for (auto &chunk : this->getChunkOffsets()) {
         // define hyperslab
         hid_t dataspace = H5Screate_simple(dims_.size(), dims_.data(), nullptr);
-        H5Sselect_hyperslab(dataspace, H5S_SELECT_SET, std::get<0>(elm).data(),
-                            NULL, std::get<1>(elm).data(), NULL);
+        H5Sselect_hyperslab(dataspace, H5S_SELECT_SET, chunk.offset.data(),
+                            NULL, chunk.dim.data(), NULL);
 
         result.push_back(dataspace);
     }
