@@ -31,9 +31,14 @@ std::vector<PLI::HDF5::ChunkParam> PLI::HDF5::chunkedOffsets(
 
     std::vector<PLI::HDF5::ChunkParam> result;
 
-    if (dataDims.size() < 2)
+    if (dataDims.size() != chunkDims.size())
         throw PLI::HDF5::Exceptions::DimensionMismatchException(
-            "Dimensions not supported yet");
+            "Dimension size does not match");
+
+    if (chunkOffset.has_value())
+        if (dataDims.size() != chunkOffset.value().size())
+            throw PLI::HDF5::Exceptions::DimensionMismatchException(
+                "Dimension size does not match");
 
     const auto chunkOffset_ =
         chunkOffset.value_or(std::vector<hsize_t>(dataDims.size(), 0));

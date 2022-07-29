@@ -325,9 +325,24 @@ class Dataset : public Object {
 
     Dataset &operator=(const PLI::HDF5::Dataset &other) noexcept;
 
+    /**
+     * @brief Returns a vector of PLI::HDF5::ChunkParam of the dataset.
+     * @return vector of PLI::HDF5::ChunkParam of the dataset from the dataset
+     * chunk.
+     * @throws PLI::HDF5::Exceptions::HDF5RuntimeException if the
+     * dataset is not chunked.
+     */
     std::vector<PLI::HDF5::ChunkParam> getChunkOffsets();
 
-    std::vector<hid_t> getChunkHyperslabs();
+    /**
+     * @brief Returns a vector of PLI::HDF5::ChunkParam of the dataset.
+     * @return vector of PLI::HDF5::ChunkParam of the dataset.
+     * @param chunkDims user defined chunk dimension of the data.
+     * @throws PLI::HDF5::Exceptions::DimensionMismatchException if the
+     * the arguments dimensions are mismatched.
+     */
+    std::vector<PLI::HDF5::ChunkParam>
+    getChunkOffsets(const std::vector<hsize_t> &chunkDims);
 
   private:
     hid_t createXfID() const;
