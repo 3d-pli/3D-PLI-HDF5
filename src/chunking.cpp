@@ -26,8 +26,8 @@
 #include "PLIHDF5/chunking.h"
 
 std::vector<PLI::HDF5::ChunkParam> PLI::HDF5::chunkedOffsets(
-    const std::vector<hsize_t> &dataDims, const std::vector<hsize_t> &chunkDims,
-    std::optional<const std::vector<hsize_t>> chunkOffset) {
+    const std::vector<size_t> &dataDims, const std::vector<size_t> &chunkDims,
+    std::optional<const std::vector<size_t>> chunkOffset) {
 
     std::vector<PLI::HDF5::ChunkParam> result;
 
@@ -41,9 +41,9 @@ std::vector<PLI::HDF5::ChunkParam> PLI::HDF5::chunkedOffsets(
                 "Dimension size does not match");
 
     const auto chunkOffset_ =
-        chunkOffset.value_or(std::vector<hsize_t>(dataDims.size(), 0));
-    std::vector<hsize_t> offset = chunkOffset_;
-    std::vector<hsize_t> count(dataDims.size(), 0);
+        chunkOffset.value_or(std::vector<size_t>(dataDims.size(), 0));
+    std::vector<size_t> offset = chunkOffset_;
+    std::vector<size_t> count(dataDims.size(), 0);
 
     bool flag = true;
     while (flag) {

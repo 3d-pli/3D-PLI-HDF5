@@ -236,17 +236,10 @@ hid_t PLI::HDF5::Dataset::createXfID() const {
 }
 
 std::vector<PLI::HDF5::ChunkParam> PLI::HDF5::Dataset::getChunkOffsets() {
-    // read metadata
-    const auto chunkDims =
-        PLI::HDF5::container_cast<std::vector<hsize_t>>(this->chunkDims());
-
-    return this->getChunkOffsets(chunkDims);
+    return this->getChunkOffsets(this->chunkDims());
 }
 
 std::vector<PLI::HDF5::ChunkParam>
-PLI::HDF5::Dataset::getChunkOffsets(const std::vector<hsize_t> &chunkDims) {
-    // read metadata
-    const auto dims =
-        PLI::HDF5::container_cast<std::vector<hsize_t>>(this->dims());
-    return chunkedOffsets(dims, chunkDims);
+PLI::HDF5::Dataset::getChunkOffsets(const std::vector<size_t> &chunkDims) {
+    return chunkedOffsets(this->dims(), chunkDims);
 }

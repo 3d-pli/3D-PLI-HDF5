@@ -35,17 +35,17 @@ namespace PLI {
 namespace HDF5 {
 
 struct ChunkParam {
-    ChunkParam(const std::vector<hsize_t> &offset_,
-               const std::vector<hsize_t> &dim_)
+    ChunkParam(const std::vector<size_t> &offset_,
+               const std::vector<size_t> &dim_)
         : offset(offset_), dim(dim_){};
 
-    std::vector<hsize_t> offset;
-    std::vector<hsize_t> dim;
+    std::vector<size_t> offset;
+    std::vector<size_t> dim;
 };
 
 std::vector<ChunkParam>
-chunkedOffsets(const std::vector<hsize_t> &dataDims,
-               const std::vector<hsize_t> &chunkDims,
-               std::optional<const std::vector<hsize_t>> chunkOffset = {});
+chunkedOffsets(const std::vector<size_t> &dataDims,
+               const std::vector<size_t> &chunkDims,
+               std::optional<const std::vector<size_t>> chunkOffset = {});
 } // namespace HDF5
 } // namespace PLI

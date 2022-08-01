@@ -342,7 +342,7 @@ class Dataset : public Object {
      * the arguments dimensions are mismatched.
      */
     std::vector<PLI::HDF5::ChunkParam>
-    getChunkOffsets(const std::vector<hsize_t> &chunkDims);
+    getChunkOffsets(const std::vector<size_t> &chunkDims);
 
   private:
     hid_t createXfID() const;

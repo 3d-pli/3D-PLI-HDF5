@@ -77,8 +77,8 @@ PLI::HDF5::Dataset::read(const std::vector<size_t> &offset,
 
     hid_t xf_id = createXfID();
     checkHDF5Call(H5Sselect_hyperslab(dataspacePtr, H5S_SELECT_SET,
-                                      _offset.data(), _stride.data(), _count.data(),
-                                      nullptr),
+                                      _offset.data(), _stride.data(),
+                                      _count.data(), nullptr),
                   "H5Sselect_hyperslab");
     checkHDF5Call(H5Dread(this->m_id, returnType, memspacePtr, dataspacePtr,
                           xf_id, returnData.data()),
