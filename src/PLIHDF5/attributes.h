@@ -45,6 +45,7 @@
 
 #include "PLIHDF5/config.h"
 #include "PLIHDF5/exceptions.h"
+#include "PLIHDF5/object.h"
 #include "PLIHDF5/type.h"
 
 /**
@@ -78,12 +79,12 @@ class AttributeHandler {
      * identified by the given pointer.
      * @param parentPtr HDF5 object pointer.
      */
-    explicit AttributeHandler(const hid_t parentPtr) noexcept;
+    explicit AttributeHandler(const Object &parentPtr) noexcept;
     /**
      * @brief Set the HDF5 object pointer.
      * @param parentPtr HDF5 object pointer.
      */
-    void setPtr(const hid_t parentPtr) noexcept;
+    void setPtr(const Object &parentPtr) noexcept;
 
     /**
      * @brief Check if an attribute with the given attributeName exists in the

@@ -49,34 +49,63 @@ TEST_F(PLI_HDF5_File, Constructor) {
     EXPECT_NO_THROW(auto h5f = PLI::HDF5::File());
 
     EXPECT_NO_THROW({
-        auto h5f_0 = PLI::HDF5::File();
+        auto h5f_0 = PLI::HDF5::createFile(
+            _filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+            MPI_COMM_WORLD);
         auto h5f_1 = PLI::HDF5::File(h5f_0);
+        ASSERT_EQ(h5f_1.id(), h5f_0.id());
+        ASSERT_EQ(h5f_1.faplID(), h5f_0.faplID());
+        ASSERT_EQ(h5f_1.usesMPIFileAccess(), h5f_0.usesMPIFileAccess());
+        removeFile(_filePath);
     });
 
     EXPECT_NO_THROW({
-        auto h5f_0 = PLI::HDF5::File();
+        auto h5f_0 = PLI::HDF5::createFile(
+            _filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+            MPI_COMM_WORLD);
         auto h5f_1 = PLI::HDF5::File(h5f_0.id(), h5f_0.faplID());
+        ASSERT_EQ(h5f_1.id(), h5f_0.id());
+        ASSERT_EQ(h5f_1.faplID(), h5f_0.faplID());
+        ASSERT_EQ(h5f_1.usesMPIFileAccess(), h5f_0.usesMPIFileAccess());
+        removeFile(_filePath);
+    });
+
+    EXPECT_NO_THROW({
+        int32_t rank;
+        MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+        if (rank == 0) {
+            auto h5f_0 = PLI::HDF5::createFile(
+                _filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+                MPI_COMM_SELF);
+            auto h5f_1 = PLI::HDF5::File(h5f_0);
+            ASSERT_EQ(h5f_1.id(), h5f_0.id());
+            ASSERT_EQ(h5f_1.faplID(), h5f_0.faplID());
+            ASSERT_EQ(h5f_1.usesMPIFileAccess(), h5f_0.usesMPIFileAccess());
+        }
+        removeFile(_filePath);
     });
 }
 
 TEST_F(PLI_HDF5_File, Destructor) {
-    EXPECT_NO_THROW({ // invoke deconstroctor
-        auto h5f = PLI::HDF5::File();
+    EXPECT_NO_THROW({ // invoke deconstructor
+        auto h5f = PLI::HDF5::File(MPI_COMM_WORLD);
+        ASSERT_EQ(h5f.id(), -1);
     });
 }
 
 TEST_F(PLI_HDF5_File, Create) {
     { // create file
         auto h5f = PLI::HDF5::File();
-        h5f.create(_filePath);
+        h5f.create(_filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+                   MPI_COMM_WORLD);
         h5f.close();
     }
 
-    MPI_Barrier(MPI_COMM_WORLD);
-
     { // create existing file
         auto h5f = PLI::HDF5::File();
-        EXPECT_THROW(h5f.create(_filePath),
+        EXPECT_THROW(h5f.create(_filePath,
+                                PLI::HDF5::File::CreateState::FailIfExists,
+                                MPI_COMM_WORLD),
                      PLI::HDF5::Exceptions::FileExistsException);
     }
 }
@@ -84,7 +113,8 @@ TEST_F(PLI_HDF5_File, Create) {
 TEST_F(PLI_HDF5_File, Open) {
     { // create dummy file
         auto h5f = PLI::HDF5::File();
-        h5f.create(_filePath);
+        h5f.create(_filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+                   MPI_COMM_WORLD);
         h5f.close();
     }
 
@@ -92,15 +122,16 @@ TEST_F(PLI_HDF5_File, Open) {
 
     { // open dummy file
         auto h5f = PLI::HDF5::File();
-        EXPECT_NO_THROW(
-            h5f.open(_filePath, PLI::HDF5::File::OpenState::ReadWrite));
+        EXPECT_NO_THROW(h5f.open(
+            _filePath, PLI::HDF5::File::OpenState::ReadWrite, MPI_COMM_WORLD));
     }
 }
 
 TEST_F(PLI_HDF5_File, IsHDF5) {
     { // create dummy file
         auto h5f = PLI::HDF5::File();
-        h5f.create(_filePath);
+        h5f.create(_filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+                   MPI_COMM_WORLD);
         h5f.close();
     }
 
@@ -110,16 +141,18 @@ TEST_F(PLI_HDF5_File, IsHDF5) {
 TEST_F(PLI_HDF5_File, FileExists) {
     { // create dummy file
         auto h5f = PLI::HDF5::File();
-        h5f.create(_filePath);
+        h5f.create(_filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+                   MPI_COMM_WORLD);
+        h5f.close();
     }
-    MPI_Barrier(MPI_COMM_WORLD);
     EXPECT_TRUE(PLI::HDF5::File::fileExists(_filePath));
 }
 
 TEST_F(PLI_HDF5_File, Close) {
     EXPECT_NO_THROW({
         auto h5f = PLI::HDF5::File();
-        h5f.create(_filePath);
+        h5f.create(_filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+                   MPI_COMM_WORLD);
         h5f.close();
     });
 }
@@ -133,7 +166,8 @@ TEST_F(PLI_HDF5_File, Reopen) {
 
     EXPECT_NO_THROW({ // reopen closed file object
         auto h5f = PLI::HDF5::File();
-        h5f.create(_filePath);
+        h5f.create(_filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+                   MPI_COMM_WORLD);
         h5f.flush();
         h5f.reopen();
         h5f.close();
@@ -142,7 +176,8 @@ TEST_F(PLI_HDF5_File, Reopen) {
 
     { // reopen closed file
         auto h5f = PLI::HDF5::File();
-        h5f.create(_filePath);
+        h5f.create(_filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+                   MPI_COMM_WORLD);
         h5f.close();
         EXPECT_THROW(h5f.reopen(),
                      PLI::HDF5::Exceptions::IdentifierNotValidException);
@@ -161,7 +196,8 @@ TEST_F(PLI_HDF5_File, Flush) {
 
     EXPECT_NO_THROW({ // flush empty file
         auto h5f = PLI::HDF5::File();
-        h5f.create(_filePath);
+        h5f.create(_filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+                   MPI_COMM_WORLD);
         h5f.flush();
         h5f.close();
     });
@@ -169,16 +205,49 @@ TEST_F(PLI_HDF5_File, Flush) {
 
 TEST_F(PLI_HDF5_File, ID) {
     auto h5f = PLI::HDF5::File();
-    h5f.create(_filePath);
+    h5f.create(_filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+               MPI_COMM_WORLD);
     ASSERT_GE(h5f.id(), 0);
     h5f.close();
 }
 
 TEST_F(PLI_HDF5_File, FaplID) {
     auto h5f = PLI::HDF5::File();
-    h5f.create(_filePath);
+    h5f.create(_filePath, PLI::HDF5::File::CreateState::OverrideExisting,
+               MPI_COMM_WORLD);
     ASSERT_GE(h5f.faplID(), 0);
     h5f.close();
+}
+
+TEST_F(PLI_HDF5_File, SequentialFile) {
+    // Disable MPI
+    {
+        int32_t rank;
+        MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+        if (rank == 0) {
+            PLI::HDF5::File h5f;
+            EXPECT_NO_THROW(
+                h5f = PLI::HDF5::createFile(
+                    _filePath, PLI::HDF5::File::CreateState::OverrideExisting));
+            ASSERT_FALSE(h5f.usesMPIFileAccess());
+            h5f.close();
+        }
+
+        removeFile(_filePath);
+    }
+
+    // Enable MPI
+    {
+        PLI::HDF5::File h5f;
+        EXPECT_NO_THROW(h5f = PLI::HDF5::createFile(
+                            _filePath,
+                            PLI::HDF5::File::CreateState::OverrideExisting,
+                            MPI_COMM_WORLD));
+        ASSERT_TRUE(h5f.usesMPIFileAccess());
+        h5f.close();
+        removeFile(_filePath);
+    }
 }
 
 int main(int argc, char *argv[]) {

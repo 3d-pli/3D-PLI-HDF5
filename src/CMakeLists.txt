@@ -47,6 +47,7 @@ set(PLIHDF5_HEADERS
     PLIHDF5/attributes.h
     PLIHDF5/attributes.tpp
     PLIHDF5/dataset.h
+    PLIHDF5/dataset.tpp
     PLIHDF5/exceptions.h
     PLIHDF5/file.h
     PLIHDF5/group.h
@@ -54,7 +55,8 @@ set(PLIHDF5_HEADERS
     PLIHDF5/plihdf5.h
     PLIHDF5/sha512.h
     PLIHDF5/type.h
-    PLIHDF5/config.h)
+    PLIHDF5/config.h
+    PLIHDF5/object.h)
 
 set(PLIHDF5_SOURCES
     plihdf5.cpp
@@ -66,7 +68,8 @@ set(PLIHDF5_SOURCES
     link.cpp
     type.cpp
     sha512.cpp
-    exceptions.cpp)
+    exceptions.cpp
+    object.cpp)
 
 add_library(PLIHDF5 SHARED ${PLIHDF5_SOURCES})
 
@@ -78,7 +81,7 @@ else()
 endif()
 
 target_compile_features(
-  PLIHDF5 PRIVATE cxx_std_20 cxx_constexpr cxx_defaulted_functions
+  PLIHDF5 PRIVATE cxx_std_17 cxx_constexpr cxx_defaulted_functions
                   cxx_deleted_functions cxx_noexcept)
 target_link_libraries(PLIHDF5 ${PLIHDF5_LINK_LIBRARIES})
 

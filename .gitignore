@@ -2,6 +2,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/c++,qtcreator,clion,cmake
 # Edit at https://www.toptal.com/developers/gitignore?templates=c++,qtcreator,clion,cmake
 
+.vs/**
+
 build/**
 docs/**
 test/test_attributes.cpp
@@ -202,4 +204,3 @@ _deps
 .vscode/
 defaults.cfg
 # End of https://www.toptal.com/developers/gitignore/api/c++,qtcreator,clion,cmake
-
