@@ -19,33 +19,27 @@ class \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} wrapper class. Create and store or read data in an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} dataset. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} wrapper class. Create and / or open an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file to store or read data. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}}
+\item 
 class \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}}
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} wrapper class. Create and / or open an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} group. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link}{Link}}
 \begin{DoxyCompactList}\small\item\em Static class to create and manage links. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object}{Object}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object}{Object}} class Each \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file contains groups, datasets and attributes. Each one can be described through an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object}{Object}} (H5O). This class offers a small wrapper to help with other \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} functionality. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{Type}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \mbox{\hyperlink{namespacePLI_1_1HDF5_ab40573c6538568ac633f7e87f8fa9159}{open\+Dataset}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name)
-\begin{DoxyCompactList}\small\item\em Open an existing dataset. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \mbox{\hyperlink{namespacePLI_1_1HDF5_acfad7de8893ad7b0e576d097adec734d}{create\+Dataset}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name, const std\+::vector$<$ size\+\_\+t $>$ \&dims, const std\+::vector$<$ size\+\_\+t $>$ \&chunk\+Dims=\{\})
-\begin{DoxyCompactList}\small\item\em Create a new dataset with the given name. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \mbox{\hyperlink{namespacePLI_1_1HDF5_aebf90116fc7708e9b85834cf5c612717}{create\+Dataset}} (const hid\+\_\+t parent\+Ptr, const std\+::string \&dataset\+Name, const std\+::vector$<$ size\+\_\+t $>$ \&dims, const std\+::vector$<$ size\+\_\+t $>$ \&chunk\+Dims=\{\}, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&data\+Type=\mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}{PLI\+::\+HDF5\+::\+Type\+::create\+Type}}$<$ float $>$())
-\begin{DoxyCompactList}\small\item\em Create a new dataset with the given name. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacePLI_1_1HDF5_ac221711f37b19deb37331fc25e818729}{check\+HDF5\+Call}} (const herr\+\_\+t hdf5\+Return\+Value, const std\+::string \&message=\char`\"{}None\char`\"{})
 \item 
 void \mbox{\hyperlink{namespacePLI_1_1HDF5_a7bece20d07576e8ec3feb4a16a3ce38b}{check\+HDF5\+Ptr}} (const hid\+\_\+t hdf5\+Ptr, const std\+::string \&message=\char`\"{}None\char`\"{})
 \item 
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} \mbox{\hyperlink{namespacePLI_1_1HDF5_a7036041ef51baaaea1f3aa1263a765f7}{create\+File}} (const std\+::string \&file\+Name)
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} \mbox{\hyperlink{namespacePLI_1_1HDF5_a6942c04eaedfc39985b1e7bd5e89b297}{create\+File}} (const std\+::string \&file\+Name, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7}{PLI\+::\+HDF5\+::\+File\+::\+Create\+State}} creation\+State, const std\+::optional$<$ MPI\+\_\+\+Comm $>$ communicator=\{\})
 \begin{DoxyCompactList}\small\item\em Create a new file object. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} \mbox{\hyperlink{namespacePLI_1_1HDF5_a793947fa88ab4a9dbb2931da321dfba5}{open\+File}} (const std\+::string \&file\+Name, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{File\+::\+Open\+State}} open\+State=File\+::\+Open\+State\+::\+Read\+Only)
-\begin{DoxyCompactList}\small\item\em Open an existing file object. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \mbox{\hyperlink{namespacePLI_1_1HDF5_a906ea863179d6d9e70ad870ae8493b1c}{open\+Group}} (hid\+\_\+t parent\+Ptr, const std\+::string \&group\+Name)
-\begin{DoxyCompactList}\small\item\em Opens a group Open an existing group. If the group does not exist, an exception is thrown. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \mbox{\hyperlink{namespacePLI_1_1HDF5_afa37c2d03829282fd6865a975fe83525}{create\+Group}} (hid\+\_\+t parent\+Ptr, const std\+::string \&group\+Name)
-\begin{DoxyCompactList}\small\item\em Creates a group Create a new group. If the group already exists, an exception is thrown. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} \mbox{\hyperlink{namespacePLI_1_1HDF5_a0756c5ccb6147088342263fc1a687437}{open\+File}} (const std\+::string \&file\+Name, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{File\+::\+Open\+State}} open\+State, const std\+::optional$<$ MPI\+\_\+\+Comm $>$ communicator=\{\})
+\begin{DoxyCompactList}\small\item\em Open an existing file object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -64,85 +58,11 @@ The \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} namespace.
 \doxysubsubsection{\texorpdfstring{checkHDF5Ptr()}{checkHDF5Ptr()}}
 {\footnotesize\ttfamily void PLI\+::\+HDF5\+::check\+HDF5\+Ptr (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{hdf5\+Ptr,  }\item[{const std\+::string \&}]{message = {\ttfamily \char`\"{}None\char`\"{}} }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{namespacePLI_1_1HDF5_acfad7de8893ad7b0e576d097adec734d}\label{namespacePLI_1_1HDF5_acfad7de8893ad7b0e576d097adec734d}} 
-\index{PLI::HDF5@{PLI::HDF5}!createDataset@{createDataset}}
-\index{createDataset@{createDataset}!PLI::HDF5@{PLI::HDF5}}
-\doxysubsubsection{\texorpdfstring{createDataset()}{createDataset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} PLI\+::\+HDF5\+::create\+Dataset (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{dataset\+Name,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dims,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{chunk\+Dims = {\ttfamily \{\}} }\end{DoxyParamCaption})}
-
-
-
-Create a new dataset with the given name. 
-
-This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. 
-\begin{DoxyTemplParams}{Template Parameters}
-{\em T} & Supported data types are\+: bool, char, unsigned char, short, unsigned short, int, unsigned int, long, unsigned long, long long, unsigned long long, float, double, long double. \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{Parameters}
-{\em parent\+Ptr} & Raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer to a file or group. \\
-\hline
-{\em dataset\+Name} & Name of the dataset to create. \\
-\hline
-{\em dims} & Dimensions of the new dataset. \\
-\hline
-{\em chunk\+Dims} & Chunking dimensions of the dataset. If not set, the chunking is disabled. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} New dataset object if successful. 
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the parent or dataset pointer is invalid. \\
-\hline
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Dataset\+Exists\+Exception}}} & If the dataset already exists. \\
-\hline
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the dataset could not be created. \\
-\hline
-\end{DoxyExceptions}
-\mbox{\Hypertarget{namespacePLI_1_1HDF5_aebf90116fc7708e9b85834cf5c612717}\label{namespacePLI_1_1HDF5_aebf90116fc7708e9b85834cf5c612717}} 
-\index{PLI::HDF5@{PLI::HDF5}!createDataset@{createDataset}}
-\index{createDataset@{createDataset}!PLI::HDF5@{PLI::HDF5}}
-\doxysubsubsection{\texorpdfstring{createDataset()}{createDataset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} PLI\+::\+HDF5\+::create\+Dataset (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{dataset\+Name,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dims,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{chunk\+Dims = {\ttfamily \{\}},  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&}]{data\+Type = {\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}{PLI\+::\+HDF5\+::\+Type\+::create\+Type}}$<$float$>$()} }\end{DoxyParamCaption})}
-
-
-
-Create a new dataset with the given name. 
-
-This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. 
-\begin{DoxyParams}{Parameters}
-{\em parent\+Ptr} & Raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer to a file or group. \\
-\hline
-{\em dataset\+Name} & Name of the dataset to create. \\
-\hline
-{\em dims} & Dimensions of the new dataset. \\
-\hline
-{\em chunk\+Dims} & Chunking dimensions of the dataset. If not set, the chunking is disabled. \\
-\hline
-{\em data\+Type} & Datatype of the dataset. Default = float. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} New dataset object if successful. 
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the parent or dataset pointer is invalid. \\
-\hline
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Dataset\+Exists\+Exception}}} & If the dataset already exists. \\
-\hline
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the dataset could not be created. \\
-\hline
-\end{DoxyExceptions}
-\mbox{\Hypertarget{namespacePLI_1_1HDF5_a7036041ef51baaaea1f3aa1263a765f7}\label{namespacePLI_1_1HDF5_a7036041ef51baaaea1f3aa1263a765f7}} 
+\mbox{\Hypertarget{namespacePLI_1_1HDF5_a6942c04eaedfc39985b1e7bd5e89b297}\label{namespacePLI_1_1HDF5_a6942c04eaedfc39985b1e7bd5e89b297}} 
 \index{PLI::HDF5@{PLI::HDF5}!createFile@{createFile}}
 \index{createFile@{createFile}!PLI::HDF5@{PLI::HDF5}}
 \doxysubsubsection{\texorpdfstring{createFile()}{createFile()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} PLI\+::\+HDF5\+::create\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} PLI\+::\+HDF5\+::create\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7}{PLI\+::\+HDF5\+::\+File\+::\+Create\+State}}}]{creation\+State,  }\item[{const std\+::optional$<$ MPI\+\_\+\+Comm $>$}]{communicator = {\ttfamily \{\}} }\end{DoxyParamCaption})}
 
 
 
@@ -151,6 +71,8 @@ Create a new file object.
 Create a new file object. Per default, the file is created with MPI file access. 
 \begin{DoxyParams}{Parameters}
 {\em file\+Name} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} name. \\
+\hline
+{\em communicator} & If an MPI\+\_\+\+Comm is set, the file will be opened with MPI access. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -165,75 +87,23 @@ Create a new file object. Per default, the file is created with MPI file access.
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & Error during setting the MPI file access. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{namespacePLI_1_1HDF5_afa37c2d03829282fd6865a975fe83525}\label{namespacePLI_1_1HDF5_afa37c2d03829282fd6865a975fe83525}} 
-\index{PLI::HDF5@{PLI::HDF5}!createGroup@{createGroup}}
-\index{createGroup@{createGroup}!PLI::HDF5@{PLI::HDF5}}
-\doxysubsubsection{\texorpdfstring{createGroup()}{createGroup()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} PLI\+::\+HDF5\+::create\+Group (\begin{DoxyParamCaption}\item[{hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{group\+Name }\end{DoxyParamCaption})}
-
-
-
-Creates a group Create a new group. If the group already exists, an exception is thrown. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em parent\+Ptr} & Pointer to the parent group or file. \\
-\hline
-{\em group\+Name} & Name of the group to create. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object, if successful. 
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupExistsException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Group\+Exists\+Exception}}} & If the group already exists. \\
-\hline
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If creating the group fails or the parent\+Ptr is invalid. \\
-\hline
-\end{DoxyExceptions}
-\mbox{\Hypertarget{namespacePLI_1_1HDF5_ab40573c6538568ac633f7e87f8fa9159}\label{namespacePLI_1_1HDF5_ab40573c6538568ac633f7e87f8fa9159}} 
-\index{PLI::HDF5@{PLI::HDF5}!openDataset@{openDataset}}
-\index{openDataset@{openDataset}!PLI::HDF5@{PLI::HDF5}}
-\doxysubsubsection{\texorpdfstring{openDataset()}{openDataset()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} PLI\+::\+HDF5\+::open\+Dataset (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{dataset\+Name }\end{DoxyParamCaption})}
-
-
-
-Open an existing dataset. 
-
-This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown. 
-\begin{DoxyParams}{Parameters}
-{\em parent\+Ptr} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} or group pointer. \\
-\hline
-{\em dataset\+Name} & Name of the dataset to open. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} if successful. 
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the parent or dataset pointer is invalid. \\
-\hline
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Dataset\+Not\+Found\+Exception}}} & If the dataset does not exist. \\
-\hline
-\end{DoxyExceptions}
-\mbox{\Hypertarget{namespacePLI_1_1HDF5_a793947fa88ab4a9dbb2931da321dfba5}\label{namespacePLI_1_1HDF5_a793947fa88ab4a9dbb2931da321dfba5}} 
+\mbox{\Hypertarget{namespacePLI_1_1HDF5_a0756c5ccb6147088342263fc1a687437}\label{namespacePLI_1_1HDF5_a0756c5ccb6147088342263fc1a687437}} 
 \index{PLI::HDF5@{PLI::HDF5}!openFile@{openFile}}
 \index{openFile@{openFile}!PLI::HDF5@{PLI::HDF5}}
 \doxysubsubsection{\texorpdfstring{openFile()}{openFile()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} PLI\+::\+HDF5\+::open\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{File\+::\+Open\+State}}}]{open\+State = {\ttfamily File\+:\+:OpenState\+:\+:ReadOnly} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} PLI\+::\+HDF5\+::open\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{File\+::\+Open\+State}}}]{open\+State,  }\item[{const std\+::optional$<$ MPI\+\_\+\+Comm $>$}]{communicator = {\ttfamily \{\}} }\end{DoxyParamCaption})}
 
 
 
 Open an existing file object. 
 
-This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the open\+State variable, one can choose between opening the file in read-\/only mode or in read-\/write mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only will open the file in read-\/only mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write will open the file in read-\/write mode. 
+This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the open\+State variable, one can choose between opening the file in read-\/only mode or in read-\/write mode. Setting open\+State to \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197}{PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only}} will open the file in read-\/only mode. Setting open\+State to \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723}{PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write}} will open the file in read-\/write mode. 
 \begin{DoxyParams}{Parameters}
 {\em file\+Name} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} name which will be opened. \\
 \hline
-{\em open\+State} & Open\+State variable. Available values are PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only and PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write. \\
+{\em open\+State} & Open\+State variable. Available values are \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197}{PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only}} and \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723}{PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write}}. \\
+\hline
+{\em communicator} & If an MPI\+\_\+\+Comm is set, the file will be opened with MPI access. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -248,32 +118,5 @@ This method tries to open an existing file. If the file doesnt exist, an excepti
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & Error during setting the MPI file access. \\
 \hline
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Invalid\+HDF5\+File\+Exception}}} & If the file is not a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \\
-\hline
-\end{DoxyExceptions}
-\mbox{\Hypertarget{namespacePLI_1_1HDF5_a906ea863179d6d9e70ad870ae8493b1c}\label{namespacePLI_1_1HDF5_a906ea863179d6d9e70ad870ae8493b1c}} 
-\index{PLI::HDF5@{PLI::HDF5}!openGroup@{openGroup}}
-\index{openGroup@{openGroup}!PLI::HDF5@{PLI::HDF5}}
-\doxysubsubsection{\texorpdfstring{openGroup()}{openGroup()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} PLI\+::\+HDF5\+::open\+Group (\begin{DoxyParamCaption}\item[{hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{group\+Name }\end{DoxyParamCaption})}
-
-
-
-Opens a group Open an existing group. If the group does not exist, an exception is thrown. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em parent\+Ptr} & Pointer to the parent group or file. \\
-\hline
-{\em group\+Name} & Name of the group to open. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object, if successful. 
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Group\+Not\+Found\+Exception}}} & If the group does not exist. \\
-\hline
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If opening the group fails or the parent\+Ptr is invalid. \\
 \hline
 \end{DoxyExceptions}

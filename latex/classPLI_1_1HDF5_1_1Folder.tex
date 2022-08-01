@@ -1,0 +1,204 @@
+\hypertarget{classPLI_1_1HDF5_1_1Folder}{}\doxysection{PLI\+::HDF5\+::Folder Class Reference}
+\label{classPLI_1_1HDF5_1_1Folder}\index{PLI::HDF5::Folder@{PLI::HDF5::Folder}}
+
+
+{\ttfamily \#include $<$object.\+h$>$}
+
+Inheritance diagram for PLI\+::HDF5\+::Folder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classPLI_1_1HDF5_1_1Folder}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder_a655395f532ab6500310c4b0ef7142828}{open\+Group}} (const std\+::string \&group\+Name)
+\begin{DoxyCompactList}\small\item\em Opens a group Open an existing group. If the group does not exist, an exception is thrown. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder_abdb750d82dc69fdcd361f99874984b77}{create\+Group}} (const std\+::string \&group\+Name)
+\begin{DoxyCompactList}\small\item\em Creates a group Create a new group. If the group already exists, an exception is thrown. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder_a876a51a74fc42cdbdfbd2f7f04e63cae}{open\+Dataset}} (const std\+::string \&dataset\+Name)
+\begin{DoxyCompactList}\small\item\em Open an existing dataset. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder_a0778579a07aa5f3a331a1d511436f174}{create\+Dataset}} (const std\+::string \&dataset\+Name, const std\+::vector$<$ size\+\_\+t $>$ \&dims, const std\+::vector$<$ size\+\_\+t $>$ \&chunk\+Dims=\{\})
+\begin{DoxyCompactList}\small\item\em Create a new dataset with the given name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder_a02265ece7a0300a98fa4c09c87844db6}{create\+Dataset}} (const std\+::string \&dataset\+Name, const std\+::vector$<$ size\+\_\+t $>$ \&dims, const std\+::vector$<$ size\+\_\+t $>$ \&chunk\+Dims=\{\}, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&data\+Type=\mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}{PLI\+::\+HDF5\+::\+Type\+::create\+Type}}$<$ float $>$())
+\begin{DoxyCompactList}\small\item\em Create a new dataset with the given name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder_aa76810358f4ead24173fac2aa46ef916}{Folder}} (const std\+::optional$<$ MPI\+\_\+\+Comm $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}}=\{\}) noexcept
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder_a12bcd8c6c63633d008eeb5c252589a0a}{Folder}} (const hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a257d24c1b2b656654f4b0d0d5a9c17b5}{id}}, const std\+::optional$<$ MPI\+\_\+\+Comm $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}}=\{\}) noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Folder_aa76810358f4ead24173fac2aa46ef916}\label{classPLI_1_1HDF5_1_1Folder_aa76810358f4ead24173fac2aa46ef916}} 
+\index{PLI::HDF5::Folder@{PLI::HDF5::Folder}!Folder@{Folder}}
+\index{Folder@{Folder}!PLI::HDF5::Folder@{PLI::HDF5::Folder}}
+\doxysubsubsection{\texorpdfstring{Folder()}{Folder()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Folder\+::\+Folder (\begin{DoxyParamCaption}\item[{const std\+::optional$<$ MPI\+\_\+\+Comm $>$ \&}]{communicator = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [protected]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Folder_a12bcd8c6c63633d008eeb5c252589a0a}\label{classPLI_1_1HDF5_1_1Folder_a12bcd8c6c63633d008eeb5c252589a0a}} 
+\index{PLI::HDF5::Folder@{PLI::HDF5::Folder}!Folder@{Folder}}
+\index{Folder@{Folder}!PLI::HDF5::Folder@{PLI::HDF5::Folder}}
+\doxysubsubsection{\texorpdfstring{Folder()}{Folder()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Folder\+::\+Folder (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{id,  }\item[{const std\+::optional$<$ MPI\+\_\+\+Comm $>$ \&}]{communicator = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [protected]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Folder_a0778579a07aa5f3a331a1d511436f174}\label{classPLI_1_1HDF5_1_1Folder_a0778579a07aa5f3a331a1d511436f174}} 
+\index{PLI::HDF5::Folder@{PLI::HDF5::Folder}!createDataset@{createDataset}}
+\index{createDataset@{createDataset}!PLI::HDF5::Folder@{PLI::HDF5::Folder}}
+\doxysubsubsection{\texorpdfstring{createDataset()}{createDataset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} PLI\+::\+HDF5\+::\+Folder\+::create\+Dataset (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{dataset\+Name,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dims,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{chunk\+Dims = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+
+
+
+Create a new dataset with the given name. 
+
+This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Supported data types are\+: bool, char, unsigned char, short, unsigned short, int, unsigned int, long, unsigned long, long long, unsigned long long, float, double, long double. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em dataset\+Name} & Name of the dataset to create. \\
+\hline
+{\em dims} & Dimensions of the new dataset. \\
+\hline
+{\em chunk\+Dims} & Chunking dimensions of the dataset. If not set, the chunking is disabled. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} New dataset object if successful. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the parent or dataset pointer is invalid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Dataset\+Exists\+Exception}}} & If the dataset already exists. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the dataset could not be created. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Folder_a02265ece7a0300a98fa4c09c87844db6}\label{classPLI_1_1HDF5_1_1Folder_a02265ece7a0300a98fa4c09c87844db6}} 
+\index{PLI::HDF5::Folder@{PLI::HDF5::Folder}!createDataset@{createDataset}}
+\index{createDataset@{createDataset}!PLI::HDF5::Folder@{PLI::HDF5::Folder}}
+\doxysubsubsection{\texorpdfstring{createDataset()}{createDataset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} PLI\+::\+HDF5\+::\+Folder\+::create\+Dataset (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{dataset\+Name,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{dims,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{chunk\+Dims = {\ttfamily \{\}},  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} \&}]{data\+Type = {\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type_ae523b5e5e3f6340416b885816e6994c6}{PLI\+::\+HDF5\+::\+Type\+::create\+Type}}$<$float$>$()} }\end{DoxyParamCaption})}
+
+
+
+Create a new dataset with the given name. 
+
+This method tries to create a new dataset with the given name. If the dataset already exists, an exception is thrown. The dimensions of the dataset need to be set during the method call. Optionally, the chunk dimensions can be set. 
+\begin{DoxyParams}{Parameters}
+{\em dataset\+Name} & Name of the dataset to create. \\
+\hline
+{\em dims} & Dimensions of the new dataset. \\
+\hline
+{\em chunk\+Dims} & Chunking dimensions of the dataset. If not set, the chunking is disabled. \\
+\hline
+{\em data\+Type} & Datatype of the dataset. Default = float. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} New dataset object if successful. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the parent or dataset pointer is invalid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetExistsException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Dataset\+Exists\+Exception}}} & If the dataset already exists. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the dataset could not be created. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Folder_abdb750d82dc69fdcd361f99874984b77}\label{classPLI_1_1HDF5_1_1Folder_abdb750d82dc69fdcd361f99874984b77}} 
+\index{PLI::HDF5::Folder@{PLI::HDF5::Folder}!createGroup@{createGroup}}
+\index{createGroup@{createGroup}!PLI::HDF5::Folder@{PLI::HDF5::Folder}}
+\doxysubsubsection{\texorpdfstring{createGroup()}{createGroup()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} PLI\+::\+HDF5\+::\+Folder\+::create\+Group (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{group\+Name }\end{DoxyParamCaption})}
+
+
+
+Creates a group Create a new group. If the group already exists, an exception is thrown. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em group\+Name} & Name of the group to create. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object, if successful. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupExistsException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Group\+Exists\+Exception}}} & If the group already exists. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If creating the group fails or the parent\+Ptr is invalid. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Folder_a876a51a74fc42cdbdfbd2f7f04e63cae}\label{classPLI_1_1HDF5_1_1Folder_a876a51a74fc42cdbdfbd2f7f04e63cae}} 
+\index{PLI::HDF5::Folder@{PLI::HDF5::Folder}!openDataset@{openDataset}}
+\index{openDataset@{openDataset}!PLI::HDF5::Folder@{PLI::HDF5::Folder}}
+\doxysubsubsection{\texorpdfstring{openDataset()}{openDataset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} PLI\+::\+HDF5\+::\+Folder\+::open\+Dataset (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{dataset\+Name }\end{DoxyParamCaption})}
+
+
+
+Open an existing dataset. 
+
+This method tries to open an existing dataset with the given name. If the dataset does not exist, an exception is thrown. 
+\begin{DoxyParams}{Parameters}
+{\em dataset\+Name} & Name of the dataset to open. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} if successful. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the parent or dataset pointer is invalid. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DatasetNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Dataset\+Not\+Found\+Exception}}} & If the dataset does not exist. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Folder_a655395f532ab6500310c4b0ef7142828}\label{classPLI_1_1HDF5_1_1Folder_a655395f532ab6500310c4b0ef7142828}} 
+\index{PLI::HDF5::Folder@{PLI::HDF5::Folder}!openGroup@{openGroup}}
+\index{openGroup@{openGroup}!PLI::HDF5::Folder@{PLI::HDF5::Folder}}
+\doxysubsubsection{\texorpdfstring{openGroup()}{openGroup()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} PLI\+::\+HDF5\+::\+Folder\+::open\+Group (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{group\+Name }\end{DoxyParamCaption})}
+
+
+
+Opens a group Open an existing group. If the group does not exist, an exception is thrown. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em group\+Name} & Name of the group to open. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object, if successful. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Group\+Not\+Found\+Exception}}} & If the group does not exist. \\
+\hline
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If opening the group fails or the parent\+Ptr is invalid. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+PLIHDF5/object.\+h\item 
+src/dataset.\+cpp\item 
+src/group.\+cpp\item 
+src/object.\+cpp\end{DoxyCompactItemize}

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>3D-PLI HDF5: v1.0.1</title>
+<title>3D-PLI HDF5: v2.0.0</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,33 +63,61 @@ $(function() {
 
 </div><!-- top -->
 <div><div class="header">
-  <div class="headertitle"><div class="title">v1.0.1 </div></div>
+  <div class="headertitle"><div class="title">v2.0.0 </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
 Added</h1>
 <ul>
+<li>Added automatic test pipeline in GitLab instances</li>
+<li>The project now uses pre-commit hooks for formatting and linting</li>
+<li>Added config file and config class containing information for <a class="el" href="classPLI_1_1PLIM.html" title="The PLIM class contains a few functions to make the integration of a generated HDF5 file easier with ...">PLI::PLIM</a></li>
+<li>Added methods to enable / disable HDF5 exception output. Default = enabled</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Changed</h1>
+<ul>
+<li>Using MPI is now optional. When creating a file, one can specify the MPI_Comm to choose which processes will read / write a file. This communicator will be transferred through all nested objects.</li>
+<li>Removed PLI::HDF5::create[...] and PLI::HDF5::open[...] in favour of direct class methods.</li>
+<li>Changed default coding format from Google to LLVM</li>
+<li>Refactoring of the toolbox (especially CMakeFiles) to improve readability</li>
+<li>Changed hsize_t to size_t throughout the toolbox to prevent that users have to import hdf5.h only for hsize_t</li>
+<li>Changed SHA256 to SHA512</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Fixed</h1>
+<ul>
+<li>Added exception if chunk size is smaller than dataset size</li>
+<li>Fixed issue resulting in wrong read datasets if the dataset is larger than 2.1B pixels.</li>
+<li>Fix issues where HDF5 headers were not found when using PLIHDF5</li>
+<li>Fix issues where attributes were not written as scalar / vector when expected.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+v1.0.1</h1>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Added</h2>
+<ul>
 <li>Added methods in <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">PLI::HDF5::Dataset</a><ul>
-<li>Added <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a5f74b960fcaa874b8ad2a9b2cfd57895" title="Create a new dataset with the given name.">PLI::HDF5::Dataset::create</a> without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a></li>
-<li>Added <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a9161cdb98507e1f67bc8333f34d5dab5" title="Write a sub-dataset.">PLI::HDF5::Dataset::write</a> with void* instead of std::vector&lt;T&gt;</li>
-<li>Added <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a9161cdb98507e1f67bc8333f34d5dab5" title="Write a sub-dataset.">PLI::HDF5::Dataset::write</a> without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a> and void* as the data pointer</li>
+<li>Added <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a7af3e91e7688c8d5cfae1685ab57687c" title="Create a new dataset with the given name.">PLI::HDF5::Dataset::create</a> without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a></li>
+<li>Added <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a99e0214e44cf4efc7810939eee3a884a" title="Write a sub-dataset.">PLI::HDF5::Dataset::write</a> with void* instead of std::vector&lt;T&gt;</li>
+<li>Added <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html#a99e0214e44cf4efc7810939eee3a884a" title="Write a sub-dataset.">PLI::HDF5::Dataset::write</a> without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a> and void* as the data pointer</li>
 </ul>
 </li>
-<li>Added <a class="el" href="namespacePLI_1_1HDF5.html#acfad7de8893ad7b0e576d097adec734d" title="Create a new dataset with the given name.">PLI::HDF5::createDataset</a> without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a></li>
+<li>Added PLI::HDF5::createDataset without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a></li>
 <li>Added <a class="el" href="classPLI_1_1PLIM.html#ae63caa54990e93c76b2b709079f90f44" title="Adds the creation time of the HDF5 file.">PLI::PLIM::addCreationTime</a> and <a class="el" href="classPLI_1_1PLIM.html#a370f51ea69573cc5642f85e3663b360f" title="Adds the name of the modality stored in the HDF5 file.">PLI::PLIM::addImageModality</a></li>
 <li>Added tests for non MPI execution</li>
 <li>Added tests for the new methods to create datasets</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Changed</h1>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Changed</h2>
 <ul>
 <li>If MPI is not initialized during the creation / opening of a file / dataset, the access token will not use MPI. This allows the usage of the toolbox in programs not using MPI.</li>
 <li>Refactoring of file and dataset methods using the HDF5 MPI implementation to keep the DRY principle.</li>
 <li>CopyAllTo and CopyAllFrom will now throw an exception after it tried to copy all attributes.</li>
 <li>One element attributes are now saved as H5S_SCALAR instead of a vector</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md3"></a>
-Fixed</h1>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Fixed</h2>
 <ul>
 <li>Fixed issues which could result in SegFaults in rare cases</li>
 <li>Fix wrong HDF5 attribute when opening files</li>
@@ -97,9 +125,9 @@ Fixed</h1>
 <li>Fix issues with copying scalar attributes</li>
 <li>Fixed an issue which returned an empty vector for <a class="el" href="classPLI_1_1HDF5_1_1AttributeHandler.html#a8db74f417c81f4edc7066f629a777f22" title="Get the Attribute Dimensions object.">PLI::HDF5::AttributeHandler::getAttributeDimensions</a> when the attribute was an H5S_SCALAR</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 v1.0.2</h1>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Added</h2>
 <ul>
 <li>Added Dataset::isChunked to check if a created dataset contains chunks.</li>
@@ -111,14 +139,14 @@ Added</h2>
 </li>
 <li>Added nlohmann_json as a dependency of the project.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Changed</h2>
 <ul>
 <li>Changed hsize_t throughout the toolbox to size_t to improve compatability with other programs.</li>
 <li>Adding the ID through <a class="el" href="classPLI_1_1PLIM.html" title="The PLIM class contains a few functions to make the integration of a generated HDF5 file easier with ...">PLI::PLIM</a> will now use the config attributes per default, except when the user sets the ID attributes manually.</li>
 <li>Changed size of scalar HDF5 attributes to be returned as an empty vector instead of a vector with {1}</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Fixed</h2>
 <ul>
 <li>Add exception when chunk dimensions are smaller than dataset dimensions. Previously, an HDF5 error was thrown because it wasn't checked before calling HDF5 methods.</li>

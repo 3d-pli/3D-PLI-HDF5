@@ -9,37 +9,33 @@
 
 {\ttfamily \#include $<$group.\+h$>$}
 
+Inheritance diagram for PLI\+::HDF5\+::Group\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classPLI_1_1HDF5_1_1Group}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a596fd620f7e16d3733b8d5dd3f1e9dcc}{Group}} () noexcept
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a757771b7db2e3799bee107390350e82a}{Group}} (const hid\+\_\+t group\+Ptr) noexcept
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a224f376e343f688791b5a61f51e7d9de}{Group}} (const hid\+\_\+t group\+Ptr, const std\+::optional$<$ MPI\+\_\+\+Comm $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}}=\{\}) noexcept
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a331c14483db6ec54cecd57c7bf35e3a4}{Group}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} \&other\+Group) noexcept
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a4cf4b28419196b2bbff1881203eac780}{open}} (hid\+\_\+t parent\+Ptr, const std\+::string \&group\+Name)
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a05075f07907846ed46ee79f92c265a46}{open}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parent\+Ptr, const std\+::string \&group\+Name)
 \begin{DoxyCompactList}\small\item\em Opens a group. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a48b1eab02d0bdd068eac1170356dcc2b}{create}} (hid\+\_\+t parent\+Ptr, const std\+::string \&group\+Name)
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a9641447caa6c7747beb5281ac925f7a9}{create}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parent\+Ptr, const std\+::string \&group\+Name)
 \begin{DoxyCompactList}\small\item\em Creates a group. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a244fc843079f3488ee215b5df0f9403e}{close}} ()
-\begin{DoxyCompactList}\small\item\em Closes the group if it is valid. \end{DoxyCompactList}\item 
-hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a456080f735a1da9d7937faeeaa745b49}{id}} () const noexcept
-\begin{DoxyCompactList}\small\item\em Get the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the group. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a1331843612104a553c4b03f5825b5dcd}{operator hid\+\_\+t}} () const noexcept
-\begin{DoxyCompactList}\small\item\em Convert the group to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} \& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_ae70745cda448856b52cd2937fa133c9c}{operator=}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \&other\+Group) noexcept
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_ac282b5bcff034bb2ac34e64634cb924d}{exists}} (hid\+\_\+t parent\+Ptr, const std\+::string \&group\+Name)
+static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a86cac480dd34c760d2e2fdded68bea55}{exists}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parent\+Ptr, const std\+::string \&group\+Name)
 \begin{DoxyCompactList}\small\item\em Checks if the group exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Private Attributes}
-\begin{DoxyCompactItemize}
-\item 
-hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a1a5bb47eb16e71c5c20838cab9992ae6}{m\+\_\+id}}
-\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
@@ -56,11 +52,11 @@ hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a1a5bb47eb16e71c5c20838cab
 
 Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} object. 
 
-Create an empty group object. Calling other methods on this object will fail because no pointer to an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object is set. To open a group, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a4cf4b28419196b2bbff1881203eac780}{PLI\+::\+HDF5\+::\+Group\+::open(hid\+\_\+t parent\+Ptr, const std\+::string\& group\+Name)}}. To create a grouop, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group_a48b1eab02d0bdd068eac1170356dcc2b}{PLI\+::\+HDF5\+::\+Group\+::create(hid\+\_\+t parent\+Ptr, const std\+::string\& group\+Name)}}. \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a757771b7db2e3799bee107390350e82a}\label{classPLI_1_1HDF5_1_1Group_a757771b7db2e3799bee107390350e82a}} 
+Create an empty group object. Calling other methods on this object will fail because no pointer to an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object is set. To open a group, use PLI\+::\+HDF5\+::\+Group\+::open(hid\+\_\+t parent\+Ptr, const std\+::string\& group\+Name). To create a grouop, use PLI\+::\+HDF5\+::\+Group\+::create(hid\+\_\+t parent\+Ptr, const std\+::string\& group\+Name). \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a224f376e343f688791b5a61f51e7d9de}\label{classPLI_1_1HDF5_1_1Group_a224f376e343f688791b5a61f51e7d9de}} 
 \index{PLI::HDF5::Group@{PLI::HDF5::Group}!Group@{Group}}
 \index{Group@{Group}!PLI::HDF5::Group@{PLI::HDF5::Group}}
 \doxysubsubsection{\texorpdfstring{Group()}{Group()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Group\+::\+Group (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{group\+Ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Group\+::\+Group (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{group\+Ptr,  }\item[{const std\+::optional$<$ MPI\+\_\+\+Comm $>$}]{communicator = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [noexcept]}}
 
 
 
@@ -89,26 +85,11 @@ Construct a new group object by using another group object.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a244fc843079f3488ee215b5df0f9403e}\label{classPLI_1_1HDF5_1_1Group_a244fc843079f3488ee215b5df0f9403e}} 
-\index{PLI::HDF5::Group@{PLI::HDF5::Group}!close@{close}}
-\index{close@{close}!PLI::HDF5::Group@{PLI::HDF5::Group}}
-\doxysubsubsection{\texorpdfstring{close()}{close()}}
-{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Group\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Closes the group if it is valid. 
-
-If the dataset is valid, it is closed. The group pointer is then set to an invalid value (-\/1) to ensure, that calls will result in an exception afterwards. 
-\begin{DoxyExceptions}{Exceptions}
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the group could not be closed. \\
-\hline
-\end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a48b1eab02d0bdd068eac1170356dcc2b}\label{classPLI_1_1HDF5_1_1Group_a48b1eab02d0bdd068eac1170356dcc2b}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a9641447caa6c7747beb5281ac925f7a9}\label{classPLI_1_1HDF5_1_1Group_a9641447caa6c7747beb5281ac925f7a9}} 
 \index{PLI::HDF5::Group@{PLI::HDF5::Group}!create@{create}}
 \index{create@{create}!PLI::HDF5::Group@{PLI::HDF5::Group}}
 \doxysubsubsection{\texorpdfstring{create()}{create()}}
-{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Group\+::create (\begin{DoxyParamCaption}\item[{hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{group\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Group\+::create (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&}]{parent\+Ptr,  }\item[{const std\+::string \&}]{group\+Name }\end{DoxyParamCaption})}
 
 
 
@@ -116,7 +97,7 @@ Creates a group.
 
 Create a new group. If the group already exists, an exception is thrown. 
 \begin{DoxyParams}{Parameters}
-{\em parent\+Ptr} & Pointer to the parent group or file. \\
+{\em parent\+Ptr} & Instance of parent group or file. \\
 \hline
 {\em group\+Name} & Name of the group to create. \\
 \hline
@@ -128,11 +109,11 @@ Create a new group. If the group already exists, an exception is thrown.
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If creating the group fails or the parent\+Ptr is invalid. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_ac282b5bcff034bb2ac34e64634cb924d}\label{classPLI_1_1HDF5_1_1Group_ac282b5bcff034bb2ac34e64634cb924d}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a86cac480dd34c760d2e2fdded68bea55}\label{classPLI_1_1HDF5_1_1Group_a86cac480dd34c760d2e2fdded68bea55}} 
 \index{PLI::HDF5::Group@{PLI::HDF5::Group}!exists@{exists}}
 \index{exists@{exists}!PLI::HDF5::Group@{PLI::HDF5::Group}}
 \doxysubsubsection{\texorpdfstring{exists()}{exists()}}
-{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+Group\+::exists (\begin{DoxyParamCaption}\item[{hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{group\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+Group\+::exists (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&}]{parent\+Ptr,  }\item[{const std\+::string \&}]{group\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -140,7 +121,7 @@ Checks if the group exists.
 
 
 \begin{DoxyParams}{Parameters}
-{\em parent\+Ptr} & Pointer to the parent group or file \\
+{\em parent\+Ptr} & Instance of parent group or file. \\
 \hline
 {\em group\+Name} & Name of the group to check. \\
 \hline
@@ -155,24 +136,11 @@ false If the group does not exist.
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the parent\+Ptr is invalid. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a456080f735a1da9d7937faeeaa745b49}\label{classPLI_1_1HDF5_1_1Group_a456080f735a1da9d7937faeeaa745b49}} 
-\index{PLI::HDF5::Group@{PLI::HDF5::Group}!id@{id}}
-\index{id@{id}!PLI::HDF5::Group@{PLI::HDF5::Group}}
-\doxysubsubsection{\texorpdfstring{id()}{id()}}
-{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+Group\+::id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
-
-
-
-Get the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the group. 
-
-Returns the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the group. This pointer can be used to access the group using the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library. \begin{DoxyReturn}{Returns}
-hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} ID stored in the object. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a4cf4b28419196b2bbff1881203eac780}\label{classPLI_1_1HDF5_1_1Group_a4cf4b28419196b2bbff1881203eac780}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a05075f07907846ed46ee79f92c265a46}\label{classPLI_1_1HDF5_1_1Group_a05075f07907846ed46ee79f92c265a46}} 
 \index{PLI::HDF5::Group@{PLI::HDF5::Group}!open@{open}}
 \index{open@{open}!PLI::HDF5::Group@{PLI::HDF5::Group}}
 \doxysubsubsection{\texorpdfstring{open()}{open()}}
-{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Group\+::open (\begin{DoxyParamCaption}\item[{hid\+\_\+t}]{parent\+Ptr,  }\item[{const std\+::string \&}]{group\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Group\+::open (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&}]{parent\+Ptr,  }\item[{const std\+::string \&}]{group\+Name }\end{DoxyParamCaption})}
 
 
 
@@ -180,7 +148,7 @@ Opens a group.
 
 Open an existing group. If the group does not exist, an exception is thrown. 
 \begin{DoxyParams}{Parameters}
-{\em parent\+Ptr} & Pointer to the parent group or file. \\
+{\em parent\+Ptr} & Instance of parent group or file. \\
 \hline
 {\em group\+Name} & Name of the group to open. \\
 \hline
@@ -192,33 +160,11 @@ Open an existing group. If the group does not exist, an exception is thrown.
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If opening the group fails or the parent\+Ptr is invalid. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a1331843612104a553c4b03f5825b5dcd}\label{classPLI_1_1HDF5_1_1Group_a1331843612104a553c4b03f5825b5dcd}} 
-\index{PLI::HDF5::Group@{PLI::HDF5::Group}!operator hid\_t@{operator hid\_t}}
-\index{operator hid\_t@{operator hid\_t}!PLI::HDF5::Group@{PLI::HDF5::Group}}
-\doxysubsubsection{\texorpdfstring{operator hid\_t()}{operator hid\_t()}}
-{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Group\+::operator hid\+\_\+t (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
-
-
-
-Convert the group to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer. 
-
-\begin{DoxyReturn}{Returns}
-hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{Group}} ID stored in the object. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_ae70745cda448856b52cd2937fa133c9c}\label{classPLI_1_1HDF5_1_1Group_ae70745cda448856b52cd2937fa133c9c}} 
 \index{PLI::HDF5::Group@{PLI::HDF5::Group}!operator=@{operator=}}
 \index{operator=@{operator=}!PLI::HDF5::Group@{PLI::HDF5::Group}}
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \& PLI\+::\+HDF5\+::\+Group\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Group}{PLI\+::\+HDF5\+::\+Group}} \&}]{other\+Group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
-
-
-
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Group_a1a5bb47eb16e71c5c20838cab9992ae6}\label{classPLI_1_1HDF5_1_1Group_a1a5bb47eb16e71c5c20838cab9992ae6}} 
-\index{PLI::HDF5::Group@{PLI::HDF5::Group}!m\_id@{m\_id}}
-\index{m\_id@{m\_id}!PLI::HDF5::Group@{PLI::HDF5::Group}}
-\doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
-{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+Group\+::m\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

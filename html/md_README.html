@@ -66,14 +66,14 @@ $(function() {
   <div class="headertitle"><div class="title">3D-PLI HDF Library </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md9"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md13"></a>
 Introduction</h1>
 <p >HDF5 is a widely used file format for storing and sharing scientific data. It is used in the Fiber Architecture Group to store brain data and pyramids of images. The pyramids allow easy visualization of the data with external tools.</p>
 <p >However, using HDF5 can be troublesome when using C / C++. The library itself is written in C. While headers for C++ are provided, important features like MPI are not available.</p>
 <p >To improve the usability of the library, this repository contains a C++ library wrapping features of HDF5 to make the usage in 3D-PLI projects easier.</p>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 Install instructions</h1>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Requirements</h2>
 <ul>
 <li>CMake 3.19 or newer</li>
@@ -88,7 +88,7 @@ Requirements</h2>
 <li>cppcheck</li>
 <li>cpplint</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Compile the project manually</h2>
 <div class="fragment"><div class="line">git clone https://github.com/3d-pli/3D-PLI-HDF5.git</div>
 <div class="line">cd 3D-PLI-HDF5</div>
@@ -96,7 +96,7 @@ Compile the project manually</h2>
 <div class="line">cd build</div>
 <div class="line">cmake ..</div>
 <div class="line">make</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
 Install the library from source</h2>
 <div class="fragment"><div class="line">git clone https://github.com/3d-pli/3D-PLI-HDF5.git</div>
 <div class="line">cd 3D-PLI-HDF5</div>
@@ -105,7 +105,7 @@ Install the library from source</h2>
 <div class="line">cmake ..</div>
 <div class="line">make</div>
 <div class="line">make install</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
 Build DEB package</h2>
 <div class="fragment"><div class="line">git clone https://github.com/3d-pli/3D-PLI-HDF5.git</div>
 <div class="line">cd 3D-PLI-HDF5</div>
@@ -114,12 +114,12 @@ Build DEB package</h2>
 <div class="line">cmake ..</div>
 <div class="line">make</div>
 <div class="line">cpack</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md19"></a>
 Install the library as a DEB package</h2>
 <p >To install the package, either build it yourself or download the packages from the releases / pipeline artifacts. Then, you can run the following commands to install the package.</p>
 <div class="fragment"><div class="line">apt-get update -qq</div>
 <div class="line">apt-get install -y ./plihdf5_1.0.0_amd64-devel.deb ./plihdf5_1.0.0_amd64-runtime.deb</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md16"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md20"></a>
 API documentation</h1>
 <p >The API documentation is generated from the source code. The methods itself are documented in the source code. To view the documentation outside of the repository, you can go to the wiki page of the repository: <a href="https://3d-pli.github.io/3D-PLI-HDF5/html/">Here</a> </p>
 </div></div><!-- contents -->

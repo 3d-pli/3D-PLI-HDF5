@@ -35,32 +35,34 @@
 \DoxyCodeLine{31 \textcolor{preprocessor}{\#include <string>}}
 \DoxyCodeLine{32 }
 \DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}PLIHDF5/exceptions.h"{}}}
-\DoxyCodeLine{34 }
-\DoxyCodeLine{38 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacePLI}{PLI}} \{}
-\DoxyCodeLine{42 \textcolor{keyword}{namespace }HDF5 \{}
-\DoxyCodeLine{46 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Link}{Link}} \{}
-\DoxyCodeLine{47   \textcolor{keyword}{public}:}
-\DoxyCodeLine{54     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a71d2780a7a86def081fccdad857eb72d}{createSoft}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string \&srcPath,}
-\DoxyCodeLine{55                            \textcolor{keyword}{const} std::string \&dstPath);}
-\DoxyCodeLine{62     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a2a679b5185bd4513f470de870776459c}{createHard}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string \&srcPath,}
-\DoxyCodeLine{63                            \textcolor{keyword}{const} std::string \&dstPath);}
-\DoxyCodeLine{71     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a89874ff15a8b7b8ee0bd8028aa6dd624}{createExternal}}(\textcolor{keyword}{const} hid\_t parentPtr,}
-\DoxyCodeLine{72                                \textcolor{keyword}{const} std::string \&externalPath,}
-\DoxyCodeLine{73                                \textcolor{keyword}{const} std::string \&srcPath,}
-\DoxyCodeLine{74                                \textcolor{keyword}{const} std::string \&dstPath);}
-\DoxyCodeLine{75     \textcolor{keyword}{static} H5L\_info\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ac3bd6112b8ac7a35ca51b9a4af6f8a7d}{getLinkInfo}}(\textcolor{keyword}{const} hid\_t parentPtr,}
-\DoxyCodeLine{76                                   \textcolor{keyword}{const} std::string \&path);}
-\DoxyCodeLine{84     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a82ae485c441b68889da022721049115f}{exists}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string \&path);}
-\DoxyCodeLine{92     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a0a14d7073f8e08b635a79219c8f67c92}{isSoftLink}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string \&path);}
-\DoxyCodeLine{100     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ac9760f2c0906c061429a8b53ecb0fb4a}{isHardLink}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string \&path);}
-\DoxyCodeLine{108     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ac52df02391a5a19b4e70fc5fa390c098}{isExternalLink}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string \&path);}
-\DoxyCodeLine{114     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ac570f98a38e7f4e24c560ce93b375822}{deleteLink}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string \&path);}
-\DoxyCodeLine{121     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a84b34a81a3fb8c0152e210138cc8b917}{moveLink}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string \&srcPath,}
-\DoxyCodeLine{122                          \textcolor{keyword}{const} std::string \&dstPath);}
-\DoxyCodeLine{129     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a0bf2655379cda6d13d06405cf2a0e749}{copyLink}}(\textcolor{keyword}{const} hid\_t parentPtr, \textcolor{keyword}{const} std::string \&srcPath,}
-\DoxyCodeLine{130                          \textcolor{keyword}{const} std::string \&dstPath);}
-\DoxyCodeLine{131 \};}
-\DoxyCodeLine{132 \} \textcolor{comment}{// namespace HDF5}}
-\DoxyCodeLine{133 \} \textcolor{comment}{// namespace PLI}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}PLIHDF5/object.h"{}}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{39 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacePLI}{PLI}} \{}
+\DoxyCodeLine{43 \textcolor{keyword}{namespace }HDF5 \{}
+\DoxyCodeLine{47 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Link}{Link}} \{}
+\DoxyCodeLine{48   \textcolor{keyword}{public}:}
+\DoxyCodeLine{55     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a54a3bc0f3b4e1c88d827d42cd43e7958}{createSoft}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&srcPath,}
+\DoxyCodeLine{56                            \textcolor{keyword}{const} std::string \&dstPath);}
+\DoxyCodeLine{63     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a7600397621c342a5358f9e8c60e18b77}{createHard}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&srcPath,}
+\DoxyCodeLine{64                            \textcolor{keyword}{const} std::string \&dstPath);}
+\DoxyCodeLine{72     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a12da4316cb2f554c2e28963594eabb63}{createExternal}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr,}
+\DoxyCodeLine{73                                \textcolor{keyword}{const} std::string \&externalPath,}
+\DoxyCodeLine{74                                \textcolor{keyword}{const} std::string \&srcPath,}
+\DoxyCodeLine{75                                \textcolor{keyword}{const} std::string \&dstPath);}
+\DoxyCodeLine{76     \textcolor{keyword}{static} H5L\_info\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a51275ec97fe452856c4df8f7f35615e3}{getLinkInfo}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr,}
+\DoxyCodeLine{77                                   \textcolor{keyword}{const} std::string \&path);}
+\DoxyCodeLine{85     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ab1073b7ba5e75e89652632864dcc1644}{exists}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&path);}
+\DoxyCodeLine{93     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ab743c1d9f130b707403081bb8cdf402b}{isSoftLink}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&path);}
+\DoxyCodeLine{101     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a39d40578f0f67504aceb44d897bdac36}{isHardLink}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&path);}
+\DoxyCodeLine{109     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a2879030b56d924b203a6b806bd4d3a61}{isExternalLink}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr,}
+\DoxyCodeLine{110                                \textcolor{keyword}{const} std::string \&path);}
+\DoxyCodeLine{116     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_abd6a90f183e6b299c41153e678cd923e}{deleteLink}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&path);}
+\DoxyCodeLine{123     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_ab835805391b24d8b27c73d806a8ab61d}{moveLink}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&srcPath,}
+\DoxyCodeLine{124                          \textcolor{keyword}{const} std::string \&dstPath);}
+\DoxyCodeLine{131     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Link_a5945259235206eb2d34437f01b3896ef}{copyLink}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&srcPath,}
+\DoxyCodeLine{132                          \textcolor{keyword}{const} std::string \&dstPath);}
+\DoxyCodeLine{133 \};}
+\DoxyCodeLine{134 \} \textcolor{comment}{// namespace HDF5}}
+\DoxyCodeLine{135 \} \textcolor{comment}{// namespace PLI}}
 
 \end{DoxyCode}

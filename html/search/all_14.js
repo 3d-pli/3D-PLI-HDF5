@@ -11,5 +11,6 @@ var searchData=
   ['_7egroupnotfoundexception_8',['~GroupNotFoundException',['../classPLI_1_1HDF5_1_1Exceptions_1_1GroupNotFoundException.html#a347d0fc34f995ac67b020e0535eca503',1,'PLI::HDF5::Exceptions::GroupNotFoundException']]],
   ['_7ehdf5runtimeexception_9',['~HDF5RuntimeException',['../classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException.html#ac2f5de9b8bed3b364e83cf6e9f23a955',1,'PLI::HDF5::Exceptions::HDF5RuntimeException']]],
   ['_7eidentifiernotvalidexception_10',['~IdentifierNotValidException',['../classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException.html#a1323a155002b00313a8bbc8746b3ab70',1,'PLI::HDF5::Exceptions::IdentifierNotValidException']]],
-  ['_7einvalidhdf5fileexception_11',['~InvalidHDF5FileException',['../classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException.html#a12caf3237aa7c51dc3673de242fb83b9',1,'PLI::HDF5::Exceptions::InvalidHDF5FileException']]]
+  ['_7einvalidhdf5fileexception_11',['~InvalidHDF5FileException',['../classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException.html#a12caf3237aa7c51dc3673de242fb83b9',1,'PLI::HDF5::Exceptions::InvalidHDF5FileException']]],
+  ['_7eobject_12',['~Object',['../classPLI_1_1HDF5_1_1Object.html#a411e03deaa087dc44f93ba7da26e708f',1,'PLI::HDF5::Object']]]
 ];

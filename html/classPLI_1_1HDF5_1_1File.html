@@ -72,7 +72,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classPLI_1_1HDF5_1_1File-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">PLI::HDF5::File Class Reference</div></div>
@@ -83,51 +82,91 @@ $(function() {
  <a href="classPLI_1_1HDF5_1_1File.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="file_8h_source.html">file.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for PLI::HDF5::File:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classPLI_1_1HDF5_1_1File.png" usemap="#PLI::HDF5::File_map" alt=""/>
+  <map id="PLI::HDF5::File_map" name="PLI::HDF5::File_map">
+<area href="classPLI_1_1HDF5_1_1Folder.html" alt="PLI::HDF5::Folder" shape="rect" coords="0,56,112,80"/>
+<area href="classPLI_1_1HDF5_1_1Object.html" title="HDF5 Object class Each HDF5 file contains groups, datasets and attributes. Each one can be described ..." alt="PLI::HDF5::Object" shape="rect" coords="0,0,112,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ad41a62cae2d952fe4648fd73585e85c5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5">OpenState</a> { <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5acae691865c93ce0d9ab73893f819c814">ReadOnly</a> = 0
-, <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5a2913814e0a1b0b13e74603a9b094e19f">ReadWrite</a> = 1
+<tr class="memitem:ad41a62cae2d952fe4648fd73585e85c5"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5">OpenState</a> { <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197">ReadOnly</a> = 0
+, <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723">ReadWrite</a> = 1
  }</td></tr>
 <tr class="separator:ad41a62cae2d952fe4648fd73585e85c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15acf29a08db9d091001e7597e7cebb7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a15acf29a08db9d091001e7597e7cebb7">CreateState</a> { <a class="el" href="classPLI_1_1HDF5_1_1File.html#a15acf29a08db9d091001e7597e7cebb7a493c57c8ea70e56c8fac4ef68b37e917">OverrideExisting</a> = 0
+, <a class="el" href="classPLI_1_1HDF5_1_1File.html#a15acf29a08db9d091001e7597e7cebb7a619fa449ebd5be68665c8d4662ac6365">FailIfExists</a> = 1
+ }</td></tr>
+<tr class="separator:a15acf29a08db9d091001e7597e7cebb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad6964fd8adfabd17faa96af53251a2fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ad6964fd8adfabd17faa96af53251a2fe">File</a> ()</td></tr>
-<tr class="memdesc:ad6964fd8adfabd17faa96af53251a2fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> object.  <a href="classPLI_1_1HDF5_1_1File.html#ad6964fd8adfabd17faa96af53251a2fe">More...</a><br /></td></tr>
-<tr class="separator:ad6964fd8adfabd17faa96af53251a2fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a678b9d7e1bb3d2f6529305ae0d875c9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a678b9d7e1bb3d2f6529305ae0d875c9e">File</a> (const std::optional&lt; MPI_Comm &gt; <a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a>={})</td></tr>
+<tr class="memdesc:a678b9d7e1bb3d2f6529305ae0d875c9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> object.  <a href="classPLI_1_1HDF5_1_1File.html#a678b9d7e1bb3d2f6529305ae0d875c9e">More...</a><br /></td></tr>
+<tr class="separator:a678b9d7e1bb3d2f6529305ae0d875c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a506df5f077ae597a98f8d7a08b04d056"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a506df5f077ae597a98f8d7a08b04d056">File</a> (const <a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> &amp;otherFile)</td></tr>
 <tr class="memdesc:a506df5f077ae597a98f8d7a08b04d056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> object.  <a href="classPLI_1_1HDF5_1_1File.html#a506df5f077ae597a98f8d7a08b04d056">More...</a><br /></td></tr>
 <tr class="separator:a506df5f077ae597a98f8d7a08b04d056"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a486f8dbce1f554d68d173c6807797175"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a486f8dbce1f554d68d173c6807797175">File</a> (const hid_t filePtr, const hid_t <a class="el" href="classPLI_1_1HDF5_1_1File.html#abea3b36b7f98ef3c425cac9fb1efab9f">faplID</a>)</td></tr>
 <tr class="memdesc:a486f8dbce1f554d68d173c6807797175"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> object.  <a href="classPLI_1_1HDF5_1_1File.html#a486f8dbce1f554d68d173c6807797175">More...</a><br /></td></tr>
 <tr class="separator:a486f8dbce1f554d68d173c6807797175"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b4b89b07ccf1301b6cbc06efc47a0ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a2b4b89b07ccf1301b6cbc06efc47a0ea">create</a> (const std::string &amp;fileName)</td></tr>
-<tr class="memdesc:a2b4b89b07ccf1301b6cbc06efc47a0ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new file.  <a href="classPLI_1_1HDF5_1_1File.html#a2b4b89b07ccf1301b6cbc06efc47a0ea">More...</a><br /></td></tr>
-<tr class="separator:a2b4b89b07ccf1301b6cbc06efc47a0ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d30180bacdbb792b5d72b4ace1ed07c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a9d30180bacdbb792b5d72b4ace1ed07c">open</a> (const std::string &amp;fileName, const <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5">OpenState</a> openState)</td></tr>
-<tr class="memdesc:a9d30180bacdbb792b5d72b4ace1ed07c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open an existing file.  <a href="classPLI_1_1HDF5_1_1File.html#a9d30180bacdbb792b5d72b4ace1ed07c">More...</a><br /></td></tr>
-<tr class="separator:a9d30180bacdbb792b5d72b4ace1ed07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a930eacc5e5c0ff2235c1d678447dd85e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a930eacc5e5c0ff2235c1d678447dd85e">close</a> ()</td></tr>
-<tr class="memdesc:a930eacc5e5c0ff2235c1d678447dd85e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the file if it is valid.  <a href="classPLI_1_1HDF5_1_1File.html#a930eacc5e5c0ff2235c1d678447dd85e">More...</a><br /></td></tr>
-<tr class="separator:a930eacc5e5c0ff2235c1d678447dd85e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5e93fd5450080812b835e5b7b049ac5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ae5e93fd5450080812b835e5b7b049ac5">create</a> (const std::string &amp;fileName, const <a class="el" href="classPLI_1_1HDF5_1_1File.html#a15acf29a08db9d091001e7597e7cebb7">CreateState</a> creationState, const std::optional&lt; MPI_Comm &gt; <a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a>={})</td></tr>
+<tr class="memdesc:ae5e93fd5450080812b835e5b7b049ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new file.  <a href="classPLI_1_1HDF5_1_1File.html#ae5e93fd5450080812b835e5b7b049ac5">More...</a><br /></td></tr>
+<tr class="separator:ae5e93fd5450080812b835e5b7b049ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af226d9b9f4cef2b05ce3e27d1d1c8ec6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#af226d9b9f4cef2b05ce3e27d1d1c8ec6">open</a> (const std::string &amp;fileName, const <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5">OpenState</a> openState, const std::optional&lt; MPI_Comm &gt; <a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a>={})</td></tr>
+<tr class="memdesc:af226d9b9f4cef2b05ce3e27d1d1c8ec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open an existing file.  <a href="classPLI_1_1HDF5_1_1File.html#af226d9b9f4cef2b05ce3e27d1d1c8ec6">More...</a><br /></td></tr>
+<tr class="separator:af226d9b9f4cef2b05ce3e27d1d1c8ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed96504e52b3de28d3fe7909d4cfcbf9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#aed96504e52b3de28d3fe7909d4cfcbf9">usesMPIFileAccess</a> () const</td></tr>
+<tr class="memdesc:aed96504e52b3de28d3fe7909d4cfcbf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns if MPI <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> Access was enabled when creating / opening the file This function will return false if MPI is not available.  <a href="classPLI_1_1HDF5_1_1File.html#aed96504e52b3de28d3fe7909d4cfcbf9">More...</a><br /></td></tr>
+<tr class="separator:aed96504e52b3de28d3fe7909d4cfcbf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adaf80744e54c4b7c04ead41a2b46b165"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#adaf80744e54c4b7c04ead41a2b46b165">reopen</a> ()</td></tr>
 <tr class="memdesc:adaf80744e54c4b7c04ead41a2b46b165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reopen the file.  <a href="classPLI_1_1HDF5_1_1File.html#adaf80744e54c4b7c04ead41a2b46b165">More...</a><br /></td></tr>
 <tr class="separator:adaf80744e54c4b7c04ead41a2b46b165"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83b2e323c070259dbde4c23909097eeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a83b2e323c070259dbde4c23909097eeb">flush</a> ()</td></tr>
 <tr class="memdesc:a83b2e323c070259dbde4c23909097eeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes the file content in a local scope.  <a href="classPLI_1_1HDF5_1_1File.html#a83b2e323c070259dbde4c23909097eeb">More...</a><br /></td></tr>
 <tr class="separator:a83b2e323c070259dbde4c23909097eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9595536a728637c89589fb595e43230"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ae9595536a728637c89589fb595e43230">id</a> () const</td></tr>
-<tr class="memdesc:ae9595536a728637c89589fb595e43230"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the file pointer.  <a href="classPLI_1_1HDF5_1_1File.html#ae9595536a728637c89589fb595e43230">More...</a><br /></td></tr>
-<tr class="separator:ae9595536a728637c89589fb595e43230"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abea3b36b7f98ef3c425cac9fb1efab9f"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#abea3b36b7f98ef3c425cac9fb1efab9f">faplID</a> () const</td></tr>
 <tr class="memdesc:abea3b36b7f98ef3c425cac9fb1efab9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the file access pointer.  <a href="classPLI_1_1HDF5_1_1File.html#abea3b36b7f98ef3c425cac9fb1efab9f">More...</a><br /></td></tr>
 <tr class="separator:abea3b36b7f98ef3c425cac9fb1efab9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c53c2e016fd0243cf5f4162e43637d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a7c53c2e016fd0243cf5f4162e43637d2">operator hid_t</a> () const</td></tr>
-<tr class="memdesc:a7c53c2e016fd0243cf5f4162e43637d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the file to a the raw <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> pointer.  <a href="classPLI_1_1HDF5_1_1File.html#a7c53c2e016fd0243cf5f4162e43637d2">More...</a><br /></td></tr>
-<tr class="separator:a7c53c2e016fd0243cf5f4162e43637d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab006abde3bb48dbf6df85701f65e0b31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1File.html">File</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ab006abde3bb48dbf6df85701f65e0b31">operator=</a> (const <a class="el" href="classPLI_1_1HDF5_1_1File.html">PLI::HDF5::File</a> &amp;otherFile) noexcept</td></tr>
 <tr class="separator:ab006abde3bb48dbf6df85701f65e0b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classPLI_1_1HDF5_1_1Folder"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPLI_1_1HDF5_1_1Folder')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPLI_1_1HDF5_1_1Folder.html">PLI::HDF5::Folder</a></td></tr>
+<tr class="memitem:a655395f532ab6500310c4b0ef7142828 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Group.html">Group</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#a655395f532ab6500310c4b0ef7142828">openGroup</a> (const std::string &amp;groupName)</td></tr>
+<tr class="memdesc:a655395f532ab6500310c4b0ef7142828 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a group Open an existing group. If the group does not exist, an exception is thrown.  <a href="classPLI_1_1HDF5_1_1Folder.html#a655395f532ab6500310c4b0ef7142828">More...</a><br /></td></tr>
+<tr class="separator:a655395f532ab6500310c4b0ef7142828 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdb750d82dc69fdcd361f99874984b77 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Group.html">Group</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#abdb750d82dc69fdcd361f99874984b77">createGroup</a> (const std::string &amp;groupName)</td></tr>
+<tr class="memdesc:abdb750d82dc69fdcd361f99874984b77 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a group Create a new group. If the group already exists, an exception is thrown.  <a href="classPLI_1_1HDF5_1_1Folder.html#abdb750d82dc69fdcd361f99874984b77">More...</a><br /></td></tr>
+<tr class="separator:abdb750d82dc69fdcd361f99874984b77 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a876a51a74fc42cdbdfbd2f7f04e63cae inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">Dataset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#a876a51a74fc42cdbdfbd2f7f04e63cae">openDataset</a> (const std::string &amp;datasetName)</td></tr>
+<tr class="memdesc:a876a51a74fc42cdbdfbd2f7f04e63cae inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open an existing dataset.  <a href="classPLI_1_1HDF5_1_1Folder.html#a876a51a74fc42cdbdfbd2f7f04e63cae">More...</a><br /></td></tr>
+<tr class="separator:a876a51a74fc42cdbdfbd2f7f04e63cae inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0778579a07aa5f3a331a1d511436f174 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a0778579a07aa5f3a331a1d511436f174 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">Dataset</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#a0778579a07aa5f3a331a1d511436f174">createDataset</a> (const std::string &amp;datasetName, const std::vector&lt; size_t &gt; &amp;dims, const std::vector&lt; size_t &gt; &amp;chunkDims={})</td></tr>
+<tr class="memdesc:a0778579a07aa5f3a331a1d511436f174 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new dataset with the given name.  <a href="classPLI_1_1HDF5_1_1Folder.html#a0778579a07aa5f3a331a1d511436f174">More...</a><br /></td></tr>
+<tr class="separator:a0778579a07aa5f3a331a1d511436f174 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02265ece7a0300a98fa4c09c87844db6 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">Dataset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#a02265ece7a0300a98fa4c09c87844db6">createDataset</a> (const std::string &amp;datasetName, const std::vector&lt; size_t &gt; &amp;dims, const std::vector&lt; size_t &gt; &amp;chunkDims={}, const <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a> &amp;dataType=<a class="el" href="classPLI_1_1HDF5_1_1Type.html#ae523b5e5e3f6340416b885816e6994c6">PLI::HDF5::Type::createType</a>&lt; float &gt;())</td></tr>
+<tr class="memdesc:a02265ece7a0300a98fa4c09c87844db6 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new dataset with the given name.  <a href="classPLI_1_1HDF5_1_1Folder.html#a02265ece7a0300a98fa4c09c87844db6">More...</a><br /></td></tr>
+<tr class="separator:a02265ece7a0300a98fa4c09c87844db6 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classPLI_1_1HDF5_1_1Object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPLI_1_1HDF5_1_1Object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPLI_1_1HDF5_1_1Object.html">PLI::HDF5::Object</a></td></tr>
+<tr class="memitem:a411e03deaa087dc44f93ba7da26e708f inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a411e03deaa087dc44f93ba7da26e708f">~Object</a> ()</td></tr>
+<tr class="separator:a411e03deaa087dc44f93ba7da26e708f inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a257d24c1b2b656654f4b0d0d5a9c17b5 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a257d24c1b2b656654f4b0d0d5a9c17b5">id</a> () const noexcept</td></tr>
+<tr class="memdesc:a257d24c1b2b656654f4b0d0d5a9c17b5 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the raw <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> pointer of the object.  <a href="classPLI_1_1HDF5_1_1Object.html#a257d24c1b2b656654f4b0d0d5a9c17b5">More...</a><br /></td></tr>
+<tr class="separator:a257d24c1b2b656654f4b0d0d5a9c17b5 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c8405ca22a13d34b6412c8aa8daf169 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">std::optional&lt; MPI_Comm &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a> () const noexcept</td></tr>
+<tr class="memdesc:a2c8405ca22a13d34b6412c8aa8daf169 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the MPI_Communicator set when creating an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object. Certain <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> objects like <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> and <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> might need an MPI_Comm to define their transaction. To help with this behaviour, the communicator used for all operations is stored in the <a class="el" href="classPLI_1_1HDF5_1_1Object.html" title="HDF5 Object class Each HDF5 file contains groups, datasets and attributes. Each one can be described ...">Object</a> class and passed to all other created instances.  <a href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">More...</a><br /></td></tr>
+<tr class="separator:a2c8405ca22a13d34b6412c8aa8daf169 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a807ddba135c3f04265b4a2b88dd55613 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a807ddba135c3f04265b4a2b88dd55613">operator hid_t</a> () const noexcept</td></tr>
+<tr class="memdesc:a807ddba135c3f04265b4a2b88dd55613 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the dataset to a the raw <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> pointer.  <a href="classPLI_1_1HDF5_1_1Object.html#a807ddba135c3f04265b4a2b88dd55613">More...</a><br /></td></tr>
+<tr class="separator:a807ddba135c3f04265b4a2b88dd55613 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae03850af7af39824f5ee588dabd2ae61 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#ae03850af7af39824f5ee588dabd2ae61">close</a> ()</td></tr>
+<tr class="memdesc:ae03850af7af39824f5ee588dabd2ae61 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object. Manually closes the <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object. If a file is closed, all other objects in that file are closed as well to prevent issues. Calling the method from a closed instance will do nothing. When closing an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object which was copied earlier, the object will still be alive until all instances or the file are closed.  <a href="classPLI_1_1HDF5_1_1Object.html#ae03850af7af39824f5ee588dabd2ae61">More...</a><br /></td></tr>
+<tr class="separator:ae03850af7af39824f5ee588dabd2ae61 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -135,7 +174,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad4f7de370ce9655532fbcae6b920868b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the file is a valid <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> file.  <a href="classPLI_1_1HDF5_1_1File.html#ad4f7de370ce9655532fbcae6b920868b">More...</a><br /></td></tr>
 <tr class="separator:ad4f7de370ce9655532fbcae6b920868b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7d1c6b269c872ce262222d5b5542885"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ae7d1c6b269c872ce262222d5b5542885">fileExists</a> (const std::string &amp;fileName)</td></tr>
-<tr class="memdesc:ae7d1c6b269c872ce262222d5b5542885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the file exists.  <a href="classPLI_1_1HDF5_1_1File.html#ae7d1c6b269c872ce262222d5b5542885">More...</a><br /></td></tr>
+<tr class="memdesc:ae7d1c6b269c872ce262222d5b5542885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the file exists. Warning: This method is not thread-safe.  <a href="classPLI_1_1HDF5_1_1File.html#ae7d1c6b269c872ce262222d5b5542885">More...</a><br /></td></tr>
 <tr class="separator:ae7d1c6b269c872ce262222d5b5542885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
@@ -143,57 +182,113 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:ac3d442651cea72e8ec97b64efa878678"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ac3d442651cea72e8ec97b64efa878678">createFaplID</a> () const</td></tr>
 <tr class="separator:ac3d442651cea72e8ec97b64efa878678"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a160692c0e464d49e1822031fccb7ce17"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a160692c0e464d49e1822031fccb7ce17">checkMPI</a> ()</td></tr>
-<tr class="separator:a160692c0e464d49e1822031fccb7ce17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ad6608149dde5f5098793411fc6e27a29"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#ad6608149dde5f5098793411fc6e27a29">m_id</a></td></tr>
-<tr class="separator:ad6608149dde5f5098793411fc6e27a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a857051f66bef03df4da39818db7b4206"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1File.html#a857051f66bef03df4da39818db7b4206">m_faplID</a></td></tr>
 <tr class="separator:a857051f66bef03df4da39818db7b4206"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classPLI_1_1HDF5_1_1Folder"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classPLI_1_1HDF5_1_1Folder')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classPLI_1_1HDF5_1_1Folder.html">PLI::HDF5::Folder</a></td></tr>
+<tr class="memitem:aa76810358f4ead24173fac2aa46ef916 inherit pro_methods_classPLI_1_1HDF5_1_1Folder"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#aa76810358f4ead24173fac2aa46ef916">Folder</a> (const std::optional&lt; MPI_Comm &gt; &amp;<a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a>={}) noexcept</td></tr>
+<tr class="separator:aa76810358f4ead24173fac2aa46ef916 inherit pro_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12bcd8c6c63633d008eeb5c252589a0a inherit pro_methods_classPLI_1_1HDF5_1_1Folder"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#a12bcd8c6c63633d008eeb5c252589a0a">Folder</a> (const hid_t <a class="el" href="classPLI_1_1HDF5_1_1Object.html#a257d24c1b2b656654f4b0d0d5a9c17b5">id</a>, const std::optional&lt; MPI_Comm &gt; &amp;<a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a>={}) noexcept</td></tr>
+<tr class="separator:a12bcd8c6c63633d008eeb5c252589a0a inherit pro_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classPLI_1_1HDF5_1_1Object"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classPLI_1_1HDF5_1_1Object')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classPLI_1_1HDF5_1_1Object.html">PLI::HDF5::Object</a></td></tr>
+<tr class="memitem:a09e31594ecd2ecd26747fee5fad0d306 inherit pro_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a09e31594ecd2ecd26747fee5fad0d306">Object</a> (const std::optional&lt; MPI_Comm &gt; &amp;<a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a>={}) noexcept</td></tr>
+<tr class="separator:a09e31594ecd2ecd26747fee5fad0d306 inherit pro_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ce9b294463c6bc64a35fee0a1d21635 inherit pro_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a8ce9b294463c6bc64a35fee0a1d21635">Object</a> (const hid_t <a class="el" href="classPLI_1_1HDF5_1_1Object.html#a257d24c1b2b656654f4b0d0d5a9c17b5">id</a>, const std::optional&lt; MPI_Comm &gt; &amp;<a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a>={}) noexcept</td></tr>
+<tr class="separator:a8ce9b294463c6bc64a35fee0a1d21635 inherit pro_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee712c946062f359c5109857bafc6314 inherit pro_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#aee712c946062f359c5109857bafc6314">closeFileObjects</a> (unsigned int types)</td></tr>
+<tr class="separator:aee712c946062f359c5109857bafc6314 inherit pro_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classPLI_1_1HDF5_1_1Object"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classPLI_1_1HDF5_1_1Object')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classPLI_1_1HDF5_1_1Object.html">PLI::HDF5::Object</a></td></tr>
+<tr class="memitem:abfc8336a2ea5f0802c25d70062269025 inherit pro_attribs_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">std::optional&lt; MPI_Comm &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#abfc8336a2ea5f0802c25d70062269025">m_communicator</a></td></tr>
+<tr class="separator:abfc8336a2ea5f0802c25d70062269025 inherit pro_attribs_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24bd8878f1fee8bbe983b5f4d9c83268 inherit pro_attribs_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a24bd8878f1fee8bbe983b5f4d9c83268">m_id</a></td></tr>
+<tr class="separator:a24bd8878f1fee8bbe983b5f4d9c83268 inherit pro_attribs_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> wrapper class. Create and / or open an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> file to store or read data. </p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a15acf29a08db9d091001e7597e7cebb7" name="a15acf29a08db9d091001e7597e7cebb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15acf29a08db9d091001e7597e7cebb7">&#9670;&nbsp;</a></span>CreateState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classPLI_1_1HDF5_1_1File.html#a15acf29a08db9d091001e7597e7cebb7">PLI::HDF5::File::CreateState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a15acf29a08db9d091001e7597e7cebb7a493c57c8ea70e56c8fac4ef68b37e917" name="a15acf29a08db9d091001e7597e7cebb7a493c57c8ea70e56c8fac4ef68b37e917"></a>OverrideExisting&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a15acf29a08db9d091001e7597e7cebb7a619fa449ebd5be68665c8d4662ac6365" name="a15acf29a08db9d091001e7597e7cebb7a619fa449ebd5be68665c8d4662ac6365"></a>FailIfExists&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="ad41a62cae2d952fe4648fd73585e85c5" name="ad41a62cae2d952fe4648fd73585e85c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad41a62cae2d952fe4648fd73585e85c5">&#9670;&nbsp;</a></span>OpenState</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5">PLI::HDF5::File::OpenState</a></td>
+          <td class="memname">enum class <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5">PLI::HDF5::File::OpenState</a></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad41a62cae2d952fe4648fd73585e85c5acae691865c93ce0d9ab73893f819c814" name="ad41a62cae2d952fe4648fd73585e85c5acae691865c93ce0d9ab73893f819c814"></a>ReadOnly&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ad41a62cae2d952fe4648fd73585e85c5a2913814e0a1b0b13e74603a9b094e19f" name="ad41a62cae2d952fe4648fd73585e85c5a2913814e0a1b0b13e74603a9b094e19f"></a>ReadWrite&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197" name="ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197"></a>ReadOnly&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723" name="ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723"></a>ReadWrite&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad6964fd8adfabd17faa96af53251a2fe" name="ad6964fd8adfabd17faa96af53251a2fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6964fd8adfabd17faa96af53251a2fe">&#9670;&nbsp;</a></span>File() <span class="overload">[1/3]</span></h2>
+<a id="a678b9d7e1bb3d2f6529305ae0d875c9e" name="a678b9d7e1bb3d2f6529305ae0d875c9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a678b9d7e1bb3d2f6529305ae0d875c9e">&#9670;&nbsp;</a></span>File() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">PLI::HDF5::File::File </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const std::optional&lt; MPI_Comm &gt;&#160;</td>
+          <td class="paramname"><em>communicator</em> = <code>{}</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Construct a new <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> object. </p>
-<p >Create an empty file object. Calling other methods on this object will fail because no pointer to an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object is set. To open a file, use PLI::HDF5::File::open(const std::string&amp; fileName). To create a file, use <a class="el" href="classPLI_1_1HDF5_1_1File.html#a2b4b89b07ccf1301b6cbc06efc47a0ea" title="Create a new file.">PLI::HDF5::File::create(const std::string&amp; fileName)</a>. </p>
+<p >Create an empty file object. Calling other methods on this object will fail because no pointer to an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object is set. To open a file, use PLI::HDF5::File::open(const std::string&amp; fileName). To create a file, use PLI::HDF5::File::create(const std::string&amp; fileName). </p>
 
 </div>
 </div>
@@ -269,58 +364,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a160692c0e464d49e1822031fccb7ce17" name="a160692c0e464d49e1822031fccb7ce17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a160692c0e464d49e1822031fccb7ce17">&#9670;&nbsp;</a></span>checkMPI()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool PLI::HDF5::File::checkMPI </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a930eacc5e5c0ff2235c1d678447dd85e" name="a930eacc5e5c0ff2235c1d678447dd85e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a930eacc5e5c0ff2235c1d678447dd85e">&#9670;&nbsp;</a></span>close()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void PLI::HDF5::File::close </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Closes the file if it is valid. </p>
-<p >If the file is valid, it is closed. The file pointer is then set to an invalid value (-1) to ensure, that calls will result in an exception afterwards. </p><dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException.html">PLI::HDF5::Exceptions::HDF5RuntimeException</a></td><td>If the file could not be closed. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a2b4b89b07ccf1301b6cbc06efc47a0ea" name="a2b4b89b07ccf1301b6cbc06efc47a0ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b4b89b07ccf1301b6cbc06efc47a0ea">&#9670;&nbsp;</a></span>create()</h2>
+<a id="ae5e93fd5450080812b835e5b7b049ac5" name="ae5e93fd5450080812b835e5b7b049ac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5e93fd5450080812b835e5b7b049ac5">&#9670;&nbsp;</a></span>create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -329,8 +374,24 @@ Private Attributes</h2></td></tr>
           <td class="memname">void PLI::HDF5::File::create </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>fileName</em></td><td>)</td>
+          <td class="paramname"><em>fileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="classPLI_1_1HDF5_1_1File.html#a15acf29a08db9d091001e7597e7cebb7">CreateState</a>&#160;</td>
+          <td class="paramname"><em>creationState</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::optional&lt; MPI_Comm &gt;&#160;</td>
+          <td class="paramname"><em>communicator</em> = <code>{}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -339,6 +400,7 @@ Private Attributes</h2></td></tr>
 <p >Create a new file. Per default, the file is created with MPI file access. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fileName</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> name. </td></tr>
+    <tr><td class="paramname">communicator</td><td>If an MPI_Comm is set, the file will be opened with MPI access. Actions need to be done collectively. </td></tr>
   </table>
   </dd>
 </dl>
@@ -422,7 +484,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Check if the file exists. </p>
+<p>Check if the file exists. Warning: This method is not thread-safe. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fileName</td><td>Filename of the file. </td></tr>
@@ -461,26 +523,6 @@ false <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrappe
 
 </div>
 </div>
-<a id="ae9595536a728637c89589fb595e43230" name="ae9595536a728637c89589fb595e43230"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9595536a728637c89589fb595e43230">&#9670;&nbsp;</a></span>id()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">hid_t PLI::HDF5::File::id </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the file pointer. </p>
-<dl class="section return"><dt>Returns</dt><dd>hid_t <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> pointer. </dd></dl>
-
-</div>
-</div>
 <a id="ad4f7de370ce9655532fbcae6b920868b" name="ad4f7de370ce9655532fbcae6b920868b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad4f7de370ce9655532fbcae6b920868b">&#9670;&nbsp;</a></span>isHDF5()</h2>
 
@@ -506,7 +548,7 @@ false <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrappe
 </div><div class="memdoc">
 
 <p>Check if the file is a valid <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> file. </p>
-<p >This method checks if the file is a valid <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> file that can be opened with this library. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >This method checks if the file is a valid <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> file that can be opened with this library. Warning: This method is not thread-safe. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fileName</td><td>Filename of the file. </td></tr>
   </table>
@@ -518,8 +560,8 @@ false <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrappe
 
 </div>
 </div>
-<a id="a9d30180bacdbb792b5d72b4ace1ed07c" name="a9d30180bacdbb792b5d72b4ace1ed07c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d30180bacdbb792b5d72b4ace1ed07c">&#9670;&nbsp;</a></span>open()</h2>
+<a id="af226d9b9f4cef2b05ce3e27d1d1c8ec6" name="af226d9b9f4cef2b05ce3e27d1d1c8ec6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af226d9b9f4cef2b05ce3e27d1d1c8ec6">&#9670;&nbsp;</a></span>open()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -534,7 +576,13 @@ false <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrappe
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5">OpenState</a>&#160;</td>
-          <td class="paramname"><em>openState</em>&#160;</td>
+          <td class="paramname"><em>openState</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::optional&lt; MPI_Comm &gt;&#160;</td>
+          <td class="paramname"><em>communicator</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -545,10 +593,11 @@ false <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrappe
 </div><div class="memdoc">
 
 <p>Open an existing file. </p>
-<p >This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the openState variable, one can choose between opening the file in read-only mode or in read-write mode. Setting openState to PLI::HDF5::File::OpenState::ReadOnly will open the file in read-only mode. Setting openState to PLI::HDF5::File::OpenState::ReadWrite will open the file in read-write mode. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the openState variable, one can choose between opening the file in read-only mode or in read-write mode. Setting openState to <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197">PLI::HDF5::File::OpenState::ReadOnly</a> will open the file in read-only mode. Setting openState to <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723">PLI::HDF5::File::OpenState::ReadWrite</a> will open the file in read-write mode. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fileName</td><td><a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> name which will be opened. </td></tr>
-    <tr><td class="paramname">openState</td><td>OpenState variable. Available values are PLI::HDF5::File::OpenState::ReadOnly and PLI::HDF5::File::OpenState::ReadWrite. </td></tr>
+    <tr><td class="paramname">openState</td><td>OpenState variable. Available values are <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197">PLI::HDF5::File::OpenState::ReadOnly</a> and <a class="el" href="classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723">PLI::HDF5::File::OpenState::ReadWrite</a>. </td></tr>
+    <tr><td class="paramname">communicator</td><td>If an MPI_Comm is set, the file will be opened with MPI access. </td></tr>
   </table>
   </dd>
 </dl>
@@ -561,26 +610,6 @@ false <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrappe
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a7c53c2e016fd0243cf5f4162e43637d2" name="a7c53c2e016fd0243cf5f4162e43637d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c53c2e016fd0243cf5f4162e43637d2">&#9670;&nbsp;</a></span>operator hid_t()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">PLI::HDF5::File::operator hid_t </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Convert the file to a the raw <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> pointer. </p>
-<dl class="section return"><dt>Returns</dt><dd>hid_t <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> ID stored in the object. </dd></dl>
 
 </div>
 </div>
@@ -635,6 +664,28 @@ false <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrappe
 
 </div>
 </div>
+<a id="aed96504e52b3de28d3fe7909d4cfcbf9" name="aed96504e52b3de28d3fe7909d4cfcbf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed96504e52b3de28d3fe7909d4cfcbf9">&#9670;&nbsp;</a></span>usesMPIFileAccess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PLI::HDF5::File::usesMPIFileAccess </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns if MPI <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> Access was enabled when creating / opening the file This function will return false if MPI is not available. </p>
+<dl class="section return"><dt>Returns</dt><dd>true MPI <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> Access is enabled </dd>
+<dd>
+false MPI <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> Access is diabled </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a857051f66bef03df4da39818db7b4206" name="a857051f66bef03df4da39818db7b4206"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a857051f66bef03df4da39818db7b4206">&#9670;&nbsp;</a></span>m_faplID</h2>
@@ -647,28 +698,6 @@ false <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrappe
       <table class="memname">
         <tr>
           <td class="memname">hid_t PLI::HDF5::File::m_faplID</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad6608149dde5f5098793411fc6e27a29" name="ad6608149dde5f5098793411fc6e27a29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6608149dde5f5098793411fc6e27a29">&#9670;&nbsp;</a></span>m_id</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">hid_t PLI::HDF5::File::m_id</td>
         </tr>
       </table>
   </td>

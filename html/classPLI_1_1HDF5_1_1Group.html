@@ -70,7 +70,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classPLI_1_1HDF5_1_1Group-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">PLI::HDF5::Group Class Reference</div></div>
 </div><!--header-->
@@ -80,46 +79,94 @@ $(function() {
  <a href="classPLI_1_1HDF5_1_1Group.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="group_8h_source.html">group.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for PLI::HDF5::Group:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classPLI_1_1HDF5_1_1Group.png" usemap="#PLI::HDF5::Group_map" alt=""/>
+  <map id="PLI::HDF5::Group_map" name="PLI::HDF5::Group_map">
+<area href="classPLI_1_1HDF5_1_1Folder.html" alt="PLI::HDF5::Folder" shape="rect" coords="0,56,112,80"/>
+<area href="classPLI_1_1HDF5_1_1Object.html" title="HDF5 Object class Each HDF5 file contains groups, datasets and attributes. Each one can be described ..." alt="PLI::HDF5::Object" shape="rect" coords="0,0,112,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a596fd620f7e16d3733b8d5dd3f1e9dcc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a596fd620f7e16d3733b8d5dd3f1e9dcc">Group</a> () noexcept</td></tr>
 <tr class="memdesc:a596fd620f7e16d3733b8d5dd3f1e9dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> object.  <a href="classPLI_1_1HDF5_1_1Group.html#a596fd620f7e16d3733b8d5dd3f1e9dcc">More...</a><br /></td></tr>
 <tr class="separator:a596fd620f7e16d3733b8d5dd3f1e9dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a757771b7db2e3799bee107390350e82a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a757771b7db2e3799bee107390350e82a">Group</a> (const hid_t groupPtr) noexcept</td></tr>
-<tr class="memdesc:a757771b7db2e3799bee107390350e82a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> object.  <a href="classPLI_1_1HDF5_1_1Group.html#a757771b7db2e3799bee107390350e82a">More...</a><br /></td></tr>
-<tr class="separator:a757771b7db2e3799bee107390350e82a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a224f376e343f688791b5a61f51e7d9de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a224f376e343f688791b5a61f51e7d9de">Group</a> (const hid_t groupPtr, const std::optional&lt; MPI_Comm &gt; <a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a>={}) noexcept</td></tr>
+<tr class="memdesc:a224f376e343f688791b5a61f51e7d9de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> object.  <a href="classPLI_1_1HDF5_1_1Group.html#a224f376e343f688791b5a61f51e7d9de">More...</a><br /></td></tr>
+<tr class="separator:a224f376e343f688791b5a61f51e7d9de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a331c14483db6ec54cecd57c7bf35e3a4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a331c14483db6ec54cecd57c7bf35e3a4">Group</a> (const <a class="el" href="classPLI_1_1HDF5_1_1Group.html">Group</a> &amp;otherGroup) noexcept</td></tr>
 <tr class="memdesc:a331c14483db6ec54cecd57c7bf35e3a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> object.  <a href="classPLI_1_1HDF5_1_1Group.html#a331c14483db6ec54cecd57c7bf35e3a4">More...</a><br /></td></tr>
 <tr class="separator:a331c14483db6ec54cecd57c7bf35e3a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cf4b28419196b2bbff1881203eac780"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a4cf4b28419196b2bbff1881203eac780">open</a> (hid_t parentPtr, const std::string &amp;groupName)</td></tr>
-<tr class="memdesc:a4cf4b28419196b2bbff1881203eac780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a group.  <a href="classPLI_1_1HDF5_1_1Group.html#a4cf4b28419196b2bbff1881203eac780">More...</a><br /></td></tr>
-<tr class="separator:a4cf4b28419196b2bbff1881203eac780"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48b1eab02d0bdd068eac1170356dcc2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a48b1eab02d0bdd068eac1170356dcc2b">create</a> (hid_t parentPtr, const std::string &amp;groupName)</td></tr>
-<tr class="memdesc:a48b1eab02d0bdd068eac1170356dcc2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a group.  <a href="classPLI_1_1HDF5_1_1Group.html#a48b1eab02d0bdd068eac1170356dcc2b">More...</a><br /></td></tr>
-<tr class="separator:a48b1eab02d0bdd068eac1170356dcc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a244fc843079f3488ee215b5df0f9403e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a244fc843079f3488ee215b5df0f9403e">close</a> ()</td></tr>
-<tr class="memdesc:a244fc843079f3488ee215b5df0f9403e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the group if it is valid.  <a href="classPLI_1_1HDF5_1_1Group.html#a244fc843079f3488ee215b5df0f9403e">More...</a><br /></td></tr>
-<tr class="separator:a244fc843079f3488ee215b5df0f9403e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a456080f735a1da9d7937faeeaa745b49"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a456080f735a1da9d7937faeeaa745b49">id</a> () const noexcept</td></tr>
-<tr class="memdesc:a456080f735a1da9d7937faeeaa745b49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the raw <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> pointer of the group.  <a href="classPLI_1_1HDF5_1_1Group.html#a456080f735a1da9d7937faeeaa745b49">More...</a><br /></td></tr>
-<tr class="separator:a456080f735a1da9d7937faeeaa745b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1331843612104a553c4b03f5825b5dcd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a1331843612104a553c4b03f5825b5dcd">operator hid_t</a> () const noexcept</td></tr>
-<tr class="memdesc:a1331843612104a553c4b03f5825b5dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the group to a the raw <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> pointer.  <a href="classPLI_1_1HDF5_1_1Group.html#a1331843612104a553c4b03f5825b5dcd">More...</a><br /></td></tr>
-<tr class="separator:a1331843612104a553c4b03f5825b5dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05075f07907846ed46ee79f92c265a46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a05075f07907846ed46ee79f92c265a46">open</a> (const <a class="el" href="classPLI_1_1HDF5_1_1Folder.html">Folder</a> &amp;parentPtr, const std::string &amp;groupName)</td></tr>
+<tr class="memdesc:a05075f07907846ed46ee79f92c265a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a group.  <a href="classPLI_1_1HDF5_1_1Group.html#a05075f07907846ed46ee79f92c265a46">More...</a><br /></td></tr>
+<tr class="separator:a05075f07907846ed46ee79f92c265a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9641447caa6c7747beb5281ac925f7a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a9641447caa6c7747beb5281ac925f7a9">create</a> (const <a class="el" href="classPLI_1_1HDF5_1_1Folder.html">Folder</a> &amp;parentPtr, const std::string &amp;groupName)</td></tr>
+<tr class="memdesc:a9641447caa6c7747beb5281ac925f7a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a group.  <a href="classPLI_1_1HDF5_1_1Group.html#a9641447caa6c7747beb5281ac925f7a9">More...</a><br /></td></tr>
+<tr class="separator:a9641447caa6c7747beb5281ac925f7a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae70745cda448856b52cd2937fa133c9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Group.html">Group</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#ae70745cda448856b52cd2937fa133c9c">operator=</a> (const <a class="el" href="classPLI_1_1HDF5_1_1Group.html">PLI::HDF5::Group</a> &amp;otherGroup) noexcept</td></tr>
 <tr class="separator:ae70745cda448856b52cd2937fa133c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classPLI_1_1HDF5_1_1Folder"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPLI_1_1HDF5_1_1Folder')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPLI_1_1HDF5_1_1Folder.html">PLI::HDF5::Folder</a></td></tr>
+<tr class="memitem:a655395f532ab6500310c4b0ef7142828 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Group.html">Group</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#a655395f532ab6500310c4b0ef7142828">openGroup</a> (const std::string &amp;groupName)</td></tr>
+<tr class="memdesc:a655395f532ab6500310c4b0ef7142828 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a group Open an existing group. If the group does not exist, an exception is thrown.  <a href="classPLI_1_1HDF5_1_1Folder.html#a655395f532ab6500310c4b0ef7142828">More...</a><br /></td></tr>
+<tr class="separator:a655395f532ab6500310c4b0ef7142828 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdb750d82dc69fdcd361f99874984b77 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Group.html">Group</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#abdb750d82dc69fdcd361f99874984b77">createGroup</a> (const std::string &amp;groupName)</td></tr>
+<tr class="memdesc:abdb750d82dc69fdcd361f99874984b77 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a group Create a new group. If the group already exists, an exception is thrown.  <a href="classPLI_1_1HDF5_1_1Folder.html#abdb750d82dc69fdcd361f99874984b77">More...</a><br /></td></tr>
+<tr class="separator:abdb750d82dc69fdcd361f99874984b77 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a876a51a74fc42cdbdfbd2f7f04e63cae inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">Dataset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#a876a51a74fc42cdbdfbd2f7f04e63cae">openDataset</a> (const std::string &amp;datasetName)</td></tr>
+<tr class="memdesc:a876a51a74fc42cdbdfbd2f7f04e63cae inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open an existing dataset.  <a href="classPLI_1_1HDF5_1_1Folder.html#a876a51a74fc42cdbdfbd2f7f04e63cae">More...</a><br /></td></tr>
+<tr class="separator:a876a51a74fc42cdbdfbd2f7f04e63cae inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0778579a07aa5f3a331a1d511436f174 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a0778579a07aa5f3a331a1d511436f174 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">Dataset</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#a0778579a07aa5f3a331a1d511436f174">createDataset</a> (const std::string &amp;datasetName, const std::vector&lt; size_t &gt; &amp;dims, const std::vector&lt; size_t &gt; &amp;chunkDims={})</td></tr>
+<tr class="memdesc:a0778579a07aa5f3a331a1d511436f174 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new dataset with the given name.  <a href="classPLI_1_1HDF5_1_1Folder.html#a0778579a07aa5f3a331a1d511436f174">More...</a><br /></td></tr>
+<tr class="separator:a0778579a07aa5f3a331a1d511436f174 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02265ece7a0300a98fa4c09c87844db6 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPLI_1_1HDF5_1_1Dataset.html">Dataset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#a02265ece7a0300a98fa4c09c87844db6">createDataset</a> (const std::string &amp;datasetName, const std::vector&lt; size_t &gt; &amp;dims, const std::vector&lt; size_t &gt; &amp;chunkDims={}, const <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a> &amp;dataType=<a class="el" href="classPLI_1_1HDF5_1_1Type.html#ae523b5e5e3f6340416b885816e6994c6">PLI::HDF5::Type::createType</a>&lt; float &gt;())</td></tr>
+<tr class="memdesc:a02265ece7a0300a98fa4c09c87844db6 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new dataset with the given name.  <a href="classPLI_1_1HDF5_1_1Folder.html#a02265ece7a0300a98fa4c09c87844db6">More...</a><br /></td></tr>
+<tr class="separator:a02265ece7a0300a98fa4c09c87844db6 inherit pub_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classPLI_1_1HDF5_1_1Object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPLI_1_1HDF5_1_1Object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPLI_1_1HDF5_1_1Object.html">PLI::HDF5::Object</a></td></tr>
+<tr class="memitem:a411e03deaa087dc44f93ba7da26e708f inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a411e03deaa087dc44f93ba7da26e708f">~Object</a> ()</td></tr>
+<tr class="separator:a411e03deaa087dc44f93ba7da26e708f inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a257d24c1b2b656654f4b0d0d5a9c17b5 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a257d24c1b2b656654f4b0d0d5a9c17b5">id</a> () const noexcept</td></tr>
+<tr class="memdesc:a257d24c1b2b656654f4b0d0d5a9c17b5 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the raw <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> pointer of the object.  <a href="classPLI_1_1HDF5_1_1Object.html#a257d24c1b2b656654f4b0d0d5a9c17b5">More...</a><br /></td></tr>
+<tr class="separator:a257d24c1b2b656654f4b0d0d5a9c17b5 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c8405ca22a13d34b6412c8aa8daf169 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">std::optional&lt; MPI_Comm &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a> () const noexcept</td></tr>
+<tr class="memdesc:a2c8405ca22a13d34b6412c8aa8daf169 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the MPI_Communicator set when creating an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object. Certain <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> objects like <a class="el" href="classPLI_1_1HDF5_1_1File.html" title="HDF5 File wrapper class. Create and / or open an HDF5 file to store or read data.">File</a> and <a class="el" href="classPLI_1_1HDF5_1_1Dataset.html" title="HDF5 Dataset wrapper class. Create and store or read data in an HDF5 dataset.">Dataset</a> might need an MPI_Comm to define their transaction. To help with this behaviour, the communicator used for all operations is stored in the <a class="el" href="classPLI_1_1HDF5_1_1Object.html" title="HDF5 Object class Each HDF5 file contains groups, datasets and attributes. Each one can be described ...">Object</a> class and passed to all other created instances.  <a href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">More...</a><br /></td></tr>
+<tr class="separator:a2c8405ca22a13d34b6412c8aa8daf169 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a807ddba135c3f04265b4a2b88dd55613 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a807ddba135c3f04265b4a2b88dd55613">operator hid_t</a> () const noexcept</td></tr>
+<tr class="memdesc:a807ddba135c3f04265b4a2b88dd55613 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the dataset to a the raw <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> pointer.  <a href="classPLI_1_1HDF5_1_1Object.html#a807ddba135c3f04265b4a2b88dd55613">More...</a><br /></td></tr>
+<tr class="separator:a807ddba135c3f04265b4a2b88dd55613 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae03850af7af39824f5ee588dabd2ae61 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#ae03850af7af39824f5ee588dabd2ae61">close</a> ()</td></tr>
+<tr class="memdesc:ae03850af7af39824f5ee588dabd2ae61 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object. Manually closes the <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object. If a file is closed, all other objects in that file are closed as well to prevent issues. Calling the method from a closed instance will do nothing. When closing an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object which was copied earlier, the object will still be alive until all instances or the file are closed.  <a href="classPLI_1_1HDF5_1_1Object.html#ae03850af7af39824f5ee588dabd2ae61">More...</a><br /></td></tr>
+<tr class="separator:ae03850af7af39824f5ee588dabd2ae61 inherit pub_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ac282b5bcff034bb2ac34e64634cb924d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#ac282b5bcff034bb2ac34e64634cb924d">exists</a> (hid_t parentPtr, const std::string &amp;groupName)</td></tr>
-<tr class="memdesc:ac282b5bcff034bb2ac34e64634cb924d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the group exists.  <a href="classPLI_1_1HDF5_1_1Group.html#ac282b5bcff034bb2ac34e64634cb924d">More...</a><br /></td></tr>
-<tr class="separator:ac282b5bcff034bb2ac34e64634cb924d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86cac480dd34c760d2e2fdded68bea55"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a86cac480dd34c760d2e2fdded68bea55">exists</a> (const <a class="el" href="classPLI_1_1HDF5_1_1Folder.html">Folder</a> &amp;parentPtr, const std::string &amp;groupName)</td></tr>
+<tr class="memdesc:a86cac480dd34c760d2e2fdded68bea55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the group exists.  <a href="classPLI_1_1HDF5_1_1Group.html#a86cac480dd34c760d2e2fdded68bea55">More...</a><br /></td></tr>
+<tr class="separator:a86cac480dd34c760d2e2fdded68bea55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a1a5bb47eb16e71c5c20838cab9992ae6"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Group.html#a1a5bb47eb16e71c5c20838cab9992ae6">m_id</a></td></tr>
-<tr class="separator:a1a5bb47eb16e71c5c20838cab9992ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classPLI_1_1HDF5_1_1Folder"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classPLI_1_1HDF5_1_1Folder')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classPLI_1_1HDF5_1_1Folder.html">PLI::HDF5::Folder</a></td></tr>
+<tr class="memitem:aa76810358f4ead24173fac2aa46ef916 inherit pro_methods_classPLI_1_1HDF5_1_1Folder"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#aa76810358f4ead24173fac2aa46ef916">Folder</a> (const std::optional&lt; MPI_Comm &gt; &amp;<a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a>={}) noexcept</td></tr>
+<tr class="separator:aa76810358f4ead24173fac2aa46ef916 inherit pro_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12bcd8c6c63633d008eeb5c252589a0a inherit pro_methods_classPLI_1_1HDF5_1_1Folder"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Folder.html#a12bcd8c6c63633d008eeb5c252589a0a">Folder</a> (const hid_t <a class="el" href="classPLI_1_1HDF5_1_1Object.html#a257d24c1b2b656654f4b0d0d5a9c17b5">id</a>, const std::optional&lt; MPI_Comm &gt; &amp;<a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a>={}) noexcept</td></tr>
+<tr class="separator:a12bcd8c6c63633d008eeb5c252589a0a inherit pro_methods_classPLI_1_1HDF5_1_1Folder"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classPLI_1_1HDF5_1_1Object"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classPLI_1_1HDF5_1_1Object')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classPLI_1_1HDF5_1_1Object.html">PLI::HDF5::Object</a></td></tr>
+<tr class="memitem:a09e31594ecd2ecd26747fee5fad0d306 inherit pro_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a09e31594ecd2ecd26747fee5fad0d306">Object</a> (const std::optional&lt; MPI_Comm &gt; &amp;<a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a>={}) noexcept</td></tr>
+<tr class="separator:a09e31594ecd2ecd26747fee5fad0d306 inherit pro_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ce9b294463c6bc64a35fee0a1d21635 inherit pro_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a8ce9b294463c6bc64a35fee0a1d21635">Object</a> (const hid_t <a class="el" href="classPLI_1_1HDF5_1_1Object.html#a257d24c1b2b656654f4b0d0d5a9c17b5">id</a>, const std::optional&lt; MPI_Comm &gt; &amp;<a class="el" href="classPLI_1_1HDF5_1_1Object.html#a2c8405ca22a13d34b6412c8aa8daf169">communicator</a>={}) noexcept</td></tr>
+<tr class="separator:a8ce9b294463c6bc64a35fee0a1d21635 inherit pro_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee712c946062f359c5109857bafc6314 inherit pro_methods_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#aee712c946062f359c5109857bafc6314">closeFileObjects</a> (unsigned int types)</td></tr>
+<tr class="separator:aee712c946062f359c5109857bafc6314 inherit pro_methods_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_classPLI_1_1HDF5_1_1Object"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classPLI_1_1HDF5_1_1Object')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classPLI_1_1HDF5_1_1Object.html">PLI::HDF5::Object</a></td></tr>
+<tr class="memitem:abfc8336a2ea5f0802c25d70062269025 inherit pro_attribs_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">std::optional&lt; MPI_Comm &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#abfc8336a2ea5f0802c25d70062269025">m_communicator</a></td></tr>
+<tr class="separator:abfc8336a2ea5f0802c25d70062269025 inherit pro_attribs_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24bd8878f1fee8bbe983b5f4d9c83268 inherit pro_attribs_classPLI_1_1HDF5_1_1Object"><td class="memItemLeft" align="right" valign="top">hid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPLI_1_1HDF5_1_1Object.html#a24bd8878f1fee8bbe983b5f4d9c83268">m_id</a></td></tr>
+<tr class="separator:a24bd8878f1fee8bbe983b5f4d9c83268 inherit pro_attribs_classPLI_1_1HDF5_1_1Object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> wrapper class. Create and / or open an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> group. </p>
@@ -148,13 +195,13 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Construct a new <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> object. </p>
-<p >Create an empty group object. Calling other methods on this object will fail because no pointer to an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object is set. To open a group, use <a class="el" href="classPLI_1_1HDF5_1_1Group.html#a4cf4b28419196b2bbff1881203eac780" title="Opens a group.">PLI::HDF5::Group::open(hid_t parentPtr, const std::string&amp; groupName)</a>. To create a grouop, use <a class="el" href="classPLI_1_1HDF5_1_1Group.html#a48b1eab02d0bdd068eac1170356dcc2b" title="Creates a group.">PLI::HDF5::Group::create(hid_t parentPtr, const
-std::string&amp; groupName)</a>. </p>
+<p >Create an empty group object. Calling other methods on this object will fail because no pointer to an <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> object is set. To open a group, use PLI::HDF5::Group::open(hid_t parentPtr, const std::string&amp; groupName). To create a grouop, use PLI::HDF5::Group::create(hid_t parentPtr, const
+std::string&amp; groupName). </p>
 
 </div>
 </div>
-<a id="a757771b7db2e3799bee107390350e82a" name="a757771b7db2e3799bee107390350e82a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a757771b7db2e3799bee107390350e82a">&#9670;&nbsp;</a></span>Group() <span class="overload">[2/3]</span></h2>
+<a id="a224f376e343f688791b5a61f51e7d9de" name="a224f376e343f688791b5a61f51e7d9de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a224f376e343f688791b5a61f51e7d9de">&#9670;&nbsp;</a></span>Group() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,8 +213,18 @@ std::string&amp; groupName)</a>. </p>
           <td class="memname">PLI::HDF5::Group::Group </td>
           <td>(</td>
           <td class="paramtype">const hid_t&#160;</td>
-          <td class="paramname"><em>groupPtr</em></td><td>)</td>
+          <td class="paramname"><em>groupPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::optional&lt; MPI_Comm &gt;&#160;</td>
+          <td class="paramname"><em>communicator</em> = <code>{}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -222,33 +279,8 @@ std::string&amp; groupName)</a>. </p>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a244fc843079f3488ee215b5df0f9403e" name="a244fc843079f3488ee215b5df0f9403e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a244fc843079f3488ee215b5df0f9403e">&#9670;&nbsp;</a></span>close()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void PLI::HDF5::Group::close </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Closes the group if it is valid. </p>
-<p >If the dataset is valid, it is closed. The group pointer is then set to an invalid value (-1) to ensure, that calls will result in an exception afterwards. </p><dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException.html">PLI::HDF5::Exceptions::HDF5RuntimeException</a></td><td>If the group could not be closed. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a48b1eab02d0bdd068eac1170356dcc2b" name="a48b1eab02d0bdd068eac1170356dcc2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48b1eab02d0bdd068eac1170356dcc2b">&#9670;&nbsp;</a></span>create()</h2>
+<a id="a9641447caa6c7747beb5281ac925f7a9" name="a9641447caa6c7747beb5281ac925f7a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9641447caa6c7747beb5281ac925f7a9">&#9670;&nbsp;</a></span>create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -256,7 +288,7 @@ std::string&amp; groupName)</a>. </p>
         <tr>
           <td class="memname">void PLI::HDF5::Group::create </td>
           <td>(</td>
-          <td class="paramtype">hid_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="classPLI_1_1HDF5_1_1Folder.html">Folder</a> &amp;&#160;</td>
           <td class="paramname"><em>parentPtr</em>, </td>
         </tr>
         <tr>
@@ -276,7 +308,7 @@ std::string&amp; groupName)</a>. </p>
 <p>Creates a group. </p>
 <p >Create a new group. If the group already exists, an exception is thrown. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parentPtr</td><td>Pointer to the parent group or file. </td></tr>
+    <tr><td class="paramname">parentPtr</td><td>Instance of parent group or file. </td></tr>
     <tr><td class="paramname">groupName</td><td>Name of the group to create. </td></tr>
   </table>
   </dd>
@@ -291,8 +323,8 @@ std::string&amp; groupName)</a>. </p>
 
 </div>
 </div>
-<a id="ac282b5bcff034bb2ac34e64634cb924d" name="ac282b5bcff034bb2ac34e64634cb924d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac282b5bcff034bb2ac34e64634cb924d">&#9670;&nbsp;</a></span>exists()</h2>
+<a id="a86cac480dd34c760d2e2fdded68bea55" name="a86cac480dd34c760d2e2fdded68bea55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86cac480dd34c760d2e2fdded68bea55">&#9670;&nbsp;</a></span>exists()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -303,7 +335,7 @@ std::string&amp; groupName)</a>. </p>
         <tr>
           <td class="memname">bool PLI::HDF5::Group::exists </td>
           <td>(</td>
-          <td class="paramtype">hid_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="classPLI_1_1HDF5_1_1Folder.html">Folder</a> &amp;&#160;</td>
           <td class="paramname"><em>parentPtr</em>, </td>
         </tr>
         <tr>
@@ -328,7 +360,7 @@ std::string&amp; groupName)</a>. </p>
 <p>Checks if the group exists. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parentPtr</td><td>Pointer to the parent group or file </td></tr>
+    <tr><td class="paramname">parentPtr</td><td>Instance of parent group or file. </td></tr>
     <tr><td class="paramname">groupName</td><td>Name of the group to check. </td></tr>
   </table>
   </dd>
@@ -345,36 +377,8 @@ false If the group does not exist. </dd></dl>
 
 </div>
 </div>
-<a id="a456080f735a1da9d7937faeeaa745b49" name="a456080f735a1da9d7937faeeaa745b49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a456080f735a1da9d7937faeeaa745b49">&#9670;&nbsp;</a></span>id()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">hid_t PLI::HDF5::Group::id </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the raw <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> pointer of the group. </p>
-<p >Returns the raw <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> pointer of the group. This pointer can be used to access the group using the <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> library. </p><dl class="section return"><dt>Returns</dt><dd>hid_t <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> ID stored in the object. </dd></dl>
-
-</div>
-</div>
-<a id="a4cf4b28419196b2bbff1881203eac780" name="a4cf4b28419196b2bbff1881203eac780"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4cf4b28419196b2bbff1881203eac780">&#9670;&nbsp;</a></span>open()</h2>
+<a id="a05075f07907846ed46ee79f92c265a46" name="a05075f07907846ed46ee79f92c265a46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05075f07907846ed46ee79f92c265a46">&#9670;&nbsp;</a></span>open()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -382,7 +386,7 @@ false If the group does not exist. </dd></dl>
         <tr>
           <td class="memname">void PLI::HDF5::Group::open </td>
           <td>(</td>
-          <td class="paramtype">hid_t&#160;</td>
+          <td class="paramtype">const <a class="el" href="classPLI_1_1HDF5_1_1Folder.html">Folder</a> &amp;&#160;</td>
           <td class="paramname"><em>parentPtr</em>, </td>
         </tr>
         <tr>
@@ -402,7 +406,7 @@ false If the group does not exist. </dd></dl>
 <p>Opens a group. </p>
 <p >Open an existing group. If the group does not exist, an exception is thrown. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parentPtr</td><td>Pointer to the parent group or file. </td></tr>
+    <tr><td class="paramname">parentPtr</td><td>Instance of parent group or file. </td></tr>
     <tr><td class="paramname">groupName</td><td>Name of the group to open. </td></tr>
   </table>
   </dd>
@@ -414,34 +418,6 @@ false If the group does not exist. </dd></dl>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a1331843612104a553c4b03f5825b5dcd" name="a1331843612104a553c4b03f5825b5dcd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1331843612104a553c4b03f5825b5dcd">&#9670;&nbsp;</a></span>operator hid_t()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">PLI::HDF5::Group::operator hid_t </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Convert the group to a the raw <a class="el" href="namespacePLI_1_1HDF5.html" title="The HDF5 namespace.">HDF5</a> pointer. </p>
-<dl class="section return"><dt>Returns</dt><dd>hid_t <a class="el" href="classPLI_1_1HDF5_1_1Group.html" title="HDF5 Group wrapper class. Create and / or open an HDF5 group.">Group</a> ID stored in the object. </dd></dl>
 
 </div>
 </div>
@@ -465,29 +441,6 @@ false If the group does not exist. </dd></dl>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1a5bb47eb16e71c5c20838cab9992ae6" name="a1a5bb47eb16e71c5c20838cab9992ae6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a5bb47eb16e71c5c20838cab9992ae6">&#9670;&nbsp;</a></span>m_id</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">hid_t PLI::HDF5::Group::m_id</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

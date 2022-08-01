@@ -1,0 +1,149 @@
+\hypertarget{classPLI_1_1HDF5_1_1Object}{}\doxysection{PLI\+::HDF5\+::Object Class Reference}
+\label{classPLI_1_1HDF5_1_1Object}\index{PLI::HDF5::Object@{PLI::HDF5::Object}}
+
+
+\mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object}{Object}} class Each \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file contains groups, datasets and attributes. Each one can be described through an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object}{Object}} (H5O). This class offers a small wrapper to help with other \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} functionality.  
+
+
+
+
+{\ttfamily \#include $<$object.\+h$>$}
+
+Inheritance diagram for PLI\+::HDF5\+::Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classPLI_1_1HDF5_1_1Object}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a411e03deaa087dc44f93ba7da26e708f}{$\sim$\+Object}} ()
+\item 
+hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a257d24c1b2b656654f4b0d0d5a9c17b5}{id}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the object. \end{DoxyCompactList}\item 
+std\+::optional$<$ MPI\+\_\+\+Comm $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Returns the MPI\+\_\+\+Communicator set when creating an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object. Certain \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} objects like \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} and \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} might need an MPI\+\_\+\+Comm to define their transaction. To help with this behaviour, the communicator used for all operations is stored in the \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object}{Object}} class and passed to all other created instances. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a807ddba135c3f04265b4a2b88dd55613}{operator hid\+\_\+t}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Convert the dataset to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_ae03850af7af39824f5ee588dabd2ae61}{close}} ()
+\begin{DoxyCompactList}\small\item\em Closes the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object. Manually closes the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object. If a file is closed, all other objects in that file are closed as well to prevent issues. Calling the method from a closed instance will do nothing. When closing an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object which was copied earlier, the object will still be alive until all instances or the file are closed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a09e31594ecd2ecd26747fee5fad0d306}{Object}} (const std\+::optional$<$ MPI\+\_\+\+Comm $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}}=\{\}) noexcept
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a8ce9b294463c6bc64a35fee0a1d21635}{Object}} (const hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a257d24c1b2b656654f4b0d0d5a9c17b5}{id}}, const std\+::optional$<$ MPI\+\_\+\+Comm $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}}=\{\}) noexcept
+\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_aee712c946062f359c5109857bafc6314}{close\+File\+Objects}} (unsigned int types)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::optional$<$ MPI\+\_\+\+Comm $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_abfc8336a2ea5f0802c25d70062269025}{m\+\_\+communicator}}
+\item 
+hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a24bd8878f1fee8bbe983b5f4d9c83268}{m\+\_\+id}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object}{Object}} class Each \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file contains groups, datasets and attributes. Each one can be described through an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object}{Object}} (H5O). This class offers a small wrapper to help with other \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} functionality. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Object_a411e03deaa087dc44f93ba7da26e708f}\label{classPLI_1_1HDF5_1_1Object_a411e03deaa087dc44f93ba7da26e708f}} 
+\index{PLI::HDF5::Object@{PLI::HDF5::Object}!````~Object@{$\sim$Object}}
+\index{````~Object@{$\sim$Object}!PLI::HDF5::Object@{PLI::HDF5::Object}}
+\doxysubsubsection{\texorpdfstring{$\sim$Object()}{~Object()}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Object\+::$\sim$\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Object_a09e31594ecd2ecd26747fee5fad0d306}\label{classPLI_1_1HDF5_1_1Object_a09e31594ecd2ecd26747fee5fad0d306}} 
+\index{PLI::HDF5::Object@{PLI::HDF5::Object}!Object@{Object}}
+\index{Object@{Object}!PLI::HDF5::Object@{PLI::HDF5::Object}}
+\doxysubsubsection{\texorpdfstring{Object()}{Object()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Object\+::\+Object (\begin{DoxyParamCaption}\item[{const std\+::optional$<$ MPI\+\_\+\+Comm $>$ \&}]{communicator = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [protected]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Object_a8ce9b294463c6bc64a35fee0a1d21635}\label{classPLI_1_1HDF5_1_1Object_a8ce9b294463c6bc64a35fee0a1d21635}} 
+\index{PLI::HDF5::Object@{PLI::HDF5::Object}!Object@{Object}}
+\index{Object@{Object}!PLI::HDF5::Object@{PLI::HDF5::Object}}
+\doxysubsubsection{\texorpdfstring{Object()}{Object()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Object\+::\+Object (\begin{DoxyParamCaption}\item[{const hid\+\_\+t}]{id,  }\item[{const std\+::optional$<$ MPI\+\_\+\+Comm $>$ \&}]{communicator = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [protected]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Object_ae03850af7af39824f5ee588dabd2ae61}\label{classPLI_1_1HDF5_1_1Object_ae03850af7af39824f5ee588dabd2ae61}} 
+\index{PLI::HDF5::Object@{PLI::HDF5::Object}!close@{close}}
+\index{close@{close}!PLI::HDF5::Object@{PLI::HDF5::Object}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Object\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object. Manually closes the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object. If a file is closed, all other objects in that file are closed as well to prevent issues. Calling the method from a closed instance will do nothing. When closing an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object which was copied earlier, the object will still be alive until all instances or the file are closed. 
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Object_aee712c946062f359c5109857bafc6314}\label{classPLI_1_1HDF5_1_1Object_aee712c946062f359c5109857bafc6314}} 
+\index{PLI::HDF5::Object@{PLI::HDF5::Object}!closeFileObjects@{closeFileObjects}}
+\index{closeFileObjects@{closeFileObjects}!PLI::HDF5::Object@{PLI::HDF5::Object}}
+\doxysubsubsection{\texorpdfstring{closeFileObjects()}{closeFileObjects()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Object\+::close\+File\+Objects (\begin{DoxyParamCaption}\item[{unsigned int}]{types }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}\label{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}} 
+\index{PLI::HDF5::Object@{PLI::HDF5::Object}!communicator@{communicator}}
+\index{communicator@{communicator}!PLI::HDF5::Object@{PLI::HDF5::Object}}
+\doxysubsubsection{\texorpdfstring{communicator()}{communicator()}}
+{\footnotesize\ttfamily std\+::optional$<$ MPI\+\_\+\+Comm $>$ PLI\+::\+HDF5\+::\+Object\+::communicator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Returns the MPI\+\_\+\+Communicator set when creating an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object. Certain \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} objects like \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} and \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} might need an MPI\+\_\+\+Comm to define their transaction. To help with this behaviour, the communicator used for all operations is stored in the \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object}{Object}} class and passed to all other created instances. 
+
+\begin{DoxyReturn}{Returns}
+MPI\+\_\+\+Comm if one is set, else an empty optional. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Object_a257d24c1b2b656654f4b0d0d5a9c17b5}\label{classPLI_1_1HDF5_1_1Object_a257d24c1b2b656654f4b0d0d5a9c17b5}} 
+\index{PLI::HDF5::Object@{PLI::HDF5::Object}!id@{id}}
+\index{id@{id}!PLI::HDF5::Object@{PLI::HDF5::Object}}
+\doxysubsubsection{\texorpdfstring{id()}{id()}}
+{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+Object\+::id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Get the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the object. 
+
+Returns the object \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer of the object. This pointer can be used to access the dataset using the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library. \begin{DoxyReturn}{Returns}
+hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object}{Object}} ID stored. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Object_a807ddba135c3f04265b4a2b88dd55613}\label{classPLI_1_1HDF5_1_1Object_a807ddba135c3f04265b4a2b88dd55613}} 
+\index{PLI::HDF5::Object@{PLI::HDF5::Object}!operator hid\_t@{operator hid\_t}}
+\index{operator hid\_t@{operator hid\_t}!PLI::HDF5::Object@{PLI::HDF5::Object}}
+\doxysubsubsection{\texorpdfstring{operator hid\_t()}{operator hid\_t()}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Object\+::operator hid\+\_\+t (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Convert the dataset to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer. 
+
+\begin{DoxyReturn}{Returns}
+hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} ID stored in the object. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Object_abfc8336a2ea5f0802c25d70062269025}\label{classPLI_1_1HDF5_1_1Object_abfc8336a2ea5f0802c25d70062269025}} 
+\index{PLI::HDF5::Object@{PLI::HDF5::Object}!m\_communicator@{m\_communicator}}
+\index{m\_communicator@{m\_communicator}!PLI::HDF5::Object@{PLI::HDF5::Object}}
+\doxysubsubsection{\texorpdfstring{m\_communicator}{m\_communicator}}
+{\footnotesize\ttfamily std\+::optional$<$MPI\+\_\+\+Comm$>$ PLI\+::\+HDF5\+::\+Object\+::m\+\_\+communicator\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Object_a24bd8878f1fee8bbe983b5f4d9c83268}\label{classPLI_1_1HDF5_1_1Object_a24bd8878f1fee8bbe983b5f4d9c83268}} 
+\index{PLI::HDF5::Object@{PLI::HDF5::Object}!m\_id@{m\_id}}
+\index{m\_id@{m\_id}!PLI::HDF5::Object@{PLI::HDF5::Object}}
+\doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
+{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+Object\+::m\+\_\+id\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+PLIHDF5/object.\+h\item 
+src/object.\+cpp\end{DoxyCompactItemize}

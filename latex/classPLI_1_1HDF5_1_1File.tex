@@ -9,38 +9,44 @@
 
 {\ttfamily \#include $<$file.\+h$>$}
 
+Inheritance diagram for PLI\+::HDF5\+::File\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classPLI_1_1HDF5_1_1File}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{Open\+State}} \{ \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5acae691865c93ce0d9ab73893f819c814}{Read\+Only}} = 0
-, \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a2913814e0a1b0b13e74603a9b094e19f}{Read\+Write}} = 1
+enum class \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{Open\+State}} \{ \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197}{Read\+Only}} = 0
+, \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723}{Read\+Write}} = 1
+ \}
+\item 
+enum class \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7}{Create\+State}} \{ \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7a493c57c8ea70e56c8fac4ef68b37e917}{Override\+Existing}} = 0
+, \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7a619fa449ebd5be68665c8d4662ac6365}{Fail\+If\+Exists}} = 1
  \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}{File}} ()
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a678b9d7e1bb3d2f6529305ae0d875c9e}{File}} (const std\+::optional$<$ MPI\+\_\+\+Comm $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}}=\{\})
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a506df5f077ae597a98f8d7a08b04d056}{File}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} \&other\+File)
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a486f8dbce1f554d68d173c6807797175}{File}} (const hid\+\_\+t file\+Ptr, const hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}{fapl\+ID}})
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a2b4b89b07ccf1301b6cbc06efc47a0ea}{create}} (const std\+::string \&file\+Name)
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae5e93fd5450080812b835e5b7b049ac5}{create}} (const std\+::string \&file\+Name, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7}{Create\+State}} creation\+State, const std\+::optional$<$ MPI\+\_\+\+Comm $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}}=\{\})
 \begin{DoxyCompactList}\small\item\em Create a new file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a9d30180bacdbb792b5d72b4ace1ed07c}{open}} (const std\+::string \&file\+Name, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{Open\+State}} open\+State)
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_af226d9b9f4cef2b05ce3e27d1d1c8ec6}{open}} (const std\+::string \&file\+Name, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{Open\+State}} open\+State, const std\+::optional$<$ MPI\+\_\+\+Comm $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}}=\{\})
 \begin{DoxyCompactList}\small\item\em Open an existing file. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a930eacc5e5c0ff2235c1d678447dd85e}{close}} ()
-\begin{DoxyCompactList}\small\item\em Closes the file if it is valid. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_aed96504e52b3de28d3fe7909d4cfcbf9}{uses\+MPIFile\+Access}} () const
+\begin{DoxyCompactList}\small\item\em Returns if MPI \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} Access was enabled when creating / opening the file This function will return false if MPI is not available. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_adaf80744e54c4b7c04ead41a2b46b165}{reopen}} ()
 \begin{DoxyCompactList}\small\item\em Reopen the file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a83b2e323c070259dbde4c23909097eeb}{flush}} ()
 \begin{DoxyCompactList}\small\item\em Flushes the file content in a local scope. \end{DoxyCompactList}\item 
-hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae9595536a728637c89589fb595e43230}{id}} () const
-\begin{DoxyCompactList}\small\item\em Get the file pointer. \end{DoxyCompactList}\item 
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}{fapl\+ID}} () const
 \begin{DoxyCompactList}\small\item\em Get the file access pointer. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a7c53c2e016fd0243cf5f4162e43637d2}{operator hid\+\_\+t}} () const
-\begin{DoxyCompactList}\small\item\em Convert the file to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} \& \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ab006abde3bb48dbf6df85701f65e0b31}{operator=}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} \&other\+File) noexcept
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
@@ -49,42 +55,52 @@ hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1
 static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad4f7de370ce9655532fbcae6b920868b}{is\+HDF5}} (const std\+::string \&file\+Name)
 \begin{DoxyCompactList}\small\item\em Check if the file is a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae7d1c6b269c872ce262222d5b5542885}{file\+Exists}} (const std\+::string \&file\+Name)
-\begin{DoxyCompactList}\small\item\em Check if the file exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Check if the file exists. Warning\+: This method is not thread-\/safe. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ac3d442651cea72e8ec97b64efa878678}{create\+Fapl\+ID}} () const
 \end{DoxyCompactItemize}
-\doxysubsection*{Static Private Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a160692c0e464d49e1822031fccb7ce17}{check\+MPI}} ()
-\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad6608149dde5f5098793411fc6e27a29}{m\+\_\+id}}
-\item 
 hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a857051f66bef03df4da39818db7b4206}{m\+\_\+fapl\+ID}}
 \end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
 \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} wrapper class. Create and / or open an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file to store or read data. 
 
 \doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7}\label{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7}} 
+\index{PLI::HDF5::File@{PLI::HDF5::File}!CreateState@{CreateState}}
+\index{CreateState@{CreateState}!PLI::HDF5::File@{PLI::HDF5::File}}
+\doxysubsubsection{\texorpdfstring{CreateState}{CreateState}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7}{PLI\+::\+HDF5\+::\+File\+::\+Create\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OverrideExisting@{OverrideExisting}!PLI::HDF5::File@{PLI::HDF5::File}}\index{PLI::HDF5::File@{PLI::HDF5::File}!OverrideExisting@{OverrideExisting}}}\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7a493c57c8ea70e56c8fac4ef68b37e917}\label{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7a493c57c8ea70e56c8fac4ef68b37e917}} 
+Override\+Existing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FailIfExists@{FailIfExists}!PLI::HDF5::File@{PLI::HDF5::File}}\index{PLI::HDF5::File@{PLI::HDF5::File}!FailIfExists@{FailIfExists}}}\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7a619fa449ebd5be68665c8d4662ac6365}\label{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7a619fa449ebd5be68665c8d4662ac6365}} 
+Fail\+If\+Exists&\\
+\hline
+
+\end{DoxyEnumFields}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}\label{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!OpenState@{OpenState}}
 \index{OpenState@{OpenState}!PLI::HDF5::File@{PLI::HDF5::File}}
 \doxysubsubsection{\texorpdfstring{OpenState}{OpenState}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{PLI\+::\+HDF5\+::\+File\+::\+Open\+State}}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{PLI\+::\+HDF5\+::\+File\+::\+Open\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
 
 \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{ReadOnly@{ReadOnly}!PLI::HDF5::File@{PLI::HDF5::File}}\index{PLI::HDF5::File@{PLI::HDF5::File}!ReadOnly@{ReadOnly}}}\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5acae691865c93ce0d9ab73893f819c814}\label{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5acae691865c93ce0d9ab73893f819c814}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ReadOnly@{ReadOnly}!PLI::HDF5::File@{PLI::HDF5::File}}\index{PLI::HDF5::File@{PLI::HDF5::File}!ReadOnly@{ReadOnly}}}\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197}\label{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197}} 
 Read\+Only&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{ReadWrite@{ReadWrite}!PLI::HDF5::File@{PLI::HDF5::File}}\index{PLI::HDF5::File@{PLI::HDF5::File}!ReadWrite@{ReadWrite}}}\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a2913814e0a1b0b13e74603a9b094e19f}\label{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a2913814e0a1b0b13e74603a9b094e19f}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ReadWrite@{ReadWrite}!PLI::HDF5::File@{PLI::HDF5::File}}\index{PLI::HDF5::File@{PLI::HDF5::File}!ReadWrite@{ReadWrite}}}\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723}\label{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723}} 
 Read\+Write&\\
 \hline
 
@@ -92,17 +108,17 @@ Read\+Write&\\
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}\label{classPLI_1_1HDF5_1_1File_ad6964fd8adfabd17faa96af53251a2fe}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a678b9d7e1bb3d2f6529305ae0d875c9e}\label{classPLI_1_1HDF5_1_1File_a678b9d7e1bb3d2f6529305ae0d875c9e}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!File@{File}}
 \index{File@{File}!PLI::HDF5::File@{PLI::HDF5::File}}
 \doxysubsubsection{\texorpdfstring{File()}{File()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+File\+::\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+File\+::\+File (\begin{DoxyParamCaption}\item[{const std\+::optional$<$ MPI\+\_\+\+Comm $>$}]{communicator = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
 Construct a new \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} object. 
 
-Create an empty file object. Calling other methods on this object will fail because no pointer to an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object is set. To open a file, use PLI\+::\+HDF5\+::\+File\+::open(const std\+::string\& file\+Name). To create a file, use \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a2b4b89b07ccf1301b6cbc06efc47a0ea}{PLI\+::\+HDF5\+::\+File\+::create(const std\+::string\& file\+Name)}}. \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a506df5f077ae597a98f8d7a08b04d056}\label{classPLI_1_1HDF5_1_1File_a506df5f077ae597a98f8d7a08b04d056}} 
+Create an empty file object. Calling other methods on this object will fail because no pointer to an \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} object is set. To open a file, use PLI\+::\+HDF5\+::\+File\+::open(const std\+::string\& file\+Name). To create a file, use PLI\+::\+HDF5\+::\+File\+::create(const std\+::string\& file\+Name). \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a506df5f077ae597a98f8d7a08b04d056}\label{classPLI_1_1HDF5_1_1File_a506df5f077ae597a98f8d7a08b04d056}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!File@{File}}
 \index{File@{File}!PLI::HDF5::File@{PLI::HDF5::File}}
 \doxysubsubsection{\texorpdfstring{File()}{File()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
@@ -137,32 +153,11 @@ Construct a new file object by using the given pointer of another file object.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a160692c0e464d49e1822031fccb7ce17}\label{classPLI_1_1HDF5_1_1File_a160692c0e464d49e1822031fccb7ce17}} 
-\index{PLI::HDF5::File@{PLI::HDF5::File}!checkMPI@{checkMPI}}
-\index{checkMPI@{checkMPI}!PLI::HDF5::File@{PLI::HDF5::File}}
-\doxysubsubsection{\texorpdfstring{checkMPI()}{checkMPI()}}
-{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+File\+::check\+MPI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
-
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a930eacc5e5c0ff2235c1d678447dd85e}\label{classPLI_1_1HDF5_1_1File_a930eacc5e5c0ff2235c1d678447dd85e}} 
-\index{PLI::HDF5::File@{PLI::HDF5::File}!close@{close}}
-\index{close@{close}!PLI::HDF5::File@{PLI::HDF5::File}}
-\doxysubsubsection{\texorpdfstring{close()}{close()}}
-{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+File\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Closes the file if it is valid. 
-
-If the file is valid, it is closed. The file pointer is then set to an invalid value (-\/1) to ensure, that calls will result in an exception afterwards. 
-\begin{DoxyExceptions}{Exceptions}
-{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & If the file could not be closed. \\
-\hline
-\end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a2b4b89b07ccf1301b6cbc06efc47a0ea}\label{classPLI_1_1HDF5_1_1File_a2b4b89b07ccf1301b6cbc06efc47a0ea}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ae5e93fd5450080812b835e5b7b049ac5}\label{classPLI_1_1HDF5_1_1File_ae5e93fd5450080812b835e5b7b049ac5}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!create@{create}}
 \index{create@{create}!PLI::HDF5::File@{PLI::HDF5::File}}
 \doxysubsubsection{\texorpdfstring{create()}{create()}}
-{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+File\+::create (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+File\+::create (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7}{Create\+State}}}]{creation\+State,  }\item[{const std\+::optional$<$ MPI\+\_\+\+Comm $>$}]{communicator = {\ttfamily \{\}} }\end{DoxyParamCaption})}
 
 
 
@@ -171,6 +166,8 @@ Create a new file.
 Create a new file. Per default, the file is created with MPI file access. 
 \begin{DoxyParams}{Parameters}
 {\em file\+Name} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} name. \\
+\hline
+{\em communicator} & If an MPI\+\_\+\+Comm is set, the file will be opened with MPI access. Actions need to be done collectively. \\
 \hline
 \end{DoxyParams}
 
@@ -209,7 +206,7 @@ hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} access pointer.
 
 
 
-Check if the file exists. 
+Check if the file exists. Warning\+: This method is not thread-\/safe. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -238,19 +235,6 @@ Flushes the file content in a local scope.
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the file pointer is invalid. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ae9595536a728637c89589fb595e43230}\label{classPLI_1_1HDF5_1_1File_ae9595536a728637c89589fb595e43230}} 
-\index{PLI::HDF5::File@{PLI::HDF5::File}!id@{id}}
-\index{id@{id}!PLI::HDF5::File@{PLI::HDF5::File}}
-\doxysubsubsection{\texorpdfstring{id()}{id()}}
-{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+File\+::id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Get the file pointer. 
-
-\begin{DoxyReturn}{Returns}
-hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} pointer. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad4f7de370ce9655532fbcae6b920868b}\label{classPLI_1_1HDF5_1_1File_ad4f7de370ce9655532fbcae6b920868b}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!isHDF5@{isHDF5}}
 \index{isHDF5@{isHDF5}!PLI::HDF5::File@{PLI::HDF5::File}}
@@ -261,7 +245,7 @@ hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} pointer.
 
 Check if the file is a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. 
 
-This method checks if the file is a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file that can be opened with this library. 
+This method checks if the file is a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file that can be opened with this library. Warning\+: This method is not thread-\/safe. 
 \begin{DoxyParams}{Parameters}
 {\em file\+Name} & Filename of the file. \\
 \hline
@@ -271,21 +255,23 @@ true \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} is a valid \mbox{\hyperli
 
 false \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} isn\textquotesingle{}t a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a9d30180bacdbb792b5d72b4ace1ed07c}\label{classPLI_1_1HDF5_1_1File_a9d30180bacdbb792b5d72b4ace1ed07c}} 
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_af226d9b9f4cef2b05ce3e27d1d1c8ec6}\label{classPLI_1_1HDF5_1_1File_af226d9b9f4cef2b05ce3e27d1d1c8ec6}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!open@{open}}
 \index{open@{open}!PLI::HDF5::File@{PLI::HDF5::File}}
 \doxysubsubsection{\texorpdfstring{open()}{open()}}
-{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+File\+::open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{Open\+State}}}]{open\+State }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+File\+::open (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{Open\+State}}}]{open\+State,  }\item[{const std\+::optional$<$ MPI\+\_\+\+Comm $>$}]{communicator = {\ttfamily \{\}} }\end{DoxyParamCaption})}
 
 
 
 Open an existing file. 
 
-This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the open\+State variable, one can choose between opening the file in read-\/only mode or in read-\/write mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only will open the file in read-\/only mode. Setting open\+State to PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write will open the file in read-\/write mode. 
+This method tries to open an existing file. If the file doesnt exist, an exception is thrown. The file will be opened with MPI file access. By using the open\+State variable, one can choose between opening the file in read-\/only mode or in read-\/write mode. Setting open\+State to \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197}{PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only}} will open the file in read-\/only mode. Setting open\+State to \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723}{PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write}} will open the file in read-\/write mode. 
 \begin{DoxyParams}{Parameters}
 {\em file\+Name} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} name which will be opened. \\
 \hline
-{\em open\+State} & Open\+State variable. Available values are PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only and PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write. \\
+{\em open\+State} & Open\+State variable. Available values are \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197}{PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Only}} and \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723}{PLI\+::\+HDF5\+::\+File\+::\+Open\+State\+::\+Read\+Write}}. \\
+\hline
+{\em communicator} & If an MPI\+\_\+\+Comm is set, the file will be opened with MPI access. \\
 \hline
 \end{DoxyParams}
 
@@ -299,19 +285,6 @@ This method tries to open an existing file. If the file doesnt exist, an excepti
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1InvalidHDF5FileException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Invalid\+HDF5\+File\+Exception}}} & If the file is not a valid \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_a7c53c2e016fd0243cf5f4162e43637d2}\label{classPLI_1_1HDF5_1_1File_a7c53c2e016fd0243cf5f4162e43637d2}} 
-\index{PLI::HDF5::File@{PLI::HDF5::File}!operator hid\_t@{operator hid\_t}}
-\index{operator hid\_t@{operator hid\_t}!PLI::HDF5::File@{PLI::HDF5::File}}
-\doxysubsubsection{\texorpdfstring{operator hid\_t()}{operator hid\_t()}}
-{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+File\+::operator hid\+\_\+t (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Convert the file to a the raw \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} pointer. 
-
-\begin{DoxyReturn}{Returns}
-hid\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} ID stored in the object. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ab006abde3bb48dbf6df85701f65e0b31}\label{classPLI_1_1HDF5_1_1File_ab006abde3bb48dbf6df85701f65e0b31}} 
 \index{PLI::HDF5::File@{PLI::HDF5::File}!operator=@{operator=}}
 \index{operator=@{operator=}!PLI::HDF5::File@{PLI::HDF5::File}}
@@ -333,6 +306,21 @@ This method tries to reopen the file for reading. If the original pointer is inv
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the file pointer is invalid or the reopen failed. \\
 \hline
 \end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_aed96504e52b3de28d3fe7909d4cfcbf9}\label{classPLI_1_1HDF5_1_1File_aed96504e52b3de28d3fe7909d4cfcbf9}} 
+\index{PLI::HDF5::File@{PLI::HDF5::File}!usesMPIFileAccess@{usesMPIFileAccess}}
+\index{usesMPIFileAccess@{usesMPIFileAccess}!PLI::HDF5::File@{PLI::HDF5::File}}
+\doxysubsubsection{\texorpdfstring{usesMPIFileAccess()}{usesMPIFileAccess()}}
+{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+File\+::uses\+MPIFile\+Access (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns if MPI \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} Access was enabled when creating / opening the file This function will return false if MPI is not available. 
+
+\begin{DoxyReturn}{Returns}
+true MPI \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} Access is enabled 
+
+false MPI \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} Access is diabled 
+\end{DoxyReturn}
 
 
 \doxysubsection{Member Data Documentation}
@@ -341,12 +329,6 @@ This method tries to reopen the file for reading. If the original pointer is inv
 \index{m\_faplID@{m\_faplID}!PLI::HDF5::File@{PLI::HDF5::File}}
 \doxysubsubsection{\texorpdfstring{m\_faplID}{m\_faplID}}
 {\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+File\+::m\+\_\+fapl\+ID\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classPLI_1_1HDF5_1_1File_ad6608149dde5f5098793411fc6e27a29}\label{classPLI_1_1HDF5_1_1File_ad6608149dde5f5098793411fc6e27a29}} 
-\index{PLI::HDF5::File@{PLI::HDF5::File}!m\_id@{m\_id}}
-\index{m\_id@{m\_id}!PLI::HDF5::File@{PLI::HDF5::File}}
-\doxysubsubsection{\texorpdfstring{m\_id}{m\_id}}
-{\footnotesize\ttfamily hid\+\_\+t PLI\+::\+HDF5\+::\+File\+::m\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

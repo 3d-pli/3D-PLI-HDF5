@@ -1,24 +1,48 @@
 \hypertarget{md_CHANGELOG_autotoc_md1}{}\doxysection{Added}\label{md_CHANGELOG_autotoc_md1}
 
 \begin{DoxyItemize}
+\item Added automatic test pipeline in Git\+Lab instances
+\item The project now uses pre-\/commit hooks for formatting and linting
+\item Added config file and config class containing information for \mbox{\hyperlink{classPLI_1_1PLIM}{PLI\+::\+PLIM}}
+\item Added methods to enable / disable HDF5 exception output. Default = enabled
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md2}{}\doxysection{Changed}\label{md_CHANGELOG_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Using MPI is now optional. When creating a file, one can specify the MPI\+\_\+\+Comm to choose which processes will read / write a file. This communicator will be transferred through all nested objects.
+\item Removed PLI\+::\+HDF5\+::create\mbox{[}...\mbox{]} and PLI\+::\+HDF5\+::open\mbox{[}...\mbox{]} in favour of direct class methods.
+\item Changed default coding format from Google to LLVM
+\item Refactoring of the toolbox (especially CMake\+Files) to improve readability
+\item Changed hsize\+\_\+t to size\+\_\+t throughout the toolbox to prevent that users have to import hdf5.\+h only for hsize\+\_\+t
+\item Changed SHA256 to SHA512
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md3}{}\doxysection{Fixed}\label{md_CHANGELOG_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Added exception if chunk size is smaller than dataset size
+\item Fixed issue resulting in wrong read datasets if the dataset is larger than 2.\+1B pixels.
+\item Fix issues where HDF5 headers were not found when using PLIHDF5
+\item Fix issues where attributes were not written as scalar / vector when expected.
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md4}{}\doxysection{v1.\+0.\+1}\label{md_CHANGELOG_autotoc_md4}
+\hypertarget{md_CHANGELOG_autotoc_md5}{}\doxysubsection{Added}\label{md_CHANGELOG_autotoc_md5}
+
+\begin{DoxyItemize}
 \item Added methods in \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}}
 \begin{DoxyItemize}
-\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a5f74b960fcaa874b8ad2a9b2cfd57895}{PLI\+::\+HDF5\+::\+Dataset\+::create}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}
-\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a9161cdb98507e1f67bc8333f34d5dab5}{PLI\+::\+HDF5\+::\+Dataset\+::write}} with void$\ast$ instead of std\+::vector$<$\+T$>$
-\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a9161cdb98507e1f67bc8333f34d5dab5}{PLI\+::\+HDF5\+::\+Dataset\+::write}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} and void$\ast$ as the data pointer
+\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7af3e91e7688c8d5cfae1685ab57687c}{PLI\+::\+HDF5\+::\+Dataset\+::create}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}
+\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a99e0214e44cf4efc7810939eee3a884a}{PLI\+::\+HDF5\+::\+Dataset\+::write}} with void$\ast$ instead of std\+::vector$<$\+T$>$
+\item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a99e0214e44cf4efc7810939eee3a884a}{PLI\+::\+HDF5\+::\+Dataset\+::write}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} and void$\ast$ as the data pointer
 \end{DoxyItemize}
-\item Added \mbox{\hyperlink{namespacePLI_1_1HDF5_acfad7de8893ad7b0e576d097adec734d}{PLI\+::\+HDF5\+::create\+Dataset}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}
+\item Added PLI\+::\+HDF5\+::create\+Dataset without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}
 \item Added \mbox{\hyperlink{classPLI_1_1PLIM_ae63caa54990e93c76b2b709079f90f44}{PLI\+::\+PLIM\+::add\+Creation\+Time}} and \mbox{\hyperlink{classPLI_1_1PLIM_a370f51ea69573cc5642f85e3663b360f}{PLI\+::\+PLIM\+::add\+Image\+Modality}}
 \item Added tests for non MPI execution
 \item Added tests for the new methods to create datasets
-\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md2}{}\doxysection{Changed}\label{md_CHANGELOG_autotoc_md2}
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md6}{}\doxysubsection{Changed}\label{md_CHANGELOG_autotoc_md6}
 
 \begin{DoxyItemize}
 \item If MPI is not initialized during the creation / opening of a file / dataset, the access token will not use MPI. This allows the usage of the toolbox in programs not using MPI.
 \item Refactoring of file and dataset methods using the HDF5 MPI implementation to keep the DRY principle.
 \item Copy\+All\+To and Copy\+All\+From will now throw an exception after it tried to copy all attributes.
 \item One element attributes are now saved as H5\+S\+\_\+\+SCALAR instead of a vector
-\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md3}{}\doxysection{Fixed}\label{md_CHANGELOG_autotoc_md3}
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md7}{}\doxysubsection{Fixed}\label{md_CHANGELOG_autotoc_md7}
 
 \begin{DoxyItemize}
 \item Fixed issues which could result in Seg\+Faults in rare cases
@@ -26,8 +50,8 @@
 \item Fix issue with some PLIM methods not deleting the old attribute if it did exist
 \item Fix issues with copying scalar attributes
 \item Fixed an issue which returned an empty vector for \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler_a8db74f417c81f4edc7066f629a777f22}{PLI\+::\+HDF5\+::\+Attribute\+Handler\+::get\+Attribute\+Dimensions}} when the attribute was an H5\+S\+\_\+\+SCALAR
-\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md4}{}\doxysection{v1.\+0.\+2}\label{md_CHANGELOG_autotoc_md4}
-\hypertarget{md_CHANGELOG_autotoc_md5}{}\doxysubsection{Added}\label{md_CHANGELOG_autotoc_md5}
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md8}{}\doxysection{v1.\+0.\+2}\label{md_CHANGELOG_autotoc_md8}
+\hypertarget{md_CHANGELOG_autotoc_md9}{}\doxysubsection{Added}\label{md_CHANGELOG_autotoc_md9}
 
 \begin{DoxyItemize}
 \item Added Dataset\+::is\+Chunked to check if a created dataset contains chunks.
@@ -38,13 +62,13 @@
 \item Per default, the tool does search in /usr/share/\+PLIHDF5 and /usr/local/share/\+PLIHDF5. A manual path can be set by calling a respective method or using the PLIHDF5\+\_\+\+ATTRIBUTE\+\_\+\+SETTINGS\+\_\+\+FILE\+\_\+\+PATH shell variable.
 \end{DoxyItemize}
 \item Added nlohmann\+\_\+json as a dependency of the project.
-\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md6}{}\doxysubsection{Changed}\label{md_CHANGELOG_autotoc_md6}
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md10}{}\doxysubsection{Changed}\label{md_CHANGELOG_autotoc_md10}
 
 \begin{DoxyItemize}
 \item Changed hsize\+\_\+t throughout the toolbox to size\+\_\+t to improve compatability with other programs.
 \item Adding the ID through \mbox{\hyperlink{classPLI_1_1PLIM}{PLI\+::\+PLIM}} will now use the config attributes per default, except when the user sets the ID attributes manually.
 \item Changed size of scalar HDF5 attributes to be returned as an empty vector instead of a vector with \{1\}
-\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md7}{}\doxysubsection{Fixed}\label{md_CHANGELOG_autotoc_md7}
+\end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md11}{}\doxysubsection{Fixed}\label{md_CHANGELOG_autotoc_md11}
 
 \begin{DoxyItemize}
 \item Add exception when chunk dimensions are smaller than dataset dimensions. Previously, an HDF5 error was thrown because it wasn\textquotesingle{}t checked before calling HDF5 methods.

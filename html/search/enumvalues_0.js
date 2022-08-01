@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['readonly_0',['ReadOnly',['../classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5acae691865c93ce0d9ab73893f819c814',1,'PLI::HDF5::File']]],
-  ['readwrite_1',['ReadWrite',['../classPLI_1_1HDF5_1_1File.html#ad41a62cae2d952fe4648fd73585e85c5a2913814e0a1b0b13e74603a9b094e19f',1,'PLI::HDF5::File']]]
+  ['failifexists_0',['FailIfExists',['../classPLI_1_1HDF5_1_1File.html#a15acf29a08db9d091001e7597e7cebb7a619fa449ebd5be68665c8d4662ac6365',1,'PLI::HDF5::File']]]
 ];
