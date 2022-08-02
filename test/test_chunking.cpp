@@ -77,6 +77,29 @@ TEST_F(PLI_HDF5_Chunking, chunks) {
             EXPECT_TRUE(chunk.dim == chunkDims);
         }
     }
+    {
+        std::vector<size_t> chunkDims = {{2048, 2048, 1}};
+        std::vector<size_t> dataDims = {
+            {chunkDims[0] * 1, chunkDims[1] * 2, 9}};
+
+        auto chunks = PLI::HDF5::chunkedOffsets(dataDims, chunkDims);
+        EXPECT_EQ(chunks.size(), 2);
+        EXPECT_TRUE(chunks[0].offset == std::vector<size_t>({{0, 0, 0}}));
+
+        for (auto chunk : chunks)
+            EXPECT_TRUE(chunk.dim == chunkDims);
+
+        for (size_t i = 0; i < dataDims[2]; i++) {
+            EXPECT_TRUE(chunks[0 * dataDims[2] + i].offset ==
+                        std::vector<size_t>({{0, 0, i}}));
+            EXPECT_TRUE(chunks[1 * dataDims[2] + i].offset ==
+                        std::vector<size_t>({{0, chunkDims[1], i}}));
+            EXPECT_TRUE(chunks[2 * dataDims[2] + i].offset ==
+                        std::vector<size_t>({{chunkDims[0], 0, i}}));
+            EXPECT_TRUE(chunks[3 * dataDims[2] + i].offset ==
+                        std::vector<size_t>({{chunkDims[0], chunkDims[1], i}}));
+        }
+    }
 }
 
 TEST_F(PLI_HDF5_Chunking, chunk_offset) {

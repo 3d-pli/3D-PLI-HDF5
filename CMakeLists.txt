@@ -5,6 +5,7 @@ project(
   VERSION 2.0.0)
 
 # Set some CMake standards
+set(CMAKE_VERBOSE_MAKEFILE OFF)
 set(CMAKE_BUILD_TYPE "Debug")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_CXX_STANDARD 17)

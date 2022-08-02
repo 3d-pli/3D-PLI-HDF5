@@ -48,7 +48,7 @@ std::vector<PLI::HDF5::ChunkParam> PLI::HDF5::chunkedOffsets(
     bool flag = true;
     while (flag) {
         for (std::size_t i = 0; i < dataDims.size(); i++) {
-            count[i] = offset[i] + chunkDims[i];
+            count[i] = chunkDims[i];
             if (count[i] >= dataDims[i])
                 count[i] = dataDims[i] - offset[i];
         }
