@@ -26,6 +26,7 @@
 #include <gtest/gtest.h>
 
 #include <algorithm>
+#include <cmath>
 #include <vector>
 
 #include "PLIHDF5/chunking.h"
@@ -76,23 +77,35 @@ TEST_F(PLI_HDF5_Chunking, chunks) {
         }
     }
     {
-        std::vector<size_t> chunkDims = {{2048, 2048, 1}};
-        std::vector<size_t> dataDims = {
-            {chunkDims[0] * 1, chunkDims[1] * 2, 9}};
+        std::vector<size_t> chunkDims = {{4096, 4096, 1}};
+        std::vector<size_t> dataDims = {{6144, 8192, 9}};
 
         auto chunks = PLI::HDF5::chunkedOffsets(dataDims, chunkDims);
-        EXPECT_EQ(chunks.size(), dataDims[0] / chunkDims[0] * dataDims[1] /
-                                     chunkDims[1] * dataDims[2] / chunkDims[2]);
+        EXPECT_EQ(chunks.size(),
+                  std::ceil(dataDims[0] / static_cast<double>(chunkDims[0])) *
+                      dataDims[1] / static_cast<double>(chunkDims[1]) *
+                      dataDims[2] / static_cast<double>(chunkDims[2]));
+        EXPECT_TRUE(chunks[0].dim == chunkDims);
         EXPECT_TRUE(chunks[0].offset == std::vector<size_t>({{0, 0, 0}}));
-
-        for (auto chunk : chunks)
-            EXPECT_TRUE(chunk.dim == chunkDims);
 
         for (size_t i = 0; i < dataDims[2]; i++) {
             EXPECT_TRUE(chunks[0 * dataDims[2] + i].offset ==
                         std::vector<size_t>({{0, 0, i}}));
             EXPECT_TRUE(chunks[1 * dataDims[2] + i].offset ==
                         std::vector<size_t>({{0, chunkDims[1], i}}));
+            EXPECT_TRUE(chunks[2 * dataDims[2] + i].offset ==
+                        std::vector<size_t>({{chunkDims[0], 0, i}}));
+            EXPECT_TRUE(chunks[3 * dataDims[2] + i].offset ==
+                        std::vector<size_t>({{chunkDims[0], chunkDims[1], i}}));
+
+            EXPECT_TRUE(chunks[0 * dataDims[2] + i].dim == chunkDims);
+            EXPECT_TRUE(chunks[1 * dataDims[2] + i].dim == chunkDims);
+            EXPECT_TRUE(chunks[2 * dataDims[2] + i].dim ==
+                        std::vector<size_t>(
+                            {{dataDims[0] - chunkDims[0], chunkDims[1], 1}}));
+            EXPECT_TRUE(chunks[3 * dataDims[2] + i].dim ==
+                        std::vector<size_t>(
+                            {{dataDims[0] - chunkDims[0], chunkDims[1], 1}}));
         }
     }
 }
