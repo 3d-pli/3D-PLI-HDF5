@@ -25,8 +25,8 @@
 
 #include <gtest/gtest.h>
 
+#include <cmath>
 #include <filesystem>
-#include <numeric>
 
 #include "PLIHDF5/dataset.h"
 #include "PLIHDF5/file.h"
@@ -318,6 +318,132 @@ TEST_F(PLI_HDF5_Dataset, isChunked) {
         auto dset = _file.createDataset<float>("/Image_2", _dims);
         EXPECT_FALSE(dset.isChunked());
         dset.close();
+    }
+}
+
+TEST_F(PLI_HDF5_Dataset, chunks) {
+    {
+        std::vector<size_t> chunkDims = {{2048, 2048, 9}};
+        std::vector<size_t> dataDims = {
+            {chunkDims[0] * 2, chunkDims[1] * 2, 9}};
+
+        auto chunks =
+            PLI::HDF5::Dataset::chunkedOffsetDims(dataDims, chunkDims);
+        EXPECT_EQ(chunks.size(), 4);
+        EXPECT_TRUE(chunks[0].offset == std::vector<size_t>({{0, 0, 0}}));
+        EXPECT_TRUE(chunks[1].offset ==
+                    std::vector<size_t>({{0, chunkDims[1], 0}}));
+        EXPECT_TRUE(chunks[2].offset ==
+                    std::vector<size_t>({{chunkDims[0], 0, 0}}));
+        EXPECT_TRUE(chunks[3].offset ==
+                    std::vector<size_t>({{chunkDims[0], chunkDims[1], 0}}));
+        for (auto chunk : chunks) {
+            EXPECT_TRUE(chunk.dim == chunkDims);
+        }
+    }
+    {
+        std::vector<size_t> chunkDims = {{2048, 2048, 9}};
+        std::vector<size_t> dataDims = {
+            {chunkDims[0] * 2, chunkDims[1] * 1, 9}};
+
+        auto chunks =
+            PLI::HDF5::Dataset::chunkedOffsetDims(dataDims, chunkDims);
+        EXPECT_EQ(chunks.size(), 2);
+        EXPECT_TRUE(chunks[0].offset == std::vector<size_t>({{0, 0, 0}}));
+        for (auto chunk : chunks) {
+            EXPECT_TRUE(chunk.dim == chunkDims);
+        }
+    }
+    {
+        std::vector<size_t> chunkDims = {{2048, 2048, 9}};
+        std::vector<size_t> dataDims = {
+            {chunkDims[0] * 1, chunkDims[1] * 2, 9}};
+
+        auto chunks =
+            PLI::HDF5::Dataset::chunkedOffsetDims(dataDims, chunkDims);
+        EXPECT_EQ(chunks.size(), 2);
+        EXPECT_TRUE(chunks[0].offset == std::vector<size_t>({{0, 0, 0}}));
+        for (auto chunk : chunks) {
+            EXPECT_TRUE(chunk.dim == chunkDims);
+        }
+    }
+    {
+        std::vector<size_t> chunkDims = {{4096, 4096, 1}};
+        std::vector<size_t> dataDims = {{6144, 8192, 9}};
+
+        auto chunks =
+            PLI::HDF5::Dataset::chunkedOffsetDims(dataDims, chunkDims);
+        EXPECT_EQ(chunks.size(),
+                  std::ceil(dataDims[0] / static_cast<double>(chunkDims[0])) *
+                      dataDims[1] / static_cast<double>(chunkDims[1]) *
+                      dataDims[2] / static_cast<double>(chunkDims[2]));
+        EXPECT_TRUE(chunks[0].dim == chunkDims);
+        EXPECT_TRUE(chunks[0].offset == std::vector<size_t>({{0, 0, 0}}));
+
+        for (size_t i = 0; i < dataDims[2]; i++) {
+            EXPECT_TRUE(chunks[0 * dataDims[2] + i].offset ==
+                        std::vector<size_t>({{0, 0, i}}));
+            EXPECT_TRUE(chunks[1 * dataDims[2] + i].offset ==
+                        std::vector<size_t>({{0, chunkDims[1], i}}));
+            EXPECT_TRUE(chunks[2 * dataDims[2] + i].offset ==
+                        std::vector<size_t>({{chunkDims[0], 0, i}}));
+            EXPECT_TRUE(chunks[3 * dataDims[2] + i].offset ==
+                        std::vector<size_t>({{chunkDims[0], chunkDims[1], i}}));
+
+            EXPECT_TRUE(chunks[0 * dataDims[2] + i].dim == chunkDims);
+            EXPECT_TRUE(chunks[1 * dataDims[2] + i].dim == chunkDims);
+            EXPECT_TRUE(chunks[2 * dataDims[2] + i].dim ==
+                        std::vector<size_t>(
+                            {{dataDims[0] - chunkDims[0], chunkDims[1], 1}}));
+            EXPECT_TRUE(chunks[3 * dataDims[2] + i].dim ==
+                        std::vector<size_t>(
+                            {{dataDims[0] - chunkDims[0], chunkDims[1], 1}}));
+        }
+    }
+}
+
+TEST_F(PLI_HDF5_Dataset, chunk_offset) {
+    {
+        std::vector<size_t> chunkDims = {{2048, 2048, 9}};
+        std::vector<size_t> dataDims = chunkDims;
+        std::vector<size_t> offset = {{0, 0, 0}};
+
+        auto chunks =
+            PLI::HDF5::Dataset::chunkedOffsetDims(dataDims, chunkDims, offset);
+        EXPECT_EQ(chunks.size(), 1);
+        EXPECT_TRUE(chunks[0].offset == offset);
+        EXPECT_TRUE(chunks[0].dim == chunkDims);
+    }
+    {
+        std::vector<size_t> chunkDims = {{2048, 2048, 9}};
+        std::vector<size_t> dataDims = chunkDims;
+        std::vector<size_t> offset = {{1, 1, 1}};
+
+        auto chunks =
+            PLI::HDF5::Dataset::chunkedOffsetDims(dataDims, chunkDims, offset);
+        EXPECT_EQ(chunks.size(), 1);
+        EXPECT_TRUE(chunks[0].offset == offset);
+
+        std::vector<size_t> diff(dataDims.size());
+        std::transform(dataDims.cbegin(), dataDims.cend(), offset.cbegin(),
+                       diff.begin(), std::minus<>{});
+        EXPECT_TRUE(chunks[0].dim == diff);
+    }
+}
+
+TEST_F(PLI_HDF5_Dataset, size_diff) {
+    {
+        std::vector<size_t> chunkDims = {{2048, 2048, 9}};
+        std::vector<size_t> dataDims = chunkDims;
+        dataDims[0] += 1;
+
+        auto chunks =
+            PLI::HDF5::Dataset::chunkedOffsetDims(dataDims, chunkDims);
+        EXPECT_EQ(chunks.size(), 2);
+        EXPECT_TRUE(chunks[0].offset == std::vector<size_t>({{0, 0, 0}}));
+        EXPECT_TRUE(chunks[0].dim == chunkDims);
+        EXPECT_TRUE(chunks[1].offset == std::vector<size_t>({{2048, 0, 0}}));
+        EXPECT_TRUE(chunks[1].dim == std::vector<size_t>({{1, 2048, 9}}));
     }
 }
 

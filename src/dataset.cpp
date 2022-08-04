@@ -236,11 +236,62 @@ hid_t PLI::HDF5::Dataset::createXfID() const {
     return xf_id;
 }
 
-std::vector<PLI::HDF5::ChunkParam> PLI::HDF5::Dataset::getChunkOffsets() {
-    return this->getChunkOffsets(this->chunkDims());
+std::vector<PLI::HDF5::Dataset::ChunkOffsetDim>
+PLI::HDF5::Dataset::getChunkOffsetDims() {
+    return this->getChunkOffsetDims(this->chunkDims());
 }
 
-std::vector<PLI::HDF5::ChunkParam>
-PLI::HDF5::Dataset::getChunkOffsets(const std::vector<size_t> &chunkDims) {
-    return chunkedOffsets(this->dims(), chunkDims);
+std::vector<PLI::HDF5::Dataset::ChunkOffsetDim>
+PLI::HDF5::Dataset::getChunkOffsetDims(const std::vector<size_t> &chunkDims) {
+    return chunkedOffsetDims(this->dims(), chunkDims);
+}
+
+std::vector<PLI::HDF5::Dataset::ChunkOffsetDim>
+PLI::HDF5::Dataset::chunkedOffsetDims(
+    const std::vector<size_t> &dataDims, const std::vector<size_t> &chunkDims,
+    std::optional<const std::vector<size_t>> chunkOffset) {
+
+    std::vector<PLI::HDF5::Dataset::ChunkOffsetDim> result;
+
+    if (dataDims.size() != chunkDims.size())
+        throw PLI::HDF5::Exceptions::DimensionMismatchException(
+            "Dimension size does not match");
+
+    if (chunkOffset.has_value())
+        if (dataDims.size() != chunkOffset.value().size())
+            throw PLI::HDF5::Exceptions::DimensionMismatchException(
+                "Dimension size does not match");
+
+    const auto chunkOffset_ =
+        chunkOffset.value_or(std::vector<size_t>(dataDims.size(), 0));
+    std::vector<size_t> offset = chunkOffset_;
+    std::vector<size_t> dim(dataDims.size(), 0);
+
+    bool flag = true;
+    while (flag) {
+        for (std::size_t i = 0; i < dataDims.size(); i++) {
+            dim[i] = chunkDims[i];
+            if (dim[i] + offset[i] > dataDims[i])
+                dim[i] = dataDims[i] - offset[i];
+        }
+
+        result.push_back(PLI::HDF5::Dataset::ChunkOffsetDim(offset, dim));
+
+        // increment offset at correct dimension, begin with last
+        auto i = static_cast<int64_t>(dataDims.size()) - 1;
+        while (true) {
+            offset[i] += chunkDims[i];
+            if (offset[i] >= dataDims[i]) {
+                offset[i] = chunkOffset_[i];
+                i--;
+                if (i < 0) {
+                    flag = false;
+                    break;
+                }
+            } else {
+                break;
+            }
+        }
+    }
+    return result;
 }
