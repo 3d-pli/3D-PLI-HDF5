@@ -37,7 +37,7 @@ lint:cppcheck:
       --suppress=unmatchedSuppression
       --suppress=missingIncludeSystem
       --suppress=unusedFunction
-      src/*.cpp src/*/*.h bin/*.cpp
+      src/*.cpp src/*/*.h bin/*.cpp src/*/*.tpp
 
 lint:clang-format:
   extends: .before_script_template_lint
@@ -45,7 +45,7 @@ lint:clang-format:
   image: rockylinux:8
   script:
     - dnf install -y clang-tools-extra
-    - clang-format --style=file -i src/*.cpp src/*/*.h
+    - clang-format --style=file -i src/*.cpp src/*/*.h src/*/*.tpp
 
 lint:cpplint:
   extends: .before_script_template_lint
@@ -54,7 +54,7 @@ lint:cpplint:
   script:
     - dnf install -y python3 python3-pip
     - pip3 install cpplint
-    - cpplint --filter=-readability/fn_size,-whitespace/indent,-whitespace/comments src/*.cpp src/*/*.h bin/*.cpp
+    - cpplint --filter=-readability/fn_size,-whitespace/indent,-whitespace/comments src/*.cpp src/*/*.h bin/*.cpp src/*/*.tpp
 
 build:ubuntu:
   extends: .before_script_template

@@ -69,6 +69,9 @@ void PLI::HDF5::Object::closeFileObjects(unsigned int types) {
 
     size_t objectCount = H5Fget_obj_count(m_id, types);
     std::vector<hid_t> objectIDs(objectCount, -1);
+    if (objectCount < 1) {
+        return;
+    }
     H5Fget_obj_ids(m_id, types, objectCount, objectIDs.data());
 
     for (size_t i = 0; i < objectCount; ++i) {

@@ -29,10 +29,10 @@
 
 PLI::HDF5::AttributeHandler::AttributeHandler() noexcept : m_id(-1) {}
 
-PLI::HDF5::AttributeHandler::AttributeHandler(const hid_t parentPtr) noexcept
+PLI::HDF5::AttributeHandler::AttributeHandler(const Object &parentPtr) noexcept
     : m_id(parentPtr) {}
 
-void PLI::HDF5::AttributeHandler::setPtr(const hid_t parentPtr) noexcept {
+void PLI::HDF5::AttributeHandler::setPtr(const Object &parentPtr) noexcept {
     m_id = parentPtr;
 }
 

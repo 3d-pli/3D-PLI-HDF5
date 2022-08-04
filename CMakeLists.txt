@@ -4,6 +4,12 @@ project(
   LANGUAGES C CXX
   VERSION 2.0.0)
 
+# Enable the usage of conan if wanted
+if(EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+  include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+  conan_basic_setup()
+endif()
+
 # Set some CMake standards
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 set(CMAKE_BUILD_TYPE "Debug")

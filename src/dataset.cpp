@@ -221,6 +221,7 @@ PLI::HDF5::Dataset &
 PLI::HDF5::Dataset::operator=(const Dataset &dataset) noexcept {
     this->m_id = dataset.id();
     checkHDF5Call(H5Iinc_ref(dataset.id()), "H5Iinc_ref");
+    this->m_communicator = dataset.communicator();
     return *this;
 }
 
