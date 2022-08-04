@@ -236,22 +236,22 @@ hid_t PLI::HDF5::Dataset::createXfID() const {
     return xf_id;
 }
 
-std::vector<PLI::HDF5::Dataset::ChunkOffsetDim>
+std::vector<PLI::HDF5::Dataset::OffsetDim>
 PLI::HDF5::Dataset::getChunkOffsetDims() {
     return this->getChunkOffsetDims(this->chunkDims());
 }
 
-std::vector<PLI::HDF5::Dataset::ChunkOffsetDim>
+std::vector<PLI::HDF5::Dataset::OffsetDim>
 PLI::HDF5::Dataset::getChunkOffsetDims(const std::vector<size_t> &chunkDims) {
     return chunkedOffsetDims(this->dims(), chunkDims);
 }
 
-std::vector<PLI::HDF5::Dataset::ChunkOffsetDim>
+std::vector<PLI::HDF5::Dataset::OffsetDim>
 PLI::HDF5::Dataset::chunkedOffsetDims(
     const std::vector<size_t> &dataDims, const std::vector<size_t> &chunkDims,
     std::optional<const std::vector<size_t>> chunkOffset) {
 
-    std::vector<PLI::HDF5::Dataset::ChunkOffsetDim> result;
+    std::vector<PLI::HDF5::Dataset::OffsetDim> result;
 
     if (dataDims.size() != chunkDims.size())
         throw PLI::HDF5::Exceptions::DimensionMismatchException(
@@ -275,7 +275,7 @@ PLI::HDF5::Dataset::chunkedOffsetDims(
                 dim[i] = dataDims[i] - offset[i];
         }
 
-        result.push_back(PLI::HDF5::Dataset::ChunkOffsetDim(offset, dim));
+        result.push_back(PLI::HDF5::Dataset::OffsetDim(offset, dim));
 
         // increment offset at correct dimension, begin with last
         auto i = static_cast<int64_t>(dataDims.size()) - 1;

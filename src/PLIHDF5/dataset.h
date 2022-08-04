@@ -325,9 +325,9 @@ class Dataset : public Object {
 
     Dataset &operator=(const PLI::HDF5::Dataset &other) noexcept;
 
-    struct ChunkOffsetDim {
-        ChunkOffsetDim(const std::vector<size_t> &offset_,
-                       const std::vector<size_t> &dim_)
+    struct OffsetDim {
+        OffsetDim(const std::vector<size_t> &offset_,
+                  const std::vector<size_t> &dim_)
             : offset(offset_), dim(dim_) {}
 
         std::vector<size_t> offset;
@@ -335,27 +335,27 @@ class Dataset : public Object {
     };
 
     /**
-     * @brief Returns a vector of PLI::HDF5::Dataset::ChunkOffsetDim of the
+     * @brief Returns a vector of PLI::HDF5::Dataset::OffsetDim of the
      * dataset.
-     * @return vector of PLI::HDF5::Dataset::ChunkOffsetDim of the dataset from
+     * @return vector of PLI::HDF5::Dataset::OffsetDim of the dataset from
      * the dataset chunk.
      * @throws PLI::HDF5::Exceptions::HDF5RuntimeException if the
      * dataset is not chunked.
      */
-    std::vector<ChunkOffsetDim> getChunkOffsetDims();
+    std::vector<OffsetDim> getChunkOffsetDims();
 
     /**
-     * @brief Returns a vector of PLI::HDF5::Dataset::ChunkOffsetDim of the
+     * @brief Returns a vector of PLI::HDF5::Dataset::OffsetDim of the
      * dataset.
-     * @return vector of PLI::HDF5::Dataset::ChunkOffsetDim of the dataset.
+     * @return vector of PLI::HDF5::Dataset::OffsetDim of the dataset.
      * @param chunkDims user defined chunk dimension of the data.
      * @throws PLI::HDF5::Exceptions::DimensionMismatchException if the
      * the arguments dimensions are mismatched.
      */
-    std::vector<ChunkOffsetDim>
+    std::vector<OffsetDim>
     getChunkOffsetDims(const std::vector<size_t> &chunkDims);
 
-    static std::vector<ChunkOffsetDim> chunkedOffsetDims(
+    static std::vector<OffsetDim> chunkedOffsetDims(
         const std::vector<size_t> &dataDims,
         const std::vector<size_t> &chunkDims,
         std::optional<const std::vector<size_t>> chunkOffset = {});
