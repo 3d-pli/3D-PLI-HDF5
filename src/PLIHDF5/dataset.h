@@ -35,7 +35,6 @@
 #include <tuple>
 #include <vector>
 
-#include "PLIHDF5/chunking.h"
 #include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/object.h"
 #include "PLIHDF5/type.h"

@@ -23,6 +23,8 @@
    IN THE SOFTWARE.
  */
 
+#include <iostream>
+
 #include "PLIHDF5/dataset.h"
 
 PLI::HDF5::Dataset PLI::HDF5::Folder::createDataset(
@@ -265,29 +267,24 @@ PLI::HDF5::Dataset::chunkedOffsetDims(
     const auto chunkOffset_ =
         chunkOffset.value_or(std::vector<size_t>(dataDims.size(), 0));
     std::vector<size_t> offset = chunkOffset_;
-    std::vector<size_t> dim(dataDims.size(), 0);
 
-    bool flag = true;
-    while (flag) {
+    // increment offset, beginning with last element, and save valid views
+    while (offset[0] < dataDims[0]) {
+        // set current offset chunk dimension
+        auto dim = chunkDims;
         for (std::size_t i = 0; i < dataDims.size(); i++) {
-            dim[i] = chunkDims[i];
             if (dim[i] + offset[i] > dataDims[i])
                 dim[i] = dataDims[i] - offset[i];
         }
 
+        // save offset/dim element
         result.push_back(PLI::HDF5::Dataset::OffsetDim(offset, dim));
 
-        // increment offset at correct dimension, begin with last
-        auto i = static_cast<int64_t>(dataDims.size()) - 1;
-        while (true) {
+        // increment offset, beginning with last
+        for (auto i = static_cast<int64_t>(dataDims.size()) - 1; i >= 0; i--) {
             offset[i] += chunkDims[i];
-            if (offset[i] >= dataDims[i]) {
+            if (offset[i] >= dataDims[i] && i > 0) {
                 offset[i] = chunkOffset_[i];
-                i--;
-                if (i < 0) {
-                    flag = false;
-                    break;
-                }
             } else {
                 break;
             }

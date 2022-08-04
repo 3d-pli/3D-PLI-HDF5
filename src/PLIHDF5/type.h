@@ -60,11 +60,5 @@ class Type {
 
     hid_t m_typeID;
 };
-
-// TODO(all): different namespace/file?
-template <typename T, typename U> T container_cast(U &&input) {
-    return T(std::begin(input), std::end(input));
-}
-
 } // namespace HDF5
 } // namespace PLI
