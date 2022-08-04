@@ -37,7 +37,7 @@ namespace HDF5 {
 struct ChunkParam {
     ChunkParam(const std::vector<size_t> &offset_,
                const std::vector<size_t> &dim_)
-        : offset(offset_), dim(dim_){};
+        : offset(offset_), dim(dim_) {}
 
     std::vector<size_t> offset;
     std::vector<size_t> dim;
