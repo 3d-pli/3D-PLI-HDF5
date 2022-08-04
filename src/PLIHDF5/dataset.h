@@ -324,14 +324,28 @@ class Dataset : public Object {
 
     Dataset &operator=(const PLI::HDF5::Dataset &other) noexcept;
 
-    struct OffsetDim {
-        OffsetDim(const std::vector<size_t> &offset_,
-                  const std::vector<size_t> &dim_)
-            : offset(offset_), dim(dim_) {}
+    struct Slice {
+        Slice() = default;
+        Slice(int64_t start_, int64_t stop_, int64_t step_)
+            : start(start_), stop(stop_), step(step_) {}
 
-        std::vector<size_t> offset;
-        std::vector<size_t> dim;
+        bool operator==(const Slice &slice);
+        bool operator!=(const Slice &slice);
+
+        int64_t start{0};
+        int64_t stop{0};
+        int64_t step{0};
     };
+
+    using View = std::vector<Slice>;
+
+    static std::tuple<std::vector<size_t>, std::vector<size_t>,
+                      std::vector<size_t>>
+    toOffsetAndDim(const View &view);
+
+    static View toView(const std::vector<size_t> &offset,
+                       const std::vector<size_t> &dim,
+                       std::optional<std::vector<size_t>> stride = {});
 
     /**
      * @brief Returns a vector of PLI::HDF5::Dataset::OffsetDim of the
@@ -341,7 +355,7 @@ class Dataset : public Object {
      * @throws PLI::HDF5::Exceptions::HDF5RuntimeException if the
      * dataset is not chunked.
      */
-    std::vector<OffsetDim> getChunkOffsetDims();
+    std::vector<View> getChunkViews();
 
     /**
      * @brief Returns a vector of PLI::HDF5::Dataset::OffsetDim of the
@@ -351,11 +365,13 @@ class Dataset : public Object {
      * @throws PLI::HDF5::Exceptions::DimensionMismatchException if the
      * the arguments dimensions are mismatched.
      */
-    std::vector<OffsetDim>
-    getChunkOffsetDims(const std::vector<size_t> &chunkDims);
+    std::vector<View> getChunkViews(const std::vector<size_t> &chunkDims);
 
-    static std::vector<OffsetDim> chunkedOffsetDims(
-        const std::vector<size_t> &dataDims,
+    // static std::vector<View> viewsFromView(const View &totalView,
+    //                                        const View &chunk);
+
+    static std::vector<View> viewsFromDimensions(
+        const std::vector<size_t> &totalDim,
         const std::vector<size_t> &chunkDims,
         std::optional<const std::vector<size_t>> chunkOffset = {});
 
