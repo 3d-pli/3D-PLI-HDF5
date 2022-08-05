@@ -239,12 +239,12 @@ hid_t PLI::HDF5::Dataset::createXfID() const {
 }
 
 bool PLI::HDF5::Dataset::Slice::operator==(
-    const PLI::HDF5::Dataset::Slice &slice) {
+    const PLI::HDF5::Dataset::Slice &slice) const {
     return slice.start == start && slice.stop == stop && slice.step == step;
 }
 
 bool PLI::HDF5::Dataset::Slice::operator!=(
-    const PLI::HDF5::Dataset::Slice &slice) {
+    const PLI::HDF5::Dataset::Slice &slice) const {
     return slice.start != start || slice.stop != stop || slice.step != step;
 }
 

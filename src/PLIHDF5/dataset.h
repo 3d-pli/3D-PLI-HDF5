@@ -329,8 +329,8 @@ class Dataset : public Object {
         Slice(int64_t start_, int64_t stop_, int64_t step_)
             : start(start_), stop(stop_), step(step_) {}
 
-        bool operator==(const Slice &slice);
-        bool operator!=(const Slice &slice);
+        bool operator==(const Slice &slice) const;
+        bool operator!=(const Slice &slice) const;
 
         int64_t start{0};
         int64_t stop{0};
