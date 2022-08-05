@@ -332,8 +332,8 @@ TEST_F(PLI_HDF5_Dataset, viewDimConversion) {
     }
 
     {
-        std::vector<size_t> offset = {{0}};
-        std::vector<size_t> dim = {{1}};
+        std::vector<size_t> offset = {0};
+        std::vector<size_t> dim = {1};
         PLI::HDF5::Dataset::View view;
         EXPECT_NO_THROW(view = PLI::HDF5::Dataset::toView(offset, dim));
         EXPECT_EQ(view.size(), offset.size());

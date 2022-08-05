@@ -21,21 +21,20 @@ configure_file(${PROJECT_SOURCE_DIR}/test/test_attributes.cpp.in
 
 file(GLOB files "test_*.cpp")
 
-if(NOT DEFINED TEST_NUM_PROC)
-  set(TEST_NUM_PROC "4")
-endif()
-
+option(PLIHDF5_TEST_MPI "Enable tests with mpirun." ON)
 foreach(file ${files})
   get_filename_component(file_name ${file} NAME)
   string(REPLACE ".cpp" "" test_name "${file_name}")
   add_executable(${test_name} ${file})
   target_link_libraries(${test_name} PLIHDF5 ${PLIHDF5_LINK_LIBRARIES}
                         gtest_main)
-  set_property(
-    TARGET ${test_name}
-    PROPERTY CROSSCOMPILING_EMULATOR
-             '${MPIEXEC_EXECUTABLE} --oversubscribe ${MPIEXEC_NUMPROC_FLAG}
-       ${TEST_NUM_PROC}')
+  if(PLIHDF5_TEST_MPI)
+    set_property(
+      TARGET ${test_name}
+      PROPERTY CROSSCOMPILING_EMULATOR
+               '${MPIEXEC_EXECUTABLE} --oversubscribe ${MPIEXEC_NUMPROC_FLAG} 4'
+    )
+  endif()
   gtest_discover_tests(${test_name})
 endforeach()
 
