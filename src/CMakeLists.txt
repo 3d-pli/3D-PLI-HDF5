@@ -1,5 +1,4 @@
-find_program(TOOLS_CLANG_TIDY NAMES clang-tidy-12 clang-tidy-11 clang-tidy-10
-                                    clang-tidy)
+find_program(TOOLS_CLANG_TIDY NAMES clang-tidy)
 find_program(TOOLS_CPPCHECK NAMES cppcheck)
 find_program(TOOLS_CPPLINT NAMES cpplint)
 
