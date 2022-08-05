@@ -46,30 +46,30 @@ configure_file(${PROJECT_SOURCE_DIR}/src/PLIHDF5/config.h.in
 set(PLIHDF5_HEADERS
     PLIHDF5/attributes.h
     PLIHDF5/attributes.tpp
+    PLIHDF5/config.h
     PLIHDF5/dataset.h
     PLIHDF5/dataset.tpp
     PLIHDF5/exceptions.h
     PLIHDF5/file.h
     PLIHDF5/group.h
     PLIHDF5/link.h
+    PLIHDF5/object.h
     PLIHDF5/plihdf5.h
     PLIHDF5/sha512.h
-    PLIHDF5/type.h
-    PLIHDF5/config.h
-    PLIHDF5/object.h)
+    PLIHDF5/type.h)
 
 set(PLIHDF5_SOURCES
-    plihdf5.cpp
-    config.cpp
-    file.cpp
     attributes.cpp
-    group.cpp
+    config.cpp
     dataset.cpp
-    link.cpp
-    type.cpp
-    sha512.cpp
     exceptions.cpp
-    object.cpp)
+    file.cpp
+    group.cpp
+    link.cpp
+    object.cpp
+    plihdf5.cpp
+    sha512.cpp
+    type.cpp)
 
 add_library(PLIHDF5 SHARED ${PLIHDF5_SOURCES})
 
