@@ -199,7 +199,7 @@ TEST_F(PLI_HDF5_Dataset, type) {
 TEST_F(PLI_HDF5_Dataset, ndims) {
     { // call
         auto dset = _file.createDataset<float>("/Image_1", _dims, _chunk_dims);
-        EXPECT_TRUE(dset.ndims() == _dims.size());
+        EXPECT_EQ(dset.ndims(), _dims.size());
         dset.close();
     }
 }
@@ -207,7 +207,7 @@ TEST_F(PLI_HDF5_Dataset, ndims) {
 TEST_F(PLI_HDF5_Dataset, dims) {
     { // call
         auto dset = _file.createDataset<float>("/Image_1", _dims, _chunk_dims);
-        EXPECT_TRUE(dset.dims() == _dims);
+        EXPECT_EQ(dset.dims(), _dims);
         dset.close();
     }
 }
@@ -276,8 +276,8 @@ TEST_F(PLI_HDF5_Dataset, read) {
     { // read dataset
         auto dset = _file.openDataset("/Image");
         const auto data_in = dset.read<int>(offset, _dims);
-        EXPECT_TRUE(data_in == data);
-        EXPECT_TRUE(data_in[data_in.size() - 1] == data_in.size() - 1);
+        EXPECT_EQ(data_in, data);
+        EXPECT_EQ(data_in[data_in.size() - 1], data_in.size() - 1);
         dset.close();
     }
 
@@ -290,7 +290,7 @@ TEST_F(PLI_HDF5_Dataset, read) {
         std::vector<int> data_in;
         std::vector<int> data_comp(size);
         EXPECT_NO_THROW(data_in = dset.read<int>(offset_in, dims_in));
-        EXPECT_TRUE(data_in.size() == size);
+        EXPECT_EQ(data_in.size(), size);
 
         auto ii = 0u;
         for (auto i = offset_in[0]; i < offset_in[0] + dims_in[0]; i++)
@@ -301,7 +301,7 @@ TEST_F(PLI_HDF5_Dataset, read) {
                         data[i * _dims[1] * _dims[2] + j * _dims[2] + k];
                 }
 
-        EXPECT_TRUE(data_in == data_comp);
+        EXPECT_EQ(data_in, data_comp);
 
         dset.close();
     }
@@ -328,7 +328,7 @@ TEST_F(PLI_HDF5_Dataset, viewDimConversion) {
         std::vector<size_t> dim = {{}};
         PLI::HDF5::Dataset::View view;
         EXPECT_NO_THROW(view = PLI::HDF5::Dataset::toView(offset, dim));
-        EXPECT_TRUE(view.size() == offset.size());
+        EXPECT_EQ(view.size(), offset.size());
     }
 
     {
@@ -422,33 +422,25 @@ TEST_F(PLI_HDF5_Dataset, viewsFromDimensions) {
         auto chunks =
             PLI::HDF5::Dataset::viewsFromDimensions(dataDims, chunkDims);
         EXPECT_EQ(chunks.size(), 4);
-        EXPECT_TRUE(chunks[0][0] ==
-                    PLI::HDF5::Dataset::Slice(0, chunkDims[0], 1));
-        EXPECT_TRUE(chunks[0][1] ==
-                    PLI::HDF5::Dataset::Slice(0, chunkDims[1], 1));
-        EXPECT_TRUE(chunks[0][2] ==
-                    PLI::HDF5::Dataset::Slice(0, chunkDims[2], 1));
+        EXPECT_EQ(chunks[0][0], PLI::HDF5::Dataset::Slice(0, chunkDims[0], 1));
+        EXPECT_EQ(chunks[0][1], PLI::HDF5::Dataset::Slice(0, chunkDims[1], 1));
+        EXPECT_EQ(chunks[0][2], PLI::HDF5::Dataset::Slice(0, chunkDims[2], 1));
 
-        EXPECT_TRUE(chunks[1][0] ==
-                    PLI::HDF5::Dataset::Slice(0, chunkDims[0], 1));
-        EXPECT_TRUE(chunks[1][1] == PLI::HDF5::Dataset::Slice(
-                                        chunkDims[1], 2 * chunkDims[1], 1));
-        EXPECT_TRUE(chunks[1][2] ==
-                    PLI::HDF5::Dataset::Slice(0, chunkDims[2], 1));
+        EXPECT_EQ(chunks[1][0], PLI::HDF5::Dataset::Slice(0, chunkDims[0], 1));
+        EXPECT_EQ(chunks[1][1],
+                  PLI::HDF5::Dataset::Slice(chunkDims[1], 2 * chunkDims[1], 1));
+        EXPECT_EQ(chunks[1][2], PLI::HDF5::Dataset::Slice(0, chunkDims[2], 1));
 
-        EXPECT_TRUE(chunks[2][0] == PLI::HDF5::Dataset::Slice(
-                                        chunkDims[0], 2 * chunkDims[0], 1));
-        EXPECT_TRUE(chunks[2][1] ==
-                    PLI::HDF5::Dataset::Slice(0, chunkDims[1], 1));
-        EXPECT_TRUE(chunks[2][2] ==
-                    PLI::HDF5::Dataset::Slice(0, chunkDims[2], 1));
+        EXPECT_EQ(chunks[2][0],
+                  PLI::HDF5::Dataset::Slice(chunkDims[0], 2 * chunkDims[0], 1));
+        EXPECT_EQ(chunks[2][1], PLI::HDF5::Dataset::Slice(0, chunkDims[1], 1));
+        EXPECT_EQ(chunks[2][2], PLI::HDF5::Dataset::Slice(0, chunkDims[2], 1));
 
-        EXPECT_TRUE(chunks[3][0] == PLI::HDF5::Dataset::Slice(
-                                        chunkDims[0], 2 * chunkDims[0], 1));
-        EXPECT_TRUE(chunks[3][1] == PLI::HDF5::Dataset::Slice(
-                                        chunkDims[1], 2 * chunkDims[1], 1));
-        EXPECT_TRUE(chunks[3][2] ==
-                    PLI::HDF5::Dataset::Slice(0, chunkDims[2], 1));
+        EXPECT_EQ(chunks[3][0],
+                  PLI::HDF5::Dataset::Slice(chunkDims[0], 2 * chunkDims[0], 1));
+        EXPECT_EQ(chunks[3][1],
+                  PLI::HDF5::Dataset::Slice(chunkDims[1], 2 * chunkDims[1], 1));
+        EXPECT_EQ(chunks[3][2], PLI::HDF5::Dataset::Slice(0, chunkDims[2], 1));
     }
 
     // TODO(felix): implement for new slice design
