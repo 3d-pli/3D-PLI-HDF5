@@ -31,6 +31,7 @@
 
 #include <algorithm>
 #include <numeric>
+#include <ostream>
 #include <string>
 #include <tuple>
 #include <vector>
@@ -324,28 +325,48 @@ class Dataset : public Object {
 
     Dataset &operator=(const PLI::HDF5::Dataset &other) noexcept;
 
+    /**
+     * @brief HDF5 Dataset Slice struct.
+     * Slice object inspired py python.
+     */
     struct Slice {
         Slice() = default;
-        Slice(int64_t start_, int64_t stop_, int64_t step_)
+        Slice(size_t start_, size_t stop_, size_t step_)
             : start(start_), stop(stop_), step(step_) {}
 
         bool operator==(const Slice &slice) const;
         bool operator!=(const Slice &slice) const;
 
-        int64_t start{0};
-        int64_t stop{0};
-        int64_t step{0};
+        friend std::ostream &operator<<(std::ostream &out, const Slice &slice) {
+            out << "[" << slice.start << ":" << slice.stop << ":" << slice.step
+                << "]";
+            return out;
+        }
+
+        size_t start{0};
+        size_t stop{0};
+        size_t step{0};
     };
 
     using View = std::vector<Slice>;
 
+    /**
+     * @brief Returns HDF5 dimension objects from PLI::HDF5::Dataset::View.
+     * @return Returns HDF5 dimension objects (offset, dim, stride) from
+     * PLI::HDF5::Dataset::View.
+     */
     static std::tuple<std::vector<size_t>, std::vector<size_t>,
                       std::vector<size_t>>
-    toOffsetAndDim(const View &view);
+    toOffsetAndDim(const View &view) noexcept;
 
+    /**
+     * @brief Returns PLI::HDF5::Dataset::View from HDF5 dimension objects.
+     * @return Returns PLI::HDF5::Dataset::View from HDF5 dimension objects
+     * (offset, dim, stride).
+     */
     static View toView(const std::vector<size_t> &offset,
                        const std::vector<size_t> &dim,
-                       std::optional<std::vector<size_t>> stride = {});
+                       std::optional<std::vector<size_t>> stride = {}) noexcept;
 
     /**
      * @brief Returns a vector of PLI::HDF5::Dataset::OffsetDim of the
@@ -378,7 +399,6 @@ class Dataset : public Object {
   private:
     hid_t createXfID() const;
 };
-
 } // namespace HDF5
 } // namespace PLI
 

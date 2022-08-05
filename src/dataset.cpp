@@ -248,8 +248,16 @@ bool PLI::HDF5::Dataset::Slice::operator!=(
     return slice.start != start || slice.stop != stop || slice.step != step;
 }
 
+// ???
+// std::ostream &operator<<(std::ostream &out,
+//                          const PLI::HDF5::Dataset::Slice &slice) {
+//     out << "[" << slice.start << ":" << slice.stop << ":" << slice.step <<
+//     "]"; return out;
+// }
+
 std::tuple<std::vector<size_t>, std::vector<size_t>, std::vector<size_t>>
-PLI::HDF5::Dataset::toOffsetAndDim(const PLI::HDF5::Dataset::View &view) {
+PLI::HDF5::Dataset::toOffsetAndDim(
+    const PLI::HDF5::Dataset::View &view) noexcept {
     std::vector<size_t> offset(view.size(), 0);
     std::vector<size_t> dim(view.size(), 0);
     std::vector<size_t> stride(view.size(), 0);
@@ -265,7 +273,7 @@ PLI::HDF5::Dataset::toOffsetAndDim(const PLI::HDF5::Dataset::View &view) {
 PLI::HDF5::Dataset::View
 PLI::HDF5::Dataset::toView(const std::vector<size_t> &offset,
                            const std::vector<size_t> &dim,
-                           std::optional<std::vector<size_t>> stride) {
+                           std::optional<std::vector<size_t>> stride) noexcept {
     PLI::HDF5::Dataset::View view(offset.size());
 
     if (offset.size() != dim.size())
@@ -274,11 +282,6 @@ PLI::HDF5::Dataset::toView(const std::vector<size_t> &offset,
         if (offset.size() != stride.value().size())
             std::runtime_error("invalid argument dimension");
     const auto stride_ = stride.value_or(std::vector<size_t>(offset.size(), 1));
-
-    if (std::any_of(stride_.begin(), stride_.end(),
-                    [](size_t i) { return i <= 0; })) {
-        std::runtime_error("invalid stride value");
-    }
 
     for (size_t i = 0; i < offset.size(); i++) {
         view[i].start = offset[i];
