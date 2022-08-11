@@ -1,23 +1,18 @@
-# - Config file for the FooBar package
+# - Config file for the PLIHDF5 package
 # It defines the following variables
-#  PLIHDF5_INCLUDE_DIRS - include directories for plihdf5
 #  PLIHDF5_LIBRARIES    - libraries to link against
 
+get_filename_component(PLIHDF5_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 include(CMakeFindDependencyMacro)
+
 set(HDF5_PREFER_PARALLEL ON)
 find_dependency(HDF5 REQUIRED COMPONENTS C HL)
 find_dependency(MPI REQUIRED COMPONENTS C CXX)
-find_dependency(OpenSSL REQUIRED)
-find_dependency(nlohmann_json REQUIRED)
-
-# Compute paths
-get_filename_component(PLIHDF5_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
-set(PLIHDF5_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@" "${HDF5_INCLUDE_DIRS}")
 
 # Our library dependencies (contains definitions for IMPORTED targets)
-if(NOT TARGET PLIHDF5 AND NOT PLIHDF5_BINARY_DIR)
+if(NOT TARGET PLIHDF5::PLIHDF5)
   include("${PLIHDF5_CMAKE_DIR}/PLIHDF5Targets.cmake")
 endif()
 
 # These are IMPORTED targets created by PLIHDF5Targets.cmake
-set(PLIHDF5_LIBRARIES PLIHDF5)
+set(PLIHDF5_LIBRARIES PLIHDF5::PLIHDF5)

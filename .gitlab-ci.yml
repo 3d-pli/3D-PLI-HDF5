@@ -14,7 +14,7 @@ variables:
 .before_script_template:
   before_script:
     - apt-get update -qq
-    - apt-get install -y git
+    - apt-get install -y git gpg wget
     - git submodule update --init --recursive
 
 .before_script_template_lint:
@@ -77,7 +77,8 @@ package:ubuntu22.04:
   image: ubuntu:22.04
   script:
     - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev nlohmann-json3-dev dpkg-dev lsb-release
-    - mkdir build || echo ""
+    - if [ -d "build" ]; then rm -r build; fi
+    - mkdir build
     - cd build
     - cmake -DBUILD_TESTING=OFF -DPLIHDF5_USE_LINTING=OFF ..
     - make
@@ -93,6 +94,9 @@ package:ubuntu20.04:
   stage: package
   image: ubuntu:20.04
   script:
+    - wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
+    - echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ focal main' | tee /etc/apt/sources.list.d/kitware.list >/dev/null
+    - apt-get update
     - apt-get install -y cmake make gcc g++ libopenmpi-dev libhdf5-dev libhdf5-openmpi-dev libssl-dev nlohmann-json3-dev dpkg-dev lsb-release
     - if [ -d "build" ]; then rm -r build; fi
     - mkdir build
