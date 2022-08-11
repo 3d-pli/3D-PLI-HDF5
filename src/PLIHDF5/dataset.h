@@ -30,6 +30,7 @@
 #include <mpi.h>
 
 #include <algorithm>
+#include <iterator>
 #include <numeric>
 #include <ostream>
 #include <string>
@@ -48,12 +49,18 @@ namespace PLI {
  * @brief The HDF5 namespace
  */
 namespace HDF5 {
+
 /**
  * @brief HDF5 Dataset wrapper class.
  * Create and store or read data in an HDF5 dataset.
  */
 class Dataset : public Object {
   public:
+    // forward declaration
+    struct Slice;
+    class Slices;
+    class Hyperslab;
+
     /**
      * @brief Construct a new Dataset object
      *
@@ -326,13 +333,36 @@ class Dataset : public Object {
     Dataset &operator=(const PLI::HDF5::Dataset &other) noexcept;
 
     /**
+     * @brief Returns a vector of PLI::HDF5::Dataset::OffsetDim of the
+     * dataset.
+     * @return vector of PLI::HDF5::Dataset::OffsetDim of the dataset from
+     * the dataset chunk.
+     * @throws PLI::HDF5::Exceptions::HDF5RuntimeException if the
+     * dataset is not chunked.
+     */
+    std::vector<Hyperslab> getChunks() const;
+
+    /**
+     * @brief Returns a vector of PLI::HDF5::Dataset::OffsetDim of the
+     * dataset.
+     * @return vector of PLI::HDF5::Dataset::OffsetDim of the dataset.
+     * @param chunkDims user defined chunk dimension of the data.
+     * @throws PLI::HDF5::Exceptions::DimensionMismatchException if the
+     * the arguments dimensions are mismatched.
+     */
+    std::vector<Hyperslab>
+    getChunks(const std::vector<size_t> &chunkDims) const;
+
+    /**
      * @brief HDF5 Dataset Slice object.
-     * Slice object inspired py python.
+     * Slice object inspired by python.
      */
     struct Slice {
         Slice() = default;
         Slice(size_t start_, size_t stop_, size_t step_)
             : start(start_), stop(stop_), step(step_) {}
+
+        Hyperslab toHyperslab() const;
 
         bool operator==(const Slice &slice) const;
         bool operator!=(const Slice &slice) const;
@@ -348,50 +378,95 @@ class Dataset : public Object {
         size_t step{0};
     };
 
-    using Slices = std::vector<Slice>;
+    /**
+     * @brief HDF5 Dataset Slices object.
+     * Slices object inspired by python slice.
+     */
+    class Slices {
+      public:
+        Slices() = default;
+        explicit Slices(const std::vector<Slice> &slices);
+
+        std::vector<Slice>::iterator begin();
+        std::vector<Slice>::iterator end();
+        std::vector<Slice>::const_iterator cbegin() const;
+        std::vector<Slice>::const_iterator cend() const;
+
+        bool operator==(const Slices &slices) const;
+        bool operator!=(const Slices &slices) const;
+
+        Slice operator[](size_t i) const;
+        Slice &operator[](size_t i);
+
+        void push_back(const Slice &slice);
+        void clear();
+        size_t size() const;
+
+        Hyperslab toHyperslab() const;
+
+        friend std::ostream &operator<<(std::ostream &out,
+                                        const Slices &slices) {
+            for (size_t i = 0; i < slices.size(); i++) {
+                out << slices[i] << ", ";
+            }
+            // ???
+            // for (auto const slice : slices) {
+            //     out << slice << ", ";
+            // }
+            out << "\b\b"; // remove list ", "
+            return out;
+        }
+
+      private:
+        std::vector<Slice> m_slices;
+    };
 
     /**
-     * @brief Returns HDF5 dimension objects from PLI::HDF5::Dataset::Slices.
-     * @return Returns HDF5 dimension objects (offset, dim, stride) from
-     * PLI::HDF5::Dataset::Slices.
+     * @brief HDF5 Dataset Hyperslap object for chunking and slicing.
+     * Hyperslap object for HDF5 for chunking and slicing.
      */
-    static std::tuple<std::vector<size_t>, std::vector<size_t>,
-                      std::vector<size_t>>
-    toOffsetAndDim(const Slices &slices) noexcept;
+    class Hyperslab {
+      public:
+        Hyperslab() = default;
+        Hyperslab(std::vector<size_t> offset, std::vector<size_t> count,
+                  std::vector<size_t> stride = {});
 
-    /**
-     * @brief Returns PLI::HDF5::Dataset::Slices from HDF5 dimension objects.
-     * @return Returns PLI::HDF5::Dataset::Slices from HDF5 dimension objects
-     * (offset, dim, stride).
-     */
-    static Slices
-    toSlices(const std::vector<size_t> &offset, const std::vector<size_t> &dim,
-             std::optional<std::vector<size_t>> stride = {}) noexcept;
+        const std::vector<size_t> &offset() const { return m_offset; }
+        const std::vector<size_t> &count() const { return m_count; }
+        const std::vector<size_t> &stride() const { return m_stride; }
 
-    /**
-     * @brief Returns a vector of PLI::HDF5::Dataset::OffsetDim of the
-     * dataset.
-     * @return vector of PLI::HDF5::Dataset::OffsetDim of the dataset from
-     * the dataset chunk.
-     * @throws PLI::HDF5::Exceptions::HDF5RuntimeException if the
-     * dataset is not chunked.
-     */
-    std::vector<Slices> getChunkSlices();
+        void push_back(size_t offset, size_t count, size_t stride);
+        void clear();
+        size_t size() const;
 
-    /**
-     * @brief Returns a vector of PLI::HDF5::Dataset::OffsetDim of the
-     * dataset.
-     * @return vector of PLI::HDF5::Dataset::OffsetDim of the dataset.
-     * @param chunkDims user defined chunk dimension of the data.
-     * @throws PLI::HDF5::Exceptions::DimensionMismatchException if the
-     * the arguments dimensions are mismatched.
-     */
-    std::vector<Slices> getChunkSlices(const std::vector<size_t> &chunkDims);
+        Slices toSlices() const;
 
-    static std::vector<Slices> slicesFromDimensions(
-        const std::vector<size_t> &totalDim,
-        const std::vector<size_t> &chunkDims,
-        std::optional<const std::vector<size_t>> chunkOffset = {});
+        bool operator==(const Hyperslab &hyperslab) const;
+        bool operator!=(const Hyperslab &hyperslab) const;
+        friend std::ostream &operator<<(std::ostream &out,
+                                        const Hyperslab &hyperslab) {
+            out << "[";
+            std::copy(hyperslab.offset().cbegin(), hyperslab.offset().cend(),
+                      std::ostream_iterator<char>(out, ", "));
+            out << "\b\b], "; // \b\b -> remove last ", "
+            std::copy(hyperslab.count().cbegin(), hyperslab.count().cend(),
+                      std::ostream_iterator<char>(out, ", "));
+            out << "\b\b], "; // \b\b -> remove last ", "
+            std::copy(hyperslab.stride().cbegin(), hyperslab.stride().cend(),
+                      std::ostream_iterator<char>(out, ", "));
+            out << "\b\b]\n"; // \b\b -> remove last ", "
+            return out;
+        }
+
+      private:
+        std::vector<size_t> m_offset;
+        std::vector<size_t> m_count;
+        std::vector<size_t> m_stride;
+    };
+
+    static std::vector<PLI::HDF5::Dataset::Hyperslab>
+    chunkTensor(const std::vector<size_t> &tensorDims,
+                const PLI::HDF5::Dataset::Hyperslab &chunk_hyperslab);
 
   private:
     hid_t createXfID() const;
