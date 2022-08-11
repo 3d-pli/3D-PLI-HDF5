@@ -326,7 +326,7 @@ class Dataset : public Object {
     Dataset &operator=(const PLI::HDF5::Dataset &other) noexcept;
 
     /**
-     * @brief HDF5 Dataset Slice struct.
+     * @brief HDF5 Dataset Slice object.
      * Slice object inspired py python.
      */
     struct Slice {
@@ -348,25 +348,25 @@ class Dataset : public Object {
         size_t step{0};
     };
 
-    using View = std::vector<Slice>;
+    using Slices = std::vector<Slice>;
 
     /**
-     * @brief Returns HDF5 dimension objects from PLI::HDF5::Dataset::View.
+     * @brief Returns HDF5 dimension objects from PLI::HDF5::Dataset::Slices.
      * @return Returns HDF5 dimension objects (offset, dim, stride) from
-     * PLI::HDF5::Dataset::View.
+     * PLI::HDF5::Dataset::Slices.
      */
     static std::tuple<std::vector<size_t>, std::vector<size_t>,
                       std::vector<size_t>>
-    toOffsetAndDim(const View &view) noexcept;
+    toOffsetAndDim(const Slices &slices) noexcept;
 
     /**
-     * @brief Returns PLI::HDF5::Dataset::View from HDF5 dimension objects.
-     * @return Returns PLI::HDF5::Dataset::View from HDF5 dimension objects
+     * @brief Returns PLI::HDF5::Dataset::Slices from HDF5 dimension objects.
+     * @return Returns PLI::HDF5::Dataset::Slices from HDF5 dimension objects
      * (offset, dim, stride).
      */
-    static View toView(const std::vector<size_t> &offset,
-                       const std::vector<size_t> &dim,
-                       std::optional<std::vector<size_t>> stride = {}) noexcept;
+    static Slices
+    toSlices(const std::vector<size_t> &offset, const std::vector<size_t> &dim,
+             std::optional<std::vector<size_t>> stride = {}) noexcept;
 
     /**
      * @brief Returns a vector of PLI::HDF5::Dataset::OffsetDim of the
@@ -376,7 +376,7 @@ class Dataset : public Object {
      * @throws PLI::HDF5::Exceptions::HDF5RuntimeException if the
      * dataset is not chunked.
      */
-    std::vector<View> getChunkViews();
+    std::vector<Slices> getChunkSlices();
 
     /**
      * @brief Returns a vector of PLI::HDF5::Dataset::OffsetDim of the
@@ -386,12 +386,9 @@ class Dataset : public Object {
      * @throws PLI::HDF5::Exceptions::DimensionMismatchException if the
      * the arguments dimensions are mismatched.
      */
-    std::vector<View> getChunkViews(const std::vector<size_t> &chunkDims);
+    std::vector<Slices> getChunkSlices(const std::vector<size_t> &chunkDims);
 
-    // static std::vector<View> viewsFromView(const View &totalView,
-    //                                        const View &chunk);
-
-    static std::vector<View> viewsFromDimensions(
+    static std::vector<Slices> slicesFromDimensions(
         const std::vector<size_t> &totalDim,
         const std::vector<size_t> &chunkDims,
         std::optional<const std::vector<size_t>> chunkOffset = {});

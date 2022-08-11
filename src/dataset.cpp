@@ -248,7 +248,7 @@ bool PLI::HDF5::Dataset::Slice::operator!=(
     return slice.start != start || slice.stop != stop || slice.step != step;
 }
 
-// ???
+// ??? why not possible in cpp?
 // std::ostream &operator<<(std::ostream &out,
 //                          const PLI::HDF5::Dataset::Slice &slice) {
 //     out << "[" << slice.start << ":" << slice.stop << ":" << slice.step <<
@@ -257,24 +257,23 @@ bool PLI::HDF5::Dataset::Slice::operator!=(
 
 std::tuple<std::vector<size_t>, std::vector<size_t>, std::vector<size_t>>
 PLI::HDF5::Dataset::toOffsetAndDim(
-    const PLI::HDF5::Dataset::View &view) noexcept {
-    std::vector<size_t> offset(view.size(), 0);
-    std::vector<size_t> dim(view.size(), 0);
-    std::vector<size_t> stride(view.size(), 0);
+    const PLI::HDF5::Dataset::Slices &slices) noexcept {
+    std::vector<size_t> offset(slices.size(), 0);
+    std::vector<size_t> dim(slices.size(), 0);
+    std::vector<size_t> stride(slices.size(), 0);
 
-    for (size_t i = 0; i < view.size(); i++) {
-        offset[i] = view[i].start;
-        dim[i] = (view[i].stop - view[i].start) / view[i].step;
-        stride[i] = view[i].step;
+    for (size_t i = 0; i < slices.size(); i++) {
+        offset[i] = slices[i].start;
+        dim[i] = (slices[i].stop - slices[i].start) / slices[i].step;
+        stride[i] = slices[i].step;
     }
     return std::make_tuple(offset, dim, stride);
 }
 
-PLI::HDF5::Dataset::View
-PLI::HDF5::Dataset::toView(const std::vector<size_t> &offset,
-                           const std::vector<size_t> &dim,
-                           std::optional<std::vector<size_t>> stride) noexcept {
-    PLI::HDF5::Dataset::View view(offset.size());
+PLI::HDF5::Dataset::Slices PLI::HDF5::Dataset::toSlices(
+    const std::vector<size_t> &offset, const std::vector<size_t> &dim,
+    std::optional<std::vector<size_t>> stride) noexcept {
+    PLI::HDF5::Dataset::Slices slice(offset.size());
 
     if (offset.size() != dim.size())
         std::runtime_error("invalid argument dimension");
@@ -284,27 +283,28 @@ PLI::HDF5::Dataset::toView(const std::vector<size_t> &offset,
     const auto stride_ = stride.value_or(std::vector<size_t>(offset.size(), 1));
 
     for (size_t i = 0; i < offset.size(); i++) {
-        view[i].start = offset[i];
-        view[i].stop = offset[i] + dim[i] * stride_[i];
-        view[i].step = stride_[i];
+        slice[i].start = offset[i];
+        slice[i].stop = offset[i] + dim[i] * stride_[i];
+        slice[i].step = stride_[i];
     }
-    return view;
+    return slice;
 }
 
-std::vector<PLI::HDF5::Dataset::View> PLI::HDF5::Dataset::getChunkViews() {
-    return this->getChunkViews(this->chunkDims());
+std::vector<PLI::HDF5::Dataset::Slices> PLI::HDF5::Dataset::getChunkSlices() {
+    return this->getChunkSlices(this->chunkDims());
 }
 
-std::vector<PLI::HDF5::Dataset::View>
-PLI::HDF5::Dataset::getChunkViews(const std::vector<size_t> &chunkDims) {
-    return viewsFromDimensions(this->dims(), chunkDims);
+std::vector<PLI::HDF5::Dataset::Slices>
+PLI::HDF5::Dataset::getChunkSlices(const std::vector<size_t> &chunkDims) {
+    return slicesFromDimensions(this->dims(), chunkDims);
 }
 
-std::vector<PLI::HDF5::Dataset::View> PLI::HDF5::Dataset::viewsFromDimensions(
+std::vector<PLI::HDF5::Dataset::Slices>
+PLI::HDF5::Dataset::slicesFromDimensions(
     const std::vector<size_t> &dataDims, const std::vector<size_t> &chunkDims,
     std::optional<const std::vector<size_t>> chunkOffset) {
 
-    std::vector<PLI::HDF5::Dataset::View> result;
+    std::vector<PLI::HDF5::Dataset::Slices> result;
 
     if (dataDims.size() != chunkDims.size())
         throw PLI::HDF5::Exceptions::DimensionMismatchException(
@@ -319,7 +319,7 @@ std::vector<PLI::HDF5::Dataset::View> PLI::HDF5::Dataset::viewsFromDimensions(
         chunkOffset.value_or(std::vector<size_t>(dataDims.size(), 0));
     std::vector<size_t> offset = chunkOffset_;
 
-    // increment offset, beginning with last element, and save valid views
+    // increment offset, beginning with last element, and save valid slices
     while (offset[0] < dataDims[0]) {
         // set current offset chunk dimension
         auto dim = chunkDims;
@@ -329,7 +329,7 @@ std::vector<PLI::HDF5::Dataset::View> PLI::HDF5::Dataset::viewsFromDimensions(
         }
 
         // save offset/dim element
-        PLI::HDF5::Dataset::View chunk;
+        PLI::HDF5::Dataset::Slices chunk;
         for (size_t i = 0; i < offset.size(); i++)
             chunk.push_back(
                 PLI::HDF5::Dataset::Slice(offset[i], offset[i] + dim[i], 1));
