@@ -33,7 +33,7 @@ include(cmake/cpack_config.cmake)
 include(cmake/install.cmake)
 
 # Testing
-option(BUILD_TESTING ON "Enable testing")
+option(BUILD_TESTING "Enable testing" ON)
 if(BUILD_TESTING)
   if(NOT WIN32)
     enable_testing()
