@@ -283,6 +283,22 @@ PLI::HDF5::Dataset::Slices::Slices(const std::initializer_list<Slice> &slices) {
     }
 }
 
+// PLI::HDF5::Dataset::Slices &PLI::HDF5::Dataset::Slices::operator=(
+//     std::initializer_list<PLI::HDF5::Dataset::Slice> &&slices) {
+//     for (auto const &s : slices) {
+//         this->m_slices.push_back(s);
+//     }
+//     return *this;
+// }
+
+// PLI::HDF5::Dataset::Slices &PLI::HDF5::Dataset::Slices::operator=(
+//     const std::initializer_list<PLI::HDF5::Dataset::Slice> &slices) {
+//     for (auto const &s : slices) {
+//         this->m_slices.push_back(s);
+//     }
+//     return *this;
+// }
+
 bool PLI::HDF5::Dataset::Slices::operator==(
     const PLI::HDF5::Dataset::Slices &other) const {
     if (this->size() != other.size())
@@ -336,7 +352,15 @@ size_t PLI::HDF5::Dataset::Slices::size() const {
 
 PLI::HDF5::Dataset::Hyperslab PLI::HDF5::Dataset::Slices::toHyperslab() const {
     PLI::HDF5::Dataset::Hyperslab hyperslab;
-    for (auto slice : this->m_slices) {
+    // ??? how to with std::transform?
+    // std::transform(this->m_slices.begin(), this->m_slices.end(),
+    //                std::back_inserter(hyperslab),
+    //                [](PLI::HDF5::Dataset::Slice slice) {
+    //                    return PLI::HDF5::Dataset::Hyperslab(
+    //                        slice.start, (slice.stop - slice.start) /
+    //                        slice.step, slice.step);
+    //                });
+    for (auto const &slice : this->m_slices) {
         hyperslab.push_back(
             slice.start, (slice.stop - slice.start) / slice.step, slice.step);
     }
@@ -347,9 +371,23 @@ PLI::HDF5::Dataset::Hyperslab PLI::HDF5::Dataset::Slices::toHyperslab() const {
  * PLI::HDF5::Dataset::Hyperslab
  */
 
-PLI::HDF5::Dataset::Hyperslab::Hyperslab(std::vector<size_t> offset,
-                                         std::vector<size_t> count,
-                                         std::vector<size_t> stride)
+PLI::HDF5::Dataset::Hyperslab::Hyperslab(
+    const PLI::HDF5::Dataset::Slice &slice) {
+    this->m_offset = std::vector<size_t>(slice.start);
+    this->m_count = std::vector<size_t>(slice.start + slice.stop * slice.step);
+    this->m_stride = std::vector<size_t>(slice.step);
+}
+
+PLI::HDF5::Dataset::Hyperslab::Hyperslab(size_t offset, size_t count,
+                                         size_t stride) {
+    this->m_offset = std::vector<size_t>(offset);
+    this->m_count = std::vector<size_t>(count);
+    this->m_stride = std::vector<size_t>(stride);
+}
+
+PLI::HDF5::Dataset::Hyperslab::Hyperslab(const std::vector<size_t> &offset,
+                                         const std::vector<size_t> &count,
+                                         const std::vector<size_t> &stride)
     : m_offset(offset), m_count(count), m_stride(stride) {
 
     if (this->m_stride.empty())

@@ -416,6 +416,8 @@ TEST_F(PLI_HDF5_Dataset, slices) {
 TEST_F(PLI_HDF5_Dataset, hyperslab) {
     { // constructor
         EXPECT_NO_THROW(PLI::HDF5::Dataset::Hyperslab());
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Hyperslab(0, 0));
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Hyperslab(0, 0, 1));
         EXPECT_NO_THROW(PLI::HDF5::Dataset::Hyperslab(
             std::vector<size_t>({0}), std::vector<size_t>({0})));
         EXPECT_NO_THROW(PLI::HDF5::Dataset::Hyperslab(

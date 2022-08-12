@@ -359,6 +359,12 @@ class Dataset : public Object {
      */
     struct Slice {
         Slice() = default;
+        Slice(Slice &&) = default;
+        Slice(const Slice &) = default;
+        Slice &operator=(Slice &&) = default;
+        Slice &operator=(const Slice &) = default;
+        ~Slice() = default;
+
         explicit Slice(size_t stop_) : start(0), stop(stop_), step(1) {}
         Slice(size_t start_, size_t stop_)
             : start(start_), stop(stop_), step(1) {}
@@ -387,9 +393,18 @@ class Dataset : public Object {
     class Slices {
       public:
         Slices() = default;
+        Slices(Slices &&) = default;
+        Slices(const Slices &) = default;
+        Slices &operator=(Slices &&) = default;
+        Slices &operator=(const Slices &) = default;
+        ~Slices() = default;
+
         explicit Slices(const std::vector<Slice> &slices);
+        // next fails when explicit
         Slices(const std::initializer_list<Slice> &slices);
 
+        // Slices &operator=(std::initializer_list<Slice> &&slices);
+        // Slices &operator=(const std::initializer_list<Slice> &slices);
         bool operator==(const Slices &slices) const;
         bool operator!=(const Slices &slices) const;
         Slice operator[](size_t i) const;
@@ -428,8 +443,17 @@ class Dataset : public Object {
     class Hyperslab {
       public:
         Hyperslab() = default;
-        Hyperslab(std::vector<size_t> offset, std::vector<size_t> count,
-                  std::vector<size_t> stride = {});
+        Hyperslab(Hyperslab &&) = default;
+        Hyperslab(const Hyperslab &) = default;
+        Hyperslab &operator=(Hyperslab &&) = default;
+        Hyperslab &operator=(const Hyperslab &) = default;
+        ~Hyperslab() = default;
+
+        explicit Hyperslab(const Slice &slice);
+        Hyperslab(size_t offset, size_t count, size_t stride = 1);
+        Hyperslab(const std::vector<size_t> &offset,
+                  const std::vector<size_t> &count,
+                  const std::vector<size_t> &stride = {});
 
         bool operator==(const Hyperslab &hyperslab) const;
         bool operator!=(const Hyperslab &hyperslab) const;
