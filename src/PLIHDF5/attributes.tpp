@@ -38,11 +38,11 @@ void PLI::HDF5::AttributeHandler::createAttribute(
   this->createAttribute(attributeName, content.data(), dimensions, _attributeType);
 }
 
-template <> 
+template <>
 void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
   const std::string &attributeName, const std::string &content);
 
-template <> 
+template <>
 void PLI::HDF5::AttributeHandler::createAttribute<std::string>(
   const std::string &attributeName, const std::vector<std::string> &content,
   const std::vector<size_t> &dimensions);
