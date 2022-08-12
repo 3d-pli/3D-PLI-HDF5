@@ -254,6 +254,15 @@ PLI::HDF5::Dataset::getChunks(const std::vector<size_t> &chunkDims) const {
  * PLI::HDF5::Dataset::Slice
  */
 
+PLI::HDF5::Dataset::Hyperslab PLI::HDF5::Dataset::Slice::toHyperslab() const {
+    PLI::HDF5::Dataset::Hyperslab hyperslab;
+    hyperslab.push_back(this->start,
+                        (this->stop - this->start) /
+                            std::min(this->step, static_cast<size_t>(1)),
+                        this->step);
+    return hyperslab;
+}
+
 bool PLI::HDF5::Dataset::Slice::operator==(
     const PLI::HDF5::Dataset::Slice &slice) const {
     return slice.start == start && slice.stop == stop && slice.step == step;
@@ -267,6 +276,15 @@ bool PLI::HDF5::Dataset::Slice::operator!=(
 /*
  * PLI::HDF5::Dataset::Slices
  */
+PLI::HDF5::Dataset::Slices::Slices(
+    const std::vector<PLI::HDF5::Dataset::Slice> &slices)
+    : m_slices(slices) {}
+
+PLI::HDF5::Dataset::Slices::Slices(const std::initializer_list<Slice> &slices) {
+    for (auto const &s : slices) {
+        this->m_slices.push_back(s);
+    }
+}
 
 std::vector<PLI::HDF5::Dataset::Slice>::iterator
 PLI::HDF5::Dataset::Slices::begin() {
@@ -286,6 +304,18 @@ PLI::HDF5::Dataset::Slices::cbegin() const {
 std::vector<PLI::HDF5::Dataset::Slice>::const_iterator
 PLI::HDF5::Dataset::Slices::cend() const {
     return this->m_slices.cend();
+}
+
+bool PLI::HDF5::Dataset::Slices::operator==(
+    const PLI::HDF5::Dataset::Slices &other) const {
+    if (this->size() != other.size())
+        return false;
+    return std::equal(this->cbegin(), this->cend(), other.cbegin());
+}
+
+bool PLI::HDF5::Dataset::Slices::operator!=(
+    const PLI::HDF5::Dataset::Slices &other) const {
+    return !(*this == other);
 }
 
 PLI::HDF5::Dataset::Slice

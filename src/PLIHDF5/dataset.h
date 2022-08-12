@@ -386,6 +386,7 @@ class Dataset : public Object {
       public:
         Slices() = default;
         explicit Slices(const std::vector<Slice> &slices);
+        Slices(const std::initializer_list<Slice> &slices);
 
         std::vector<Slice>::iterator begin();
         std::vector<Slice>::iterator end();
@@ -409,7 +410,7 @@ class Dataset : public Object {
             for (size_t i = 0; i < slices.size(); i++) {
                 out << slices[i] << ", ";
             }
-            // ???
+            // ??? why does this not work
             // for (auto const slice : slices) {
             //     out << slice << ", ";
             // }
