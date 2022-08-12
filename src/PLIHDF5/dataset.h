@@ -359,23 +359,25 @@ class Dataset : public Object {
      */
     struct Slice {
         Slice() = default;
+        explicit Slice(size_t stop_) : start(0), stop(stop_), step(1) {}
+        Slice(size_t start_, size_t stop_)
+            : start(start_), stop(stop_), step(1) {}
         Slice(size_t start_, size_t stop_, size_t step_)
             : start(start_), stop(stop_), step(step_) {}
 
-        Hyperslab toHyperslab() const;
-
         bool operator==(const Slice &slice) const;
         bool operator!=(const Slice &slice) const;
-
         friend std::ostream &operator<<(std::ostream &out, const Slice &slice) {
             out << "[" << slice.start << ":" << slice.stop << ":" << slice.step
                 << "]";
             return out;
         }
 
+        Hyperslab toHyperslab() const;
+
         size_t start{0};
         size_t stop{0};
-        size_t step{0};
+        size_t step{1};
     };
 
     /**
@@ -388,23 +390,10 @@ class Dataset : public Object {
         explicit Slices(const std::vector<Slice> &slices);
         Slices(const std::initializer_list<Slice> &slices);
 
-        std::vector<Slice>::iterator begin();
-        std::vector<Slice>::iterator end();
-        std::vector<Slice>::const_iterator cbegin() const;
-        std::vector<Slice>::const_iterator cend() const;
-
         bool operator==(const Slices &slices) const;
         bool operator!=(const Slices &slices) const;
-
         Slice operator[](size_t i) const;
         Slice &operator[](size_t i);
-
-        void push_back(const Slice &slice);
-        void clear();
-        size_t size() const;
-
-        Hyperslab toHyperslab() const;
-
         friend std::ostream &operator<<(std::ostream &out,
                                         const Slices &slices) {
             for (size_t i = 0; i < slices.size(); i++) {
@@ -417,6 +406,16 @@ class Dataset : public Object {
             out << "\b\b"; // remove list ", "
             return out;
         }
+
+        std::vector<Slice>::iterator begin();
+        std::vector<Slice>::iterator end();
+        std::vector<Slice>::const_iterator cbegin() const;
+        std::vector<Slice>::const_iterator cend() const;
+        void push_back(const Slice &slice);
+        void clear();
+        size_t size() const;
+
+        Hyperslab toHyperslab() const;
 
       private:
         std::vector<Slice> m_slices;
@@ -431,16 +430,6 @@ class Dataset : public Object {
         Hyperslab() = default;
         Hyperslab(std::vector<size_t> offset, std::vector<size_t> count,
                   std::vector<size_t> stride = {});
-
-        const std::vector<size_t> &offset() const { return m_offset; }
-        const std::vector<size_t> &count() const { return m_count; }
-        const std::vector<size_t> &stride() const { return m_stride; }
-
-        void push_back(size_t offset, size_t count, size_t stride);
-        void clear();
-        size_t size() const;
-
-        Slices toSlices() const;
 
         bool operator==(const Hyperslab &hyperslab) const;
         bool operator!=(const Hyperslab &hyperslab) const;
@@ -458,6 +447,16 @@ class Dataset : public Object {
             out << "\b\b]\n"; // \b\b -> remove last ", "
             return out;
         }
+
+        const std::vector<size_t> &offset() const { return m_offset; }
+        const std::vector<size_t> &count() const { return m_count; }
+        const std::vector<size_t> &stride() const { return m_stride; }
+
+        void push_back(size_t offset, size_t count, size_t stride = 1);
+        void clear();
+        size_t size() const;
+
+        Slices toSlices() const;
 
       private:
         std::vector<size_t> m_offset;
