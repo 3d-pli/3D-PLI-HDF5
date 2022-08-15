@@ -352,18 +352,12 @@ size_t PLI::HDF5::Dataset::Slices::size() const {
 
 PLI::HDF5::Dataset::Hyperslab PLI::HDF5::Dataset::Slices::toHyperslab() const {
     PLI::HDF5::Dataset::Hyperslab hyperslab;
-    // ??? how to with std::transform?
-    // std::transform(this->m_slices.begin(), this->m_slices.end(),
-    //                std::back_inserter(hyperslab),
-    //                [](PLI::HDF5::Dataset::Slice slice) {
-    //                    return PLI::HDF5::Dataset::Hyperslab(
-    //                        slice.start, (slice.stop - slice.start) /
-    //                        slice.step, slice.step);
-    //                });
-    for (auto const &slice : this->m_slices) {
-        hyperslab.push_back(
-            slice.start, (slice.stop - slice.start) / slice.step, slice.step);
-    }
+    std::for_each(this->m_slices.begin(), this->m_slices.end(),
+                  [&](PLI::HDF5::Dataset::Slice slice) {
+                      hyperslab.push_back(
+                          slice.start, (slice.stop - slice.start) / slice.step,
+                          slice.step);
+                  });
     return hyperslab;
 }
 
