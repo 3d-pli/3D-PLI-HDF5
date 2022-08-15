@@ -400,11 +400,8 @@ class Dataset : public Object {
         ~Slices() = default;
 
         explicit Slices(const std::vector<Slice> &slices);
-        // next fails when explicit
-        Slices(const std::initializer_list<Slice> &slices);
+        explicit Slices(const std::initializer_list<Slice> &slices);
 
-        // Slices &operator=(std::initializer_list<Slice> &&slices);
-        // Slices &operator=(const std::initializer_list<Slice> &slices);
         bool operator==(const Slices &slices) const;
         bool operator!=(const Slices &slices) const;
         Slice operator[](size_t i) const;

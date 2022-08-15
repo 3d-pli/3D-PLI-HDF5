@@ -283,22 +283,6 @@ PLI::HDF5::Dataset::Slices::Slices(const std::initializer_list<Slice> &slices) {
     }
 }
 
-// PLI::HDF5::Dataset::Slices &PLI::HDF5::Dataset::Slices::operator=(
-//     std::initializer_list<PLI::HDF5::Dataset::Slice> &&slices) {
-//     for (auto const &s : slices) {
-//         this->m_slices.push_back(s);
-//     }
-//     return *this;
-// }
-
-// PLI::HDF5::Dataset::Slices &PLI::HDF5::Dataset::Slices::operator=(
-//     const std::initializer_list<PLI::HDF5::Dataset::Slice> &slices) {
-//     for (auto const &s : slices) {
-//         this->m_slices.push_back(s);
-//     }
-//     return *this;
-// }
-
 bool PLI::HDF5::Dataset::Slices::operator==(
     const PLI::HDF5::Dataset::Slices &other) const {
     if (this->size() != other.size())

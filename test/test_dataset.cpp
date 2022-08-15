@@ -367,7 +367,7 @@ TEST_F(PLI_HDF5_Dataset, slices) {
 
     { // operator
         PLI::HDF5::Dataset::Slices slices0;
-        PLI::HDF5::Dataset::Slices slices1 = {
+        PLI::HDF5::Dataset::Slices slices1{
             {PLI::HDF5::Dataset::Slice(0, 0, 0),
              PLI::HDF5::Dataset::Slice(1, 0, 0),
              PLI::HDF5::Dataset::Slice(2, 0, 0)}};
@@ -382,10 +382,9 @@ TEST_F(PLI_HDF5_Dataset, slices) {
         EXPECT_EQ(slices0.begin(), slices0.end());
         EXPECT_EQ(slices0.cbegin(), slices0.cend());
 
-        PLI::HDF5::Dataset::Slices slices = {
-            {PLI::HDF5::Dataset::Slice(0, 0, 0),
-             PLI::HDF5::Dataset::Slice(1, 0, 0),
-             PLI::HDF5::Dataset::Slice(2, 0, 0)}};
+        PLI::HDF5::Dataset::Slices slices{{PLI::HDF5::Dataset::Slice(0, 0, 0),
+                                           PLI::HDF5::Dataset::Slice(1, 0, 0),
+                                           PLI::HDF5::Dataset::Slice(2, 0, 0)}};
         EXPECT_NE(slices.begin(), slices.end());
         EXPECT_NE(slices.cbegin(), slices.cend());
         EXPECT_EQ(std::distance(slices.begin(), slices.end()), slices.size());
