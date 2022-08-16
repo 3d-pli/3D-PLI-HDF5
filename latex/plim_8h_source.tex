@@ -1,0 +1,61 @@
+\hypertarget{plim_8h_source}{}\doxysection{plim.\+h}
+\label{plim_8h_source}\index{src/PLIHDF5/plim.h@{src/PLIHDF5/plim.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    MIT License}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{    Copyright (c) 2022 Forschungszentrum Jülich / Jan André Reuter \& Felix}}
+\DoxyCodeLine{5 \textcolor{comment}{   Matuschke.}}
+\DoxyCodeLine{6 \textcolor{comment}{}}
+\DoxyCodeLine{7 \textcolor{comment}{    Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{8 \textcolor{comment}{    of this software and associated documentation files (the "{}Software"{}), to}}
+\DoxyCodeLine{9 \textcolor{comment}{   deal in the Software without restriction, including without limitation the}}
+\DoxyCodeLine{10 \textcolor{comment}{   rights to use, copy, modify, merge, publish, distribute, sublicense, and/or}}
+\DoxyCodeLine{11 \textcolor{comment}{   sell copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{12 \textcolor{comment}{    furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{13 \textcolor{comment}{}}
+\DoxyCodeLine{14 \textcolor{comment}{    The above copyright notice and this permission notice shall be included in}}
+\DoxyCodeLine{15 \textcolor{comment}{   all copies or substantial portions of the Software.}}
+\DoxyCodeLine{16 \textcolor{comment}{}}
+\DoxyCodeLine{17 \textcolor{comment}{    THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{18 \textcolor{comment}{    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{19 \textcolor{comment}{    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{20 \textcolor{comment}{    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{21 \textcolor{comment}{    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING}}
+\DoxyCodeLine{22 \textcolor{comment}{   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS}}
+\DoxyCodeLine{23 \textcolor{comment}{   IN THE SOFTWARE.}}
+\DoxyCodeLine{24 \textcolor{comment}{ */}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include "{}PLIHDF5/attributes.h"{}}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include "{}PLIHDF5/file.h"{}}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{37 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacePLI}{PLI}} \{}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{keyword}{namespace }HDF5 \{}
+\DoxyCodeLine{47 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM}{PLIM}} \{}
+\DoxyCodeLine{48   \textcolor{keyword}{public}:}
+\DoxyCodeLine{54     \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a9bc221a8a335d389126872ecdd318110}{PLIM}}(\mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI::HDF5::File}} file, \textcolor{keyword}{const} std::string \&dataset);}
+\DoxyCodeLine{60     \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a9bc221a8a335d389126872ecdd318110}{PLIM}}(\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}} dataset);}
+\DoxyCodeLine{64     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a0b935ae8c9a051fe4e76bfdd8775824f}{addCreator}}();}
+\DoxyCodeLine{69     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a0ef9925817a494b8c9956ec111b1e116}{addID}}(\textcolor{keyword}{const} std::vector<std::string> \&idAttributes = \{\});}
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_aa984b5f4dbba7984b17da48b7db7c787}{addReference}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}} \&file);}
+\DoxyCodeLine{80     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_aa984b5f4dbba7984b17da48b7db7c787}{addReference}}(\textcolor{keyword}{const} std::vector<PLI::HDF5::AttributeHandler> \&files);}
+\DoxyCodeLine{85     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a969cdeb013e813e55b48f2d3cd721efc}{addSoftware}}(\textcolor{keyword}{const} std::string \&softwareName);}
+\DoxyCodeLine{91     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_ab624428f823270a75ece30803ec59eb7}{addSoftwareRevision}}(\textcolor{keyword}{const} std::string \&softwareRevision);}
+\DoxyCodeLine{97     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a187e525e1801f3c4843cf8d84a1ed494}{addSoftwareParameters}}(\textcolor{keyword}{const} std::string \&softwareParameters);}
+\DoxyCodeLine{101     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_aa580b0677342839b063642410539fdd6}{addCreationTime}}();}
+\DoxyCodeLine{106     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a0022bfc3949c2c5319e1734f768319f0}{addImageModality}}(\textcolor{keyword}{const} std::string \&modalityName);}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108   \textcolor{keyword}{private}:}
+\DoxyCodeLine{109     \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a306455307984cec270af4619c36a7b6f}{m\_attrHandler}};}
+\DoxyCodeLine{110 \};}
+\DoxyCodeLine{111 \} \textcolor{comment}{// namespace HDF5}}
+\DoxyCodeLine{112 \} \textcolor{comment}{// namespace PLI}}
+
+\end{DoxyCode}

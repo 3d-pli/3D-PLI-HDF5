@@ -71,7 +71,7 @@ Added</h1>
 <ul>
 <li>Added automatic test pipeline in GitLab instances</li>
 <li>The project now uses pre-commit hooks for formatting and linting</li>
-<li>Added config file and config class containing information for <a class="el" href="classPLI_1_1PLIM.html" title="The PLIM class contains a few functions to make the integration of a generated HDF5 file easier with ...">PLI::PLIM</a></li>
+<li>Added config file and config class containing information for PLI::PLIM</li>
 <li>Added methods to enable / disable HDF5 exception output. Default = enabled</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
@@ -104,7 +104,7 @@ Added</h2>
 </ul>
 </li>
 <li>Added PLI::HDF5::createDataset without template but with <a class="el" href="classPLI_1_1HDF5_1_1Type.html">PLI::HDF5::Type</a></li>
-<li>Added <a class="el" href="classPLI_1_1PLIM.html#ae63caa54990e93c76b2b709079f90f44" title="Adds the creation time of the HDF5 file.">PLI::PLIM::addCreationTime</a> and <a class="el" href="classPLI_1_1PLIM.html#a370f51ea69573cc5642f85e3663b360f" title="Adds the name of the modality stored in the HDF5 file.">PLI::PLIM::addImageModality</a></li>
+<li>Added PLI::PLIM::addCreationTime and PLI::PLIM::addImageModality</li>
 <li>Added tests for non MPI execution</li>
 <li>Added tests for the new methods to create datasets</li>
 </ul>
@@ -133,7 +133,7 @@ Added</h2>
 <li>Added Dataset::isChunked to check if a created dataset contains chunks.</li>
 <li>Added Dataset::chunkDims to retrieve the chunk dimensions of a created dataset.</li>
 <li>Added PLI::HDF5::Config class<ul>
-<li>With this class, one can set settings for the attribute copying and <a class="el" href="classPLI_1_1PLIM.html" title="The PLIM class contains a few functions to make the integration of a generated HDF5 file easier with ...">PLI::PLIM</a> id calculation.</li>
+<li>With this class, one can set settings for the attribute copying and PLI::PLIM id calculation.</li>
 <li>Per default, the tool does search in /usr/share/PLIHDF5 and /usr/local/share/PLIHDF5. A manual path can be set by calling a respective method or using the PLIHDF5_ATTRIBUTE_SETTINGS_FILE_PATH shell variable.</li>
 </ul>
 </li>
@@ -143,7 +143,7 @@ Added</h2>
 Changed</h2>
 <ul>
 <li>Changed hsize_t throughout the toolbox to size_t to improve compatability with other programs.</li>
-<li>Adding the ID through <a class="el" href="classPLI_1_1PLIM.html" title="The PLIM class contains a few functions to make the integration of a generated HDF5 file easier with ...">PLI::PLIM</a> will now use the config attributes per default, except when the user sets the ID attributes manually.</li>
+<li>Adding the ID through PLI::PLIM will now use the config attributes per default, except when the user sets the ID attributes manually.</li>
 <li>Changed size of scalar HDF5 attributes to be returned as an empty vector instead of a vector with {1}</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md11"></a>

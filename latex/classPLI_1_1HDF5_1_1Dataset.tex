@@ -15,6 +15,15 @@ Inheritance diagram for PLI\+::HDF5\+::Dataset\+:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{classPLI_1_1HDF5_1_1Dataset}
 \end{center}
 \end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} Hyperslap object for chunking and slicing. Hyperslap object for \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} for chunking and slicing. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} object. \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} object inspired by python. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} object. \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} object inspired by python slice. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,12 +60,18 @@ int \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ab1f82284d13d3426e0e6a9104673d0
 const std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}} () const
 \begin{DoxyCompactList}\small\item\em Returns the number of elements of the dataset. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a08d24fb280f331eedd0fe44f4e087b8c}{operator=}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI\+::\+HDF5\+::\+Dataset}} \&other) noexcept
-\end{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_aa28abd8714868c9b524364e5b1ad1dee}{get\+Chunks}} () const
+\begin{DoxyCompactList}\small\item\em Returns a vector of PLI\+::\+HDF5\+::\+Dataset\+::\+Offset\+Dim of the dataset. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a16a2a2f74f42fe3c9a5d68aed7f9e045}{get\+Chunks}} (const std\+::vector$<$ size\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}{chunk\+Dims}}) const
+\begin{DoxyCompactList}\small\item\em Returns a vector of PLI\+::\+HDF5\+::\+Dataset\+::\+Offset\+Dim of the dataset. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_af52acbc9b884fdc80fc2012fd1f6f8d9}{exists}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parent\+Ptr, const std\+::string \&dataset\+Name)
-\begin{DoxyCompactList}\small\item\em Check if the dataset exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Check if the dataset exists. \end{DoxyCompactList}\item 
+static std\+::vector$<$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab}} $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ad999f604cdacad572117a31764ce62e6}{chunk\+Tensor}} (const std\+::vector$<$ size\+\_\+t $>$ \&tensor\+Dims, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab}} \&chunk\+\_\+hyperslab)
+\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -125,6 +140,12 @@ Returns the size of the chunks chosen when creating the dataset. If the dataset 
 \begin{DoxyReturn}{Returns}
 std\+::vector$<$size\+\_\+t$>$ Size of the chunks. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_ad999f604cdacad572117a31764ce62e6}\label{classPLI_1_1HDF5_1_1Dataset_ad999f604cdacad572117a31764ce62e6}} 
+\index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!chunkTensor@{chunkTensor}}
+\index{chunkTensor@{chunkTensor}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
+\doxysubsubsection{\texorpdfstring{chunkTensor()}{chunkTensor()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab}} $>$ PLI\+::\+HDF5\+::\+Dataset\+::chunk\+Tensor (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{tensor\+Dims,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab}} \&}]{chunk\+\_\+hyperslab }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a7af3e91e7688c8d5cfae1685ab57687c}\label{classPLI_1_1HDF5_1_1Dataset_a7af3e91e7688c8d5cfae1685ab57687c}} 
 \index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!create@{create}}
 \index{create@{create}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
@@ -247,6 +268,47 @@ false \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} does not exist.
 
 \begin{DoxyExceptions}{Exceptions}
 {\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1IdentifierNotValidException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Identifier\+Not\+Valid\+Exception}}} & If the parent pointer is invalid. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_aa28abd8714868c9b524364e5b1ad1dee}\label{classPLI_1_1HDF5_1_1Dataset_aa28abd8714868c9b524364e5b1ad1dee}} 
+\index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!getChunks@{getChunks}}
+\index{getChunks@{getChunks}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
+\doxysubsubsection{\texorpdfstring{getChunks()}{getChunks()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab}} $>$ PLI\+::\+HDF5\+::\+Dataset\+::get\+Chunks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns a vector of PLI\+::\+HDF5\+::\+Dataset\+::\+Offset\+Dim of the dataset. 
+
+\begin{DoxyReturn}{Returns}
+vector of PLI\+::\+HDF5\+::\+Dataset\+::\+Offset\+Dim of the dataset from the dataset chunk. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1HDF5RuntimeException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+HDF5\+Runtime\+Exception}}} & if the dataset is not chunked. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a16a2a2f74f42fe3c9a5d68aed7f9e045}\label{classPLI_1_1HDF5_1_1Dataset_a16a2a2f74f42fe3c9a5d68aed7f9e045}} 
+\index{PLI::HDF5::Dataset@{PLI::HDF5::Dataset}!getChunks@{getChunks}}
+\index{getChunks@{getChunks}!PLI::HDF5::Dataset@{PLI::HDF5::Dataset}}
+\doxysubsubsection{\texorpdfstring{getChunks()}{getChunks()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab}} $>$ PLI\+::\+HDF5\+::\+Dataset\+::get\+Chunks (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{chunk\+Dims }\end{DoxyParamCaption}) const}
+
+
+
+Returns a vector of PLI\+::\+HDF5\+::\+Dataset\+::\+Offset\+Dim of the dataset. 
+
+\begin{DoxyReturn}{Returns}
+vector of PLI\+::\+HDF5\+::\+Dataset\+::\+Offset\+Dim of the dataset. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em chunk\+Dims} & user defined chunk dimension of the data. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPLI_1_1HDF5_1_1Exceptions_1_1DimensionMismatchException}{PLI\+::\+HDF5\+::\+Exceptions\+::\+Dimension\+Mismatch\+Exception}}} & if the the arguments dimensions are mismatched. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_a468a4ac3d54d409aa02cfee8b24273c5}\label{classPLI_1_1HDF5_1_1Dataset_a468a4ac3d54d409aa02cfee8b24273c5}} 

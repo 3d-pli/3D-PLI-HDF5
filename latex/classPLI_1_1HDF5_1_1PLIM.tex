@@ -1,0 +1,224 @@
+\hypertarget{classPLI_1_1HDF5_1_1PLIM}{}\doxysection{PLI\+::HDF5\+::PLIM Class Reference}
+\label{classPLI_1_1HDF5_1_1PLIM}\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+
+
+The \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM}{PLIM}} class contains a few functions to make the integration of a generated \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file easier with the Solr database used in the work group.  
+
+
+
+
+{\ttfamily \#include $<$plim.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a9bc221a8a335d389126872ecdd318110}{PLIM}} (\mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}} file, const std\+::string \&dataset)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a2c058d31bc32702d51d05677fd1d17f8}{PLIM}} (\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} dataset)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a0b935ae8c9a051fe4e76bfdd8775824f}{add\+Creator}} ()
+\begin{DoxyCompactList}\small\item\em Adds the creator of the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file to the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a0ef9925817a494b8c9956ec111b1e116}{add\+ID}} (const std\+::vector$<$ std\+::string $>$ \&id\+Attributes=\{\})
+\begin{DoxyCompactList}\small\item\em Adds the ID of the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file to the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_aa984b5f4dbba7984b17da48b7db7c787}{add\+Reference}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} \&file)
+\begin{DoxyCompactList}\small\item\em Adds the reference files used to generate this \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a749732745a8a49ce59f28b0f6229b155}{add\+Reference}} (const std\+::vector$<$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} $>$ \&files)
+\begin{DoxyCompactList}\small\item\em Adds the reference files used to generate this \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a969cdeb013e813e55b48f2d3cd721efc}{add\+Software}} (const std\+::string \&software\+Name)
+\begin{DoxyCompactList}\small\item\em Adds the software name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_ab624428f823270a75ece30803ec59eb7}{add\+Software\+Revision}} (const std\+::string \&software\+Revision)
+\begin{DoxyCompactList}\small\item\em Adds the software revision. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a187e525e1801f3c4843cf8d84a1ed494}{add\+Software\+Parameters}} (const std\+::string \&software\+Parameters)
+\begin{DoxyCompactList}\small\item\em Adds the software parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_aa580b0677342839b063642410539fdd6}{add\+Creation\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Adds the creation time of the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a0022bfc3949c2c5319e1734f768319f0}{add\+Image\+Modality}} (const std\+::string \&modality\+Name)
+\begin{DoxyCompactList}\small\item\em Adds the name of the modality stored in the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM_a306455307984cec270af4619c36a7b6f}{m\+\_\+attr\+Handler}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classPLI_1_1HDF5_1_1PLIM}{PLIM}} class contains a few functions to make the integration of a generated \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file easier with the Solr database used in the work group. 
+
+The class is a wrapper around the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} library. It provides functions to add the necessary information to the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file to make it compatible with the Solr database. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1PLIM_a9bc221a8a335d389126872ecdd318110}\label{classPLI_1_1HDF5_1_1PLIM_a9bc221a8a335d389126872ecdd318110}} 
+\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}!PLIM@{PLIM}}
+\index{PLIM@{PLIM}!PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+\doxysubsubsection{\texorpdfstring{PLIM()}{PLIM()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+PLIM\+::\+PLIM (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI\+::\+HDF5\+::\+File}}}]{file,  }\item[{const std\+::string \&}]{dataset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file object used to store the information. \\
+\hline
+{\em dataset} & \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} dataset object used to store the information. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1PLIM_a2c058d31bc32702d51d05677fd1d17f8}\label{classPLI_1_1HDF5_1_1PLIM_a2c058d31bc32702d51d05677fd1d17f8}} 
+\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}!PLIM@{PLIM}}
+\index{PLIM@{PLIM}!PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+\doxysubsubsection{\texorpdfstring{PLIM()}{PLIM()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+PLIM\+::\+PLIM (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}}}]{dataset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dataset} & \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{Attribute\+Handler}} containing the attributes of the desired dataset where information is stored. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1PLIM_aa580b0677342839b063642410539fdd6}\label{classPLI_1_1HDF5_1_1PLIM_aa580b0677342839b063642410539fdd6}} 
+\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}!addCreationTime@{addCreationTime}}
+\index{addCreationTime@{addCreationTime}!PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+\doxysubsubsection{\texorpdfstring{addCreationTime()}{addCreationTime()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+PLIM\+::add\+Creation\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Adds the creation time of the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. 
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1PLIM_a0b935ae8c9a051fe4e76bfdd8775824f}\label{classPLI_1_1HDF5_1_1PLIM_a0b935ae8c9a051fe4e76bfdd8775824f}} 
+\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}!addCreator@{addCreator}}
+\index{addCreator@{addCreator}!PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+\doxysubsubsection{\texorpdfstring{addCreator()}{addCreator()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+PLIM\+::add\+Creator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Adds the creator of the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file to the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. 
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1PLIM_a0ef9925817a494b8c9956ec111b1e116}\label{classPLI_1_1HDF5_1_1PLIM_a0ef9925817a494b8c9956ec111b1e116}} 
+\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}!addID@{addID}}
+\index{addID@{addID}!PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+\doxysubsubsection{\texorpdfstring{addID()}{addID()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+PLIM\+::add\+ID (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{id\+Attributes = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+
+
+
+Adds the ID of the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file to the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+Attributes} & List of attributes that are used to generate the ID. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1PLIM_a0022bfc3949c2c5319e1734f768319f0}\label{classPLI_1_1HDF5_1_1PLIM_a0022bfc3949c2c5319e1734f768319f0}} 
+\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}!addImageModality@{addImageModality}}
+\index{addImageModality@{addImageModality}!PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+\doxysubsubsection{\texorpdfstring{addImageModality()}{addImageModality()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+PLIM\+::add\+Image\+Modality (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{modality\+Name }\end{DoxyParamCaption})}
+
+
+
+Adds the name of the modality stored in the \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em modality} & Modality name stored. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1PLIM_aa984b5f4dbba7984b17da48b7db7c787}\label{classPLI_1_1HDF5_1_1PLIM_aa984b5f4dbba7984b17da48b7db7c787}} 
+\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}!addReference@{addReference}}
+\index{addReference@{addReference}!PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+\doxysubsubsection{\texorpdfstring{addReference()}{addReference()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+PLIM\+::add\+Reference (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Adds the reference files used to generate this \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Reference attribute handler used to generate this \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1PLIM_a749732745a8a49ce59f28b0f6229b155}\label{classPLI_1_1HDF5_1_1PLIM_a749732745a8a49ce59f28b0f6229b155}} 
+\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}!addReference@{addReference}}
+\index{addReference@{addReference}!PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+\doxysubsubsection{\texorpdfstring{addReference()}{addReference()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+PLIM\+::add\+Reference (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} $>$ \&}]{files }\end{DoxyParamCaption})}
+
+
+
+Adds the reference files used to generate this \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em files} & List of reference attribute handlers used to generate this \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1PLIM_a969cdeb013e813e55b48f2d3cd721efc}\label{classPLI_1_1HDF5_1_1PLIM_a969cdeb013e813e55b48f2d3cd721efc}} 
+\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}!addSoftware@{addSoftware}}
+\index{addSoftware@{addSoftware}!PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+\doxysubsubsection{\texorpdfstring{addSoftware()}{addSoftware()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+PLIM\+::add\+Software (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{software\+Name }\end{DoxyParamCaption})}
+
+
+
+Adds the software name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em software\+Name} & Software name used to generate this \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1PLIM_a187e525e1801f3c4843cf8d84a1ed494}\label{classPLI_1_1HDF5_1_1PLIM_a187e525e1801f3c4843cf8d84a1ed494}} 
+\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}!addSoftwareParameters@{addSoftwareParameters}}
+\index{addSoftwareParameters@{addSoftwareParameters}!PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+\doxysubsubsection{\texorpdfstring{addSoftwareParameters()}{addSoftwareParameters()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+PLIM\+::add\+Software\+Parameters (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{software\+Parameters }\end{DoxyParamCaption})}
+
+
+
+Adds the software parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em software\+Parameters} & Software parameters used to generate this \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1PLIM_ab624428f823270a75ece30803ec59eb7}\label{classPLI_1_1HDF5_1_1PLIM_ab624428f823270a75ece30803ec59eb7}} 
+\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}!addSoftwareRevision@{addSoftwareRevision}}
+\index{addSoftwareRevision@{addSoftwareRevision}!PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+\doxysubsubsection{\texorpdfstring{addSoftwareRevision()}{addSoftwareRevision()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+PLIM\+::add\+Software\+Revision (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{software\+Revision }\end{DoxyParamCaption})}
+
+
+
+Adds the software revision. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em software\+Revision} & Software revision used to generate this \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} file. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1PLIM_a306455307984cec270af4619c36a7b6f}\label{classPLI_1_1HDF5_1_1PLIM_a306455307984cec270af4619c36a7b6f}} 
+\index{PLI::HDF5::PLIM@{PLI::HDF5::PLIM}!m\_attrHandler@{m\_attrHandler}}
+\index{m\_attrHandler@{m\_attrHandler}!PLI::HDF5::PLIM@{PLI::HDF5::PLIM}}
+\doxysubsubsection{\texorpdfstring{m\_attrHandler}{m\_attrHandler}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI\+::\+HDF5\+::\+Attribute\+Handler}} PLI\+::\+HDF5\+::\+PLIM\+::m\+\_\+attr\+Handler\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+PLIHDF5/plim.\+h\item 
+src/plim.\+cpp\end{DoxyCompactItemize}

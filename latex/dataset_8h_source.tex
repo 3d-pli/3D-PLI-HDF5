@@ -30,78 +30,210 @@
 \DoxyCodeLine{26 \textcolor{preprocessor}{\#pragma once}}
 \DoxyCodeLine{27 }
 \DoxyCodeLine{28 \textcolor{preprocessor}{\#include <hdf5.h>}}
-\DoxyCodeLine{29 \textcolor{preprocessor}{\#include <hdf5\_hl.h>}}
-\DoxyCodeLine{30 \textcolor{preprocessor}{\#include <mpi.h>}}
-\DoxyCodeLine{31 }
-\DoxyCodeLine{32 \textcolor{preprocessor}{\#include <algorithm>}}
-\DoxyCodeLine{33 \textcolor{preprocessor}{\#include <numeric>}}
-\DoxyCodeLine{34 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{35 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{36 }
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#include "{}PLIHDF5/exceptions.h"{}}}
-\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}PLIHDF5/object.h"{}}}
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}PLIHDF5/type.h"{}}}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{44 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacePLI}{PLI}} \{}
-\DoxyCodeLine{48 \textcolor{keyword}{namespace }HDF5 \{}
-\DoxyCodeLine{53 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object}{Object}} \{}
-\DoxyCodeLine{54   \textcolor{keyword}{public}:}
-\DoxyCodeLine{65     \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a8dd99e73f85ac7a3683f03dc65fabf6d}{Dataset}}() \textcolor{keyword}{noexcept};}
-\DoxyCodeLine{73     \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a8dd99e73f85ac7a3683f03dc65fabf6d}{Dataset}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \&otherFile) \textcolor{keyword}{noexcept};}
-\DoxyCodeLine{80     \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a8dd99e73f85ac7a3683f03dc65fabf6d}{Dataset}}(hid\_t datasetPtr,}
-\DoxyCodeLine{81                      \textcolor{keyword}{const} std::optional<MPI\_Comm> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}} = \{\}) \textcolor{keyword}{noexcept};}
-\DoxyCodeLine{82 }
-\DoxyCodeLine{95     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a207b415bbabf16258cd21142e037022e}{open}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&datasetName);}
-\DoxyCodeLine{118     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{119     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7af3e91e7688c8d5cfae1685ab57687c}{create}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&datasetName,}
-\DoxyCodeLine{120                 \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}},}
-\DoxyCodeLine{121                 \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}{chunkDims}} = \{\});}
-\DoxyCodeLine{122 }
-\DoxyCodeLine{145     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7af3e91e7688c8d5cfae1685ab57687c}{create}}(}
-\DoxyCodeLine{146         \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&datasetName,}
-\DoxyCodeLine{147         \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}},}
-\DoxyCodeLine{148         \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}{chunkDims}} = \{\},}
-\DoxyCodeLine{149         \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} \&dataType = PLI::HDF5::Type::createType<float>());}
-\DoxyCodeLine{161     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_af52acbc9b884fdc80fc2012fd1f6f8d9}{exists}}(\textcolor{keyword}{const} Folder \&parentPtr, \textcolor{keyword}{const} std::string \&datasetName);}
-\DoxyCodeLine{162 }
-\DoxyCodeLine{168     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a468a4ac3d54d409aa02cfee8b24273c5}{isChunked}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{169 }
-\DoxyCodeLine{175     std::vector<size\_t> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}{chunkDims}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{176 }
-\DoxyCodeLine{191     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> std::vector<T> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac879f9258f2fa5f2d89faf5e6a477105}{readFullDataset}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{192 }
-\DoxyCodeLine{215     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{216     std::vector<T> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a9ac175e623638369397e7855c6e8a98c}{read}}(\textcolor{keyword}{const} std::vector<size\_t> \&offset,}
-\DoxyCodeLine{217                         \textcolor{keyword}{const} std::vector<size\_t> \&count,}
-\DoxyCodeLine{218                         \textcolor{keyword}{const} std::vector<size\_t> \&stride = \{\}) \textcolor{keyword}{const};}
-\DoxyCodeLine{219 }
-\DoxyCodeLine{242     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{243     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a99e0214e44cf4efc7810939eee3a884a}{write}}(\textcolor{keyword}{const} std::vector<T> \&data, \textcolor{keyword}{const} std::vector<size\_t> \&offset,}
-\DoxyCodeLine{244                \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}},}
-\DoxyCodeLine{245                \textcolor{keyword}{const} std::vector<size\_t> \&stride = \{\});}
-\DoxyCodeLine{246 }
-\DoxyCodeLine{269     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
-\DoxyCodeLine{270     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ab71fb6c80c2dc5298dfe849fd34b3b6d}{write}}(\textcolor{keyword}{const} \textcolor{keywordtype}{void} *data, \textcolor{keyword}{const} std::vector<size\_t> \&offset,}
-\DoxyCodeLine{271                \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}},}
-\DoxyCodeLine{272                \textcolor{keyword}{const} std::vector<size\_t> \&stride = \{\});}
-\DoxyCodeLine{273 }
-\DoxyCodeLine{294     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a99e0214e44cf4efc7810939eee3a884a}{write}}(\textcolor{keyword}{const} \textcolor{keywordtype}{void} *data, \textcolor{keyword}{const} std::vector<size\_t> \&offset,}
-\DoxyCodeLine{295                \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}},}
-\DoxyCodeLine{296                \textcolor{keyword}{const} std::vector<size\_t> \&stride, \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}{type}});}
-\DoxyCodeLine{297 }
-\DoxyCodeLine{305     \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}{type}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{312     \textcolor{keywordtype}{int} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ab1f82284d13d3426e0e6a9104673d02e}{ndims}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{322     \textcolor{keyword}{const} std::vector<size\_t> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{323 }
-\DoxyCodeLine{324     \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a08d24fb280f331eedd0fe44f4e087b8c}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI::HDF5::Dataset}} \&other) \textcolor{keyword}{noexcept};}
-\DoxyCodeLine{325 }
-\DoxyCodeLine{326   \textcolor{keyword}{private}:}
-\DoxyCodeLine{327     hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a33e12a51e065d400bddc8827140093c5}{createXfID}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{328 \};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include <iterator>}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include "{}PLIHDF5/object.h"{}}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#include "{}PLIHDF5/type.h"{}}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{42 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacePLI}{PLI}} \{}
+\DoxyCodeLine{46 \textcolor{keyword}{namespace }HDF5 \{}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{52 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object}{Object}} \{}
+\DoxyCodeLine{53   \textcolor{keyword}{public}:}
+\DoxyCodeLine{54     \textcolor{comment}{// forward declaration}}
+\DoxyCodeLine{55     \textcolor{keyword}{struct }\mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}};}
+\DoxyCodeLine{56     \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}};}
+\DoxyCodeLine{57     \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{69     \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a8dd99e73f85ac7a3683f03dc65fabf6d}{Dataset}}() \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{77     \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a8dd99e73f85ac7a3683f03dc65fabf6d}{Dataset}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \&otherFile) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{84     \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a8dd99e73f85ac7a3683f03dc65fabf6d}{Dataset}}(hid\_t datasetPtr,}
+\DoxyCodeLine{85                      \textcolor{keyword}{const} std::optional<MPI\_Comm> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}} = \{\}) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{99     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a207b415bbabf16258cd21142e037022e}{open}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&datasetName);}
+\DoxyCodeLine{122     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{123     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7af3e91e7688c8d5cfae1685ab57687c}{create}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&datasetName,}
+\DoxyCodeLine{124                 \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}},}
+\DoxyCodeLine{125                 \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}{chunkDims}} = \{\});}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{149     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7af3e91e7688c8d5cfae1685ab57687c}{create}}(}
+\DoxyCodeLine{150         \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \&parentPtr, \textcolor{keyword}{const} std::string \&datasetName,}
+\DoxyCodeLine{151         \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}},}
+\DoxyCodeLine{152         \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}{chunkDims}} = \{\},}
+\DoxyCodeLine{153         \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} \&dataType = PLI::HDF5::Type::createType<float>());}
+\DoxyCodeLine{165     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_af52acbc9b884fdc80fc2012fd1f6f8d9}{exists}}(\textcolor{keyword}{const} Folder \&parentPtr, \textcolor{keyword}{const} std::string \&datasetName);}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{172     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a468a4ac3d54d409aa02cfee8b24273c5}{isChunked}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{179     std::vector<size\_t> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}{chunkDims}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{195     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T> std::vector<T> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ac879f9258f2fa5f2d89faf5e6a477105}{readFullDataset}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{219     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{220     std::vector<T> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a9ac175e623638369397e7855c6e8a98c}{read}}(\textcolor{keyword}{const} std::vector<size\_t> \&offset,}
+\DoxyCodeLine{221                         \textcolor{keyword}{const} std::vector<size\_t> \&count,}
+\DoxyCodeLine{222                         \textcolor{keyword}{const} std::vector<size\_t> \&stride = \{\}) \textcolor{keyword}{const};}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{246     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{247     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a99e0214e44cf4efc7810939eee3a884a}{write}}(\textcolor{keyword}{const} std::vector<T> \&data, \textcolor{keyword}{const} std::vector<size\_t> \&offset,}
+\DoxyCodeLine{248                \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}},}
+\DoxyCodeLine{249                \textcolor{keyword}{const} std::vector<size\_t> \&stride = \{\});}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{273     \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{274     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ab71fb6c80c2dc5298dfe849fd34b3b6d}{write}}(\textcolor{keyword}{const} \textcolor{keywordtype}{void} *data, \textcolor{keyword}{const} std::vector<size\_t> \&offset,}
+\DoxyCodeLine{275                \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}},}
+\DoxyCodeLine{276                \textcolor{keyword}{const} std::vector<size\_t> \&stride = \{\});}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{298     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a99e0214e44cf4efc7810939eee3a884a}{write}}(\textcolor{keyword}{const} \textcolor{keywordtype}{void} *data, \textcolor{keyword}{const} std::vector<size\_t> \&offset,}
+\DoxyCodeLine{299                \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}},}
+\DoxyCodeLine{300                \textcolor{keyword}{const} std::vector<size\_t> \&stride, \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}{type}});}
+\DoxyCodeLine{301 }
+\DoxyCodeLine{309     \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI::HDF5::Type}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a13dea74ee786ed31f37b57a26295c167}{type}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{316     \textcolor{keywordtype}{int} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ab1f82284d13d3426e0e6a9104673d02e}{ndims}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{326     \textcolor{keyword}{const} std::vector<size\_t> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a656e58691eef2d22e4bfbcc47e965a19}{dims}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{327 }
+\DoxyCodeLine{328     \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a08d24fb280f331eedd0fe44f4e087b8c}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{PLI::HDF5::Dataset}} \&other) \textcolor{keyword}{noexcept};}
 \DoxyCodeLine{329 }
-\DoxyCodeLine{330 \} \textcolor{comment}{// namespace HDF5}}
-\DoxyCodeLine{331 \} \textcolor{comment}{// namespace PLI}}
-\DoxyCodeLine{332 }
-\DoxyCodeLine{333 \textcolor{preprocessor}{\#include "{}PLIHDF5/dataset.tpp"{}}}
+\DoxyCodeLine{338     std::vector<Hyperslab> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_aa28abd8714868c9b524364e5b1ad1dee}{getChunks}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{339 }
+\DoxyCodeLine{348     std::vector<Hyperslab>}
+\DoxyCodeLine{349     \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_aa28abd8714868c9b524364e5b1ad1dee}{getChunks}}(\textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a7daa3ae04f49970212bc2d591648a9c0}{chunkDims}}) \textcolor{keyword}{const};}
+\DoxyCodeLine{350 }
+\DoxyCodeLine{355     \textcolor{keyword}{struct }\mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \{}
+\DoxyCodeLine{356         \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a58b93cc9575255c0f4382c7a60389b19}{Slice}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{357         \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a929e037046b3c757d17ba4841a838358}{Slice}}(\mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{358         \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a5555db98e4415490b240ad95e7c29829}{Slice}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{359         \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&\mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_ac5e7798e9361fa0cd607b3d05feb1945}{operator=}}(\mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{360         \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&\mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a8b4a18512c83866f17bcaaaa68bf2ba5}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{361         \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_ab65835b6e131c876c4a1ce08b68737b0}{\string~Slice}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363         \textcolor{keyword}{explicit} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_aec4e6de83c368ad9e17dbc2b4d801f11}{Slice}}(\textcolor{keywordtype}{size\_t} stop\_) : \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_afdef6cb394a6b2fd0f5b2ff9dca0aac1}{start}}(0), \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a625a66c461f33589987fe26f0f35d648}{stop}}(stop\_), \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a31dcdfcb5fadd37023db781e946286de}{step}}(1) \{\}}
+\DoxyCodeLine{364         \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_ad1fe8aca88ed5254a6354523b8938329}{Slice}}(\textcolor{keywordtype}{size\_t} start\_, \textcolor{keywordtype}{size\_t} stop\_)}
+\DoxyCodeLine{365             : \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_afdef6cb394a6b2fd0f5b2ff9dca0aac1}{start}}(start\_), \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a625a66c461f33589987fe26f0f35d648}{stop}}(stop\_), \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a31dcdfcb5fadd37023db781e946286de}{step}}(1) \{\}}
+\DoxyCodeLine{366         \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a0bcd50692541538b9725c18306560761}{Slice}}(\textcolor{keywordtype}{size\_t} start\_, \textcolor{keywordtype}{size\_t} stop\_, \textcolor{keywordtype}{size\_t} step\_)}
+\DoxyCodeLine{367             : \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_afdef6cb394a6b2fd0f5b2ff9dca0aac1}{start}}(start\_), \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a625a66c461f33589987fe26f0f35d648}{stop}}(stop\_), \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a31dcdfcb5fadd37023db781e946286de}{step}}(step\_) \{\}}
+\DoxyCodeLine{368 }
+\DoxyCodeLine{369         \textcolor{keywordtype}{bool} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a8f202869212c9972b4d94ccb0135c78e}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&slice) \textcolor{keyword}{const};}
+\DoxyCodeLine{370         \textcolor{keywordtype}{bool} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a05255bf6985126050836af2c6a4b7ab7}{operator!=}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&slice) \textcolor{keyword}{const};}
+\DoxyCodeLine{371         \textcolor{keyword}{friend} std::ostream \&\mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_adcd9e13b926a625d821fcad1afe0cf2a}{operator<<}}(std::ostream \&out, \textcolor{keyword}{const} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&slice) \{}
+\DoxyCodeLine{372             out << \textcolor{stringliteral}{"{}["{}} << slice.\mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_afdef6cb394a6b2fd0f5b2ff9dca0aac1}{start}} << \textcolor{stringliteral}{"{}:"{}} << slice.\mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a625a66c461f33589987fe26f0f35d648}{stop}} << \textcolor{stringliteral}{"{}:"{}} << slice.\mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a31dcdfcb5fadd37023db781e946286de}{step}}}
+\DoxyCodeLine{373                 << \textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{374             \textcolor{keywordflow}{return} out;}
+\DoxyCodeLine{375         \}}
+\DoxyCodeLine{376 }
+\DoxyCodeLine{377         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_aec98e8b174fd69e7eff8a2eb611541d7}{toHyperslab}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{378 }
+\DoxyCodeLine{379         \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_afdef6cb394a6b2fd0f5b2ff9dca0aac1}{start}}\{0\};}
+\DoxyCodeLine{380         \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a625a66c461f33589987fe26f0f35d648}{stop}}\{0\};}
+\DoxyCodeLine{381         \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice_a31dcdfcb5fadd37023db781e946286de}{step}}\{1\};}
+\DoxyCodeLine{382     \};}
+\DoxyCodeLine{383 }
+\DoxyCodeLine{388     \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} \{}
+\DoxyCodeLine{389       \textcolor{keyword}{public}:}
+\DoxyCodeLine{390         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a211554fc6c27b2008da3e2126ce5f833}{Slices}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{391         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a6e781720bd521c3566daf750f60b717c}{Slices}}(\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} \&\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{392         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_aba8da430a0f49f83b60760803eaa811e}{Slices}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{393         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a380a8dc57e97da948725579eea896770}{operator=}}(\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} \&\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{394         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a92cd8702d2b75c2c4e10f9d09c00dcc8}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{395         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_ad8c9c539fe5bc750dddd469a196d6903}{\string~Slices}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{396 }
+\DoxyCodeLine{397         \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a211554fc6c27b2008da3e2126ce5f833}{Slices}}(\textcolor{keyword}{const} std::vector<Slice> \&slices);}
+\DoxyCodeLine{398         \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a211554fc6c27b2008da3e2126ce5f833}{Slices}}(\textcolor{keyword}{const} std::initializer\_list<Slice> \&slices);}
+\DoxyCodeLine{399 }
+\DoxyCodeLine{400         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a9a6936d431d705cc7afc39d20fa9473f}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} \&slices) \textcolor{keyword}{const};}
+\DoxyCodeLine{401         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a4a230c7debddf63411665d757aef925d}{operator!=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} \&slices) \textcolor{keyword}{const};}
+\DoxyCodeLine{402         \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_ad189081e1240abe2b20bd5072cf119ed}{operator[]}}(\textcolor{keywordtype}{size\_t} i) \textcolor{keyword}{const};}
+\DoxyCodeLine{403         \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_ad189081e1240abe2b20bd5072cf119ed}{operator[]}}(\textcolor{keywordtype}{size\_t} i);}
+\DoxyCodeLine{404         \textcolor{keyword}{friend} std::ostream \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_acb29467a06ebd121c95dd73ffac790ee}{operator<<}}(std::ostream \&out,}
+\DoxyCodeLine{405                                         \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} \&slices) \{}
+\DoxyCodeLine{406             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < slices.\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a31527f98580630a11a7eed3ec3f1f80e}{size}}(); i++) \{}
+\DoxyCodeLine{407                 out << slices[i] << \textcolor{stringliteral}{"{}, "{}};}
+\DoxyCodeLine{408             \}}
+\DoxyCodeLine{409             \textcolor{comment}{// ??? why does this not work}}
+\DoxyCodeLine{410             \textcolor{comment}{// for (auto const slice : slices) \{}}
+\DoxyCodeLine{411             \textcolor{comment}{//     out << slice << "{}, "{};}}
+\DoxyCodeLine{412             \textcolor{comment}{// \}}}
+\DoxyCodeLine{413             out << \textcolor{stringliteral}{"{}\(\backslash\)b\(\backslash\)b"{}}; \textcolor{comment}{// remove list "{}, "{}}}
+\DoxyCodeLine{414             \textcolor{keywordflow}{return} out;}
+\DoxyCodeLine{415         \}}
+\DoxyCodeLine{416 }
+\DoxyCodeLine{417         std::vector<Slice>::iterator \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a1d0e163825beef91e7b1e4284962ddcb}{begin}}();}
+\DoxyCodeLine{418         std::vector<Slice>::iterator \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_aa04d0007e47cddb334779766733a3ebe}{end}}();}
+\DoxyCodeLine{419         std::vector<Slice>::const\_iterator \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_abf09ac607dd9ec37867a802dfce0e829}{cbegin}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{420         std::vector<Slice>::const\_iterator \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a5834de34ff4fd6275b0704951e70cc4c}{cend}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{421         \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a606d54bef87aa821938274a18744f273}{push\_back}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&slice);}
+\DoxyCodeLine{422         \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a443d9bd0da2013b94304d60fc6ebc1f7}{clear}}();}
+\DoxyCodeLine{423         \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a31527f98580630a11a7eed3ec3f1f80e}{size}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{424 }
+\DoxyCodeLine{425         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a20d09cf33b6d6b83ceed89497bf42a2e}{toHyperslab}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{426 }
+\DoxyCodeLine{427       \textcolor{keyword}{private}:}
+\DoxyCodeLine{428         std::vector<Slice> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices_a51c0e934284a962c6d480a2e6c8057d5}{m\_slices}};}
+\DoxyCodeLine{429     \};}
+\DoxyCodeLine{430 }
+\DoxyCodeLine{435     \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \{}
+\DoxyCodeLine{436       \textcolor{keyword}{public}:}
+\DoxyCodeLine{437         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_af06edf9f82bfc2d3440199f23aab5cb0}{Hyperslab}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{438         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a93f2144d835dd6c7fd2bad1ee7cdcb1c}{Hyperslab}}(\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{439         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a526709fb82bb542128932cde16f2c41e}{Hyperslab}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{440         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_af150175b3e6ee8afc0cb0c7ab9aec821}{operator=}}(\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{441         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a4a8ce2b4174e41838f0c8b498ace94c4}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{442         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a350f893edcb6229c1ba9ae75b59b7ce3}{\string~Hyperslab}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{443 }
+\DoxyCodeLine{444         \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_af06edf9f82bfc2d3440199f23aab5cb0}{Hyperslab}}(\textcolor{keyword}{const} \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&slice);}
+\DoxyCodeLine{445         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_af06edf9f82bfc2d3440199f23aab5cb0}{Hyperslab}}(\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ac3abcbc1e0a4878d25acf58a419d688d}{offset}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a0d6861fe05365f6b170cd5a207b7ccd4}{count}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a6bb91844db822da925576c62c5809362}{stride}} = 1);}
+\DoxyCodeLine{446         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_af06edf9f82bfc2d3440199f23aab5cb0}{Hyperslab}}(\textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ac3abcbc1e0a4878d25acf58a419d688d}{offset}},}
+\DoxyCodeLine{447                   \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a0d6861fe05365f6b170cd5a207b7ccd4}{count}},}
+\DoxyCodeLine{448                   \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a6bb91844db822da925576c62c5809362}{stride}} = \{\});}
+\DoxyCodeLine{449 }
+\DoxyCodeLine{450         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a114b30f86d6262c9d2de3ba858cc7cf6}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&hyperslab) \textcolor{keyword}{const};}
+\DoxyCodeLine{451         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_add996f0cddc3c9da5e41d83da4c743c3}{operator!=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&hyperslab) \textcolor{keyword}{const};}
+\DoxyCodeLine{452         \textcolor{keyword}{friend} std::ostream \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a2204e28278c1c20987e8fd0a718bb8f1}{operator<<}}(std::ostream \&out,}
+\DoxyCodeLine{453                                         \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&hyperslab) \{}
+\DoxyCodeLine{454             out << \textcolor{stringliteral}{"{}["{}};}
+\DoxyCodeLine{455             std::copy(hyperslab.\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ac3abcbc1e0a4878d25acf58a419d688d}{offset}}().cbegin(), hyperslab.\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ac3abcbc1e0a4878d25acf58a419d688d}{offset}}().cend(),}
+\DoxyCodeLine{456                       std::ostream\_iterator<char>(out, \textcolor{stringliteral}{"{}, "{}}));}
+\DoxyCodeLine{457             out << \textcolor{stringliteral}{"{}\(\backslash\)b\(\backslash\)b], "{}}; \textcolor{comment}{// \(\backslash\)b\(\backslash\)b -\/> remove last "{}, "{}}}
+\DoxyCodeLine{458             std::copy(hyperslab.\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a0d6861fe05365f6b170cd5a207b7ccd4}{count}}().cbegin(), hyperslab.\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a0d6861fe05365f6b170cd5a207b7ccd4}{count}}().cend(),}
+\DoxyCodeLine{459                       std::ostream\_iterator<char>(out, \textcolor{stringliteral}{"{}, "{}}));}
+\DoxyCodeLine{460             out << \textcolor{stringliteral}{"{}\(\backslash\)b\(\backslash\)b], "{}}; \textcolor{comment}{// \(\backslash\)b\(\backslash\)b -\/> remove last "{}, "{}}}
+\DoxyCodeLine{461             std::copy(hyperslab.\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a6bb91844db822da925576c62c5809362}{stride}}().cbegin(), hyperslab.\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a6bb91844db822da925576c62c5809362}{stride}}().cend(),}
+\DoxyCodeLine{462                       std::ostream\_iterator<char>(out, \textcolor{stringliteral}{"{}, "{}}));}
+\DoxyCodeLine{463             out << \textcolor{stringliteral}{"{}\(\backslash\)b\(\backslash\)b]\(\backslash\)n"{}}; \textcolor{comment}{// \(\backslash\)b\(\backslash\)b -\/> remove last "{}, "{}}}
+\DoxyCodeLine{464             \textcolor{keywordflow}{return} out;}
+\DoxyCodeLine{465         \}}
+\DoxyCodeLine{466 }
+\DoxyCodeLine{467         \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ac3abcbc1e0a4878d25acf58a419d688d}{offset}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a59cfab169a5f60a37c08cf0179bd14a4}{m\_offset}}; \}}
+\DoxyCodeLine{468         \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a0d6861fe05365f6b170cd5a207b7ccd4}{count}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ad57f17b73fbb636638814cc8dc64a4a1}{m\_count}}; \}}
+\DoxyCodeLine{469         \textcolor{keyword}{const} std::vector<size\_t> \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a6bb91844db822da925576c62c5809362}{stride}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a2d3f85973324db054d6c908dad166b82}{m\_stride}}; \}}
+\DoxyCodeLine{470 }
+\DoxyCodeLine{471         \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a1f2cc41655f965233af2378481efe36c}{push\_back}}(\textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ac3abcbc1e0a4878d25acf58a419d688d}{offset}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a0d6861fe05365f6b170cd5a207b7ccd4}{count}}, \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a6bb91844db822da925576c62c5809362}{stride}} = 1);}
+\DoxyCodeLine{472         \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a03711e7d7d1e8a25fa9f281aa7a68e52}{clear}}();}
+\DoxyCodeLine{473         \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ad175dfbda519e60fb66705247ac4cf38}{size}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{474 }
+\DoxyCodeLine{475         \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a4d4143815bc514e941a809e9036fa436}{toSlices}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{476 }
+\DoxyCodeLine{477       \textcolor{keyword}{private}:}
+\DoxyCodeLine{478         std::vector<size\_t> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a59cfab169a5f60a37c08cf0179bd14a4}{m\_offset}};}
+\DoxyCodeLine{479         std::vector<size\_t> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ad57f17b73fbb636638814cc8dc64a4a1}{m\_count}};}
+\DoxyCodeLine{480         std::vector<size\_t> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a2d3f85973324db054d6c908dad166b82}{m\_stride}};}
+\DoxyCodeLine{481     \};}
+\DoxyCodeLine{482 }
+\DoxyCodeLine{483     \textcolor{keyword}{static} std::vector<PLI::HDF5::Dataset::Hyperslab>}
+\DoxyCodeLine{484     \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_ad999f604cdacad572117a31764ce62e6}{chunkTensor}}(\textcolor{keyword}{const} std::vector<size\_t> \&tensorDims,}
+\DoxyCodeLine{485                 \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{PLI::HDF5::Dataset::Hyperslab}} \&chunk\_hyperslab);}
+\DoxyCodeLine{486 }
+\DoxyCodeLine{487   \textcolor{keyword}{private}:}
+\DoxyCodeLine{488     hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a33e12a51e065d400bddc8827140093c5}{createXfID}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{489 \};}
+\DoxyCodeLine{490 \} \textcolor{comment}{// namespace HDF5}}
+\DoxyCodeLine{491 \} \textcolor{comment}{// namespace PLI}}
+\DoxyCodeLine{492 }
+\DoxyCodeLine{493 \textcolor{preprocessor}{\#include "{}PLIHDF5/dataset.tpp"{}}}
 
 \end{DoxyCode}

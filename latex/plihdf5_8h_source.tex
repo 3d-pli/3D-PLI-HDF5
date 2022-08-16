@@ -29,39 +29,15 @@
 \DoxyCodeLine{25 }
 \DoxyCodeLine{26 \textcolor{preprocessor}{\#pragma once}}
 \DoxyCodeLine{27 }
-\DoxyCodeLine{28 \textcolor{preprocessor}{\#include <algorithm>}}
-\DoxyCodeLine{29 \textcolor{preprocessor}{\#include <chrono>} \textcolor{comment}{// NOLINT [build/c++11]}}
-\DoxyCodeLine{30 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{31 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{32 }
-\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}PLIHDF5/attributes.h"{}}}
-\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}PLIHDF5/config.h"{}}}
-\DoxyCodeLine{35 \textcolor{preprocessor}{\#include "{}PLIHDF5/dataset.h"{}}}
-\DoxyCodeLine{36 \textcolor{preprocessor}{\#include "{}PLIHDF5/exceptions.h"{}}}
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#include "{}PLIHDF5/file.h"{}}}
-\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}PLIHDF5/group.h"{}}}
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}PLIHDF5/link.h"{}}}
-\DoxyCodeLine{40 \textcolor{preprocessor}{\#include "{}PLIHDF5/sha512.h"{}}}
-\DoxyCodeLine{41 \textcolor{preprocessor}{\#include "{}PLIHDF5/type.h"{}}}
-\DoxyCodeLine{42 }
-\DoxyCodeLine{46 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacePLI}{PLI}} \{}
-\DoxyCodeLine{54 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1PLIM}{PLIM}} \{}
-\DoxyCodeLine{55   \textcolor{keyword}{public}:}
-\DoxyCodeLine{61     \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1PLIM_aaf59bc288f4792cb1ed817afa65b164f}{PLIM}}(\mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{PLI::HDF5::File}} file, \textcolor{keyword}{const} std::string \&dataset);}
-\DoxyCodeLine{67     \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1PLIM_aaf59bc288f4792cb1ed817afa65b164f}{PLIM}}(\mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}} dataset);}
-\DoxyCodeLine{71     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1PLIM_abd48bbf9cd7ce0e01b371f236937704a}{addCreator}}();}
-\DoxyCodeLine{76     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1PLIM_a291455545c648dec826c3b1506904529}{addID}}(\textcolor{keyword}{const} std::vector<std::string> \&idAttributes = \{\});}
-\DoxyCodeLine{81     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1PLIM_a80518890be2c725084b0683b43e0c9ba}{addReference}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}} \&file);}
-\DoxyCodeLine{87     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1PLIM_a80518890be2c725084b0683b43e0c9ba}{addReference}}(\textcolor{keyword}{const} std::vector<PLI::HDF5::AttributeHandler> \&files);}
-\DoxyCodeLine{92     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1PLIM_a27fe20888c2b6355a699531f881161ea}{addSoftware}}(\textcolor{keyword}{const} std::string \&softwareName);}
-\DoxyCodeLine{98     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1PLIM_ac5bd6172ef0808a283e6c7f1f502100a}{addSoftwareRevision}}(\textcolor{keyword}{const} std::string \&softwareRevision);}
-\DoxyCodeLine{104     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1PLIM_a979ec407109eb171a70415dc97afe1c3}{addSoftwareParameters}}(\textcolor{keyword}{const} std::string \&softwareParameters);}
-\DoxyCodeLine{108     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1PLIM_ae63caa54990e93c76b2b709079f90f44}{addCreationTime}}();}
-\DoxyCodeLine{113     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1PLIM_a370f51ea69573cc5642f85e3663b360f}{addImageModality}}(\textcolor{keyword}{const} std::string \&modalityName);}
-\DoxyCodeLine{114 }
-\DoxyCodeLine{115   \textcolor{keyword}{private}:}
-\DoxyCodeLine{116     \mbox{\hyperlink{classPLI_1_1HDF5_1_1AttributeHandler}{PLI::HDF5::AttributeHandler}} \mbox{\hyperlink{classPLI_1_1PLIM_aa87c96afddeb9c3dd8cc8fd823e0945e}{m\_attrHandler}};}
-\DoxyCodeLine{117 \};}
-\DoxyCodeLine{118 \} \textcolor{comment}{// namespace PLI}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include "{}PLIHDF5/attributes.h"{}}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include "{}PLIHDF5/config.h"{}}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include "{}PLIHDF5/dataset.h"{}}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include "{}PLIHDF5/exceptions.h"{}}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include "{}PLIHDF5/file.h"{}}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}PLIHDF5/group.h"{}}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}PLIHDF5/link.h"{}}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include "{}PLIHDF5/plim.h"{}}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include "{}PLIHDF5/sha512.h"{}}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#include "{}PLIHDF5/type.h"{}}}
 
 \end{DoxyCode}

@@ -3,7 +3,7 @@
 \begin{DoxyItemize}
 \item Added automatic test pipeline in Git\+Lab instances
 \item The project now uses pre-\/commit hooks for formatting and linting
-\item Added config file and config class containing information for \mbox{\hyperlink{classPLI_1_1PLIM}{PLI\+::\+PLIM}}
+\item Added config file and config class containing information for PLI\+::\+PLIM
 \item Added methods to enable / disable HDF5 exception output. Default = enabled
 \end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md2}{}\doxysection{Changed}\label{md_CHANGELOG_autotoc_md2}
 
@@ -32,7 +32,7 @@
 \item Added \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_a99e0214e44cf4efc7810939eee3a884a}{PLI\+::\+HDF5\+::\+Dataset\+::write}} without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}} and void$\ast$ as the data pointer
 \end{DoxyItemize}
 \item Added PLI\+::\+HDF5\+::create\+Dataset without template but with \mbox{\hyperlink{classPLI_1_1HDF5_1_1Type}{PLI\+::\+HDF5\+::\+Type}}
-\item Added \mbox{\hyperlink{classPLI_1_1PLIM_ae63caa54990e93c76b2b709079f90f44}{PLI\+::\+PLIM\+::add\+Creation\+Time}} and \mbox{\hyperlink{classPLI_1_1PLIM_a370f51ea69573cc5642f85e3663b360f}{PLI\+::\+PLIM\+::add\+Image\+Modality}}
+\item Added PLI\+::\+PLIM\+::add\+Creation\+Time and PLI\+::\+PLIM\+::add\+Image\+Modality
 \item Added tests for non MPI execution
 \item Added tests for the new methods to create datasets
 \end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md6}{}\doxysubsection{Changed}\label{md_CHANGELOG_autotoc_md6}
@@ -58,7 +58,7 @@
 \item Added Dataset\+::chunk\+Dims to retrieve the chunk dimensions of a created dataset.
 \item Added PLI\+::\+HDF5\+::\+Config class
 \begin{DoxyItemize}
-\item With this class, one can set settings for the attribute copying and \mbox{\hyperlink{classPLI_1_1PLIM}{PLI\+::\+PLIM}} id calculation.
+\item With this class, one can set settings for the attribute copying and PLI\+::\+PLIM id calculation.
 \item Per default, the tool does search in /usr/share/\+PLIHDF5 and /usr/local/share/\+PLIHDF5. A manual path can be set by calling a respective method or using the PLIHDF5\+\_\+\+ATTRIBUTE\+\_\+\+SETTINGS\+\_\+\+FILE\+\_\+\+PATH shell variable.
 \end{DoxyItemize}
 \item Added nlohmann\+\_\+json as a dependency of the project.
@@ -66,7 +66,7 @@
 
 \begin{DoxyItemize}
 \item Changed hsize\+\_\+t throughout the toolbox to size\+\_\+t to improve compatability with other programs.
-\item Adding the ID through \mbox{\hyperlink{classPLI_1_1PLIM}{PLI\+::\+PLIM}} will now use the config attributes per default, except when the user sets the ID attributes manually.
+\item Adding the ID through PLI\+::\+PLIM will now use the config attributes per default, except when the user sets the ID attributes manually.
 \item Changed size of scalar HDF5 attributes to be returned as an empty vector instead of a vector with \{1\}
 \end{DoxyItemize}\hypertarget{md_CHANGELOG_autotoc_md11}{}\doxysubsection{Fixed}\label{md_CHANGELOG_autotoc_md11}
 

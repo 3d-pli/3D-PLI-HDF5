@@ -1,0 +1,217 @@
+\hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{}\doxysection{PLI\+::HDF5\+::Dataset\+::Hyperslab Class Reference}
+\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+
+
+\mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} Hyperslap object for chunking and slicing. Hyperslap object for \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} for chunking and slicing.  
+
+
+
+
+{\ttfamily \#include $<$dataset.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_af06edf9f82bfc2d3440199f23aab5cb0}{Hyperslab}} ()=default
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a93f2144d835dd6c7fd2bad1ee7cdcb1c}{Hyperslab}} (\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&\&)=default
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a526709fb82bb542128932cde16f2c41e}{Hyperslab}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&)=default
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_af150175b3e6ee8afc0cb0c7ab9aec821}{operator=}} (\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&\&)=default
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a4a8ce2b4174e41838f0c8b498ace94c4}{operator=}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&)=default
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a350f893edcb6229c1ba9ae75b59b7ce3}{$\sim$\+Hyperslab}} ()=default
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_abc034aa656af654df001d9e26f8e3812}{Hyperslab}} (const \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&slice)
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a95d6175d9e24e3ddb034decc2c145a13}{Hyperslab}} (size\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ac3abcbc1e0a4878d25acf58a419d688d}{offset}}, size\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a0d6861fe05365f6b170cd5a207b7ccd4}{count}}, size\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a6bb91844db822da925576c62c5809362}{stride}}=1)
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ab0970c8f47452e200fd7e7f5a04fcbbe}{Hyperslab}} (const std\+::vector$<$ size\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ac3abcbc1e0a4878d25acf58a419d688d}{offset}}, const std\+::vector$<$ size\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a0d6861fe05365f6b170cd5a207b7ccd4}{count}}, const std\+::vector$<$ size\+\_\+t $>$ \&\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a6bb91844db822da925576c62c5809362}{stride}}=\{\})
+\item 
+bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a114b30f86d6262c9d2de3ba858cc7cf6}{operator==}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&hyperslab) const
+\item 
+bool \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_add996f0cddc3c9da5e41d83da4c743c3}{operator!=}} (const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&hyperslab) const
+\item 
+const std\+::vector$<$ size\+\_\+t $>$ \& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ac3abcbc1e0a4878d25acf58a419d688d}{offset}} () const
+\item 
+const std\+::vector$<$ size\+\_\+t $>$ \& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a0d6861fe05365f6b170cd5a207b7ccd4}{count}} () const
+\item 
+const std\+::vector$<$ size\+\_\+t $>$ \& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a6bb91844db822da925576c62c5809362}{stride}} () const
+\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a1f2cc41655f965233af2378481efe36c}{push\+\_\+back}} (size\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ac3abcbc1e0a4878d25acf58a419d688d}{offset}}, size\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a0d6861fe05365f6b170cd5a207b7ccd4}{count}}, size\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a6bb91844db822da925576c62c5809362}{stride}}=1)
+\item 
+void \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a03711e7d7d1e8a25fa9f281aa7a68e52}{clear}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ad175dfbda519e60fb66705247ac4cf38}{size}} () const
+\item 
+\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{Slices}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a4d4143815bc514e941a809e9036fa436}{to\+Slices}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a59cfab169a5f60a37c08cf0179bd14a4}{m\+\_\+offset}}
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ad57f17b73fbb636638814cc8dc64a4a1}{m\+\_\+count}}
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a2d3f85973324db054d6c908dad166b82}{m\+\_\+stride}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a2204e28278c1c20987e8fd0a718bb8f1}{operator$<$$<$}} (std\+::ostream \&out, const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&hyperslab)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset}{Dataset}} Hyperslap object for chunking and slicing. Hyperslap object for \mbox{\hyperlink{namespacePLI_1_1HDF5}{HDF5}} for chunking and slicing. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_af06edf9f82bfc2d3440199f23aab5cb0}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_af06edf9f82bfc2d3440199f23aab5cb0}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!Hyperslab@{Hyperslab}}
+\index{Hyperslab@{Hyperslab}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{Hyperslab()}{Hyperslab()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::\+Hyperslab (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a93f2144d835dd6c7fd2bad1ee7cdcb1c}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a93f2144d835dd6c7fd2bad1ee7cdcb1c}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!Hyperslab@{Hyperslab}}
+\index{Hyperslab@{Hyperslab}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{Hyperslab()}{Hyperslab()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::\+Hyperslab (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a526709fb82bb542128932cde16f2c41e}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a526709fb82bb542128932cde16f2c41e}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!Hyperslab@{Hyperslab}}
+\index{Hyperslab@{Hyperslab}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{Hyperslab()}{Hyperslab()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::\+Hyperslab (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a350f893edcb6229c1ba9ae75b59b7ce3}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a350f893edcb6229c1ba9ae75b59b7ce3}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!````~Hyperslab@{$\sim$Hyperslab}}
+\index{````~Hyperslab@{$\sim$Hyperslab}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{$\sim$Hyperslab()}{~Hyperslab()}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::$\sim$\+Hyperslab (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_abc034aa656af654df001d9e26f8e3812}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_abc034aa656af654df001d9e26f8e3812}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!Hyperslab@{Hyperslab}}
+\index{Hyperslab@{Hyperslab}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{Hyperslab()}{Hyperslab()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::\+Hyperslab (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPLI_1_1HDF5_1_1Dataset_1_1Slice}{Slice}} \&}]{slice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a95d6175d9e24e3ddb034decc2c145a13}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a95d6175d9e24e3ddb034decc2c145a13}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!Hyperslab@{Hyperslab}}
+\index{Hyperslab@{Hyperslab}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{Hyperslab()}{Hyperslab()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::\+Hyperslab (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{offset,  }\item[{size\+\_\+t}]{count,  }\item[{size\+\_\+t}]{stride = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ab0970c8f47452e200fd7e7f5a04fcbbe}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ab0970c8f47452e200fd7e7f5a04fcbbe}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!Hyperslab@{Hyperslab}}
+\index{Hyperslab@{Hyperslab}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{Hyperslab()}{Hyperslab()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::\+Hyperslab (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{offset,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{count,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{stride = {\ttfamily \{\}} }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a03711e7d7d1e8a25fa9f281aa7a68e52}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a03711e7d7d1e8a25fa9f281aa7a68e52}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!clear@{clear}}
+\index{clear@{clear}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a0d6861fe05365f6b170cd5a207b7ccd4}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a0d6861fe05365f6b170cd5a207b7ccd4}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!count@{count}}
+\index{count@{count}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{count()}{count()}}
+{\footnotesize\ttfamily const std\+::vector$<$ size\+\_\+t $>$ \& PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ac3abcbc1e0a4878d25acf58a419d688d}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ac3abcbc1e0a4878d25acf58a419d688d}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!offset@{offset}}
+\index{offset@{offset}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily const std\+::vector$<$ size\+\_\+t $>$ \& PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_add996f0cddc3c9da5e41d83da4c743c3}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_add996f0cddc3c9da5e41d83da4c743c3}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&}]{hyperslab }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a4a8ce2b4174e41838f0c8b498ace94c4}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a4a8ce2b4174e41838f0c8b498ace94c4}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!operator=@{operator=}}
+\index{operator=@{operator=}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \& PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_af150175b3e6ee8afc0cb0c7ab9aec821}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_af150175b3e6ee8afc0cb0c7ab9aec821}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!operator=@{operator=}}
+\index{operator=@{operator=}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \& PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a114b30f86d6262c9d2de3ba858cc7cf6}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a114b30f86d6262c9d2de3ba858cc7cf6}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!operator==@{operator==}}
+\index{operator==@{operator==}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&}]{hyperslab }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a1f2cc41655f965233af2378481efe36c}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a1f2cc41655f965233af2378481efe36c}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily void PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{offset,  }\item[{size\+\_\+t}]{count,  }\item[{size\+\_\+t}]{stride = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ad175dfbda519e60fb66705247ac4cf38}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ad175dfbda519e60fb66705247ac4cf38}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!size@{size}}
+\index{size@{size}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily size\+\_\+t PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a6bb91844db822da925576c62c5809362}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a6bb91844db822da925576c62c5809362}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!stride@{stride}}
+\index{stride@{stride}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{stride()}{stride()}}
+{\footnotesize\ttfamily const std\+::vector$<$ size\+\_\+t $>$ \& PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::stride (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a4d4143815bc514e941a809e9036fa436}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a4d4143815bc514e941a809e9036fa436}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!toSlices@{toSlices}}
+\index{toSlices@{toSlices}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{toSlices()}{toSlices()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Slices}{PLI\+::\+HDF5\+::\+Dataset\+::\+Slices}} PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::to\+Slices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a2204e28278c1c20987e8fd0a718bb8f1}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a2204e28278c1c20987e8fd0a718bb8f1}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out,  }\item[{const \mbox{\hyperlink{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab}{Hyperslab}} \&}]{hyperslab }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ad57f17b73fbb636638814cc8dc64a4a1}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_ad57f17b73fbb636638814cc8dc64a4a1}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!m\_count@{m\_count}}
+\index{m\_count@{m\_count}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{m\_count}{m\_count}}
+{\footnotesize\ttfamily std\+::vector$<$size\+\_\+t$>$ PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::m\+\_\+count\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a59cfab169a5f60a37c08cf0179bd14a4}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a59cfab169a5f60a37c08cf0179bd14a4}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!m\_offset@{m\_offset}}
+\index{m\_offset@{m\_offset}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{m\_offset}{m\_offset}}
+{\footnotesize\ttfamily std\+::vector$<$size\+\_\+t$>$ PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::m\+\_\+offset\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a2d3f85973324db054d6c908dad166b82}\label{classPLI_1_1HDF5_1_1Dataset_1_1Hyperslab_a2d3f85973324db054d6c908dad166b82}} 
+\index{PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}!m\_stride@{m\_stride}}
+\index{m\_stride@{m\_stride}!PLI::HDF5::Dataset::Hyperslab@{PLI::HDF5::Dataset::Hyperslab}}
+\doxysubsubsection{\texorpdfstring{m\_stride}{m\_stride}}
+{\footnotesize\ttfamily std\+::vector$<$size\+\_\+t$>$ PLI\+::\+HDF5\+::\+Dataset\+::\+Hyperslab\+::m\+\_\+stride\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+PLIHDF5/dataset.\+h\item 
+src/dataset.\+cpp\end{DoxyCompactItemize}
