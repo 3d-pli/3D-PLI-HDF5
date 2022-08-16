@@ -1,7 +1,11 @@
 #pragma once
 
 #include "PLIHDF5/dataset.h"
+
 #include <limits>
+#include <numeric>
+
+#include "PLIHDF5/exceptions.h"
 
 template <typename T>
 PLI::HDF5::Dataset

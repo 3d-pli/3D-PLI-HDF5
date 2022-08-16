@@ -26,18 +26,13 @@
 #pragma once
 
 #include <hdf5.h>
-#include <hdf5_hl.h>
-#include <mpi.h>
 
 #include <algorithm>
 #include <iterator>
-#include <numeric>
 #include <ostream>
 #include <string>
-#include <tuple>
 #include <vector>
 
-#include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/object.h"
 #include "PLIHDF5/type.h"
 

@@ -23,9 +23,13 @@
    IN THE SOFTWARE.
  */
 
+#include "PLIHDF5/dataset.h"
+
+#include <mpi.h>
+
 #include <iostream>
 
-#include "PLIHDF5/dataset.h"
+#include "PLIHDF5/exceptions.h"
 
 PLI::HDF5::Dataset PLI::HDF5::Folder::createDataset(
     const std::string &datasetName, const std::vector<size_t> &dims,

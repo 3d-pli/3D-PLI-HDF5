@@ -32,7 +32,6 @@
 #include <optional>
 #include <string>
 
-#include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/object.h"
 
 /**
