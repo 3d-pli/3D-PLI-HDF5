@@ -25,6 +25,12 @@
 
 #include "PLIHDF5/dataset.h"
 
+#include <mpi.h>
+
+#include <iostream>
+
+#include "PLIHDF5/exceptions.h"
+
 PLI::HDF5::Dataset PLI::HDF5::Folder::createDataset(
     const std::string &datasetName, const std::vector<size_t> &dims,
     const std::vector<size_t> &chunkDims, const PLI::HDF5::Type &dataType) {
@@ -234,4 +240,228 @@ hid_t PLI::HDF5::Dataset::createXfID() const {
                       "H5Pset_dxpl_mpio");
     }
     return xf_id;
+}
+
+std::vector<PLI::HDF5::Dataset::Hyperslab>
+PLI::HDF5::Dataset::getChunks() const {
+    return this->getChunks(this->chunkDims());
+}
+
+std::vector<PLI::HDF5::Dataset::Hyperslab>
+PLI::HDF5::Dataset::getChunks(const std::vector<size_t> &chunkDims) const {
+    auto hyperslab = PLI::HDF5::Dataset::Hyperslab(
+        chunkDims, std::vector<size_t>(chunkDims.size(), 0));
+    return PLI::HDF5::Dataset::chunkTensor(this->dims(), hyperslab);
+}
+
+/*
+ * PLI::HDF5::Dataset::Slice
+ */
+bool PLI::HDF5::Dataset::Slice::operator==(
+    const PLI::HDF5::Dataset::Slice &slice) const {
+    return slice.start == start && slice.stop == stop && slice.step == step;
+}
+
+bool PLI::HDF5::Dataset::Slice::operator!=(
+    const PLI::HDF5::Dataset::Slice &slice) const {
+    return slice.start != start || slice.stop != stop || slice.step != step;
+}
+
+PLI::HDF5::Dataset::Hyperslab PLI::HDF5::Dataset::Slice::toHyperslab() const {
+    PLI::HDF5::Dataset::Hyperslab hyperslab;
+    hyperslab.push_back(this->start, (this->stop - this->start) / this->step,
+                        this->step);
+    return hyperslab;
+}
+
+/*
+ * PLI::HDF5::Dataset::Slices
+ */
+PLI::HDF5::Dataset::Slices::Slices(
+    const std::vector<PLI::HDF5::Dataset::Slice> &slices)
+    : m_slices(slices) {}
+
+PLI::HDF5::Dataset::Slices::Slices(const std::initializer_list<Slice> &slices) {
+    for (auto const &s : slices) {
+        this->m_slices.push_back(s);
+    }
+}
+
+bool PLI::HDF5::Dataset::Slices::operator==(
+    const PLI::HDF5::Dataset::Slices &other) const {
+    if (this->size() != other.size())
+        return false;
+    return std::equal(this->cbegin(), this->cend(), other.cbegin());
+}
+
+bool PLI::HDF5::Dataset::Slices::operator!=(
+    const PLI::HDF5::Dataset::Slices &other) const {
+    return !(*this == other);
+}
+
+PLI::HDF5::Dataset::Slice
+PLI::HDF5::Dataset::Slices::operator[](size_t i) const {
+    return this->m_slices[i];
+}
+
+PLI::HDF5::Dataset::Slice &PLI::HDF5::Dataset::Slices::operator[](size_t i) {
+    return this->m_slices[i];
+}
+
+std::vector<PLI::HDF5::Dataset::Slice>::iterator
+PLI::HDF5::Dataset::Slices::begin() {
+    return this->m_slices.begin();
+}
+
+std::vector<PLI::HDF5::Dataset::Slice>::iterator
+PLI::HDF5::Dataset::Slices::end() {
+    return this->m_slices.end();
+}
+
+std::vector<PLI::HDF5::Dataset::Slice>::const_iterator
+PLI::HDF5::Dataset::Slices::cbegin() const {
+    return this->m_slices.cbegin();
+}
+
+std::vector<PLI::HDF5::Dataset::Slice>::const_iterator
+PLI::HDF5::Dataset::Slices::cend() const {
+    return this->m_slices.cend();
+}
+
+void PLI::HDF5::Dataset::Slices::push_back(
+    const PLI::HDF5::Dataset::Slice &slice) {
+    this->m_slices.push_back(slice);
+}
+void PLI::HDF5::Dataset::Slices::clear() { this->m_slices.clear(); }
+
+size_t PLI::HDF5::Dataset::Slices::size() const {
+    return this->m_slices.size();
+}
+
+PLI::HDF5::Dataset::Hyperslab PLI::HDF5::Dataset::Slices::toHyperslab() const {
+    PLI::HDF5::Dataset::Hyperslab hyperslab;
+    std::for_each(this->m_slices.begin(), this->m_slices.end(),
+                  [&](PLI::HDF5::Dataset::Slice slice) {
+                      hyperslab.push_back(
+                          slice.start, (slice.stop - slice.start) / slice.step,
+                          slice.step);
+                  });
+    return hyperslab;
+}
+
+/*
+ * PLI::HDF5::Dataset::Hyperslab
+ */
+
+PLI::HDF5::Dataset::Hyperslab::Hyperslab(
+    const PLI::HDF5::Dataset::Slice &slice) {
+    this->m_offset = std::vector<size_t>(slice.start);
+    this->m_count = std::vector<size_t>(slice.start + slice.stop * slice.step);
+    this->m_stride = std::vector<size_t>(slice.step);
+}
+
+PLI::HDF5::Dataset::Hyperslab::Hyperslab(size_t offset, size_t count,
+                                         size_t stride) {
+    this->m_offset = std::vector<size_t>(offset);
+    this->m_count = std::vector<size_t>(count);
+    this->m_stride = std::vector<size_t>(stride);
+}
+
+PLI::HDF5::Dataset::Hyperslab::Hyperslab(const std::vector<size_t> &offset,
+                                         const std::vector<size_t> &count,
+                                         const std::vector<size_t> &stride)
+    : m_offset(offset), m_count(count), m_stride(stride) {
+
+    if (this->m_stride.empty())
+        this->m_stride = std::vector<size_t>(this->m_offset.size(), 1);
+
+    if (this->m_offset.size() != this->m_count.size() ||
+        this->m_offset.size() != this->m_stride.size())
+        throw PLI::HDF5::Exceptions::DimensionMismatchException(
+            "Dimension mismatch. Offset, count and stride must have the same "
+            "size: " +
+            std::to_string(this->m_offset.size()) + ":" +
+            std::to_string(this->m_count.size()) + ":" +
+            std::to_string(this->m_stride.size()));
+}
+
+bool PLI::HDF5::Dataset::Hyperslab::operator==(
+    const PLI::HDF5::Dataset::Hyperslab &hyperslab) const {
+    return hyperslab.offset() == this->m_offset &&
+           hyperslab.count() == this->m_count &&
+           hyperslab.stride() == this->m_stride;
+}
+
+bool PLI::HDF5::Dataset::Hyperslab::operator!=(
+    const PLI::HDF5::Dataset::Hyperslab &hyperslab) const {
+    return hyperslab.offset() != this->m_offset ||
+           hyperslab.count() != this->m_count ||
+           hyperslab.stride() != this->m_stride;
+}
+
+void PLI::HDF5::Dataset::Hyperslab::push_back(size_t offset, size_t count,
+                                              size_t stride) {
+    this->m_offset.push_back(offset);
+    this->m_count.push_back(count);
+    this->m_stride.push_back(stride);
+}
+
+void PLI::HDF5::Dataset::Hyperslab::clear() {
+    this->m_offset.clear();
+    this->m_count.clear();
+    this->m_stride.clear();
+}
+
+size_t PLI::HDF5::Dataset::Hyperslab::size() const {
+    return this->m_offset.size();
+}
+
+PLI::HDF5::Dataset::Slices PLI::HDF5::Dataset::Hyperslab::toSlices() const {
+    PLI::HDF5::Dataset::Slices slices;
+    for (size_t i = 0; i < this->size(); i++)
+        slices.push_back(PLI::HDF5::Dataset::Slice(
+            this->m_offset[i],
+            this->m_offset[i] + this->m_count[i] * this->m_stride[i],
+            this->m_stride[i]));
+    return slices;
+}
+
+/*
+ * PLI::HDF5::Dataset static Slice(s) Hyperslab helper functions
+ */
+
+std::vector<PLI::HDF5::Dataset::Hyperslab> PLI::HDF5::Dataset::chunkTensor(
+    const std::vector<size_t> &tensorDims,
+    const PLI::HDF5::Dataset::Hyperslab &chunk_hyperslab) {
+    std::vector<PLI::HDF5::Dataset::Hyperslab> chunks;
+
+    if (tensorDims.size() != chunk_hyperslab.size())
+        throw PLI::HDF5::Exceptions::DimensionMismatchException(
+            "Dimension size does not match");
+
+    auto offset = chunk_hyperslab.offset();
+
+    // increment offset, beginning with last element, and save valid slices
+    while (offset[0] < tensorDims[0]) {
+        // set current offset chunk dimension
+        auto dim = chunk_hyperslab.count();
+        for (std::size_t i = 0; i < tensorDims.size(); i++) {
+            if (dim[i] + offset[i] > tensorDims[i])
+                dim[i] = tensorDims[i] - offset[i];
+        }
+
+        chunks.push_back(PLI::HDF5::Dataset::Hyperslab(offset, dim));
+
+        // increment offset, beginning with last
+        for (auto i = static_cast<int64_t>(tensorDims.size()) - 1; i >= 0;
+             i--) {
+            offset[i] += chunk_hyperslab.count()[i];
+            if (offset[i] >= tensorDims[i] && i > 0) {
+                offset[i] = chunk_hyperslab.offset()[i];
+            } else {
+                break;
+            }
+        }
+    }
+    return chunks;
 }

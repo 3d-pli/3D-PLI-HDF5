@@ -1,6 +1,6 @@
 add_library(
   PLIHDF5 SHARED
-  plihdf5.cpp
+  plim.cpp
   config.cpp
   file.cpp
   attributes.cpp
@@ -25,6 +25,13 @@ target_link_libraries(
 if(MSVC)
   target_compile_options(PLIHDF5 PRIVATE /W4 /WX)
 else()
-  target_compile_options(PLIHDF5 PRIVATE -Wall -Wextra -Wpedantic -Werror
-                                         -Wshadow -O)
+  target_compile_options(
+    PLIHDF5
+    PRIVATE -Wall
+            -Wextra
+            -Wpedantic
+            -Werror
+            -Wfatal-errors
+            -Wshadow
+            -O)
 endif()

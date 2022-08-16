@@ -29,11 +29,10 @@
 
 #include "PLIHDF5/type.h"
 
-template <typename T>
-class TypeTest : public ::testing::Test {
- protected:
-  TypeTest() : m_type(PLI::HDF5::Type::createType<T>()) {}
-  PLI::HDF5::Type m_type;
+template <typename T> class TypeTest : public ::testing::Test {
+  protected:
+    TypeTest() : m_type(PLI::HDF5::Type::createType<T>()) {}
+    PLI::HDF5::Type m_type;
 };
 typedef ::testing::Types<uint8_t, uint16_t, uint32_t, uint64_t, int8_t, int16_t,
                          int32_t, int64_t, float, double>
@@ -42,16 +41,16 @@ typedef ::testing::Types<uint8_t, uint16_t, uint32_t, uint64_t, int8_t, int16_t,
 TYPED_TEST_SUITE(TypeTest, TestTypes);
 
 TYPED_TEST(TypeTest, CreateType) {
-  EXPECT_TRUE(PLI::HDF5::Type::createType<TypeParam>() == this->m_type);
+    EXPECT_TRUE(PLI::HDF5::Type::createType<TypeParam>() == this->m_type);
 }
 
-int main(int argc, char* argv[]) {
-  int result = 0;
+int main(int argc, char *argv[]) {
+    int result = 0;
 
-  MPI_Init(&argc, &argv);
-  ::testing::InitGoogleTest(&argc, argv);
-  result = RUN_ALL_TESTS();
+    MPI_Init(&argc, &argv);
+    ::testing::InitGoogleTest(&argc, argv);
+    result = RUN_ALL_TESTS();
 
-  MPI_Finalize();
-  return result;
+    MPI_Finalize();
+    return result;
 }

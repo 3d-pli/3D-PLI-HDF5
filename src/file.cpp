@@ -24,7 +24,10 @@
  */
 
 #include "PLIHDF5/file.h"
+
 #include <iostream>
+
+#include "PLIHDF5/exceptions.h"
 
 PLI::HDF5::File
 PLI::HDF5::createFile(const std::string &fileName,

@@ -281,7 +281,31 @@ TEST_F(PLI_HDF5_Dataset_Non_MPI, read) {
     }
 }
 
-// TEST_F(PLI_HDF5_Dataset_Non_MPI, hid_t) {} // operator??
+TEST_F(PLI_HDF5_Dataset_Non_MPI, readLimit) {
+    // write test dataset
+    std::vector<int> data(std::accumulate(_dims.begin(), _dims.end(), 1,
+                                          std::multiplies<std::size_t>()));
+    std::iota(data.begin(), data.end(), 0);
+    const std::vector<size_t> offset{{0, 0, 0}};
+    {
+        auto dset = _file.createDataset<int>("/Image", _dims, _chunk_dims);
+        dset.write(data, offset, _dims);
+        dset.close();
+    }
+
+    { // read dataset
+        auto dset = _file.openDataset("/Image");
+        // We expect another exception than in the MPI version because our input
+        // dataset is too small. However, the exception is thrown after the
+        // initial check if we would run into issues with MPI.
+        EXPECT_THROW(
+            const auto data_in = dset.read<int>(
+                offset,
+                {static_cast<size_t>(std::numeric_limits<int>::max()) + 1}),
+            PLI::HDF5::Exceptions::HDF5RuntimeException);
+        dset.close();
+    }
+}
 
 int main(int argc, char *argv[]) {
     int result = 0;

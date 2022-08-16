@@ -25,7 +25,13 @@
 
 #include "PLIHDF5/attributes.h"
 
+#include <hdf5.h>
+
+#include <algorithm>
+#include <cstring>
 #include <iostream>
+
+#include "PLIHDF5/config.h"
 
 PLI::HDF5::AttributeHandler::AttributeHandler() noexcept : m_id(-1) {}
 

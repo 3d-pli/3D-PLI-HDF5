@@ -23,9 +23,16 @@
    IN THE SOFTWARE.
  */
 
-#include "PLIHDF5/plihdf5.h"
+#include "PLIHDF5/plim.h"
 
-PLI::PLIM::PLIM(PLI::HDF5::File handler, const std::string &dataset) {
+#include <algorithm>
+#include <chrono> // NOLINT [build/c++11]
+
+#include "PLIHDF5/config.h"
+#include "PLIHDF5/dataset.h"
+#include "PLIHDF5/sha512.h"
+
+PLI::HDF5::PLIM::PLIM(PLI::HDF5::File handler, const std::string &dataset) {
     if (PLI::HDF5::Dataset::exists(handler, dataset)) {
         PLI::HDF5::Dataset datasetHandler = handler.openDataset(dataset);
         m_attrHandler = PLI::HDF5::AttributeHandler(datasetHandler);
@@ -34,9 +41,10 @@ PLI::PLIM::PLIM(PLI::HDF5::File handler, const std::string &dataset) {
     }
 }
 
-PLI::PLIM::PLIM(PLI::HDF5::AttributeHandler handler) : m_attrHandler(handler) {}
+PLI::HDF5::PLIM::PLIM(PLI::HDF5::AttributeHandler handler)
+    : m_attrHandler(handler) {}
 
-void PLI::PLIM::addCreator() {
+void PLI::HDF5::PLIM::addCreator() {
     std::string username;
 #ifdef __GNUC__
     char *user = std::getenv("USER");
@@ -57,7 +65,7 @@ void PLI::PLIM::addCreator() {
     m_attrHandler.createAttribute("created_by", username);
 }
 
-void PLI::PLIM::addID(const std::vector<std::string> &idAttributes) {
+void PLI::HDF5::PLIM::addID(const std::vector<std::string> &idAttributes) {
     std::string hashCode;
 
     std::vector<std::string> _idAttributes;
@@ -87,7 +95,7 @@ void PLI::PLIM::addID(const std::vector<std::string> &idAttributes) {
     m_attrHandler.createAttribute("id", toSHA512(hashCode));
 }
 
-void PLI::PLIM::addReference(const PLI::HDF5::AttributeHandler &file) {
+void PLI::HDF5::PLIM::addReference(const PLI::HDF5::AttributeHandler &file) {
     std::vector<std::string> fileID = file.getAttribute<std::string>("id");
     if (m_attrHandler.attributeExists("reference_images")) {
         m_attrHandler.deleteAttribute("reference_images");
@@ -95,7 +103,7 @@ void PLI::PLIM::addReference(const PLI::HDF5::AttributeHandler &file) {
     m_attrHandler.createAttribute("reference_images", fileID, {fileID.size()});
 }
 
-void PLI::PLIM::addReference(
+void PLI::HDF5::PLIM::addReference(
     const std::vector<PLI::HDF5::AttributeHandler> &files) {
     std::vector<std::string> fileIDs;
     std::transform(files.begin(), files.end(), std::back_inserter(fileIDs),
@@ -109,28 +117,29 @@ void PLI::PLIM::addReference(
                                   {fileIDs.size()});
 }
 
-void PLI::PLIM::addSoftware(const std::string &softwareName) {
+void PLI::HDF5::PLIM::addSoftware(const std::string &softwareName) {
     if (m_attrHandler.attributeExists("software")) {
         m_attrHandler.deleteAttribute("software");
     }
     m_attrHandler.createAttribute("software", softwareName);
 }
 
-void PLI::PLIM::addSoftwareRevision(const std::string &softwareRevision) {
+void PLI::HDF5::PLIM::addSoftwareRevision(const std::string &softwareRevision) {
     if (m_attrHandler.attributeExists("software_revision")) {
         m_attrHandler.deleteAttribute("software_revision");
     }
     m_attrHandler.createAttribute("software_revision", softwareRevision);
 }
 
-void PLI::PLIM::addSoftwareParameters(const std::string &softwareParameters) {
+void PLI::HDF5::PLIM::addSoftwareParameters(
+    const std::string &softwareParameters) {
     if (m_attrHandler.attributeExists("software_parameters")) {
         m_attrHandler.deleteAttribute("software_parameters");
     }
     m_attrHandler.createAttribute("software_parameters", softwareParameters);
 }
 
-void PLI::PLIM::addCreationTime() {
+void PLI::HDF5::PLIM::addCreationTime() {
     if (m_attrHandler.attributeExists("creation_time")) {
         m_attrHandler.deleteAttribute("creation_time");
     }
@@ -144,7 +153,7 @@ void PLI::PLIM::addCreationTime() {
     m_attrHandler.createAttribute("creation_time", std::string(buffer));
 }
 
-void PLI::PLIM::addImageModality(const std::string &modalityName) {
+void PLI::HDF5::PLIM::addImageModality(const std::string &modalityName) {
     if (m_attrHandler.attributeExists("image_modality")) {
         m_attrHandler.deleteAttribute("image_modality");
     }

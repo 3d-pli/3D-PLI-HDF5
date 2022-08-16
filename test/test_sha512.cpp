@@ -29,21 +29,21 @@
 #include "PLIHDF5/sha512.h"
 
 TEST(TestSHA512, ToSHA512) {
-  std::string string = "Hello World!";
-  std::string expected =
-      "861844d6704e8573fec34d967e20bcfef3d424cf48be04e6dc08f2bd58c729743371015e"
-      "ad891cc3cf1c9d34b49264b510751b1ff9e537937bc46b5d6ff4ecc8";
-  std::string actual = PLI::toSHA512(string);
-  EXPECT_EQ(expected, actual);
+    std::string string = "Hello World!";
+    std::string expected =
+        "861844d6704e8573fec34d967e20bcfef3d424cf48be04e6dc08f2bd58c72974337101"
+        "5ead891cc3cf1c9d34b49264b510751b1ff9e537937bc46b5d6ff4ecc8";
+    std::string actual = PLI::toSHA512(string);
+    EXPECT_EQ(expected, actual);
 }
 
-int main(int argc, char* argv[]) {
-  int result = 0;
+int main(int argc, char *argv[]) {
+    int result = 0;
 
-  MPI_Init(&argc, &argv);
-  ::testing::InitGoogleTest(&argc, argv);
-  result = RUN_ALL_TESTS();
+    MPI_Init(&argc, &argv);
+    ::testing::InitGoogleTest(&argc, argv);
+    result = RUN_ALL_TESTS();
 
-  MPI_Finalize();
-  return result;
+    MPI_Finalize();
+    return result;
 }

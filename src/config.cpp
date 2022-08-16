@@ -25,7 +25,12 @@
 
 #include "PLIHDF5/config.h"
 
+#include <filesystem>
+#include <fstream>
 #include <iostream>
+
+#include "PLIHDF5/exceptions.h"
+#include <nlohmann/json.hpp>
 
 std::unique_ptr<PLI::HDF5::Config> PLI::HDF5::Config::instance = nullptr;
 

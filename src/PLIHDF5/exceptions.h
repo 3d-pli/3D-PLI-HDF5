@@ -53,6 +53,17 @@ class DatasetNotFoundException : public std::exception {
     std::string m_message;
 };
 
+class DatasetOperationOverflowException : public std::exception {
+  public:
+    explicit DatasetOperationOverflowException(const std::string &message)
+        : std::exception(), m_message(message) {}
+    virtual ~DatasetOperationOverflowException() noexcept {}
+    virtual const char *what() const noexcept { return m_message.c_str(); }
+
+  private:
+    std::string m_message;
+};
+
 class IdentifierNotValidException : public std::exception {
   public:
     explicit IdentifierNotValidException(const std::string &message)

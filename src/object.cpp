@@ -25,6 +25,8 @@
 
 #include "PLIHDF5/object.h"
 
+#include "PLIHDF5/exceptions.h"
+
 PLI::HDF5::Object::Object(hid_t id,
                           const std::optional<MPI_Comm> &communicator) noexcept
     : m_communicator(communicator), m_id(id) {

@@ -27,11 +27,11 @@
 
 #include <hdf5.h>
 #include <mpi.h>
+
 #include <optional>
 #include <string>
 #include <vector>
 
-#include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/type.h"
 
 namespace PLI::HDF5 {

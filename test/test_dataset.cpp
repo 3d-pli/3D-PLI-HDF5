@@ -25,8 +25,10 @@
 
 #include <gtest/gtest.h>
 
+#include <cmath>
 #include <filesystem>
-#include <numeric>
+#include <iostream>
+#include <limits>
 
 #include "PLIHDF5/dataset.h"
 #include "PLIHDF5/file.h"
@@ -199,7 +201,7 @@ TEST_F(PLI_HDF5_Dataset, type) {
 TEST_F(PLI_HDF5_Dataset, ndims) {
     { // call
         auto dset = _file.createDataset<float>("/Image_1", _dims, _chunk_dims);
-        EXPECT_TRUE(dset.ndims() == _dims.size());
+        EXPECT_EQ(dset.ndims(), _dims.size());
         dset.close();
     }
 }
@@ -207,7 +209,7 @@ TEST_F(PLI_HDF5_Dataset, ndims) {
 TEST_F(PLI_HDF5_Dataset, dims) {
     { // call
         auto dset = _file.createDataset<float>("/Image_1", _dims, _chunk_dims);
-        EXPECT_TRUE(dset.dims() == _dims);
+        EXPECT_EQ(dset.dims(), _dims);
         dset.close();
     }
 }
@@ -276,8 +278,8 @@ TEST_F(PLI_HDF5_Dataset, read) {
     { // read dataset
         auto dset = _file.openDataset("/Image");
         const auto data_in = dset.read<int>(offset, _dims);
-        EXPECT_TRUE(data_in == data);
-        EXPECT_TRUE(data_in[data_in.size() - 1] == data_in.size() - 1);
+        EXPECT_EQ(data_in, data);
+        EXPECT_EQ(data_in[data_in.size() - 1], data_in.size() - 1);
         dset.close();
     }
 
@@ -290,7 +292,7 @@ TEST_F(PLI_HDF5_Dataset, read) {
         std::vector<int> data_in;
         std::vector<int> data_comp(size);
         EXPECT_NO_THROW(data_in = dset.read<int>(offset_in, dims_in));
-        EXPECT_TRUE(data_in.size() == size);
+        EXPECT_EQ(data_in.size(), size);
 
         auto ii = 0u;
         for (auto i = offset_in[0]; i < offset_in[0] + dims_in[0]; i++)
@@ -301,8 +303,31 @@ TEST_F(PLI_HDF5_Dataset, read) {
                         data[i * _dims[1] * _dims[2] + j * _dims[2] + k];
                 }
 
-        EXPECT_TRUE(data_in == data_comp);
+        EXPECT_EQ(data_in, data_comp);
 
+        dset.close();
+    }
+}
+
+TEST_F(PLI_HDF5_Dataset, readLimit) {
+    // write test dataset
+    std::vector<int> data(std::accumulate(_dims.begin(), _dims.end(), 1,
+                                          std::multiplies<std::size_t>()));
+    std::iota(data.begin(), data.end(), 0);
+    const std::vector<size_t> offset{{0, 0, 0}};
+    {
+        auto dset = _file.createDataset<int>("/Image", _dims, _chunk_dims);
+        dset.write(data, offset, _dims);
+        dset.close();
+    }
+
+    { // read dataset
+        auto dset = _file.openDataset("/Image");
+        EXPECT_THROW(
+            const auto data_in = dset.read<int>(
+                offset,
+                {static_cast<size_t>(std::numeric_limits<int>::max()) + 1}),
+            PLI::HDF5::Exceptions::DatasetOperationOverflowException);
         dset.close();
     }
 }
@@ -321,18 +346,165 @@ TEST_F(PLI_HDF5_Dataset, isChunked) {
     }
 }
 
-TEST_F(PLI_HDF5_Dataset, chunkDims) {
-    { // create dataset with chunks
-        auto dset = _file.createDataset<float>("/Image", _dims, _chunk_dims);
-        EXPECT_EQ(dset.chunkDims(), _chunk_dims);
-        dset.close();
+TEST_F(PLI_HDF5_Dataset, slice) {
+    { // constructor
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Slice());
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Slice(0));
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Slice(0, 0));
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Slice(0, 0, 1));
     }
 
-    { // create dataset without chunks
-        auto dset = _file.createDataset<float>("/Image_2", _dims);
-        EXPECT_THROW(dset.chunkDims(),
-                     PLI::HDF5::Exceptions::HDF5RuntimeException);
-        dset.close();
+    { // operator
+        EXPECT_EQ(PLI::HDF5::Dataset::Slice(0, 0),
+                  PLI::HDF5::Dataset::Slice(0, 0));
+        EXPECT_NE(PLI::HDF5::Dataset::Slice(0, 0, 0),
+                  PLI::HDF5::Dataset::Slice(1, 0, 0));
+        EXPECT_NE(PLI::HDF5::Dataset::Slice(0, 0, 0),
+                  PLI::HDF5::Dataset::Slice(0, 1, 0));
+        EXPECT_NE(PLI::HDF5::Dataset::Slice(0, 0, 0),
+                  PLI::HDF5::Dataset::Slice(0, 0, 1));
+    }
+
+    { // toHyperslab
+        PLI::HDF5::Dataset::Slice slice;
+        PLI::HDF5::Dataset::Hyperslab hyperslab;
+        EXPECT_NO_THROW(hyperslab = slice.toHyperslab());
+        EXPECT_EQ(hyperslab.size(), 1);
+    }
+}
+
+TEST_F(PLI_HDF5_Dataset, slices) {
+    { // constructor
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Slices());
+
+        EXPECT_NO_THROW(
+            PLI::HDF5::Dataset::Slices({PLI::HDF5::Dataset::Slice(0, 0, 0),
+                                        PLI::HDF5::Dataset::Slice(0, 0, 0),
+                                        PLI::HDF5::Dataset::Slice(0, 0, 0)}));
+
+        std::vector<PLI::HDF5::Dataset::Slice> slices = {
+            {PLI::HDF5::Dataset::Slice(0, 0, 0),
+             PLI::HDF5::Dataset::Slice(0, 0, 0),
+             PLI::HDF5::Dataset::Slice(0, 0, 0)}};
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Slices(slices));
+    }
+
+    { // operator
+        PLI::HDF5::Dataset::Slices slices0;
+        PLI::HDF5::Dataset::Slices slices1{
+            {PLI::HDF5::Dataset::Slice(0, 0, 0),
+             PLI::HDF5::Dataset::Slice(1, 0, 0),
+             PLI::HDF5::Dataset::Slice(2, 0, 0)}};
+        EXPECT_EQ(slices0, slices0);
+        EXPECT_EQ(slices1, slices1);
+        EXPECT_NE(slices0, slices1);
+        EXPECT_NE(slices1, slices0);
+    }
+
+    { // iterator
+        PLI::HDF5::Dataset::Slices slices0;
+        EXPECT_EQ(slices0.begin(), slices0.end());
+        EXPECT_EQ(slices0.cbegin(), slices0.cend());
+
+        PLI::HDF5::Dataset::Slices slices{{PLI::HDF5::Dataset::Slice(0, 0, 0),
+                                           PLI::HDF5::Dataset::Slice(1, 0, 0),
+                                           PLI::HDF5::Dataset::Slice(2, 0, 0)}};
+        EXPECT_NE(slices.begin(), slices.end());
+        EXPECT_NE(slices.cbegin(), slices.cend());
+        EXPECT_EQ(std::distance(slices.begin(), slices.end()), slices.size());
+    }
+
+    { // vector stuff
+        PLI::HDF5::Dataset::Slices slices;
+        EXPECT_EQ(slices.size(), 0);
+        EXPECT_NO_THROW(slices.push_back(PLI::HDF5::Dataset::Slice(0)));
+        EXPECT_EQ(slices.size(), 1);
+        EXPECT_NO_THROW(slices.clear());
+        EXPECT_EQ(slices.size(), 0);
+    }
+
+    { // tohyperslab
+        PLI::HDF5::Dataset::Slices slices;
+        slices.push_back(PLI::HDF5::Dataset::Slice(0));
+
+        PLI::HDF5::Dataset::Hyperslab hyperslab;
+        EXPECT_NO_THROW(hyperslab = slices.toHyperslab());
+        EXPECT_EQ(hyperslab.size(), 1);
+        EXPECT_EQ(hyperslab.offset(), std::vector<size_t>({0}));
+        EXPECT_EQ(hyperslab.count(), std::vector<size_t>({0}));
+        EXPECT_EQ(hyperslab.stride(), std::vector<size_t>({1}));
+    }
+}
+
+TEST_F(PLI_HDF5_Dataset, hyperslab) {
+    { // constructor
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Hyperslab());
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Hyperslab(0, 0));
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Hyperslab(0, 0, 1));
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Hyperslab(
+            std::vector<size_t>({0}), std::vector<size_t>({0})));
+        EXPECT_NO_THROW(PLI::HDF5::Dataset::Hyperslab(
+            std::vector<size_t>({0}), std::vector<size_t>({0}),
+            std::vector<size_t>({1})));
+    }
+
+    { // operator
+        auto hyperslab0 = PLI::HDF5::Dataset::Hyperslab();
+        auto hyperslab1 = PLI::HDF5::Dataset::Hyperslab(
+            std::vector<size_t>({0}), std::vector<size_t>({0}));
+        auto hyperslab2 = PLI::HDF5::Dataset::Hyperslab(
+            std::vector<size_t>({0}), std::vector<size_t>({0}),
+            std::vector<size_t>({1}));
+        auto hyperslab3 = PLI::HDF5::Dataset::Hyperslab();
+        hyperslab3.push_back(0, 0);
+
+        EXPECT_EQ(hyperslab0, hyperslab0);
+        EXPECT_EQ(hyperslab1, hyperslab1);
+        EXPECT_EQ(hyperslab2, hyperslab2);
+        EXPECT_EQ(hyperslab3, hyperslab3);
+
+        EXPECT_EQ(hyperslab1, hyperslab2);
+        EXPECT_EQ(hyperslab1, hyperslab3);
+
+        EXPECT_EQ(hyperslab2, hyperslab1);
+        EXPECT_EQ(hyperslab2, hyperslab3);
+
+        EXPECT_EQ(hyperslab3, hyperslab1);
+        EXPECT_EQ(hyperslab3, hyperslab2);
+
+        EXPECT_NE(hyperslab0, hyperslab1);
+        EXPECT_NE(hyperslab0, hyperslab2);
+        EXPECT_NE(hyperslab0, hyperslab3);
+        EXPECT_NE(hyperslab1, hyperslab0);
+        EXPECT_NE(hyperslab2, hyperslab0);
+        EXPECT_NE(hyperslab3, hyperslab0);
+    }
+
+    { // vector stuff
+        PLI::HDF5::Dataset::Hyperslab hyperslab;
+        EXPECT_EQ(hyperslab.size(), 0);
+        EXPECT_NO_THROW(hyperslab.push_back(0, 0));
+        EXPECT_EQ(hyperslab.size(), 1);
+        EXPECT_NO_THROW(hyperslab.push_back(0, 0, 1));
+        EXPECT_EQ(hyperslab.size(), 2);
+        EXPECT_NO_THROW(hyperslab.clear());
+        EXPECT_EQ(hyperslab.size(), 0);
+    }
+
+    { // toSlice
+        PLI::HDF5::Dataset::Slices slices;
+
+        PLI::HDF5::Dataset::Hyperslab hyperslab;
+        hyperslab.push_back(0, 2);
+        hyperslab.push_back(1, 3, 2);
+        EXPECT_NO_THROW(slices = hyperslab.toSlices());
+        EXPECT_EQ(slices.size(), 2);
+        EXPECT_EQ(slices[0].start, 0);
+        EXPECT_EQ(slices[0].stop, 2 * 1);
+        EXPECT_EQ(slices[0].step, 1);
+        EXPECT_EQ(slices[1].start, 1);
+        EXPECT_EQ(slices[1].stop, 1 + 3 * 2);
+        EXPECT_EQ(slices[1].step, 2);
     }
 }
 
