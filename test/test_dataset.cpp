@@ -28,6 +28,7 @@
 #include <cmath>
 #include <filesystem>
 #include <iostream>
+#include <limits>
 
 #include "PLIHDF5/dataset.h"
 #include "PLIHDF5/file.h"
@@ -304,6 +305,29 @@ TEST_F(PLI_HDF5_Dataset, read) {
 
         EXPECT_EQ(data_in, data_comp);
 
+        dset.close();
+    }
+}
+
+TEST_F(PLI_HDF5_Dataset, readLimit) {
+    // write test dataset
+    std::vector<int> data(std::accumulate(_dims.begin(), _dims.end(), 1,
+                                          std::multiplies<std::size_t>()));
+    std::iota(data.begin(), data.end(), 0);
+    const std::vector<size_t> offset{{0, 0, 0}};
+    {
+        auto dset = _file.createDataset<int>("/Image", _dims, _chunk_dims);
+        dset.write(data, offset, _dims);
+        dset.close();
+    }
+
+    { // read dataset
+        auto dset = _file.openDataset("/Image");
+        EXPECT_THROW(
+            const auto data_in = dset.read<int>(
+                offset,
+                {static_cast<size_t>(std::numeric_limits<int>::max()) + 1}),
+            PLI::HDF5::Exceptions::DatasetOperationOverflowException);
         dset.close();
     }
 }
