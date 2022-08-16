@@ -22,7 +22,11 @@
    IN THE SOFTWARE.
  */
 #pragma once
+
 #include "PLIHDF5/attributes.h"
+#include "PLIHDF5/exceptions.h"
+
+#include <hdf5.h>
 
 template <typename T>
 void PLI::HDF5::AttributeHandler::createAttribute(

@@ -25,26 +25,9 @@
 
 #pragma once
 
-#include <hdf5.h>
-#include <mpi.h>
-
-#ifdef __GNUC__
-#include <pwd.h>
-#include <unistd.h>
-#else
-#define NOMINMAX
-#include <Windows.h>
-#include <lmcons.h>
-#endif
-
-#include <algorithm>
-#include <cstring>
-#include <memory>
 #include <string>
 #include <vector>
 
-#include "PLIHDF5/config.h"
-#include "PLIHDF5/exceptions.h"
 #include "PLIHDF5/object.h"
 #include "PLIHDF5/type.h"
 
