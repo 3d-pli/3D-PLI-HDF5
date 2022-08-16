@@ -24,7 +24,10 @@
  */
 
 #include "PLIHDF5/group.h"
+
 #include <iostream>
+
+#include "PLIHDF5/exceptions.h"
 
 void PLI::HDF5::Group::open(const Folder &parentPtr,
                             const std::string &groupName) {
