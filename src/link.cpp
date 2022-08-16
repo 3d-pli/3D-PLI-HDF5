@@ -25,6 +25,8 @@
 
 #include "PLIHDF5/link.h"
 
+#include "PLIHDF5/exceptions.h"
+
 H5L_info_t PLI::HDF5::Link::getLinkInfo(const Folder &parentPtr,
                                         const std::string &path) {
     H5L_info_t linkInfo;
