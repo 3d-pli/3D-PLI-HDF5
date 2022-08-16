@@ -25,7 +25,9 @@
 
 #include <gtest/gtest.h>
 
-#include "PLIHDF5/plihdf5.h"
+#include "PLIHDF5/file.h"
+#include "PLIHDF5/group.h"
+#include "PLIHDF5/plim.h"
 
 class PLIMTest : public ::testing::Test {
   protected:
@@ -84,13 +86,13 @@ TEST_F(PLIMTest, CopyAfterCreation) {
     auto _group2 = _file.createGroup("test_group2");
     auto _attrHandler2 = PLI::HDF5::AttributeHandler(_group2);
 
-    auto _plim = PLI::PLIM(_attributeHandler);
+    auto _plim = PLI::HDF5::PLIM(_attributeHandler);
     _plim.addCreator();
     _plim.addSoftware("test_plihdf5");
     _plim.addSoftwareParameters("None");
     _plim.addSoftwareRevision("0.1");
 
-    auto _plim2 = PLI::PLIM(_attrHandler2);
+    auto _plim2 = PLI::HDF5::PLIM(_attrHandler2);
     _plim2.addCreator();
     _plim2.addSoftware("test_plihdf5");
     _plim2.addSoftwareParameters("None");
