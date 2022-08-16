@@ -12,7 +12,7 @@ endif()
 
 # HDF5 Support
 set(HDF5_PREFER_PARALLEL ON)
-find_package(HDF5 REQUIRED COMPONENTS C)
+find_package(HDF5 REQUIRED COMPONENTS C HL)
 if(NOT HDF5_IS_PARALLEL)
   message(FATAL_ERROR "HDF5 is not parallel")
 endif()
