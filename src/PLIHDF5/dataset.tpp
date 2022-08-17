@@ -186,8 +186,8 @@ template <typename T>
 void PLI::HDF5::Dataset::write(const std::vector<T> &data,
                                const PLI::HDF5::Dataset::Hyperslab &hyperslab) {
 
-    this->write(data, hyperslab.offset(), hyperslab.count(), hyperslab.stride(),
-                PLI::HDF5::Type::createType<T>());
+    this->write(data.data(), hyperslab.offset(), hyperslab.count(),
+                hyperslab.stride(), PLI::HDF5::Type::createType<T>());
 }
 
 template <typename T>
