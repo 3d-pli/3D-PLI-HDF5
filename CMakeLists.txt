@@ -4,6 +4,18 @@ project(
   LANGUAGES C CXX
   VERSION 2.0.0)
 
+if(NOT EXISTS ${CMAKE_BINARY_DIR}/CMakeCache.txt)
+  if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE
+        "Debug"
+        CACHE STRING "" FORCE)
+  endif()
+endif()
+
+if(NOT CMAKE_BUILD_TYPE STREQUAL "Release")
+  message(WARNING "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+endif()
+
 # Enable the usage of conan if wanted
 if(EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
   include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
