@@ -159,6 +159,17 @@ TEST_F(PLI_HDF5_Dataset, write) {
         const std::vector<size_t> offset{{0, 0, 0}};
         EXPECT_NO_THROW(dset.write<float>(data.data(), offset, _dims));
     }
+
+    { // Call write with hyperslab
+        PLI::HDF5::Type type = PLI::HDF5::Type::createType<float>();
+        auto dset = PLI::HDF5::Dataset();
+        dset.create(_file, "/Image_7", _dims, _chunk_dims, type);
+        const std::vector<float> data(std::accumulate(
+            _dims.begin(), _dims.end(), 1, std::multiplies<std::size_t>()));
+        const PLI::HDF5::Dataset::Hyperslab hyperslab(
+            std::vector<size_t>({{0, 0, 0}}), _dims);
+        EXPECT_NO_THROW(dset.write<float>(data.data(), hyperslab));
+    }
 }
 
 TEST(PLI_HDF5_Dataset_, write_mpi_toggle) {
@@ -305,6 +316,24 @@ TEST_F(PLI_HDF5_Dataset, read) {
 
         EXPECT_EQ(data_in, data_comp);
 
+        dset.close();
+    }
+
+    { // read dataset to pointer
+        auto dset = _file.openDataset("/Image");
+        const PLI::HDF5::Dataset::Hyperslab hyperslab(offset, _dims);
+        const auto size = std::accumulate(_dims.begin(), _dims.end(), 1,
+                                          std::multiplies<std::size_t>());
+        auto data = new int[size];
+        EXPECT_NO_THROW(dset.read<int>(data, offset, _dims));
+    }
+
+    { // read dataset with hyperslab
+        auto dset = _file.openDataset("/Image");
+        const PLI::HDF5::Dataset::Hyperslab hyperslab(offset, _dims);
+        const auto data_in = dset.read<int>(hyperslab);
+        EXPECT_EQ(data_in, data);
+        EXPECT_EQ(data_in[data_in.size() - 1], data_in.size() - 1);
         dset.close();
     }
 }

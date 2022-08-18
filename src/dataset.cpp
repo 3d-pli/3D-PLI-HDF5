@@ -176,6 +176,13 @@ void PLI::HDF5::Dataset::write(const void *data,
     checkHDF5Call(H5Sclose(dataSpacePtr), "H5Sclose");
 }
 
+void PLI::HDF5::Dataset::write(const void *data,
+                               const PLI::HDF5::Dataset::Hyperslab &hyperslab,
+                               const PLI::HDF5::Type &type) {
+    this->write(data, hyperslab.offset(), hyperslab.count(), hyperslab.stride(),
+                type);
+}
+
 const PLI::HDF5::Type PLI::HDF5::Dataset::type() const {
     checkHDF5Ptr(this->m_id, "PLI::HDF5::Dataset::type");
     hid_t typePtr = H5Dget_type(this->m_id);
