@@ -42,12 +42,12 @@
 \DoxyCodeLine{44 \textcolor{keyword}{namespace }HDF5 \{}
 \DoxyCodeLine{49 \textcolor{keyword}{class }\mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}} : \textcolor{keyword}{public} \mbox{\hyperlink{classPLI_1_1HDF5_1_1Folder}{Folder}} \{}
 \DoxyCodeLine{50   \textcolor{keyword}{public}:}
-\DoxyCodeLine{51     \textcolor{keyword}{enum class} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{OpenState}} \{ ReadOnly = 0, ReadWrite = 1 \};}
-\DoxyCodeLine{52     \textcolor{keyword}{enum class} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7}{CreateState}} \{ OverrideExisting = 0, FailIfExists = 1 \};}
+\DoxyCodeLine{51     \textcolor{keyword}{enum class} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5}{OpenState}} \{ \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a131fb182a881796e7606ed6da27f1197}{ReadOnly}} = 0, \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ad41a62cae2d952fe4648fd73585e85c5a70a2a84088d405a2e3f1e3accaa16723}{ReadWrite}} = 1 \};}
+\DoxyCodeLine{52     \textcolor{keyword}{enum class} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7}{CreateState}} \{ \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7a493c57c8ea70e56c8fac4ef68b37e917}{OverrideExisting}} = 0, \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7a619fa449ebd5be68665c8d4662ac6365}{FailIfExists}} = 1 \};}
 \DoxyCodeLine{53 }
-\DoxyCodeLine{62     \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a678b9d7e1bb3d2f6529305ae0d875c9e}{File}}(\textcolor{keyword}{const} std::optional<MPI\_Comm> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}} = \{\});}
-\DoxyCodeLine{70     \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a678b9d7e1bb3d2f6529305ae0d875c9e}{File}}(\textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a678b9d7e1bb3d2f6529305ae0d875c9e}{File}} \&otherFile);}
-\DoxyCodeLine{79     \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a678b9d7e1bb3d2f6529305ae0d875c9e}{File}}(\textcolor{keyword}{const} hid\_t filePtr, \textcolor{keyword}{const} hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}{faplID}});}
+\DoxyCodeLine{62     \textcolor{keyword}{explicit} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File}{File}}(\textcolor{keyword}{const} std::optional<MPI\_Comm> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}} = \{\});}
+\DoxyCodeLine{70     File(\textcolor{keyword}{const} File \&otherFile);}
+\DoxyCodeLine{79     \textcolor{keyword}{explicit} File(\textcolor{keyword}{const} hid\_t filePtr, \textcolor{keyword}{const} hid\_t \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_abea3b36b7f98ef3c425cac9fb1efab9f}{faplID}});}
 \DoxyCodeLine{80 }
 \DoxyCodeLine{96     \textcolor{keywordtype}{void} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_ae5e93fd5450080812b835e5b7b049ac5}{create}}(\textcolor{keyword}{const} std::string \&fileName, \textcolor{keyword}{const} \mbox{\hyperlink{classPLI_1_1HDF5_1_1File_a15acf29a08db9d091001e7597e7cebb7}{CreateState}} creationState,}
 \DoxyCodeLine{97                 \textcolor{keyword}{const} std::optional<MPI\_Comm> \mbox{\hyperlink{classPLI_1_1HDF5_1_1Object_a2c8405ca22a13d34b6412c8aa8daf169}{communicator}} = \{\});}
