@@ -8,6 +8,7 @@ build/**
 docs/**
 test/test_attributes.cpp
 src/PLIHDF5/config.h
+src/PLIHDF5/version.h
 
 ### C++ ###
 # Prerequisites

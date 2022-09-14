@@ -1,8 +1,13 @@
 cmake_minimum_required(VERSION 3.16)
+
+# Get version from git tag
+include(cmake/version.cmake)
+gitversion()
+
 project(
   plihdf5
   LANGUAGES C CXX
-  VERSION 2.0.0)
+  VERSION ${project_git_version})
 
 if(NOT EXISTS ${CMAKE_BINARY_DIR}/CMakeCache.txt)
   if(NOT CMAKE_BUILD_TYPE)
@@ -28,11 +33,9 @@ find_package(HDF5 REQUIRED COMPONENTS C HL)
 if(NOT HDF5_IS_PARALLEL)
   message(FATAL_ERROR "HDF5 is not parallel")
 endif()
-# MPI Support
+
 find_package(MPI REQUIRED COMPONENTS C CXX)
-# OpenSSL Support
 find_package(OpenSSL REQUIRED)
-# JSON
 find_package(nlohmann_json REQUIRED)
 
 # Source files / headers

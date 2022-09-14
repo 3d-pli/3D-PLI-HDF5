@@ -95,8 +95,7 @@ package:ubuntu22.04:
     - cpack
   artifacts:
     paths:
-      - build/plihdf5_2.0.0_amd64-devel.deb
-      - build/plihdf5_2.0.0_amd64-runtime.deb
+      - build/
     expire_in: 1 week
 
 package:ubuntu20.04:
@@ -118,8 +117,7 @@ package:ubuntu20.04:
     - cpack
   artifacts:
     paths:
-      - build/plihdf5_2.0.0_amd64-devel.deb
-      - build/plihdf5_2.0.0_amd64-runtime.deb
+      - build/
     expire_in: 1 week
 
 package-install:ubuntu20.04:
@@ -132,7 +130,7 @@ package-install:ubuntu20.04:
     - package:ubuntu20.04
   script:
     - apt-get update -qq
-    - apt-get install -y ./build/plihdf5_2.0.0_amd64-devel.deb ./build/plihdf5_2.0.0_amd64-runtime.deb
+    - apt-get install -y ./build/plihdf5_*_amd64-*.deb
 
 package-install:ubuntu22.04:
   extends: .before_script_template
@@ -144,7 +142,7 @@ package-install:ubuntu22.04:
     - package:ubuntu22.04
   script:
     - apt-get update -qq
-    - apt-get install -y ./build/plihdf5_2.0.0_amd64-devel.deb ./build/plihdf5_2.0.0_amd64-runtime.deb
+    - apt-get install -y ./build/plihdf5_*_amd64-*.deb
 
 test:ubuntu:
   extends: .before_script_template
